@@ -25,7 +25,7 @@ const NavBar = () => {
   
     return (
         <div>
-            <AppBar style={{ background: '#2E3B55' }} position="static">
+            <AppBar style={{zIndex:1301, backgroundColor: 'rgb(6, 57, 87)'}} position="fixed">
                 <Toolbar>
                 <IconButton edge="start" color="inherit" aria-label="menu" onClick={handleClick}>
                     <MenuIcon />

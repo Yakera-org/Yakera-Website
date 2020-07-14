@@ -12,4 +12,13 @@
 .donate{
   text-align: center;
   padding: 1%;
+  background-color: rgb(255, 231, 200);
 }
+
+.drawer {
+  height:100%;
+  margin-top: 50px;
+  padding: 100px;
+  background-color: #ff8e8e;
+}
+

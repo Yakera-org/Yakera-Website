@@ -79,8 +79,8 @@ class CardForDonation extends Component{
       const { open } = this.state
         return(
 
-            <Card style={{margin:'2%'}} >
-                <Grid container spacing={5}>
+            <Card style={{margin:'2% 2% 2% 20%'}} >
+                <Grid container spacing={4}>
                     <Grid item>
                     <CardMedia
                             style = {{ height: '400px', width:'400px'}}
