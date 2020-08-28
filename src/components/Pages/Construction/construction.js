@@ -10,7 +10,7 @@ class ConstructionPage extends Component{
            <div className='construction-page'>
                s
                <div className='construction-text'>
-                    TESTING
+                    YO IT'S LOUIS NICAUD COMING STRAIGHT FROM THE UNDERGROUND 💀
                </div>
                <div className='construction-img'>
                     <img src={logo} alt='logo' width='100%' />
