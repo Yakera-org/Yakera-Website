@@ -1,0 +1,20 @@
+.construction-page{
+    height: 100vh;      
+    background-color: rgb(255, 245, 238);
+    width: 100%;
+}
+.construction-img {
+    margin-top: 5%;
+    margin-right: 1%;
+    width: 35%;
+    float: right;
+}
+.construction-text {
+    width: 55%;
+    float: left;
+    color: rgb(63, 45, 97);
+    margin-top: 15%;
+    margin-left: 5%;
+    font-size: 35px;
+    font-weight: bolder;
+}

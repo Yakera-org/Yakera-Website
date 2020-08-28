@@ -6,8 +6,7 @@ class home extends Component{
     render(){
         return(
             <div className="homePage">  
-                <img style={{width:'100%'}} src={wallpaper} alt="img" />
-               
+                <img style={{width:'100%'}} src={wallpaper} alt="img" />               
             </div>
         )
     }

@@ -78,12 +78,14 @@ class CardForDonation extends Component{
      
       const { open } = this.state
         return(
-
+          <div
+            hidden={this.props.value !== this.props.index}                     
+          > 
             <Card style={{margin:'2% 2% 2% 20%'}} >
                 <Grid container spacing={4}>
                     <Grid item>
                     <CardMedia
-                            style = {{ height: '400px', width:'400px'}}
+                            style = {{ height: '200px', width:'200px'}}
                             image={logo}    
                             title="picture"
                             />
@@ -107,10 +109,10 @@ class CardForDonation extends Component{
                                       maxWidth='lg'                                 
                                       open={open}
                                       onClose={this.handleToggle}
-                                      style={{maxHeight:'95%'}}                                                                                                          
+                                      style={{maxHeight:'100%', marginTop:'1%'}}                                                                                                          
                                     >
                                       
-                                      <DialogTitle style={{marginTop:'5%', marginLeft:'5%'}} >{this.props.name} needs {this.props.cause}</DialogTitle>
+                                      <DialogTitle style={{marginTop:'2%', marginLeft:'2%'}} >{this.props.name} needs {this.props.cause}</DialogTitle>
                                       <Box display="flex"
                                             flexWrap="nowrap"
                                             
@@ -169,7 +171,7 @@ class CardForDonation extends Component{
 
                 </Grid>                
             </Card>
-
+          </div>
 
         )
     }
