@@ -10,12 +10,7 @@ class ConstructionPage extends Component{
            <div className='construction-page'>
                s
                <div className='construction-text'>
-                    <p>
-                    ... YAKERA and its team are working on this website.
-                   </p>
-                   <p style={{paddingLeft:'200px'}}>
-                   Come back soon to see ...
-                   </p>
+                    TESTING
                </div>
                <div className='construction-img'>
                     <img src={logo} alt='logo' width='100%' />
