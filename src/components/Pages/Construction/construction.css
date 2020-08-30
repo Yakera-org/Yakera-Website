@@ -1,20 +1,31 @@
 .construction-page{
-    height: 100vh;      
+    margin-top: 200px;    
     background-color: rgb(255, 245, 238);
     width: 100%;
+    padding: 5%;
 }
-.construction-img {
-    margin-top: 5%;
-    margin-right: 1%;
-    width: 35%;
-    float: right;
+
+#intro-text  {
+    font-size: 20px;
 }
-.construction-text {
-    width: 55%;
+#description {
+    font-size: 20px;
     float: left;
-    color: rgb(63, 45, 97);
-    margin-top: 15%;
-    margin-left: 5%;
-    font-size: 35px;
-    font-weight: bolder;
+    width: 65%;
+    margin-bottom: 50px;
 }
+#construction-logo{
+    float: right;
+    width: 30%;
+}
+
+#construction-content {
+    text-align: justify;
+    font-size: 20px;
+}
+
+#construction-partners{
+    text-align: center;
+    font-size: 20px;
+}
+

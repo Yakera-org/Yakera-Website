@@ -1,8 +1,8 @@
 import React, { Component,Fragment } from 'react';
-import  { Box, Dialog, DialogTitle, DialogContent, DialogContentText, DialogActions, Grid, Card, CardContent, TextField, CardActionArea, CardActions, CardMedia, Drawer, Button, Typography} from '@material-ui/core';
+import  { Box, Dialog, DialogTitle, DialogContent, DialogContentText, DialogActions, Grid, Card, CardContent, TextField, CardMedia, Drawer, Button, Typography} from '@material-ui/core';
 import GenerateRandomCode from 'react-random-code-generator';
 import axios from 'axios';
-import logo from '../pics/logo.png';
+import logo from '../../../pics/logo.png';
 
 const PROXY_URL = 'https://cors-anywhere.herokuapp.com/';
 const URL = 'https://payments.static-stg.tests.airtm.org/purchases';
@@ -17,16 +17,13 @@ class CardForDonation extends Component{
         this.state = {
             amount: null,
             isLoaded: false,
-            open: false
-            
+            open: false            
         }
       }   
 
       
-      genetrateCode(){
-
-        return GenerateRandomCode.NumCode(10);
-        
+      generateCode(){
+        return GenerateRandomCode.NumCode(10);        
         };
 
       handleOnChange = (event) => {
@@ -49,7 +46,7 @@ class CardForDonation extends Component{
                   'Authorization': `Basic ${token}` 
                 },
                 data: {
-                    "code": this.genetrateCode(),
+                    "code": this.generateCode(),
                     "description": `YAKERA donation for ${name}`,
                     "cancel_uri": "http://localhost:3000/cancelled",
                     "confirmation_uri": "http://localhost:3000/confirmed",
