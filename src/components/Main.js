@@ -1,8 +1,8 @@
 import React from 'react';
 import {BrowserRouter, Switch, Route } from "react-router-dom";
-import login from './login';
-import home from './home';
-import donate from './donate';
+import login from './Pages/Login/login';
+import home from './Pages/Home/home';
+import donate from './Pages/Donate/donate';
 import confirmed from './confirmed';
 import cancelled from './cancelled';
 

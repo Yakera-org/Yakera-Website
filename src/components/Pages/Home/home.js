@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import logo from '../pics/logo.png';
-import wallpaper from '../pics/wallpaper.png';
+import wallpaper from '../../../pics/wallpaper.png';
 
 class home extends Component{
     render(){
