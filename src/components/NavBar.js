@@ -14,7 +14,7 @@ class NavBar extends Component {
                         YAKERA
                         </Typography>
                         <Typography  id='app-bar-statement'>
-                        mission statement
+                        Yakera uplifts the voices of Venezuelan people to provide a safe, vetted, and decentralized pathway to aid motivated by solidarity and freedom to help Venezuelans transition from survival to resilience.
                         </Typography>
                     </Toolbar>
                 </AppBar>

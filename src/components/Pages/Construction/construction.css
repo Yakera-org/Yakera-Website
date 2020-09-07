@@ -1,18 +1,19 @@
 .construction-page{
-    margin-top: 200px;    
+    margin-top: 100px;    
     background-color: rgb(255, 245, 238);
     width: 100%;
     padding: 5%;
 }
 
 #intro-text  {
+    margin-top: 50px;
     font-size: 20px;
 }
 #description {
+    margin-top: 80px;
     font-size: 20px;
     float: left;
     width: 65%;
-    margin-bottom: 50px;
 }
 #construction-logo{
     float: right;
