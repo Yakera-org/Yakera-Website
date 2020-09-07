@@ -26,21 +26,22 @@
  */
 
  #app-bar{
-   background-color: darkcyan;
-   height: 200px;
+   background-color: #da3b18;
+   height: 100px;
  }
 
  #app-bar-text {
-   padding-top: 50px;
+   padding-top: 10px;
    padding-left: 50px;
-   color:wheat;
+   color:rgb(255, 223, 168);
    font-size: 50px;
    vertical-align: auto;
  }
 
 #app-bar-statement {
-  padding-top: 50px;
-  color:wheat;
-  font-size: 30px;
-  padding-left: 30%;
+  text-align: center;
+  padding-top: 15px;
+  color:rgb(255, 247, 233);
+  font-size: 20px;
+  padding-left: 10%;
 }
