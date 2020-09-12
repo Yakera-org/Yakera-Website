@@ -24,18 +24,22 @@
   background-color: #ff8e8e;
 }
  */
-
+ @font-face {
+  font-family: 'Kollektif';
+  src: local('Kollektif'), url(./fonts/._Kollektif.ttf) format('truetype');
+}
  #app-bar{
-   background-color: #da3b18;
+   background-color: #003049;
    height: 100px;
  }
 
  #app-bar-text {
    padding-top: 10px;
    padding-left: 50px;
-   color:rgb(255, 223, 168);
+   color:rgb(255, 255, 255);
    font-size: 50px;
    vertical-align: auto;
+   font-family: Kollektif, Arial, serif;
  }
 
 #app-bar-statement {
@@ -43,5 +47,16 @@
   padding-top: 15px;
   color:rgb(255, 247, 233);
   font-size: 20px;
-  padding-left: 10%;
+  padding-left: 7%;
+  font-family: Kollektif, Arial, serif;
+}
+
+@media screen and (max-width: 1000px) {
+  #app-bar-text {
+    width: 100%;
+    text-align: center;
+  }
+  #app-bar-statement {
+    display:none;
+  }
 }
