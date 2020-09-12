@@ -1,32 +1,86 @@
 .construction-page{
-    margin-top: 100px;    
-    background-color: rgb(255, 245, 238);
+    margin-top: 50px;    
+    background-color: #f7f3e0;
     width: 100%;
     padding: 5%;
 }
-
-#intro-text  {
+.langSwitch {
+    text-align: center;
     margin-top: 50px;
-    font-size: 20px;
+    width: 15%;
+    padding: 20px;
+    border-radius: 15px;
+    float: right;
+    background-color: #dadada
+}
+#intro-text  {
+    font-family: Kollektif, Arial, serif;
+    float: left;
+    margin-top: 40px;
+    font-size: 30px;
+    width: 80%;
+    margin-bottom: 50px;
+}
+hr{
+    color:#003049;
+    width: 100%;
+    text-align: center;
 }
 #description {
-    margin-top: 80px;
-    font-size: 20px;
+    text-align: justify;
+    font-size: 25px;
     float: left;
     width: 65%;
+    margin-bottom: 50px;
 }
 #construction-logo{
+    margin-top: -50px;
     float: right;
     width: 30%;
 }
 
-#construction-content {
+#construction-content, #construction-path {
     text-align: justify;
-    font-size: 20px;
+    font-size: 25px;
 }
 
 #construction-partners{
-    text-align: center;
+    text-align: left;
     font-size: 20px;
 }
 
+
+@media screen and (max-width: 1000px) {
+    .intro{
+        clear:both;
+        width:100%,
+    }
+    #intro-text{
+        clear: both;
+        width: 100%;
+    }
+    .langSwitch{
+        width: 50%;
+        text-align: center;
+        padding:15px;
+        margin-right: 25%;
+        margin-top: 0px;
+        margin-bottom: 10px;
+    }
+    #description{
+        clear: both;
+        width:100%;
+    }
+    #construction-logo{
+        clear: both;
+        width: 80%;
+        margin-right: 10%;
+        margin-top: -100px;
+    }
+    #construction-content{
+        text-align: center;
+    }
+    #construction-partners{
+        text-align: center;
+    }
+}
