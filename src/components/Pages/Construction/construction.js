@@ -4,6 +4,9 @@ import './construction.css';
 import texts from './texts.json';
 import { Button, MuiThemeProvider } from '@material-ui/core';
 import { createMuiTheme } from '@material-ui/core/styles';
+import airTMlogo from '../../../pics/airtmlogo.png';
+import nutriendologo from '../../../pics/nutriendologo.jpg';
+import rotaracatlogo from '../../../pics/rotaracat.jpg';
 
 
 const theme = createMuiTheme({
@@ -47,17 +50,37 @@ class ConstructionPage extends Component{
         return(
             <div className='construction-page'>
                 <div className='intro'>
-                    <div id='intro-text'>
-                            {texts["intro-text"][this.state.language]}
-                    </div>
                     <div className='langSwitch'>
                         <MuiThemeProvider theme={theme}>
                             <Button style={{marginRight:'2px', marginBottom:'2px'}} size="large" variant="outlined" color={this.state.color1} onClick={(event) => this.switchLang(event)}>ENG</Button>
                             <Button style={{marginRight:'2px'}} size="large" variant="outlined" color={this.state.color2} onClick={(event) => this.switchLang(event)}>ESP</Button>
                         </MuiThemeProvider>
                     </div>                
+                    <div id='intro-text'>
+                            {texts["intro-text"][this.state.language]}
+                    </div>
+
+                    <div id='follow-us'>
+                        <div className='links'>
+                            <span>
+                                <i className="fab fa-twitter-square  fa-2x"></i>
+                                <a href='https://twitter.com/Yakera_ve'  rel="noopener noreferrer" target="_blank">@Yakera_ve</a>
+                            </span>
+                            
+                            <span>
+                                <i className="fab fa-instagram  fa-2x"></i>
+                                <a href='https://www.instagram.com/yakera_ve/'  rel="noopener noreferrer" target="_blank">yakera_ve</a>
+                            </span>
+                            
+                            <span>
+                                <i className="fab fa-medium  fa-2x"></i>
+                                <a href='https://medium.com/@yakera.venezuela/yakera-re-imagining-peer-to-peer-aid-for-venezuelans-793024ac9767'  rel="noopener noreferrer" target="_blank">Read about us</a>
+                            </span>
+                        </div>
+                    </div>
                 
                 </div>
+
 
                <hr style={{margin:'80px 0px 50px 0px'}}/>
 
@@ -96,9 +119,11 @@ class ConstructionPage extends Component{
 
                <div id='construction-partners'>
                 <b>Our partners:</b><br /><br />
-                AirTm<br /><br />
-                Nutriendo el Futuro<br /><br />
-                Rotaract Caracas
+                <div id='partners'>                    
+                    <img src={rotaracatlogo} width='150px' style={{borderRadius:'20%', marginLeft:'20px', marginRight:'20px'}} alt='Airtm logo' />
+                    <img src={nutriendologo} width='150px' style={{borderRadius:'10%', marginLeft:'20px', marginRight:'20px'}} alt='Airtm logo' />
+                    <img src={airTMlogo} width='150px' style={{borderRadius:'20%', marginLeft:'20px', marginRight:'20px'}} alt='Airtm logo' />
+                </div>
 
                </div>
 
