@@ -36,7 +36,7 @@
  #app-bar-text {
    padding-top: 10px;
    padding-left: 50px;
-   color:rgb(255, 255, 255);
+   color:#f7f3e0;
    font-size: 50px;
    vertical-align: auto;
    font-family: Kollektif, Arial, serif;
@@ -45,7 +45,7 @@
 #app-bar-statement {
   text-align: center;
   padding-top: 15px;
-  color:rgb(255, 247, 233);
+  color:#f7f3e0;
   font-size: 20px;
   padding-left: 7%;
   font-family: Kollektif, Arial, serif;
@@ -55,6 +55,7 @@
   #app-bar-text {
     width: 100%;
     text-align: center;
+    padding-left: 0%;
   }
   #app-bar-statement {
     display:none;
