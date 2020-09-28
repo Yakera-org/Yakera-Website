@@ -22,25 +22,7 @@ class donate extends Component{
              <h1 style={{padding:'45px'}}>
                  Donate Page
              </h1>
-            <Drawer
-            variant="permanent"
-            >
-            <div className="drawer">
-                <List>
-                    <ListItemText>
-                        Categories
-                    </ListItemText>
-                </List>
-                <Divider style={{backgroundColor:'white'}}/>
-                <List>
-                    {['Education', 'Medicine', 'Food', 'Small Business'].map((text, index) => (                         
-                        <Tabs value={this.state.value} onChange={(event, value) => { this.handle_change(value) }}>
-                            <Tab value={index} label={text} />                           
-                        </Tabs>                   
-                    ))}
-                </List>
-            </div>
-            </Drawer>
+           
         
              <CardForDonation  value={this.state.value} index={0}  name="Garcia" cause="books"/>
              <CardForDonation  value={this.state.value} index={1}  name="Enrique" cause="asma" />

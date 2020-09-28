@@ -1,23 +1,27 @@
 import React, {Component} from 'react';
-import {AppBar, Toolbar, Typography } from '@material-ui/core';
+import Navbar from 'react-bootstrap/NavBar';
+import Nav from 'react-bootstrap/Nav';
 
 import '../App.css';
 
 
 class NavBar extends Component {
     render(){
-        return(
-            <div className='nav-bar'>
-                <AppBar position="fixed" id='app-bar'>
-                    <Toolbar>
-                        <Typography  id='app-bar-text'>
-                        YAKERA
-                        </Typography>
-                        <Typography  id='app-bar-statement'>
-                        Yakera uplifts the voices of Venezuelan people to provide a safe, vetted, and decentralized pathway to aid motivated by solidarity and freedom to help Venezuelans transition from survival to resilience.
-                        </Typography>
-                    </Toolbar>
-                </AppBar>
+        return( 
+            <div>
+                <Navbar  collapseOnSelect fixed="top" className='nav-bar' bg="blue" variant="dark" expand="lg">
+                <Navbar.Brand className='nav-brand' href="/">Yakera</Navbar.Brand>
+                <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+                <Navbar.Collapse id="responsive-navbar-nav">
+                    <Nav className="mr-auto">
+                    <Nav.Link href="/info">Info</Nav.Link>
+                    <Nav.Link href="/donate">Donate</Nav.Link>
+                    <Nav.Link href="/login">Log-in</Nav.Link>
+                    </Nav>                    
+
+                </Navbar.Collapse>
+                
+                </Navbar>
             </div>
         )
     }
