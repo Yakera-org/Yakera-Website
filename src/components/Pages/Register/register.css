@@ -1,0 +1,14 @@
+.register-page{
+    text-align: center;
+}
+
+.register-page a{
+    color: white;
+}
+
+#here {
+    color:blue
+}
+#checks input {
+    margin-right: 5px;
+}
