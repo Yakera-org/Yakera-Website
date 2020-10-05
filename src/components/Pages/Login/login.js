@@ -19,7 +19,7 @@ class login extends Component{
                     </div>
                     <Button href="/" variant="contained" color="primary" style={{margin: '5%'}}>Log In</Button>
                     <br />
-                    <Typography variant="p">Don't have an account? Sign up <a id='here' href='/register'>here</a></Typography>
+                    <p>Don't have an account? Sign up <a id='here' href='/register'>here</a></p>
                     
                 </form>
                 </CardContent>

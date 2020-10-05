@@ -27,6 +27,20 @@ class ValidateFields {
       }
       return false;
   }
+  validateNumber(num){
+    if(validator.isEmpty(num)){
+      return'This field cannot be empty';
+    } else if (!validator.isNumeric(num)){
+        return 'Invalid Number';
+    }
+    return false;
+  }
+  validateAddress(address){
+    if(validator.isEmpty(address)){
+      return'This field cannot be empty';
+    }
+    return false;
+  }
   validatePassword(password) {
     if (validator.isEmpty(password)) {
       return 'Password is required';

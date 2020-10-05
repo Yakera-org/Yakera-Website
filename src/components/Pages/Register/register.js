@@ -28,15 +28,114 @@ const initialState = {
       validateOnChange: false,
       error: ''
     },
+    address: {
+      value: '',
+      validateOnChange: false,
+      error: ''
+    },
+    phone: {
+      value: '',
+      validateOnChange: false,
+      error: ''
+    },
+    socialNum: {
+      value: '',
+      validateOnChange: false,
+      error: ''
+    },
+    AirTMNum: {
+      value: '',
+      validateOnChange: false,
+      error: ''
+    },
+    checkboxes:{
+      errorMessage: '',
+      a: false,
+      b: false,
+      c: false,
+      d: false,
+      e: false,
+    },
     submitCalled: false,
     allFieldsValidated: false
   };
-
+  
+ 
 class Register extends Component{
     constructor(props) {
         super(props);
         this.state = initialState;
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleCheck = this.handleCheck.bind(this);
+    }
+
+
+    handleCheck(evt){      
+      switch(evt.target.name){
+        case 'a':
+          this.setState({
+            checkboxes:{
+              errorMessage: '',
+              a: !this.state.checkboxes.a,
+              b: this.state.checkboxes.b,
+              c: this.state.checkboxes.c,
+              d: this.state.checkboxes.d,
+              e: this.state.checkboxes.e,
+            }
+          });
+          break;
+        case 'b':
+          this.setState({
+            checkboxes:{
+              errorMessage: '',
+              a: this.state.checkboxes.a,
+              b: !this.state.checkboxes.b,
+              c: this.state.checkboxes.c,
+              d: this.state.checkboxes.d,
+              e: this.state.checkboxes.e,
+            }
+          });
+          break;
+        case 'c':
+          this.setState({
+            checkboxes:{
+              errorMessage: '',
+              a: this.state.checkboxes.a,
+              b: this.state.checkboxes.b,
+              c: !this.state.checkboxes.c,
+              d: this.state.checkboxes.d,
+              e: this.state.checkboxes.e,
+            }
+          });
+          break;
+        case 'd':
+          this.setState({
+            checkboxes:{
+              errorMessage: '',
+              a: this.state.checkboxes.a,
+              b: this.state.checkboxes.b,
+              c: this.state.checkboxes.c,
+              d: !this.state.checkboxes.d,
+              e: this.state.checkboxes.e,
+            }
+          });
+        break;
+        case 'e':
+          this.setState({
+            checkboxes:{
+              errorMessage: '',
+              a: this.state.checkboxes.a,
+              b: this.state.checkboxes.b,
+              c: this.state.checkboxes.c,
+              d: this.state.checkboxes.d,
+              e: !this.state.checkboxes.e,
+            }
+          });
+          break;
+        default:
+          break;
+      }
+     
     }
       /*
    * validates the field onBlur if sumbit button is not clicked
@@ -86,58 +185,140 @@ class Register extends Component{
   handleSubmit(evt) {
     evt.preventDefault();
 
-    if(this.state.step == 0){
+    if(this.state.step === 0){
         this.setState({
             step: 1
         });
         return true;
     }
     // validate all fields
-    const { email, password, firstName, lastName } = this.state;
+    const { email, password, firstName, lastName, address, AirTMNum, phone, socialNum } = this.state;
     const emailError = validateFields.validateEmail(email.value);
     const passwordError = validateFields.validatePassword(password.value);
     const FNerror = validateFields.validateName(firstName.value);
     const LNerror = validateFields.validateName(lastName.value);
-    if ([emailError, passwordError, FNerror, LNerror].every(e => e === false)) {
-      // no errors submit the form
-      console.log('success');
-
-      // clear state and show all fields are validated
-      this.setState({ step: this.state.step+1 });
-     
-    } else {
-      // update the state with errors
-      this.setState(state => ({
-        email: {
-          ...state.email,
-          validateOnChange: true,
-          error: emailError
-        },
-        firstName: {
-            ...state.firstName,
-            validateOnChange: true,
-            error: FNerror
-          },
-        lastName: {
-            ...state.lastName,
-            validateOnChange: true,
-            error: LNerror
-        },
-        password: {
-          ...state.password,
-          validateOnChange: true,
-          error: passwordError
+    const AddressError = validateFields.validateAddress(address.value);
+    const AirTMError = validateFields.validateNumber(AirTMNum.value);
+    const SocialNumError = validateFields.validateNumber(socialNum.value);
+    const PhoneError = validateFields.validateNumber(phone.value);
+    switch(this.state.step){
+      case 1:
+        if ([emailError, passwordError, FNerror, LNerror].every(e => e === false)) {
+          // no errors submit the form
+          console.log('success');
+    
+          // clear state and show all fields are validated
+          this.setState({ step: this.state.step+1 });
+         
+        } else {
+          // update the state with errors
+          this.setState(state => ({
+            email: {
+              ...state.email,
+              validateOnChange: true,
+              error: emailError
+            },
+            firstName: {
+                ...state.firstName,
+                validateOnChange: true,
+                error: FNerror
+              },
+            lastName: {
+                ...state.lastName,
+                validateOnChange: true,
+                error: LNerror
+            },
+            password: {
+              ...state.password,
+              validateOnChange: true,
+              error: passwordError
+            },
+          }));
         }
-      }));
-    }
+        break;
+
+    case 2:
+      if ([PhoneError, AddressError, AirTMError, SocialNumError].every(e => e === false)) {
+        // no errors submit the form
+        console.log('success');
+  
+        // clear state and show all fields are validated
+        this.setState({ step: this.state.step+1 });
+       
+      } else {
+        // update the state with errors
+        this.setState(state => ({
+          phone: {
+            ...state.phone,
+            validateOnChange: true,
+            error: PhoneError
+          },
+          address: {
+            ...state.address,
+            validateOnChange: true,
+            error: AddressError
+          },
+          AirTMNum: {
+            ...state.AirTMNum,
+            validateOnChange: true,
+            error: AirTMError
+          },
+          socialNum: {
+            ...state.socialNum,
+            validateOnChange: true,
+            error: SocialNumError
+          },
+        }));
+      }
+      break;
+    case 3:
+          if(this.state.checkboxes.a === false || this.state.checkboxes.b === false || this.state.checkboxes.c === false || this.state.checkboxes.d === false || this.state.checkboxes.e === false ){
+              this.setState({
+                checkboxes:{
+                  a: false,
+                  b: false,
+                  c: false,
+                  d: false,
+                  e: false,
+                  errorMessage: 'These fields must be checked'
+                }
+              })
+          }else{
+
+            // clear state and show all fields are validated
+            this.setState({ step: this.state.step+1 });  
+            console.log('email ' + this.state.email.value);      
+            console.log('name ' + this.state.firstName.value + " " + this.state.lastName.value);  
+            console.log('password ' + this.state.password.value);  
+            console.log('address' + this.state.address.value);  
+            console.log('social sec num' + this.state.socialNum.value);  
+            console.log('phone ' + this.state.phone.value);  
+            console.log('airtm ' + this.state.AirTMNum.value);   
+          }
+        
+      
+      break;
+
+    default:
+      break;
   }
+}
 
    
     render(){
-        const { firstName, lastName, email, password, allFieldsValidated } = this.state;
+      const { firstName, lastName, email, password, address, AirTMNum, phone, socialNum, allFieldsValidated } = this.state;
+      function ButtonText(props) {
+        if(props.step === 0){
+          return 'Start'
+        }else if(props.step === 3){
+          return 'Finish'
+        }
+        return 'Continue'
+
+      }
         return(
             <div className="register-page">     
-             <Card style={{margin: '10% 30%', marginTop:'10%', paddingLeft:'5%', paddingRight:'5%'}}>
+             <Card style={{margin: '10% 30%', marginTop:'10%', paddingLeft:'2%', paddingRight:'2%'}}>
                 <CardContent>
                     <Typography variant="h4" style={{margin: '5%'}}>Sign up with Yakera in 3 easy steps</Typography>
                     <MultiStepForm activeStep={this.state.step} accentColor='#003049'>
@@ -237,23 +418,161 @@ class Register extends Component{
                     </form>
                         </Step>
                         <Step label="Authentication">
-                        <p>Authentication</p>
+                          {/* Phone field */}
+                        <div className="form-group">
+                                <label>Phone Number</label>
+                                <input
+                                type="text"
+                                name="phone"
+                                value={phone.value}
+                                placeholder="Enter your phone Number"
+                                className={classnames(
+                                    'form-control',
+                                    { 'is-valid': phone.error === false },
+                                    { 'is-invalid': phone.error }
+                                )}
+                                onChange={evt =>
+                                    this.handleChange(validateFields.validateNumber, evt)
+                                }
+                                onBlur={evt =>
+                                    this.handleBlur(validateFields.validateNumber, evt)
+                                }
+                                />
+                                <div className="invalid-feedback">{phone.error}</div>
+                            </div>
+                             {/* Address field */}
+                            <div className="form-group">
+                                    <label>Address</label>
+                                    <input
+                                    type="text"
+                                    name="address"
+                                    value={address.value}
+                                    placeholder="Enter your Address"
+                                    className={classnames(
+                                        'form-control',
+                                        { 'is-valid': address.error === false },
+                                        { 'is-invalid': address.error }
+                                    )}
+                                    onChange={evt =>
+                                        this.handleChange(validateFields.validateAddress, evt)
+                                    }
+                                    onBlur={evt =>
+                                        this.handleBlur(validateFields.validateAddress, evt)
+                                    }
+                                    />
+                                    <div className="invalid-feedback">{address.error}</div>
+                            </div>
+
+                             {/* Social Security Number field */}
+                             <div className="form-group">
+                                    <label>Social Security Number</label>
+                                    <input
+                                    type="text"
+                                    name="socialNum"
+                                    value={socialNum.value}
+                                    placeholder="Enter your Social Security Number"
+                                    className={classnames(
+                                        'form-control',
+                                        { 'is-valid': socialNum.error === false },
+                                        { 'is-invalid': socialNum.error }
+                                    )}
+                                    onChange={evt =>
+                                        this.handleChange(validateFields.validateNumber, evt)
+                                    }
+                                    onBlur={evt =>
+                                        this.handleBlur(validateFields.validateNumber, evt)
+                                    }
+                                    />
+                                    <div className="invalid-feedback">{socialNum.error}</div>
+                            </div>
+
+                             {/* AirTM account Number */}
+                             <div className="form-group">
+                                    <label>AirTM account number</label>
+                                    <input
+                                    type="text"
+                                    name="AirTMNum"
+                                    value={AirTMNum.value}
+                                    placeholder="Enter your AirTM account Number"
+                                    className={classnames(
+                                        'form-control',
+                                        { 'is-valid': AirTMNum.error === false },
+                                        { 'is-invalid': AirTMNum.error }
+                                    )}
+                                    onChange={evt =>
+                                        this.handleChange(validateFields.validateNumber, evt)
+                                    }
+                                    onBlur={evt =>
+                                        this.handleBlur(validateFields.validateNumber, evt)
+                                    }
+                                    />
+                                    <div className="invalid-feedback">{AirTMNum.error}</div>
+                            </div>
                         </Step>
-                        <Step label="Confirmation">
-                        <p>Confirmation</p>
+                        <Step id='checks' label="Confirmation">
+                          <h6>Pease select all that apply</h6>
+                          <hr />
+                          <input
+                            name="a"
+                            type="checkbox"
+                            checked={this.state.checkboxes.a}
+                            onChange={this.handleCheck} />
+                          <label>I have never been a Venezuelan government official in the Minister of Interior</label>
+
+                          <br />
+                          
+                          <input
+                            name="b"
+                            type="checkbox"
+                            checked={this.state.checkboxes.b}
+                            onChange={this.handleCheck} />
+                          <label>I have never worked for or with the FAES</label>
+
+                          <br />
+
+                          <input
+                            name="c"
+                            type="checkbox"
+                            checked={this.state.checkboxes.c}
+                            onChange={this.handleCheck} />
+                          <label>I have never been an agent of the SEBIN</label>
+
+                          <br />
+
+                          <input
+                            name="d"
+                            type="checkbox"
+                            checked={this.state.checkboxes.d}
+                            onChange={this.handleCheck} />
+                          <label>I have never been involved in human rights violations</label>
+
+                          <br />
+
+                          <input
+                            name="e"
+                            type="checkbox"
+                            checked={this.state.checkboxes.e}
+                            onChange={this.handleCheck} />
+                          <label>I agree to the terms and conditions</label>
+
+                          <br />
+                          
+                          <p style={{color:'red'}}>{this.state.checkboxes.errorMessage}</p>
                         </Step>
                     </MultiStepForm>
-                  
+                 
                     <button
                         type="submit"
                         className="btn btn-secondary btn-block"
                         onClick={this.handleSubmit}
                         >
-                        Start
+                        <ButtonText step={this.state.step}/>
                     </button>
                     <Button variant="contained" color="primary" style={{margin: '15px'}}>Register with Facebook</Button>
+                  
+                    <Button variant="contained" color="secondary" style={{margin: '15px'}}>Register with Google</Button>
                     <br />
-                    <Typography variant="p" >Already have an account? Log in <a id='here' href='/login'>here</a></Typography>
+                    <p >Already have an account? Log in <a id='here' href='/login'>here</a></p>
                     
                 </CardContent>
                 </Card>
@@ -263,32 +582,3 @@ class Register extends Component{
 }
 
 export default Register;
-
-class Details extends Component{
-    render(){
-        return(
-            <div>
-                Hi
-            </div>
-        )
-    }
-}
-class Authentication extends Component{
-    render(){
-        return(
-            <div>
-                Hi
-            </div>
-        )
-    }
-}
-
-class Confirmation extends Component{
-    render(){
-        return(
-            <div>
-                Hi
-            </div>
-        )
-    }
-}
