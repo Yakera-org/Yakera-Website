@@ -24,10 +24,10 @@ class login extends Component{
         super(props);
         this.state = initialState;
         this.handleSubmit = this.handleSubmit.bind(this);
-    }
+    }$
+
     handleSubmit(evt) {
         evt.preventDefault();
-
          // validate all fields
       const { email, password } = this.state;
       const emailError = validateFields.validateEmail(email.value);
