@@ -1,63 +1,12 @@
-/* 
-.login {
-  text-align: center;
-  margin: 10%;
-  vertical-align: auto;
-}
-.input_field{
-  margin: 10px;
-}
-.homePage{
-  text-align: center;
-}
-.donate{
-  text-align: center;
-  padding: 1%;
-  background-color: rgb(255, 231, 200);
-  height: auto;
-}
-
-.drawer {
-  height:100%;
-  margin-top: 50px;
-  padding: 30px;
-  background-color: #ff8e8e;
-}
- */
- @font-face {
+@font-face {
   font-family: 'Kollektif';
   src: local('Kollektif'), url(./fonts/._Kollektif.ttf) format('truetype');
 }
- #app-bar{
-   background-color: #003049;
-   height: 100px;
- }
 
- #app-bar-text {
-   padding-top: 10px;
-   padding-left: 50px;
-   color:#f7f3e0;
-   font-size: 50px;
-   vertical-align: auto;
-   font-family: Kollektif, Arial, serif;
- }
-
-#app-bar-statement {
-  text-align: center;
-  padding-top: 15px;
-  color:#f7f3e0;
-  font-size: 20px;
-  padding-left: 7%;
-  font-family: Kollektif, Arial, serif;
+.nav-bar {
+font-size: 20px;
 }
 
-@media screen and (max-width: 1000px) {
-  #app-bar-text {
-    width: 100%;
-    text-align: center;
-    padding-left: 0%;
-  }
-  #app-bar-statement {
-    display:none;
-  }
+.nav-brand{
+  font-size: 50px;
 }
