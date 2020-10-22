@@ -4,6 +4,9 @@ import { validateFields } from './Validation';
 import classnames from 'classnames';
 import { MultiStepForm, Step } from 'react-multi-form';
 import './register.css';
+const _axios = require('axios');
+const axios = _axios.create();
+const qs = require('querystring')
 
 const initialState = {
     
@@ -49,7 +52,6 @@ const initialState = {
       error: ''
     },
     checkboxes:{
-      errorMessage: '',
       a: false,
       b: false,
       c: false,
@@ -57,7 +59,8 @@ const initialState = {
       e: false,
     },
     submitCalled: false,
-    allFieldsValidated: false
+    allFieldsValidated: false,
+    errorMessage: ''
   };
   
  
@@ -176,13 +179,58 @@ class Register extends Component{
       }
     }));
   }
+  async checkemail(){
+    //checks if the email is already in use
+    const requestBody = {
+      email: this.state.email.value
+    }
+    const config = {
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+      }
+    }
+    const url = "http://yakerabackenv-env.eba-gzbp3dxp.eu-west-3.elasticbeanstalk.com/api/auth/doesEmailExist";
 
+    const response = axios.post(url, qs.stringify(requestBody), config);
+    const data = await response;
+    return(data.data.doesExist)
+  }
+
+  async signupUser(){
+    const requestBody = {      
+      email: this.state.email.value,
+      address: this.state.address.value,
+      agreedToTermsAndConditions: true,
+      airTMID: this.state.AirTMNum.value,
+      firstname: this.state.firstName.value,
+      lastname: this.state.lastName.value,
+      password: this.state.password.value,
+      phone: this.state.phone.value,
+      socialID: this.state.socialNum.value
+    }
+    const config = {
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+      }
+    }
+    const url = "http://yakerabackenv-env.eba-gzbp3dxp.eu-west-3.elasticbeanstalk.com/api/auth/signup";
+
+    axios.post(url, qs.stringify(requestBody), config)
+        .then(res => {
+                console.log("user registered");
+                window.location.href = "/";
+        })
+        .catch(err => {
+            console.log("error: " + err.message);
+        })
+
+  }
   /*
    * validate all fields
    * check if all fields are valid if yes then submit the Form
    * otherwise set errors for the feilds in the state
    */
-  handleSubmit(evt) {
+  async handleSubmit(evt) {
     evt.preventDefault();
 
     if(this.state.step === 0){
@@ -203,16 +251,29 @@ class Register extends Component{
     const PhoneError = validateFields.validateNumber(phone.value);
     switch(this.state.step){
       case 1:
-        if ([emailError, passwordError, FNerror, LNerror].every(e => e === false)) {
-          // no errors submit the form
-          console.log('success');
-    
+        const doesExist = await this.checkemail();
+        if(doesExist){
+          this.setState({
+            errorMessage:"This email is not available",
+            email:{
+              validateOnChange: true,
+              value: this.state.email.value,
+              error: "please use another email"
+            }
+          })
+        }
+        else if ([emailError, passwordError, FNerror, LNerror].every(e => e === false)) {
+          //no errors    
           // clear state and show all fields are validated
-          this.setState({ step: this.state.step+1 });
+          this.setState({errorMessage:'', step: this.state.step+1 });
          
         } else {
+          if ([emailError, passwordError, FNerror, LNerror].every(e => e === false)){
+            console.log("user already exists")
+            
+          }
           // update the state with errors
-          this.setState(state => ({
+          this.setState(state => ({            
             email: {
               ...state.email,
               validateOnChange: true,
@@ -279,29 +340,34 @@ class Register extends Component{
                   b: false,
                   c: false,
                   d: false,
-                  e: false,
-                  errorMessage: 'These fields must be checked'
-                }
+                  e: false
+                },
+                errorMessage: 'These fields must be checked'
               })
           }else{
-
-            // clear state and show all fields are validated
-            this.setState({ step: this.state.step+1 });  
-            console.log('email ' + this.state.email.value);      
-            console.log('name ' + this.state.firstName.value + " " + this.state.lastName.value);  
-            console.log('password ' + this.state.password.value);  
-            console.log('address' + this.state.address.value);  
-            console.log('social sec num' + this.state.socialNum.value);  
-            console.log('phone ' + this.state.phone.value);  
-            console.log('airtm ' + this.state.AirTMNum.value);   
-          }
-        
-      
+            await this.signupUser() ;
+            this.setState({
+               step: this.state.step+1,
+               errorMessage: ""
+               });  
+          }      
       break;
-
     default:
       break;
   }
+}
+handleFacebook(){
+  const stringifiedParams = qs.stringify({
+    client_id: 676134259977180,
+    redirect_uri: "/register",
+    scope: ['email'].join(','),
+    response_type: 'code',
+    auth_type: 'rerequest',
+    display:'popup'
+  });
+  const facebookLoginUrl = `https://www.facebook.com/v4.0/dialog/oauth?${stringifiedParams}`;
+
+  window.location.href = facebookLoginUrl;
 }
 
    
@@ -557,18 +623,26 @@ class Register extends Component{
 
                           <br />
                           
-                          <p style={{color:'red'}}>{this.state.checkboxes.errorMessage}</p>
                         </Step>
                     </MultiStepForm>
+                      <button
+                          type="submit"
+                          className="btn btn-secondary btn-block"
+                          onClick={this.handleSubmit}
+                          >
+                          <ButtonText step={this.state.step}/>
+                      </button>
+
+                    <p style={{color:'red', marginTop:'10px', marginBottom:'-10px'}}>{this.state.errorMessage}</p>
                  
                     <button
-                        type="submit"
-                        className="btn btn-secondary btn-block"
-                        onClick={this.handleSubmit}
-                        >
-                        <ButtonText step={this.state.step}/>
-                    </button>
-                    <Button variant="contained" color="primary" style={{margin: '15px'}}>Register with Facebook</Button>
+                          type="submit"
+                          className="btn btn-secondary btn-block"
+                          style={{backgroundColor:"#106", marginTop:'20px'}}
+                          onClick={this.handleFacebook}
+                          >
+                          Register with Facebook
+                      </button>
                   
                     <Button variant="contained" color="secondary" style={{margin: '15px'}}>Register with Google</Button>
                     <br />

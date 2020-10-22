@@ -4,7 +4,12 @@ import './login.css';
 import { validateFields } from '../Register/Validation';
 import classnames from 'classnames';
 
+const _axios = require('axios');
+const axios = _axios.create();
+const qs = require('querystring')
+
 const initialState = {
+    errorMessage:"",
     email: {
         value: '',
         validateOnChange: false,
@@ -33,14 +38,35 @@ class login extends Component{
       const emailError = validateFields.validateEmail(email.value);
       const passwordError = validateFields.validatePassword(password.value);
 
+      const requestBody = {
+        email: this.state.email.value,
+        password: this.state.password.value
+      }
+      const config = {
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded'
+        }
+      }
+      const url = "http://yakerabackenv-env.eba-gzbp3dxp.eu-west-3.elasticbeanstalk.com/api/auth/signin";
+
       if ([emailError, passwordError].every(e => e === false)) {
         // no errors submit the form
-        console.log('success');
-
+        
         this.setState({
           allFieldsValidated : true
         })
-        window.location.href = "/";
+
+        axios.post(url, qs.stringify(requestBody), config)
+        .then(res => {
+                console.log("Hello " + res.data.firstname);
+                //window.location.href = "/";
+        })
+        .catch(err => {
+          console.log(err.message);
+            this.setState({
+              errorMessage: "Invalid credentials"
+            })
+      })
     }
   }
 
@@ -75,7 +101,8 @@ class login extends Component{
             ...state[field],
             value: fieldVal,
             error: state[field]['validateOnChange'] ? validationFunc(fieldVal) : ''
-          }
+          },
+          errorMessage:""
         }));
       }
 
@@ -131,8 +158,8 @@ class login extends Component{
                                 />
                                 <div className="invalid-feedback">{password.error}</div>
                             </div>
-                    <Button onClick={this.handleSubmit} variant="contained" color="primary" style={{margin: '5%'}}>Log In</Button>
-                    <br />
+                    <p style={{color:"red"}}>{this.state.errorMessage}</p>
+                    <Button onClick={this.handleSubmit} variant="contained" color="primary">Log In</Button>                    
                     <p>Don't have an account? Sign up <a id='here' href='/register'>here</a></p>
                     
                 </form>
