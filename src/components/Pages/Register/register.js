@@ -59,7 +59,6 @@ const initialState = {
       e: false,
     },
     submitCalled: false,
-    allFieldsValidated: false,
     errorMessage: ''
   };
   
@@ -372,7 +371,7 @@ handleFacebook(){
 
    
     render(){
-      const { firstName, lastName, email, password, address, AirTMNum, phone, socialNum, allFieldsValidated } = this.state;
+      const { firstName, lastName, email, password, address, AirTMNum, phone, socialNum } = this.state;
       function ButtonText(props) {
         if(props.step === 0){
           return 'Start'
