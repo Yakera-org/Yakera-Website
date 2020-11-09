@@ -67,6 +67,20 @@ class login extends Component{
               errorMessage: "Invalid credentials"
             })
       })
+    } else {
+      // update the state with errors
+      this.setState(state => ({
+        email: {
+          ...state.email,
+          validateOnChange: true,
+          error: emailError
+        },
+        password: {
+          ...state.password,
+          validateOnChange: true,
+          error: passwordError
+        }
+      }));
     }
   }
 
@@ -115,7 +129,7 @@ class login extends Component{
                     <Typography variant="h4" style={{margin: '5%'}}>Log in to Yakera</Typography>
                 <form  autoComplete="off">
                    {/* Email fields */}
-                   <div className="form-group">
+                   <div >
                                 <label>Email</label>
                                 <input
                                 type="email"
@@ -137,7 +151,7 @@ class login extends Component{
                                 <div className="invalid-feedback">{email.error}</div>
                             </div>
                     {/* Password field */}
-                    <div className="form-group">
+                    <div >
                                 <label>Password</label>
                                 <input
                                 type="password"

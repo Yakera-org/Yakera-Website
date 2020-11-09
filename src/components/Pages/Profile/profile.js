@@ -1,13 +1,26 @@
-import React, { Component } from 'react';
-import  { Card, CardContent, Typography, Grid, Paper, CardHeader, Avatar, CardMedia} from '@material-ui/core';
-
-import './profile.css';
+import React, { Component, Fragment } from 'react';
+import  { Card, CardContent, Typography, Grid, Paper, CardHeader, Avatar} from '@material-ui/core';
 import User from './exampleuser.json';
+import AddDialog from './addCampaign';
+import './profile.css';
+
 
 
 
 class Profile extends Component{
-    
+
+    constructor(props) {
+        super(props);
+        this.handleAdd = this.handleAdd.bind(this);
+        this.state = {
+            openDialog: false     
+        }
+      }   
+    handleAdd(){
+        this.setState({
+            openDialog: !this.state.openDialog
+        })
+    }
     render(){
         return(
             <div className='profile-page'>
@@ -64,28 +77,39 @@ class Profile extends Component{
             </Card>
 
             <Card className="campaigns-card" style={{width:'90%', margin:'5%', marginTop:'-5%'}}>
-                <CardContent>
-                    <Typography variant="h4" style={{margin: '1%'}}>Your campaigns</Typography>
-                    <Card style={{width:'20%', backgroundColor:'#DEE'}}>
-                        <CardHeader
-                            avatar={
-                            <Avatar aria-label="recipe">
-                               J
-                            </Avatar>
-                            }
-                            title="José medicine bills"
-                            subheader="September 14, 2020"
-                        />
-                        <CardContent>
-                            <Typography variant="body2" color="textSecondary" component="p">
-                            José needed medicine. José needed medicine. José needed medicine. José needed medicine. José needed medicine. José needed medicine. 
-                            </Typography>
-                        </CardContent>              
-                    </Card>
+            <CardContent>
+                <Typography variant="h4" style={{margin: '1%'}}>Your campaigns</Typography>
+                <Grid container spacing={5} style={{alignContent:'center', alignItems:'center'}}>
                     
-                    
-                </CardContent>
+                    <Grid item xs={6}>
+                        <Card style={{width:'100%', backgroundColor:'#DEE'}}>
+                            <CardHeader
+                                avatar={
+                                    <Avatar aria-label="recipe">
+                                J
+                                </Avatar>
+                                }
+                                title="José medicine bills"
+                                subheader="September 14, 2020"
+                                />
+                            <CardContent>
+                                <Typography variant="body2" color="textSecondary" component="p">
+                                José needed medicine. José needed medicine. José needed medicine. José needed medicine. José needed medicine. José needed medicine. 
+                                </Typography>
+                            </CardContent>              
+                        </Card>
+                    </Grid>
+                    <Grid item xs={12} style={{textAlign:'center'}}>
+                        <button style={{borderRadius:'50%', height:'100px', width:'100px', backgroundColor:'#003049', border:'none', color:'white', fontSize:'50px'}} onClick={this.handleAdd}>+</button>
+                    </Grid>
+                </Grid>
+                    </CardContent>
             </Card>
+
+
+            <AddDialog open={this.state.openDialog} onClose={this.handleAdd} />
+
+            
             </div>       
         )
     }

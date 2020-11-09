@@ -10,25 +10,29 @@ import '../App.css';
 class NavBar extends Component {
     constructor(props) {
         super(props);
+        this.handleToggle = this.handleToggle.bind(this);
         this.state = {
             bgColor : 'blue',
-            navSize : 200,
+            navSize : '50%',
             opacity: 1,
-            displayImg: ''
+            displayImg: '',
+            brandSize: 50
         }
     }
     componentWillMount(){
         if(window.location.pathname == '/'){
             this.setState({
                 bgColor: 'transparent',
-                navSize: 500,
-                displayImg: ''
+                navSize: '50%',
+                displayImg: '',
+                brandSize: 100
             })
         }else{
             this.setState({
                 bgColor:'blue',
-                navSize: 150,
-                displayImg: 'none'
+                navSize: '15%',
+                displayImg: 'none',
+                brandSize: 50
             })
         };            
         }
@@ -42,14 +46,30 @@ class NavBar extends Component {
             }
         }
         }
+
+    handleToggle(){
+        let currentNavSize = this.state.navSize
+        if(currentNavSize == '15%'){
+            this.setState({
+                navSize: '40%'
+            });
+        }else if(currentNavSize == '40%'){
+            this.setState({
+                navSize: '15%'
+            });
+        } 
+
+        
+    }
     render(){
         return( 
             <div>
-                <Navbar  collapseOnSelect fixed="top" className='nav-bar' bg={this.state.bgColor} variant="dark" expand="lg"
+                <Navbar  inverse="true" collapseOnSelect fixed="top" className='nav-bar' bg={this.state.bgColor} variant="dark" expand="sm"
+                    onToggle={this.handleToggle}
                  style={{height:this.state.navSize, position:'absolute'}}>
 
-                <Navbar.Brand className='nav-brand' href="/">Yakera</Navbar.Brand>
-                <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+                <Navbar.Brand style={{fontSize:this.state.brandSize+'px'}} href="/">Yakera</Navbar.Brand>
+                <Navbar.Toggle  />
                 <Navbar.Collapse id="responsive-navbar-nav">
                     <Nav className="mr-auto">
                     <Nav.Link href="/info">Info</Nav.Link>

@@ -4,6 +4,7 @@ import { validateFields } from './Validation';
 import classnames from 'classnames';
 import { MultiStepForm, Step } from 'react-multi-form';
 import './register.css';
+
 const _axios = require('axios');
 const axios = _axios.create();
 const qs = require('querystring')
@@ -261,7 +262,7 @@ class Register extends Component{
             }
           })
         }
-        else if ([emailError, passwordError, FNerror, LNerror].every(e => e === false)) {
+        if ([emailError, passwordError, FNerror, LNerror].every(e => e === false)) {
           //no errors    
           // clear state and show all fields are validated
           this.setState({errorMessage:'', step: this.state.step+1 });
@@ -393,7 +394,7 @@ handleFacebook(){
 
                             <form onSubmit={evt => this.handleSubmit(evt)}>
                             {/* Name fields */}
-                            <div className="form-group">
+                            <div >
                                 <label>First Name</label>
                                 <input
                                 type="text"
@@ -414,7 +415,7 @@ handleFacebook(){
                                 />
                                 <div className="invalid-feedback">{firstName.error}</div>
                             </div>
-                            <div className="form-group">
+                            <div >
                                 <label>Last Name</label>
                                 <input
                                 type="text"
@@ -436,7 +437,7 @@ handleFacebook(){
                                 <div className="invalid-feedback">{lastName.error}</div>
                             </div>
                             {/* Email fields */}
-                            <div className="form-group">
+                            <div>
                                 <label>Email</label>
                                 <input
                                 type="email"
@@ -458,7 +459,7 @@ handleFacebook(){
                                 <div className="invalid-feedback">{email.error}</div>
                             </div>
                             {/* Password field */}
-                            <div className="form-group">
+                            <div >
                                 <label>Password</label>
                                 <input
                                 type="password"
@@ -484,7 +485,7 @@ handleFacebook(){
                         </Step>
                         <Step label="Authentication">
                           {/* Phone field */}
-                        <div className="form-group">
+                        <div >
                                 <label>Phone Number</label>
                                 <input
                                 type="text"
@@ -506,7 +507,7 @@ handleFacebook(){
                                 <div className="invalid-feedback">{phone.error}</div>
                             </div>
                              {/* Address field */}
-                            <div className="form-group">
+                            <div >
                                     <label>Address</label>
                                     <input
                                     type="text"
@@ -529,7 +530,7 @@ handleFacebook(){
                             </div>
 
                              {/* Social Security Number field */}
-                             <div className="form-group">
+                             <div >
                                     <label>Social Security Number</label>
                                     <input
                                     type="text"
@@ -552,7 +553,7 @@ handleFacebook(){
                             </div>
 
                              {/* AirTM account Number */}
-                             <div className="form-group">
+                             <div >
                                     <label>AirTM account number</label>
                                     <input
                                     type="text"

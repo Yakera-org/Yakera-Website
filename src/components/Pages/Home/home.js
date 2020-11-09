@@ -39,7 +39,7 @@ class Home extends Component{
             </div>
 
 
-           <div id='description'>
+           <div id='description-home'>
                 <b style={{color:'#d62828'}}>Yakera</b>{texts["description"]["eng"]}
            </div>
            
