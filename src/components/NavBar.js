@@ -20,7 +20,7 @@ class NavBar extends Component {
         }
     }
     componentWillMount(){
-        if(window.location.pathname == '/'){
+        if(window.location.pathname === '/'){
             this.setState({
                 bgColor: 'transparent',
                 navSize: '50%',
@@ -49,11 +49,11 @@ class NavBar extends Component {
 
     handleToggle(){
         let currentNavSize = this.state.navSize
-        if(currentNavSize == '15%'){
+        if(currentNavSize === '15%'){
             this.setState({
                 navSize: '40%'
             });
-        }else if(currentNavSize == '40%'){
+        }else if(currentNavSize === '40%'){
             this.setState({
                 navSize: '15%'
             });

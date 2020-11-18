@@ -2,6 +2,7 @@ import React, { Component, Fragment } from 'react';
 import  { Card, CardContent, Typography, Grid, Paper, CardHeader, Avatar} from '@material-ui/core';
 import User from './exampleuser.json';
 import AddDialog from './addCampaign';
+import CampaignCard from '../../campaignCard';
 import './profile.css';
 
 
@@ -80,25 +81,35 @@ class Profile extends Component{
             <CardContent>
                 <Typography variant="h4" style={{margin: '1%'}}>Your campaigns</Typography>
                 <Grid container spacing={5} style={{alignContent:'center', alignItems:'center'}}>
-                    
-                    <Grid item xs={6}>
-                        <Card style={{width:'100%', backgroundColor:'#DEE'}}>
-                            <CardHeader
-                                avatar={
-                                    <Avatar aria-label="recipe">
-                                J
-                                </Avatar>
-                                }
-                                title="José medicine bills"
-                                subheader="September 14, 2020"
-                                />
-                            <CardContent>
-                                <Typography variant="body2" color="textSecondary" component="p">
-                                José needed medicine. José needed medicine. José needed medicine. José needed medicine. José needed medicine. José needed medicine. 
-                                </Typography>
-                            </CardContent>              
-                        </Card>
+
+                    <Grid item xs={12} sm={4}>
+                        <CampaignCard
+                         author="J"
+                         title="Books for local school"
+                         description="children need education"
+                         deadline="1 December 2020"
+                         image="https://venezuelanalysis.com/files/styles/large/public/images/2011/08/escuelas_bolivarianas.jpg?itok=rpJh-B6v"
+                          />
                     </Grid>
+                    <Grid item xs={12} sm={4}>
+                        <CampaignCard
+                        author="J"
+                        title="Medecin for José"
+                        description="help me pls"
+                        deadline="12 December 2020"
+                        image="https://staticshare.america.gov/uploads/2020/04/GettyImages-1206996921.jpg"
+                         />
+                    </Grid>
+                    <Grid item xs={12} sm={4}>
+                        <CampaignCard 
+                        author="J"
+                        title="Oil needed to repair bike"
+                        description="I cant afford oil"
+                        deadline="12 Nov 2020"
+                        image="https://s4.reutersmedia.net/resources/r/?m=02&d=20200602&t=2&i=1520799557&w=780&fh=&fw=&ll=&pl=&sq=&r=LYNXMPEG511GW"
+                        />
+                    </Grid>                        
+
                     <Grid item xs={12} style={{textAlign:'center'}}>
                         <button style={{borderRadius:'50%', height:'100px', width:'100px', backgroundColor:'#003049', border:'none', color:'white', fontSize:'50px'}} onClick={this.handleAdd}>+</button>
                     </Grid>

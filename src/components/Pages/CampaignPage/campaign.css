@@ -1,0 +1,52 @@
+.campaign-page {
+    margin-top: 180px;
+    padding: 0px 10%;
+    padding-bottom: 100px;
+}
+.campaign-title {
+    font-weight: bolder;
+    font-size: 55px;
+}
+.img-sub {
+        margin-top: 10px;
+        font-size: 20px;
+        color: 'grey'
+    }
+
+.campaign-des {
+        margin-top: 10px;
+        font-size: 20px;
+        color: black;
+        width: 100%;
+        text-align: justify;
+        float: left;
+}
+.donate-card-slit-header {
+        padding: 20px 50px;
+        text-align: center;
+        color: black
+}
+.donate-card-slit-target p {
+    text-align: center;
+    color: grey;
+    font-size: 25px;
+}
+.progress-bar {
+    width: 70%;
+    text-align: center;
+    margin-left: 15%;
+    overflow: visible;
+    padding-bottom: 25px;
+}
+
+.donate-card-slit-btn {
+    width: 50%;
+    height: 60px;
+    font-size: 23px;
+    background-color: #f77f00;
+    border: none;
+    text-align: center;
+    margin: 10px;
+    margin-left: 25%;
+    margin-bottom: 20px;
+}

@@ -23,7 +23,7 @@ class AddDialog extends Component{
                 error: ''
               },
               goal: {
-                value: 'Health',
+                value: '',
                 validateOnChange: false,
                 error: ''
               },
@@ -33,7 +33,7 @@ class AddDialog extends Component{
                 error: ''
               },
               category: {
-                value: '',
+                value: 'Health',
                 validateOnChange: false,
                 error: ''
               }
@@ -66,7 +66,8 @@ class AddDialog extends Component{
           const binaryStr = reader.result
           console.log(binaryStr)
         }
-        reader.readAsArrayBuffer(file)
+        reader.readAsText(file);
+        //reader.readAsArrayBuffer(file)
       })
   }
 
@@ -75,9 +76,10 @@ class AddDialog extends Component{
 
     const { name, goal, description, deadline, category } = this.state;
     const nameError = validateFields.validateName(name.value);
-    const goalError = validateFields.validateName(goal.value);
+    const goalError = validateFields.validateNumber(goal.value);
     const desError = validateFields.validateName(description.value);
     const deadlineError = validateFields.validateName(deadline.value);
+    const catError = validateFields.validateName(category.value);
     if ([nameError, goalError, desError, deadlineError].every(e => e === false)) {
         // no errors submit the form
         alert(name.value + " " + goal.value + " " + description.value + " " + deadline.value)
@@ -105,6 +107,11 @@ class AddDialog extends Component{
             ...state.description,
             validateOnChange: true,
             error: desError
+          },
+          category: {
+            ...state.category,
+            validateOnChange: true,
+            error: catError
           }
         }));
       }
@@ -150,13 +157,13 @@ class AddDialog extends Component{
                                     <label >Category</label>
                                     <select
                                     type="text"
-                                    name="goal"
+                                    name="category"
                                     placeholder="Health"
-                                    value={goal.value}
+                                    value={category.value}
                                     className={classnames(
                                         'form-control',
-                                        { 'is-valid': goal.error === false },
-                                        { 'is-invalid': goal.error }
+                                        { 'is-valid': category.error === false },
+                                        { 'is-invalid': category.error }
                                         )}
                                         onChange={evt =>
                                             this.handleChange(validateFields.validateName, evt)
@@ -167,7 +174,7 @@ class AddDialog extends Component{
                                              <option value="community">Community</option>
                                              <option value="business">Business</option>
                                     </select>
-                                    <div className="invalid-feedback">{goal.error}</div>
+                                    <div className="invalid-feedback">{category.error}</div>
                                 </div>
                                 <div className="form-group">
                                     <label>Goal</label>
