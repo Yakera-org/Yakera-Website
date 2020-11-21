@@ -22,7 +22,7 @@
         float: left;
 }
 .donate-card-slit-header {
-        padding: 20px 50px;
+        padding: 10px 40px;
         text-align: center;
         color: black
 }
@@ -31,12 +31,16 @@
     color: grey;
     font-size: 25px;
 }
+.donate-card-slit-target{
+    text-align: center;
+}
 .progress-bar {
     width: 70%;
     text-align: center;
     margin-left: 15%;
     overflow: visible;
     padding-bottom: 25px;
+    background-color: transparent;
 }
 
 .donate-card-slit-btn {
@@ -48,5 +52,19 @@
     text-align: center;
     margin: 10px;
     margin-left: 25%;
+    margin-bottom: 20px;
+}
+
+.donate-section {
+    text-align: center
+}
+.donate-start-btn {
+    margin-left: 40%;
+    width: 20%;
+    height: 55px;
+    font-size: 20px;
+    background-color: #003049;
+    border: none;
+    margin-top: 10px;
     margin-bottom: 20px;
 }
