@@ -1,0 +1,140 @@
+
+.campaign-page {
+    margin-top: 40px;
+    padding: 0px 0px 0px 5%;
+    padding-bottom: 100px;
+}
+.donate-banner {
+    min-height: 100%;
+    margin-top: -100px;
+}
+.campaign-title {
+    font-weight: bolder;
+    font-size: 55px;
+}
+.img-sub {
+        margin-top: 10px;
+        font-size: 20px;
+        color: 'grey'
+    }
+
+.campaign-des {
+        margin-top: 10px;
+        font-size: 25px;
+        color: black;
+        width: 100%;
+        text-align: justify;
+        float: left;
+}
+.donate-card-slit-header {
+        padding: 10px 40px;
+        text-align: center;
+        color: #201001;
+}
+.donate-card-slit-target p {
+    text-align: center;
+    color: grey;
+    font-size: 25px;
+}
+.donate-card-slit-target{
+    text-align: center;
+    padding: 20px;
+}
+.progress-bar {
+    width: 70%;
+    text-align: center;
+    margin-left: 15%;
+    overflow: visible;
+    padding-bottom: 25px;
+    background-color: transparent;
+}
+
+.donate-card-slit-btn {
+    width: 50%;
+    height: 60px;
+    font-size: 23px;
+    background-color: #9c1a1a;
+    border: none;
+    text-align: center;
+    margin: 10px;
+    margin-left: 25%;
+    margin-bottom: 20px;
+}
+
+.donate-section {
+    text-align: center
+}
+.donate-start-btn {
+    margin-left: 40%;
+    width: 20%;
+    height: 55px;
+    font-size: 20px;
+    background-color: #9c1a1a;
+    border: none;
+    margin-top: 10px;
+    margin-bottom: 60px;
+}
+
+.donate-img-yakera {
+    width: 100%;
+}
+
+.donateSection{
+    width:60%;
+    margin-left: 20%;
+}
+
+.card-right {
+    padding: 20px;
+    width: 80%;
+    margin-left: 10%;
+    position: sticky;
+}
+.card-right b {
+    font-size: 35px;
+}
+.donateSection input {
+    width: 20%;
+    margin-left: 40%;
+}
+
+@media only screen and (max-width: 600px) {
+    .campaign-des {
+      width: 95%;
+      text-align: start;
+      margin-bottom: 0px;
+    }
+    .card-right{
+        margin-top: -600px;
+        margin-left: 7%;
+    }
+    .card-right h1, .donateSection h1{
+        font-size: 25px;
+    }
+    .card-right p, .donateSection p{
+        font-size: 20px;
+    }
+    .card-right b {
+        font-size: 30px;
+    }
+    .card-right button, .donateSection button {
+        width: 80%;
+        margin-left: 10%;
+        height: 50px;
+        font-size: 20px;
+    }
+    #sep-cards{
+        margin-top: -120px;
+        margin-bottom: 50px;
+        width: 50%;
+    }
+    .donateSection {
+        width: 90%;
+        margin-left: 6px;
+    }
+    .donateSection input {
+        width: 60%;
+        margin-left: 20%;
+    }
+    
+  }

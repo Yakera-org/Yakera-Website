@@ -6,28 +6,30 @@ import CampaignCard from '../../campaignCard';
 import './profile.css';
 
 
-
-
 class Profile extends Component{
 
     constructor(props) {
         super(props);
         this.handleAdd = this.handleAdd.bind(this);
         this.state = {
-            openDialog: false     
+            openDialog: false,
+            user: {}
         }
       }   
+      
+  
     handleAdd(){
         this.setState({
             openDialog: !this.state.openDialog
         })
     }
     render(){
+        
         return(
             <div className='profile-page'>
              <Card className="info-card" style={{margin:'10% 5%', width:'90%'}}>
                 <CardContent>
-                    <Typography variant="h4" style={{margin: '1%'}}>Hello {User.firstname}</Typography>
+                    <Typography variant="h4" style={{margin: '1%'}}>Hello</Typography>
                     <hr style={{width:'80%', margin:'-1% 5%', marginTop:'2%'}}/>
                     <Grid container spacing={3}>
                         <Grid item xs={6}>
@@ -125,5 +127,6 @@ class Profile extends Component{
         )
     }
 }
+
 
 export default Profile;

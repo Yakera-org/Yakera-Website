@@ -27,7 +27,25 @@ class NavBar extends Component {
                 displayImg: '',
                 brandSize: 100
             })
-        }else{
+        }else if(window.location.pathname === '/donate'){
+           if(window.matchMedia('(max-width: 600px)').matches){
+               this.setState({
+                   bgColor: 'transparent',
+                   navSize: '10%',
+                   displayImg: 'none',
+                   brandSize: 40
+               })
+           }else{
+                this.setState({
+                    bgColor:'transparent',
+                    navSize: '15%',
+                    displayImg: 'none',
+                    brandSize: 50
+            })
+           }
+
+        }
+        else{
             this.setState({
                 bgColor:'blue',
                 navSize: '15%',
@@ -49,6 +67,23 @@ class NavBar extends Component {
 
     handleToggle(){
         let currentNavSize = this.state.navSize
+        if(window.location.pathname === '/donate'){
+            if(this.state.bgColor === 'transparent'){
+                this.setState({
+                    bgColor: 'darkred',
+                    navSize: '40%',
+                    displayImg: 'none',
+                    brandSize: 40
+                })
+            }else{
+                this.setState({
+                    bgColor: 'transparent',
+                    navSize: '10%',
+                    displayImg: 'none',
+                    brandSize: 40
+                })
+            }
+        }
         if(currentNavSize === '15%'){
             this.setState({
                 navSize: '40%'

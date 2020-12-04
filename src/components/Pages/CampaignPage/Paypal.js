@@ -18,7 +18,7 @@ class PayPal extends React.Component {
                 
                 style={{
                     layout:  'vertical',
-                    color:   'blue',
+                    color:   'gold',
                     shape:   'rect',
                     label:   'paypal'
                 }}

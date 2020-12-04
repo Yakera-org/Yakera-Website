@@ -9,6 +9,8 @@ const _axios = require('axios');
 const axios = _axios.create();
 const qs = require('querystring')
 
+const yakeraBackUrl = 'http://yakera-back-dev.eu-west-3.elasticbeanstalk.com';
+
 const initialState = {
     
     step:0,
@@ -189,7 +191,7 @@ class Register extends Component{
         'Content-Type': 'application/x-www-form-urlencoded'
       }
     }
-    const url = "http://yakerabackenv-env.eba-gzbp3dxp.eu-west-3.elasticbeanstalk.com/api/auth/doesEmailExist";
+    const url = yakeraBackUrl + "/api/auth/doesEmailExist";
 
     const response = axios.post(url, qs.stringify(requestBody), config);
     const data = await response;
@@ -213,7 +215,7 @@ class Register extends Component{
         'Content-Type': 'application/x-www-form-urlencoded'
       }
     }
-    const url = "http://yakerabackenv-env.eba-gzbp3dxp.eu-west-3.elasticbeanstalk.com/api/auth/signup";
+    const url = yakeraBackUrl + "/api/auth/signup";
 
     axios.post(url, qs.stringify(requestBody), config)
         .then(res => {

@@ -8,6 +8,8 @@ const _axios = require('axios');
 const axios = _axios.create();
 const qs = require('querystring')
 
+const yakeraBackUrl = 'http://yakera-back-dev.eu-west-3.elasticbeanstalk.com';
+
 const initialState = {
     errorMessage:"",
     email: {
@@ -47,7 +49,7 @@ class login extends Component{
           'Content-Type': 'application/x-www-form-urlencoded'
         }
       }
-      const url = "http://yakerabackenv-env.eba-gzbp3dxp.eu-west-3.elasticbeanstalk.com/api/auth/signin";
+      const url = yakeraBackUrl + "/api/auth/signin";
 
       if ([emailError, passwordError].every(e => e === false)) {
         // no errors submit the form
@@ -58,7 +60,8 @@ class login extends Component{
 
         axios.post(url, qs.stringify(requestBody), config)
         .then(res => {
-                console.log("Hello " + res.data.firstname);
+              console.log(res.data);
+                
                 //window.location.href = "/";
         })
         .catch(err => {
