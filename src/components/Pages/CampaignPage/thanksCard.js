@@ -33,11 +33,12 @@ class Thankscard extends Component{
                     maxWidth='lg'                                 
                     open={this.props.open}
                     onClose={this.props.onClose}
-                    className="thanks-dialog"                                                                                                                     
+                    className="thanks-dialog"  
+                                                                                                                                    
                 >
                     
-                <h1 > Thank you </h1>
-                <p id="share-help"> Thank you for your donation of <b>{this.props.amount}$</b> to the campaign: {this.props.title} </p>
+                <h1 style={{marginTop:'100px', fontSize:'40px'}}> Thank you </h1>
+                <p style={{marginBottom:'100px', fontSize:'20px'}}> Thank you for your donation of <b>{this.props.amount}$</b> to the campaign: {this.props.title} </p>
                 
                   
                 </Dialog>

@@ -1,7 +1,8 @@
-.home-page{
-    background-color: #ffffff;
+.home-page{    
     width: 100%;
-    padding: 5%;
+    padding: 5%;}
+.home{
+    background-color: white;
 }
 #intro-text  {
     font-family: Kollektif, Arial, serif;
@@ -18,6 +19,8 @@
 }
 .links {
     text-align: center;
+    font-size: 40px;
+    margin: 50px 0px;
 }
 .links i{
     margin-right: 10px;
@@ -40,15 +43,14 @@ hr{
 }
 #description-home {
     text-align: justify;
-    font-size: 25px;
-    float: left;
-    width: 65%;
+    font-size: 35px;
+    width: 100%;
     margin-bottom: 50px;
 }
-#construction-logo{
-    margin-top: -50px;
-    float: right;
-    width: 30%;
+#description-logo{
+    width: 120%;
+    margin-top: 0px;
+    margin-left: 120px;
 }
 
 #construction-content, #construction-path {
@@ -57,11 +59,34 @@ hr{
 }
 
 #construction-partners{
-    text-align: left;
     font-size: 20px;
+    text-align: center;
+    margin: 70px;
+}
+#construction-partners h1{
+    font-size: 70px;
 }
 #partners{
     text-align: center;
+}
+#partners img{
+    width: 200px;
+    border-radius: 10px;
+    margin: 10px 50px;
+}
+.banner-home{
+    padding-bottom: 100px;
+    background-color: #003049;
+}
+.banner-home-alt{
+    margin-top: 120px;
+    padding-bottom: 100px;
+    background-color: #003049;
+
+}
+.banner-home img, .banner-home-alt img {
+    border-top: 100px solid #d62828;
+    border-bottom: 100px solid #fcbf49;
 }
 
 @media screen and (max-width: 1000px) {
@@ -69,10 +94,14 @@ hr{
         text-align: center;
         width: 100%;
     }
+    .links {
+        text-align: center;
+        font-size: 30px;
+        margin: 10px 0px;
+    }
     .links span{
         text-align: start;
         display: block;
-        margin-left: 10%;
     }
    
     .intro{
@@ -92,11 +121,14 @@ hr{
         width:100%;
         padding: 20px;
     }
-    #construction-logo{
-        clear: both;
-        width: 80%;
-        margin-right: 10%;
-        margin-top: -80px;
+    #description-home{
+        text-align: start;
+        font-size: 25px;
+    }
+    #description-logo{
+        width: 100%;
+        margin-top: -50px;
+        margin-left: 0px;
     }
     #construction-content{
         text-align: center;
@@ -107,6 +139,31 @@ hr{
     #construction-path{
         padding: 20px;
     }
-
+    .banner-home{
+        padding-bottom: 20px;
+        background-color: #003049;
+    }
+    .banner-home-alt{
+        background-color: #003049;
+        padding-bottom: 20px;
+        margin-top: 350px;
+    }
+    .banner-home img, .banner-home-alt img {
+        border-top: 20px solid #d62828;
+        border-bottom: 20px solid #fcbf49;
+    }
+    #follow-us{
+        font-size: 25px;
+        width: 100%;
+    }
+    .links{
+        margin-left: 5%;
+    }
+    #construction-partners h1{
+        font-size: 40px;
+    }
+    #partners img{
+        width: 100px;
+    }
     
 }

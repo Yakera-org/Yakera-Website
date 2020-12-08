@@ -1,21 +1,36 @@
 import React, { Component } from 'react';
+import  { Grid } from '@material-ui/core';
 import logo from '../../../pics/logo.png';
 import './home.css';
 import texts from './texts.json';
 import airTMlogo from '../../../pics/airtmlogo.png';
 import nutriendologo from '../../../pics/nutriendologo.jpg';
 import rotaracatlogo from '../../../pics/rotaracat.jpg';
-import wallpaper from '../../../pics/wallpaper.png';
+import banner1 from '../../../pics/banner1.png';
+import banner2 from '../../../pics/banner2.png';
+import banner3 from '../../../pics/banner3.png';
+import banner4 from '../../../pics/banner4.png';
 
 class Home extends Component{
     
     render(){
         return(
-            <div className='home-page'>
-            <div className='intro'>          
-                <div id='intro-text'>
-                        {texts["intro-text"]["eng"]}
-                </div>
+            <div className="home">
+            <div className='home-page'>   
+
+
+            <Grid container spacing={0} >
+                <Grid item xs={12} sm={8}>    
+                    <div id='description-home'>
+                        <b style={{color:'#d62828'}}>Yakera</b>{texts["description"]["eng"]}
+                    </div>
+                </Grid>
+                <Grid item xs={12} sm={3}>    
+                    <div id='description-logo'>
+                        <img src={logo} width='100%' alt='logo' />
+                    </div>
+                </Grid>
+            </Grid>
 
                 <div id='follow-us'>
                     <div className='links'>
@@ -35,55 +50,37 @@ class Home extends Component{
                         </span>
                     </div>
                 </div>
-            
             </div>
-
-
-           <div id='description-home'>
-                <b style={{color:'#d62828'}}>Yakera</b>{texts["description"]["eng"]}
-           </div>
            
-           <div id='construction-logo'>
-               <img src={logo} width='100%' alt='logo' />
-           </div>
 
-           <hr style={{clear:'both', margin:'50px 0px'}}/>
 
            <div id='construction-content'>
-                <h2>Venezuela by the  <b style={{color:'#d62828'}}>Numbers</b></h2>
-                <h1 style={{textAlign:'center'}}>79.3%</h1>
-                <p>The percentage of Venezuelans living in  <b style={{color:'#d62828'}}>extreme poverty</b> according to the 2020 Encuesta de Condiciones de Vida. 96.2% are considered poor or in poverty.</p>
-                <br />
-                <h1 style={{textAlign:'center'}}>5 million +</h1>
-                <p >People have  <b style={{color:'#d62828'}}>left the country</b> due to the economic catastrophe and the unstable political situation.</p>
-                <br />
-                <h1 style={{textAlign:'center'}}>24 Lbs.</h1>
-                <p>Average  <b style={{color:'#d62828'}}>weight lost</b> per capita since the beginning of the economic crisis.</p>
-                <br />
-                <h1 style={{textAlign:'center'}}>1</h1>
-                <p>The  <b style={{color:'#d62828'}}>number of crowdfunding platforms</b> capable of providing anonymous, non-inflated, direct cash transfers to Venezuelans in need. Spoiler alert, it’s us.</p>
-
-                <hr style={{margin:'50px 0px'}}/>
+                    <div className='banner-home-alt'>
+                        <img src={banner1} width='100%' alt='banner1' />
+                    </div>
+                    <div className='banner-home'>
+                        <img src={banner2} width='100%' alt='banner1' />
+                    </div>
+                    <div className='banner-home'>
+                        <img src={banner3} width='100%' alt='banner1' />
+                    </div>
+                    <div className='banner-home'>
+                        <img src={banner4} width='100%' alt='banner1' />
+                    </div>
            </div>
-           <div  id='construction-path'>
-                {texts["construction-path"]["eng"]}
-           </div>
-               
-
-           <hr style={{margin:'50px 0px'}}/>
+                
 
            <div id='construction-partners'>
-            <b>Our partners:</b><br /><br />
-            <div id='partners'>                    
-                <img src={rotaracatlogo} width='150px' style={{borderRadius:'20%', marginLeft:'20px', marginRight:'20px'}} alt='Airtm logo' />
-                <img src={nutriendologo} width='150px' style={{borderRadius:'10%', marginLeft:'20px', marginRight:'20px'}} alt='Airtm logo' />
-                <img src={airTMlogo} width='150px' style={{borderRadius:'20%', marginLeft:'20px', marginRight:'20px'}} alt='Airtm logo' />
-            </div>
+                <h1>Our Partners:</h1><br /><br />
+                <div id='partners'>                    
+                    <img src={rotaracatlogo} width='150px' alt='Rotaracat logo' />
+                    <img src={nutriendologo} width='150px' alt='nutriendo logo' />
+                    <img src={airTMlogo} width='150px' alt='Airtm logo' />
+                </div>
+            </div>  
+       
 
-           </div>
-
-           
-       </div>
+       </div>//end home
        
         )
     }

@@ -12,11 +12,27 @@ import Paypal from '../CampaignPage/Paypal';
 import './donateYakera.css';
 import '../CampaignPage/sharecard.css';
 import classnames from 'classnames';
+import HashLoader from "react-spinners/HashLoader";
+
+
+const _axios = require('axios');
+const axios = _axios.create();
+const qs = require('querystring');
+const yakeraBackUrl = 'http://yakera-back-dev.eu-west-3.elasticbeanstalk.com';
+
 
 class DonateYakera extends Component{
     constructor(props) {
         super(props);
         this.state = {
+            campaign: {
+                description: "",
+                amount: 0,
+                state: "",
+                category: "",
+                deadline: "",
+                campaignName: ""
+            },
             openShare: false,
             openThanks: false,
             hasAmount: false,
@@ -26,7 +42,8 @@ class DonateYakera extends Component{
                 error: '',
               },
             opacity: 1,
-            margin:0
+            margin:0,
+            loading: false
         }
         this.handleScrollToDonate = this.handleScrollToDonate.bind(this);
         this.handleShare = this.handleShare.bind(this);
@@ -34,12 +51,13 @@ class DonateYakera extends Component{
         this.handleDonateStart = this.handleDonateStart.bind(this);
         this.onSuccess = this.onSuccess.bind(this);
         this.closeThanks = this.closeThanks.bind(this);
+        this.onPayPalOn= this.onPayPalOn.bind(this);
+        this.onPayPalOff = this.onPayPalOff.bind(this);
     }
 
     handleScrollToDonate(){
-        const donateSection = ReactDOM.findDOMNode(this.refs.donateSection);       
-        window.scrollTo({ behavior: 'smooth', top: donateSection.offsetTop })
-        
+        var element = document.getElementById("donateRef");
+        element.scrollIntoView({behavior: "smooth", block: "start", inline: "nearest"});
     }
 
     handleShare(){
@@ -51,6 +69,7 @@ class DonateYakera extends Component{
         this.setState({
             openThanks: false
         })
+        window.location.reload(false);
     }
 
     handleChange(validationFunc, evt) {
@@ -86,171 +105,241 @@ class DonateYakera extends Component{
           } 
       }
 
-      onSuccess(details, data) {
-          console.log(details);
-          console.log(data);
+    async addAmount(){
+        const requestBody = {
+            "email":"yakera",
+            "addAmount": this.state.amount.value,
+            "campaignName": "Yakera Donation"
+        }
+        const config = {
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            }
+        }
+        const url = yakeraBackUrl + "/api/campaign/addAmount";
+        
+        await axios.post(url, qs.stringify(requestBody), config)
+        .then(res => {
+              console.log(res.data);
+              console.log("SUCCESS");
+        })
+        .catch(err => {
+          console.log(err.message + ": Amount nod added")            
+      })
+    
+    }
 
-          this.setState({
-              openThanks: true
-          })
-      }
+    async onSuccess(details, data) {
+        await this.addAmount();
+        console.log(details);
+        console.log(data);
 
-      componentDidMount() {
+        this.setState({
+            openThanks: true,
+            loading: false
+        })
+    }
+    onPayPalOff(){
+        this.setState({
+            loading: false
+        })
+    }
+    onPayPalOn(){
+        this.setState({
+            loading: true
+        })
+    }
+
+
+    async loadCampaign(){
+        const config = {
+            headers: {
+                'Content-Type': 'application/json',
+                "email": "yakera"
+            }
+        }
+        const url = yakeraBackUrl + "/api/campaign";
+        
+         await axios.get(url, config)
+            .then(res => {
+                    this.setState({campaign: res.data[0]});
+            })
+            .catch(err => {
+                console.log("error: " + err.message);
+            })
+    
+    }
+    async componentDidMount() { 
+        await this.loadCampaign();
         if (typeof window !== "undefined") {
             window.onscroll = () => {
             let currentScrollPos = 800 - window.pageYOffset;
 
             this.setState({
-                 opacity: currentScrollPos / 300,
-                 margin: Math.min(Math.max(0, -currentScrollPos + 100), 650)
-                 })
-            
-        
+                    opacity: currentScrollPos / 300,
+                    margin: Math.min(Math.max(0, -currentScrollPos + 100), 650)
+                    })  
             }
         }
-        }
+    }
+
     render(){
-        const { amount } = this.state;
-        return(                
-            <div className='donate-yakera'>
-                <div className='donate-banner'>
-                    <img  className='donate-img-yakera'
-                    width="100%"
-                    src={image}
-                    alt={ExCampaign.title}
-                    style={{opacity: this.state.opacity}}
-                    />
-                </div>
-                <div className='campaign-page'>
+        if( this.state.campaign.description == "") {
+           return (<p> Loading </p>);
+          } else {
 
-                    <p className="img-sub">
-                        Created by {ExCampaign.author} on {ExCampaign.created}
-                    </p>
+            const { amount } = this.state;
+            return(                
+                <div className='donate-yakera'>
+                    <div className='donate-banner'>
+                        <img  className='donate-img-yakera'
+                        width="100%"
+                        src={image}
+                        alt={ExCampaign.title}
+                        style={{opacity: this.state.opacity}}
+                        />
+                    </div>
+                    <div className='campaign-page'>
 
-                    <hr />
+                        <p className="img-sub">
+                            Created by {ExCampaign.author} on {ExCampaign.created}
+                        </p>
 
-                    <Grid container spacing={0} >
+                        <hr />
 
-                        <Grid item xs={12} sm={6}>
+                        <Grid container spacing={0} >
 
-                            {ExCampaign.description.map((p) => 
-                                <p className="campaign-des">
-                                    {p}
-                                </p> 
-                            )}
-                        
-                        </Grid>
+                            <Grid item xs={12} sm={6}>
 
-                        <Grid item xs={12} sm={6} style={{marginTop:this.state.margin}}>
-                            <Card className="card-right" >
-                                <h1 className="donate-card-slit-header">
-                                    Donate now</h1>
-
-                                <div className="donate-card-slit-target">
-                                    <p>
-                                        <b style={{ color:'#9c1a1a', marginRight:'5px'}}>
-                                            ${ExCampaign.reached} 
-                                        </b>
-                                        raised of ${ExCampaign.goal} target   
+                                {ExCampaign.description.map((p) => 
+                                    <p className="campaign-des" key={p}>
+                                        {p}
                                     </p> 
-                                </div>
-                                <div className="progress-bar">
-                                    <Progress theme={{
-                                        default: {
-                                            trailColor: 'lightred',
-                                            symbol: '',
-                                            color: '#201001',
-                                            overflow:'visible'
-                                        }
-                                    }}
-                                    status="default"
-                                    percent={parseInt(100* ExCampaign.reached / ExCampaign.goal)}/>
-                                </div>
-
-                                <div>
-                                    <button
-                                        type="submit"
-                                        className="btn btn-secondary btn-block donate-card-slit-btn"
-                                        onClick={this.handleScrollToDonate}                                   
-                                        >
-                                        Donate now
-                                    </button>
-                                    <button
-                                        type="submit"
-                                        className="btn btn-secondary btn-block donate-card-slit-btn"
-                                        onClick={this.handleShare}
-                                        >
-                                        Share
-                                    </button>
-                                </div>   
-                            </Card>
-                        </Grid>
-                    </Grid>
-
-                    <hr id="sep-cards"/>
-
-
-                    <Card ref="donateSection" className="donateSection">
-                        <h1 className="donate-card-slit-header">
-                            Donate now
-                        </h1>
-
-                        <div className="donate-section">
-
-                        {!this.state.hasAmount
-                            ? <div className="donate-card-slit-target">
-                            <p>Please enter amount below</p>
-                            <input
-                            type="number"
-                            name="amount"
-                            value={amount.value}
-                            placeholder="$"
-                            className={classnames(
-                                'form-control',
-                                { 'is-valid': amount.error === false },
-                                { 'is-invalid': amount.error }
                                 )}
-                                onChange={evt =>
-                                    this.handleChange(validateFields.validateNumber, evt)
-                                }
-                                
-                                
-                                />
-                            <div style={{marginBottom:'10px'}} className="invalid-feedback">{amount.error}</div>   
+                            
+                            </Grid>
 
-                            <button
-                                type="submit"
-                                className="btn btn-secondary btn-block donate-start-btn"    
-                                onClick={this.handleDonateStart}                   
-                                >
-                                Donate
-                            </button>               
-                        </div> 
-                            : <div className="donate-card-slit-target">
-                            <p>
-                                You are about to donate <b>{this.state.amount.value} $ </b>
-                            </p>
-                            <p>                   
-                                Please put your bank details below
-                            </p>  
-                                <Paypal amount={this.state.amount.value} onSuccess={this.onSuccess}/>  
-                            </div>  
-                        }
+                            <Grid item xs={12} sm={6} style={{marginTop:this.state.margin}}>
+                                <Card className="card-right" >
+                                    <h1 className="donate-card-slit-header">
+                                        Donate now</h1>
+
+                                    <div className="donate-card-slit-target">
+                                        <p>
+                                            <b style={{ color:'#9c1a1a', marginRight:'5px'}}>
+                                                ${this.state.campaign.amount} 
+                                            </b>
+                                            raised of ${ExCampaign.goal} target   
+                                        </p> 
+                                    </div>
+                                    <div className="progress-bar">
+                                        <Progress theme={{
+                                            default: {
+                                                trailColor: 'lightred',
+                                                symbol: '',
+                                                color: '#201001',
+                                                overflow:'visible'
+                                            }
+                                        }}
+                                        status="default"
+                                        percent={parseInt(100* this.state.campaign.amount / ExCampaign.goal)}/>
+                                    </div>
+
+                                    <div>
+                                        <button
+                                            type="submit"
+                                            className="btn btn-secondary btn-block donate-card-slit-btn"
+                                            onClick={this.handleScrollToDonate}                                   
+                                            >
+                                            Donate now
+                                        </button>
+                                        <button
+                                            type="submit"
+                                            className="btn btn-secondary btn-block donate-card-slit-btn"
+                                            onClick={this.handleShare}
+                                            >
+                                            Share
+                                        </button>
+                                    </div>   
+                                </Card>
+                            </Grid>
+                        </Grid>
+
+                        <div className="sweet-loading">
+                            <HashLoader
+                            css="display: block;
+                                margin: 0 auto;
+                                border-color: red;
+                                position: sticky"
+                            size={150}
+                            color={"#9c1a1a"}
+                            loading={this.state.loading}
+                            />
                         </div>
+                        <hr id="sep-cards"/>
 
-                        
 
-                        
+                        <Card id="donateRef" className="donateSection">
+                            <h1 className="donate-card-slit-header">
+                                Donate now
+                            </h1>
 
-                    </Card>   
+                            <div className="donate-section">
 
-                    <ShareCard open={this.state.openShare} onClose={this.handleShare}/>
-                    <ThanksCard open={this.state.openThanks} onClose={this.closeThanks} amount={this.state.amount.value} title={ExCampaign.title}/>
+                            {!this.state.hasAmount
+                                ? <div className="donate-card-slit-target">
+                                <p>Please enter amount below</p>
+                                <input
+                                type="number"
+                                name="amount"
+                                value={amount.value}
+                                placeholder="$"
+                                className={classnames(
+                                    'form-control',
+                                    { 'is-valid': amount.error === false },
+                                    { 'is-invalid': amount.error }
+                                    )}
+                                    onChange={evt =>
+                                        this.handleChange(validateFields.validateNumber, evt)
+                                    }
+                                    
+                                    
+                                    />
+                                <div style={{marginBottom:'10px'}} className="invalid-feedback">{amount.error}</div>   
 
-                
-                </div>       
-        </div>
-        )
+                                <button
+                                    type="submit"
+                                    className="btn btn-secondary btn-block donate-start-btn"    
+                                    onClick={this.handleDonateStart}                   
+                                    >
+                                    Donate
+                                </button>               
+                            </div> 
+                                : <div className="donate-card-slit-target">
+                                <p>
+                                    You are about to donate <b>{this.state.amount.value} $ </b>
+                                </p>
+                                <p>                   
+                                    Please put your bank details below
+                                </p>  
+                                    <Paypal amount={this.state.amount.value} onSuccess={this.onSuccess} onClick={this.onPayPalOn} onError={this.onPayPalOff} onCancel={this.onPayPalOff}/>  
+                                </div>  
+                            }
+                            </div>
+
+                            
+
+                            
+
+                        </Card>   
+
+                        <ShareCard open={this.state.openShare} onClose={this.handleShare}/>
+                        <ThanksCard open={this.state.openThanks} onClose={this.closeThanks} amount={this.state.amount.value} title={ExCampaign.title}/>
+                    
+                    </div>       
+            </div>
+            )
+        }
     }
 }
 
