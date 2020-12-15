@@ -38,10 +38,10 @@ class CampaignCard extends Component {
   }
 
   render(){
-    const { author, goal, description, deadline, category, title, image } = this.props;
+    const { author, description, deadline, title, image } = this.props;
     return (
       <div>
-        <Card onClick={this.hanldeClick} onMouseEnter={this.handleHover} onMouseLeave={this.handleHover} style={{backgroundColor:this.state.cardColor}}>
+        <Card onClick={this.hanldeClick} onMouseEnter={this.handleHover} onMouseLeave={this.handleHover} style={{backgroundColor:this.state.cardColor, borderRadius:'30px'}}>
           <CardHeader
             avatar={
               <Avatar aria-label={author}style={{backgroundColor:'#003049'}} >
@@ -56,12 +56,11 @@ class CampaignCard extends Component {
             title={title}
             subheader={deadline}
             />
-            <div style={{textAlign:'center', maxHeight:'400px', minHeight:'400px', overflow: 'hidden'}}>
+            <div style={{textAlign:'center', maxHeight:'300px', minHeight:'300px', overflow: 'hidden'}}>
               <img  
               style={{
                 minHeight:'100%',
                 minWidht:'100%',
-                borderRadius:'6px'
               }}
                 width="100%"
                 src={image}

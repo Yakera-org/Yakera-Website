@@ -34,7 +34,7 @@
 .links a{
     font-family: Kollektif, Arial, serif;
     font-weight: bold;
-    color:#d62828;
+    color:#f73a00;
 }
 hr{
     color:#003049;
@@ -75,19 +75,13 @@ hr{
     margin: 10px 50px;
 }
 .banner-home{
-    padding-bottom: 100px;
-    background-color: #003049;
+    padding-bottom: 10px;
 }
-.banner-home-alt{
-    margin-top: 120px;
-    padding-bottom: 100px;
-    background-color: #003049;
+.banner-home-alt img{
+    padding-bottom: 10px;
+    border-top: 70px solid #f73a00;
+}
 
-}
-.banner-home img, .banner-home-alt img {
-    border-top: 100px solid #d62828;
-    border-bottom: 100px solid #fcbf49;
-}
 
 @media screen and (max-width: 1000px) {
     #follow-us{
@@ -141,16 +135,6 @@ hr{
     }
     .banner-home{
         padding-bottom: 20px;
-        background-color: #003049;
-    }
-    .banner-home-alt{
-        background-color: #003049;
-        padding-bottom: 20px;
-        margin-top: 350px;
-    }
-    .banner-home img, .banner-home-alt img {
-        border-top: 20px solid #d62828;
-        border-bottom: 20px solid #fcbf49;
     }
     #follow-us{
         font-size: 25px;
@@ -165,5 +149,8 @@ hr{
     #partners img{
         width: 100px;
     }
-    
+    .banner-home-alt img{
+        padding-bottom: 10px;
+        border-top: 40px solid #f73a00;
+    }
 }

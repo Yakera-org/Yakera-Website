@@ -41,6 +41,17 @@ class DonateYakera extends Component{
                 validateOnChange: false,
                 error: '',
               },
+            name: {
+                value: '',
+                validateOnChange: false,
+                error: '',
+            },
+            email: {
+                value: '',
+                validateOnChange: false,
+                error: '',
+            },
+            PaypalId: 0,
             opacity: 1,
             margin:0,
             loading: false
@@ -85,11 +96,13 @@ class DonateYakera extends Component{
       }
       handleDonateStart(){
 
-        const { amount } = this.state;
+        const { amount, name, email } = this.state;
         const amountError = validateFields.validateNumber(amount.value);
+        const nameError = validateFields.validateName(name.value);
+        const emailError = validateFields.validateEmail(email.value);
         
 
-        if ([amountError].every(e => e === false)) {
+        if ([amountError, nameError, emailError].every(e => e === false)) {
             this.setState({
                 hasAmount: true
             }) 
@@ -100,6 +113,16 @@ class DonateYakera extends Component{
                 ...state.amount,
                 validateOnChange: true,
                 error: amountError
+              },
+              name: {
+                ...state.name,
+                validateOnChange: true,
+                error: nameError
+              },
+              email: {
+                ...state.email,
+                validateOnChange: true,
+                error: emailError
               }
             }));
           } 
@@ -109,7 +132,10 @@ class DonateYakera extends Component{
         const requestBody = {
             "email":"yakera",
             "addAmount": this.state.amount.value,
-            "campaignName": "Yakera Donation"
+            "campaignName": "Yakera Donation",
+            "donatorEmail": this.state.email.value,
+            "donatorName": this.state.name.value,
+            "transactionID": this.state.PaypalId
         }
         const config = {
             headers: {
@@ -120,7 +146,6 @@ class DonateYakera extends Component{
         
         await axios.post(url, qs.stringify(requestBody), config)
         .then(res => {
-              console.log(res.data);
               console.log("SUCCESS");
         })
         .catch(err => {
@@ -130,14 +155,13 @@ class DonateYakera extends Component{
     }
 
     async onSuccess(details, data) {
-        await this.addAmount();
-        console.log(details);
-        console.log(data);
-
+        
         this.setState({
             openThanks: true,
-            loading: false
+            loading: false,
+            PaypalId: data.payerID
         })
+        await this.addAmount();
     }
     onPayPalOff(){
         this.setState({
@@ -188,7 +212,7 @@ class DonateYakera extends Component{
            return (<p> Loading </p>);
           } else {
 
-            const { amount } = this.state;
+            const { amount, name, email } = this.state;
             return(                
                 <div className='donate-yakera'>
                     <div className='donate-banner'>
@@ -199,10 +223,10 @@ class DonateYakera extends Component{
                         style={{opacity: this.state.opacity}}
                         />
                     </div>
-                    <div className='campaign-page'>
+                    <div className='yakera-campaign-page'>
 
                         <p className="img-sub">
-                            Created by {ExCampaign.author} on {ExCampaign.created}
+                            Created by {ExCampaign.author} on 12/12/2020
                         </p>
 
                         <hr />
@@ -248,14 +272,14 @@ class DonateYakera extends Component{
                                     <div>
                                         <button
                                             type="submit"
-                                            className="btn btn-secondary btn-block donate-card-slit-btn"
+                                            className="btn btn-secondary btn-block yakera-donate-card-slit-btn"
                                             onClick={this.handleScrollToDonate}                                   
                                             >
                                             Donate now
                                         </button>
                                         <button
                                             type="submit"
-                                            className="btn btn-secondary btn-block donate-card-slit-btn"
+                                            className="btn btn-secondary btn-block yakera-donate-card-slit-btn"
                                             onClick={this.handleShare}
                                             >
                                             Share
@@ -267,13 +291,15 @@ class DonateYakera extends Component{
 
                         <div className="sweet-loading">
                             <HashLoader
-                            css="display: block;
+                                css="display: block;
                                 margin: 0 auto;
-                                border-color: red;
-                                position: sticky"
-                            size={150}
-                            color={"#9c1a1a"}
-                            loading={this.state.loading}
+                                border-color: blue;
+                                position: fixed;
+                                top:40%;
+                                left:45%"
+                                size={150}
+                                color={"#9c1a1a"}
+                                loading={this.state.loading}
                             />
                         </div>
                         <hr id="sep-cards"/>
@@ -288,11 +314,12 @@ class DonateYakera extends Component{
 
                             {!this.state.hasAmount
                                 ? <div className="donate-card-slit-target">
-                                <p>Please enter amount below</p>
+                                <p>Please enter details below</p>
                                 <input
                                 type="number"
                                 name="amount"
                                 value={amount.value}
+                                style={{ marginTop:'10px', height:'50px'}}
                                 placeholder="$"
                                 className={classnames(
                                     'form-control',
@@ -301,15 +328,48 @@ class DonateYakera extends Component{
                                     )}
                                     onChange={evt =>
                                         this.handleChange(validateFields.validateNumber, evt)
+                                    } />
+                                <div style={{marginBottom:'10px'}} className="invalid-feedback">{amount.error}</div> 
+                                <input
+                                type="text"
+                                name="email"
+                                value={email.value}
+                                style={{ marginTop:'10px'}}
+                                placeholder="Email"
+                                className={classnames(
+                                    'form-control',
+                                    { 'is-valid': email.error === false },
+                                    { 'is-invalid': email.error }
+                                    )}
+                                    onChange={evt =>
+                                        this.handleChange(validateFields.validateEmail, evt)
                                     }
                                     
                                     
                                     />
-                                <div style={{marginBottom:'10px'}} className="invalid-feedback">{amount.error}</div>   
+                                <div style={{marginBottom:'10px'}} className="invalid-feedback">{email.error}</div> 
+                                
+                                <input
+                                type="text"
+                                name="name"
+                                value={name.value}
+                                style={{ marginTop:'10px'}}
+                                placeholder="Name"
+                                className={classnames(
+                                    'form-control',
+                                    { 'is-valid': name.error === false },
+                                    { 'is-invalid': name.error }
+                                    )}
+                                    onChange={evt =>
+                                        this.handleChange(validateFields.validateName, evt)
+                                    }                                   
+                                    
+                                    />
+                                <div style={{marginBottom:'10px'}} className="invalid-feedback">{name.error}</div> 
 
                                 <button
                                     type="submit"
-                                    className="btn btn-secondary btn-block donate-start-btn"    
+                                    className="btn btn-secondary btn-block yakera-donate-start-btn"    
                                     onClick={this.handleDonateStart}                   
                                     >
                                     Donate

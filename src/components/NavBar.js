@@ -21,12 +21,21 @@ class NavBar extends Component {
     }
     componentWillMount(){
         if(window.location.pathname === '/'){
-            this.setState({
-                bgColor: 'transparent',
-                navSize: '50%',
-                displayImg: '',
-                brandSize: 100
-            })
+            if(window.matchMedia('(max-width: 600px)').matches){
+                this.setState({
+                    bgColor: 'transparent',
+                    navSize: '10%',
+                    displayImg: '',
+                    brandSize: 50
+                })
+            }else{
+                this.setState({
+                    bgColor: 'transparent',
+                    navSize: '50%',
+                    displayImg: '',
+                    brandSize: 120
+                })
+            }
         }else if(window.location.pathname === '/donate'){
            if(window.matchMedia('(max-width: 600px)').matches){
                this.setState({
@@ -66,7 +75,8 @@ class NavBar extends Component {
         }
 
     handleToggle(){
-        let currentNavSize = this.state.navSize
+        let currentNavSize = this.state.navSize;
+
         if(window.location.pathname === '/donate'){
             if(this.state.bgColor === 'transparent'){
                 this.setState({
@@ -81,6 +91,23 @@ class NavBar extends Component {
                     navSize: '10%',
                     displayImg: 'none',
                     brandSize: 40
+                })
+            }
+        }
+        if(window.location.pathname === '/'){
+            if(this.state.bgColor === 'transparent'){
+                this.setState({
+                    bgColor: 'beige',
+                    navSize: '40%',
+                    displayImg: 'none',
+                    brandSize: 40
+                })
+            }else{
+                this.setState({
+                    bgColor: 'transparent',
+                    navSize: '10%',
+                    displayImg: '',
+                    brandSize: 50
                 })
             }
         }
@@ -107,10 +134,11 @@ class NavBar extends Component {
                 <Navbar.Toggle  />
                 <Navbar.Collapse id="responsive-navbar-nav">
                     <Nav className="mr-auto">
-                    <Nav.Link href="/info">Info</Nav.Link>
-                    <Nav.Link href="/donate">Donate</Nav.Link>
-                    <Nav.Link href="/profile">Profile</Nav.Link>
-                    <Nav.Link href="/login">Log-in</Nav.Link>
+                    <Nav.Link href="/info" style={{fontSize:'30px'}}>Info</Nav.Link>
+                    <Nav.Link href="/donate" style={{fontSize:'30px'}}>Donate</Nav.Link>
+                    <Nav.Link href="/campaigns" style={{fontSize:'30px'}}>Campaigns</Nav.Link>
+                    {/* <Nav.Link href="/profile" style={{fontSize:'30px'}}>Profile</Nav.Link>
+                    <Nav.Link href="/login" style={{fontSize:'30px'}}>Log-in</Nav.Link> */}
                     </Nav>                    
 
                 </Navbar.Collapse>

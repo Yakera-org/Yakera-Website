@@ -17,20 +17,21 @@ import cancelled from './cancelled';
 const Main = () => (
     
     <BrowserRouter>
+        <div style={{marginTop: '100px'}}>
         <Switch>
-            <div style={{marginTop: '100px'}}>
             <Route exact path="/login" component={login}/>
             <Route exact path="/register" component={register}/>
             <Route exact path="/profile" component={profile}/>
             <Route exact path="/donate" component={donateYakera}/>
+            <Route exact path="/campaigns" component={donate}/>
             <Route exact path="/confirmed" component={confirmed}/>         
             <Route exact path="/cancelled" component={cancelled}/>       
             <Route exact path="/info" component={home}/>
             <Route exact path="/campaign/:title" component={Campaign}/>
             <Route exact path="/" component={home}/>
-            </div>
 
         </Switch>
+        </div>
     </BrowserRouter>
 )
 

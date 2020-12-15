@@ -30,7 +30,7 @@ class ValidateFields {
   validateNumber(num){
     if(validator.isEmpty(num)){
       return'This field cannot be empty';
-    } else if (!validator.isNumeric(num)){
+    } else if (!validator.isNumeric(num) || num < 0){
         return 'Invalid Number';
     }
     return false;
