@@ -1,0 +1,28 @@
+.share-dialog, .thanks-dialog {
+    height: 100%;
+    width: 40%;
+    text-align: center;
+    margin-left: 30%;
+    padding: 20px;
+}
+
+.share-dialog h1, .thanks-dialog h1 {
+    margin: 10px;
+    margin-top: 20px;
+}
+
+.copy-btn {
+    background-color: #02a95c;
+    border: none;
+}
+
+
+
+.copied {
+    color: #02a95c;
+    font-size: 20px;
+}
+#share-help {
+    font-size: 15px;
+    margin-bottom: -5px;
+}

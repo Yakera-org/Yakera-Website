@@ -1,0 +1,11 @@
+{
+    "email": "jangbel99@gmail.com",
+    "firstname": "Jang",
+    "lastname": "Belche",
+    "phone": "+352691593392",
+    "address": "99, Denmark Road, Apartment 67",
+    "socialID": "123456",
+    "airTMID": "123456",
+    "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImphbmdiZWw5OUBnbWFpbC5jb20iLCJpYXQiOjE2MDQyNjQzMDgsImV4cCI6MTYwNDM1MDcwOH0.zsTja1-j_VQdg1cppQNoXGg9G8MrwrlIZw5ZdCzQj3s",
+    "expiresAt": 1604264394544
+}

@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
+import CampaignCard from '../../campaignCard';
+import Author from '../../author';
+import  { Grid } from '@material-ui/core';
+import './donate.css';
 
-import CardForDonation from './cardForDonation'
-import  {Drawer, List, ListItemText, Divider, Tabs, Tab} from '@material-ui/core';
-
+import valdimir from '../../../pics/vladBike.jpeg';
 
 class donate extends Component{
     constructor(props) {
@@ -18,38 +20,25 @@ class donate extends Component{
    
     render(){
         return(
-            <div className="donate">     
-             <h1 style={{padding:'45px'}}>
-                 Donate Page
-             </h1>
-            <Drawer
-            variant="permanent"
-            >
-            <div className="drawer">
-                <List>
-                    <ListItemText>
-                        Categories
-                    </ListItemText>
-                </List>
-                <Divider style={{backgroundColor:'white'}}/>
-                <List>
-                    {['Education', 'Medicine', 'Food', 'Small Business'].map((text, index) => (                         
-                        <Tabs value={this.state.value} onChange={(event, value) => { this.handle_change(value) }}>
-                            <Tab value={index} label={text} />                           
-                        </Tabs>                   
-                    ))}
-                </List>
+            <div className="donate-page">
+             <Grid container spacing={5} style={{alignContent:'center', alignItems:'center'}}>
+                
+                <Grid item xs={12} sm={3}>
+                    <CampaignCard
+                    author="V"
+                    title="Help Vladimir work as a mototaxista"
+                    description="Support Vladimir and his mototaxista company"
+                    deadline="12 December 2020"
+                    image={valdimir}
+                    />
+                </Grid>
+                
+
+            </Grid>
+            <div style={{marginTop:'16%'}}>
+                <Author />
             </div>
-            </Drawer>
-        
-             <CardForDonation  value={this.state.value} index={0}  name="Garcia" cause="books"/>
-             <CardForDonation  value={this.state.value} index={1}  name="Enrique" cause="asma" />
-             <CardForDonation  value={this.state.value} index={2}  name="Fernanda" cause="fruits" />
-             <CardForDonation  value={this.state.value} index={3}  name="Miguel" cause="car" />
-             <CardForDonation  value={this.state.value} index={2}  name="Luigi" cause="bread" />
-             <CardForDonation  value={this.state.value} index={2}  name="Sara" cause="pizza" />
-             <CardForDonation  value={this.state.value} index={1}  name="Olivia" cause="bandaids" />
-             <CardForDonation  value={this.state.value} index={0}  name="Jazmin" cause="table" />
+
             </div>
         )
     }

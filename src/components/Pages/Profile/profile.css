@@ -1,0 +1,29 @@
+.info-card #paper{
+    margin: 25px;
+    padding: 3%;
+}
+
+.form-group label{
+    margin-top: 7px;
+    font-size: 15px;
+    width: 150px;
+}
+.form-group input, .form-group select{
+    width: 50%;
+}
+
+#description{
+    height:320px;
+    width: 400px;
+    font-size: 15px;
+}
+#create-btn{
+    background-color: #114b6b;
+    border: none;
+    height: 50px;
+    border-radius: 10px;
+    padding: 0px 20px;
+    text-align: center;
+    width: 20%;
+    color: white;
+}

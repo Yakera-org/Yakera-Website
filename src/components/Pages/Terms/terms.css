@@ -1,0 +1,16 @@
+.terms-frame {
+    padding: 50px 0px 0px 200px;
+    margin-top: 50px;
+    height: 85vh;
+    width: 100%;
+}
+
+@media only screen and (max-width: 600px) {
+    .terms-frame {
+        padding: 0px 0px 0px 10px;
+        margin-top: 20px;
+        height: 85vh;
+        width: 100%;
+        border: none;
+    }
+}
