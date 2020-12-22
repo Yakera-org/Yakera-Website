@@ -17,7 +17,7 @@ class NavBar extends Component {
             opacity: 1,
             displayImg: '',
             brandSize: 50,
-            fontSize: 40
+            fontSize: 30
         }
     }
 
@@ -46,7 +46,7 @@ class NavBar extends Component {
                     navSize: '50%',
                     displayImg: '',
                     brandSize: 120,
-                    fontSize: 40
+                    fontSize: 30
                 })
             }
         }else if(window.location.pathname === '/donate' || window.location.pathname === '/info'){
@@ -64,7 +64,7 @@ class NavBar extends Component {
                     navSize: '15%',
                     displayImg: 'none',
                     brandSize: 50,
-                    fontSize: 40
+                    fontSize: 30
             })
            }
 
@@ -98,7 +98,7 @@ class NavBar extends Component {
                     navSize: '10%',
                     displayImg: 'none',
                     brandSize: 40,
-                    fontSize: 40
+                    fontSize: 30
                 })
             }
         }
@@ -117,7 +117,7 @@ class NavBar extends Component {
                     navSize: '10%',
                     displayImg: '',
                     brandSize: 50,
-                    fontSize: 40
+                    fontSize: 30
                 })
             }
         }
