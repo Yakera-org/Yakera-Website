@@ -39,7 +39,7 @@ class AboutUs extends Component{
                     </div>
                     <div className='about-page'>
                         
-                        <h1>What is Yakera</h1>
+                        <h1>What is Yakera ?</h1>
                         {texts.what.map((p, index) => 
                         <div key={index+"d"}>
                             <p key={index}>
@@ -94,6 +94,10 @@ class AboutUs extends Component{
                                 alt="trial"
                             />
                         </div>
+                        <h1>Community Trial</h1>
+                        <p>
+                            {texts.trial}
+                        </p>
 
                         <h1>Our long term Goals</h1>
                         <p>
