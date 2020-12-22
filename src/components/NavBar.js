@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import Navbar from 'react-bootstrap/NavBar';
+import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 
 import landingPic from '../pics/landingPic.jpg'
