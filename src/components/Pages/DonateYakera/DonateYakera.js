@@ -18,7 +18,7 @@ import HashLoader from "react-spinners/HashLoader";
 const _axios = require('axios');
 const axios = _axios.create();
 const qs = require('querystring');
-const yakeraBackUrl = 'http://yakera-back-dev.eu-west-3.elasticbeanstalk.com';
+const yakeraBackUrl = 'https://yakera-back-dev.eu-west-3.elasticbeanstalk.com';
 
 
 class DonateYakera extends Component{
