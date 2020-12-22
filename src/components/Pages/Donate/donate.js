@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import CampaignCard from '../../campaignCard';
+import Author from '../../author';
 import  { Grid } from '@material-ui/core';
 import './donate.css';
 
@@ -21,7 +22,7 @@ class donate extends Component{
         return(
             <div className="donate-page">
              <Grid container spacing={5} style={{alignContent:'center', alignItems:'center'}}>
-
+                
                 <Grid item xs={12} sm={3}>
                     <CampaignCard
                     author="V"
@@ -34,6 +35,9 @@ class donate extends Component{
                 
 
             </Grid>
+            <div style={{marginTop:'16%'}}>
+                <Author />
+            </div>
 
             </div>
         )

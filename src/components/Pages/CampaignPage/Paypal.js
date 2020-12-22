@@ -1,5 +1,4 @@
 import React from "react";
-import ReactDOM from "react-dom"
 import { PayPalButton } from "react-paypal-button-v2";
 
 
@@ -8,7 +7,7 @@ import { PayPalButton } from "react-paypal-button-v2";
 
 class PayPal extends React.Component {
     render() {
-        const { amount, onSuccess, onApprove, onError, onCancel, onClick } = this.props;
+        const { amount, onSuccess, onError, onCancel, onClick } = this.props;
           return (
               <PayPalButton
                 amount={amount}

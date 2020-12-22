@@ -78,6 +78,7 @@
     border: none;
     margin-top: 10px;
     margin-bottom: 20px;
+    clear: both;
 }
 .bottom-img{
     max-height: 500px;

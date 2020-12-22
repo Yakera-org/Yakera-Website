@@ -16,53 +16,11 @@ class NavBar extends Component {
             navSize : '50%',
             opacity: 1,
             displayImg: '',
-            brandSize: 50
+            brandSize: 50,
+            fontSize: 40
         }
     }
-    componentWillMount(){
-        if(window.location.pathname === '/'){
-            if(window.matchMedia('(max-width: 600px)').matches){
-                this.setState({
-                    bgColor: 'transparent',
-                    navSize: '10%',
-                    displayImg: '',
-                    brandSize: 50
-                })
-            }else{
-                this.setState({
-                    bgColor: 'transparent',
-                    navSize: '50%',
-                    displayImg: '',
-                    brandSize: 120
-                })
-            }
-        }else if(window.location.pathname === '/donate'){
-           if(window.matchMedia('(max-width: 600px)').matches){
-               this.setState({
-                   bgColor: 'transparent',
-                   navSize: '10%',
-                   displayImg: 'none',
-                   brandSize: 40
-               })
-           }else{
-                this.setState({
-                    bgColor:'transparent',
-                    navSize: '15%',
-                    displayImg: 'none',
-                    brandSize: 50
-            })
-           }
 
-        }
-        else{
-            this.setState({
-                bgColor:'blue',
-                navSize: '15%',
-                displayImg: 'none',
-                brandSize: 50
-            })
-        };            
-        }
     componentDidMount() {
         if (typeof window !== "undefined") {
             window.onscroll = () => {
@@ -72,25 +30,75 @@ class NavBar extends Component {
             
             }
         }
+
+        if(window.location.pathname === '/'){
+            if(window.matchMedia('(max-width: 600px)').matches){
+                this.setState({
+                    bgColor: 'transparent',
+                    navSize: '10%',
+                    displayImg: '',
+                    brandSize: 50,
+                    fontSize: 20
+                })
+            }else{
+                this.setState({
+                    bgColor: 'transparent',
+                    navSize: '50%',
+                    displayImg: '',
+                    brandSize: 120,
+                    fontSize: 40
+                })
+            }
+        }else if(window.location.pathname === '/donate' || window.location.pathname === '/info'){
+           if(window.matchMedia('(max-width: 600px)').matches){
+               this.setState({
+                   bgColor: 'transparent',
+                   navSize: '10%',
+                   displayImg: 'none',
+                   brandSize: 40,
+                   fontSize: 20
+               })
+           }else{
+                this.setState({
+                    bgColor:'transparent',
+                    navSize: '15%',
+                    displayImg: 'none',
+                    brandSize: 50,
+                    fontSize: 40
+            })
+           }
+
+        }
+        else{
+            this.setState({
+                bgColor:'blue',
+                navSize: '15%',
+                displayImg: 'none',
+                brandSize: 50,
+                fontSize: 30
+            })
+        };         
         }
 
     handleToggle(){
         let currentNavSize = this.state.navSize;
 
-        if(window.location.pathname === '/donate'){
+        if(window.location.pathname === '/donate' || window.location.pathname === '/info'){
             if(this.state.bgColor === 'transparent'){
                 this.setState({
                     bgColor: 'darkred',
                     navSize: '40%',
                     displayImg: 'none',
-                    brandSize: 40
+                    brandSize: 40,
+                    fontSize: 20
                 })
             }else{
                 this.setState({
                     bgColor: 'transparent',
                     navSize: '10%',
                     displayImg: 'none',
-                    brandSize: 40
+                    brandSize: 40,
+                    fontSize: 40
                 })
             }
         }
@@ -100,14 +108,16 @@ class NavBar extends Component {
                     bgColor: 'beige',
                     navSize: '40%',
                     displayImg: 'none',
-                    brandSize: 40
+                    brandSize: 40,
+                    fontSize: 20
                 })
             }else{
                 this.setState({
                     bgColor: 'transparent',
                     navSize: '10%',
                     displayImg: '',
-                    brandSize: 50
+                    brandSize: 50,
+                    fontSize: 40
                 })
             }
         }
@@ -134,9 +144,10 @@ class NavBar extends Component {
                 <Navbar.Toggle  />
                 <Navbar.Collapse id="responsive-navbar-nav">
                     <Nav className="mr-auto">
-                    <Nav.Link href="/info" style={{fontSize:'30px'}}>Info</Nav.Link>
-                    <Nav.Link href="/donate" style={{fontSize:'30px'}}>Donate</Nav.Link>
-                    <Nav.Link href="/campaigns" style={{fontSize:'30px'}}>Campaigns</Nav.Link>
+                    <Nav.Link href="/info" style={{fontSize: this.state.fontSize + 'px'}}>Info</Nav.Link>
+                    <Nav.Link href="/donate" style={{fontSize: this.state.fontSize + 'px'}}>Donate</Nav.Link>
+                    <Nav.Link href="/campaigns" style={{fontSize: this.state.fontSize + 'px'}}>Campaigns</Nav.Link>
+                    <Nav.Link href="/terms" style={{fontSize: this.state.fontSize + 'px'}}>Terms & Conditions</Nav.Link>
                     {/* <Nav.Link href="/profile" style={{fontSize:'30px'}}>Profile</Nav.Link>
                     <Nav.Link href="/login" style={{fontSize:'30px'}}>Log-in</Nav.Link> */}
                     </Nav>                    

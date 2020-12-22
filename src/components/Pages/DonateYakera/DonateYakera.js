@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
 import { Progress } from 'react-sweet-progress';
 import { validateFields } from '../Register/Validation';
 import ExCampaign from './yakeraCampaign.json';
 import "react-sweet-progress/lib/style.css";
-import  { Card, CardContent, Typography, Grid, Paper, CardHeader, Avatar} from '@material-ui/core';
+import  { Card, Grid } from '@material-ui/core';
 import image from '../../../pics/donate.png';
 import ShareCard from '../CampaignPage/ShareCard';
 import ThanksCard from '../CampaignPage/thanksCard';
+import ConsentCard from '../CampaignPage/consentCard';
 import Paypal from '../CampaignPage/Paypal';
 import './donateYakera.css';
 import '../CampaignPage/sharecard.css';
@@ -35,6 +35,7 @@ class DonateYakera extends Component{
             },
             openShare: false,
             openThanks: false,
+            openConsent: false,
             hasAmount: false,
             amount: {
                 value: '',
@@ -51,10 +52,13 @@ class DonateYakera extends Component{
                 validateOnChange: false,
                 error: '',
             },
+            consent: false,
+            age: false,
             PaypalId: 0,
             opacity: 1,
             margin:0,
-            loading: false
+            loading: false,
+            checkError:''
         }
         this.handleScrollToDonate = this.handleScrollToDonate.bind(this);
         this.handleShare = this.handleShare.bind(this);
@@ -62,8 +66,11 @@ class DonateYakera extends Component{
         this.handleDonateStart = this.handleDonateStart.bind(this);
         this.onSuccess = this.onSuccess.bind(this);
         this.closeThanks = this.closeThanks.bind(this);
+        this.onConsent = this.onConsent.bind(this);
         this.onPayPalOn= this.onPayPalOn.bind(this);
         this.onPayPalOff = this.onPayPalOff.bind(this);
+        this.onConsentCheck = this.onConsentCheck.bind(this);
+        this.onAgeCheck = this.onAgeCheck.bind(this);
     }
 
     handleScrollToDonate(){
@@ -81,6 +88,23 @@ class DonateYakera extends Component{
             openThanks: false
         })
         window.location.reload(false);
+    }
+    onConsent(){
+        this.setState({
+            openConsent: !this.state.openConsent
+        })
+    }
+
+    onConsentCheck(){
+        this.setState({
+            consent: !this.state.consent
+        })
+    }
+
+    onAgeCheck(){
+        this.setState({
+            age: !this.state.age
+        })
     }
 
     handleChange(validationFunc, evt) {
@@ -101,32 +125,42 @@ class DonateYakera extends Component{
         const nameError = validateFields.validateName(name.value);
         const emailError = validateFields.validateEmail(email.value);
         
-
-        if ([amountError, nameError, emailError].every(e => e === false)) {
+        if(this.state.age === false || this.state.consent === false){
             this.setState({
-                hasAmount: true
-            }) 
-          } else {
-            // update the state with errors
-            this.setState(state => ({
-              amount: {
-                ...state.amount,
-                validateOnChange: true,
-                error: amountError
-              },
-              name: {
-                ...state.name,
-                validateOnChange: true,
-                error: nameError
-              },
-              email: {
-                ...state.email,
-                validateOnChange: true,
-                error: emailError
-              }
-            }));
-          } 
-      }
+                checkError:'These fields need to be checked'
+            })
+        }else{
+            this.setState({
+                checkError:''
+            })
+
+            if ([amountError, nameError, emailError].every(e => e === false)) {
+
+                this.setState({
+                    hasAmount: true
+                })         
+            } else {
+                // update the state with errors
+                this.setState(state => ({
+                amount: {
+                    ...state.amount,
+                    validateOnChange: true,
+                    error: amountError
+                },
+                name: {
+                    ...state.name,
+                    validateOnChange: true,
+                    error: nameError
+                },
+                email: {
+                    ...state.email,
+                    validateOnChange: true,
+                    error: emailError
+                }
+                }));
+            } 
+        }
+        }
 
     async addAmount(){
         const requestBody = {
@@ -208,7 +242,7 @@ class DonateYakera extends Component{
     }
 
     render(){
-        if( this.state.campaign.description == "") {
+        if( this.state.campaign.description === "") {
            return (<p> Loading </p>);
           } else {
 
@@ -226,7 +260,7 @@ class DonateYakera extends Component{
                     <div className='yakera-campaign-page'>
 
                         <p className="img-sub">
-                            Created by {ExCampaign.author} on 12/12/2020
+                            Created by {ExCampaign.author} on 22/12/2020
                         </p>
 
                         <hr />
@@ -366,6 +400,40 @@ class DonateYakera extends Component{
                                     
                                     />
                                 <div style={{marginBottom:'10px'}} className="invalid-feedback">{name.error}</div> 
+                                
+                                <input
+                                    name="consent"
+                                    type="checkbox"
+                                    onChange={this.onConsentCheck}
+                                    style={{ marginTop:'10px', width:'15px', float:'left'}}
+                                    className={classnames(
+                                        'form-control'
+                                        )}
+                                />
+                                <div className="consent-txt" >
+                                    I consent to the 
+                                    <button
+                                        className="consent-btn"  
+                                        onClick={this.onConsent}
+                                        >
+                                        privacy form
+                                    </button>  
+                                </div>
+
+                                <input
+                                    name="age"
+                                    type="checkbox"
+                                    onChange={this.onAgeCheck}
+                                    style={{ marginBottom:'5px', marginTop:'5px', width:'15px', float:'left', clear:'both'}}
+                                    className={classnames(
+                                        'form-control'
+                                        )}
+                                />
+                                <div className="age-txt" >
+                                    I confirm to be 18 or over
+                                </div>
+
+                                <div style={{clear:'both', color:'#d62828', fontWeight:'bold'}}>{this.state.checkError}</div>
 
                                 <button
                                     type="submit"
@@ -394,6 +462,7 @@ class DonateYakera extends Component{
                         </Card>   
 
                         <ShareCard open={this.state.openShare} onClose={this.handleShare}/>
+                        <ConsentCard open={this.state.openConsent} onClose={this.onConsent}/>
                         <ThanksCard open={this.state.openThanks} onClose={this.closeThanks} amount={this.state.amount.value} title={ExCampaign.title}/>
                     
                     </div>       

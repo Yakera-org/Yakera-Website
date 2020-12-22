@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import  { Grid } from '@material-ui/core';
+import Author from '../../author';
 import logo from '../../../pics/logo.png';
 import './home.css';
 import texts from './texts.json';
@@ -78,6 +79,9 @@ class Home extends Component{
                     <img src={airTMlogo} width='150px' alt='Airtm logo' />
                 </div>
             </div>  
+
+
+           <Author />
        
 
        </div>//end home

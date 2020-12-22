@@ -20,7 +20,7 @@ class CampaignCard extends Component {
   }   
   hanldeClick(){
     
-    const { author, goal, description, deadline, category, title, image } = this.props;
+    const { title } = this.props;
     let redirect = `/campaign/${title}`;
     this.props.history.push(redirect);
   }

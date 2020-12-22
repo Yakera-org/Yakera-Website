@@ -5,13 +5,13 @@ import ExCampaign from './exampleCampaign.json';
 import "react-sweet-progress/lib/style.css";
 import  { Card, Grid} from '@material-ui/core';
 import vladimirBike from '../../../pics/vladBike.jpeg';
-import vladimirFam from '../../../pics/vladFam.png';
 import vladimir1 from '../../../pics/vlad1.jpg';
 import vladimir2 from '../../../pics/vlad2.jpg';
 import vladimir3 from '../../../pics/vlad3.jpg';
 import vladimir4 from '../../../pics/vlad4.jpg';
 import ShareCard from './ShareCard';
 import ThanksCard from './thanksCard';
+import ConsentCard from './consentCard';
 import Paypal from './Paypal';
 import './campaign.css';
 import './sharecard.css';
@@ -52,10 +52,14 @@ class Campaign extends Component{
                 category: "",
                 deadline: "",
                 campaignName: ""
-            },
+            },            
+            consent: false,
+            age: false,
+            openConsent:false,
             PaypalId: 0,
             margin: -4000,
-            loading:false
+            loading:false,            
+            checkError:''
         }
         this.handleScrollToDonate = this.handleScrollToDonate.bind(this);
         this.handleShare = this.handleShare.bind(this);
@@ -63,8 +67,12 @@ class Campaign extends Component{
         this.handleDonateStart = this.handleDonateStart.bind(this);
         this.onSuccess = this.onSuccess.bind(this);
         this.closeThanks = this.closeThanks.bind(this);
+        this.onConsent = this.onConsent.bind(this);
         this.onPayPalOn= this.onPayPalOn.bind(this);
         this.onPayPalOff = this.onPayPalOff.bind(this);
+        
+        this.onConsentCheck = this.onConsentCheck.bind(this);
+        this.onAgeCheck = this.onAgeCheck.bind(this);
     }
 
     async componentDidMount() { 
@@ -146,6 +154,22 @@ class Campaign extends Component{
         })
         window.location.reload(false);
     }
+    onConsent(){
+        this.setState({
+            openConsent: !this.state.openConsent
+        })
+    }
+    onConsentCheck(){
+        this.setState({
+            consent: !this.state.consent
+        })
+    }
+
+    onAgeCheck(){
+        this.setState({
+            age: !this.state.age
+        })
+    }
 
     handleChange(validationFunc, evt) {
         const field = evt.target.name;
@@ -165,32 +189,41 @@ class Campaign extends Component{
         const nameError = validateFields.validateName(name.value);
         const emailError = validateFields.validateEmail(email.value);
         
-
-        if ([amountError, nameError, emailError].every(e => e === false)) {
+        if(this.state.age === false || this.state.consent === false){
             this.setState({
-                hasAmount: true
-            }) 
-          } else {
-            // update the state with errors
-            this.setState(state => ({
-              amount: {
-                ...state.amount,
-                validateOnChange: true,
-                error: amountError
-              },
-              name: {
-                ...state.name,
-                validateOnChange: true,
-                error: nameError
-              },
-              email: {
-                ...state.email,
-                validateOnChange: true,
-                error: emailError
-              }
-            }));
-          } 
-      }
+                checkError:'These fields need to be checked'
+            })
+        }else{
+            this.setState({
+                checkError:''
+            })            
+
+            if ([amountError, nameError, emailError].every(e => e === false)) {
+                this.setState({
+                    hasAmount: true
+                }) 
+            } else {
+                // update the state with errors
+                this.setState(state => ({
+                amount: {
+                    ...state.amount,
+                    validateOnChange: true,
+                    error: amountError
+                },
+                name: {
+                    ...state.name,
+                    validateOnChange: true,
+                    error: nameError
+                },
+                email: {
+                    ...state.email,
+                    validateOnChange: true,
+                    error: emailError
+                }
+                }));
+            } 
+        }
+    }
 
     async onSuccess(details, data) {
         this.setState({
@@ -214,7 +247,7 @@ class Campaign extends Component{
     }
     render(){
 
-        if( this.state.campaign.description == "") {
+        if( this.state.campaign.description === "") {
             return (<p> Loading </p>);
            } else {
                 let title = this.props.match.params.title;
@@ -421,6 +454,40 @@ class Campaign extends Component{
                                             />
                                         <div style={{marginBottom:'10px'}} className="invalid-feedback">{name.error}</div> 
 
+                                        <input
+                                            name="consent"
+                                            type="checkbox"
+                                            onClick={this.onConsentCheck}
+                                            style={{ marginTop:'10px', width:'15px', float:'left'}}
+                                            className={classnames(
+                                                'form-control'
+                                                )}
+                                        />
+                                        <div className="consent-txt" >
+                                            I consent to the 
+                                            <button
+                                                className="consent-btn"  
+                                                onClick={this.onConsent}
+                                                style={{color:'#003049'}}
+                                                >
+                                                privacy form
+                                            </button>  
+                                        </div>
+
+                                        <input
+                                            name="age"
+                                            type="checkbox"
+                                            onClick={this.onAgeCheck}
+                                            style={{ marginBottom:'15px', marginTop:'5px', width:'15px', float:'left', clear:'both'}}
+                                            className={classnames(
+                                                'form-control'
+                                                )}
+                                        />
+                                        <div className="age-txt" >
+                                            I confirm to be 18 or over
+                                        </div>
+
+                                        <div style={{clear:'both', color:'#d62828', fontWeight:'bold'}}>{this.state.checkError}</div>
 
                                         <button
                                             type="submit"
@@ -450,6 +517,7 @@ class Campaign extends Component{
 
                         
                         <ShareCard open={this.state.openShare} onClose={this.handleShare}/>
+                        <ConsentCard open={this.state.openConsent} onClose={this.onConsent}/>
                         <ThanksCard open={this.state.openThanks} onClose={this.closeThanks} amount={this.state.amount.value} title={ExCampaign.title}/>
 
                     
