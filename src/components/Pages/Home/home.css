@@ -7,7 +7,7 @@
 #intro-text  {
     font-family: Kollektif, Arial, serif;
     float: left;
-    font-size: 30px;
+    font-size: 25px;
     width: 100%;
     margin-bottom: 10px;
 }
@@ -49,7 +49,7 @@ hr{
 }
 #description-logo{
     width: 120%;
-    margin-top: 0px;
+    margin-top: -120px;
     margin-left: 120px;
 }
 

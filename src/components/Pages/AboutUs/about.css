@@ -27,14 +27,14 @@
     min-height: 100%;
 }
 .about-page h1 {
-    font-size: 45px;
+    font-size: 40px;
     margin-top: 100px;
     padding: 0px 10%;
     color: #003049;
 }
 
 .about-page p {
-    font-size: 30px;
+    font-size: 25px;
     padding: 0px 10%;
     text-align: justify;
 }

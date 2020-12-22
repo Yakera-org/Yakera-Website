@@ -82,7 +82,7 @@ class AboutUs extends Component{
                             />
                         </div>
 
-                        <h1>How it works</h1>
+                        <h1>How It Works</h1>
                         <p>
                             {texts.how}
                         </p>
@@ -99,7 +99,7 @@ class AboutUs extends Component{
                             {texts.trial}
                         </p>
 
-                        <h1>Our long term Goals</h1>
+                        <h1>Our Long Term Goals</h1>
                         <p>
                             {texts.goals}
                         </p>
