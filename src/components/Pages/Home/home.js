@@ -1,16 +1,10 @@
 import React, { Component } from 'react';
 import  { Grid } from '@material-ui/core';
 import Author from '../../author';
-import logo from '../../../pics/logo.png';
 import './home.css';
 import texts from './texts.json';
-import airTMlogo from '../../../pics/airtmlogo.png';
-import nutriendologo from '../../../pics/nutriendologo.jpg';
-import rotaracatlogo from '../../../pics/rotaracat.jpg';
-import banner1 from '../../../pics/banner1.png';
-import banner2 from '../../../pics/banner2.png';
-import banner3 from '../../../pics/banner3.png';
-import banner4 from '../../../pics/banner4.png';
+import {pics} from './picsHome.js';
+
 
 class Home extends Component{
     
@@ -28,7 +22,7 @@ class Home extends Component{
                 </Grid>
                 <Grid item xs={12} sm={3}>    
                     <div id='description-logo'>
-                        <img src={logo} width='100%' alt='logo' />
+                        <img src={pics.logo} width='100%' alt='logo' />
                     </div>
                 </Grid>
             </Grid>
@@ -57,26 +51,37 @@ class Home extends Component{
 
            <div id='construction-content'>
                     <div className='banner-home-alt'>
-                        <img src={banner1} width='100%' alt='banner1' />
+                        <img src={pics.banner1} width='100%' alt='banner1' />
                     </div>
                     <div className='banner-home'>
-                        <img src={banner2} width='100%' alt='banner1' />
+                        <img src={pics.banner2} width='100%' alt='banner1' />
                     </div>
                     <div className='banner-home'>
-                        <img src={banner3} width='100%' alt='banner1' />
+                        <img src={pics.banner3} width='100%' alt='banner1' />
                     </div>
                     <div className='banner-home'>
-                        <img src={banner4} width='100%' alt='banner1' />
+                        <img src={pics.banner4} width='100%' alt='banner1' />
                     </div>
            </div>
                 
 
-           <div id='construction-partners'>
+           <div id='categories'>
+                <div id='cat'>                    
+                    <img src={pics.healthcare} width='25%' alt='healthcare' />
+                    <img src={pics.business} width='25%' alt='business' />
+                    <img src={pics.education} width='25%' alt='education' />
+                    <img src={pics.nutrition} width='25%' alt='nutrition' />
+                </div>
+            </div>  
+
+            <hr style={{width:'80%', marginLeft:'10%' }}/>
+
+            <div id='construction-partners'>
                 <h1>Our Partners:</h1><br /><br />
                 <div id='partners'>                    
-                    <img src={rotaracatlogo} width='150px' alt='Rotaracat logo' />
-                    <img src={nutriendologo} width='150px' alt='nutriendo logo' />
-                    <img src={airTMlogo} width='150px' alt='Airtm logo' />
+                    <img src={pics.rotaracatlogo} width='150px' alt='Rotaracat logo' />
+                    <img src={pics.nutriendologo} width='150px' alt='nutriendo logo' />
+                    <img src={pics.airTMlogo} width='150px' alt='Airtm logo' />
                 </div>
             </div>  
 

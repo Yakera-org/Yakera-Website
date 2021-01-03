@@ -43,12 +43,12 @@ hr{
 }
 #description-home {
     text-align: justify;
-    font-size: 35px;
+    font-size: 30px;
     width: 100%;
-    margin-bottom: 50px;
+    margin-bottom: 30px;
 }
 #description-logo{
-    width: 120%;
+    width: 110%;
     margin-top: -120px;
     margin-left: 120px;
 }
@@ -66,8 +66,11 @@ hr{
 #construction-partners h1{
     font-size: 70px;
 }
-#partners{
+#partners, #cat{
     text-align: center;
+}
+#cat{
+    min-width: 100px;
 }
 #partners img{
     width: 200px;
@@ -144,7 +147,7 @@ hr{
         margin-left: 5%;
     }
     #construction-partners h1{
-        font-size: 40px;
+        font-size: 30px;
     }
     #partners img{
         width: 100px;
@@ -152,5 +155,8 @@ hr{
     .banner-home-alt img{
         padding-bottom: 10px;
         border-top: 40px solid #003049;
+    }
+    #cat{
+        min-width: 100%;
     }
 }
