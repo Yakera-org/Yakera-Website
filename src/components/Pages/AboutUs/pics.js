@@ -5,6 +5,7 @@ export const pics =
         "what": require("../../../pics/what.png"),
         "mission": require("../../../pics/mission.JPG"),
         "trial": require("../../../pics/trial.png"),
+        "long-term": require("../../../pics/long-term.png"),
         "sdgs": require("../../../pics/sdgs.png"),
         "sdg1": require("../../../pics/sdg1.png"),
         "sdg2": require("../../../pics/sdg2.png"),

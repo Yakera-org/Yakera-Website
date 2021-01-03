@@ -31,7 +31,8 @@ class DonateYakera extends Component{
                 state: "",
                 category: "",
                 deadline: "",
-                campaignName: ""
+                campaignName: "",
+                transactions: ""
             },
             openShare: false,
             openThanks: false,
@@ -212,15 +213,14 @@ class DonateYakera extends Component{
     async loadCampaign(){
         const config = {
             headers: {
-                'Content-Type': 'application/json',
-                "email": "yakera"
+                'Content-Type': 'application/json'
             }
         }
-        const url = yakeraBackUrl + "/api/campaign";
-        
-         await axios.get(url, config)
-            .then(res => {
-                    this.setState({campaign: res.data[0]});
+        const url = yakeraBackUrl + "/api/campaign/?email=yakera";
+        await axios.get(url, config)
+        .then(res => {
+            this.setState({campaign: res.data[0]});
+            console.log(res.data[0])
             })
             .catch(err => {
                 console.log("error: " + err.message);

@@ -99,6 +99,13 @@ class AboutUs extends Component{
                             {texts.trial}
                         </p>
 
+                        <div className='about-banner-page'>
+                            <img
+                                width="100%"
+                                src={pics['long-term']}
+                                alt="trial"
+                            />
+                        </div>
                         <h1>Our Long Term Goals</h1>
                         <p>
                             {texts.goals}

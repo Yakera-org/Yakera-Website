@@ -96,11 +96,10 @@ class Campaign extends Component{
     async loadCampaign(){
         const config = {
             headers: {
-                'Content-Type': 'application/json',
-                "email": "vladimir"
+                'Content-Type': 'application/json'
             }
         }
-        const url = yakeraBackUrl + "/api/campaign";
+        const url = yakeraBackUrl + "/api/campaign/?email=vladimir";
         
          await axios.get(url, config)
             .then(res => {
