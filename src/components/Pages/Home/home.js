@@ -16,7 +16,7 @@ class Home extends Component{
 
             <Grid container spacing={0} >
                 <Grid item xs={12} sm={8}>    
-                    <div className='description-home'>
+                    <div id='description-home'>
                         <b style={{color:'#d62828'}}>Yakera</b>{texts["description"]["eng"]}
                     </div>
                 </Grid>
