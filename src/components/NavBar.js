@@ -47,7 +47,7 @@ class NavBar extends Component {
                     bgColor: 'transparent',
                     navSize: '50%',
                     displayImg: '',
-                    brandSize: 120,
+                    brandSize: 90,
                     fontSize: 30
                 })
             }
