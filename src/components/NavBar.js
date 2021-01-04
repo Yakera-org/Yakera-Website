@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faBars } from '@fortawesome/free-solid-svg-icons'
 
 import landingPic from '../pics/landingPic.jpg'
 
@@ -141,7 +143,11 @@ class NavBar extends Component {
                  style={{height:this.state.navSize, position:'absolute'}}>
 
                 <Navbar.Brand style={{fontSize:this.state.brandSize+'px'}} href="/">Yakera</Navbar.Brand>
-                <Navbar.Toggle  />
+                <Navbar.Toggle>
+                    <FontAwesomeIcon
+                        icon={faBars} color="white" size="2x" 
+                    />
+                </Navbar.Toggle>
                 <Navbar.Collapse id="responsive-navbar-nav">
                     <Nav className="mr-auto">
                     <Nav.Link href="/info" style={{fontSize: this.state.fontSize + 'px'}}>Info</Nav.Link>

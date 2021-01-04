@@ -266,7 +266,7 @@ class Campaign extends Component{
                             loading={this.state.loading}
                             />
                         </div>
-                        <h1 className="campaign-title">{title}</h1>
+                        <h1 id="campaign-title">{title}</h1>
                         <hr id="top-hr"/>
                         <div className='backdrop-img'>
                             <img  

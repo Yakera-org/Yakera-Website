@@ -220,7 +220,7 @@ class DonateYakera extends Component{
         await axios.get(url, config)
         .then(res => {
             this.setState({campaign: res.data[0]});
-            console.log(res.data[0])
+            //console.log(res.data[0])
             })
             .catch(err => {
                 console.log("error: " + err.message);

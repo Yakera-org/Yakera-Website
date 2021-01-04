@@ -49,7 +49,7 @@ hr{
 }
 #description-logo{
     width: 110%;
-    margin-top: -120px;
+    margin-top: -20%;
     margin-left: 120px;
 }
 
@@ -86,7 +86,7 @@ hr{
 }
 
 
-@media screen and (max-width: 1000px) {
+@media screen and (max-width: 600px) {
     #follow-us{
         text-align: center;
         width: 100%;

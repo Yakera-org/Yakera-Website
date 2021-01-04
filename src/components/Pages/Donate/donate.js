@@ -26,8 +26,8 @@ class donate extends Component{
                 <Grid item xs={12} sm={3}>
                     <CampaignCard
                     author="V"
-                    title="Help Vladimir work as a mototaxista"
-                    description="Support Vladimir and his mototaxista company"
+                    title="Help Vladimir Work As a Mototaxista"
+                    description="Help Vladimir get back on his feet after his motorcycle was stolen"
                     deadline="12 December 2020"
                     image={valdimir}
                     />
