@@ -41,7 +41,7 @@ hr{
     width: 100%;
     text-align: center;
 }
-#description-home {
+.description-home {
     text-align: justify;
     font-size: 30px;
     width: 100%;
@@ -118,7 +118,7 @@ hr{
         width:100%;
         padding: 20px;
     }
-    #description-home{
+    .description-home{
         text-align: start;
         font-size: 25px;
     }
