@@ -82,7 +82,7 @@ class Campaign extends Component{
                 
             let height = window.document.body.offsetHeight;
             let currentScrollPos = 2*window.pageYOffset - height ;
-            let margin = Math.min(Math.max(-height+0.2*height, currentScrollPos+0.2*height), height/2)
+            let margin = Math.min(Math.max(-height+0.3*height, currentScrollPos+0.2*height), height/2.5)
             if(height > 6000){
                 margin= 700
             }

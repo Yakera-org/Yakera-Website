@@ -235,7 +235,7 @@ class DonateYakera extends Component{
 
             this.setState({
                     opacity: currentScrollPos / 300,
-                    margin: Math.min(Math.max(0, -currentScrollPos + 100), 650)
+                    margin: Math.min(Math.max(0, -currentScrollPos + 100), 500)
                     })  
             }
         }
