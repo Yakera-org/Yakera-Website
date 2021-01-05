@@ -6,8 +6,8 @@ class Terms extends Component{
     render(){
         return(
             <div>
-
-                <iframe src={"../terms.html"} title="terms"
+                <iframe src={"../terms.html"}
+                title="terms"
                 className="terms-frame"/>     
             </div>      
         )

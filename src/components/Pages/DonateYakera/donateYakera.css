@@ -121,14 +121,20 @@
     margin-top: 14px;
     margin-left: 7px;
 }
+#check-consent {
+    margin-top: 10px;
+    width: 15px;
+    float: left;
+}
 @media only screen and (max-width: 600px) {
     .campaign-des {
       width: 95%;
       text-align: start;
       margin-bottom: 0px;
+      font-size: 18px;
     }
     .card-right{
-        margin-top: -600px;
+        margin-top: -450px;
         margin-left: 7%;
     }
     .card-right h1, .donateSection h1{
@@ -154,6 +160,8 @@
     .donateSection {
         width: 90%;
         margin-left: 6px;
+        margin-top: 150px;
+        padding-top: 20px;
     }
     .donateSection input {
         width: 60%;
@@ -163,6 +171,21 @@
         margin-top: 10px;
         font-size: 15px;
         color: 'grey'
+    }
+    .consent-btn {
+        margin-top: 0px;
+    }
+    .consent-txt {
+        text-align: left;
+        margin-top: 20px;
+    }
+    #mobile-privacy {
+        text-align: left;
+        font-size: 15px;
+    }
+    #check-consent {
+        margin-top: 10px;
+        float: left;
     }
     
   }

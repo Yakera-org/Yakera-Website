@@ -291,7 +291,7 @@ class Campaign extends Component{
                             Created by Yakera on 12/12/2020
                         </p>
 
-                        <hr id="top-hr"/>
+                        <hr id="top-hr-2"/>
 
                         <Grid container spacing={10} style={{alignContent:'center', alignItems:'center'}}>
 
@@ -461,13 +461,14 @@ class Campaign extends Component{
                                             className={classnames(
                                                 'form-control'
                                                 )}
-                                        />
-                                        <div className="consent-txt" >
+                                                />
+                                        <div className="campaign-consent-txt" >
                                             I consent to the 
                                             <button
-                                                className="consent-btn"  
-                                                onClick={this.onConsent}
+                                                className="consent-btn" 
+                                                id="campaign-mobile-privacy" 
                                                 style={{color:'#003049'}}
+                                                onClick={this.onConsent}
                                                 >
                                                 privacy form
                                             </button>  

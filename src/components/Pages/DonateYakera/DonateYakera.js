@@ -405,7 +405,7 @@ class DonateYakera extends Component{
                                     name="consent"
                                     type="checkbox"
                                     onChange={this.onConsentCheck}
-                                    style={{ marginTop:'10px', width:'15px', float:'left'}}
+                                    id="check-consent"                                    
                                     className={classnames(
                                         'form-control'
                                         )}
@@ -413,7 +413,8 @@ class DonateYakera extends Component{
                                 <div className="consent-txt" >
                                     I consent to the 
                                     <button
-                                        className="consent-btn"  
+                                        className="consent-btn" 
+                                        id="mobile-privacy" 
                                         onClick={this.onConsent}
                                         >
                                         privacy form

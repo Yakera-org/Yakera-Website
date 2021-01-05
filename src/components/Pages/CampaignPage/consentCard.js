@@ -17,14 +17,14 @@ class Thankscard extends Component{
                     
                 <iframe src={"../consent.html"} title="consentform"
                 style={{
-                    padding:'20px 20px',
+                    padding: '10px 10px',
                     height:'700px'
                 }} />
                 <br />
 
                 <button
                     type="submit"
-                    className="btn btn-secondary btn-block yakera-donate-start-btn"    
+                    className="btn btn-secondary btn-block consent-return"    
                     onClick={this.props.onClose}                   
                     >
                     return

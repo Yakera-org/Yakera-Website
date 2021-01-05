@@ -89,7 +89,7 @@ class NavBar extends Component {
             if(this.state.bgColor === 'transparent'){
                 this.setState({
                     bgColor: 'darkred',
-                    navSize: '40%',
+                    navSize: '55%',
                     displayImg: 'none',
                     brandSize: 40,
                     fontSize: 20
@@ -108,7 +108,7 @@ class NavBar extends Component {
             if(this.state.bgColor === 'transparent'){
                 this.setState({
                     bgColor: 'beige',
-                    navSize: '40%',
+                    navSize: '55%',
                     displayImg: 'none',
                     brandSize: 40,
                     fontSize: 20
@@ -123,11 +123,16 @@ class NavBar extends Component {
                 })
             }
         }
+        if(window.location.pathname !== '/' || window.location.pathname !== '/donate' || window.location.pathname !== '/info'){
+            this.setState({
+                fontSize: 20
+            })
+        }
         if(currentNavSize === '15%'){
             this.setState({
-                navSize: '40%'
+                navSize: '55%'
             });
-        }else if(currentNavSize === '40%'){
+        }else if(currentNavSize === '55%'){
             this.setState({
                 navSize: '15%'
             });

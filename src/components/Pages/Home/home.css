@@ -99,8 +99,10 @@ hr{
     .links span{
         text-align: start;
         display: block;
+    }  
+    .links a {
+        font-size: 25px;
     }
-   
     .intro{
         clear:both;
         width:100%,
@@ -120,7 +122,7 @@ hr{
     }
     #description-home{
         text-align: start;
-        font-size: 25px;
+        font-size: 23px;
     }
     #description-logo{
         width: 100%;
