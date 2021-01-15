@@ -4,7 +4,7 @@ import { validateFields } from '../Register/Validation';
 import ExCampaign from './yakeraCampaign.json';
 import "react-sweet-progress/lib/style.css";
 import  { Card, Grid } from '@material-ui/core';
-import image from '../../../pics/donate.png';
+import image from '../../../pics/donate_new.png';
 import ShareCard from '../CampaignPage/ShareCard';
 import ThanksCard from '../CampaignPage/thanksCard';
 import ConsentCard from '../CampaignPage/consentCard';
@@ -268,6 +268,13 @@ class DonateYakera extends Component{
                         <Grid container spacing={0} >
 
                             <Grid item xs={12} sm={6}>
+                            <button
+                                type="submit"
+                                className="btn btn-secondary btn-block yakera-donate-card-slit-btn mobile-only"
+                                onClick={this.handleScrollToDonate}                                   
+                                >
+                                Donate now
+                            </button>
 
                                 {ExCampaign.description.map((p) => 
                                     <p className="campaign-des" key={p}>
