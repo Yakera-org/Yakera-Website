@@ -1,7 +1,7 @@
 export const pics = 
     {
         "about": require("../../../pics/about.png"),
-        "how": require("../../../pics/how.png"),
+        "how": require("../../../pics/how_new.png"),
         "what": require("../../../pics/what.png"),
         "mission": require("../../../pics/mission.JPG"),
         "trial": require("../../../pics/trial.png"),

@@ -1,8 +1,12 @@
+.mobile-only{
+    display: none;
+}
 .home-page{    
     width: 100%;
     padding: 5%;}
 .home{
     background-color: white;
+    margin-top: -5%;
 }
 #intro-text  {
     font-family: Kollektif, Arial, serif;
@@ -82,11 +86,22 @@ hr{
 }
 .banner-home-alt img{
     padding-bottom: 10px;
-    border-top: 70px solid #003049;
+    border-top: 70px solid #01224d;
 }
 
 
 @media screen and (max-width: 600px) {
+    .mobile-only{
+        display: inline;
+        margin: 20px 10%;
+        padding: 15px 0px;
+        background-color: #d62828;
+        border: #f77f00;
+        font-size: 20px;
+    }
+    .home {
+        margin-top: -100px;
+    }
     #follow-us{
         text-align: center;
         width: 100%;

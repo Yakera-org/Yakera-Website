@@ -44,7 +44,7 @@ class CampaignCard extends Component {
         <Card onClick={this.hanldeClick} onMouseEnter={this.handleHover} onMouseLeave={this.handleHover} style={{backgroundColor:this.state.cardColor, borderRadius:'30px'}}>
           <CardHeader
             avatar={
-              <Avatar aria-label={author}style={{backgroundColor:'#003049'}} >
+              <Avatar aria-label={author}style={{backgroundColor:'#01224d'}} >
                 {author}
               </Avatar>
             }

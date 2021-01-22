@@ -17,7 +17,7 @@ class AboutUs extends Component{
     componentDidMount() { 
         if (typeof window !== "undefined") {
             window.onscroll = () => {
-            let currentScrollPos = 800 - window.pageYOffset;
+            let currentScrollPos = 600 - window.pageYOffset;
 
             this.setState({
                     opacity: currentScrollPos / 300,
@@ -29,13 +29,17 @@ class AboutUs extends Component{
     render(){
         return(
             <div className='about'>
-                    <div className='about-banner'>
-                        <img
+                    <div style={{textAlign:'center', maxHeight:'60vh', minHeight:'40%', overflow: 'hidden', marginTop:'-100px'}}>
+                        <img  
+                            style={{
+                                minHeight:'100%',
+                                minWidht:'100%',
+                                opacity: this.state.opacity
+                            }}
                             width="100%"
                             src={pics.about}
-                            alt="about"
-                            style={{opacity:this.state.opacity}}
-                        />
+                            alt="about-banner"
+                            />
                     </div>
                     <div className='about-page'>
                         

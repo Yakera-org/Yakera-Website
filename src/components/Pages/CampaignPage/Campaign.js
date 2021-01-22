@@ -316,7 +316,7 @@ class Campaign extends Component{
 
                                     <div className="donate-card-slit-target">
                                         <p>
-                                            <b style={{fontSize:'35px', color:'#003049', marginRight:'5px'}}>
+                                            <b style={{fontSize:'35px', color:'#01224d', marginRight:'5px'}}>
                                                 ${this.state.campaign.amount} 
                                             </b>
                                             raised of $200 target   
@@ -327,7 +327,7 @@ class Campaign extends Component{
                                             default: {
                                                 trailColor: 'lightblue',
                                                 symbol: '',
-                                                color: '#003049',
+                                                color: '#01224d',
                                                 overflow:'visible'
                                             }
                                         }}

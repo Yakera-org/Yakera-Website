@@ -76,7 +76,7 @@ class NavBar extends Component {
                 bgColor:'blue',
                 navSize: '15%',
                 displayImg: 'none',
-                brandSize: 50,
+                brandSize: 40,
                 fontSize: 30
             })
         };         
@@ -166,8 +166,19 @@ class NavBar extends Component {
                 </Navbar.Collapse>
                 
                 </Navbar>
-                <img src={landingPic} width='150px' style={{ marginTop:0, marginBottom:'-100px', width:'100%', opacity: this.state.opacity, display: this.state.displayImg}} alt='Airtm logo' />
-                
+                <div style={{textAlign:'center', maxHeight:'50%', minHeight:'50%', overflow: 'hidden'}}>
+                    <img  
+                    style={{
+                        minHeight:'100%',
+                        minWidht:'100%',
+                        display: this.state.displayImg,
+                        opacity: this.state.opacity
+                    }}
+                        width="100%"
+                        src={landingPic}
+                        alt="home-banner"
+                        />
+                </div>                
             </div>
         )
     }
