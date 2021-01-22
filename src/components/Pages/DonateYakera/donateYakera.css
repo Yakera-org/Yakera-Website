@@ -1,6 +1,3 @@
-.mobile-only{
-    display: none;
-}
 .yakera-campaign-page {
     margin-top: 40px;
     padding: 0px 0px 0px 5%;
@@ -129,10 +126,7 @@
     float: left;
 }
 @media only screen and (max-width: 600px) {
-    .mobile-only{
-        display: inline;
-        margin-left: 20%;
-    }
+    
     .campaign-des {
       width: 95%;
       text-align: start;

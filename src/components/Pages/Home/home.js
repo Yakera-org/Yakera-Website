@@ -7,6 +7,15 @@ import {pics} from './picsHome.js';
 
 
 class Home extends Component{
+    constructor(props) {
+        super(props);
+        this.hanldeClick = this.hanldeClick.bind(this)
+    }
+
+    hanldeClick(){
+        window.location='/donate';
+        console.log("scroll")
+    }
     
     render(){
         return(
@@ -15,6 +24,14 @@ class Home extends Component{
 
 
             <Grid container spacing={0} >
+                <button
+                    type="submit"
+                    className="btn btn-secondary btn-block mobile-only"  
+                    onClick={this.hanldeClick}                                                   
+                    >
+                    Donate now
+                </button>
+
                 <Grid item xs={12} sm={8}>    
                     <div id='description-home'>
                         {texts["pre-des"]}

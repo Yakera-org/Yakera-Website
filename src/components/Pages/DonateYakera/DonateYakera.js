@@ -4,7 +4,7 @@ import { validateFields } from '../Register/Validation';
 import ExCampaign from './yakeraCampaign.json';
 import "react-sweet-progress/lib/style.css";
 import  { Card, Grid } from '@material-ui/core';
-import image from '../../../pics/donate_new.png';
+import image from '../../../pics/donate.png';
 import ShareCard from '../CampaignPage/ShareCard';
 import ThanksCard from '../CampaignPage/thanksCard';
 import ConsentCard from '../CampaignPage/consentCard';
@@ -231,11 +231,11 @@ class DonateYakera extends Component{
         await this.loadCampaign();
         if (typeof window !== "undefined") {
             window.onscroll = () => {
-            let currentScrollPos = 800 - window.pageYOffset;
+            let currentScrollPos = 600 - window.pageYOffset;
 
             this.setState({
                     opacity: currentScrollPos / 300,
-                    margin: Math.min(Math.max(0, -currentScrollPos + 100), 500)
+                    margin: Math.min(Math.max(0, -currentScrollPos + 100), 450)
                     })  
             }
         }
@@ -249,13 +249,17 @@ class DonateYakera extends Component{
             const { amount, name, email } = this.state;
             return(                
                 <div className='donate-yakera'>
-                    <div className='donate-banner'>
-                        <img  className='donate-img-yakera'
-                        width="100%"
-                        src={image}
-                        alt={ExCampaign.title}
-                        style={{opacity: this.state.opacity}}
-                        />
+                   <div style={{textAlign:'center', maxHeight:'60vh', minHeight:'40%', overflow: 'hidden', marginTop:'-100px'}}>
+                        <img  
+                            style={{
+                                minHeight:'100%',
+                                minWidht:'100%',
+                                opacity: this.state.opacity
+                            }}
+                            width="100%"
+                            src={image}
+                            alt="donate-banner"
+                            />
                     </div>
                     <div className='yakera-campaign-page'>
 
@@ -267,15 +271,7 @@ class DonateYakera extends Component{
 
                         <Grid container spacing={0} >
 
-                            <Grid item xs={12} sm={6}>
-                            <button
-                                type="submit"
-                                className="btn btn-secondary btn-block yakera-donate-card-slit-btn mobile-only"
-                                onClick={this.handleScrollToDonate}                                   
-                                >
-                                Donate now
-                            </button>
-
+                            <Grid item xs={12} sm={6}>   
                                 {ExCampaign.description.map((p) => 
                                     <p className="campaign-des" key={p}>
                                         {p}
