@@ -158,6 +158,7 @@ class NavBar extends Component {
                     <Nav.Link href="/info" style={{fontSize: this.state.fontSize + 'px'}}>Info</Nav.Link>
                     <Nav.Link href="/donate" style={{fontSize: this.state.fontSize + 'px'}}>Donate</Nav.Link>
                     <Nav.Link href="/campaigns" style={{fontSize: this.state.fontSize + 'px'}}>Campaigns</Nav.Link>
+                    <Nav.Link href="/faq" style={{fontSize: this.state.fontSize + 'px'}}>FAQ</Nav.Link>
                     <Nav.Link href="/terms" style={{fontSize: this.state.fontSize + 'px'}}>Terms & Conditions</Nav.Link>
                     {/* <Nav.Link href="/profile" style={{fontSize:'30px'}}>Profile</Nav.Link>
                     <Nav.Link href="/login" style={{fontSize:'30px'}}>Log-in</Nav.Link> */}
