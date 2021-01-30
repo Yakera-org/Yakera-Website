@@ -6,6 +6,7 @@ import home from './Pages/Home/home';
 import Campaign from './Pages/CampaignPage/Campaign';
 // import profile from './Pages/Profile/profile';
 import Terms from './Pages/Terms/terms';
+import FAQ from './Pages/FAQ/FAQ';
 import donate from './Pages/Donate/donate';
 import AboutUs from './Pages/AboutUs/aboutus';
 import donateYakera from './Pages/DonateYakera/DonateYakera';
@@ -28,6 +29,7 @@ const Main = () => (
             <Route exact path="/info" component={AboutUs}/>
             <Route exact path="/campaign/:title" component={Campaign}/>
             <Route exact path="/terms" component={Terms}/>
+            <Route exact path="/faq" component={FAQ}/>
             <Route exact path="/" component={home}/>
 
         </Switch>

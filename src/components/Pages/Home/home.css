@@ -6,7 +6,7 @@
     padding: 5%;}
 .home{
     background-color: white;
-    margin-top: -5%;
+    margin-top: -10%;
 }
 #intro-text  {
     font-family: Kollektif, Arial, serif;
@@ -154,7 +154,7 @@ hr{
         padding: 20px;
     }
     .banner-home{
-        padding-bottom: 20px;
+        padding-bottom: 10px;
     }
     #follow-us{
         font-size: 25px;

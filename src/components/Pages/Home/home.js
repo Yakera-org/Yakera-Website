@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import  { Grid } from '@material-ui/core';
+import ReactCountryFlag from "react-country-flag"
 import Author from '../../author';
 import './home.css';
 import texts from './texts.json';
@@ -14,7 +15,6 @@ class Home extends Component{
 
     hanldeClick(){
         window.location='/donate';
-        console.log("scroll")
     }
     
     render(){
@@ -32,7 +32,26 @@ class Home extends Component{
                     Donate now
                 </button>
 
-                <Grid item xs={12} sm={8}>    
+                <Grid item xs={12} sm={8}> 
+ 
+                {/* <ReactCountryFlag
+                    countryCode="BV"
+                    svg
+                    style={{
+                        width: '100px',
+                        height: '100px',
+                    }}
+                    title="US"
+                />
+                <ReactCountryFlag
+                    countryCode="AQ"
+                    svg
+                    style={{
+                        width: '100px',
+                        height: '100px',
+                    }}
+                    title="GB"
+                /> */}
                     <div id='description-home'>
                         {texts["pre-des"]}
                     <br />
@@ -97,11 +116,11 @@ class Home extends Component{
             <hr style={{width:'80%', marginLeft:'10%' }}/>
 
             <div id='construction-partners'>
-                <h1>Our Partners:</h1><br /><br />
+                <h2>Our Partners:</h2><br /><br />
                 <div id='partners'>                    
-                    <img src={pics.rotaracatlogo} width='150px' alt='Rotaracat logo' />
-                    <img src={pics.nutriendologo} width='150px' alt='nutriendo logo' />
-                    <img src={pics.airTMlogo} width='150px' alt='Airtm logo' />
+                    <img src={pics.rotaracatlogo} style={{width:'140px'}} alt='Rotaracat logo' />
+                    <img src={pics.nutriendologo} style={{width:'140px'}} alt='nutriendo logo' />
+                    <img src={pics.airTMlogo} style={{width:'140px'}} alt='Airtm logo' />
                 </div>
             </div>  
 

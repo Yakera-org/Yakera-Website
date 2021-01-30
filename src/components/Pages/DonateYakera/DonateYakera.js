@@ -267,7 +267,7 @@ class DonateYakera extends Component{
                             Created by {ExCampaign.author} on 22/12/2020
                         </p>
 
-                        <hr />
+                        <hr style={{width:'95%', marginLeft:'0%'}}/>
 
                         <Grid container spacing={0} >
 
@@ -339,7 +339,7 @@ class DonateYakera extends Component{
                                 loading={this.state.loading}
                             />
                         </div>
-                        <hr id="sep-cards"/>
+                        <hr id="sep-cards" style={{width:'95%', marginLeft:'0%'}}/>
 
 
                         <Card id="donateRef" className="donateSection">
