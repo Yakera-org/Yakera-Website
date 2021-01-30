@@ -34,8 +34,8 @@ class Home extends Component{
 
                 <Grid item xs={12} sm={8}> 
  
-                <ReactCountryFlag
-                    countryCode="VE"
+                {/* <ReactCountryFlag
+                    countryCode="BV"
                     svg
                     style={{
                         width: '100px',
@@ -44,14 +44,14 @@ class Home extends Component{
                     title="US"
                 />
                 <ReactCountryFlag
-                    countryCode="GB"
+                    countryCode="AQ"
                     svg
                     style={{
                         width: '100px',
                         height: '100px',
                     }}
                     title="GB"
-                />
+                /> */}
                     <div id='description-home'>
                         {texts["pre-des"]}
                     <br />
