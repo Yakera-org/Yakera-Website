@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import './about.css';
-import {pics} from './pics.js';
+import {en_pics, sp_pics} from './pics.js';
 import texts from './texts.json';
-
 import Author from '../../author';
+
+var pics = en_pics;
 
 class AboutUs extends Component{
 
@@ -11,6 +12,7 @@ class AboutUs extends Component{
         super(props);
         this.state = {
             opacity: 1,
+            loaded: false
         }
     }
 
@@ -24,182 +26,215 @@ class AboutUs extends Component{
                     })  
             }
         }
+
+        var lang = localStorage.getItem("lang");
+        if(lang){
+            this.setState({
+                language: lang
+            })
+        }else{
+            localStorage.setItem("lang", this.state.language);
+        }
+
+        if(lang === "en"){
+            pics = en_pics;
+        }else{
+            pics = sp_pics;
+        }
+
+        this.setState({
+            loaded: true
+        })
     }
     
     render(){
-        return(
-            <div className='about'>
-                    <div style={{textAlign:'center', maxHeight:'60vh', minHeight:'40%', overflow: 'hidden', marginTop:'-100px'}}>
-                        <img  
-                            style={{
-                                minHeight:'100%',
-                                minWidht:'100%',
-                                opacity: this.state.opacity
-                            }}
-                            width="100%"
-                            src={pics.about}
-                            alt="about-banner"
-                            />
-                    </div>
-                    <div className='about-page'>
-                        
-                        <h1>What is Yakera ?</h1>
-                        {texts.what.map((p, index) => 
-                        <div key={index+"d"}>
-                            <p key={index}>
-                                {p}
-                            </p> 
-                        </div>
-                            )}
-
-                        <div className='about-banner-page'>
-                            <img
+        if(!this.state.loaded){
+            return(
+                <div>
+                    Loading
+                </div>
+            )
+        }else{
+            var EN = true //is english
+            if(this.state.language === 'en'){
+                EN = true
+            }else{
+                EN = false
+            }
+            return(
+                <div className='about'>
+                        <div style={{textAlign:'center', maxHeight:'60vh', minHeight:'40%', overflow: 'hidden', marginTop:'-100px'}}>
+                            <img  
+                                style={{
+                                    minHeight:'100%',
+                                    minWidht:'100%',
+                                    opacity: this.state.opacity
+                                }}
                                 width="100%"
-                                src={pics.mission}
-                                alt="mission"
-                            />
+                                src={pics.about}
+                                alt="about-banner"
+                                />
                         </div>
-
-                        <h1>Mission</h1>
-                        <p>
-                            {texts.mission}
-                        </p>
-
-                        <div className='about-banner-page'>
-                            <img
-                                width="100%"
-                                src={pics.what}
-                                alt="what"
-                            />
-                        </div>
-
-                        <h1>What do we want to accomplish?</h1>
-                        <p>
-                            {texts.accomplish}
-                        </p>
-
-                        <div className='about-banner-page'>
-                            <img
-                                width="100%"
-                                src={pics.how}
-                                alt="how"
-                            />
-                        </div>
-
-                        <h1>How It Works</h1>
-                        <p>
-                            {texts.how}
-                        </p>
-
-                        <div className='about-banner-page'>
-                            <img
-                                width="100%"
-                                src={pics.trial}
-                                alt="trial"
-                            />
-                        </div>
-                        <h1>Community Trial</h1>
-                        <p>
-                            {texts.trial}
-                        </p>
-
-                        <div className='about-banner-page'>
-                            <img
-                                width="100%"
-                                src={pics['long-term']}
-                                alt="trial"
-                            />
-                        </div>
-                        <h1>Our Long Term Goals</h1>
-                        <p>
-                            {texts.goals}
-                        </p>
-
-                        <div className='about-sdg-page'>
-                            <img
-                                width="100%"
-                                src={pics.sdgs}
-                                alt="sdgs"
-                            />
-                        </div>
-
-                        <h1>Yakera and the Sustainable Development Goals</h1>
-                        <p>
-                            {texts.sdgs}
-                        </p>
-                        
-                        <div className='sdg-card'>
-                            <img
-                                width="100%"
-                                src={pics.sdg1}
-                                alt="sdg1"
-                            />
-                        </div>
-                        <p>
-                            <b>{texts.sdg1[0]}</b>
-                            <br />
-                            {texts.sdg1[1]}
-                        </p>
-
-                        <div className='sdg-card'>
-                            <img
-                                width="100%"
-                                src={pics.sdg2}
-                                alt="sdg2"
-                            />
-                        </div>
-                        <p>
-                            <b>{texts.sdg2[0]}</b>
-                            <br />
-                            {texts.sdg2[1]}
-                        </p>
-
-                        <div className='sdg-card'>
-                            <img
-                                width="100%"
-                                src={pics.sdg3}
-                                alt="sdg3"
-                            />
-                        </div>
-                        <p>
-                            <b>{texts.sdg3[0]}</b>
-                            <br />
-                            {texts.sdg3[1]}
-                        </p>
-
-                        <div className='sdg-card'>
-                            <img
-                                width="100%"
-                                src={pics.sdg4}
-                                alt="sdg4"
-                            />
-                        </div>
-                        <p>
-                            <b>{texts.sdg4[0]}</b>
-                            <br />
-                            {texts.sdg4[1]}
-                        </p>
-
-                        <div className='sdg-card'>
-                            <img
-                                width="100%"
-                                src={pics.sdg8}
-                                alt="sdg8"
-                            />
-                        </div>
-                        <p>
-                            <b>{texts.sdg8[0]}</b>
-                            <br />
-                            {texts.sdg8[1]}
-                        </p>
+                        <div className='about-page'>
                             
+                            <h1>{EN ? 'What is Yakera?' : '¿Qué es Yakera?'}</h1>
+                            {texts[this.state.language].what.map((p, index) => 
+                            <div key={index+"d"}>
+                                <p key={index}>
+                                    {p}
+                                </p> 
+                            </div>
+                                )}
 
-                    </div>
+                            <div className='about-banner-page'>
+                                <img
+                                    width="100%"
+                                    src={pics.mission}
+                                    alt="mission"
+                                />
+                            </div>
 
-                    <Author />
-            </div>
-        
-        )
+                            <h1>{EN ? 'Mission' : 'Nuestra Misión'}</h1>
+                            <p>
+                                {texts[this.state.language].mission}
+                            </p>
+
+                            <div className='about-banner-page'>
+                                <img
+                                    width="100%"
+                                    src={pics.what}
+                                    alt="what"
+                                />
+                            </div>
+
+                            <h1>{EN ? 'What do we want to accomplish?' : '¿Qué queremos lograr?'}</h1>
+                            <p>
+                                {texts[this.state.language].accomplish}
+                            </p>
+
+                            <div className='about-banner-page'>
+                                <img
+                                    width="100%"
+                                    src={pics.how}
+                                    alt="how"
+                                />
+                            </div>
+
+                            <h1>{EN ? 'How it works' : 'Como funciona'}</h1>
+                            <p>
+                                {texts[this.state.language].how}
+                            </p>
+
+                            <div className='about-banner-page'>
+                                <img
+                                    width="100%"
+                                    src={pics.trial}
+                                    alt="trial"
+                                />
+                            </div>
+                            <h1>{EN ? 'Community Trial' : 'Piloto Comunitario '}</h1>
+                            <p>
+                                {texts[this.state.language].trial}
+                            </p>
+
+                            <div className='about-banner-page'>
+                                <img
+                                    width="100%"
+                                    src={pics['long-term']}
+                                    alt="trial"
+                                />
+                            </div>
+                            <h1>{EN ? 'Our Long-Term Goals' : 'Nuestras metas a largo plazo.'}</h1>
+                            <p>
+                                {texts[this.state.language].goals}
+                            </p>
+
+                            <div className='about-sdg-page'>
+                                <img
+                                    width="100%"
+                                    src={pics.sdgs}
+                                    alt="sdgs"
+                                />
+                            </div>
+
+                            <h1>{EN ? 'Yakera and the Sustainable Development Goals' : 'Yakera y las metas de desarrollo sostenible'}</h1>
+                            <p>
+                                {texts[this.state.language].sdgs}
+                            </p>
+                            
+                            <div className='sdg-card'>
+                                <img
+                                    width="100%"
+                                    src={pics.sdg1}
+                                    alt="sdg1"
+                                />
+                            </div>
+                            <p>
+                                <b>{texts[this.state.language].sdg1[0]}</b>
+                                <br />
+                                {texts[this.state.language].sdg1[1]}
+                            </p>
+
+                            <div className='sdg-card'>
+                                <img
+                                    width="100%"
+                                    src={pics.sdg2}
+                                    alt="sdg2"
+                                />
+                            </div>
+                            <p>
+                                <b>{texts[this.state.language].sdg2[0]}</b>
+                                <br />
+                                {texts[this.state.language].sdg2[1]}
+                            </p>
+
+                            <div className='sdg-card'>
+                                <img
+                                    width="100%"
+                                    src={pics.sdg3}
+                                    alt="sdg3"
+                                />
+                            </div>
+                            <p>
+                                <b>{texts[this.state.language].sdg3[0]}</b>
+                                <br />
+                                {texts[this.state.language].sdg3[1]}
+                            </p>
+
+                            <div className='sdg-card'>
+                                <img
+                                    width="100%"
+                                    src={pics.sdg4}
+                                    alt="sdg4"
+                                />
+                            </div>
+                            <p>
+                                <b>{texts[this.state.language].sdg4[0]}</b>
+                                <br />
+                                {texts[this.state.language].sdg4[1]}
+                            </p>
+
+                            <div className='sdg-card'>
+                                <img
+                                    width="100%"
+                                    src={pics.sdg8}
+                                    alt="sdg8"
+                                />
+                            </div>
+                            <p>
+                                <b>{texts[this.state.language].sdg8[0]}</b>
+                                <br />
+                                {texts[this.state.language].sdg8[1]}
+                            </p>
+                                
+
+                        </div>
+
+                        <Author />
+                </div>
+            
+            )
+        }
     }
 }
 

@@ -69,7 +69,7 @@ class Home extends Component{
     
                     
                         <div id='description-home'>
-                            {texts["pre-des"]}
+                            {texts["pre-des"][this.state.language]}
                         <br />
                         <br />
                             <b style={{color:'#d62828'}}>Yakera</b>{texts["description"][this.state.language]}
@@ -132,7 +132,7 @@ class Home extends Component{
                 <hr style={{width:'80%', marginLeft:'10%' }}/>
 
                 <div id='construction-partners'>
-                    <h2>Our Partners:</h2><br /><br />
+                    <h2>{this.state.language==='en' ? 'Our Partners' : 'Nuestros Compañeros'}</h2><br /><br />
                     <div id='partners'>                    
                         <img src={pics.rotaracatlogo} style={{width:'140px'}} alt='Rotaracat logo' />
                         <img src={pics.nutriendologo} style={{width:'140px'}} alt='nutriendo logo' />

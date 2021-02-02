@@ -4,7 +4,8 @@ import { validateFields } from '../Register/Validation';
 import ExCampaign from './yakeraCampaign.json';
 import "react-sweet-progress/lib/style.css";
 import  { Card, Grid } from '@material-ui/core';
-import image from '../../../pics/donate.png';
+import image_en from '../../../pics/donate.png';
+import image_sp from '../../../pics/donate_sp.png';
 import ShareCard from '../CampaignPage/ShareCard';
 import ThanksCard from '../CampaignPage/thanksCard';
 import ConsentCard from '../CampaignPage/consentCard';
@@ -19,6 +20,9 @@ const _axios = require('axios');
 const axios = _axios.create();
 const qs = require('querystring');
 const yakeraBackUrl = 'https://api.yakera.net';
+
+var campaign = ExCampaign.en;
+var banner = image_en;
 
 
 class DonateYakera extends Component{
@@ -59,6 +63,7 @@ class DonateYakera extends Component{
             opacity: 1,
             margin:0,
             loading: false,
+            loaded: false,
             checkError:''
         }
         this.handleScrollToDonate = this.handleScrollToDonate.bind(this);
@@ -239,10 +244,26 @@ class DonateYakera extends Component{
                     })  
             }
         }
+
+        var lang = localStorage.getItem("lang");
+        if(!lang){
+            localStorage.setItem("lang", "en");
+        }
+
+        if(lang === "en"){
+            campaign = ExCampaign.en;
+            banner = image_en;
+        }else{
+            campaign = ExCampaign.sp;
+            banner = image_sp;
+        } 
+        this.setState({
+            loaded: true
+        })
     }
 
     render(){
-        if( this.state.campaign.description === "") {
+        if( this.state.campaign.description === "" && !this.state.loaded) {
            return (<p> Loading </p>);
           } else {
 
@@ -257,14 +278,14 @@ class DonateYakera extends Component{
                                 opacity: this.state.opacity
                             }}
                             width="100%"
-                            src={image}
+                            src={banner}
                             alt="donate-banner"
                             />
                     </div>
                     <div className='yakera-campaign-page'>
 
                         <p className="img-sub">
-                            Created by {ExCampaign.author} on 22/12/2020
+                           {campaign.author} 22/12/2020
                         </p>
 
                         <hr style={{width:'95%', marginLeft:'0%'}}/>
@@ -272,7 +293,7 @@ class DonateYakera extends Component{
                         <Grid container spacing={0} >
 
                             <Grid item xs={12} sm={6}>   
-                                {ExCampaign.description.map((p) => 
+                                {campaign.description.map((p) => 
                                     <p className="campaign-des" key={p}>
                                         {p}
                                     </p> 
@@ -290,7 +311,7 @@ class DonateYakera extends Component{
                                             <b style={{ color:'#9c1a1a', marginRight:'5px'}}>
                                                 ${this.state.campaign.amount} 
                                             </b>
-                                            raised of ${ExCampaign.goal} target   
+                                            raised of ${campaign.goal} target   
                                         </p> 
                                     </div>
                                     <div className="progress-bar">
@@ -303,7 +324,7 @@ class DonateYakera extends Component{
                                             }
                                         }}
                                         status="default"
-                                        percent={parseInt(100* this.state.campaign.amount / ExCampaign.goal)}/>
+                                        percent={parseInt(100* this.state.campaign.amount / campaign.goal)}/>
                                     </div>
 
                                     <div>

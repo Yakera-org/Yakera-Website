@@ -183,6 +183,13 @@ class NavBar extends Component {
 
         
     render(){
+        var EN = true //is english
+        if(this.state.language === 'en'){
+            EN = true
+        }else{
+            EN = false
+        }
+
         if(!this.state.loaded){
             return(
                 <p>loading</p>
@@ -203,10 +210,10 @@ class NavBar extends Component {
                     <Navbar.Collapse id="responsive-navbar-nav">
                         <Nav className="mr-auto">
                         <Nav.Link href="/info" style={{fontSize: this.state.fontSize + 'px'}}>Info</Nav.Link>
-                        <Nav.Link href="/donate" style={{fontSize: this.state.fontSize + 'px'}}>Donate</Nav.Link>
-                        <Nav.Link href="/campaigns" style={{fontSize: this.state.fontSize + 'px'}}>Campaigns</Nav.Link>
+                        <Nav.Link href="/donate" style={{fontSize: this.state.fontSize + 'px'}}>{EN ? 'Donate' : 'Donar'}</Nav.Link>
+                        <Nav.Link href="/campaigns" style={{fontSize: this.state.fontSize + 'px'}}>{EN ? 'Campaigns' : 'Campañas'}</Nav.Link>
                         <Nav.Link href="/faq" style={{fontSize: this.state.fontSize + 'px'}}>FAQ</Nav.Link>
-                        <Nav.Link href="/terms" style={{fontSize: this.state.fontSize + 'px'}}>Terms & Conditions</Nav.Link>
+                        <Nav.Link href="/terms" style={{fontSize: this.state.fontSize + 'px'}}>{EN ? 'Terms & Conditions' : 'Términos y Condiciones'}</Nav.Link>
                         {/* <Nav.Link href="/profile" style={{fontSize:'30px'}}>Profile</Nav.Link>
                         <Nav.Link href="/login" style={{fontSize:'30px'}}>Log-in</Nav.Link> */}
                         <div style={{marginLeft:'5px'}}>
