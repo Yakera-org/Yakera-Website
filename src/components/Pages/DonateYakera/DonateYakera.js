@@ -4,7 +4,8 @@ import { validateFields } from '../Register/Validation';
 import ExCampaign from './yakeraCampaign.json';
 import "react-sweet-progress/lib/style.css";
 import  { Card, Grid } from '@material-ui/core';
-import image from '../../../pics/donate.png';
+import image_en from '../../../pics/donate.png';
+import image_sp from '../../../pics/donate_sp.png';
 import ShareCard from '../CampaignPage/ShareCard';
 import ThanksCard from '../CampaignPage/thanksCard';
 import ConsentCard from '../CampaignPage/consentCard';
@@ -19,6 +20,9 @@ const _axios = require('axios');
 const axios = _axios.create();
 const qs = require('querystring');
 const yakeraBackUrl = 'https://api.yakera.net';
+
+var campaign = ExCampaign.en;
+var banner = image_en;
 
 
 class DonateYakera extends Component{
@@ -59,7 +63,9 @@ class DonateYakera extends Component{
             opacity: 1,
             margin:0,
             loading: false,
-            checkError:''
+            loaded: false,
+            checkError:'',
+            language:'en'
         }
         this.handleScrollToDonate = this.handleScrollToDonate.bind(this);
         this.handleShare = this.handleShare.bind(this);
@@ -239,13 +245,36 @@ class DonateYakera extends Component{
                     })  
             }
         }
+
+        var lang = localStorage.getItem("lang");
+        if(!lang){
+            localStorage.setItem("lang", "en");
+        }
+
+        if(lang === "en"){
+            campaign = ExCampaign.en;
+            banner = image_en;
+            
+        }else{
+            campaign = ExCampaign.sp;
+            banner = image_sp;
+        } 
+        this.setState({
+            loaded: true,
+            language: lang
+        })
     }
 
     render(){
-        if( this.state.campaign.description === "") {
+        if( this.state.campaign.description === "" && !this.state.loaded) {
            return (<p> Loading </p>);
           } else {
-
+            var EN = true //is english
+            if(this.state.language === 'en'){
+                EN = true
+            }else{
+                EN = false
+            }
             const { amount, name, email } = this.state;
             return(                
                 <div className='donate-yakera'>
@@ -257,14 +286,14 @@ class DonateYakera extends Component{
                                 opacity: this.state.opacity
                             }}
                             width="100%"
-                            src={image}
+                            src={banner}
                             alt="donate-banner"
                             />
                     </div>
                     <div className='yakera-campaign-page'>
 
                         <p className="img-sub">
-                            Created by {ExCampaign.author} on 22/12/2020
+                           {campaign.author} 22/12/2020
                         </p>
 
                         <hr style={{width:'95%', marginLeft:'0%'}}/>
@@ -272,7 +301,7 @@ class DonateYakera extends Component{
                         <Grid container spacing={0} >
 
                             <Grid item xs={12} sm={6}>   
-                                {ExCampaign.description.map((p) => 
+                                {campaign.description.map((p) => 
                                     <p className="campaign-des" key={p}>
                                         {p}
                                     </p> 
@@ -283,14 +312,14 @@ class DonateYakera extends Component{
                             <Grid item xs={12} sm={6} style={{marginTop:this.state.margin}}>
                                 <Card className="card-right" >
                                     <h1 className="donate-card-slit-header">
-                                        Donate now</h1>
+                                    {EN ? 'Donate Now' : 'Done ahora'}</h1>
 
                                     <div className="donate-card-slit-target">
                                         <p>
                                             <b style={{ color:'#9c1a1a', marginRight:'5px'}}>
                                                 ${this.state.campaign.amount} 
                                             </b>
-                                            raised of ${ExCampaign.goal} target   
+                                            {EN ? 'raised of' : 'levantado de'} ${campaign.goal} {EN ? 'target' : 'objectivo'}   
                                         </p> 
                                     </div>
                                     <div className="progress-bar">
@@ -303,7 +332,7 @@ class DonateYakera extends Component{
                                             }
                                         }}
                                         status="default"
-                                        percent={parseInt(100* this.state.campaign.amount / ExCampaign.goal)}/>
+                                        percent={parseInt(100* this.state.campaign.amount / campaign.goal)}/>
                                     </div>
 
                                     <div>
@@ -312,14 +341,14 @@ class DonateYakera extends Component{
                                             className="btn btn-secondary btn-block yakera-donate-card-slit-btn"
                                             onClick={this.handleScrollToDonate}                                   
                                             >
-                                            Donate now
+                                            {EN ? 'Donate Now' : 'Done ahora'}
                                         </button>
                                         <button
                                             type="submit"
                                             className="btn btn-secondary btn-block yakera-donate-card-slit-btn"
                                             onClick={this.handleShare}
                                             >
-                                            Share
+                                             {EN ? 'Share' : 'Comparte'}
                                         </button>
                                     </div>   
                                 </Card>
@@ -344,14 +373,14 @@ class DonateYakera extends Component{
 
                         <Card id="donateRef" className="donateSection">
                             <h1 className="donate-card-slit-header">
-                                Donate now
+                                {EN ? 'Donate Now' : 'Done ahora'}
                             </h1>
 
                             <div className="donate-section">
 
                             {!this.state.hasAmount
                                 ? <div className="donate-card-slit-target">
-                                <p>Please enter details below</p>
+                                <p>{EN ? 'Please enter details below' : 'Ingrese los detalles a continuación'}</p>
                                 <input
                                 type="number"
                                 name="amount"
@@ -391,7 +420,7 @@ class DonateYakera extends Component{
                                 name="name"
                                 value={name.value}
                                 style={{ marginTop:'10px'}}
-                                placeholder="Name"
+                                placeholder={EN ? 'Name' : 'Nombre'}
                                 className={classnames(
                                     'form-control',
                                     { 'is-valid': name.error === false },
@@ -414,13 +443,13 @@ class DonateYakera extends Component{
                                         )}
                                 />
                                 <div className="consent-txt" >
-                                    I consent to the 
+                                        {EN ? 'I consent to the' : 'Consiento al'}
                                     <button
                                         className="consent-btn" 
                                         id="mobile-privacy" 
                                         onClick={this.onConsent}
                                         >
-                                        privacy form
+                                        {EN ? 'privacy form' : 'avido de privacidad'}
                                     </button>  
                                 </div>
 
@@ -434,7 +463,7 @@ class DonateYakera extends Component{
                                         )}
                                 />
                                 <div className="age-txt" >
-                                    I confirm to be 18 or over
+                                    {EN ? 'I confirm to be 18 or over' : 'Confirmo tener 18 años o más'}   
                                 </div>
 
                                 <div style={{clear:'both', color:'#d62828', fontWeight:'bold'}}>{this.state.checkError}</div>
@@ -444,15 +473,15 @@ class DonateYakera extends Component{
                                     className="btn btn-secondary btn-block yakera-donate-start-btn"    
                                     onClick={this.handleDonateStart}                   
                                     >
-                                    Donate
+                                      {EN ? 'Donate' : 'Donar'}
                                 </button>               
                             </div> 
                                 : <div className="donate-card-slit-target">
                                 <p>
-                                    You are about to donate <b>{this.state.amount.value} $ </b>
+                                    {EN ? 'You are about to donate' : 'Estás a punto de donar'} <b>{this.state.amount.value} $ </b>
                                 </p>
                                 <p>                   
-                                    Please put your bank details below
+                                    {EN ? 'Please put your bank details below' : 'Por favor ingrese sus datos bancarios a continuación'} 
                                 </p>  
                                     <Paypal amount={this.state.amount.value} onSuccess={this.onSuccess} onClick={this.onPayPalOn} onError={this.onPayPalOff} onCancel={this.onPayPalOff}/>  
                                 </div>  

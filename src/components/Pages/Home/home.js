@@ -1,136 +1,153 @@
 import React, { Component } from 'react';
 import  { Grid } from '@material-ui/core';
-import ReactCountryFlag from "react-country-flag"
 import Author from '../../author';
 import './home.css';
 import texts from './texts.json';
-import {pics} from './picsHome.js';
+import {en_pics, sp_pics} from './picsHome.js';
+
+var pics = en_pics;
 
 
 class Home extends Component{
     constructor(props) {
         super(props);
+        this.state = {
+            loaded: false,
+            language: 'en',
+        }
         this.hanldeClick = this.hanldeClick.bind(this)
     }
 
     hanldeClick(){
         window.location='/donate';
     }
+
+    componentDidMount(){
+        var lang = localStorage.getItem("lang");
+        if(lang){
+            this.setState({
+                language: lang
+            })
+        }else{
+            localStorage.setItem("lang", this.state.language);
+        }
+
+        if(lang === "en"){
+            pics = en_pics;
+        }else{
+            pics = sp_pics;
+        }
+
+        this.setState({
+            loaded: true
+        })
+    }
     
     render(){
-        return(
-            <div className="home">
-            <div className='home-page'>   
+        if(!this.state.loaded){
+            return(
+                <div>
+                    Loading
+                </div>
+            )
+        }else{
+            return(
+                <div className="home">
+                <div className='home-page'>   
 
 
-            <Grid container spacing={0} >
-                <button
-                    type="submit"
-                    className="btn btn-secondary btn-block mobile-only"  
-                    onClick={this.hanldeClick}                                                   
-                    >
-                    Donate now
-                </button>
+                <Grid container spacing={0} >
+                    <button
+                        type="submit"
+                        className="btn btn-secondary btn-block mobile-only"  
+                        onClick={this.hanldeClick}                                                   
+                        >
+                        Donate now
+                    </button>
 
-                <Grid item xs={12} sm={8}> 
- 
-                {/* <ReactCountryFlag
-                    countryCode="BV"
-                    svg
-                    style={{
-                        width: '100px',
-                        height: '100px',
-                    }}
-                    title="US"
-                />
-                <ReactCountryFlag
-                    countryCode="AQ"
-                    svg
-                    style={{
-                        width: '100px',
-                        height: '100px',
-                    }}
-                    title="GB"
-                /> */}
-                    <div id='description-home'>
-                        {texts["pre-des"]}
-                    <br />
-                    <br />
-                        <b style={{color:'#d62828'}}>Yakera</b>{texts["description"]["eng"]}
-                    </div>
+                    <Grid item xs={12} sm={8}> 
+    
+                    
+                        <div id='description-home'>
+                            {texts["pre-des"][this.state.language]}
+                        <br />
+                        <br />
+                            <b style={{color:'#d62828'}}>Yakera</b>{texts["description"][this.state.language]}
+                        </div>
+                    </Grid>
+                    <Grid item xs={12} sm={3}>    
+                        <div id='description-logo'>
+                            <img src={pics.logo} width='100%' alt='logo' />
+                        </div>
+                    </Grid>
                 </Grid>
-                <Grid item xs={12} sm={3}>    
-                    <div id='description-logo'>
-                        <img src={pics.logo} width='100%' alt='logo' />
-                    </div>
-                </Grid>
-            </Grid>
 
-                <div id='follow-us'>
-                    <div className='links'>
-                        <span>
-                            <i className="fab fa-twitter-square  fa-2x"></i>
-                            <a href='https://twitter.com/Yakera_ve'  rel="noopener noreferrer" target="_blank">@Yakera_ve</a>
-                        </span>
-                        
-                        <span>
-                            <i className="fab fa-instagram  fa-2x"></i>
-                            <a href='https://www.instagram.com/yakera_ve/'  rel="noopener noreferrer" target="_blank">yakera_ve</a>
-                        </span>
-                        
-                        <span>
-                            <i className="fab fa-medium  fa-2x"></i>
-                            <a href='https://medium.com/@yakera.venezuela/yakera-re-imagining-peer-to-peer-aid-for-venezuelans-793024ac9767'  rel="noopener noreferrer" target="_blank">Read about us</a>
-                        </span>
+                    <div id='follow-us'>
+                        <div className='links'>
+                            <span>
+                                <i className="fab fa-twitter-square  fa-2x"></i>
+                                <a href='https://twitter.com/Yakera_ve'  rel="noopener noreferrer" target="_blank">@Yakera_ve</a>
+                            </span>
+                            
+                            <span>
+                                <i className="fab fa-instagram  fa-2x"></i>
+                                <a href='https://www.instagram.com/yakera_ve/'  rel="noopener noreferrer" target="_blank">yakera_ve</a>
+                            </span>
+                            
+                            <span>
+                                <i className="fab fa-medium  fa-2x"></i>
+                                <a href='https://medium.com/@yakera.venezuela/yakera-re-imagining-peer-to-peer-aid-for-venezuelans-793024ac9767'  rel="noopener noreferrer" target="_blank">Read about us</a>
+                            </span>
+                        </div>
                     </div>
                 </div>
+            
+
+
+            <div id='construction-content'>
+                        <div className='banner-home-alt'>
+                            <img src={pics.banner1} width='100%' alt='banner1' />
+                        </div>
+                        <div className='banner-home'>
+                            <img src={pics.banner2} width='100%' alt='banner1' />
+                        </div>
+                        <div className='banner-home'>
+                            <img src={pics.banner3} width='100%' alt='banner1' />
+                        </div>
+                        <div className='banner-home'>
+                            <img src={pics.banner4} width='100%' alt='banner1' />
+                        </div>
             </div>
-           
+                    
 
-
-           <div id='construction-content'>
-                    <div className='banner-home-alt'>
-                        <img src={pics.banner1} width='100%' alt='banner1' />
+            <div id='categories'>
+                    <div id='cat'>                    
+                        <img src={pics.healthcare} width='25%' alt='healthcare' />
+                        <img src={pics.business} width='25%' alt='business' />
+                        <img src={pics.education} width='25%' alt='education' />
+                        <img src={pics.nutrition} width='25%' alt='nutrition' />
                     </div>
-                    <div className='banner-home'>
-                        <img src={pics.banner2} width='100%' alt='banner1' />
+                </div>  
+
+                <hr style={{width:'80%', marginLeft:'10%' }}/>
+
+                <div id='construction-partners'>
+                    <h2>{this.state.language==='en' ? 'Our Partners' : 'Nuestros Compañeros'}</h2><br /><br />
+                    <div id='partners'>                    
+                        <img src={pics.rotaracatlogo} style={{width:'140px'}} alt='Rotaracat logo' />
+                        <img src={pics.nutriendologo} style={{width:'140px'}} alt='nutriendo logo' />
+                        <img src={pics.airTMlogo} style={{width:'140px'}} alt='Airtm logo' />
                     </div>
-                    <div className='banner-home'>
-                        <img src={pics.banner3} width='100%' alt='banner1' />
-                    </div>
-                    <div className='banner-home'>
-                        <img src={pics.banner4} width='100%' alt='banner1' />
-                    </div>
-           </div>
-                
-
-           <div id='categories'>
-                <div id='cat'>                    
-                    <img src={pics.healthcare} width='25%' alt='healthcare' />
-                    <img src={pics.business} width='25%' alt='business' />
-                    <img src={pics.education} width='25%' alt='education' />
-                    <img src={pics.nutrition} width='25%' alt='nutrition' />
-                </div>
-            </div>  
-
-            <hr style={{width:'80%', marginLeft:'10%' }}/>
-
-            <div id='construction-partners'>
-                <h2>Our Partners:</h2><br /><br />
-                <div id='partners'>                    
-                    <img src={pics.rotaracatlogo} style={{width:'140px'}} alt='Rotaracat logo' />
-                    <img src={pics.nutriendologo} style={{width:'140px'}} alt='nutriendo logo' />
-                    <img src={pics.airTMlogo} style={{width:'140px'}} alt='Airtm logo' />
-                </div>
-            </div>  
+                </div>  
 
 
-           <Author />
-       
+            <Author />
+        
 
-       </div>//end home
-       
-        )
+        </div>//end home
+        
+            )
+        }      
     }
 }
 
