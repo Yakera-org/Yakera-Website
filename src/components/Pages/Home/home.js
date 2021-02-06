@@ -62,7 +62,7 @@ class Home extends Component{
                         className="btn btn-secondary btn-block mobile-only"  
                         onClick={this.hanldeClick}                                                   
                         >
-                        Donate now
+                        {this.state.language === 'en' ? 'Donate Now' : 'Done ahora'}
                     </button>
 
                     <Grid item xs={12} sm={8}> 
@@ -96,7 +96,9 @@ class Home extends Component{
                             
                             <span>
                                 <i className="fab fa-medium  fa-2x"></i>
-                                <a href='https://medium.com/@yakera.venezuela/yakera-re-imagining-peer-to-peer-aid-for-venezuelans-793024ac9767'  rel="noopener noreferrer" target="_blank">Read about us</a>
+                                <a href='https://medium.com/@yakera.venezuela/yakera-re-imagining-peer-to-peer-aid-for-venezuelans-793024ac9767'  rel="noopener noreferrer" target="_blank">
+                                    {this.state.language==='en' ? 'Read about us' : 'Lee sobre nosotros'}
+                                </a>
                             </span>
                         </div>
                     </div>
