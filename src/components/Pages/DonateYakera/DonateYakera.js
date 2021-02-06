@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { Progress } from 'react-sweet-progress';
 import { validateFields } from '../Register/Validation';
-import ExCampaign from './yakeraCampaign.json';
+import classnames from 'classnames';
+import HashLoader from "react-spinners/HashLoader";
 import "react-sweet-progress/lib/style.css";
 import  { Card, Grid } from '@material-ui/core';
 import image_en from '../../../pics/donate.png';
@@ -10,10 +11,10 @@ import ShareCard from '../CampaignPage/ShareCard';
 import ThanksCard from '../CampaignPage/thanksCard';
 import ConsentCard from '../CampaignPage/consentCard';
 import Paypal from '../CampaignPage/Paypal';
+import ExCampaign from './yakeraCampaign.json';
+import Author from '../../author';
 import './donateYakera.css';
 import '../CampaignPage/sharecard.css';
-import classnames from 'classnames';
-import HashLoader from "react-spinners/HashLoader";
 
 
 const _axios = require('axios');
@@ -312,7 +313,8 @@ class DonateYakera extends Component{
                             <Grid item xs={12} sm={6} style={{marginTop:this.state.margin}}>
                                 <Card className="card-right" >
                                     <h1 className="donate-card-slit-header">
-                                    {EN ? 'Donate Now' : 'Done ahora'}</h1>
+                                        {EN ? 'Donate Now' : 'Done ahora'}
+                                    </h1>
 
                                     <div className="donate-card-slit-target">
                                         <p>
@@ -369,7 +371,21 @@ class DonateYakera extends Component{
                             />
                         </div>
                         <hr id="sep-cards" style={{width:'95%', marginLeft:'0%'}}/>
+                        
+                        {/* Youtube embed */}
+                        <div className='ytframe'>
+                            <iframe id="ytplayer"
+                             type="text/html"
+                             width="100%"
+                             height="100%"
+                             src="https://www.youtube.com/embed/Fnk_P6K_p3o?loop=1"
+                             frameBorder="0"
+                             >
 
+                            </iframe>
+                        </div>
+
+                        <hr id="sep-cards" style={{width:'95%', marginLeft:'0%', marginBottom:'50px'}}/>
 
                         <Card id="donateRef" className="donateSection">
                             <h1 className="donate-card-slit-header">
@@ -449,7 +465,7 @@ class DonateYakera extends Component{
                                         id="mobile-privacy" 
                                         onClick={this.onConsent}
                                         >
-                                        {EN ? 'privacy form' : 'avido de privacidad'}
+                                        {EN ? 'privacy form' : 'contrato de privacidad'}
                                     </button>  
                                 </div>
 
@@ -499,6 +515,8 @@ class DonateYakera extends Component{
                         <ThanksCard open={this.state.openThanks} onClose={this.closeThanks} amount={this.state.amount.value} title={ExCampaign.title}/>
                     
                     </div>       
+
+                    <Author />
             </div>
             )
         }

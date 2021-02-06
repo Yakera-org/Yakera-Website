@@ -125,6 +125,18 @@
     width: 15px;
     float: left;
 }
+.ytframe {
+    margin-bottom: 20px;
+    margin-left: 10%;
+    width: 80%;
+    height: 70vh;
+    background-color: #9c1a1a;
+    padding: 10px;
+    border-radius: 20px 
+}
+.ytframe iframe{
+    border-radius: 20px
+}
 @media only screen and (max-width: 600px) {
     
     .campaign-des {
@@ -134,8 +146,21 @@
       font-size: 18px;
     }
     .card-right{
-        margin-top: -450px;
+        margin-top: -150px;
+        margin-bottom: -90px;
         margin-left: 7%;
+    }
+    .ytframe {
+        margin-top: -580px;
+        margin-bottom: 520px;
+        width: 75%;
+        height: 25vh;
+        background-color: #9c1a1a;
+        padding: 10px;
+        border-radius: 20px 
+    }
+    .ytframe iframe{
+        border-radius: 20px
     }
     .card-right h1, .donateSection h1{
         font-size: 25px;
@@ -153,9 +178,7 @@
         font-size: 20px;
     }
     #sep-cards{
-        margin-top: -120px;
-        margin-bottom: 50px;
-        width: 50%;
+        display: none;
     }
     .donateSection {
         width: 90%;
@@ -178,10 +201,17 @@
     .consent-txt {
         text-align: left;
         margin-top: 20px;
+        font-size: 13px
     }
+    .age-txt {
+        text-align: left;
+        margin-top: 15px;
+        font-size: 13px        
+    }
+    
     #mobile-privacy {
         text-align: left;
-        font-size: 15px;
+        font-size: 11px;
     }
     #check-consent {
         margin-top: 10px;

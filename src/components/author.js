@@ -47,7 +47,7 @@ class Author extends Component{
                             
                             <br />
     
-                            Ambos son estudiantes e hicieron este trabajo en este itio web durante su tiempo libre. 
+                            Ambos son estudiantes e hicieron este trabajo en este sitio web durante su tiempo libre. 
     
                             <br />
     
