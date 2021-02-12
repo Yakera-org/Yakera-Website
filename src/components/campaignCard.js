@@ -8,6 +8,7 @@ import Avatar from '@material-ui/core/Avatar';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import ShareIcon from '@material-ui/icons/Share';
+import campaigns from './Pages/Donate/allCampaigns';
 
 class CampaignCard extends Component {
   constructor(props) {
@@ -18,10 +19,10 @@ class CampaignCard extends Component {
     this.hanldeClick = this.hanldeClick.bind(this);
     this.handleHover = this.handleHover.bind(this);
   }   
-  hanldeClick(){
-    
-    const { title } = this.props;
-    let redirect = `/campaign/${title}`;
+  
+  hanldeClick(){    
+    const { campaign } = this.props;
+    let redirect = `/campaign/${campaign.title}`;
     this.props.history.push(redirect);
   }
 
@@ -38,7 +39,13 @@ class CampaignCard extends Component {
   }
 
   render(){
-    const { author, description, deadline, title, image } = this.props;
+    const { campaign } = this.props;
+    const date = campaign.date;
+    const author = campaign.authorInitial;
+    const title = campaign.title;
+    const description = campaign.description;
+    const image = campaign.image;
+
     return (
       <div>
         <Card onClick={this.hanldeClick} onMouseEnter={this.handleHover} onMouseLeave={this.handleHover} style={{backgroundColor:this.state.cardColor, borderRadius:'30px'}}>
@@ -54,7 +61,7 @@ class CampaignCard extends Component {
             </IconButton>
             }
             title={title}
-            subheader={deadline}
+            subheader={date}
             />
             <div style={{textAlign:'center', maxHeight:'300px', minHeight:'300px', overflow: 'hidden'}}>
               <img  

@@ -3,7 +3,7 @@ import {BrowserRouter, Switch, Route } from "react-router-dom";
 // import login from './Pages/Login/login';
 // import register from './Pages/Register/register'; 
 import home from './Pages/Home/home';
-import Campaign from './Pages/CampaignPage/Campaign';
+import Campaign from './Pages/CampaignPage/CampaignPage';
 // import profile from './Pages/Profile/profile';
 import Terms from './Pages/Terms/terms';
 import FAQ from './Pages/FAQ/FAQ';

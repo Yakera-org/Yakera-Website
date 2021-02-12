@@ -7,14 +7,14 @@ import "react-sweet-progress/lib/style.css";
 import  { Card, Grid } from '@material-ui/core';
 import image_en from '../../../pics/donate.png';
 import image_sp from '../../../pics/donate_sp.png';
-import ShareCard from '../CampaignPage/ShareCard';
-import ThanksCard from '../CampaignPage/thanksCard';
-import ConsentCard from '../CampaignPage/consentCard';
-import Paypal from '../CampaignPage/Paypal';
+import ShareCard from '../CampaignPageold/ShareCard';
+import ThanksCard from '../CampaignPageold/thanksCard';
+import ConsentCard from '../CampaignPageold/consentCard';
+import Paypal from '../CampaignPageold/Paypal';
 import ExCampaign from './yakeraCampaign.json';
 import Author from '../../author';
 import './donateYakera.css';
-import '../CampaignPage/sharecard.css';
+import '../CampaignPageold/sharecard.css';
 
 
 const _axios = require('axios');
@@ -378,6 +378,7 @@ class DonateYakera extends Component{
                              type="text/html"
                              width="100%"
                              height="100%"
+                             title="yakera_yt"
                              src="https://www.youtube.com/embed/Fnk_P6K_p3o?loop=1"
                              frameBorder="0"
                              >
