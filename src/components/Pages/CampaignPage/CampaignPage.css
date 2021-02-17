@@ -1,3 +1,9 @@
 .campaignPage{
     margin-top: 10%;
 }
+.camp-page-vis {
+    margin:  0 10%;
+}
+.camp-page-story{
+    text-align: justify;
+}

@@ -22,7 +22,7 @@ class CampaignCard extends Component {
   
   hanldeClick(){    
     const { campaign } = this.props;
-    let redirect = `/campaign/${campaign.title}`;
+    let redirect = `/campaign/${campaign.title.en}`;
     this.props.history.push(redirect);
   }
 
@@ -42,8 +42,8 @@ class CampaignCard extends Component {
     const { campaign } = this.props;
     const date = campaign.date;
     const author = campaign.authorInitial;
-    const title = campaign.title;
-    const description = campaign.description;
+    const title = campaign.title.en;
+    const description = campaign.description.en;
     const image = campaign.image;
 
     return (
