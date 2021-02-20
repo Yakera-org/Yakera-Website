@@ -8,7 +8,6 @@ import Avatar from '@material-ui/core/Avatar';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import ShareIcon from '@material-ui/icons/Share';
-import campaigns from './Pages/Donate/allCampaigns';
 
 class CampaignCard extends Component {
   constructor(props) {

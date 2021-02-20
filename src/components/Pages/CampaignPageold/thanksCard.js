@@ -1,7 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import {Dialog} from '@material-ui/core';
 
-import './sharecard.css';
 
 class Thankscard extends Component{
   

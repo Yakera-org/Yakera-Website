@@ -7,14 +7,14 @@ import "react-sweet-progress/lib/style.css";
 import  { Card, Grid } from '@material-ui/core';
 import image_en from '../../../pics/donate.png';
 import image_sp from '../../../pics/donate_sp.png';
-import ShareCard from '../CampaignPageold/ShareCard';
+import ShareCard from '../CampaignPage/ShareCard';
 import ThanksCard from '../CampaignPageold/thanksCard';
 import ConsentCard from '../CampaignPageold/consentCard';
 import Paypal from '../CampaignPageold/Paypal';
 import ExCampaign from './yakeraCampaign.json';
 import Author from '../../author';
 import './donateYakera.css';
-import '../CampaignPageold/sharecard.css';
+import '../CampaignPage/sharecard.css';
 
 
 const _axios = require('axios');

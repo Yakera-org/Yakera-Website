@@ -1,22 +1,26 @@
 import React, { Component } from 'react';
 import  { Card } from '@material-ui/core';
 import { Progress } from 'react-sweet-progress';
+import ShareCard from './ShareCard';
 
 class DonateCard extends Component {
     render() {
+        const amount = this.props.amount;
+        const target = this.props.target;
+
         return (
             <div>
-                <Card>
+                <Card className="donate-page-card">
                     <h1>Donate now</h1>
                     <div >
                         <p>
                             <b>
-                                $100 
+                                ${amount}
                             </b>
-                            raised of $200 target   
+                            &nbsp;raised of ${target} target   
                         </p> 
                     </div>
-                    <div >
+                    <div className="donate-page-card-progress">
                         <Progress theme={{
                             default: {
                                 trailColor: 'lightblue',
@@ -26,7 +30,7 @@ class DonateCard extends Component {
                             }
                         }}
                         status="default"
-                        percent={20}/>
+                        percent={ 100* amount/target }/>
                     </div>
 
                     <div>
@@ -39,11 +43,14 @@ class DonateCard extends Component {
                         <button
                             type="submit"
                             className="btn btn-secondary btn-block"
+                            onClick={this.props.onShare}
                             >
                             Share
                         </button>
                     </div> 
                 </Card>
+
+                <ShareCard open={this.props.showShare} onClose={this.props.onClose}/>
             </div>
         );
     }

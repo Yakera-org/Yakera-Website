@@ -2,7 +2,6 @@ import React, { Component, Fragment } from 'react';
 import {Dialog, Grid} from '@material-ui/core';
 import classnames from 'classnames';
 
-import './sharecard.css';
 
 class ShareCard extends Component{
     constructor(props) {

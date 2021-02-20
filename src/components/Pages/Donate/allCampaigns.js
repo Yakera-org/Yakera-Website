@@ -2,6 +2,7 @@ const campaigns = [
     {
         "cam":{
             "name": "vladimir",
+            "author": "Vladimir",
             "authorInitial": "V",
             "title":{
                 "en":"Help Vladimir Work As a Mototaxista",
@@ -16,6 +17,12 @@ const campaigns = [
             "headers": {
                 "en":[
                     "Vladimir’s Story",
+                    "Where I’ve come from…",
+                    "Who I am today…",
+                    "Where I’m going…"
+                ],
+                "sp":[
+                    "Vladimir’s StorySP",
                     "Where I’ve come from…",
                     "Who I am today…",
                     "Where I’m going…"
@@ -35,6 +42,7 @@ const campaigns = [
     {
         "cam":{
             "name":"eduardo",
+            "author":"Eduardo",
             "authorInitial": "E",
             "title":{
                 "en":"Help Eduardo",
@@ -49,6 +57,12 @@ const campaigns = [
             "headers": {
                 "en":[
                     "Vladimir’s Story",
+                    "Where I’ve come from…",
+                    "Who I am today…",
+                    "Where I’m going…"
+                ],
+                "sp":[
+                    "Vladimir’s StorySP",
                     "Where I’ve come from…",
                     "Who I am today…",
                     "Where I’m going…"
