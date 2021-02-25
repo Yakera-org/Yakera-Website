@@ -69,3 +69,70 @@
 .donate-page-card button:focus{
     background-color: #805e3b;
 }
+
+.payment-visual {
+    margin:  0 5% 0 10%;
+}
+/* payments bottom of page */
+.payment-card{
+    text-align: center;
+    margin-bottom: 5%;
+    margin-top: 5%;
+    padding: 2%;
+}
+.payment-card-sec{
+    text-align: center
+}
+.payment-card h1{
+    font-size: 50px;
+}
+.payment-card p{
+    font-size: 25px;
+    color: #7c7c7c;
+}
+.payment-card-sec input{
+    width: 30%;
+    margin-left: 35%;
+    margin-right: 5px;
+    margin-top: 10px;
+    height: 50px;
+}
+.check-text {
+    text-align: left;
+    margin-top: 22px;
+    height: 50px;
+    font-size: 15px;
+}
+#privacy-button{
+    color: #01224d;
+    font-weight: bolder;
+    background-color: transparent;
+    border: none;
+}
+.payment-start-button{
+    width: 20%;
+    margin-left: 40%;
+    height: 50px;
+    font-size: 20px;
+    background-color: #f77f00;
+    border: none;
+}
+.payment-slit{
+    text-align: center;
+    color: grey;
+    font-size: 25px;
+}
+.payment-slit b{
+    color: #01224d;
+    font-size: 30px;
+}
+
+.consent-return{
+    width: 20%;
+    margin-left: 40%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    background-color: #01224d;
+    border: none;
+
+}

@@ -36,7 +36,8 @@ class DonateCard extends Component {
                     <div>
                         <button
                             type="submit"
-                            className="btn btn-secondary btn-block"                              
+                            className="btn btn-secondary btn-block"    
+                            onClick={this.props.onDonate}                          
                             >
                             Donate now
                         </button>

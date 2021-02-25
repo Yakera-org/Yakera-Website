@@ -2,6 +2,7 @@ const campaigns = [
     {
         "cam":{
             "name": "vladimir",
+            "campaignName":"Mototaxista Vladimir",
             "author": "Vladimir",
             "authorInitial": "V",
             "title":{

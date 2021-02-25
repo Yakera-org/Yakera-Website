@@ -1,10 +1,14 @@
 import React, { Component } from 'react';
 import Visual from './CampaignPageVisual';
+import Author from '../../author';
+import PaymentVisual from './PaymentVisual';
 import './CampaignPage.css';
 import campaigns from '../Donate/allCampaigns';
+import HashLoader from "react-spinners/HashLoader";
 
 const _axios = require('axios');
 const axios = _axios.create();
+const qs = require('querystring');
 const yakeraBackUrl = 'https://api.yakera.net';
 
 class CampaignPage extends Component{
@@ -12,11 +16,15 @@ class CampaignPage extends Component{
         super(props);
         this.state = {
             loaded: false,
+            loading: false,
             language: 'en',
             campaign: null,
             amount:0,
             target:0
         }
+        this.onPayPalOff = this.onPayPalOff.bind(this);
+        this.onPayPalOn = this.onPayPalOn.bind(this);
+        this.addAmount = this.addAmount.bind(this);
     }
 
     async componentDidMount(){
@@ -63,7 +71,43 @@ class CampaignPage extends Component{
             })
     
     }
-    
+    async addAmount(payerID, amount, name, email){
+        const requestBody = {
+            "email":this.state.campaign.name,
+            "addAmount": amount,
+            "campaignName": this.state.campaign.campaignName,
+            "donatorEmail": email,
+            "donatorName": name,
+            "transactionID": payerID
+        }
+        const config = {
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            }
+        }
+        const url = yakeraBackUrl + "/api/campaign/addAmount";
+        
+        await axios.post(url, qs.stringify(requestBody), config)
+        .then(res => {
+              console.log("SUCCESS");
+        })
+        .catch(err => {
+          console.log(err.message + ": Amount nod added")            
+      })    
+    }
+
+    onPayPalOff(){
+        this.setState({
+            loading: false
+        })
+    }
+    onPayPalOn(){
+        this.setState({
+            loading: true
+        })
+    }
+   
+
     render(){
         if(!this.state.loaded){
             return(
@@ -74,13 +118,42 @@ class CampaignPage extends Component{
         }else{
             const campaign = this.state.campaign
             return(
+
+                
+                //NOTE: ACTIVATE ANALYTICS BEFORE PUSHING
+
+
                 <div className="campaignPage">
+                    <div className="sweet-loading">
+                            <HashLoader
+                                css="display: block;
+                                margin: 0 auto;
+                                border-color: blue;
+                                position: fixed;
+                                top:40%;
+                                left:45%"
+                                size={150}
+                                color={"#01224d"}
+                                loading={this.state.loading}
+                            />
+                        </div>
                     <Visual
                         campaign={campaign} 
                         amount={this.state.amount} 
                         target={200}
                         language={this.state.language}
                      />
+
+                     <hr style={{width:'90%', marginLeft:'6%'}}/>
+
+                     <PaymentVisual
+                        language={this.state.language}
+                        onPayPalOff={this.onPayPalOff}
+                        onPayPalOn={this.onPayPalOn}
+                        addAmount={this.addAmount}
+                     />
+                    
+                    <Author />
                 </div>      
             )
         }

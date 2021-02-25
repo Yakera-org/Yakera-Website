@@ -14,6 +14,7 @@ class CampaignPageVisual extends Component {
             showShare:false
         }
         this.onShare = this.onShare.bind(this);
+        this.onDonate = this.onDonate.bind(this);
     }
 
     onShare(){
@@ -22,11 +23,20 @@ class CampaignPageVisual extends Component {
         })
     }
 
+    onDonate(){
+        var element = document.getElementById("donateRef");
+        element.scrollIntoView({behavior: "smooth", block: "start", inline: "nearest"});
+    }
+
     componentDidMount(){
         if (typeof window !== "undefined") {
             window.onscroll = () => {
                 let offset = marginOffset;
-                let currentScrollPos = window.pageYOffset  ;
+                let currentScrollPos = window.pageYOffset;  
+                var lowerBoundary = document.getElementById('left-col').offsetHeight - 500;
+                if(currentScrollPos > lowerBoundary){
+                    currentScrollPos = lowerBoundary
+                }
                 this.setState({
                         marginCard: currentScrollPos + offset
                         })  
@@ -43,7 +53,7 @@ class CampaignPageVisual extends Component {
             <div className = "camp-page-vis">
                 <h1>{campaign.title.en}</h1>  
                 <Grid container spacing={5} style={{ alignItems:'flex-start'}}>
-                    <Grid item xs={12} sm={8}>
+                    <Grid item xs={12} sm={8} id="left-col">
                         {/* left column  */}
                         <hr />              
 
@@ -73,6 +83,7 @@ class CampaignPageVisual extends Component {
                             showShare={this.state.showShare}
                             onShare={this.onShare}
                             onClose={this.onShare}
+                            onDonate={this.onDonate}
                             />
                          </div>
                              
