@@ -7,17 +7,25 @@ class DonateCard extends Component {
     render() {
         const amount = this.props.amount;
         const target = this.props.target;
+        const language = this.props.language;
+        var EN = true;
+
+        if(language ==="en"){
+            EN=true
+        }else{
+            EN=false
+        }
 
         return (
             <div>
                 <Card className="donate-page-card">
-                    <h1>Donate now</h1>
+                    <h1>{EN ? 'Donate now' : 'Done ahora'}</h1>
                     <div >
                         <p>
                             <b>
                                 ${amount}
                             </b>
-                            &nbsp;raised of ${target} target   
+                            &nbsp;{EN ? 'raised of ' : 'levantado de '} ${target} {EN ? ' target' : 'objetivo'}   
                         </p> 
                     </div>
                     <div className="donate-page-card-progress">
@@ -25,12 +33,11 @@ class DonateCard extends Component {
                             default: {
                                 trailColor: 'lightblue',
                                 symbol: '',
-                                color: '#01224d',
-                                overflow:'visible'
+                                color: '#01224d'
                             }
                         }}
                         status="default"
-                        percent={ 100* amount/target }/>
+                        percent={ Math.min(100* amount/target, 100) }/>
                     </div>
 
                     <div>
@@ -39,14 +46,14 @@ class DonateCard extends Component {
                             className="btn btn-secondary btn-block"    
                             onClick={this.props.onDonate}                          
                             >
-                            Donate now
+                            {EN ? 'Donate now' : 'Done ahora'}
                         </button>
                         <button
                             type="submit"
                             className="btn btn-secondary btn-block"
                             onClick={this.props.onShare}
                             >
-                            Share
+                            {EN ? 'Share' : 'Cuota'}
                         </button>
                     </div> 
                 </Card>

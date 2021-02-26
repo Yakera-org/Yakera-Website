@@ -3,6 +3,7 @@ import  { Card } from '@material-ui/core';
 import classnames from 'classnames';
 import { validateFields } from '../Register/Validation';
 import PrivacyCard from './consentCard';
+import ThanksCard from './thanksCard';
 import Paypal from './Paypal';
 
 
@@ -15,6 +16,7 @@ class PaymentVisual extends Component {
             age:false,
             consent:false,
             openPrivacy: false,
+            openThanks: false,
             PaypalId:0,
             amount: {
                 value: '',
@@ -38,6 +40,7 @@ class PaymentVisual extends Component {
         this.onDonateStart = this.onDonateStart.bind(this);
         this.onPrivacy = this.onPrivacy.bind(this);
         this.onSuccess = this.onSuccess.bind(this);
+        this.closeThanks = this.closeThanks.bind(this);
     }
 
     handleChange(validationFunc, evt) {
@@ -70,12 +73,27 @@ class PaymentVisual extends Component {
         })
     }
 
+    closeThanks(){
+        this.setState({
+            openThanks: false,
+        })
+    }
 
     onDonateStart(){
-        const { amount, name, email } = this.state;
+        var { amount, name, email } = this.state;
         const amountError = validateFields.validateNumber(amount.value);
         const nameError = validateFields.validateName(name.value);
         const emailError = validateFields.validateEmail(email.value);
+
+        //ADJUST FOR 5% MARGIN 
+        var actualSum = amount.value * 1.05;
+        actualSum = actualSum.toFixed(2);
+
+        this.setState({
+            amount: {
+                value: actualSum
+            }
+        })
         
         if(this.state.age === false || this.state.consent === false){
             var response = ""
@@ -121,10 +139,16 @@ class PaymentVisual extends Component {
     }
     async onSuccess(details, data) {        
         const { amount, name, email } = this.state;
-        
-        await this.props.addAmount(data.payerID, amount.value, name.value, email.value);
-        
 
+        //substract 5 % again
+        var actualSum = amount.value * 0.95;
+        actualSum = actualSum.toFixed(2);
+        
+        await this.props.addAmount(data.payerID, actualSum, name.value, email.value);
+        
+        this.setState({
+            openThanks:true
+        })
         this.props.onPayPalOff();
     }
     
@@ -250,13 +274,31 @@ class PaymentVisual extends Component {
                         <p>                   
                             {EN ? 'Please put your bank details below' : 'Por favor ingrese sus datos bancarios a continuación'} 
                         </p>  
-                            <Paypal amount={this.state.amount.value} onSuccess={this.onSuccess} onClick={this.props.onPayPalOn} onError={this.props.onPayPalOff} onCancel={this.props.onPayPalOff}/>
+
+                        <Paypal amount={this.state.amount.value} onSuccess={this.onSuccess} onClick={this.props.onPayPalOn} onError={this.props.onPayPalOff} onCancel={this.props.onPayPalOff}/>
+
+                        <p id="charge-exp">                 
+                            <b style={{color:'#444444', fontSize:'18px'}}>
+                                {EN ? 'Please note: A fee of 5% has been added' : 'Please note: A fee of 5% has been added'}
+                            </b>
+
+                            <br /> 
+
+                            {EN ? "Sending money to Venezuela, promoting Yakera, covering fixed expenses, and processing your donations carries a cost that we do not (and will not, ever) charge the recipient for. We are committed to sending 100% of your donation, but we need you to cover the fee in order to make your donation travel directly into each individuals' bank accounts." : "Sending money to Venezuela, promoting Yakera, covering fixed expenses, and processing your donations carries a cost that we do not (and will not, ever) charge the recipient for. We are committed to sending 100% of your donation, but we need you to cover the fee in order to make your donation travel directly into each individuals' bank accounts."} 
+                        </p> 
                         </div>  
                     }
                     </div>    
                 </Card>
 
                  <PrivacyCard open={this.state.openPrivacy} onClose={this.onPrivacy}/>   
+                 <ThanksCard 
+                    open={this.state.openThanks} 
+                    onClose={this.closeThanks}
+                    language={EN}
+                    amount={this.state.amount.value}
+                    title={this.props.title}
+                    />
             </div>
         );
     }

@@ -51,7 +51,7 @@ class CampaignPageVisual extends Component {
         const language = this.props.language;
         return (
             <div className = "camp-page-vis">
-                <h1>{campaign.title.en}</h1>  
+                <h1>{campaign.title[language]}</h1>  
                 <Grid container spacing={5} style={{ alignItems:'flex-start'}}>
                     <Grid item xs={12} sm={8} id="left-col">
                         {/* left column  */}
@@ -61,7 +61,7 @@ class CampaignPageVisual extends Component {
                             <img src={campaign.image} alt="title.img"/>
                         </div>
 
-                        <p id="author-credit">Created by {campaign.author} on {campaign.date}</p>
+                        <p id="author-credit">{campaign.author} - {campaign.date}</p>
 
                         <hr style={{marginBottom:'-10px'}}/>    
 
@@ -84,6 +84,7 @@ class CampaignPageVisual extends Component {
                             onShare={this.onShare}
                             onClose={this.onShare}
                             onDonate={this.onDonate}
+                            language={language}
                             />
                          </div>
                              

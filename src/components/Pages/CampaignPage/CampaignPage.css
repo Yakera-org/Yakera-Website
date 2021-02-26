@@ -136,3 +136,10 @@
     border: none;
 
 }
+#charge-exp{
+    color: #636363;
+    font-size: 20px;
+    width: 50%;
+    margin-left: 25%;
+    text-align: justify;
+}

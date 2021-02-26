@@ -151,6 +151,7 @@ class CampaignPage extends Component{
                         onPayPalOff={this.onPayPalOff}
                         onPayPalOn={this.onPayPalOn}
                         addAmount={this.addAmount}
+                        title={campaign.campaignName}
                      />
                     
                     <Author />
