@@ -3,10 +3,8 @@ import  { withRouter } from 'react-router-dom'
 import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
 import CardContent from '@material-ui/core/CardContent';
-import CardActions from '@material-ui/core/CardActions';
 import Avatar from '@material-ui/core/Avatar';
 import IconButton from '@material-ui/core/IconButton';
-import Typography from '@material-ui/core/Typography';
 import ShareIcon from '@material-ui/icons/Share';
 
 class CampaignCard extends Component {
@@ -41,16 +39,16 @@ class CampaignCard extends Component {
     const { campaign } = this.props;
     const date = campaign.date;
     const author = campaign.authorInitial;
-    const title = campaign.title.en;
-    const description = campaign.description.en;
+    const title = campaign.title[this.props.language];
+    const description = campaign.description[this.props.language];
     const image = campaign.image;
 
     return (
       <div>
-        <Card onClick={this.hanldeClick} onMouseEnter={this.handleHover} onMouseLeave={this.handleHover} style={{backgroundColor:this.state.cardColor, borderRadius:'30px'}}>
+        <Card onClick={this.hanldeClick} onMouseEnter={this.handleHover} onMouseLeave={this.handleHover} style={{backgroundColor:this.state.cardColor, borderRadius:'30px', borderStyle:'solid', borderColor:this.props.color, borderWidth:'2px', cursor:'pointer'}}>
           <CardHeader
             avatar={
-              <Avatar aria-label={author}style={{backgroundColor:'#01224d'}} >
+              <Avatar aria-label={author}style={{backgroundColor:this.props.color}} >
                 {author}
               </Avatar>
             }
@@ -62,7 +60,7 @@ class CampaignCard extends Component {
             title={title}
             subheader={date}
             />
-            <div style={{textAlign:'center', maxHeight:'300px', minHeight:'300px', overflow: 'hidden'}}>
+            <div style={{textAlign:'center', maxHeight:'300px', minHeight:'300px', overflow: 'hidden',boxShadow:'10px 10px 10px #888'}}>
               <img  
               style={{
                 minHeight:'100%',
@@ -73,14 +71,13 @@ class CampaignCard extends Component {
                 alt={title}
                 />
             </div>
-
           <CardContent>
-            <Typography variant="body2" color="textPrimary" component="p">
+
+            <p style={{fontSize:'18px'}}>
               {description}
-            </Typography>
+            </p>
+
           </CardContent>
-          <CardActions disableSpacing>
-          </CardActions>
         </Card>
       </div>
     );

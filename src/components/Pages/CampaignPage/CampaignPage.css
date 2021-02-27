@@ -143,3 +143,12 @@
     margin-left: 25%;
     text-align: justify;
 }
+.gallery{
+    text-align: center;
+}
+.gallery img{
+    margin: 10px 2%;
+    max-width: 20%;
+    min-width: 20%;
+    border-radius: 20px;
+}

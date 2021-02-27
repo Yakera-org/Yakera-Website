@@ -2,6 +2,33 @@
     padding:20px;
     margin-top: 180px;
 }
+.img-tabs{
+    text-align: center;
+    background-color:#01224d8a;
+    border-radius: 20px;
+    padding: 20px 0;
+}
+.img-tabs img{
+    max-width: 20%;
+    min-width: 20%;
+    border-radius: 50%;
+    margin: 0 2%;
+}
+.img-tabs img:hover{
+    cursor:pointer;
+    opacity: 0.7;
+}
+.header-top{
+    text-align: center;
+}
+.header-top h1{
+    font-size: 60px;
+    margin-bottom: 30px;
+}
+.header-top p{
+    font-size: 20px;
+    color: rgb(44, 44, 44);
+}
 @media only screen and (max-width: 600px) {
     .donate-page{
         padding:20px;

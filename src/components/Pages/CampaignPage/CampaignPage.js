@@ -146,6 +146,15 @@ class CampaignPage extends Component{
 
                      <hr style={{width:'90%', marginLeft:'6%'}}/>
 
+                     {/* Images gallery */}
+                    <div className="gallery">
+                        {campaign.images.map((im, i) =>(
+                            <img  src={im} alt={i} key={i} />
+                        ))}
+                    </div>
+
+                    <hr style={{width:'90%', marginLeft:'6%'}}/>
+
                      <PaymentVisual
                         language={this.state.language}
                         onPayPalOff={this.onPayPalOff}

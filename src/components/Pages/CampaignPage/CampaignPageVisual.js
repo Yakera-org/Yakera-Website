@@ -33,7 +33,11 @@ class CampaignPageVisual extends Component {
             window.onscroll = () => {
                 let offset = marginOffset;
                 let currentScrollPos = window.pageYOffset;  
-                var lowerBoundary = document.getElementById('left-col').offsetHeight - 500;
+                
+                if(document.getElementById('left-col')){
+                    var lowerBoundary = document.getElementById('left-col').offsetHeight - 500;
+                }
+
                 if(currentScrollPos > lowerBoundary){
                     currentScrollPos = lowerBoundary
                 }
