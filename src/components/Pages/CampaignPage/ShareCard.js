@@ -37,7 +37,7 @@ class ShareCard extends Component{
         let copied;
        
         if(this.state.copied){
-            copied = <p className="copied">{this.state.language ? 'Copied!' : 'Copia!'}</p>
+            copied = <p className="copied">{this.state.language==="en" ? 'Copied!' : 'Copia!'}</p>
         }
         if(!this.state.loaded){
             return(
@@ -61,7 +61,8 @@ class ShareCard extends Component{
                         maxWidth='lg'                                 
                         open={this.props.open}
                         onClose={this.props.onClose}
-                        className="share-dialog"                                                                                                                           
+                        className="share-dialog" 
+                                                                                                                                                 
                     >
                         
                     <h1 >{EN ? 'Help by sharing' : 'Ayuda compartiendo'} </h1>

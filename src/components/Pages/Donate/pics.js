@@ -1,15 +1,15 @@
 const pics ={
     "en": {
-        "education": require("../../../pics/education.png"),
-        "business": require("../../../pics/business.png"),
-        "nutrition": require("../../../pics/nutrition.png"),
-        "healthcare": require("../../../pics/healthcare.png"),
+        "education": require("../../../pics/education_tab.png"),
+        "business": require("../../../pics/business_tab.png"),
+        "nutrition": require("../../../pics/nutrition_tab.png"),
+        "healthcare": require("../../../pics/healthcare_tab.png"),
     },
     "sp": {
-        "education": require("../../../pics/education_sp.png"),
-        "business": require("../../../pics/business_sp.png"),
-        "nutrition": require("../../../pics/nutrition_sp.png"),
-        "healthcare": require("../../../pics/healthcare_sp.png"),
+        "education": require("../../../pics/education_tab.png"),
+        "business": require("../../../pics/business_tab.png"),
+        "nutrition": require("../../../pics/nutrition_tab.png"),
+        "healthcare": require("../../../pics/healthcare_tab.png"),
     }
 }
 

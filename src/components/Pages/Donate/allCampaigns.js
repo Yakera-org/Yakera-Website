@@ -12,7 +12,7 @@ const campaigns = [
                 },
             "description":{
                 "en": "Help Vladimir get back on his feet after his motorcycle was stolen",
-                "sp": "Help Vladimir get back on his feet after his motorcycle was stolen"
+                "sp": "Help Vladimir get back on his feet after his motorcycle was stolen but in spanish"
             },
             "date": "12/12/2020",
             "image": require('../../../pics/vlad1.jpg'),
@@ -54,6 +54,7 @@ const campaigns = [
     {
         "cam":{
             "name":"eduardo",
+            "campaignName":"campaign",
             "category":"healthcare",
             "author":"Eduardo",
             "authorInitial": "E",
@@ -102,6 +103,7 @@ const campaigns = [
         "cam":{
             "name":"eduardo",
             "category":"business",
+            "campaignName":"eduardo",
             "author":"Eduardo",
             "authorInitial": "E",
             "title":{

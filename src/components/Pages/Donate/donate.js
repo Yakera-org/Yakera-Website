@@ -13,7 +13,7 @@ const headerDic = {
         "education":"Education",
         "healthcare":"Healthcare",
         "nutrition":"Nutrition",
-        "business":"Business",
+        "business":"Small Business",
     },
     "sp":{
         "education":"Educación",
@@ -26,9 +26,9 @@ const headerDic = {
 
 const colorDic={
     "education": '#004aad',
-    "healthcare": '#ffa011',
-    "business":'#ff5f5f',
-    "nutrition": '#ff6c11',
+    "healthcare": '#da3b18',
+    "business":'#ff6c11',
+    "nutrition": '#915700',
   }
 
 class donate extends Component{
@@ -75,13 +75,43 @@ class donate extends Component{
             )
         }else{
             var selectedColor = colorDic[this.state.tab];
+            var education = 'none';
+            var healthcare = 'none';
+            var business = 'none';
+            var nutrition = 'none';
+
+            switch(this.state.tab){
+                case "education":
+                    education = 'solid';
+                    break;
+                case "healthcare":
+                    healthcare = 'solid';
+                    break;
+                case "business":
+                    business = 'solid';
+                    break;
+                case "nutrition":
+                    nutrition = 'solid';
+                    break;
+                default:
+                    break;  
+            }
+
             return(
                 <div className="donate-page">
                     <div className="img-tabs">
-                        <img src={pics[this.state.language].education} id="education" alt="tab-1" onClick={this.imgClick}/>
-                        <img src={pics[this.state.language].healthcare} id="healthcare" alt="tab-2" onClick={this.imgClick}/>
-                        <img src={pics[this.state.language].business} id="business" alt="tab-3" onClick={this.imgClick}/>
-                        <img src={pics[this.state.language].nutrition} id="nutrition" alt="tab-4" onClick={this.imgClick}/>
+                        <img src={pics[this.state.language].education} id="education" alt="tab-1" onClick={this.imgClick}
+                        style={{ borderStyle:education, borderColor:selectedColor}}
+                        />
+                        <img src={pics[this.state.language].healthcare} id="healthcare" alt="tab-2" onClick={this.imgClick}
+                        style={{ borderStyle:healthcare, borderColor:selectedColor}}
+                        />
+                        <img src={pics[this.state.language].business} id="business" alt="tab-3" onClick={this.imgClick}
+                        style={{ borderStyle:business, borderColor:selectedColor}}
+                        />
+                        <img src={pics[this.state.language].nutrition} id="nutrition" alt="tab-4" onClick={this.imgClick}
+                        style={{ borderStyle:nutrition, borderColor:selectedColor}}/>
+
                     </div>
     
                 <hr style={{margin:'50px 0'}}/>
@@ -102,7 +132,6 @@ class donate extends Component{
                      
                         if(cam.cam.category === this.state.tab){
                             count++;
-                            console.log(count)
                             return(
                                 <Grid item xs={12} sm={3} key={i}>
                                     <CampaignCard
@@ -120,8 +149,8 @@ class donate extends Component{
                 </Grid>
     
                 <div style={{textAlign:'center'}}>
-                    <p style={{fontSize:'20px'}}>
-                        {count===0 ? 'No campaigns in this category' : ''}
+                    <p id='no-cam'>
+                        {count===0 ?  this.state.language === 'en' ? 'No campaigns in this category' : 'No hay campañas en esta categoría.' : ''}
                     </p>
                 </div>
 

@@ -152,3 +152,92 @@
     min-width: 20%;
     border-radius: 20px;
 }
+
+@media only screen and (max-width: 600px) {
+
+    .camp-page-vis {
+        margin-top: 150px;
+    }
+
+    .campaign-page-title-img img {
+        height: auto;
+        max-height: 300px;
+        min-height: 300px;
+        border-radius: 5px;
+    }
+    .camp-page-vis h1{
+        font-size: 32px;
+        text-align: left;
+    }
+    #author-credit{
+        font-size: 17px;
+    }
+    .camp-page-story :is(p, h2){
+        text-align: start;
+    }
+    .camp-page-story p{
+        font-size: 17px;
+    }
+    .camp-page-story h2{
+        font-size: 28px;
+    }
+    .donate-page-card h1{
+        font-size: 32px;
+        text-align: center;
+    }
+    .donate-page-card p{
+        font-size: 20px;
+        margin: 10px 0;
+    }
+    .donate-page-card b{
+        font-size: 25px;
+    }
+    .donate-page-card button{
+        font-size: 18px;
+        margin: 10px 0;
+        height: 40px;
+    }
+    .gallery img{
+        margin: 10px 2%;
+        max-width: 40%;
+        min-width: 40%;
+        border-radius: 10px;
+    }
+    .payment-card h1{
+        font-size: 35px;
+    }
+    .payment-card p{
+        font-size: 20px;
+    }
+    .payment-card-sec input{
+        width: 50%;
+        margin-left: 25%;
+        margin-right: 5px;
+        margin-top: 10px;
+        height: 40px;
+    }
+    .check-text{
+        font-size: 15px;
+    }
+    #privacy-button{
+        font-size: 14px;
+    }
+    .payment-start-button{
+        width: 60%;
+        margin-left: 20%;
+        margin-top: -10px;
+        margin-bottom: 20px;
+    }
+    .payment-slit{
+        font-size: 20px;
+    }
+    .payment-slit b{
+        font-size: 25px;
+    }
+    #charge-exp{
+        text-align: start;
+        font-size: 18px;
+        width: 80%;
+        margin-left: 10%;
+    }
+}

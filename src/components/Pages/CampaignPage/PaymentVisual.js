@@ -279,12 +279,12 @@ class PaymentVisual extends Component {
 
                         <p id="charge-exp">                 
                             <b style={{color:'#444444', fontSize:'18px'}}>
-                                {EN ? 'Please note: A fee of 5% has been added' : 'Please note: A fee of 5% has been added'}
+                                {EN ? 'Please note: A fee of 5% has been added' : 'Tenga en cuenta: se ha agregado una tarifa del 5%'}
                             </b>
 
                             <br /> 
 
-                            {EN ? "Sending money to Venezuela, promoting Yakera, covering fixed expenses, and processing your donations carries a cost that we do not (and will not, ever) charge the recipient for. We are committed to sending 100% of your donation, but we need you to cover the fee in order to make your donation travel directly into each individuals' bank accounts." : "Sending money to Venezuela, promoting Yakera, covering fixed expenses, and processing your donations carries a cost that we do not (and will not, ever) charge the recipient for. We are committed to sending 100% of your donation, but we need you to cover the fee in order to make your donation travel directly into each individuals' bank accounts."} 
+                            {EN ? "Sending money to Venezuela, promoting Yakera, covering fixed expenses, and processing your donations carries a cost that we do not (and will not, ever) charge the recipient for. We are committed to sending 100% of your donation, but we need you to cover the fee in order to make your donation travel directly into each individuals' bank accounts." : "Por favor note: Enviar dinero a Venezuela, promover Yakera, cubrir gastos fijos y procesar las donaciones lleva un costo que nosotros no le cobraremos (ahora ni nunca) a los destinatarios. Estamos comprometidos a enviar 100% de tus donaciones pero necesitamos que usted cubra la tarifa de procesamiento para hacer que tu donación vaya directamente a la cuenta de banco de cada individuo."} 
                         </p> 
                         </div>  
                     }

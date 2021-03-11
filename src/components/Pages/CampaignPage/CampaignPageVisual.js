@@ -30,6 +30,7 @@ class CampaignPageVisual extends Component {
 
     componentDidMount(){
         if (typeof window !== "undefined") {
+            const mql = window.matchMedia('(max-width: 600px)');
             window.onscroll = () => {
                 let offset = marginOffset;
                 let currentScrollPos = window.pageYOffset;  
@@ -41,9 +42,16 @@ class CampaignPageVisual extends Component {
                 if(currentScrollPos > lowerBoundary){
                     currentScrollPos = lowerBoundary
                 }
-                this.setState({
-                        marginCard: currentScrollPos + offset
+                if(!mql.matches){
+                    this.setState({
+                            marginCard: currentScrollPos + offset
+                            })  
+                    }
+                else{
+                    this.setState({
+                        marginCard: 0
                         })  
+                    }
                 }
         }
     }
