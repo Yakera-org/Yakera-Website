@@ -7,6 +7,15 @@ import Avatar from '@material-ui/core/Avatar';
 import IconButton from '@material-ui/core/IconButton';
 import ShareIcon from '@material-ui/icons/Share';
 
+import './campaignCard.css';
+
+const sp_headers = {
+  "education":"Educación",
+  "healthcare":"Atención Médica",
+  "nutrition":"Nutrición",
+  "business":"Pequeños Negocios"
+}
+
 class CampaignCard extends Component {
   constructor(props) {
     super(props);
@@ -36,16 +45,17 @@ class CampaignCard extends Component {
   }
 
   render(){
-    const { campaign } = this.props;
+    const { campaign, logo } = this.props;
     const date = campaign.date;
     const author = campaign.authorInitial;
     const title = campaign.title[this.props.language];
     const description = campaign.description[this.props.language];
     const image = campaign.image;
+    const category = campaign.category;
 
     return (
       <div>
-        <Card onClick={this.hanldeClick} onMouseEnter={this.handleHover} onMouseLeave={this.handleHover} style={{backgroundColor:this.state.cardColor, borderRadius:'30px', borderStyle:'solid', borderColor:this.props.color, borderWidth:'3px', cursor:'pointer'}}>
+        <Card className="camp-card" onClick={this.hanldeClick} onMouseEnter={this.handleHover} onMouseLeave={this.handleHover} style={{backgroundColor:this.state.cardColor, borderColor:this.props.color, borderRadius:'20px'}}>
           <CardHeader
             avatar={
               <Avatar aria-label={author}style={{backgroundColor:this.props.color}} >
@@ -61,7 +71,7 @@ class CampaignCard extends Component {
             subheader={date}
             />
             <div style={{textAlign:'center', maxHeight:'300px', minHeight:'300px', overflow: 'hidden',boxShadow:'10px 10px 10px #888'}}>
-              <img  
+              <img 
               style={{
                 minHeight:'100%',
                 minWidht:'100%',
@@ -72,10 +82,27 @@ class CampaignCard extends Component {
                 />
             </div>
           <CardContent>
+              
+            <div className="logo-sec">
+              <img src={logo} alt="logo"/>
+              <p>
+                <b>
+                {this.props.language === "en"? 
+                 category.charAt(0).toUpperCase() + category.slice(1)
+                 :
+                 sp_headers[category].charAt(0).toUpperCase() + sp_headers[category].slice(1)                 
+                 }
+               </b>
+              </p>
+            </div>
 
-            <p style={{fontSize:'18px'}}>
+            <p style={{fontSize:'18px'}}>              
               {description}
             </p>
+
+            <div id="read-more">
+              {this.props.language==="en" ? 'Click on the card to read more' : 'Haga clic en la tarjeta para leer más'}
+            </div>
 
           </CardContent>
         </Card>

@@ -1,16 +1,8 @@
 const pics ={
-    "en": {
-        "education": require("../../../pics/education_tab.png"),
-        "business": require("../../../pics/business_tab.png"),
-        "nutrition": require("../../../pics/nutrition_tab.png"),
-        "healthcare": require("../../../pics/healthcare_tab.png"),
-    },
-    "sp": {
-        "education": require("../../../pics/education_tab.png"),
-        "business": require("../../../pics/business_tab.png"),
-        "nutrition": require("../../../pics/nutrition_tab.png"),
-        "healthcare": require("../../../pics/healthcare_tab.png"),
-    }
+    "education": require("../../../pics/education_logo.png"),
+    "business": require("../../../pics/business_logo.png"),
+    "nutrition": require("../../../pics/nutrition_logo.png"),
+    "healthcare": require("../../../pics/healthcare_logo.png"),
 }
 
 export default pics

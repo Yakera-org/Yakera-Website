@@ -252,7 +252,7 @@ class PaymentVisual extends Component {
                                     'form-control'
                                     )}
                             />
-                            <div className="check-text" style={{marginTop:'-5px'}} >
+                            <div className="check-text" style={{marginTop:'0px'}} >
                                 {EN ? 'I confirm to be 18 or over' : 'Confirmo tener 18 años o más'}   
                             </div>
 

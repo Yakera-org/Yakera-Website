@@ -140,7 +140,6 @@ class CampaignPage extends Component{
                     <Visual
                         campaign={campaign} 
                         amount={this.state.amount} 
-                        target={200}
                         language={this.state.language}
                      />
 

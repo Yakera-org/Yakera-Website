@@ -19,7 +19,7 @@ class Home extends Component{
     }
 
     hanldeClick(){
-        window.location='/donate#donateRef';
+        window.location='/campaigns';
     }
 
     componentDidMount(){

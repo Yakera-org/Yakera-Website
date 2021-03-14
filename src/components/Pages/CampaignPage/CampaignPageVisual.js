@@ -59,7 +59,7 @@ class CampaignPageVisual extends Component {
     render() {
         const campaign = this.props.campaign;
         const amount = this.props.amount;
-        const target = this.props.target;
+        const target = campaign.target;
         const language = this.props.language;
         return (
             <div className = "camp-page-vis">
