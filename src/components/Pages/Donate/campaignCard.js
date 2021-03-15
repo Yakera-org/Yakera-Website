@@ -62,7 +62,7 @@ class CampaignCard extends Component {
 
     return (
       <div>
-        <Card className="camp-card" onClick={this.hanldeClick} onMouseEnter={this.handleHover} onMouseLeave={this.handleHover} style={{backgroundColor:this.state.cardColor, borderColor:this.props.color, borderRadius:'20px'}}>
+        <Card className="camp-card" onClick={this.hanldeClick} onMouseEnter={this.handleHover} onMouseLeave={this.handleHover} style={{backgroundColor:this.state.cardColor, borderRadius:'20px'}}>
           <CardHeader
             avatar={
               <Avatar aria-label={author}style={{backgroundColor:this.props.color}} >
