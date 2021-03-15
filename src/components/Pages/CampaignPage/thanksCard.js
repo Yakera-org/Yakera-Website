@@ -1,11 +1,22 @@
 import React, { Component, Fragment } from 'react';
 import {Dialog} from '@material-ui/core';
 
-import './sharecard.css';
+import bg_pic_en from '../../../pics/thankyoucard.png';
+import bg_pic_sp from '../../../pics/thankyoucard_sp.png';
+
+var bg_pic = bg_pic_en;
+
 
 class Thankscard extends Component{
   
     render(){ 
+        var EN = this.props.EN;
+        if(EN==="en"){
+            bg_pic = bg_pic_en;
+        }else{
+            bg_pic = bg_pic_sp;
+        }
+
         return(
             <Fragment >
                 <Dialog
@@ -16,9 +27,10 @@ class Thankscard extends Component{
                     className="thanks-dialog"  
                                                                                                                                     
                 >
+                    <img src={bg_pic} width="100%" alt="background-pic" />
                     
-                <h1 style={{marginTop:'100px', fontSize:'50px'}}> Thank you </h1>
-                <p style={{marginBottom:'100px', fontSize:'30px'}}> Thank you for your donation of <b>{this.props.amount}$</b> to the campaign: {this.props.title} </p>
+                <h1 style={{marginTop:'10px', color:'#072147'}}> {EN ? 'Thank you!' : 'Gracias!'}</h1>
+                <p> {EN ? 'Thank you for your donation of' : 'Gracias por tu donación de'} <b>{this.props.amount}$</b> {EN ? 'To the campaign: ' : 'A la campaña: '} {this.props.title} </p>
                 
                   
                 </Dialog>

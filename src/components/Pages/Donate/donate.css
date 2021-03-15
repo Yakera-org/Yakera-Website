@@ -2,10 +2,39 @@
     padding:20px;
     margin-top: 180px;
 }
+.header-top{
+    text-align: center;
+}
+.header-top h1{
+    font-size: 60px;
+    margin-bottom: 30px;
+    color: #01224d;
+}
+.header-top p{
+    font-size: 24px;
+    text-align: left;
+    width: 40%;
+    margin-left: 30%;
+    color: rgb(44, 44, 44);
+}
+#no-cam{
+    font-size: 20px;
+}
 @media only screen and (max-width: 600px) {
     .donate-page{
         padding:20px;
         margin-top: 120px;
     }
-
+    .header-top h1{
+        font-size: 40px;
+        margin-bottom: 10px;
+    }
+    .header-top p{
+        font-size: 17px;
+        width: 100%;
+        margin-left: 0%;
+    }
+    #no-cam{
+        font-size: 18px;
+    }
 }

@@ -378,6 +378,7 @@ class DonateYakera extends Component{
                              type="text/html"
                              width="100%"
                              height="100%"
+                             title="yakera_yt"
                              src="https://www.youtube.com/embed/Fnk_P6K_p3o?loop=1"
                              frameBorder="0"
                              >
