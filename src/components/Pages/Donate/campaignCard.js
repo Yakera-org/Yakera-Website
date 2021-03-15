@@ -16,6 +16,13 @@ const sp_headers = {
   "business":"Pequeños Negocios"
 }
 
+const en_headers = {
+  "education":"Education",
+  "healthcare":"Healthcare",
+  "nutrition":"Nutrition",
+  "business":"Small Business"
+}
+
 class CampaignCard extends Component {
   constructor(props) {
     super(props);
@@ -88,9 +95,9 @@ class CampaignCard extends Component {
               <p>
                 <b>
                 {this.props.language === "en"? 
-                 category.charAt(0).toUpperCase() + category.slice(1)
+                 en_headers[category]
                  :
-                 sp_headers[category].charAt(0).toUpperCase() + sp_headers[category].slice(1)                 
+                 sp_headers[category]                
                  }
                </b>
               </p>

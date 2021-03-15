@@ -8,10 +8,10 @@ import pics from './pics';
 import './donate.css';
 
 const colorDic={
-    "education": '#004aad',
-    "healthcare": '#da3b18',
-    "business":'#ff6c11',
-    "nutrition": '#915700',
+    "education": '#71b98f',
+    "healthcare": '#ff7d7d',
+    "business":'#7099d0',
+    "nutrition": '#ffc19a',
   }
 
 
@@ -58,7 +58,7 @@ class donate extends Component{
                     {this.state.language === 'en' ? 'Campaigns' : 'Campañas'}
                     </h1>
                     <p>
-                        {this.state.language === 'en' ? 'Browse campaigns and chip in. Now, more than ever, Venezuelans need your help in education, healthcare, nutrition, and small businesses. Yakera helps Venezuelans transition from survival to resilience.' : 'Explora campañas y dona directamente. Ahora más que nunca, los venezolanos necesitan tu ayuda en educación, salud, nutrición y pequeños negocios. Yakera asiste a los venezolanos a pasar de supervivencia a resiliencia.'}
+                        {this.state.language === 'en' ? 'Browse campaigns and chip in. Now, more than ever, Venezuelans need your help in education, healthcare, nutrition, and small business. Yakera helps Venezuelans transition from survival to resilience.' : 'Explora campañas y dona directamente. Ahora más que nunca, los venezolanos necesitan tu ayuda en educación, salud, nutrición y pequeños negocios. Yakera asiste a los venezolanos a pasar de supervivencia a resiliencia.'}
                     </p>
                 </div>
     
