@@ -62,7 +62,7 @@ class CampaignCard extends Component {
 
     return (
       <div>
-        <Card className="camp-card" onClick={this.hanldeClick} onMouseEnter={this.handleHover} onMouseLeave={this.handleHover} style={{backgroundColor:this.state.cardColor, borderColor:this.props.color, borderRadius:'20px'}}>
+        <Card className="camp-card" onClick={this.hanldeClick} onMouseEnter={this.handleHover} onMouseLeave={this.handleHover} style={{backgroundColor:this.state.cardColor, borderRadius:'20px'}}>
           <CardHeader
             avatar={
               <Avatar aria-label={author}style={{backgroundColor:this.props.color}} >
@@ -77,7 +77,7 @@ class CampaignCard extends Component {
             title={title}
             subheader={date}
             />
-            <div style={{textAlign:'center', maxHeight:'300px', minHeight:'300px', overflow: 'hidden',boxShadow:'10px 10px 10px #888'}}>
+            <div style={{textAlign:'center', maxHeight:'300px', overflow: 'hidden',boxShadow:'10px 10px 10px #888'}}>
               <img 
               style={{
                 minHeight:'100%',

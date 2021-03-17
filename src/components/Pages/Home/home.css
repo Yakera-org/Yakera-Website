@@ -76,6 +76,9 @@ hr{
 #cat{
     min-width: 100px;
 }
+#cat img{
+    cursor: pointer;
+}
 #partners img{
     width: 200px;
     border-radius: 10px;

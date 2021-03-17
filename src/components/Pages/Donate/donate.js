@@ -55,7 +55,7 @@ class donate extends Component{
                 <div className="donate-page">
                 <div className="header-top">
                     <h1>
-                    {this.state.language === 'en' ? 'Campaigns' : 'Campañas'}
+                        {this.state.language === 'en' ? 'Campaigns' : 'Campañas'}
                     </h1>
                     <p>
                         {this.state.language === 'en' ? 'Browse campaigns and chip in. Now, more than ever, Venezuelans need your help in education, healthcare, nutrition, and small business. Yakera helps Venezuelans transition from survival to resilience.' : 'Explora campañas y dona directamente. Ahora más que nunca, los venezolanos necesitan tu ayuda en educación, salud, nutrición y pequeños negocios. Yakera asiste a los venezolanos a pasar de supervivencia a resiliencia.'}
@@ -64,8 +64,8 @@ class donate extends Component{
     
                 <hr style={{margin:'50px 0'}}/>
 
-                 <Grid container spacing={5} style={{alignContent:'center', alignItems:'center'}}>
-                    {campaigns.map((cam, i) => {
+                 <Grid container spacing={5} style={{alignContent:'center', alignItems:'flex-start'}}>
+                    {campaigns.sort(() => 0.5 - Math.random()).map((cam, i) => {
                             count++;
                             return(
                                 <Grid item xs={12} sm={3} key={i}>

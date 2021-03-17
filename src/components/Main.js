@@ -1,5 +1,5 @@
 import React from 'react';
-import {BrowserRouter, Switch, Route } from "react-router-dom";
+import {Redirect, BrowserRouter, Switch, Route } from "react-router-dom";
 // import login from './Pages/Login/login';
 // import register from './Pages/Register/register'; 
 import home from './Pages/Home/home';
@@ -10,6 +10,7 @@ import FAQ from './Pages/FAQ/FAQ';
 import donate from './Pages/Donate/donate';
 import AboutUs from './Pages/AboutUs/aboutus';
 import donateYakera from './Pages/DonateYakera/DonateYakera';
+import NotFoundPage from './Pages/404/NotFoundPage';
 
 
 
@@ -31,6 +32,8 @@ const Main = () => (
             <Route exact path="/terms" component={Terms}/>
             <Route exact path="/faq" component={FAQ}/>
             <Route exact path="/" component={home}/>
+            <Route path="/404" component={NotFoundPage} />
+            <Redirect to="/404" />
 
         </Switch>
         </div>
