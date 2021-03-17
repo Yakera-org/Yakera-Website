@@ -77,7 +77,7 @@ class CampaignCard extends Component {
             title={title}
             subheader={date}
             />
-            <div style={{textAlign:'center', maxHeight:'300px', minHeight:'300px', overflow: 'hidden',boxShadow:'10px 10px 10px #888'}}>
+            <div style={{textAlign:'center', maxHeight:'300px', overflow: 'hidden',boxShadow:'10px 10px 10px #888'}}>
               <img 
               style={{
                 minHeight:'100%',

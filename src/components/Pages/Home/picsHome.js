@@ -1,9 +1,9 @@
 export const en_pics = 
     {
-        "education": require("../../../pics/education.png"),
-        "business": require("../../../pics/business.png"),
-        "nutrition": require("../../../pics/nutrition.png"),
-        "healthcare": require("../../../pics/healthcare.png"),
+        "education": require("../../../pics/education_logo.png"),
+        "business": require("../../../pics/business_logo.png"),
+        "nutrition": require("../../../pics/nutrition_logo.png"),
+        "healthcare": require("../../../pics/healthcare_logo.png"),
         "logo" : require('../../../pics/logo.png'), 
         "airTMlogo" : require('../../../pics/airtmlogo.png'),
         "nutriendologo" : require('../../../pics/nutriendologo.jpg'),                      
@@ -15,10 +15,10 @@ export const en_pics =
     }
 export const sp_pics = 
     {
-        "education": require("../../../pics/education_sp.png"),
-        "business": require("../../../pics/business_sp.png"),
-        "nutrition": require("../../../pics/nutrition_sp.png"),
-        "healthcare": require("../../../pics/healthcare_sp.png"),
+        "education": require("../../../pics/education_logo.png"),
+        "business": require("../../../pics/business_logo.png"),
+        "nutrition": require("../../../pics/nutrition_logo.png"),
+        "healthcare": require("../../../pics/healthcare_logo.png"),
         "logo" : require('../../../pics/logo.png'), 
         "airTMlogo" : require('../../../pics/airtmlogo.png'),
         "nutriendologo" : require('../../../pics/nutriendologo.jpg'),                      

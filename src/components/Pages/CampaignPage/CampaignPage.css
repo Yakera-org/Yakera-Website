@@ -160,9 +160,9 @@
     }
 
     .campaign-page-title-img img {
-        height: auto;
-        max-height: 300px;
-        min-height: 300px;
+        width: 100%;
+        max-height: 10px;
+        object-fit: cover;
         border-radius: 5px;
     }
     .camp-page-vis h1{

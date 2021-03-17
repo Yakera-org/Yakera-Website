@@ -15,7 +15,7 @@ class Home extends Component{
             loaded: false,
             language: 'en',
         }
-        this.hanldeClick = this.hanldeClick.bind(this)
+        this.hanldeClick = this.hanldeClick.bind(this);
     }
 
     hanldeClick(){
@@ -124,10 +124,10 @@ class Home extends Component{
 
             <div id='categories'>
                     <div id='cat'>                    
-                        <img src={pics.healthcare} width='25%' alt='healthcare' />
-                        <img src={pics.business} width='25%' alt='business' />
-                        <img src={pics.education} width='25%' alt='education' />
-                        <img src={pics.nutrition} width='25%' alt='nutrition' />
+                        <a href="/campaigns"><img src={pics.healthcare} width='25%' alt='healthcare' /></a>
+                        <a href="/campaigns"><img src={pics.business} width='25%' alt='business' /></a>
+                        <a href="/campaigns"><img src={pics.education} width='25%' alt='education' /></a>
+                        <a href="/campaigns"><img src={pics.nutrition} width='25%' alt='nutrition' /></a>
                     </div>
                 </div>  
 
