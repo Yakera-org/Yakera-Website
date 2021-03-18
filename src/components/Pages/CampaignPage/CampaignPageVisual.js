@@ -64,7 +64,7 @@ class CampaignPageVisual extends Component {
         return (
             <div className = "camp-page-vis">
                 <h1>{campaign.title[language]}</h1>  
-                <Grid container spacing={5} style={{ alignItems:'flex-start'}}>
+                <Grid container spacing={4} style={{ alignItems:'flex-start'}}>
                     <Grid item xs={12} sm={8} id="left-col">
                         {/* left column  */}
                         <hr />              
@@ -78,12 +78,20 @@ class CampaignPageVisual extends Component {
                         <hr style={{marginBottom:'-10px'}}/>    
 
                         <div className="camp-page-story">
-                            {campaign.headers[language].map((h, i) =>(
-                                <div key={h+i}>
-                                    <h2 key={i}>{h}</h2>
-                                    <p key={h}>{campaign.story[language][i]}</p>
-                                </div>
-                            ))}
+                            {campaign.headers[language].map((h, i) =>{
+                                return(
+                                    <div key={h+i}>
+                                        <h2 key={i}>{h}</h2>
+                                        <p key={h}>{campaign.story[language][i]}</p>
+                                    </div>
+                                )
+                            })}
+                            {campaign.links ? 
+                                <a href={campaign.links[0]}>{campaign.links[0]}</a>
+                                : 
+                                ''
+                            }
+                            
                         </div>
                     </Grid>
                     <Grid item xs={12} sm={4}>

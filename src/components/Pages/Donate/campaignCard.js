@@ -74,6 +74,7 @@ class CampaignCard extends Component {
               <ShareIcon />      
             </IconButton>
             }
+            titleTypographyProps={{variant:'h6' }}
             title={title}
             subheader={date}
             />

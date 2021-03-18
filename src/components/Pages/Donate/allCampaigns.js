@@ -113,32 +113,33 @@ const campaigns = [
                     "",
                     "",
                     "",
-                    ""
                 ],
                 "sp":[
                     "La historia de Alejandra",
                     "",
                     "",
                     "",
-                    ""
                 ]
             },
             "story": {
                 "en":[
                     "I am Alexandra Requena, I am 11 years old, I live in El Calvario municipality El Hatillo, Miranda state, I come from a humble family with limited resources, my father being a laborer without stable employment; my mother a housewife and my sister employed by the public sector, to whom it is difficult to provide me with a quality education. Venezuela is undergoing a situation in decline in most of the sectors, public education being one of the worst affected.",
                     "Being a student with a good grade point average and social activist in the community I reside in, participating in activities in which are highlighted: obtaining 1st place in the kids and teens stories contest in the municipality of El Hatillo which was captured in the first steps of the community in which I live, spokeswoman of cultural activities like the Cross of May and the publication of a diary of my life at the beginning of the pandemic by a foundation. I am completing the sixth grade of elementary school and it would affect me not to receive a quality education at the next academic level given that in the public sector they do not have the quantity and quality of teachers because they do not receive a fair salary that covers their necessities.",
-                    "https://assembly.malala.org/stories/alexandra-roll-call-spanish",
+                    
                     "My family and I request the financial support to be able to continue with my studies in a private institution or private high school, the amounts to start are $500 for a registration to secure a spot from the first until the fifth year of middle education, it would be more accessible for my family to cover the monthly payments of the institution given that it is an amount of less than $30 per month.",
                     "To cover this necessity would give me the opportunity to study and make an effort to fulfill what I desire, which is to graduate from high school and continue with my education."
                 ],
                 "sp": [
                     "Soy Alexandra Requena tengo 11 años, vivo en el calvario municipio El Hatillo estado Miranda, vengo de una familia humilde de bajos recursos, siendo mi padre obrero sin empleo fijo; mi madre ama de casa y mi hermana empleada del sector público, los cuales se les hace difícil brindarme una educación de calidad, en Venezuela viene atravesando una situación de declive en la mayoría de los sectore, siendo uno de los más afectados es de la educación pública.",
                     "Siendo una estudiante buen promedio y activista social en la comunidad donde resido, participando en actividades las cuales resaltan: la obtención del primer lugar en el concurso de cuentos infantiles y adolescentes en el municipio el Hatillo el cuál fue plasmado en las primeras escaleras de la comunidad donde vivo, vocera de actividades culturales como la cruz de mayo y la publicación de un diario de mi vida al inicio de la pandemia por una fundación, estoy culminando el sexto grado educación básica me afectaría no recibir una educación de calidad en el próximo nivel académico ya que en el sector público no cuentan con la cantidad y calidad de profesores ya que éstos no reciben un sueldo justo que cubra sus necesidades.",
-                    "https://assembly.malala.org/stories/alexandra-roll-call-spanish",
+                    
                     "Mi familia y yo solicitamos el apoyo financiero para poder seguir con mis estudios en una institución o liceo privado, los montos para un comienzo son de 500$ por ser una inscripción para asegurar el cupo desde el primer año hasta   quinto año de educación media, sería más accesible para mi familia cubrir las mensualidades de la institución ya que es un monto  menor de $30 mensuales al solicitado a ustedes.",
                     "El cubrir esta necesidad me daría la oportunidad de estudiar y esforzarme para cumplir con lo deseado que es graduarme de bachiller y continuar con mi formación educativa."
                 ]
-            }
+            },
+            "links":[
+                "https://assembly.malala.org/stories/alexandra-roll-call-spanish"
+            ]
         },
     },
     {
@@ -305,7 +306,7 @@ const campaigns = [
             "authorInitial": "V",
             "target":715,
             "title":{
-                "en":"A Helping Hand for an Operation on Gleidimar Ramirez’ Daughter’s Hand",
+                "en":"A Helping Hand for Gleidimar",
                 "sp":"Una mano amiga para operar la mano de Gleidimar Ramirez"
                 },
             "description":{
@@ -590,7 +591,7 @@ const campaigns = [
             "target":850,
             "title":{
                 "en":"United for Health",
-                "sp":"Unidos por la saluds"
+                "sp":"Unidos por la salud"
                 },
             "description":{
                 "en": "Help Rotaract purchase medical supplies for local healthcare workers.",
@@ -807,7 +808,7 @@ const campaigns = [
             "authorInitial": "C",
             "target":500,
             "title":{
-                "en":"Help Carlos Rojas Get the Tools and Medicine He Heeds",
+                "en":"Help Carlos Rojas Get the Tools and Medicine He Needs",
                 "sp":"Carlos Rojas requiere tu apoyo para comprar unos medicamentos y herramientas para montar un local de mecánica."
                 },
             "description":{
