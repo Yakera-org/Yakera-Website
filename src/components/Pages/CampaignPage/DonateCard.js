@@ -53,7 +53,7 @@ class DonateCard extends Component {
                             className="btn btn-secondary btn-block"
                             onClick={this.props.onShare}
                             >
-                            {EN ? 'Share' : 'Cuota'}
+                            {EN ? 'Share' : 'Compartir'}
                         </button>
                     </div> 
                 </Card>

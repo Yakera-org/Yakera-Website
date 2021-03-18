@@ -295,7 +295,7 @@ class PaymentVisual extends Component {
                  <ThanksCard 
                     open={this.state.openThanks} 
                     onClose={this.closeThanks}
-                    language={EN}
+                    EN={EN}
                     amount={this.state.amount.value}
                     title={this.props.title}
                     />

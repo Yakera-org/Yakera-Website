@@ -33,6 +33,19 @@
     margin-bottom: 15px;
     color: #01224d;
 }
+.camp-page-story a{
+    color: #002453;
+}
+.camp-page-story a:hover{
+    color: #f77f00;
+}
+.camp-page-story a:visited{
+    color: #002453;
+}
+.camp-page-story a:active{
+    color: #002453;
+}
+
 
 /* donate card right */
 .donate-page-card {
