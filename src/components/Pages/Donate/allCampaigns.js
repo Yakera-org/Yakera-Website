@@ -1275,7 +1275,7 @@ const campaigns = [
     },
     {
         "cam":{
-            "name": "estefani",
+            "name": "estefania",
             "category":"business",
             "campaignName":"Las tortas de la tía",
             "author": "Estefanía Vergara",
