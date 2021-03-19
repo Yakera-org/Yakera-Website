@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import  {Grid} from '@material-ui/core';
+import {Dialog, Grid} from '@material-ui/core';
+
 
 import DonateCard from './DonateCard';
 
@@ -11,10 +12,18 @@ class CampaignPageVisual extends Component {
         super(props);
         this.state = {
             marginCard:marginOffset,
-            showShare:false
+            showShare:false,
+            imgClicked: false
         }
         this.onShare = this.onShare.bind(this);
         this.onDonate = this.onDonate.bind(this);
+        this.imgClick = this.imgClick.bind(this);
+    }
+
+    imgClick(){
+        this.setState({
+            imgClicked: !this.state.imgClicked
+        })
     }
 
     onShare(){
@@ -70,7 +79,22 @@ class CampaignPageVisual extends Component {
                         <hr />              
 
                         <div className="campaign-page-title-img">
-                            <img src={campaign.image} alt="title.img"/>
+                            <img onClick={this.imgClick} src={campaign.image} alt="title.img"/>
+                            
+                                <Dialog
+                                    fullWidth={true} 
+                                    maxWidth='lg'                                 
+                                    open={this.state.imgClicked}    
+                                    onClose={this.imgClick}                                                                                                                                                    
+                                >            
+                                <img 
+                                 id="exp-img"
+                                 onClick={this.imgClick}
+                                 src={campaign.image} 
+                                 alt="title.img"
+                                />
+                                </Dialog>
+                             
                         </div>
 
                         <p id="author-credit">{campaign.author} - {campaign.date}</p>
@@ -87,7 +111,7 @@ class CampaignPageVisual extends Component {
                                 )
                             })}
                             {campaign.links ? 
-                                <a href={campaign.links[0]}>{campaign.links[0]}</a>
+                                <a href={campaign.links[0]}>https://assembly.malala.org/stories</a>
                                 : 
                                 ''
                             }

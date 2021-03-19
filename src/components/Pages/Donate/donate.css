@@ -17,6 +17,9 @@
     margin-left: 30%;
     color: rgb(49, 59, 87);
 }
+#hr-top {
+    margin: 50px 0;
+}
 #no-cam{
     font-size: 20px;
 }
@@ -33,6 +36,10 @@
         font-size: 17px;
         width: 100%;
         margin-left: 0%;
+        margin-bottom: 0px;
+    }
+    #hr-top {
+        margin: 25px 0;
     }
     #no-cam{
         font-size: 18px;

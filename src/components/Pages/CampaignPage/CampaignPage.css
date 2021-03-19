@@ -4,6 +4,10 @@
 .camp-page-vis {
     margin:  0 5% 0 10%;
 }
+#exp-img {
+    padding: 5% 15%;
+    background-color:  rgba(204, 205, 212, 1);
+}
 /* donate leftf column */
 .campaign-page-title-img{
     width: 100%;
@@ -14,6 +18,7 @@
 }
 .campaign-page-title-img img {
     height: auto;
+    cursor: pointer;
     max-height: 500px;
     min-height: 500px;
     border-radius: 5px;
@@ -167,20 +172,27 @@
 }
 
 @media only screen and (max-width: 600px) {
-
+    .campaign-page-title-img{
+        padding: 5% 5%;
+    }
     .camp-page-vis {
         margin-top: 150px;
+        margin-right: 10%;
     }
-
+    #exp-img {
+        padding: 5% 5%;
+        background-color:  rgba(204, 205, 212, 1);
+    }
     .campaign-page-title-img img {
         width: 100%;
-        max-height: 10px;
         object-fit: cover;
         border-radius: 5px;
     }
     .camp-page-vis h1{
-        font-size: 32px;
+        font-size: 30px;
         text-align: left;
+        margin-bottom: -10px;
+        margin-top: -10px;
     }
     #author-credit{
         font-size: 17px;
@@ -252,5 +264,9 @@
         font-size: 18px;
         width: 80%;
         margin-left: 10%;
+    }
+    .camp-page-story a{
+        overflow: hidden;
+        font-size: 18px;
     }
 }
