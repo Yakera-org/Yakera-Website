@@ -196,13 +196,12 @@
         color: 'grey'
     }
     .consent-btn {
-        margin-top: 0px;
         font-size: 20px;
     }
     .consent-txt {
-        float: left;    
-        margin-top: -30px;
-        margin-left: 10px;
+        float: both;    
+        margin-top: 15px;
+        margin-left: 0px;
         font-size: 13px;
     }
     .age-txt {

@@ -18,6 +18,7 @@ class PaymentVisual extends Component {
             openPrivacy: false,
             openThanks: false,
             PaypalId:0,
+            actualValue: 0,
             amount: {
                 value: '',
                 validateOnChange: false,
@@ -85,14 +86,8 @@ class PaymentVisual extends Component {
         const nameError = validateFields.validateName(name.value);
         const emailError = validateFields.validateEmail(email.value);
 
-        //ADJUST FOR 5% MARGIN 
-        var actualSum = amount.value * 1.05;
-        actualSum = actualSum.toFixed(2);
-
         this.setState({
-            amount: {
-                value: actualSum
-            }
+            actualValue: amount.value
         })
         
         if(this.state.age === false || this.state.consent === false){
@@ -111,10 +106,16 @@ class PaymentVisual extends Component {
             })
 
             if ([amountError, nameError, emailError].every(e => e === false)) {
+                //ADJUST FOR 5% MARGIN 
+                var actualSum = amount.value * 1.05;
+                actualSum = actualSum.toFixed(2);
 
                 this.setState({
+                    amount: {
+                        value: actualSum
+                    },
                     hasAmount: true
-                })         
+                })     
             } else {
                 // update the state with errors
                 this.setState(state => ({
@@ -138,16 +139,30 @@ class PaymentVisual extends Component {
         }
     }
     async onSuccess(details, data) {        
-        const { amount, name, email } = this.state;
-
-        //substract 5 % again
-        var actualSum = amount.value * 0.95;
-        actualSum = actualSum.toFixed(2);
+        const { actualValue, name, email } = this.state;
         
-        await this.props.addAmount(data.payerID, actualSum, name.value, email.value);
+        await this.props.addAmount(data.payerID, actualValue, name.value, email.value);
         
         this.setState({
-            openThanks:true
+            openThanks:true,
+            actualValue:0,
+            hasAmount:false,
+            checkError:"",
+            age:false,
+            consent:false,
+            openPrivacy: false,
+            PaypalId:0,
+            name: {
+                value: '',
+                validateOnChange: false,
+                error: '',
+            },
+            email: {
+                value: '',
+                validateOnChange: false,
+                error: '',
+            }
+
         })
         this.props.onPayPalOff();
     }

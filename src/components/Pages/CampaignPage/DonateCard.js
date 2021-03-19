@@ -37,7 +37,7 @@ class DonateCard extends Component {
                             }
                         }}
                         status="default"
-                        percent={ Math.min(100* (amount/target).toFixed(2), 100) }/>
+                        percent={ Math.min((100* (amount/target)).toFixed(2), 100) }/>
                     </div>
 
                     <div>

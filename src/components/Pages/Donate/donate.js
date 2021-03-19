@@ -62,7 +62,7 @@ class donate extends Component{
                     </p>
                 </div>
     
-                <hr style={{margin:'50px 0'}}/>
+                <hr id="hr-top"/>
 
                  <Grid container spacing={5} style={{alignContent:'center', alignItems:'flex-start'}}>
                     {campaigns.sort(() => 0.5 - Math.random()).map((cam, i) => {
