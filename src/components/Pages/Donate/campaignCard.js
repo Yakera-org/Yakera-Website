@@ -6,6 +6,7 @@ import CardContent from '@material-ui/core/CardContent';
 import Avatar from '@material-ui/core/Avatar';
 import IconButton from '@material-ui/core/IconButton';
 import ShareIcon from '@material-ui/icons/Share';
+import { Progress } from 'react-sweet-progress';
 
 import './campaignCard.css';
 
@@ -59,6 +60,7 @@ class CampaignCard extends Component {
     const description = campaign.description[this.props.language];
     const image = campaign.image;
     const category = campaign.category;
+    const target = campaign.target;
 
     return (
       <div>
@@ -103,8 +105,17 @@ class CampaignCard extends Component {
                </b>
               </p>
             </div>
-
-            <p style={{fontSize:'18px'}}>              
+            <Progress theme={{
+                default: {
+                    trailColor: 'lightgrey',
+                    symbol: '',
+                    color: this.props.color
+                }
+              }}
+              status="default"
+              percent={ Math.min((100* (this.props.amount/target)).toFixed(1), 100) }            
+            />
+            <p style={{fontSize:'18px', marginTop:'15px'}}>              
               {description}
             </p>
 
