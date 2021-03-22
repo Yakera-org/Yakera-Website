@@ -1282,7 +1282,7 @@ const campaigns = [
             "authorInitial": "E",
             "target":150,
             "title":{
-                "en":"Cakes from Auntie ",
+                "en":"Cakes from Auntie",
                 "sp":"Las tortas de la tía"
                 },
             "description":{
