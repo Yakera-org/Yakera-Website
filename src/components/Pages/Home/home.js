@@ -24,6 +24,8 @@ class Home extends Component{
 
     componentDidMount(){
         var lang = localStorage.getItem("lang");
+
+        localStorage.setItem("dic", null)
         if(lang){
             this.setState({
                 language: lang
