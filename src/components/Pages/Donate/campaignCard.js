@@ -115,7 +115,7 @@ class CampaignCard extends Component {
               status="default"
               percent={ Math.min((100* (this.props.amount/target)).toFixed(1), 100) }            
             />
-            <p style={{fontSize:'18px'}}>              
+            <p style={{fontSize:'18px', marginTop:'15px'}}>              
               {description}
             </p>
 
