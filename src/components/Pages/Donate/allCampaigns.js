@@ -144,52 +144,6 @@ const campaigns = [
     },
     {
         "cam":{
-            "name": "maria",
-            "category":"healthcare",
-            "campaignName":"Medicamentos para vivir mejor",
-            "author": "Maria",
-            "authorInitial": "M",
-            "target":130,
-            "title":{
-                "en":"Medicine for a Better Life",
-                "sp":"Medicamentos para vivir mejor"
-                },
-            "description":{
-                "en": "Help Maria pay for her medicine.",
-                "sp": "Ayuda a Maria a pagar por sus medicamentos."
-            },
-            "date": "03/09/21",
-            "image": require('../../../pics/campaigns/maria/title.jpeg'),
-            "images": [
-                require('../../../pics/campaigns/maria/1.jpeg'),
-                require('../../../pics/campaigns/maria/2.jpeg'),
-                require('../../../pics/campaigns/maria/3.jpeg'),
-                require('../../../pics/campaigns/maria/4.jpeg')
-            ],
-            "headers": {
-                "en":[
-                    "Maria's story",
-                    ""
-                ],
-                "sp":[
-                    "La historia de Maria",
-                    ""
-                ]
-            },
-            "story": {
-                "en":[
-                    "I am Maria Nicolasa, 67 years old. I never worked outside my home, to raise my children. I used to knit little shoes for kids, to help a little bit. My husband left us 14 years ago: me, 2 grown kids, and a little one. Since then, the two older ones have helped with my and my little one’s basic needs. 12 years ago, I was diagnosed with hypertension and diabetes. I started getting my pension when I was 56 years old. With that, I used to be able to help my children afford the medication. But, years passed, and our currency suffered so many devaluations, that now I cannot afford a single pill of my medication with the pension. My eldest child is unemployed right now, even though he has an oil technician degree.",
-                    "My daughter is a housewife, and she does a little bit of secretary work for the company her husband works for. My youngest child is still studying, his siblings help him pay for that. I am soliciting your help, as my children cannot afford such an expensive treatment with the situation of this country."
-                ],
-                "sp": [
-                    "Soy María Nicolasa cisneros tengo 67 años fui diagnosticada con azúcar y tensión arterial por los cuál necesito compra una serie de medicamentos mensual los cuales no puede cubrir por qué no trabajo y soy pensionada y esa pensión no me alcanza para poder adquirir los medicamentos todos son indispensables para poder tener mejor calidad de vida. Aproximadamente mensualmente gasto  130$. Mis hijos no tienen un salario para ayudar a costear estos medicamentos.",
-                    "Nunca trabaje fuera de mi hogar para poder criar a mis hijos. Para ayudar a el que era mi esposo tejía zapaticos para niños con eso me ayudaba mi esposo se fue de casa hace 14 años dejando a 2 hijos grande y uno pequeño desde entonces mis hijos mayores me ayudan con mi manutención y la de mi hijo de 20 años hace 12 años me diagnosticaron diabética e hipertensa. Comencé a cobrar la pensión a los 56 años con eso ayudaba a mis hijos a comprar los medicamentos a medida que han pasado los años y con la devaluaciones que ha sufrido la moneda ya la pensión no me alcanza ni para comprar una sola pastilla del tratamiento. Mi hijo mayor actualmente está desempleado el es técnico petrolero y mi hija mayor es ama de casa hace algunos trabajos de secretaria para la empresa que trabaja su esposo y mi hijo más pequeño está estudiando en la universidad y sus hermanos lo ayudan por eso solicito la ayuda ya que mis hijos no pueden comprar un tratamiento tan caro en esta situación país."
-                ]
-            }
-        },
-    },
-    {
-        "cam":{
             "name": "sandra",
             "category":"healthcare",
             "campaignName":"Ayúdame a combatir el cáncer",
@@ -418,86 +372,6 @@ const campaigns = [
                 ],
                 "sp": [
                     "Soy Luis Alfonso Linares venezolano de 81 año domiciliado en el hatillo barrio el calvario alto no.pcr45 soy diabetico isulino dependiente desde hace 20 años y no tengo los reculsos para obtenerla por el alto costo, no trabajo por mi edad vivo de la pensión por mi jubilación hace 21 años a consecuencia de esta patologia presento segun examen ( eco dopler) de una obtrucion en la arteria de ambas extremidades inferiores.actualmente estoy en tramites en el hospital universitario con el cirujano cardio vascular. asi mismo presento difilcutad en el ojo derecho de una catarata que requiere de una intervencion."
-                ]
-            }
-        },
-    },
-    {
-        "cam":{
-            "name": "olga",
-            "category":"healthcare",
-            "campaignName":"Olga quiere sentirse bien",
-            "author": "Olga Cisneros",
-            "authorInitial": "O",
-            "target":130,
-            "title":{
-                "en":"Olga Wants to Feel Well",
-                "sp":"Olga quiere sentirse bien"
-                },
-            "description":{
-                "en": "Help Olga afford her medication.",
-                "sp": "Ayuda a Olga a pagar por sus medicamentos."
-            },
-            "date": "3/14/21",
-            "image": require('../../../pics/campaigns/olga/title.jpeg'),
-            "images": [
-                require('../../../pics/campaigns/olga/1.jpeg'),
-                require('../../../pics/campaigns/olga/2.jpeg'),
-                require('../../../pics/campaigns/olga/3.jpeg'),
-            ],
-            "headers": {
-                "en":[
-                    "Olga's story",
-                ],
-                "sp":[
-                    "La historia de Olga",
-                ]
-            },
-            "story": {
-                "en":[
-                    "I am Olga Cisneros, I am 64 years old and I live in El Calvario. I am a housewife, I have never had a job out there, but I love to cook. I have three daughters, one of them I live with, the little one moved to Spain two years ago. The two that remain here are manicurists (not a well-paid job in Venezuela) and I receive a survival pension since my husband passed away 18 years ago, leaving my two daughters behind without enough resources to survive. Even though they work, my two daughters have a hard time affording my medication. I was diagnosed with hypertension 8 years ago. At that time, I could pay for my medication with the pension. But, as years passed, and with the devaluation of our currency, that money is not worth anything. My daughters try to help me, but they also have their own commitments. When the one who’s in Spain sends me some money, I am able to buy my medication. But, some months, it’s not enough to cover it, and I feel very ill then. This is why I am asking for your collaboration."
-                ],
-                "sp": [
-                    "Soy Olga cisneros díaz tengo 64 años vivo en el calvario soy ama de casa nunca e trabajado en la calle tengo 3 hijas, me encanta cocinar,  vivo con una de mis hijas, mi hija más pequeña vive en España desde hace dos años y mi hija mayor vive en baruta, las dos hijas que tengo cerca son manicurista, recibo la pensión de sobreviviente ya que mi esposo falleció hace 18 años dejando a mis dos hijas pequeñas sin recursos para vivir, a pesar de que mis hijas trabajan se les hace difícil costear mi tratamiento médico, Fui diagnosticada hipertensa hace 8 años al principio de mi enfermedad podía comprar los medicamentos con la pensión pero al paso de los año y con la devaluaciones no me alcanza para nada mis hijas me ayudan pero ellas también tienen sus compromisos y la que está afuera cuando puede mandar algo y puedo comprar el tratamiento completo hay meses que no puedo comprarlo completo y esto hace que me sienta muy mal por eso pido la colaboración de ustedes."
-                ]
-            }
-        },
-    },
-    {
-        "cam":{
-            "name": "vicenso",
-            "category":"healthcare",
-            "campaignName":"Quiero ver mejor y tener una mejor salud",
-            "author": "Vicenso Cisneros",
-            "authorInitial": "V",
-            "target":300,
-            "title":{
-                "en":"I Want to See Better and to Be in Better Health",
-                "sp":"Quiero ver mejor y tener una mejor salud"
-                },
-            "description":{
-                "en": "Help Vicencio pay for his medicine and a consultation.",
-                "sp": "Ayuda a Vicencio a pagar por sus medicamentos una consulta."
-            },
-            "date": "3/14/21",
-            "image": require('../../../pics/campaigns/vicenso/title.jpeg'),
-            "images": [
-                require('../../../pics/campaigns/vicenso/1.jpeg'),
-            ],
-            "headers": {
-                "en":[
-                    "Vicenso's story",
-                ],
-                "sp":[
-                    "La historia de Vicenso",
-                ]
-            },
-            "story": {
-                "en":[
-                    "My name is Vicencio Cisneros. I am 62 years old, unemployed, and I suffer from diabetes. Because of this I have had many urinary tract infections and I do not have the money to go to a proper specialist. Apart from that I use glasses that are not in good condition and I would like your help with this. I need to go to the diabetes and prostate specialists, and to have new glasses made. I know that they are highly priced but a medical consultation here is no less than $50 and I also need to purchase medicine."
-                ],
-                "sp": [
-                    "Mi nombre es Vicencio cisneros tengo 62 años no tengo empleo fijo sufro de azúcar , por esta razón he tenido muchas infecciones urinaria no cuento con los recurso para ir a un buen especialista, aparte de eso uso lentes los cuales no están en buenas condiciones me gustaría que me ayudaran con esto. Necesito ir a los especialistas de azúcar y próstata y para mandarme hacer los lentes y eso es aproximadamente $300. Sé que son montos muy alto pero una consulta médica aquí no se baja de 50$ y necesito también comprar medicamentos."
                 ]
             }
         },
