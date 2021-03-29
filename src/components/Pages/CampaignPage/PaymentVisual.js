@@ -6,6 +6,8 @@ import PrivacyCard from './consentCard';
 import ThanksCard from './thanksCard';
 import Paypal from './Paypal';
 
+import airtmLogo from '../../../pics/airtmbutton.png';
+
 
 class PaymentVisual extends Component {
 
@@ -42,6 +44,7 @@ class PaymentVisual extends Component {
         this.onPrivacy = this.onPrivacy.bind(this);
         this.onSuccess = this.onSuccess.bind(this);
         this.closeThanks = this.closeThanks.bind(this);
+        this.onAirTM = this.onAirTM.bind(this);
     }
 
     handleChange(validationFunc, evt) {
@@ -166,6 +169,12 @@ class PaymentVisual extends Component {
         })
         this.props.onPayPalOff();
     }
+
+    onAirTM(){
+        //turn on loader
+        //generate payment id
+        //direct to airtm payment
+    }
     
 
     render() {
@@ -289,6 +298,14 @@ class PaymentVisual extends Component {
                         <p>                   
                             {EN ? 'Please put your bank details below' : 'Por favor ingrese sus datos bancarios a continuación'} 
                         </p>  
+
+                        <button
+                                type="submit"
+                                className="btn btn-secondary btn-block airtm-but"    
+                                onClick={this.onAirTM}                  
+                                >
+                                    <img src={airtmLogo} alt="airtm-logo-button" />
+                        </button>
 
                         <Paypal amount={this.state.amount.value} onSuccess={this.onSuccess} onClick={this.props.onPayPalOn} onError={this.props.onPayPalOff} onCancel={this.props.onPayPalOff}/>
 

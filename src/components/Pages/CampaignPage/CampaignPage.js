@@ -28,6 +28,9 @@ class CampaignPage extends Component{
     }
 
     async componentDidMount(){
+
+        let code = qs.parse(window.location.search).code
+        console.log(code) // ==> hello
         var lang = localStorage.getItem("lang");
         if(!lang){
             localStorage.setItem("lang", "en");
