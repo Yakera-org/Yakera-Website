@@ -174,6 +174,7 @@ class PaymentVisual extends Component {
         //turn on loader
         //generate payment id
         //direct to airtm payment
+        this.props.AirTM();
     }
     
 

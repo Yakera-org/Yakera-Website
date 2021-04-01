@@ -28,9 +28,6 @@ class CampaignPage extends Component{
     }
 
     async componentDidMount(){
-
-        let code = qs.parse(window.location.search).code
-        console.log(code) // ==> hello
         var lang = localStorage.getItem("lang");
         if(!lang){
             localStorage.setItem("lang", "en");
@@ -95,8 +92,42 @@ class CampaignPage extends Component{
               console.log("SUCCESS");
         })
         .catch(err => {
-          console.log(err.message + ": Amount nod added")            
+          console.log(err.message + ": Amount not added")            
       })    
+    }
+
+    async AirTM(){
+        const requestBody = {
+          "code": "drgdfgdfg",
+          "description": "Test purchase ",
+          "cancel_uri": "http://localhost/confirmed",
+          "confirmation_uri": "http://localhost/confirmed",
+          "amount": 10,
+          "items": [
+            {
+              "description": "Purchase Item 1",
+              "amount": 10,
+              "quantity": 1
+            }
+          ]
+        }  
+        const config = {
+            headers: {
+                'Authorization': 'Basic NGRlMWVmYzItYjhlMy00YTA0LTkwYTgtMWUwYmE0MGUyMjkzOjNib0xjQWR4dE1nTW9iOFJuQ0lsUVFiUVZzZ0g2RDcyTVpuWlg5TVNwNVJkMzc5aWU0S3Y3VjZKSXdrWWJId2I=', 
+                'Content-Type': 'application/json'
+            }
+        }
+
+        const url =  "https://payments.static-stg.tests.airtm.org/purchases";
+
+        await axios.post(url, JSON.stringify(requestBody), config)
+        .then(res => {
+              console.log("SUCCESS");
+              console.log(res);
+        })
+        .catch(err => {
+          console.log(err.message + ": airtmID not generated")            
+        })  
     }
 
     onPayPalOff(){
@@ -159,6 +190,7 @@ class CampaignPage extends Component{
 
                      <PaymentVisual
                         language={this.state.language}
+                        AirTM = {this.AirTM}
                         onPayPalOff={this.onPayPalOff}
                         onPayPalOn={this.onPayPalOn}
                         addAmount={this.addAmount}
