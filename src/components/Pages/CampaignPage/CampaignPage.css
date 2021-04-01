@@ -228,6 +228,9 @@
         min-width: 40%;
         border-radius: 10px;
     }
+    .payment-card {
+        margin-right: 5%;
+    }
     .payment-card h1{
         font-size: 35px;
     }
