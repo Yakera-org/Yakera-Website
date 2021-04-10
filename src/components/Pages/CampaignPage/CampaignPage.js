@@ -103,7 +103,7 @@ class CampaignPage extends Component{
           "code": code,
           "description": title,
           "cancel_uri": window.location.href,
-          "confirmation_uri": "https://www.yakera.net/",
+          "confirmation_uri": "https://www.yakera.net/confirm",
           "amount": val,
           "items": [
             {
