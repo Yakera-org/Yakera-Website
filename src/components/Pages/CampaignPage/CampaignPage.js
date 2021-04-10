@@ -92,8 +92,58 @@ class CampaignPage extends Component{
               console.log("SUCCESS");
         })
         .catch(err => {
-          console.log(err.message + ": Amount nod added")            
+          console.log(err.message + ": Amount not added")            
       })    
+    }
+
+    async AirTM(val, title){
+        this.onPayPalOn();
+        var code = Math.random().toString(36).substring(7);
+        const requestBody = {
+          "code": code,
+          "description": title,
+          "cancel_uri": window.location.href,
+          "confirmation_uri": "https://www.yakera.net/confirm",
+          "amount": val,
+          "items": [
+            {
+              "description": "Yakera donation for: " + title,
+              "amount": val,
+              "quantity": 1
+            }
+          ]
+        }  
+        //sandbox
+        //NGRlMWVmYzItYjhlMy00YTA0LTkwYTgtMWUwYmE0MGUyMjkzOjNib0xjQWR4dE1nTW9iOFJuQ0lsUVFiUVZzZ0g2RDcyTVpuWlg5TVNwNVJkMzc5aWU0S3Y3VjZKSXdrWWJId2I=
+        //production
+        //ZDIyNDNiZmUtNzJlYS00M2EzLThmMGItZmU0NTVlMzU5ZDJhOmdCOHlrUm5iMFlUYmRHUjhuempuWlJEcmFqR3hzakV2d2tEVFR6WlNNNlJnbksxN2xXbnEzck5IWmJPOGtpdUh5YmZ5cTBIMlJuZGtPbmtE
+        const config = {
+            headers: {
+                'Authorization': 'Basic ZDIyNDNiZmUtNzJlYS00M2EzLThmMGItZmU0NTVlMzU5ZDJhOmdCOHlrUm5iMFlUYmRHUjhuempuWlJEcmFqR3hzakV2d2tEVFR6WlNNNlJnbksxN2xXbnEzck5IWmJPOGtpdUh5YmZ5cTBIMlJuZGtPbmtE', 
+                'Content-Type': 'application/json',
+            }
+        }
+        const heroku_proxy = "https://shielded-coast-15960.herokuapp.com/";
+        const url =  heroku_proxy + "https://payments.air-pay.io/purchases";
+
+        //https://payments.static-stg.tests.airtm.org/purchases
+        //https://payments.air-pay.io/purchases
+
+        await axios.post(url, JSON.stringify(requestBody), config)
+        .then(res => {
+            console.log("SUCCESS");
+            var id = res.data.id;
+            console.log(id)
+            window.location.href = "https://app.airtm.com/checkout/"+id;
+            //https://app.stg.airtm.io/checkout/
+            //https://app.airtm.com/checkout/
+            this.onPayPalOff();
+
+        })
+        .catch(err => {
+          this.onPayPalOff();
+          console.log(err)            
+        })  
     }
 
     onPayPalOff(){
@@ -124,18 +174,14 @@ class CampaignPage extends Component{
 
 
                 <div className="campaignPage">
-                    <div className="sweet-loading">
-                            <HashLoader
-                                css="display: block;
-                                margin: 0 auto;
-                                border-color: blue;
-                                position: fixed;
-                                top:40%;
-                                left:45%"
-                                size={150}
-                                color={"#01224d"}
-                                loading={this.state.loading}
-                            />
+                        <div className="donate-page-loading">
+                            <div className="sweet-loading loader">
+                                <HashLoader
+                                    size={150}
+                                    color={"#01224d"}
+                                    loading={this.state.loading}
+                                />
+                            </div>               
                         </div>
                     <Visual
                         campaign={campaign} 
@@ -156,6 +202,7 @@ class CampaignPage extends Component{
 
                      <PaymentVisual
                         language={this.state.language}
+                        AirTM = {this.AirTM}
                         onPayPalOff={this.onPayPalOff}
                         onPayPalOn={this.onPayPalOn}
                         addAmount={this.addAmount}

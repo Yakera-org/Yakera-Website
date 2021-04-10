@@ -11,6 +11,7 @@ import donate from './Pages/Donate/donate';
 import AboutUs from './Pages/AboutUs/aboutus';
 import donateYakera from './Pages/DonateYakera/DonateYakera';
 import NotFoundPage from './Pages/404/NotFoundPage';
+import Confirmation from './Pages/Confirmation/Confirmation';
 
 
 
@@ -31,6 +32,7 @@ const Main = () => (
             <Route exact path="/campaign/:title" component={Campaign}/>
             <Route exact path="/terms" component={Terms}/>
             <Route exact path="/faq" component={FAQ}/>
+            <Route exact path="/confirm" component={Confirmation}/>
             <Route exact path="/" component={home}/>
             <Route path="/404" component={NotFoundPage} />
             <Redirect to="/404" />

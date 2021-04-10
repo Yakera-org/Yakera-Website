@@ -171,7 +171,36 @@
     border-radius: 20px;
 }
 
+.airtm-but {
+    width: 40%;
+    margin-left: 30%;
+    margin-bottom: 15px;
+    height: 4rem;
+    border: none;
+    font-size: 30px;
+    background-color: rgb(223, 240, 255);
+}
+
+.airtm-but:hover{
+    background-color:  rgb(178, 199, 216);
+}
+.airtm-but:active{
+    background-color:  rgb(223, 240, 255);
+}
+.airtm-but:focus{
+    background-color:  rgb(223, 240, 255);
+}
+.airtm-but:visited{
+    background-color:  rgb(223, 240, 255);
+}
+
+.airtm-but img{
+    height: 100%;
+    padding: 5px 0;
+}
+
 @media only screen and (max-width: 600px) {
+   
     .campaign-page-title-img{
         padding: 5% 5%;
     }
@@ -260,7 +289,8 @@
         font-size: 20px;
     }
     .payment-slit b{
-        font-size: 25px;
+        display: block;
+        font-size: 30px;
     }
     #charge-exp{
         text-align: start;
@@ -271,5 +301,14 @@
     .camp-page-story a{
         overflow: hidden;
         font-size: 18px;
+    }
+    .airtm-but {
+        width: 100%;
+        margin-left: 0;
+    }
+    .airtm-but img{
+        height: 100%;
+        padding: 5px 0;
+        width: auto;
     }
 }
