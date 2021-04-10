@@ -21,6 +21,7 @@ class PaymentVisual extends Component {
             openThanks: false,
             PaypalId:0,
             actualValue: 0,
+            percentage:0,
             amount: {
                 value: '',
                 validateOnChange: false,
@@ -45,6 +46,7 @@ class PaymentVisual extends Component {
         this.onSuccess = this.onSuccess.bind(this);
         this.closeThanks = this.closeThanks.bind(this);
         this.onAirTM = this.onAirTM.bind(this);
+        this.getPercentage = this.getPercentage.bind(this);
     }
 
     handleChange(validationFunc, evt) {
@@ -83,6 +85,39 @@ class PaymentVisual extends Component {
         })
     }
 
+    getPercentage(amount){
+        let val = parseInt(amount);
+        let per = 0;
+
+        if (0 < val && val <= 10){
+            per = 0.3;
+        }
+        if (10 < val && val <= 20){
+            per = 0.2;
+        }
+        if (20 < val && val <= 40){
+            per = 0.15;
+        }
+        if (40 < val && val <= 60){
+            per = 0.125;
+        }
+        if (60 < val && val <= 80){
+            per = 0.1;
+        }
+        if (80 < val && val <= 100){
+            per = 0.075;
+        }
+        if (100 < val ){
+            per = 0.05;
+        }
+
+        this.setState({
+            percentage: per*100
+        })
+
+        return val + val * per;
+    }
+
     onDonateStart(){
         var { amount, name, email } = this.state;
         const amountError = validateFields.validateNumber(amount.value);
@@ -109,8 +144,8 @@ class PaymentVisual extends Component {
             })
 
             if ([amountError, nameError, emailError].every(e => e === false)) {
-                //ADJUST FOR 5% MARGIN 
-                var actualSum = amount.value * 1.05;
+                //ADJUST FOR % MARGIN
+                var actualSum = this.getPercentage(amount.value);
                 actualSum = actualSum.toFixed(2);
 
                 this.setState({
@@ -296,6 +331,9 @@ class PaymentVisual extends Component {
                         <p>
                             {EN ? 'You are about to donate' : 'Estás a punto de donar'} <b>{this.state.amount.value} $ </b>
                         </p>
+                        <p style={{fontSize:'18px'}}>
+                            {EN ? `A fee of ${(this.state.amount.value - this.state.actualValue).toFixed(2)}$ has been added*` : `Se ha agregado una tarifa del ${(this.state.amount.value - this.state.actualValue).toFixed(2)}$ *`}
+                        </p>
                         <p>                   
                             {EN ? 'Please put your bank details below' : 'Por favor ingrese sus datos bancarios a continuación'} 
                         </p>  
@@ -312,7 +350,7 @@ class PaymentVisual extends Component {
 
                         <p id="charge-exp">                 
                             <b style={{color:'#444444', fontSize:'18px'}}>
-                                {EN ? 'Please note: A fee of 5% has been added' : 'Tenga en cuenta: se ha agregado una tarifa del 5%'}
+                                {EN ? `*Please note: A fee of ${this.state.percentage}% has been added` : `*Tenga en cuenta: se ha agregado una tarifa del ${this.state.percentage}%`}
                             </b>
 
                             <br /> 
