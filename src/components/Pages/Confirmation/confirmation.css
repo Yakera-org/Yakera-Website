@@ -1,0 +1,16 @@
+.conf-but  {
+    width: 20%;
+    margin: 10px 40%;
+    color:  #072147;
+    background-color:#ff9b41;
+    border: none;
+    font-weight: 500;
+}
+
+@media only screen and (max-width: 600px) {
+
+    .conf-but  {
+        width: 50%;
+        margin: 10px 25%;
+    }
+}
