@@ -174,18 +174,14 @@ class CampaignPage extends Component{
 
 
                 <div className="campaignPage">
-                    <div className="sweet-loading">
-                            <HashLoader
-                                css="display: block;
-                                margin: 0 auto;
-                                border-color: blue;
-                                position: fixed;
-                                top:40%;
-                                left:45%"
-                                size={150}
-                                color={"#01224d"}
-                                loading={this.state.loading}
-                            />
+                        <div className="donate-page-loading">
+                            <div className="sweet-loading loader">
+                                <HashLoader
+                                    size={150}
+                                    color={"#01224d"}
+                                    loading={this.state.loading}
+                                />
+                            </div>               
                         </div>
                     <Visual
                         campaign={campaign} 

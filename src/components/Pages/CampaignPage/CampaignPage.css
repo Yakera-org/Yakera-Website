@@ -194,14 +194,13 @@
     background-color:  rgb(223, 240, 255);
 }
 
-
-
 .airtm-but img{
     height: 100%;
     padding: 5px 0;
 }
 
 @media only screen and (max-width: 600px) {
+   
     .campaign-page-title-img{
         padding: 5% 5%;
     }
