@@ -200,6 +200,9 @@
 }
 
 @media only screen and (max-width: 600px) {
+    .campaignPage{
+        margin-top: -55%;
+    }
    
     .campaign-page-title-img{
         padding: 5% 5%;

@@ -3,16 +3,13 @@
     {
         "title": "Yakera",
         "author": "Created by Raul Romero & the Yakera Team on",
-        "description": ["Yakera is a crowdfunding platform developed to provide a safe and vetted pathway for all Venezuelans to receive financial support and help them weather the humanitarian crisis which they are currently facing. Yakera’s goal is to improve the everyday lives of Venezuelan people by enhancing their nutritional, medical, and financial security while giving Venezuelans a voice to advocate for their own pressing needs.", 
+        "description": ["In order for Yakera to continue providing Venezuelans with a platform to voice their needs and seek assistance, we need your help. Contributions made directly to Yakera help us cover operating costs along with costs associated with the expansion of our platform. These costs comprise web hosting services, software development and legal expenses. Your contribution helps us sustain our online presence, reach more donors and recipients, and scale up. Join us and become part of our effort to facilitate channeling aid to Venezuelans who need the most support.", 
 
 
-        "The funds raised through this campaign will fund the pilot phase of our project and cover operational costs such as web hosting services, computers (to make it accessible for people to post their campaigns), advertising and legal fees, as well as personal protective equipment for our partners in Venezuela. Our community pilot will be carried out in February of 2021. With the help of our partner organization Nutriendo el Futuro, which coordinates community initiatives in Caracas, we will provide initial donations and matchable funds for several family campaigns and 4 community projects. Using AirTM, a financial service that facilitates payments through an encrypted blockchain and local “cashiers” which fulfill transactions in approximately 15 minutes, applicants on the platform will be able to solicit and receive money safely.", 
+        "Yakera is a registered 501(c)4 organization that directs individual donor contributions to Venezuelans in need of immediate support or humanitarian assistance. ", 
         
         
-        "Yakera aims to help people like our friend Vladimir. Growing up, Vladimir was subject to abuse and a victim of scarcity. The severity of his situation pushed him into crime at an early age. Crime was an avenue to provide for himself and his family, but also led to a life of addiction and incarceration. Thanks to the support of his wife and family, along with his determination to right his wrongs, Vladimir now leads a program to promote prisoners’ transition from a life of crime to a life of good. However, Vladimir’s motorcycle (an essential tool that helps him provide for his family with an honest living) has recently been stolen. There are millions of Venezuelans like Vladimir whose dire situations push them to engage in illegal activities, and millions of Venezuelans who have lost their means of support during the country’s economic decline.", 
-        
-        
-        "With Yakera, you can be part of the journey for people like Vladimir. Your contribution may not pay for the whole trip, but it will help him get closer to his destination. Join us and walk a while with Vladimir, with Yakera and with Venezuela."],
+        "Visit our Campaigns page to contribute to individuals, families, or community organizations directly."],
     
         "goal": 8000    
     },
@@ -20,16 +17,13 @@
     {
         "title": "Yakera",
         "author": "Creado por Raul Romero y el Equipo Yakera el",
-        "description": ["Yakera es una plataforma de crowdfunding desarrollada para proveer una manera segura y verificada para que los Venezolanos puedan recibir apoyo financiero, ayudándolos a enfrentar la crisis humanitaria que están experimentando. La meta de Yakera es mejorar las vidas cotidianas de la gente Venezolana por medio de beneficiar su seguridad médica, alimentaria, y financiera, mientras damos a ellos una voz para abogar por sus necesidades más importantes.", 
+        "description": ["Necesitamos tu ayuda para que Yakera continúe proveyendo una plataforma para que los venezolanos puedan contar sus historias y recibir asistencia inmediata. Las contribuciones hechas directamente a Yakera nos ayudan a cubrir los costos operativos y los costos asociados con la expansión de nuestra plataforma. Estos costos incluyen servicios de alojamiento web, desarrollo de software y gastos legales. Tu contribución nos ayuda a mantener nuestra presencia en línea, llegar a más donantes y destinatarios. Únete a nosotros y forma parte de nuestro esfuerzo para facilitar la canalización de la ayuda a los venezolanos que necesitan más apoyo.", 
 
 
-        "Los fondos recaudados por esta campaña financiarán nuestro proyecto piloto del y cubrirán las cuestas operacionales como el hospedaje web, computadoras (para hacer accesible el establecimiento de las campañas), cargas legales y comerciales, y equipo de protección individual para nuestros socios en Venezuela. Nuestro piloto será llevada a cabo en enero 2021. Con la ayuda de nuestra organización asociada en Venezuela, Nutriendo El Futuro, que coordina iniciativas comunitarias en Caracas, vamos a proveer donaciones iniciales y fondos iguales a 12 campañas de familias y 4 proyectos comunitarios. Con el uso de AirTM, un servicio financiero que facilita pagos por un blockchain encriptado y “cajeros” locales que realizan las transacciones en aproximadamente 15 minutos, los aplicantes de la plataforma podrán solicitar y recibir donaciones seguramente.", 
+        "Yakera es una organización registrada 501 (c) 4 que dirige las contribuciones de donantes individuales a los venezolanos que necesitan apoyo inmediato o ayuda humanitaria. ", 
         
         
-        "Yakera intenta beneficiar a personas como nuestro amigo, Vladimir. Cuando era un niño, Vladimir fue abusado y víctima de escasez. La gravedad de su situación lo impulsó a entrar en una vida de crimen a una edad pequeña. La delincuencia fue una manera para proveer para él mismo y para su familia, pero también llevó a una vida de adicción y encarcelación. Gracias al apoyo de su esposa y su familia, junto con su determinación de corregir los males que cometió, Vladimir ahora gestiona un programa para promover las transiciones de prisioneros desde vidas de crimen a vidas de bien. A pesar de todo, su motocicleta (una herramienta esencial que ayuda a Vladimir proveer para su familia con una ganancia honesta) ha sido robada recientemente. Hay millones de Venezolanos como Vladimir cuyas situaciones graves les impulsan a participar en actividades ilegales, y millones de Venezolanos que han perdido sus medios de apoyo durante la crisis económica del país.", 
-        
-        
-        "Con Yakera, usted puede ser parte del viaje para personas como Vladimir. Su contribución quizás no pagará por todo, pero lo ayudará a acercarse a su destino. Únase a nosotros y camine un rato con Vladimir, con Yakera, y con Venezuela."],
+        "Visite nuestra página de campañas para contribuir directamente a individuos, familias u organizaciones comunitarias."],
     
         "goal": 8000   
     }   

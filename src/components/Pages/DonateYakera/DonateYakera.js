@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Progress } from 'react-sweet-progress';
 import { validateFields } from '../Register/Validation';
 import classnames from 'classnames';
 import HashLoader from "react-spinners/HashLoader";
@@ -241,8 +240,7 @@ class DonateYakera extends Component{
             let currentScrollPos = 600 - window.pageYOffset;
 
             this.setState({
-                    opacity: currentScrollPos / 300,
-                    margin: Math.min(Math.max(0, -currentScrollPos + 100), 450)
+                    opacity: currentScrollPos / 300
                     })  
             }
         }
@@ -321,10 +319,10 @@ class DonateYakera extends Component{
                                             <b style={{ color:'#9c1a1a', marginRight:'5px'}}>
                                                 ${this.state.campaign.amount} 
                                             </b>
-                                            {EN ? 'raised of' : 'levantado de'} ${campaign.goal} {EN ? 'target' : 'objectivo'}   
+                                            {EN ? 'raised' : 'levantado '}    
                                         </p> 
                                     </div>
-                                    <div className="progress-bar">
+                                    {/* <div className="progress-bar">
                                         <Progress theme={{
                                             default: {
                                                 trailColor: 'lightred',
@@ -335,7 +333,7 @@ class DonateYakera extends Component{
                                         }}
                                         status="default"
                                         percent={parseInt(100* this.state.campaign.amount / campaign.goal)}/>
-                                    </div>
+                                    </div> */}
 
                                     <div>
                                         <button
