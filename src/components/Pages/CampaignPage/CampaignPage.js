@@ -96,19 +96,20 @@ class CampaignPage extends Component{
       })    
     }
 
-    async AirTM(val, title){
+    async AirTM(val, title, actualValue, name, email){
         this.onPayPalOn();
+        
         var code = Math.random().toString(36).substring(7);
         const requestBody = {
           "code": code,
           "description": title,
           "cancel_uri": window.location.href,
           "confirmation_uri": "https://www.yakera.net/confirm",
-          "amount": val,
+          "amount": actualValue,
           "items": [
             {
               "description": "Yakera donation for: " + title,
-              "amount": val,
+              "amount": actualValue,
               "quantity": 1
             }
           ]
@@ -131,13 +132,13 @@ class CampaignPage extends Component{
 
         await axios.post(url, JSON.stringify(requestBody), config)
         .then(res => {
-            console.log("SUCCESS");
             var id = res.data.id;
-            console.log(id)
-            window.location.href = "https://app.airtm.com/checkout/"+id;
-            //https://app.stg.airtm.io/checkout/
-            //https://app.airtm.com/checkout/
-            this.onPayPalOff();
+            //this.addAmount("AIRTM: " + id, actualValue, name, email).then( () => {
+                window.location.href = "https://app.airtm.com/checkout/"+id;
+                //https://app.stg.airtm.io/checkout/
+                //https://app.airtm.com/checkout/
+                this.onPayPalOff();
+           // })
 
         })
         .catch(err => {

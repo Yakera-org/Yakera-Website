@@ -206,10 +206,9 @@ class PaymentVisual extends Component {
     }
 
     onAirTM(){
-        //turn on loader
-        //generate payment id
-        //direct to airtm payment
-        this.props.AirTM(this.state.amount.value, this.props.title);
+        const { actualValue, name, email } = this.state;
+        
+        this.props.AirTM(this.state.amount.value, this.props.title, actualValue, name, email);
     }
     
 

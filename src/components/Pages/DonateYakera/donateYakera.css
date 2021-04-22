@@ -19,7 +19,7 @@
 
 .campaign-des {
         margin-top: 10px;
-        font-size: 20px;
+        font-size: 22px;
         color: black;
         width: 100%;
         text-align: justify;
@@ -146,13 +146,13 @@
       font-size: 18px;
     }
     .card-right{
-        margin-top: -150px;
-        margin-bottom: -90px;
+        margin-top: 10px;
+        margin-bottom: 0px;
         margin-left: 7%;
     }
     .ytframe {
-        margin-top: -580px;
-        margin-bottom: 520px;
+        margin-top: 40px;
+        margin-bottom: -70px;
         width: 75%;
         height: 25vh;
         background-color: #9c1a1a;
