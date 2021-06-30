@@ -1,0 +1,23 @@
+#footer-hr{
+    margin-top: 20px;
+}
+#footer-ul{
+    float:right;
+    list-style:none;
+    padding-right: 12%;
+    font-size:30px;
+}
+
+@media only screen and (max-width: 600px) {
+    #footer-item{
+        margin-left: 80px;
+        margin-right: 0px;
+    }     
+    #footer-ul{
+        padding-right: 0%;
+    }
+
+    #footer-hr{
+        margin-top: 200px;
+    }
+}
