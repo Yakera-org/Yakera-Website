@@ -1,8 +1,15 @@
 @font-face {
-  font-family: 'Kollektif';
-  src: local('Kollektif'), url(./fonts/._Kollektif.ttf) format('truetype');
+  font-family: 'Ramona-Bold';
+  src: local('Ramona'), url(./fonts/Ramona-Bold.ttf) format('truetype');
 }
-
+@font-face {
+  font-family: 'Ramona-Light';
+  src: local('Ramona'), url(./fonts/Ramona-Light.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Intro-Regular-Alt';
+  src: local('Intro'), url(./fonts/Intro-Regular-Alt.otf) format('opentype');
+}
 .nav-bar {
 font-size: 20px;
 }
