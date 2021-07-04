@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import  { Card, CardContent, Button, Typography} from '@material-ui/core';
-import './login.css';
+import './oldLogin.css';
 import { validateFields } from '../Register/Validation';
 import classnames from 'classnames';
 
@@ -26,7 +26,7 @@ const initialState = {
       allFieldsValidated: false
 }
 
-class login extends Component{
+class oldLogin extends Component{
     constructor(props) {
         super(props);
         this.state = initialState;
@@ -187,4 +187,4 @@ class login extends Component{
     }
 }
 
-export default login;
+export default oldLogin;

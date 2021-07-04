@@ -1,6 +1,6 @@
 import React from 'react';
 import {Redirect, BrowserRouter, Switch, Route } from "react-router-dom";
-// import login from './Pages/Login/login';
+import login from './Pages/Login/LoginPage';
 // import register from './Pages/Register/register'; 
 import home from './Pages/Home/home';
 import Campaign from './Pages/CampaignPage/CampaignPage';
@@ -22,8 +22,8 @@ const Main = () => (
     <BrowserRouter>
         <div style={{marginTop: '100px'}}>
         <Switch>
-            {/* <Route exact path="/login" component={login}/>
-            <Route exact path="/register" component={register}/>
+            <Route exact path="/login" component={login}/>
+            {/* <Route exact path="/register" component={register}/>
             <Route exact path="/profile" component={profile}/> */}
             <Route exact path="/donate" component={donateYakera}/>
             <Route exact path="/campaigns" component={donate}/>
