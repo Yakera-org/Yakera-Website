@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBars } from '@fortawesome/free-solid-svg-icons'
 import ReactCountryFlag from "react-country-flag";
 import Switch from "react-switch";
-import landingPic from '../pics/landingPic.jpg'
+import logo from "../svg/logo.svg";
 
 import '../App.css';
 
@@ -65,18 +65,18 @@ class NavBar extends Component {
         if(window.location.pathname === '/'){
             if(window.matchMedia('(max-width: 600px)').matches){
                 this.setState({
-                    bgColor: 'transparent',
-                    navSize: '10%',
+                    bgColor: 'white',
+                    navSize: '15%',
                     displayImg: '',
                     brandSize: 50,
-                    fontSize: 20
+                    fontSize: 30
                 })
             }else{
                 this.setState({
-                    bgColor: 'transparent',
-                    navSize: '50%',
+                    bgColor: 'white',
+                    navSize: '15%',
                     displayImg: '',
-                    brandSize: 90,
+                    brandSize: 50,
                     fontSize: 30
                 })
             }
@@ -134,9 +134,9 @@ class NavBar extends Component {
             }
         }
         if(window.location.pathname === '/'){
-            if(this.state.bgColor === 'transparent'){
+            if(this.state.bgColor === 'blue'){
                 this.setState({
-                    bgColor: 'beige',
+                    bgColor: 'blue',
                     navSize: '55%',
                     displayImg: 'none',
                     brandSize: 40,
@@ -144,7 +144,7 @@ class NavBar extends Component {
                 })
             }else{
                 this.setState({
-                    bgColor: 'transparent',
+                    bgColor: 'blue',
                     navSize: '10%',
                     displayImg: '',
                     brandSize: 50,
@@ -201,7 +201,9 @@ class NavBar extends Component {
                         onToggle={this.handleToggle}
                     style={{height:this.state.navSize, position:'absolute'}}>
 
-                    <Navbar.Brand style={{fontSize:this.state.brandSize+'px'}} href="/">Yakera</Navbar.Brand>
+                    <Navbar.Brand >
+                        <a href="/"><div><object style={{pointerEvents:"none", maxWidth:"200px"}} data={logo} width="300" height="300"> </object></div></a>
+                    </Navbar.Brand>
                     <Navbar.Toggle>
                         <FontAwesomeIcon
                             icon={faBars} color="white" size="2x" 
@@ -263,20 +265,7 @@ class NavBar extends Component {
 
                     </Navbar.Collapse>
                     
-                    </Navbar>
-                    <div style={{textAlign:'center', maxHeight:'50%', minHeight:'50%', overflow: 'hidden'}}>
-                        <img  
-                        style={{
-                            minHeight:'100%',
-                            minWidht:'100%',
-                            display: this.state.displayImg,
-                            opacity: this.state.opacity
-                        }}
-                            width="100%"
-                            src={landingPic}
-                            alt="home-banner"
-                            />
-                    </div>                
+                    </Navbar>               
                 </div>
             )
         }
