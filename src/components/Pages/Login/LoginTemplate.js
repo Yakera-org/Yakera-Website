@@ -2,7 +2,7 @@ import React, { Component, Fragment } from 'react';
 import { Button, Form, FormGroup, Label, Input} from 'reactstrap'
 import { Grid, Link, Card, CardContent} from '@material-ui/core';
 import './LoginPage.css';
-import background from '../../../pics/pattern-yakera.png'
+import background from '../../../pics/pattern-yakera-orange.png'
 // import Author from '../../author';
 
 
@@ -27,18 +27,18 @@ class LoginTemplate extends Component {
                 <Input type='password' placeholder='Password'></Input>
               </FormGroup>
 
-              <Button className='btn-lg btn-dark btn-block'>
+              <Button className='btn-lg btn-dark btn-block' style={{backgroundColor:"#0E325E"}}>
                 Login
               </Button>
 
               <Grid container style={{marginTop:'4%'}}>
                 <Grid item xs>
-                  <Link href="/sign-up">
+                  <Link href="/forgotPassword">
                     Forgot password?
                   </Link>
                 </Grid>
                 <Grid item>
-                  <Link href="/forgot-password">
+                  <Link href="/register">
                     Don't have an account? Sign Up
                   </Link>
                 </Grid>
