@@ -63,23 +63,13 @@ class NavBar extends Component {
         }
 
         if(window.location.pathname === '/'){
-            if(window.matchMedia('(max-width: 600px)').matches){
                 this.setState({
                     bgColor: 'white',
                     navSize: '15%',
                     displayImg: '',
                     brandSize: 50,
-                    fontSize: 30
+                    fontSize: 20
                 })
-            }else{
-                this.setState({
-                    bgColor: 'white',
-                    navSize: '15%',
-                    displayImg: '',
-                    brandSize: 50,
-                    fontSize: 30
-                })
-            }
         }else if(window.location.pathname === '/donate' || window.location.pathname === '/info'){
            if(window.matchMedia('(max-width: 600px)').matches){
                this.setState({
@@ -95,7 +85,7 @@ class NavBar extends Component {
                     navSize: '15%',
                     displayImg: 'none',
                     brandSize: 50,
-                    fontSize: 30
+                    fontSize: 20
             })
            }
 
@@ -106,7 +96,7 @@ class NavBar extends Component {
                 navSize: '15%',
                 displayImg: 'none',
                 brandSize: 40,
-                fontSize: 30
+                fontSize: 20
             })
         };         
         }
@@ -129,26 +119,7 @@ class NavBar extends Component {
                     navSize: '10%',
                     displayImg: 'none',
                     brandSize: 40,
-                    fontSize: 30
-                })
-            }
-        }
-        if(window.location.pathname === '/'){
-            if(this.state.bgColor === 'blue'){
-                this.setState({
-                    bgColor: 'blue',
-                    navSize: '55%',
-                    displayImg: 'none',
-                    brandSize: 40,
                     fontSize: 20
-                })
-            }else{
-                this.setState({
-                    bgColor: 'blue',
-                    navSize: '10%',
-                    displayImg: '',
-                    brandSize: 50,
-                    fontSize: 30
                 })
             }
         }
@@ -202,20 +173,19 @@ class NavBar extends Component {
                     style={{height:this.state.navSize, position:'absolute'}}>
 
                     <Navbar.Brand >
-                        <a href="/"><div><object style={{pointerEvents:"none", maxWidth:"200px"}} data={logo} width="300" height="300"> </object></div></a>
+                        <a href="/"><div><object style={{pointerEvents:"none", maxWidth:"200px", marginLeft:'20px'}} data={logo} width="300" height="300"> </object></div></a>
                     </Navbar.Brand>
                     <Navbar.Toggle>
                         <FontAwesomeIcon
-                            icon={faBars} color="white" size="2x" 
+                            icon={faBars} color="#0e325e" size="2x" 
                         />
                     </Navbar.Toggle>
                     <Navbar.Collapse id="responsive-navbar-nav">
                         <Nav className="mr-auto">
-                        <Nav.Link href="/info" style={{fontSize: this.state.fontSize + 'px'}}>Info</Nav.Link>
-                        <Nav.Link href="/donate" style={{fontSize: this.state.fontSize + 'px'}}>{EN ? 'Donate' : 'Donar'}</Nav.Link>
-                        <Nav.Link href="/campaigns" style={{fontSize: this.state.fontSize + 'px'}}>{EN ? 'Campaigns' : 'Campañas'}</Nav.Link>
-                        <Nav.Link href="/faq" style={{fontSize: this.state.fontSize + 'px'}}>FAQ</Nav.Link>
-                        <Nav.Link href="/terms" style={{fontSize: this.state.fontSize + 'px'}}>{EN ? 'Terms & Conditions' : 'Términos y Condiciones'}</Nav.Link>
+                        <Nav.Link id='nav-tab' href="/info" style={{fontSize: this.state.fontSize + 'px', marginLeft:'100px'}}>ABOUT US</Nav.Link>
+                        <Nav.Link href="/donate" id='nav-tab' style={{fontSize: this.state.fontSize + 'px'}}>{EN ? 'DONATE' : 'DONAR'}</Nav.Link>
+                        <Nav.Link href="/campaigns" id='nav-tab' style={{fontSize: this.state.fontSize + 'px'}}>{EN ? 'CAMPAIGNS' : 'Campañas'}</Nav.Link>
+                        <Nav.Link href="/faq" id='nav-tab' style={{fontSize: this.state.fontSize + 'px'}}>FAQ</Nav.Link>
                         {/* <Nav.Link href="/profile" style={{fontSize:'30px'}}>Profile</Nav.Link>
                         <Nav.Link href="/login" style={{fontSize:'30px'}}>Log-in</Nav.Link> */}
                         <div style={{marginLeft:'5px'}}>

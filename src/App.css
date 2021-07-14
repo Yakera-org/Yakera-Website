@@ -10,6 +10,23 @@
   font-family: 'Intro-Regular-Alt';
   src: local('Intro'), url(./fonts/Intro-Regular-Alt.otf) format('opentype');
 }
+@font-face {
+  font-family: 'Intro-Thin';
+  src: local('Intro'), url(./fonts/Intro-Thin-Alt-Regular.otf) format('opentype');
+}
+@font-face {
+  font-family: 'Intro-Light';
+  src: local('Intro'), url(./fonts/Intro-Light-Alt-Regular.otf) format('opentype');
+}
 .nav-bar {
 font-size: 20px;
+}
+
+#nav-tab {
+  color:#0e325e;
+  font-family:Intro-Regular-Alt;
+  margin-left: 10px;
+}
+#nav-tab:hover {
+  color: #ea8737;
 }
