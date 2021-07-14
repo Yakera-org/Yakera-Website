@@ -29,14 +29,14 @@ font-size: 20px;
 #nav-brand {
   pointer-events:none;
   max-width:200px;
-  margin-left:20px;
-  height:300px
+  margin-left:10px;
+  height:100px
 }
 #nav-tab {
   color:#0e325e;
   font-family:Intro-Regular-Alt;
   margin-left: 30px;
-  margin-top: 5px;
+  margin-top: 0px;
 }
 #nav-tab:hover {
   color: #ea8737;

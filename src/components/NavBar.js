@@ -79,11 +79,11 @@ class NavBar extends Component {
         }else{
             return( 
                 <div>
-                    <Navbar id='navbar' inverse="true" collapseOnSelect fixed="top" className='nav-bar' bg='white' variant="dark" expand="sm"
+                    <Navbar id='navbar' inverse="true" collapseOnSelect fixed="top" className='nav-bar' bg='white' variant="dark" expand="lg"
                         onToggle={this.handleToggle}>
 
                     <Navbar.Brand >
-                        <a href="/"><div><object id='nav-brand' data={logo} width="300"> </object></div></a>
+                        <a href="/"><div><object id='nav-brand' data={logo} > </object></div></a>
                     </Navbar.Brand>
                     <Navbar.Toggle>
                         <FontAwesomeIcon
