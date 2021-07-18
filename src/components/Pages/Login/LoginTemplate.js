@@ -5,52 +5,83 @@ import './LoginPage.css';
 import background from '../../../pics/pattern-yakera.png'
 // import Author from '../../author';
 
+const LoginTemplate = ({
+  handleChange,
+  data,
+  validateForm,
+  handleSubmit,
+}) => {
+  return (
+    <div style={{ backgroundImage: `url(${background})`}}>
+      <Card className='login-card'>
+        <CardContent>
 
-class LoginTemplate extends Component {
-  render() {
-    return (
-      <div style={{ backgroundImage: `url(${background})`}}>
-        <Card className='login-card'>
-          <CardContent>
+          <Form className='login-form' onSubmit={handleSubmit}>
+            <h1>
+              <span className='font-weight-bold'>Welcome to Yakera</span>
+            </h1>
+            <h2>Log in</h2>
+            <FormGroup>
+              <Label>Email</Label>
+              <Input
+                type='email'
+                placeholder='Email address'
+                name="email"
+                value={data.email}
+                onChange={handleChange}
+                isInvalid={!!data.errors.email}
+                required
+              />
+            </FormGroup>
 
-            <Form className='login-form'>
-              <h1>
-                <span className='font-weight-bold'>Welcome to Yakera</span>
-              </h1>
-              <h2>Log in</h2>
-              <FormGroup>
-                <Label>Email</Label>
-                <Input type='email' placeholder='Email'/>
-              </FormGroup>
-              <FormGroup>
-                <Label>Password</Label>
-                <Input type='password' placeholder='Password'></Input>
-              </FormGroup>
+            {data.errors.email && (
+              <span className="form-error">{data.errors.email}</span>
+            )}
 
-              <Button className='btn-lg btn-dark btn-block'>
-                Login
-              </Button>
+            <FormGroup>
+              <Label>Password</Label>
+              <Input
+                type='password'
+                placeholder='Password'
+                name="password"
+                value={data.password}
+                onChange={handleChange}
+                isInvalid={!!data.errors.password}
+                required
+              />
+            </FormGroup>
 
-              <Grid container style={{marginTop:'4%'}}>
-                <Grid item xs>
-                  <Link href="/sign-up">
-                    Forgot password?
-                  </Link>
-                </Grid>
-                <Grid item>
-                  <Link href="/forgot-password">
-                    Don't have an account? Sign Up
-                  </Link>
-                </Grid>
+            {data.errors.password && (
+              <span className="form-error">{data.errors.password}</span>
+            )}
+
+            <Button
+              className='btn-lg btn-dark btn-block'
+              type="submit"
+              disabled={!validateForm}
+            >
+              Login
+            </Button>
+
+            <Grid container style={{marginTop:'4%'}}>
+              <Grid item xs>
+                <Link href="/sign-up">
+                  Forgot password?
+                </Link>
               </Grid>
+              <Grid item>
+                <Link href="/forgot-password">
+                  Don't have an account? Sign Up
+                </Link>
+              </Grid>
+            </Grid>
 
-            </Form>
+          </Form>
 
-          </CardContent>
-        </Card>
-      </div>
-    )
-  }
-}
+        </CardContent>
+      </Card>
+    </div>
+  )
+};
 
 export default LoginTemplate;
