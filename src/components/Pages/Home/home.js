@@ -1,13 +1,17 @@
-import React, { Component } from 'react';
+import React from 'react'
+import {pics} from './picsHome.js';
+import './home.css';
 
-class Home extends Component {
-    render() {
-        return (
-            <div>
-                Hello Home
+
+function Home() {
+    return (
+        <div>
+            <div className='home-page'>
+                <img src={pics.phones} alt='phones'/>
             </div>
-        );
-    }
+
+        </div>
+    )
 }
 
-export default Home;
+export default Home

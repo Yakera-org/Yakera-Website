@@ -2,7 +2,7 @@ import React from 'react';
 import {Redirect, BrowserRouter, Switch, Route } from "react-router-dom";
 // import login from './Pages/Login/login';
 // import register from './Pages/Register/register'; 
-import home from './Pages/Home/home';
+import Home from './Pages/Home/home';
 import Campaign from './Pages/CampaignPage/CampaignPage';
 // import profile from './Pages/Profile/profile';
 import Terms from './Pages/Terms/terms';
@@ -33,7 +33,7 @@ const Main = () => (
             <Route exact path="/terms" component={Terms}/>
             <Route exact path="/faq" component={FAQ}/>
             <Route exact path="/confirm" component={Confirmation}/>
-            <Route exact path="/" component={home}/>
+            <Route exact path="/" component={Home}/>
             <Route path="/404" component={NotFoundPage} />
             <Redirect to="/404" />
 
