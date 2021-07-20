@@ -18,7 +18,8 @@ class NavBar extends Component {
         this.state = {
             checked: true,
             language: 'en',
-            loaded: false
+            loaded: false,
+            navHeight: 150,
         }
     }
 
@@ -47,8 +48,18 @@ class NavBar extends Component {
         }) 
     }
 
+    // toggles for mobile, increases size so the dropdown adapts
     handleToggle(){
-        
+        var height = 400
+        if(this.state.navHeight === 400){ //readjust if closed
+            height = 150
+        }
+
+        //set state
+        this.setState({
+            navHeight: height
+        })
+
     }
 
     onChange(){
@@ -79,13 +90,13 @@ class NavBar extends Component {
         }else{
             return( 
                 <div>
-                    <Navbar id='navbar' inverse="true" collapseOnSelect fixed="top" className='nav-bar' bg='white' variant="dark" expand="lg"
+                    <Navbar id='navbar' style={{height: this.state.navHeight + 'px'}} inverse="true" collapseOnSelect fixed="top" className='nav-bar' bg='white' variant="dark" expand="lg"
                         onToggle={this.handleToggle}>
 
                     <Navbar.Brand >
                         <a href="/"><div><object id='nav-brand' data={logo} > </object></div></a>
                     </Navbar.Brand>
-                    <Navbar.Toggle>
+                    <Navbar.Toggle aria-controls="responsive-navbar-nav" style={{marginBottom:'10px'}}>
                         <FontAwesomeIcon
                             icon={faBars} color="#0e325e" size="2x" 
                         />
@@ -98,7 +109,7 @@ class NavBar extends Component {
                         <Nav.Link href="/faq" id='nav-tab'>FAQ</Nav.Link>
                         {/* <Nav.Link href="/profile" style={{fontSize:'30px'}}>Profile</Nav.Link>
                         <Nav.Link href="/login" style={{fontSize:'30px'}}>Log-in</Nav.Link> */}
-                        <div style={{marginLeft:'50px', marginTop:'-5px'}}>
+                        <div style={{marginLeft:'25px', marginTop:'-5px'}}>
                             <Switch
                             onChange={this.onChange}
                             checked={this.state.checked}
