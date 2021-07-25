@@ -13,10 +13,10 @@ function Home() {
             <div className='home-page'>
 
                  <Parallax   x={[-240, 0 ]}>
-                    <img src={pics.Y} alt='Y' style={{float:'left',marginTop:'10%', marginLeft:'30%', width:'10%'}}/>
+                    <img src={pics.Y} alt='Y' id='Y'/>
                 </Parallax>
                 <div style={{textAlign:'center'}}>
-                    <img src={pics.akera} alt='akea' style={{marginTop:'10%', width:'30%', marginLeft:'-30%'}}/>
+                    <img src={pics.akera} alt='akera' id='akera'/>
                 </div>
 
                 <div className="container">
@@ -35,7 +35,7 @@ function Home() {
                     style={{
                         height: '50px',
                         minHeight:'50px',
-                        marginTop:'150px',
+                        marginTop:'100px',
                         width:'100%'
                     }}
                 >
