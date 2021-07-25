@@ -1,3 +1,19 @@
 .home-page img{
  width: 50%;
 }
+.home-page {
+    height: 2000px;
+}
+.home-right {
+    text-align: center;
+    padding-top: 10%;
+}
+
+.home-right p{
+    font-family: Intro-Light;
+    font-size: 50px;
+    width: 55%;
+    margin-left: 25%;
+    text-align: left;
+
+}
