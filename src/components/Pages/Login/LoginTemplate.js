@@ -10,7 +10,9 @@ const LoginTemplate = ({
   data,
   validateForm,
   handleSubmit,
-}) => {  return (
+}) => {
+  console.log(data);
+  return (
     <div style={{ backgroundImage: `url(${background})`}}>
       <Card className='login-card'>
         <CardContent>
@@ -28,7 +30,7 @@ const LoginTemplate = ({
                 name="email"
                 value={data.email}
                 onChange={handleChange}
-                isInvalid={!!data.errors.email}
+                isInvalid={data.errors.email === null}
                 required
               />
             </FormGroup>
@@ -45,19 +47,19 @@ const LoginTemplate = ({
                 name="password"
                 value={data.password}
                 onChange={handleChange}
-                isInvalid={!!data.errors.password}
+                isInvalid={data.errors.password === null}
                 required
               />
             </FormGroup>
 
-            {data.errors.password && (
+            {data.errors.password !== null && (
               <span className="form-error">{data.errors.password}</span>
             )}
 
             <Button
               className='btn-lg btn-dark btn-block'
               type="submit"
-              disabled={data.errors.email || data.errors.password}
+              disabled={data.errors.email !== null || data.errors.password !== null}
             >
               Login
             </Button>

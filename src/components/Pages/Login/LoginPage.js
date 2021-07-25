@@ -20,7 +20,6 @@ const LoginPage = () => {
       ...data,
       [event.target.name]: event.target.value
     });
-    // TODO: check if you can do the validation here instead
     validateForm(event);
   };
 
@@ -28,40 +27,40 @@ const LoginPage = () => {
     let error;
     const name = event.target.name;
 
-    if (name == "email") {
+    if (name === "email") {
       error = validateFields.validateEmail(data.email);
-      if (error == true) {
+      if (error !== null) {
+        console.log(data);
         setData({
           ...data,
-          [error.email]: error,
+          "errors.email": error
         });
-      } else {
+      } 
+      else {
         setData({
           ...data,
-          [error.email]: false,
+          "error.email": null,
         });
       }
     } else {
       error = validateFields.validatePassword(data.password);
-      if (error == true) {
+      if (error !== null) {
         setData({
           ...data,
-          [error.password]: error,
+          "error.password": error,
         });
       } else {
         setData({
           ...data,
-          [error.password]: false,
+          "error.password": null,
         });
       }
     }
 
-    console.log(error);
-
-    if (error == true) {
+    if (error !== null) {
       return true
     }
-    return false  
+    return false
   }
 
   const handleSubmit = event => {
