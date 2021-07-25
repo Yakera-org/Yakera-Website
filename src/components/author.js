@@ -1,10 +1,8 @@
 
 
 import React, { Component } from 'react';
-import {en_pics} from './Pages/Home/picsHome.js';
+import {pics} from './Pages/Home/picsHome.js';
 import './author.css';
-
-var pics = en_pics;
 
 class Author extends Component{
     
