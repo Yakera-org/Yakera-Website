@@ -1,15 +1,12 @@
 import React from 'react';
 import MyEditor from '../../generics/MyEditor';
 import { Form, FormGroup, FormControl, FormLabel, Button, FormText, FormCheck } from 'react-bootstrap';
+import './CreateCampaignPage.css'
 
 const CreateCampaignPage = () => {
     return (
-        <div
-            style={{
-                margin: '150px'
-            }}
-        >
-            <div className='page-header'>
+        <div className='create-page'        >
+            <div className='create-header'>
                 <h1>
                     Create your campaign
                 </h1>
@@ -32,43 +29,8 @@ const CreateCampaignPage = () => {
             </div>
             <div 
                 className='form' 
-                style={{
-                    margin: '6rem'
-                }}
             >
                 <Form>
-                    {/* <FormGroup>
-                        <FormLabel>Full Name</FormLabel>
-                        <FormControl type='full-name' as='input' />
-                    </FormGroup>
-                    <FormGroup>
-                        <FormLabel>ID</FormLabel>
-                        <FormControl type='id' as='input' />
-                    </FormGroup>
-                    <FormGroup>
-                        <FormLabel>Email</FormLabel>
-                        <FormControl type='email' as='input' />
-                    </FormGroup>
-                    <FormGroup>
-                        <FormLabel>Password with numbers, text and a special character. Example: Elefante1481#</FormLabel>
-                        <FormControl type='password' as='input' />
-                    </FormGroup>
-                    <FormGroup>
-                        <FormLabel>Airtm user</FormLabel>
-                        <FormControl type='airtm' as='input' />
-                    </FormGroup>
-                    <FormGroup>
-                        <FormLabel>Address</FormLabel>
-                        <FormControl type='address' as='input' />
-                    </FormGroup>
-                    <FormGroup>
-                        <FormLabel>Phone Number</FormLabel>
-                        <FormControl type='phone-number' as='input' />
-                    </FormGroup>
-                    <FormGroup>
-                        <FormLabel>Facebook User</FormLabel>
-                        <FormControl type='fb-user' as='input' />
-                    </FormGroup> */}
                     <FormGroup>
                         <FormLabel>Campaign Category</FormLabel>
                         {['Healthcare', 'Education', 'Small Business', 'Nutrition'].map((val, index) => (
@@ -80,24 +42,7 @@ const CreateCampaignPage = () => {
                                 group='category'
                             />
                         ))}
-                        {/* <FormCheck 
-                            type='radio'
-                            label='Healthcare'
-                            custom
-                        />
-                        <FormCheck 
-                            type='radio'
-                            label='Education'
-                            custom
-                        />
-                        <FormCheck 
-                            type='radio'
-                            label='Small Business'
-                        />
-                        <FormCheck 
-                            type='radio'
-                            label='Nutrition'
-                        /> */}
+                        
                     </FormGroup>
                     <FormGroup>
                         <FormLabel>Name of your Campaign</FormLabel>

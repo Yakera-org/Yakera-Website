@@ -1,0 +1,16 @@
+.create-page {
+    margin: 150px;
+}
+.form {
+    padding: 6em;
+}
+
+@media screen and (max-width: 600px) {
+
+    .create-page {
+        margin: 10px;
+    }
+    .form {
+        padding: 1em;
+    }
+}
