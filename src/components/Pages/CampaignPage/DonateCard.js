@@ -18,14 +18,21 @@ class DonateCard extends Component {
 
         return (
             <div>
-                <Card className="donate-page-card">
-                    <h1>{EN ? 'Donate now' : 'Done ahora'}</h1>
+                <Card
+                    className="donate-page-card"
+                    style={{
+                        borderRadius: '20px',
+                        backgroundColor: '#f0f0f0',
+                    }}
+                >
+                    {/* <h1>{EN ? 'Donate now' : 'Done ahora'}</h1> */}
                     <div >
                         <p>
                             <b>
                                 ${amount}
                             </b>
-                            &nbsp;{EN ? 'raised of ' : 'levantado de '} ${target} {EN ? ' target' : 'objetivo'}   
+                            &nbsp;
+                            {EN ? 'raised of ' : 'levantado de '} ${target} {EN ? ' target' : 'objetivo'}   
                         </p> 
                     </div>
                     <div className="donate-page-card-progress">
@@ -44,15 +51,22 @@ class DonateCard extends Component {
                         <button
                             type="submit"
                             className="btn btn-secondary btn-block"    
-                            onClick={this.props.onDonate}                          
-                            >
+                            onClick={this.props.onDonate}
+                            style={{
+                                borderRadius: '20px',
+                                backgroundColor: '#2f476c'
+                            }}                       
+                        >
                             {EN ? 'Donate now' : 'Done ahora'}
                         </button>
                         <button
                             type="submit"
                             className="btn btn-secondary btn-block"
                             onClick={this.props.onShare}
-                            >
+                            style={{
+                                borderRadius: '20px',
+                            }}  
+                        >
                             {EN ? 'Share' : 'Compartir'}
                         </button>
                     </div> 
