@@ -37,7 +37,7 @@ const CreateCampaignPage = () => {
                 }}
             >
                 <Form>
-                    <FormGroup>
+                    {/* <FormGroup>
                         <FormLabel>Full Name</FormLabel>
                         <FormControl type='full-name' as='input' />
                     </FormGroup>
@@ -68,7 +68,7 @@ const CreateCampaignPage = () => {
                     <FormGroup>
                         <FormLabel>Facebook User</FormLabel>
                         <FormControl type='fb-user' as='input' />
-                    </FormGroup>
+                    </FormGroup> */}
                     <FormGroup>
                         <FormLabel>Campaign Category</FormLabel>
                         {['Healthcare', 'Education', 'Small Business', 'Nutrition'].map((val, index) => (
@@ -115,10 +115,32 @@ const CreateCampaignPage = () => {
                         <FormLabel>Itemized budget for each item you will purchase with the donations</FormLabel>
                         <FormControl type='itemized-budget' as='input' />
                     </FormGroup>
-                    
+                    <FormGroup>
+                        <FormLabel>Pictures that support your ask (i.e medical orders or notes, tuition receipt, pictures of your small business, budget, etc.)</FormLabel>
+                        <FormControl type='file' as='input' />
+                    </FormGroup>
+                    <FormGroup>
+                        <FormLabel>Main Campaign picture</FormLabel>
+                        <FormControl type='file' as='input' />
+                    </FormGroup>
+                    <FormGroup>
+                        <FormLabel>Campaign pictures</FormLabel>
+                        <FormControl type='file' as='input' />
+                    </FormGroup>
+                    <FormGroup>
+                    <FormLabel>Campaign Category</FormLabel>
+                        {['Yes', 'No'].map((val, index) => (
+                            <FormCheck
+                                key={index}
+                                type='radio'
+                                id={`terms-cond`}
+                                label={val}
+                                group='terms-cond'
+                            />
+                        ))}
+                    </FormGroup>
                 </Form>
             </div>
-                {/* <MyEditor /> */}
         </div>
     )
 };
