@@ -9,11 +9,11 @@ const LoginPage = () => {
     password: "",
     isSubmitting: false,
     errors: {
-      email: "",
-      password: ""
+      email: null,
+      password: null,
     },
   };
-  const [data, setData] = React.useState(initialState);
+  const [data, setData] = useState(initialState);
 
   const handleChange = event => {
     setData({
@@ -21,20 +21,47 @@ const LoginPage = () => {
       [event.target.name]: event.target.value
     });
     // TODO: check if you can do the validation here instead
+    validateForm(event);
   };
 
-  const validateForm = () => {
-    const emailError = validateFields.validateEmail(data.email);
-    const passwordError = validateFields.validatePassword(data.password);
+  const validateForm = event => {
+    let error;
+    const name = event.target.name;
 
-    if (emailError == true) {
-      data.errors.email = emailError;
+    if (name == "email") {
+      error = validateFields.validateEmail(data.email);
+      if (error == true) {
+        setData({
+          ...data,
+          [error.email]: error,
+        });
+      } else {
+        setData({
+          ...data,
+          [error.email]: false,
+        });
+      }
+    } else {
+      error = validateFields.validatePassword(data.password);
+      if (error == true) {
+        setData({
+          ...data,
+          [error.password]: error,
+        });
+      } else {
+        setData({
+          ...data,
+          [error.password]: false,
+        });
+      }
     }
 
-    if (passwordError == true) {
-      data.errors.password = passwordError;
+    console.log(error);
+
+    if (error == true) {
+      return true
     }
-    
+    return false  
   }
 
   const handleSubmit = event => {

@@ -10,13 +10,12 @@ const LoginTemplate = ({
   data,
   validateForm,
   handleSubmit,
-}) => {
-  return (
+}) => {  return (
     <div style={{ backgroundImage: `url(${background})`}}>
       <Card className='login-card'>
         <CardContent>
 
-          <Form className='login-form' onSubmit={handleSubmit}>
+          <Form noValidate className='login-form' onSubmit={handleSubmit}>
             <h1>
               <span className='font-weight-bold'>Welcome to Yakera</span>
             </h1>
@@ -58,7 +57,7 @@ const LoginTemplate = ({
             <Button
               className='btn-lg btn-dark btn-block'
               type="submit"
-              disabled={!validateForm}
+              disabled={data.errors.email || data.errors.password}
             >
               Login
             </Button>
