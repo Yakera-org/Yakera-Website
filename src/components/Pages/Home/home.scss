@@ -1,0 +1,162 @@
+.home-page img{
+ width: 50%;
+}
+.home-page {
+    height: 2000px;
+}
+.home-right {
+    text-align: center;
+    padding-top: 10%;
+}
+#Y {
+    float: left;
+    margin-top: 10%;
+    margin-left: 30%;
+    width: 10%;
+}
+#akera {
+    margin-top: 10%;
+    width: 30%;
+    margin-left: -30%;
+}
+.home-right p{
+    font-family: Intro-Light;
+    font-size: 50px;
+    width: 55%;
+    margin-left: 25%;
+    text-align: left;
+
+}
+
+.home-right button{
+    font-family: Intro-Light;
+    font-size: 20px;
+    width: 20%;
+    margin-left: -10%;
+    margin-top: 10px;
+    text-align: center;
+    border-radius: 10px;
+    border:none;
+    background-color: #01224d;
+    color: white;
+    font-weight: bold;
+    padding: 10px 5px;
+
+}
+.home-right button:hover{
+    background-color: #052a5cd2;
+}
+
+
+$base: 0.6rem;
+
+.container {
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ width: 100%;
+ height: 10vh;
+}
+
+.chevron {
+  position: absolute;
+  width: $base * 3.5;
+  height: $base * 0.8;
+  opacity: 0;
+  transform: scale(0.3);
+  animation: move-chevron 3s ease-out infinite;
+}
+
+.chevron:first-child {
+  animation: move-chevron 3s ease-out 1s infinite;
+}
+
+.chevron:nth-child(2) {
+  animation: move-chevron 3s ease-out 2s infinite;
+}
+
+.chevron:before,
+.chevron:after {
+ content: '';
+ position: absolute;
+ top: 0;
+ height: 100%;
+ width: 50%;
+ background: #01224d;
+}
+
+.chevron:before {
+ left: 0;
+ transform: skewY(30deg);
+}
+
+.chevron:after {
+ right: 0;
+ width: 50%;
+ transform: skewY(-30deg);
+}
+
+@keyframes move-chevron {
+ 25% {
+  opacity: 1;
+	}
+ 33.3% {
+  opacity: 1;
+  transform: translateY($base * 3.8);
+ }
+ 66.6% {
+  opacity: 1;
+  transform: translateY($base * 5.2);
+ }
+ 100% {
+  opacity: 0;
+  transform: translateY($base * 8) scale(0.5);
+ }
+}
+
+@media screen and (max-width: 600px) {
+
+    #Y{
+        float: left;
+        margin-top: 40%;
+        margin-left: 30%;
+        width: 10%;
+    }
+    #akera {
+        margin-top: 40%;
+        width: 30%;
+        margin-left: -30%;
+    }
+    .container {
+        height: 5vh;
+    }
+    .chevron {
+        width: $base * 2;
+        height: $base * 0.5;
+    }
+    .home-right p{
+        font-family: Intro-Light;
+        font-size: 30px;
+        width: 100%;
+        margin-left: 0%;
+        padding: 5%;
+        text-align: left;
+    
+    }
+    
+    .home-right button{
+        font-family: Intro-Light;
+        font-size: 20px;
+        width: 60%;
+        margin-left: 0%;
+        margin-top: 0px;
+        text-align: center;
+        border-radius: 10px;
+        border:none;
+        background-color: #01224d;
+        color: white;
+        font-weight: bold;
+        padding: 10px 5px;
+    
+    }
+}

@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBars } from '@fortawesome/free-solid-svg-icons'
 import ReactCountryFlag from "react-country-flag";
 import Switch from "react-switch";
-import landingPic from '../pics/landingPic.jpg'
+import logo from "../svg/logo.svg";
 
 import '../App.css';
 
@@ -16,15 +16,10 @@ class NavBar extends Component {
         this.handleToggle = this.handleToggle.bind(this);
         this.onChange = this.onChange.bind(this);
         this.state = {
-            bgColor : 'blue',
-            navSize : '50%',
-            opacity: 1,
-            displayImg: '',
-            brandSize: 50,
-            fontSize: 30,
             checked: true,
             language: 'en',
-            loaded: false
+            loaded: false,
+            navHeight: 150,
         }
     }
 
@@ -50,123 +45,23 @@ class NavBar extends Component {
         }
         this.setState({
             loaded: true
+        }) 
+    }
+
+    // toggles for mobile, increases size so the dropdown adapts
+    handleToggle(){
+        var height = 400
+        if(this.state.navHeight === 400){ //readjust if closed
+            height = 150
+        }
+
+        //set state
+        this.setState({
+            navHeight: height
         })
 
-        //navbar sizings
-        if (typeof window !== "undefined") {
-            window.onscroll = () => {
-            let currentScrollPos = 500 - window.pageYOffset;
-
-            this.setState({ opacity: currentScrollPos / 200 })
-            
-            }
-        }
-
-        if(window.location.pathname === '/'){
-            if(window.matchMedia('(max-width: 600px)').matches){
-                this.setState({
-                    bgColor: 'transparent',
-                    navSize: '10%',
-                    displayImg: '',
-                    brandSize: 50,
-                    fontSize: 20
-                })
-            }else{
-                this.setState({
-                    bgColor: 'transparent',
-                    navSize: '50%',
-                    displayImg: '',
-                    brandSize: 90,
-                    fontSize: 30
-                })
-            }
-        }else if(window.location.pathname === '/donate' || window.location.pathname === '/info'){
-           if(window.matchMedia('(max-width: 600px)').matches){
-               this.setState({
-                   bgColor: 'transparent',
-                   navSize: '10%',
-                   displayImg: 'none',
-                   brandSize: 40,
-                   fontSize: 20
-               })
-           }else{
-                this.setState({
-                    bgColor:'transparent',
-                    navSize: '15%',
-                    displayImg: 'none',
-                    brandSize: 50,
-                    fontSize: 30
-            })
-           }
-
-        }
-        else{
-            this.setState({
-                bgColor:'blue',
-                navSize: '15%',
-                displayImg: 'none',
-                brandSize: 40,
-                fontSize: 30
-            })
-        };         
-        }
-
-    handleToggle(){
-        let currentNavSize = this.state.navSize;
-
-        if(window.location.pathname === '/donate' || window.location.pathname === '/info'){
-            if(this.state.bgColor === 'transparent'){
-                this.setState({
-                    bgColor: 'darkred',
-                    navSize: '55%',
-                    displayImg: 'none',
-                    brandSize: 40,
-                    fontSize: 20
-                })
-            }else{
-                this.setState({
-                    bgColor: 'transparent',
-                    navSize: '10%',
-                    displayImg: 'none',
-                    brandSize: 40,
-                    fontSize: 30
-                })
-            }
-        }
-        if(window.location.pathname === '/'){
-            if(this.state.bgColor === 'transparent'){
-                this.setState({
-                    bgColor: 'beige',
-                    navSize: '55%',
-                    displayImg: 'none',
-                    brandSize: 40,
-                    fontSize: 20
-                })
-            }else{
-                this.setState({
-                    bgColor: 'transparent',
-                    navSize: '10%',
-                    displayImg: '',
-                    brandSize: 50,
-                    fontSize: 30
-                })
-            }
-        }
-        if(window.location.pathname !== '/' || window.location.pathname !== '/donate' || window.location.pathname !== '/info'){
-            this.setState({
-                fontSize: 20
-            })
-        }
-        if(currentNavSize === '15%'){
-            this.setState({
-                navSize: '55%'
-            });
-        }else if(currentNavSize === '55%'){
-            this.setState({
-                navSize: '15%'
-            });
-        } 
     }
+
     onChange(){
         this.setState({
             checked: !this.state.checked
@@ -177,8 +72,6 @@ class NavBar extends Component {
             localStorage.setItem("lang", 'en');
         }
         window.location.reload(false);
-
-        
     }
 
         
@@ -197,31 +90,32 @@ class NavBar extends Component {
         }else{
             return( 
                 <div>
-                    <Navbar  inverse="true" collapseOnSelect fixed="top" className='nav-bar' bg={this.state.bgColor} variant="dark" expand="sm"
-                        onToggle={this.handleToggle}
-                    style={{height:this.state.navSize, position:'absolute'}}>
+                    <Navbar id='navbar' style={{height: this.state.navHeight + 'px'}} inverse="true" collapseOnSelect fixed="top" className='nav-bar' bg='white' variant="dark" expand="lg"
+                        onToggle={this.handleToggle}>
 
-                    <Navbar.Brand style={{fontSize:this.state.brandSize+'px'}} href="/">Yakera</Navbar.Brand>
-                    <Navbar.Toggle>
+                    <Navbar.Brand >
+                        <a href="/"><div><object id='nav-brand' data={logo} > </object></div></a>
+                    </Navbar.Brand>
+                    <Navbar.Toggle aria-controls="responsive-navbar-nav" style={{marginBottom:'10px'}}>
                         <FontAwesomeIcon
-                            icon={faBars} color="white" size="2x" 
+                            icon={faBars} color="#0e325e" size="2x" 
                         />
                     </Navbar.Toggle>
                     <Navbar.Collapse id="responsive-navbar-nav">
                         <Nav className="mr-auto">
-                        <Nav.Link href="/info" style={{fontSize: this.state.fontSize + 'px'}}>Info</Nav.Link>
-                        <Nav.Link href="/donate" style={{fontSize: this.state.fontSize + 'px'}}>{EN ? 'Donate' : 'Donar'}</Nav.Link>
-                        <Nav.Link href="/campaigns" style={{fontSize: this.state.fontSize + 'px'}}>{EN ? 'Campaigns' : 'Campañas'}</Nav.Link>
-                        <Nav.Link href="/faq" style={{fontSize: this.state.fontSize + 'px'}}>FAQ</Nav.Link>
+                        <Nav.Link id='nav-tab' href="/info" > ABOUT US</Nav.Link>
+                        <Nav.Link href="/donate" id='nav-tab' > {EN ? 'SUPPORT US' : 'DONAR'}</Nav.Link>
+                        <Nav.Link href="/campaigns" id='nav-tab'> {EN ? 'CAMPAIGNS' : 'Campañas'}</Nav.Link>
+                        <Nav.Link href="/faq" id='nav-tab'>FAQ</Nav.Link>
                         {/* <Nav.Link href="/profile" style={{fontSize:'30px'}}>Profile</Nav.Link>
                         <Nav.Link href="/login" style={{fontSize:'30px'}}>Log-in</Nav.Link> */}
-                        <div style={{marginLeft:'5px'}}>
+                        <div style={{marginLeft:'25px', marginTop:'-5px'}}>
                             <Switch
                             onChange={this.onChange}
                             checked={this.state.checked}
-                            handleDiameter={25}
-                            offColor="#bebdbe"
-                            onColor="#bebdbe"
+                            handleDiameter={20}
+                            offColor="#eeeeee"
+                            onColor="#eeeeee"
                             offHandleColor="#01224d"
                             onHandleColor="#01224d"
                             height={50}
@@ -262,20 +156,7 @@ class NavBar extends Component {
 
                     </Navbar.Collapse>
                     
-                    </Navbar>
-                    <div style={{textAlign:'center', maxHeight:'50%', minHeight:'50%', overflow: 'hidden'}}>
-                        <img  
-                        style={{
-                            minHeight:'100%',
-                            minWidht:'100%',
-                            display: this.state.displayImg,
-                            opacity: this.state.opacity
-                        }}
-                            width="100%"
-                            src={landingPic}
-                            alt="home-banner"
-                            />
-                    </div>                
+                    </Navbar>               
                 </div>
             )
         }
