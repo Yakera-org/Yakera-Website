@@ -2,6 +2,10 @@
     margin-top: 50px;
 }
 
+.register-page a{
+    color: #ea8737;
+}
+
 #step-btn {
     text-align: center;
 }

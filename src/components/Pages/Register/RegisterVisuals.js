@@ -72,6 +72,10 @@ function RegisterVisuals(props) {
                                     </div>
                                 </Grid>
                             </Grid> 
+
+                            <br />
+
+                            <p>Already have an account? Log in <a href='/login'>here</a></p>
                         </CardContent>
                     </Card>
                 </div>
