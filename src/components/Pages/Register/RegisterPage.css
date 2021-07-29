@@ -1,0 +1,24 @@
+#step-btn {
+    text-align: center;
+}
+
+#step-btn button {
+    font-family: Intro-Light;
+    font-size: 20px;
+    width: 50%;
+    text-align: center;
+    border-radius: 10px;
+    border:none;
+    background-color: #01224d;
+    color: white;
+    font-weight: bold;
+    padding: 10px 5px;
+}
+
+#step-btn button:hover{
+    background-color: #052a5cd2;
+}
+/* 
+.register-details{
+    text-align: left;
+} */

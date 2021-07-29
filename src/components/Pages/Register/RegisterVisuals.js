@@ -1,6 +1,5 @@
 import React, {useState} from "react";
-import { Button, Form, FormGroup, Label, Input} from 'reactstrap'
-import { Grid, Link, Card, CardContent} from '@material-ui/core';
+import {Card, CardContent} from '@material-ui/core';
 import { MultiStepForm, Step } from 'react-multi-form';
 import RegisterDetails from "./Register_details";
 import RegisterAuth from "./Register_auth";
@@ -12,6 +11,13 @@ import './RegisterPage.css'
 function RegisterVisuals(props) {
 
     const [step, nextStep] = useState(1);
+
+    function onContinue() {
+        if(props.validate()){
+            nextStep(step + 1)
+        }
+    }
+
     return (
         <div className='register-page'>
             <div id='background' style={{ backgroundImage: `url(${background})`}}>
@@ -34,10 +40,12 @@ function RegisterVisuals(props) {
                                 </Step>
 
                             </MultiStepForm>
-
-                            <button onClick={() => nextStep(step + 1)}>
-                                 Continue 
-                            </button>
+                            <br /> 
+                            <div id='step-btn'>
+                                <button  onClick={onContinue}>
+                                    Continue 
+                                </button>
+                            </div>
 
                         </CardContent>
                     </Card>

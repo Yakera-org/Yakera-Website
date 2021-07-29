@@ -22,10 +22,13 @@ class ValidateFields {
     return false;
   }
   validateName(name){
-      if(validator.isEmpty(name)){
-          return'This field cannot be empty';
-      }
-      return false;
+    if (validator.isEmpty(name)) {
+      return 'Name is required';
+    }
+    if(validator.isEmpty(name)){
+        return'This field cannot be empty';
+    }
+    return false;
   }
   validateNumber(num){
     if(validator.isEmpty(num)){
