@@ -15,6 +15,10 @@ function Register() {
     socialNum: "",
     airTMNum: "",
     isSubmitting: false,
+    check:{
+      terms:false,
+      newsLetter:false
+    },
     errors: {
       firstName: null,
       lastName: null,
@@ -29,6 +33,26 @@ function Register() {
   const [data, setData] = useState(initialState);
   
   const handleChange = event => {
+    if(event.target.name === 'terms'){
+      setData({
+        ...data,
+        check:{
+          ...data.check,
+          [event.target.name]: !data.check.terms
+        }
+      })
+      return
+    }
+    if(event.target.name === 'newsLetter'){
+      setData({
+        ...data,
+        check:{
+          ...data.check,
+          [event.target.name]: !data.check.newsLetter
+        }
+      })
+      return
+    }
     setData({
       ...data,
       [event.target.name]: event.target.value

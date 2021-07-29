@@ -1,3 +1,7 @@
+.register-page {
+    margin-top: 50px;
+}
+
 #step-btn {
     text-align: center;
 }
@@ -30,4 +34,33 @@
 .login-card h2{
     font-family: Intro-Regular-Alt;
     margin-top: 20px;
+}
+.register-confirmation .checks{
+    text-align: left;
+}
+
+.register-confirmation{
+    font-family: Intro-Light;
+}
+
+.register-confirmation .checks label {
+    font-family: Intro-Regular-Alt;
+    margin-left: 5px;
+    font-size: 15px;
+}
+
+@media only screen and (max-width: 600px) {
+
+    .register-page {
+        margin-top: 180px;
+    }
+    
+    .login-card{
+        text-align: center;
+        padding: 0px 25px;
+    }
+
+    .login-card input{
+        width: 100%;
+    }
 }
