@@ -23,7 +23,7 @@ function Register_details(props) {
                                 { 'is-invalid': props.data.errors.firstName }
                             )}
                         />
-                        <div className="invalid-feedback">{props.data.errors.lastNamex}</div>
+                        <div className="invalid-feedback">{props.data.errors.firstName}</div>
                     </Grid>
                     <Grid item xs={12} sm={6} >
                         <input

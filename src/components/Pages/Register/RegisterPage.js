@@ -21,42 +21,76 @@ function Register() {
   const [data, setData] = useState(initialState);
   
   const handleChange = event => {
-    console.log(event.target.value)
     setData({
       ...data,
       [event.target.name]: event.target.value
     },);
     validateEntry(event);
+
+    console.log(data.errors)
   };
 
   const validateEntry = event => {
     const name = event.target.name;
+    const value = event.target.value;
+    var error;
 
-    const emailError = validateFields.validateEmail(data.email);
-    const passwordError = validateFields.validatePassword(data.password);
-    const FNerror = validateFields.validateName(data.firstName);
-    const LNerror = validateFields.validateName(data.lastName);
+    if(name === 'email'){
+      error = validateFields.validateEmail(value);
+    }else if(name === 'password'){
+      error = validateFields.validatePassword(value);
+    }else if(name === 'firstName' || name === 'lastName'){
+      error = validateFields.validateName(value);
+    }
 
-      if (emailError !== null) {
-        setData({
-          ...data,
-          [event.target.name]: event.target.value,
-          errors:{[name]: emailError}
-        });
-      } 
-      else {
-        setData({
-          ...data,
-          [event.target.name]: event.target.value,
-          errors:{[name]: null}
-        });
-      }
-    
+    if (error !== null) {
+      setData({
+        ...data,
+        [event.target.name]: event.target.value,
+        errors:{
+          ...data.errors,
+          [name]: error
+        }
+      });
+    } 
+    else {
+      setData({
+        ...data,
+        [event.target.name]: event.target.value,
+        errors:{
+          ...data.errors,
+          [name]: null
+        }
+      });
+    }   
   }
-  
 
   const validate = () => {
-    console.log(data)
+    let emptyWarning = 'Cannot be empty';
+    let firstNameError, lastNameError, emailError, passwordError;
+
+    if(!data.firstName){
+      firstNameError = emptyWarning;
+    }
+    if(!data.lastName){
+      lastNameError = emptyWarning;
+    }
+    if(!data.email){
+      emailError = emptyWarning;     
+    }
+    if(!data.password){
+      passwordError = emptyWarning;      
+    }
+
+    setData({
+      ...data,
+      errors: { 
+        firstName: firstNameError,
+        lastName: lastNameError,
+        email: emailError,
+        password: passwordError,
+      }
+    })
     return false
   }
 
