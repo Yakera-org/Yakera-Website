@@ -107,6 +107,7 @@ class NavBar extends Component {
                         <Nav.Link href="/donate" id='nav-tab' > {EN ? 'SUPPORT US' : 'DONAR'}</Nav.Link>
                         <Nav.Link href="/campaigns" id='nav-tab'> {EN ? 'CAMPAIGNS' : 'Campañas'}</Nav.Link>
                         <Nav.Link href="/faq" id='nav-tab'>FAQ</Nav.Link>
+                        <Nav.Link href="/login" id='nav-tab'>LOGIN</Nav.Link>
                         {/* <Nav.Link href="/profile" style={{fontSize:'30px'}}>Profile</Nav.Link>
                         <Nav.Link href="/login" style={{fontSize:'30px'}}>Log-in</Nav.Link> */}
                         <div style={{marginLeft:'25px', marginTop:'-5px'}}>
