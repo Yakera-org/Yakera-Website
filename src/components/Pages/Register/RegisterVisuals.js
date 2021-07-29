@@ -13,7 +13,8 @@ function RegisterVisuals(props) {
     const [step, nextStep] = useState(1);
 
     function onContinue() {
-        if(props.validate()){
+        console.log(props.data)
+        if(props.validate(step)){
             nextStep(step + 1)
         }
     }
@@ -31,12 +32,12 @@ function RegisterVisuals(props) {
                                     <RegisterDetails data={props.data} handleChange={props.handleChange}/>
                                 </Step>
 
-                                <Step label="Authentication" data={props.data} handleChange={props.handleChange}>
-                                    <RegisterAuth />
+                                <Step label="Authentication" >
+                                    <RegisterAuth data={props.data} handleChange={props.handleChange}/>
                                 </Step>
 
-                                <Step label="Confirmation" data={props.data} handleChange={props.handleChange}>
-                                    <RegisterConf />
+                                <Step label="Confirmation" >
+                                    <RegisterConf data={props.data} handleChange={props.handleChange}/>
                                 </Step>
 
                             </MultiStepForm>

@@ -60,10 +60,11 @@ function Register_details(props) {
 
 
                 <br /> 
-
+                <form>
                 <input
                     type="password"
                     name="password"
+                    autoComplete="password"
                     placeholder="Enter your password"
                     value={props.data.password}
                     onChange={props.handleChange}
@@ -74,7 +75,7 @@ function Register_details(props) {
                     )}
                 />
                 <div className="invalid-feedback">{props.data.errors.password}</div>
-
+                </form>
 
 
 

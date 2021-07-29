@@ -10,12 +10,20 @@ function Register() {
     lastName: "",
     email: "",
     password: "",
+    address: "",
+    phone: "",
+    socialNum: "",
+    airTMNum: "",
     isSubmitting: false,
     errors: {
       firstName: null,
       lastName: null,
       email: null,
       password: null,
+      address: null,
+      phone: null,
+      socialNum: null,
+      airTMNum: null,
     },
   };
   const [data, setData] = useState(initialState);
@@ -26,8 +34,6 @@ function Register() {
       [event.target.name]: event.target.value
     },);
     validateEntry(event);
-
-    console.log(data.errors)
   };
 
   const validateEntry = event => {
@@ -39,7 +45,7 @@ function Register() {
       error = validateFields.validateEmail(value);
     }else if(name === 'password'){
       error = validateFields.validatePassword(value);
-    }else if(name === 'firstName' || name === 'lastName'){
+    }else if(name === 'firstName' || name === 'lastName' || name === 'address' || name === 'phone' || name === 'airTMNum' || name === 'socialNum'){
       error = validateFields.validateName(value);
     }
 
@@ -65,10 +71,19 @@ function Register() {
     }   
   }
 
-  const validate = () => {
+  const validate = (step) =>{
+    if (step === 1){
+      return validateStep1();
+    }else if (step === 2){
+      return validateStep2();
+    }
+  }
+
+  const validateStep1 = () => {
     let emptyWarning = 'Cannot be empty';
     let firstNameError, lastNameError, emailError, passwordError;
 
+    
     if(!data.firstName){
       firstNameError = emptyWarning;
     }
@@ -77,11 +92,15 @@ function Register() {
     }
     if(!data.email){
       emailError = emptyWarning;     
+    }else{
+      emailError = validateFields.validateEmail(data.email);
     }
     if(!data.password){
       passwordError = emptyWarning;      
+    }else{
+      passwordError = validateFields.validatePassword(data.password);
     }
-
+    
     setData({
       ...data,
       errors: { 
@@ -91,6 +110,42 @@ function Register() {
         password: passwordError,
       }
     })
+
+    if(data.firstName && data.lastName && data.password && data.email && !emailError && !passwordError){
+      return true
+    }
+    return false
+  }
+  const validateStep2 = () => {
+    let emptyWarning = 'Cannot be empty';
+    let addressError, phoneError, airTMNumError, socialNumError;
+
+    
+    if(!data.address){
+      addressError = emptyWarning;      
+    }
+    if(!data.phone){
+      phoneError = emptyWarning;      
+    }
+    if(!data.airTMNum){
+      airTMNumError = emptyWarning;      
+    }
+    if(!data.socialNum){
+      socialNumError = emptyWarning;      
+    }
+    
+    setData({
+      ...data,
+      errors: { 
+        phone: phoneError,
+        airTMNum: airTMNumError,
+        address: addressError,
+        socialNum: socialNumError,
+      }
+    })
+    if(data.address && data.airTMNum && data.socialNum && data.phone){
+      return true
+    }
     return false
   }
 
