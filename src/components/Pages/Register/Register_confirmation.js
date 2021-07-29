@@ -3,9 +3,9 @@ import React from 'react'
 function Register_conf(props) {
 
     return (
-        <div>
-
-            Confirmation
+        <div className='register-confirmation'>
+            <h2>Confirmation</h2>
+            <hr />
 
             
         </div>

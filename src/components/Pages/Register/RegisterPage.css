@@ -5,7 +5,7 @@
 #step-btn button {
     font-family: Intro-Light;
     font-size: 20px;
-    width: 50%;
+    width: 80%;
     text-align: center;
     border-radius: 10px;
     border:none;
@@ -18,7 +18,16 @@
 #step-btn button:hover{
     background-color: #052a5cd2;
 }
-/* 
-.register-details{
-    text-align: left;
-} */
+.login-card{
+    text-align: center;
+    padding: 20px 50px;
+}
+.login-card h1{
+    color: #052a5c;
+    font-family: Intro-Regular-Alt;
+    margin-bottom: 20px;
+}
+.login-card h2{
+    font-family: Intro-Regular-Alt;
+    margin-top: 20px;
+}

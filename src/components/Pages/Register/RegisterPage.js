@@ -80,7 +80,7 @@ function Register() {
   }
 
   const validateStep1 = () => {
-    let emptyWarning = 'Cannot be empty';
+    let emptyWarning = 'This field cannot be empty';
     let firstNameError, lastNameError, emailError, passwordError;
 
     
@@ -149,8 +149,11 @@ function Register() {
     return false
   }
 
+  function register(){
+    console.log(data)
+  }
   return (
-      <RegisterVisuals data={data} handleChange={handleChange} validate={validate}/>
+      <RegisterVisuals data={data} handleChange={handleChange} validate={validate} register={register}/>
   )
 }
 
