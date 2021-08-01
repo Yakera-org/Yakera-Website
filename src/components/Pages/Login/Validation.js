@@ -25,7 +25,7 @@ class ValidateFields {
     if (validator.isEmpty(password)) {
       return 'Password is required';
     } else if (!validator.isLength(password, { min: 8 })) {
-      return 'Password should be minimum 3 characters';
+      return 'Password should be minimum 8 characters';
     } // TODO: decide whether to add isStrongPassword to this validation
     return false;
   }

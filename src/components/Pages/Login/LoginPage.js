@@ -16,51 +16,33 @@ const LoginPage = () => {
   const [data, setData] = useState(initialState);
 
   const handleChange = event => {
-    setData({
+    event.persist();
+
+    setData(data => ({
       ...data,
       [event.target.name]: event.target.value
-    });
+    }));
+    console.log(event.target.name)
     validateForm(event);
   };
 
   const validateForm = event => {
     let error;
-    const name = event.target.name;
 
-    if (name === "email") {
+    if (event.target.name === "email") {
       error = validateFields.validateEmail(data.email);
-      if (error !== null) {
-        console.log(data);
-        setData({
-          ...data,
-          "errors.email": error
-        });
-      } 
-      else {
-        setData({
-          ...data,
-          "error.email": null,
-        });
-      }
     } else {
       error = validateFields.validatePassword(data.password);
-      if (error !== null) {
-        setData({
-          ...data,
-          "error.password": error,
-        });
-      } else {
-        setData({
-          ...data,
-          "error.password": null,
-        });
+    }
+    
+    setData(data => ({
+      ...data,
+      errors: {
+        ...data.errors,
+        [event.target.name]: error,
       }
-    }
+    })); 
 
-    if (error !== null) {
-      return true
-    }
-    return false
   }
 
   const handleSubmit = event => {
@@ -71,7 +53,6 @@ const LoginPage = () => {
     <LoginTemplate 
       handleChange = {handleChange}
       data = {data}
-      validateForm = {validateForm}
       handleSubmit = {handleSubmit}
     />
   );
