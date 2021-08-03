@@ -1,0 +1,24 @@
+.dashboard-page {
+    margin-top: 150px;
+}
+.dash-card {
+    margin: 50px;
+    height: auto;
+    padding: 50px;
+}
+.dash-card-top {
+    font-family: Intro-Regular-Alt;
+}
+#dash-name, #dash-stats{
+    color: #ea8737;
+}
+.dash-left {
+    font-family: Intro-Regular-Alt;
+    font-size: 20px;
+    padding: 10px;
+}
+.dash-campaigns h2{
+    font-family: Intro-Regular-Alt;
+    margin-top: 50px;
+    font-size: 25px;
+}

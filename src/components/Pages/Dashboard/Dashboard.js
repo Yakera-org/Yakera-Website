@@ -1,8 +1,12 @@
-import React from 'react'
+import React from 'react';
+import DashboardVisuals from './DashboardVisuals';
+import './Dashboard.css';
 
 function Dashboard() {
     return (
-        <div>Dashboard</div>
+        <div className='dashboard-page'>
+            <DashboardVisuals />
+        </div>
     )
 }
 
