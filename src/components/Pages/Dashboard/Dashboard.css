@@ -1,5 +1,5 @@
 .dashboard-page {
-    margin-top: 150px;
+    margin-top: 180px;
 }
 .dash-card {
     margin: 50px;
@@ -17,8 +17,31 @@
     font-size: 20px;
     padding: 10px;
 }
+.dash-btn{
+    text-align: center;
+}
+.dash-btn button {
+    border: none;
+    padding: 15px;
+    border-radius: 10px;
+    background-color: #ea8737;
+    color: white;
+    font-family: Intro-Regular-Alt;
+    font-size: 25px;
+}
+.dash-btn button:hover{
+    background-color: #f5b784;
+    color: rgb(255, 248, 236);
+}
 .dash-campaigns h2{
     font-family: Intro-Regular-Alt;
-    margin-top: 50px;
+    margin-top: 20px;
     font-size: 25px;
+}
+.active-campaigns {
+    width: 100%;
+    margin-top: 10px;
+    background-color: rgba(214, 214, 214, 0.5);
+    border-radius: 10px;
+    padding: 20px;
 }

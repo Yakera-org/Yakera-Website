@@ -12,7 +12,8 @@ const user = {
         {
             id:'1',
             title:'Campaign 1',
-            active: true
+            active: true,
+            description:'hi'
         }
     ]
 }
@@ -55,15 +56,20 @@ function DashboardVisuals() {
 
                     <hr style={{marginTop:'-10px'}}/>  
 
-                    <div>
-                       CENTER BUTTON ADD CAMPAIGN
+                    <br />
+
+                    <div className='dash-btn'>
+                       <button><a href='createCampaign' >Create new campaign</a></button>
                     </div>
 
                     <div className='dash-campaigns'>
                         <h2>
                             Active <span id='dash-stats'>Campaigns</span>
+                            <div className='active-campaigns'>
+                            Campaign here
+                            </div>
                         </h2>
-                            
+
                     </div>
                     
                 </CardContent>
