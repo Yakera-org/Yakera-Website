@@ -79,8 +79,6 @@ function RegisterVisuals(props) {
                         </CardContent>
                     </Card>
                 </div>
-
-
         </div>
     )
 }
