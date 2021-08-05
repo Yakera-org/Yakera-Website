@@ -158,7 +158,7 @@ function DashboardVisuals() {
 
                                     <Grid item xs={12} sm={6} >
                                         <div className='dash-plus-sign'>
-                                            <a href='createCampaign'><i class="fas fa-9x fa-plus-circle"></i></a>
+                                            <a href='createCampaign'><i className="fas fa-9x fa-plus-circle"></i></a>
                                         </div>
                                     </Grid>
 
