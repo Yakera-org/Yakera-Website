@@ -96,6 +96,18 @@
     background-color: #f58b78;
     color: white;
 }
+.dash-plus-sign {
+    width: 100%;
+    margin-top: 15%;
+    margin-bottom: 15%;
+}
+.dash-plus-sign i{
+    color: rgb(173, 173, 173);
+}
+.dash-plus-sign i:hover{
+    color: rgb(75, 75, 75);
+    cursor: pointer;
+}
 
 
 @media only screen and (max-width: 600px) {
@@ -151,5 +163,9 @@
         max-width: 200px;
         min-width: 100px;
         max-height: 300px;
+    }
+    .dash-plus-sign{
+        margin-bottom: 5%;
+        margin-top: 0%;
     }
 }

@@ -95,8 +95,6 @@ function DashboardVisuals() {
                             Active <span id='dash-stats'>Campaigns</span>
                             <div className='active-campaigns'>
                                 <Grid container spacing={4} style={{ alignItems:'flex-start', textAlign:'center'}}>
-                                    
-                                    
                                     {
                                         user.campaigns.map((campaign,i) => {
                                             var hrefLink = '/campaign/' + campaign.title;
@@ -158,7 +156,13 @@ function DashboardVisuals() {
                                         })
                                     }
 
-                                    </Grid> 
+                                    <Grid item xs={12} sm={6} >
+                                        <div className='dash-plus-sign'>
+                                            <a href='createCampaign'><i class="fas fa-9x fa-plus-circle"></i></a>
+                                        </div>
+                                    </Grid>
+
+                                </Grid> 
                             </div>
                         </h2>
 
