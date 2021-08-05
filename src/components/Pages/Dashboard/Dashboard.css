@@ -53,12 +53,14 @@
 
 .active-cam-card {
     padding: 10px;
+    text-align: center;
 }
 
 .dash-active-cam img{
-    width: 50%;
-    max-width: 50%;
+    width: auto;
+    max-width: 300px;
     min-width: 100px;
+    max-height: 300px;
     border-radius: 10px;
 }
 .dash-active-cam p{
@@ -93,4 +95,61 @@
 .action-btn #withdraw:hover{
     background-color: #f58b78;
     color: white;
+}
+
+
+@media only screen and (max-width: 600px) {
+    .dashboard-page {
+        margin-top: 160px;
+    }
+    .dash-campaigns h2{
+        font-size: 23px;
+    }
+    .dash-card {
+        margin: 10px;
+        height: auto;
+        padding: 5px;
+    }
+    .dash-left {
+        width: 100%;
+        padding: 0%;
+    }
+    .dash-btn button {
+        border: none;
+        padding: 10px;
+        border-radius: 10px;
+        background-color: #ea8737;
+        color: white;
+        font-family: Intro-Regular-Alt;
+        font-size: 20px;
+        margin-bottom: 10px;
+    }
+    .active-campaigns {
+        padding: 10px;
+    }
+    .active-cam-card {
+        padding: 5px;
+    }
+    .react-sweet-progress {
+        width: 80%;
+        margin-left: 10%;
+    }
+    .action-btn {
+        margin-top: -20px;
+        margin-bottom: 0px;
+    }
+    .action-btn button{
+        border: none;
+        border-radius: 10px;
+        font-size: 16px;
+        padding: 12px;
+        width: 80%;
+        margin-left: 10%;
+    }
+    .dash-active-cam img{
+        width: auto;
+        max-width: 200px;
+        min-width: 100px;
+        max-height: 300px;
+    }
 }

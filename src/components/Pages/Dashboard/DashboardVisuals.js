@@ -31,6 +31,17 @@ const user = {
             title: "Retirement is Not the End",
             description: "Help me earn an income in my food small business after I was unjustly forced to retire from my education job.",
             date: "03/13/21",
+            image: require('../../../pics/campaigns/ailin/title.jpeg'),
+        },
+        {
+            name: "larys",
+            category:"business",
+            campaignName:"Jubilarse no es el final",
+            target:205,
+            amount:100,
+            title: "Retirement is Not the End",
+            description: "Help me earn an income in my food small business after I was unjustly forced to retire from my education job.",
+            date: "03/13/21",
             image: require('../../../pics/campaigns/maria/title.jpeg'),
         },
     ]
@@ -61,12 +72,12 @@ function DashboardVisuals() {
                         </Grid>
                         <Grid item xs={12} sm={3} >
                             <div className='dash-left'>
-                                <p><span id='dash-stats'>Social Number:</span> {user.socialNum}</p>
+                                <p><span id='dash-stats'>ID Number:</span> {user.socialNum}</p>
                             </div>
                         </Grid>
                         <Grid item xs={12} sm={3} >
                             <div className='dash-left'>
-                                <p><span id='dash-stats'>Social Number:</span> {user.address}</p>
+                                <p><span id='dash-stats'>Adress:</span> {user.address}</p>
                             </div>
                         </Grid>                        
                     </Grid> 
@@ -98,7 +109,7 @@ function DashboardVisuals() {
 
                                                                 <hr />
 
-                                                                <Grid container spacing={1} style={{ alignItems:'flex-start'}}>
+                                                                <Grid container spacing={5} style={{ alignItems:'flex-start'}}>
                                                                     <Grid item xs={12} sm={6} style={{textAlign:'left'}} >
                                                                         <p><span id='dash-stats'>Created:</span> {campaign.date}</p>
                                                                         <p><span id='dash-stats'>Category:</span> {campaign.category}</p>
