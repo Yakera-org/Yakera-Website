@@ -13,7 +13,7 @@ import AboutUs from './Pages/AboutUs/aboutus';
 import donateYakera from './Pages/DonateYakera/DonateYakera';
 import NotFoundPage from './Pages/404/NotFoundPage';
 import Confirmation from './Pages/Confirmation/Confirmation';
-import CreateCampaignPage from './Pages/CreateCampaignPage/CreateCampaignPage';
+import CreateCampaign from './Pages/CreateCampaignPage/CreateCampaign';
 
 
 
@@ -28,7 +28,7 @@ const Main = () => (
             <Route exact path="/profile" component={profile}/> */}
             <Route exact path="/donate" component={donateYakera}/>
             <Route exact path="/campaigns" component={donate}/>
-            <Route exact path="/create-campaign" component={CreateCampaignPage} />
+            <Route exact path="/create-campaign" component={CreateCampaign} />
             {/* <Route exact path="/confirmed" component={confirmed}/>         
             <Route exact path="/cancelled" component={cancelled}/>        */}
             <Route exact path="/info" component={AboutUs}/>
