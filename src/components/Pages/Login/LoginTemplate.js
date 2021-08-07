@@ -8,16 +8,16 @@ import background from '../../../pics/pattern-yakera.png'
 const LoginTemplate = ({
   handleChange,
   data,
-  handleSubmit,
+  handleLogin,
 }) => {
-  console.log(data);
+
   return (
     // <div style={{ backgroundImage: `url(${background})`}}>
     <div>
       <Card className='login-card'>
         <CardContent>
 
-          <Form noValidate className='login-form' onSubmit={handleSubmit}>
+          <Form noValidate className='login-form' onSubmit={handleLogin}>
             <h1>
               <span className='font-weight-bold'>Welcome to Yakera</span>
             </h1>
@@ -71,7 +71,9 @@ const LoginTemplate = ({
             <Button
               className='btn-lg btn-dark btn-block'
               type="submit"
-              disabled={data.errors.email !== false || data.errors.password !== false}
+              disabled={data.errors.email !== false || data.errors.password !== false || data.loading}
+              value={data.loading ? 'Loading...' : 'Login'}
+              onClick={handleLogin}
             >
               Login
             </Button>
