@@ -12,8 +12,7 @@ const LoginTemplate = ({
 }) => {
 
   return (
-    // <div style={{ backgroundImage: `url(${background})`}}>
-    <div>
+    <div style={{ backgroundImage: `url(${background})`}}>
       <Card className='login-card'>
         <CardContent>
 
@@ -21,12 +20,12 @@ const LoginTemplate = ({
             <h1>
               <span className='font-weight-bold'>Welcome to Yakera</span>
             </h1>
-            <h2>Log in</h2>
+            <h2>Please Log In</h2>
+            <hr />
             <FormGroup>
-              <Label>Email</Label>
               <Input
                 type='email'
-                placeholder='Email address'
+                placeholder='Enter your email address'
                 name="email"
                 value={data.email}
                 onChange={handleChange}
@@ -46,10 +45,9 @@ const LoginTemplate = ({
             )}
 
             <FormGroup>
-              <Label>Password</Label>
               <Input
                 type='password'
-                placeholder='Password'
+                placeholder='Enter your password'
                 name="password"
                 value={data.password}
                 onChange={handleChange}
