@@ -1,8 +1,53 @@
 @font-face {
-  font-family: 'Kollektif';
-  src: local('Kollektif'), url(./fonts/._Kollektif.ttf) format('truetype');
+  font-family: 'Ramona-Bold';
+  src: local('Ramona'), url(./fonts/Ramona-Bold.ttf) format('truetype');
 }
-
+@font-face {
+  font-family: 'Ramona-Light';
+  src: local('Ramona'), url(./fonts/Ramona-Light.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Intro-Regular-Alt';
+  src: local('Intro'), url(./fonts/Intro-Regular-Alt.otf) format('opentype');
+}
+@font-face {
+  font-family: 'Intro-Thin';
+  src: local('Intro'), url(./fonts/Intro-Thin-Alt-Regular.otf) format('opentype');
+}
+@font-face {
+  font-family: 'Intro-Light';
+  src: local('Intro'), url(./fonts/Intro-Light-Alt-Regular.otf) format('opentype');
+}
 .nav-bar {
 font-size: 20px;
+}
+
+#navbar {
+  position: absolute;
+  height: 150px;
+}
+#nav-brand {
+  pointer-events:none;
+  max-width:200px;
+  margin-left:10px;
+  height:100px
+}
+#nav-tab {
+  color:#0e325e;
+  font-family:Intro-Regular-Alt;
+  margin-left: 30px;
+  margin-top: 0px;
+}
+#nav-tab:hover {
+  color: #ea8737;
+}
+
+
+@media only screen and (max-width: 600px) {
+
+  #nav-brand {
+    margin-left:0px;
+    height:100px
+  }
+
 }

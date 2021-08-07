@@ -2,12 +2,15 @@
 $theme-colors: (
   "primary": #fff7f7,
   "secondary": #555555,
-  'blue': #01224d,
+  'blue': #0e325e,
   'red': #d62828,
   'darkred': #9c1a1a,
-  'orange': #f77f00,
-  'yellow': #fcbf49,
-  'beige': #7c7c79
+  'orange-dark': #ea8737,
+  'orange-light': #ec913b,
+  'yellow': #e3c8ad,
+  'beige': #7c7c79,
+  'white': #ffe7c4,
+  'black': #242424
 );
 
 // Import Bootstrap and its default variables
