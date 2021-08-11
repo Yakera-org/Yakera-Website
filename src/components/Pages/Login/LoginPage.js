@@ -34,16 +34,18 @@ const LoginPage = () => {
       ...data,
       [event.target.name]: event.target.value
     }));
+
     validateForm(event);
+    
   };
 
   const validateForm = event => {
-    let error;
+    var error = null;
 
     if (event.target.name === "email") {
-      error = validateFields.validateEmail(data.email);
+      error = validateFields.validateEmail(event.target.value);
     } else {
-      error = validateFields.validatePassword(data.password);
+      error = validateFields.validatePassword(event.target.value);
     }
     
     setData(data => ({

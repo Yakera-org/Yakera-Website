@@ -1,9 +1,9 @@
 import React from 'react';
-import { Button, Form, FormGroup, Label, Input, Alert} from 'reactstrap'
+import { Button, Form, FormGroup, Input, Alert} from 'reactstrap'
 import { Grid, Link, Card, CardContent} from '@material-ui/core';
 import './LoginPage.css';
 import classnames from 'classnames';
-import background from '../../../pics/pattern-yakera.png'
+import background from '../../../pics/pattern-yakera-orange.png'
 
 const LoginTemplate = ({
   handleChange,
@@ -78,12 +78,12 @@ const LoginTemplate = ({
 
             <Grid container style={{marginTop:'4%'}}>
               <Grid item xs>
-                <Link href="/sign-up">
+                <Link href="/forgot-password">
                   Forgot password?
                 </Link>
               </Grid>
               <Grid item>
-                <Link href="/forgot-password">
+                <Link href="/register">
                   Don't have an account? Sign Up
                 </Link>
               </Grid>
