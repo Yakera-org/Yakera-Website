@@ -9,7 +9,7 @@ import './CreateCampaignPage.css'
 function CreateCampaignVisuals(props) {
 
     return(
-        <div className='create-campaign-page'>
+        <div className='create-page'>
             <div id='background' >
                         <h1>
                             Create your campaign
@@ -29,9 +29,14 @@ function CreateCampaignVisuals(props) {
                             or +56 9 5699 7352 or at info@yakera.org. We are here to help you
                             and answer any questions.
                         </p>
-                        <Step label="Details">
+                        <Step label="Details" assentColor='#003049'>
                             <CreatCampaignDetails data={props.data} handleChange={props.handleChange}/>
                         </Step>
+                        <div id='step-btn'>
+                            <button onClick={props.submit}>
+                                Create Campaign
+                            </button>
+                        </div>
             </div>
         </div>
     )

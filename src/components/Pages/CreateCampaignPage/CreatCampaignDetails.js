@@ -10,8 +10,8 @@ function CreateCampaignDetails(props) {
             <h2>Detais</h2>
             <hr />
 
-            <Form>
-                <FormGroup>
+            <Form container spacing={3} style={{ alignItems:'flex-start' }}>
+                <FormGroup item xs={12} sm={6}>
                     <FormLabel>Campaign Category</FormLabel>
                     {['Healthcare', 'Education', 'Small Business', 'Nutrition'].map((val, index) => (
                         <FormCheck
@@ -20,7 +20,7 @@ function CreateCampaignDetails(props) {
                             id={`category`}
                             label={val}
                             group='category'
-                            checked={props.data.campaignCategory}
+                            // defaultChecked= {props.data.campaignCategory}
                             onChange={props.handleChange}
                         />
                     ))}
@@ -30,8 +30,9 @@ function CreateCampaignDetails(props) {
                     <FormControl
                         type='campaign-name'
                         as='input'
+                        name='campaign-page'
                         placeholder='Enter your campaign name'
-                        value={props.data.campaignName}
+                        // value={props.data.campaignName}
                         onChange={props.handleChange}
                         className={classnames(
                             'form-control',
@@ -47,7 +48,7 @@ function CreateCampaignDetails(props) {
                         type='amount'
                         as='input'
                         placeholder='Enter the amount (USD)'
-                        value={props.data.amount}
+                        // value={props.data.amount}
                         onChange={props.handleChange}
                         className={classnames(
                             'form-control',
@@ -59,11 +60,11 @@ function CreateCampaignDetails(props) {
                 </FormGroup>
                 <FormGroup>
                     <FormLabel>Your story (we recommend referencing your personal story, the need behind your campaign, why you are opening a campaign, how will you spend the money, and what will the support of people in Yakera allow you to do). Usually successful campaigns have between 3-6 paragraphs.</FormLabel>
-                    <FormControl
+                    <MyEditor
                         type='story'
                         as='input'
                         placeholder='Tell us your story'
-                        value={props.data.story}
+                        // value={props.data.story}
                         onChange={props.handleChange}
                         className={classnames(
                             'form-control',
@@ -71,7 +72,6 @@ function CreateCampaignDetails(props) {
                             {'is-invalid': props.data.errors.story }
                         )}
                     />
-                    <MyEditor />
                     <div className="invalid-feedback">{props.data.errors.story}</div>
                 </FormGroup>
                 <FormGroup>
@@ -80,7 +80,7 @@ function CreateCampaignDetails(props) {
                         type='itemized-budget'
                         as='input'
                         placeholder='Enter the amount (USD)'
-                        value={props.data.itemizedBudget}
+                        // value={props.data.itemizedBudget}
                         onChange={props.handleChange}
                         className={classnames(
                             'form-control',
@@ -89,6 +89,37 @@ function CreateCampaignDetails(props) {
                         )}
                     />
                     <div className="invalid-feedback">{props.data.errors.itemizedBudget}</div>
+                </FormGroup>
+                <FormGroup className="mb-3">
+                    <FormLabel>Documents that support your ask (i.e medical orders or notes, tuition receipt, pictures of your small business, budget, etc.)</FormLabel>
+                    <FormControl
+                        type="file"
+                        multiple
+                        as='input'
+                        placeholder='Choose files'
+                        // value={props.data.supportDocuments}
+                        onChange={props.handleChange}
+                    />
+                </FormGroup>
+                <FormGroup className="mb-3">
+                    <FormLabel>Main Campaign picture</FormLabel>
+                    <FormControl
+                        type="file"
+                        as='input'
+                        placeholder='Choose files'
+                        // value={props.data.supportDocuments}
+                        onChange={props.handleChange}
+                    />
+                </FormGroup>
+                <FormGroup className="mb-3">
+                    <FormLabel>Campaign pictures</FormLabel>
+                    <FormControl
+                        type="file"
+                        as='input'
+                        placeholder='Choose files'
+                        // value={props.data.supportDocuments}
+                        onChange={props.handleChange}
+                    />
                 </FormGroup>
             </Form>
 
