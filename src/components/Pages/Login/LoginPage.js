@@ -102,7 +102,10 @@ const LoginPage = () => {
     //   })); 
     //   if (error.response.status === 401) setError(error.response.data.message);
     //   else setError("Something went wrong. Please try again later. ");
-    // });    
+    // });
+
+    window.location.href = "../campaigns";
+    
   }
 
   return (
