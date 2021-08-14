@@ -26,7 +26,7 @@ class DonateCard extends Component {
                     }}
                 >
                     {/* <h1>{EN ? 'Donate now' : 'Done ahora'}</h1> */}
-                    <div >
+                    <div className='donate-page-card-text'>
                         <p>
                             <b>
                                 ${amount}
@@ -47,11 +47,13 @@ class DonateCard extends Component {
                         percent={ Math.min((100* (amount/target)).toFixed(2), 100) }/>
                     </div>
 
-                    <div>
+                    <div className='donate-page-card-buttons'>
                         <button
                             type="submit"
                             className="btn btn-secondary btn-block"    
-                            onClick={this.props.onDonate}
+                            onClick={() => {
+                                this.props.onDonate('donateRef')
+                            }}
                             style={{
                                 borderRadius: '20px',
                                 backgroundColor: '#2f476c'

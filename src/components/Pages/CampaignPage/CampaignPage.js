@@ -193,7 +193,7 @@ class CampaignPage extends Component{
                      <hr style={{width:'90%', marginLeft:'6%'}}/>
 
                      {/* Images gallery */}
-                    <div className="gallery">
+                    <div className="gallery" id='gallery'>
                         {campaign.images.map((im, i) =>(
                             <img  src={im} alt={i} key={i} />
                         ))}
