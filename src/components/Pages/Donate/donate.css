@@ -1,6 +1,7 @@
 .donate-page{
     padding:20px;
     margin-top: 180px;
+    font-family: Intro-Regular-Alt;
 }
 .donate-page-loading{
     padding:20px;
@@ -48,6 +49,10 @@
 }
 #no-cam{
     font-size: 20px;
+}
+.campaign-filter img{
+    margin: 20px;
+    cursor: pointer;
 }
 @media only screen and (max-width: 600px) {
     .loader {

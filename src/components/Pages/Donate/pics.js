@@ -1,8 +1,8 @@
 const pics ={
-    "education": require("../../../pics/education_logo.png"),
-    "business": require("../../../pics/business_logo.png"),
-    "nutrition": require("../../../pics/nutrition_logo.png"),
-    "healthcare": require("../../../pics/healthcare_logo.png"),
-}
+    "education": require("../../../pics/Education-icon.svg"),
+    "business": require("../../../pics/smallbusiness-icon.svg"),
+    "nutrition": require("../../../pics/nutrition-icon.svg"),
+    "healthcare": require("../../../pics/healthcare-icon.svg"),
+};
 
-export default pics
+export default pics;
