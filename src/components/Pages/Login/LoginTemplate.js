@@ -8,6 +8,7 @@ import background from '../../../pics/pattern-yakera-orange.png'
 const LoginTemplate = ({
   handleChange,
   data,
+  error,
   handleLogin,
 }) => {
 
@@ -22,6 +23,13 @@ const LoginTemplate = ({
             </h1>
             <h2>Please Log In</h2>
             <hr />
+
+            { error.errorMessage &&
+              <Alert color="danger">
+                { error.errorMessage }
+              </Alert>
+            }
+
             <FormGroup>
               <Input
                 type='email'
@@ -38,11 +46,11 @@ const LoginTemplate = ({
               />
             </FormGroup>
 
-            {(data.errors.email !== false && data.errors.email !== null) && (
+            { (data.errors.email !== false && data.errors.email !== null) && (
               <Alert color="danger">
-                {data.errors.email}
+                { data.errors.email }
               </Alert>
-            )}
+            ) }
 
             <FormGroup>
               <Input

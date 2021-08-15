@@ -8,7 +8,7 @@ const LoginPage = () => {
   const _axios = require('axios');
   const axios = _axios.create();
   const qs = require('querystring');
-  // const yakeraBackUrl = 'https://yakera-back-dev.eu-west-3.elasticbeanstalk.com';
+  const yakeraBackUrl = 'https://express-backend-api.herokuapp.com';
 
   const config = {
     headers: {
@@ -25,7 +25,13 @@ const LoginPage = () => {
       password: null,
     },
   };
+
+  const errorState = {
+    errorMessage: null,
+  }
+
   const [data, setData] = useState(initialState);
+  const [error, setError] = useState(errorState);
 
   const handleChange = event => {
     event.persist();
@@ -70,41 +76,41 @@ const LoginPage = () => {
       password: data.password,
     }
 
-    // const url = yakeraBackUrl + "/api/auth/login";
-    const url = "http://localhost:9000/.netlify/functions/hello"
-
-    // TODO: change the dummy API call
-    axios.get(url, qs.stringify(requestBody), config).then(response => {
+    const url = yakeraBackUrl + "/api/auth/login";
+    
+    axios.post(url, qs.stringify(requestBody), config).then(response => {
       setData(data => ({
         ...data,
         loading: false,
       }));
-      if (response.data.response === "Hello World !") {
-        console.log("User with email ", data.email, "is authenticated");
-      } else {
-        console.log("User with email ", data.email, "was NOT authenticated");
-      }
       // window.location.href = "/";
       // setUserSession(response.data.token, response.data.user);
       // props.history.push('/dashboard');
+    
+      window.location.href = "../campaigns";
+
+    }).catch(error => {
+      var errorMessage = null;
+      console.log(error);
+
+      if (error.response.data.message) {
+        errorMessage = error.response.data.message;
+      } else {
+        errorMessage = "Something went wrong. Please try again later.";
+      }
+
+      setError({errorMessage: errorMessage});
+      setData(data => ({
+        email: "",
+        password: "",
+        loading: false,
+        errors: {
+          email: null,
+          password: null
+        }
+      }));
+
     });
-    
-    // TODO: redirect the user somewhere
-    // <Route exact path="/">
-    //   {loggedIn ? <Redirect to="/dashboard" /> : <PublicHomePage />}
-    // </Route>
-
-    
-    // }).catch(error => {
-    //   setData(data => ({
-    //     ...data,
-    //     loading: false,
-    //   })); 
-    //   if (error.response.status === 401) setError(error.response.data.message);
-    //   else setError("Something went wrong. Please try again later. ");
-    // });
-
-    window.location.href = "../campaigns";
     
   }
 
@@ -112,6 +118,7 @@ const LoginPage = () => {
     <LoginTemplate 
       handleChange = {handleChange}
       data = {data}
+      error = {error}
       handleLogin = {handleLogin}
     />
   );
