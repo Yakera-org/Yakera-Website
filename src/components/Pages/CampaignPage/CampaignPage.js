@@ -4,7 +4,6 @@ import Author from '../../author';
 import PaymentVisual from './PaymentVisual';
 import './CampaignPage.css';
 import campaigns from '../Donate/allCampaigns';
-import HashLoader from "react-spinners/HashLoader";
 
 const _axios = require('axios');
 const axios = _axios.create();
@@ -22,8 +21,6 @@ class CampaignPage extends Component{
             amount:0,
             target:0
         }
-        this.onPayPalOff = this.onPayPalOff.bind(this);
-        this.onPayPalOn = this.onPayPalOn.bind(this);
         this.addAmount = this.addAmount.bind(this);
     }
 
@@ -142,20 +139,9 @@ class CampaignPage extends Component{
 
         })
         .catch(err => {
-          this.onPayPalOff();
+          //this.onPayPalOff();
           console.log(err)            
         })  
-    }
-
-    onPayPalOff(){
-        this.setState({
-            loading: false
-        })
-    }
-    onPayPalOn(){
-        this.setState({
-            loading: true
-        })
     }
    
 
@@ -175,15 +161,6 @@ class CampaignPage extends Component{
 
 
                 <div className="campaignPage">
-                        <div className="donate-page-loading">
-                            <div className="sweet-loading loader">
-                                <HashLoader
-                                    size={150}
-                                    color={"#01224d"}
-                                    loading={this.state.loading}
-                                />
-                            </div>               
-                        </div>
                     <Visual
                         campaign={campaign} 
                         amount={this.state.amount} 
@@ -204,8 +181,6 @@ class CampaignPage extends Component{
                      <PaymentVisual
                         language={this.state.language}
                         AirTM = {this.AirTM}
-                        onPayPalOff={this.onPayPalOff}
-                        onPayPalOn={this.onPayPalOn}
                         addAmount={this.addAmount}
                         title={campaign.title[this.state.language]}
                      />
