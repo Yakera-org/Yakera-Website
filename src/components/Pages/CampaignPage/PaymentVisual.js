@@ -7,84 +7,54 @@ class PaymentVisual extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            checkError:"",
-            age:false,
-            consent:false,
-            amount: {
-                value: '',
-                validateOnChange: false,
-                error: '',
-              },
-            name: {
-                value: '',
-                validateOnChange: false,
-                error: '',
-            },
-            email: {
-                value: '',
-                validateOnChange: false,
-                error: '',
-            }
+            hasDetails: false,
+            amount: 0,
+            name: '',
+            email: '',
         }
-        this.handleChange = this.handleChange.bind(this);
-        this.onConsentCheck = this.onConsentCheck.bind(this);
-        this.onAgeCheck = this.onAgeCheck.bind(this);
         this.onContinue = this.onContinue.bind(this);
-    }
-
-    handleChange(validationFunc, evt) {
-        const field = evt.target.name;
-        const fieldVal = evt.target.value;
-        this.setState(state => ({
-          [field]: {
-            ...state[field],
-            value: fieldVal,
-            error: state[field]['validateOnChange'] ? validationFunc(fieldVal) : ''
-          }
-        }));
-      }
-
-    onConsentCheck(){
-        this.setState({
-            consent: !this.state.consent
-        })
-    }
-
-    onAgeCheck(){
-        this.setState({
-            age: !this.state.age
-        })
+        this.onClose = this.onClose.bind(this);
     }
 
     onContinue(amount, email, name){
         this.setState({
-            hasAmount: true,
+            hasDetails: true,
             amount: amount,
             name: name,
             email: email,
         })
     }
+
+    onClose(){
+        this.setState({
+            hasDetails:false
+        })
+    }
     
 
-    render() {
-        
+    render() {        
         return (
             <div className="payment-visual">
-                 <Card id="donateRef" className="payment-card">
+                <div className="payment-card-sec">
+                    {!this.state.hasDetails
+                        ? //ask for payment details
 
-                    <div className="payment-card-sec">
-                    {!this.state.hasAmount
+                        <Card id="donateRef" className="payment-card">
+                            <PaymentDetails 
+                                language={this.props.language}
+                                onContinue={this.onContinue}
+                                />
+                        </Card>  
 
-                        ? 
-                        <PaymentDetails 
+                        : // else get to payment authentication
+
+                        <PaymentAuth 
                             language={this.props.language}
-                            onContinue={this.onContinue}
+                            onClose={this.onClose}
+                            amount={this.state.amount}
                         />
-                        :
-                         <PaymentAuth />
                     }
-                    </div>    
-                </Card>  
+                </div>    
             </div>
         );
     }

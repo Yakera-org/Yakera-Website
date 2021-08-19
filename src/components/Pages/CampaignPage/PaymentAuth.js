@@ -1,33 +1,38 @@
 import React, { PureComponent, Fragment } from 'react';
-import {Dialog} from '@material-ui/core';
+import {Dialog, Card} from '@material-ui/core';
 
 class PaymentAuth extends PureComponent {
     constructor(props) {
         super(props)
 
         this.state = {
-            open: true
         }
     }
 
-    onClose(){
-        this.setState({
-            open:false
-        })
-    }
-
     render() {
+
+        const language = this.props.language;
+        var EN = true;
+        if(language !=="en"){
+            EN = false
+        }
         return (
             <div>
                 <Fragment >
                     <Dialog
                         fullWidth={true} 
                         maxWidth='lg'                                 
-                        open={this.state.open}
-                        className="share-dialog" 
-                        onClose={this.onClose.bind(this)}
+                        open={true}
+                        className="payment-auth" 
+                        onClose={this.props.onClose}
                     >           
-                        PAYMENT AUTH HERE
+                        <Card className='payment-auth-card'>
+                            
+                            PAYMENT AUTH HERE
+                            Amount: {this.props.amount}
+
+                        </Card>
+
                     </Dialog>
                 </Fragment> 
             </div>

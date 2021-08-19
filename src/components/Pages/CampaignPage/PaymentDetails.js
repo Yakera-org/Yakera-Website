@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react'
 import classnames from 'classnames';
 import { validateFields } from '../Register/Validation';
+import ConsentCard from '../CampaignPage/consentCard';
 
 class PaymentDetails extends PureComponent {
     constructor(props) {
@@ -10,7 +11,6 @@ class PaymentDetails extends PureComponent {
             checkError:"",
             age:false,
             consent:false,
-            percentage:0,
             amount: {
                 value: '',
                 validateOnChange: false,
@@ -63,21 +63,23 @@ class PaymentDetails extends PureComponent {
             openPrivacy: !this.state.openPrivacy
         })
     }
+
     onContinue(){
-        this.props.onContinue(this.state.amount, this.state.email, this.state.name )
+        this.props.onContinue(this.state.amount.value, this.state.email.value, this.state.name.value )
     }
 
     render() {
         const { amount, name, email } = this.state;
         const language = this.props.language;
         var EN = true;
-        if(language ==="en"){
-            EN = true
-        }else{
+        if(language !=="en"){
             EN = false
         }
         return (
             <div >
+
+                <ConsentCard open={this.state.openPrivacy} onClose={this.onPrivacy}/>
+
                 <h1 >
                     {EN ? 'Donate Now' : 'Done ahora'}
                 </h1>
