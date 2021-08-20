@@ -39,12 +39,12 @@ class PaymentVisual extends Component {
                     {!this.state.hasDetails
                         ? //ask for payment details
 
-                        <Card id="donateRef" className="payment-card">
+                        <div id="donateRef" className="payment-card">
                             <PaymentDetails 
                                 language={this.props.language}
                                 onContinue={this.onContinue}
                                 />
-                        </Card>  
+                        </div>  
 
                         : // else get to payment authentication
 
