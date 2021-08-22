@@ -36,6 +36,10 @@ const LoginPage = () => {
   const handleChange = event => {
     event.persist();
 
+    if (error.errorMessage !== null) {
+      setError({errorMessage: null});
+    }
+
     setData(data => ({
       ...data,
       [event.target.name]: event.target.value
@@ -83,11 +87,11 @@ const LoginPage = () => {
         ...data,
         loading: false,
       }));
-      // window.location.href = "/";
-      // setUserSession(response.data.token, response.data.user);
-      // props.history.push('/dashboard');
-    
-      window.location.href = "../campaigns";
+
+      if (response.status === 200) {
+        // TODO: set authentication and tokens 
+        window.location.href = "../campaigns";
+      }
 
     }).catch(error => {
       var errorMessage = null;
