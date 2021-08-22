@@ -1,56 +1,108 @@
-import React, { Component, Fragment } from 'react';
-import { Button, Form, FormGroup, Label, Input} from 'reactstrap'
+import React from 'react';
+import { Button, Form, FormGroup, Input, Alert} from 'reactstrap'
 import { Grid, Link, Card, CardContent} from '@material-ui/core';
 import './LoginPage.css';
+import classnames from 'classnames';
 import background from '../../../pics/pattern-yakera-orange.png'
-// import Author from '../../author';
 
+const LoginTemplate = ({
+  handleChange,
+  data,
+  error,
+  handleLogin,
+}) => {
 
-class LoginTemplate extends Component {
-  render() {
-    return (
-      <div style={{ backgroundImage: `url(${background})`}}>
-        <Card className='login-card'>
-          <CardContent>
+  return (
+    <div style={{ backgroundImage: `url(${background})`}}>
+      <Card className='login-card'>
+        <CardContent>
 
-            <Form className='login-form'>
-              <h1>
-                <span className='font-weight-bold'>Welcome to Yakera</span>
-              </h1>
-              <h2>Log in</h2>
-              <FormGroup>
-                <Label>Email</Label>
-                <Input type='email' placeholder='Email'/>
-              </FormGroup>
-              <FormGroup>
-                <Label>Password</Label>
-                <Input type='password' placeholder='Password'></Input>
-              </FormGroup>
+          <Form noValidate className='login-form' onSubmit={handleLogin}>
+            <h1>
+              <span className='font-weight-bold'>Welcome to Yakera</span>
+            </h1>
+            <h2>Please Log In</h2>
+            <hr />
 
-              <Button className='btn-lg btn-dark btn-block' style={{backgroundColor:"#0E325E"}}>
-                Login
-              </Button>
+            { error.errorMessage &&
+              <Alert color="danger">
+                { error.errorMessage }
+              </Alert>
+            }
 
-              <Grid container style={{marginTop:'4%'}}>
-                <Grid item xs>
-                  <Link href="/forgotPassword">
-                    Forgot password?
-                  </Link>
-                </Grid>
-                <Grid item>
-                  <Link href="/register">
-                    Don't have an account? Sign Up
-                  </Link>
-                </Grid>
+            <FormGroup>
+              <Input
+                type='email'
+                placeholder='Enter your email address'
+                name="email"
+                value={data.email}
+                onChange={handleChange}
+                className={classnames(
+                  'form-control',
+                  { 'is-valid': data.errors.email === false},
+                  { 'is-invalid': data.errors.email }
+                )}
+                required
+              />
+            </FormGroup>
+
+            { (data.errors.email !== false && data.errors.email !== null) && (
+              <Alert color="danger">
+                { data.errors.email }
+              </Alert>
+            ) }
+
+            <FormGroup>
+              <Input
+                type='password'
+                placeholder='Enter your password'
+                name="password"
+                value={data.password}
+                onChange={handleChange}
+                className={classnames(
+                  'form-control',
+                  { 'is-valid': data.errors.password === false},
+                  { 'is-invalid': data.errors.password }
+                )}
+                required
+              />
+            </FormGroup>
+
+            {(data.errors.password !== false && data.errors.password !== null) && (
+              <Alert color="danger">
+                {data.errors.password}
+              </Alert>
+            )}
+
+            <Button
+              className='btn-lg btn-dark btn-block'
+              type="submit"
+              disabled={data.errors.email !== false || data.errors.password !== false || data.loading}
+              value={data.loading ? 'Loading...' : 'Login'}
+              onClick={handleLogin}
+            >
+              Login
+            </Button>
+
+            <Grid container style={{marginTop:'4%'}}>
+              <Grid item xs>
+                <Link href="/forgot-password">
+                  Forgot password?
+                </Link>
               </Grid>
+              <Grid item>
+                <Link href="/register">
+                  Don't have an account? Sign Up
+                </Link>
+              </Grid>
+            </Grid>
 
-            </Form>
+          </Form>
 
-          </CardContent>
-        </Card>
-      </div>
-    )
-  }
-}
+        </CardContent>
+      </Card>
+    </div>
+  )
+};
 
 export default LoginTemplate;
