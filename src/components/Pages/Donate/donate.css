@@ -54,6 +54,12 @@
     margin: 20px;
     cursor: pointer;
 }
+.campaign-filter .fade {
+    opacity: 0.3;
+}
+.campaign-filter .active {
+    border-color: black;
+}
 @media only screen and (max-width: 600px) {
     .loader {
         display: block;

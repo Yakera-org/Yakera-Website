@@ -79,6 +79,10 @@ class donate extends Component{
                 tab:'education',
                 dicAmount:{},
                 searchQuery:'',
+                healthcareFilter: '',
+                educationFilter: '',
+                businessFilter: '',
+                nutritionFilter: '',
             }
     }
 
@@ -143,8 +147,24 @@ class donate extends Component{
         this.setState({searchQuery : e});
     }
 
-    handleFilter = (category) => {
-
+    handleFilter = (categoryState) => {
+        if (this.state[categoryState] === 'active') {
+            this.setState({
+                healthcareFilter: '',
+                educationFilter: '',
+                businessFilter: '',
+                nutritionFilter: '',
+            });
+        } else {
+            this.setState({
+                healthcareFilter: 'fade',
+                educationFilter: 'fade',
+                businessFilter: 'fade',
+                nutritionFilter: 'fade',
+            });
+    
+            this.setState({[categoryState]: 'active'});
+        }
     }
    
     render(){
@@ -184,10 +204,38 @@ class donate extends Component{
                         {this.state.language === 'en' ? 'Browse campaigns and chip in. Now, more than ever, Venezuelans need your help in education, healthcare, nutrition, and small business. Yakera helps Venezuelans transition from survival to resilience.' : 'Explora campañas y dona directamente. Ahora más que nunca, los venezolanos necesitan tu ayuda en educación, salud, nutrición y pequeños negocios. Yakera asiste a los venezolanos a pasar de supervivencia a resiliencia.'}
                     </p> */}
                     <div className='campaign-filter'>
-                        <img src={pics.healthcare} width='10%' height='10%' />
-                        <img src={pics.education} width='10%' height='10%' />
-                        <img src={pics.business} width='10%' height='10%' />
-                        <img src={pics.nutrition} width='10%' height='10%' />
+                        <img 
+                            src={pics.healthcare}
+                            width='10%' height='10%'
+                            className={this.state.healthcareFilter}
+                            onClick={() => {
+                                this.handleFilter('healthcareFilter')
+                            }} 
+                        />
+                        <img
+                            src={pics.education}
+                            width='10%' height='10%'
+                            className={this.state.educationFilter}
+                            onClick={() => {
+                                this.handleFilter('educationFilter')
+                            }} 
+                        />
+                        <img 
+                            src={pics.business}
+                            width='10%' height='10%'
+                            className={this.state.businessFilter}
+                            onClick={() => {
+                                this.handleFilter('businessFilter')
+                            }} 
+                        />
+                        <img
+                            src={pics.nutrition}
+                            width='10%' height='10%'
+                            className={this.state.nutritionFilter}
+                            onClick={() => {
+                                this.handleFilter('nutritionFilter')
+                            }} 
+                        />
                     </div>
                     <SearchBar 
                         searchQuery={this.state.searchQuery}
