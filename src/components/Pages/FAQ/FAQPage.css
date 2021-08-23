@@ -1,0 +1,27 @@
+.faq-page{
+    margin-top: 150px;
+    font-family: Intro-Regular-Alt;
+}
+.faq-visuals{
+    padding: 1%;
+}
+.faq-banner {
+    background-color: #01224d;
+    color: white;
+    border-radius: 15px;
+    padding: 60px 80px 0px 80px;
+    font-size: 40px;
+    margin: 0 100px;
+    max-height: 300px;
+}
+.faq-banner img{
+    width: 100%;
+    border-radius: 25px;
+    max-height: 300px;
+    margin: -60px 0px 0px 80px;
+    object-fit: cover;
+    
+}
+.faq-drawer-area {
+    margin: 20px 40px;
+}

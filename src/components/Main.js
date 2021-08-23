@@ -7,7 +7,7 @@ import Campaign from './Pages/CampaignPage/CampaignPage';
 // import profile from './Pages/Profile/profile';
 import Terms from './Pages/Terms/terms';
 import Consent from './Pages/Privacy/consent';
-import FAQ from './Pages/FAQ/FAQ';
+import FAQ from './Pages/FAQ/FAQPage';
 import donate from './Pages/Donate/donate';
 import AboutUs from './Pages/AboutUs/aboutus';
 import donateYakera from './Pages/DonateYakera/DonateYakera';
@@ -36,7 +36,7 @@ function Main(){
                 <Route exact path="/campaign/:title" component={Campaign}/>
                 <Route exact path="/terms" component={Terms}/>
                 <Route exact path="/consent" component={Consent}/>
-                <Route exact path="/faq" component={FAQ}/>
+                <Route exact path="/frequently-asked-questions" component={FAQ}/>
                 <Route exact path="/confirm" component={Confirmation}/>
                 <Route exact path="/dashboard" component={isAuthenticated ? Dashboard : login}/>
                 <Route exact path="/" component={home}/>
