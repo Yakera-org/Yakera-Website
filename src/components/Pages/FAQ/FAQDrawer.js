@@ -17,11 +17,11 @@ function FAQDrawer(props) {
                     {
                         questions.map((question, i) => {
                             return(
-                                <div>
+                                <div key={i}>
                                     <FAQQuestion
                                         question={question}
                                         answer={answers[i]}
-                                        key={i}
+                                        
                                     />
                                     {
                                         i === 1 ? '' : <hr style={{width:'90%', marginLeft:'5%'}}/>

@@ -5,11 +5,24 @@ import Drawer from './FAQDrawer'
 import SearchIcon from '@material-ui/icons/Search';
 import { Form, InputGroup } from 'react-bootstrap';
 import Author from '../../author';
+import content from './FAQ.json'
 
 
 function FAQVisuals() {
 
     const [searchQuery, setSearchQuery] = useState('');
+    const filterCampaignsBySearch = (content, query) => {
+        if(!query) {
+            return content.en;
+        }
+        const result = content.en.filter(drawer => {
+            return(drawer.questions[0].includes(query))
+        });
+        console.log(result)
+        return result;
+    };
+
+    let filteredContent = filterCampaignsBySearch(content, searchQuery)
 
     return (
         <div className='faq-visuals'>
@@ -39,27 +52,18 @@ function FAQVisuals() {
                             searchQuery={searchQuery}
                             setSearchQuery={setSearchQuery}
                         />
-
-                        <Drawer 
-                            title={'About Yakera, our story, and our mission'}
-                            questions={['How does Yakera work?', 'How much of my donation goes to people in Venezuela?']}
-                            answers={['Yakera sends the donation made through PayPal or card to the AirTM account of the campaigner. This transaction is done with an exchange from USD to an equivalent of the pegged currency AirUSD and allows the recipient to save the money in their account, transfer it to a bank, or withdraw it in cash. This is all done by AirTM’s network of cashiers in Venezuela who complete secure, untraceable transactions in approximately 15 minutes. Users making donations can use whichever card they prefer and recipients will receive the donation at a fair exchange rate without inflation or currency restrictions.', 'We are committed to ensuring that 100% of donations go directly to the user in Venezuela. There is no fee to withdraw funds and our service fees are charged on top of the donation to avoid any misallocation. However much you donate, you can be confident that the entire amount will be given to the organizer of the campaign (at the cost of a small fee on top to sustain operations at Yakera as well).true']}
-                        />
-                        <Drawer 
-                            title={'About Yakera, our story, and our mission'}
-                            questions={['How does Yakera work?', 'How much of my donation goes to people in Venezuela?']}
-                            answers={['Yakera sends the donation made through PayPal or card to the AirTM account of the campaigner. This transaction is done with an exchange from USD to an equivalent of the pegged currency AirUSD and allows the recipient to save the money in their account, transfer it to a bank, or withdraw it in cash. This is all done by AirTM’s network of cashiers in Venezuela who complete secure, untraceable transactions in approximately 15 minutes. Users making donations can use whichever card they prefer and recipients will receive the donation at a fair exchange rate without inflation or currency restrictions.', 'We are committed to ensuring that 100% of donations go directly to the user in Venezuela. There is no fee to withdraw funds and our service fees are charged on top of the donation to avoid any misallocation. However much you donate, you can be confident that the entire amount will be given to the organizer of the campaign (at the cost of a small fee on top to sustain operations at Yakera as well).true']}
-                        />
-                        <Drawer 
-                            title={'About Yakera, our story, and our mission'}
-                            questions={['How does Yakera work?', 'How much of my donation goes to people in Venezuela?']}
-                            answers={['Yakera sends the donation made through PayPal or card to the AirTM account of the campaigner. This transaction is done with an exchange from USD to an equivalent of the pegged currency AirUSD and allows the recipient to save the money in their account, transfer it to a bank, or withdraw it in cash. This is all done by AirTM’s network of cashiers in Venezuela who complete secure, untraceable transactions in approximately 15 minutes. Users making donations can use whichever card they prefer and recipients will receive the donation at a fair exchange rate without inflation or currency restrictions.', 'We are committed to ensuring that 100% of donations go directly to the user in Venezuela. There is no fee to withdraw funds and our service fees are charged on top of the donation to avoid any misallocation. However much you donate, you can be confident that the entire amount will be given to the organizer of the campaign (at the cost of a small fee on top to sustain operations at Yakera as well).true']}
-                        />
-                        <Drawer 
-                            title={'About Yakera, our story, and our mission'}
-                            questions={['How does Yakera work?', 'How much of my donation goes to people in Venezuela?']}
-                            answers={['Yakera sends the donation made through PayPal or card to the AirTM account of the campaigner. This transaction is done with an exchange from USD to an equivalent of the pegged currency AirUSD and allows the recipient to save the money in their account, transfer it to a bank, or withdraw it in cash. This is all done by AirTM’s network of cashiers in Venezuela who complete secure, untraceable transactions in approximately 15 minutes. Users making donations can use whichever card they prefer and recipients will receive the donation at a fair exchange rate without inflation or currency restrictions.', 'We are committed to ensuring that 100% of donations go directly to the user in Venezuela. There is no fee to withdraw funds and our service fees are charged on top of the donation to avoid any misallocation. However much you donate, you can be confident that the entire amount will be given to the organizer of the campaign (at the cost of a small fee on top to sustain operations at Yakera as well).true']}
-                        />
+                        {
+                            filteredContent.map((element, i) => {
+                                return(
+                                    <Drawer 
+                                        title={element.title}
+                                        questions={element.questions}
+                                        answers={element.answers}
+                                        key={i}
+                                    />
+                                )                                
+                            })
+                        }
                     </div>
                 </Grid>
             </Grid>
