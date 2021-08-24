@@ -4,6 +4,8 @@ import banner_pic from '../../../pics/pattern-yakera.png'
 import Drawer from './FAQDrawer'
 import SearchIcon from '@material-ui/icons/Search';
 import { Form, InputGroup } from 'react-bootstrap';
+import Author from '../../author';
+
 
 function FAQVisuals() {
 
@@ -61,6 +63,8 @@ function FAQVisuals() {
                     </div>
                 </Grid>
             </Grid>
+
+            <Author />
 
         </div>
     )
