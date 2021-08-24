@@ -24,4 +24,26 @@
 }
 .faq-drawer-area {
     margin: 20px 40px;
+    padding: 20px;
+}
+
+.drawer-title{
+    background-color: #01224d;
+    color: white;
+    font-size: 22px;
+    padding: 30px;
+    border-radius: 10px;
+    margin: 20px 0 -10px 0;
+}
+.drawer-question{
+    color: rgb(133, 133, 133);
+    font-size: 22px;
+}
+.drawer-answer{
+    color: rgb(51, 51, 51);
+    padding: 5px 25px;
+    font-size: 18px;
+}
+.faq-question-area{
+    margin: 30px;
 }
