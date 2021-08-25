@@ -1,374 +1,60 @@
 import React, { Component } from 'react';
 import  { Card } from '@material-ui/core';
-import classnames from 'classnames';
-import { validateFields } from '../Register/Validation';
-import PrivacyCard from './consentCard';
-import ThanksCard from './thanksCard';
-import Paypal from './Paypal';
-
-import airtmLogo from '../../../pics/airtmbutton.png';
-
-
+import PaymentAuth from './PaymentAuth';
+import PaymentDetails from './PaymentDetails';
 class PaymentVisual extends Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            checkError:"",
-            age:false,
-            consent:false,
-            openPrivacy: false,
-            openThanks: false,
-            PaypalId:0,
-            actualValue: 0,
-            percentage:0,
-            amount: {
-                value: '',
-                validateOnChange: false,
-                error: '',
-              },
-            name: {
-                value: '',
-                validateOnChange: false,
-                error: '',
-            },
-            email: {
-                value: '',
-                validateOnChange: false,
-                error: '',
-            }
+            hasDetails: false,
+            amount: 0,
+            name: '',
+            email: '',
         }
-        this.handleChange = this.handleChange.bind(this);
-        this.onConsentCheck = this.onConsentCheck.bind(this);
-        this.onAgeCheck = this.onAgeCheck.bind(this);
-        this.onDonateStart = this.onDonateStart.bind(this);
-        this.onPrivacy = this.onPrivacy.bind(this);
-        this.onSuccess = this.onSuccess.bind(this);
-        this.closeThanks = this.closeThanks.bind(this);
-        this.onAirTM = this.onAirTM.bind(this);
-        this.getPercentage = this.getPercentage.bind(this);
+        this.onContinue = this.onContinue.bind(this);
+        this.onClose = this.onClose.bind(this);
     }
 
-    handleChange(validationFunc, evt) {
-        const field = evt.target.name;
-        const fieldVal = evt.target.value;
-        this.setState(state => ({
-          [field]: {
-            ...state[field],
-            value: fieldVal,
-            error: state[field]['validateOnChange'] ? validationFunc(fieldVal) : ''
-          }
-        }));
-      }
-
-    onConsentCheck(){
+    onContinue(amount, email, name){
         this.setState({
-            consent: !this.state.consent
+            hasDetails: true,
+            amount: amount,
+            name: name,
+            email: email,
         })
     }
 
-    onAgeCheck(){
+    onClose(){
         this.setState({
-            age: !this.state.age
+            hasDetails:false
         })
-    }
-
-    onPrivacy(){
-        this.setState({
-            openPrivacy: !this.state.openPrivacy
-        })
-    }
-
-    closeThanks(){
-        this.setState({
-            openThanks: false,
-        })
-    }
-
-    getPercentage(amount){
-        let val = parseInt(amount);
-        let per = 0;
-
-        if (0 < val && val <= 10){
-            per = 0.3;
-        }
-        if (10 < val && val <= 20){
-            per = 0.2;
-        }
-        if (20 < val && val <= 40){
-            per = 0.15;
-        }
-        if (40 < val && val <= 60){
-            per = 0.125;
-        }
-        if (60 < val && val <= 80){
-            per = 0.1;
-        }
-        if (80 < val && val <= 100){
-            per = 0.075;
-        }
-        if (100 < val ){
-            per = 0.05;
-        }
-
-        this.setState({
-            percentage: per*100
-        })
-
-        return val + val * per;
-    }
-
-    onDonateStart(){
-        var { amount, name, email } = this.state;
-        const amountError = validateFields.validateNumber(amount.value);
-        const nameError = validateFields.validateName(name.value);
-        const emailError = validateFields.validateEmail(email.value);
-
-        this.setState({
-            actualValue: amount.value
-        })
-        
-        if(this.state.age === false || this.state.consent === false){
-            var response = ""
-            if(this.props.language==="en"){
-                response = 'All fields need to be checked'
-            }else{
-                response = 'Todos los campos deben ser revisados'
-            }
-            this.setState({
-                checkError: response
-            })
-        }else{
-            this.setState({
-                checkError:''
-            })
-
-            if ([amountError, nameError, emailError].every(e => e === false)) {
-                //ADJUST FOR % MARGIN
-                var actualSum = this.getPercentage(amount.value);
-                actualSum = actualSum.toFixed(2);
-
-                this.setState({
-                    amount: {
-                        value: actualSum
-                    },
-                    hasAmount: true
-                })     
-            } else {
-                // update the state with errors
-                this.setState(state => ({
-                amount: {
-                    ...state.amount,
-                    validateOnChange: true,
-                    error: amountError
-                },
-                name: {
-                    ...state.name,
-                    validateOnChange: true,
-                    error: nameError
-                },
-                email: {
-                    ...state.email,
-                    validateOnChange: true,
-                    error: emailError
-                }
-                }));
-            } 
-        }
-    }
-    async onSuccess(details, data) {        
-        const { actualValue, name, email } = this.state;
-        
-        await this.props.addAmount(data.payerID, actualValue, name.value, email.value);
-        
-        this.setState({
-            openThanks:true,
-            actualValue:0,
-            hasAmount:false,
-            checkError:"",
-            age:false,
-            consent:false,
-            openPrivacy: false,
-            PaypalId:0,
-            name: {
-                value: '',
-                validateOnChange: false,
-                error: '',
-            },
-            email: {
-                value: '',
-                validateOnChange: false,
-                error: '',
-            }
-
-        })
-        this.props.onPayPalOff();
-    }
-
-    onAirTM(){
-        const { actualValue, name, email } = this.state;
-        
-        this.props.AirTM(this.state.amount.value, this.props.title, actualValue, name, email);
     }
     
 
-    render() {
-        const { amount, name, email } = this.state;
-        const language = this.props.language;
-        var EN = true;
-        if(language ==="en"){
-            EN = true
-        }else{
-            EN = false
-        }
+    render() {        
         return (
             <div className="payment-visual">
-                 <Card id="donateRef" className="payment-card">
-                    <h1 >
-                        {EN ? 'Donate Now' : 'Done ahora'}
-                    </h1>
+                <div className="payment-card-sec">
+                    {!this.state.hasDetails
+                        ? //ask for payment details
 
-                    <div className="payment-card-sec">
-
-                    {!this.state.hasAmount
-                        ? <div >
-                            <p>{EN ? 'Please enter details below' : 'Ingrese los detalles a continuación'}</p>
-                            <input
-                                type="number"
-                                name="amount"
-                                value={amount.value}
-                                placeholder="$"
-                                className={classnames(
-                                    'form-control',
-                                    { 'is-valid': amount.error === false },
-                                    { 'is-invalid': amount.error }
-                                    )}
-                                    onChange={evt =>
-                                         this.handleChange(validateFields.validateNumber, evt)
-                                    }
-                                    />
-                            <div >{amount.error}</div> 
-
-                            <input
-                                type="text"
-                                name="email"
-                                value={email.value}
-                                placeholder="Email"
-                                className={classnames(
-                                    'form-control',
-                                    { 'is-valid': email.error === false },
-                                    { 'is-invalid': email.error }
-                                    )}
-                                    onChange={evt =>
-                                        this.handleChange(validateFields.validateEmail, evt)
-                                    }                            
-                                    
-                                    />
-                            <div >{email.error}</div> 
-                            
-                            <input
-                                type="text"
-                                name="name"
-                                value={name.value}
-                                placeholder={EN ? 'Name' : 'Nombre'}
-                                className={classnames(
-                                    'form-control',
-                                    { 'is-valid': name.error === false },
-                                    { 'is-invalid': name.error }
-                                    )}
-                                    onChange={evt =>
-                                      this.handleChange(validateFields.validateName, evt)
-                                    }                                  
-                                    
-                                    />
-                            <div >{name.error}</div> 
-                            
-                            <input
-                                name="consent"
-                                type="checkbox"
-                                onChange={this.onConsentCheck}
-                                id="check-consent"                                    
-                                className={classnames(
-                                    'form-control'
-                                    )}
-                            />
-                            <div className="check-text" >
-                                    {EN ? 'I consent to the' : 'Consiento al'}
-                                <button
-                                    id="privacy-button" 
-                                    onClick={this.onPrivacy}
-                                    >
-                                    {EN ? 'privacy form' : 'contrato de privacidad'}
-                                </button>  
-                            </div>
-
-                            <input
-                                name="age"
-                                type="checkbox"
-                                onChange={this.onAgeCheck}
-                                style={{ marginBottom:'5px', marginTop:'-15px', width:'15px', float:'left', clear:'both'}}
-                                className={classnames(
-                                    'form-control'
-                                    )}
-                            />
-                            <div className="check-text" style={{marginTop:'0px'}} >
-                                {EN ? 'I confirm to be 18 or over' : 'Confirmo tener 18 años o más'}   
-                            </div>
-
-                            <div style={{clear:'both', color:'#d62828', fontSize:'20px', marginBottom:'10px'}}>{this.state.checkError}</div>
-
-                            <button
-                                type="submit"
-                                className="btn btn-secondary btn-block payment-start-button"    
-                                onClick={this.onDonateStart}                   
-                                >
-                                    {EN ? 'Donate' : 'Donar'}
-                            </button>               
-                    </div> 
-                        :
-                         <div className="payment-slit">
-                        <p>
-                            {EN ? 'You are about to donate' : 'Estás a punto de donar'} <b>{this.state.amount.value} $ </b>
-                        </p>
-                        <p style={{fontSize:'18px'}}>
-                            {EN ? `A fee of ${(this.state.amount.value - this.state.actualValue).toFixed(2)}$ has been added*` : `Se ha agregado una tarifa del ${(this.state.amount.value - this.state.actualValue).toFixed(2)}$ *`}
-                        </p>
-                        <p>                   
-                            {EN ? 'Please put your bank details below' : 'Por favor ingrese sus datos bancarios a continuación'} 
-                        </p>  
-
-                        <button
-                                type="submit"
-                                className="btn btn-secondary btn-block airtm-but"    
-                                onClick={this.onAirTM}                  
-                                >
-                                    <img src={airtmLogo} alt="airtm-logo-button" />
-                        </button>
-
-                        <Paypal amount={this.state.amount.value} onSuccess={this.onSuccess} onClick={this.props.onPayPalOn} onError={this.props.onPayPalOff} onCancel={this.props.onPayPalOff}/>
-
-                        <p id="charge-exp">                 
-                            <b style={{color:'#444444', fontSize:'18px'}}>
-                                {EN ? `*Please note: A fee of ${this.state.percentage}% has been added` : `*Tenga en cuenta: se ha agregado una tarifa del ${this.state.percentage}%`}
-                            </b>
-
-                            <br /> 
-
-                            {EN ? "Sending money to Venezuela, promoting Yakera, covering fixed expenses, and processing your donations carries a cost that we do not (and will not, ever) charge the recipient for. We are committed to sending 100% of your donation, but we need you to cover the fee in order to make your donation travel directly into each individuals' bank accounts." : "Por favor note: Enviar dinero a Venezuela, promover Yakera, cubrir gastos fijos y procesar las donaciones lleva un costo que nosotros no le cobraremos (ahora ni nunca) a los destinatarios. Estamos comprometidos a enviar 100% de tus donaciones pero necesitamos que usted cubra la tarifa de procesamiento para hacer que tu donación vaya directamente a la cuenta de banco de cada individuo."} 
-                        </p> 
+                        <div id="donateRef" className="payment-card">
+                            <PaymentDetails 
+                                language={this.props.language}
+                                onContinue={this.onContinue}
+                                />
                         </div>  
-                    }
-                    </div>    
-                </Card>
 
-                 <PrivacyCard open={this.state.openPrivacy} onClose={this.onPrivacy}/>   
-                 <ThanksCard 
-                    open={this.state.openThanks} 
-                    onClose={this.closeThanks}
-                    EN={EN}
-                    amount={this.state.amount.value}
-                    title={this.props.title}
-                    />
+                        : // else get to payment authentication
+
+                        <PaymentAuth 
+                            language={this.props.language}
+                            onClose={this.onClose}
+                            amount={this.state.amount}
+                        />
+                    }
+                </div>    
             </div>
         );
     }

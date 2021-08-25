@@ -106,7 +106,6 @@ class CampaignPageVisual extends Component {
                     <Grid item xs={12} sm={8} id="left-col">
                         {/* left column  */}
                         {/* <hr />*/}
-                        {console.log(campaign.image)}
                         <div
                             className="campaign-page-title-img"
                             style={{
