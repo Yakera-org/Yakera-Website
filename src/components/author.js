@@ -19,12 +19,7 @@ class Author extends Component{
 
                         <div style={{textAlign:'left', padding:'0px', marginLeft: '10%'}}>
                             <img src={pics.logo} alt={'logo'} style={{height:"50px", paddingBottom:'20px'}}/>
-                            <p style={{
-                                color: 'grey',
-                                fontSize: '20px',
-                                float: "left",
-                                marginLeft:'10%'
-                            }}>Yakera Inc.</p>
+                            
                             <ul id="footer-ul" >
                                 <li  style={{display:"inline-block", margin:"0px", width:'100%', textAlign:'center'}} >
                                     <a id="footer-item" href={"info"} style={{
@@ -106,12 +101,7 @@ class Author extends Component{
 
                 <div style={{textAlign:'left', padding:'0px', marginLeft: '10%'}}>
                     <img src={pics.logo} alt={'logo'} style={{height:"50px", paddingBottom:'20px'}}/>
-                    <p style={{
-                        color: 'grey',
-                        fontSize: '20px',
-                        float: "left",
-                        marginLeft:'10%'
-                    }}>Yakera Inc.</p>
+                    
                     <ul id="footer-ul" >
                         <li  style={{display:"inline-block", margin:"0px", width:'100%', textAlign:'center'}} >
                             <a id="footer-item" href={"info"} style={{
