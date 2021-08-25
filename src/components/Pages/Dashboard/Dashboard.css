@@ -1,0 +1,171 @@
+.dashboard-page {
+    margin-top: 180px;
+}
+.dashboard-page a{
+    color: white;
+    text-decoration: none;
+}
+.dash-card {
+    margin: 50px;
+    height: auto;
+    padding: 50px;
+}
+.dash-card-top {
+    font-family: Intro-Regular-Alt;
+}
+#dash-name, #dash-stats{
+    color: #ea8737;
+}
+.dash-left {
+    font-family: Intro-Regular-Alt;
+    font-size: 20px;
+    padding: 10px;
+}
+.dash-btn{
+    text-align: center;
+}
+.dash-btn button {
+    border: none;
+    padding: 15px;
+    border-radius: 10px;
+    background-color: #ea8737;
+    color: white;
+    font-family: Intro-Regular-Alt;
+    font-size: 25px;
+}
+.dash-btn button:hover{
+    background-color: #f5b784;
+    color: rgb(255, 248, 236);
+}
+
+.dash-campaigns h2{
+    font-family: Intro-Regular-Alt;
+    margin-top: 20px;
+    font-size: 25px;
+}
+.active-campaigns {
+    width: 100%;
+    margin-top: 10px;
+    background-color: rgba(214, 214, 214, 0.5);
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.active-cam-card {
+    padding: 10px;
+    text-align: center;
+}
+
+.dash-active-cam img{
+    width: auto;
+    max-width: 300px;
+    min-width: 100px;
+    max-height: 300px;
+    border-radius: 10px;
+}
+.dash-active-cam p{
+    font-size: 18px;
+}
+.active-cam-card #dash-raised {
+    text-align: center;
+    font-size: 20px;
+}
+.action-btn {
+    text-align: center;
+}
+.action-btn button{
+    border: none;
+    border-radius: 10px;
+    font-size: 20px;
+    padding: 10px;
+}
+
+.action-btn #go{
+    background-color: #ec913b;
+    color: white;
+}
+.action-btn #go:hover{
+    background-color: #f5b784;
+    color: rgb(255, 248, 236);
+}
+.action-btn #withdraw{
+    background-color: #ec563b;
+    color: white;
+}
+.action-btn #withdraw:hover{
+    background-color: #f58b78;
+    color: white;
+}
+.dash-plus-sign {
+    width: 100%;
+    margin-top: 15%;
+    margin-bottom: 15%;
+}
+.dash-plus-sign i{
+    color: rgb(173, 173, 173);
+}
+.dash-plus-sign i:hover{
+    color: rgb(75, 75, 75);
+    cursor: pointer;
+}
+
+
+@media only screen and (max-width: 600px) {
+    .dashboard-page {
+        margin-top: 160px;
+    }
+    .dash-campaigns h2{
+        font-size: 23px;
+    }
+    .dash-card {
+        margin: 10px;
+        height: auto;
+        padding: 5px;
+    }
+    .dash-left {
+        width: 100%;
+        padding: 0%;
+    }
+    .dash-btn button {
+        border: none;
+        padding: 10px;
+        border-radius: 10px;
+        background-color: #ea8737;
+        color: white;
+        font-family: Intro-Regular-Alt;
+        font-size: 20px;
+        margin-bottom: 10px;
+    }
+    .active-campaigns {
+        padding: 10px;
+    }
+    .active-cam-card {
+        padding: 5px;
+    }
+    .react-sweet-progress {
+        width: 80%;
+        margin-left: 10%;
+    }
+    .action-btn {
+        margin-top: -20px;
+        margin-bottom: 0px;
+    }
+    .action-btn button{
+        border: none;
+        border-radius: 10px;
+        font-size: 16px;
+        padding: 12px;
+        width: 80%;
+        margin-left: 10%;
+    }
+    .dash-active-cam img{
+        width: auto;
+        max-width: 200px;
+        min-width: 100px;
+        max-height: 300px;
+    }
+    .dash-plus-sign{
+        margin-bottom: 5%;
+        margin-top: 0%;
+    }
+}
