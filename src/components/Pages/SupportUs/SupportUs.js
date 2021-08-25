@@ -8,6 +8,7 @@ function SupportUs() {
     return (
         <div className='support-us-page'>
             <SupportUsVisuals />
+            <PaymentVisual />
         </div>
     )
 }
