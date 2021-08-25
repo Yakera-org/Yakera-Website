@@ -10,16 +10,25 @@ function FAQQuestion(props) {
         defaultExpanded: false,
       });
 
+    function arrow(){
+
+        if(isExpanded){
+            return '↑'
+        }else{
+            return'↓'
+        }
+    }
+
     return (
         <Grid container spacing={1} style={{ alignItems:'flex-start'}}>
             <Grid item xs={12} sm={12} >
                 <div className='drawer-question' {...getToggleProps()}>
-                    {question} {isExpanded ? '↑' : '↓'}
+                    <div dangerouslySetInnerHTML={{__html:question + arrow()}}></div>
                 </div>
             </Grid>
             <Grid item xs={12} sm={12} >
                 <div className='drawer-answer' {...getCollapseProps()}>
-                    {isExpanded ? answer : ''}
+                <div dangerouslySetInnerHTML={{__html:answer}}></div>
                 </div>
             </Grid>
         </Grid>

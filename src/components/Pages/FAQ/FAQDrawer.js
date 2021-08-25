@@ -24,7 +24,7 @@ function FAQDrawer(props) {
                                         
                                     />
                                     {
-                                        i === 1 ? '' : <hr style={{width:'90%', marginLeft:'5%'}}/>
+                                        i === questions.length-1 ? '' : <hr style={{width:'90%', marginLeft:'5%'}}/>
                                     }
                                    
                                 </div>
