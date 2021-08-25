@@ -260,12 +260,13 @@ class PaymentDetails extends PureComponent {
                     name="consent"
                     type="checkbox"
                     onChange={this.onConsentCheck}
-                    id="check-consent"                                    
+                    id="check-consent"            
+                    style={{ marginBottom:'0px', marginTop:'0px', width:'15px', float:'left', clear:'both'}}                        
                     className={classnames(
                         'form-control'
                         )}
                 />  
-                <div className="check-text" style={{marginTop:'40px'}}>
+                <div className="check-text" style={{marginTop:'30px'}}>
                         {EN ? 'I consent to the' : 'Consiento al'}
                     <button
                         id="privacy-button" 
