@@ -10,7 +10,7 @@ import Consent from './Pages/Privacy/consent';
 import FAQ from './Pages/FAQ/FAQ';
 import donate from './Pages/Donate/donate';
 import AboutUs from './Pages/AboutUs/aboutus';
-import donateYakera from './Pages/DonateYakera/DonateYakera';
+import SupportUs from './Pages/SupportUs/SupportUs';
 import NotFoundPage from './Pages/404/NotFoundPage';
 import Confirmation from './Pages/Confirmation/Confirmation';
 import Dashboard from './Pages/Dashboard/Dashboard';
@@ -28,7 +28,7 @@ function Main(){
                 <Route exact path="/login" component={login}/>
                 <Route exact path="/register" component={register}/>
                 {/* <Route exact path="/profile" component={profile}/> */}
-                <Route exact path="/donate" component={donateYakera}/>
+                <Route exact path="/support" component={SupportUs}/>
                 <Route exact path="/campaigns" component={donate}/>
                 {/* <Route exact path="/confirmed" component={confirmed}/> */}
                 {/* <Route exact path="/cancelled" component={cancelled}/> */}
