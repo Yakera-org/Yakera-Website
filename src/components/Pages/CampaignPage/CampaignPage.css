@@ -65,7 +65,7 @@
 }
 
 /* hr */
-hr {
+.campaignPage hr {
     background-color: var(--brand-orange);
     height: 1px;
 }

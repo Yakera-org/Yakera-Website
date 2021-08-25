@@ -7,6 +7,7 @@ import Avatar from '@material-ui/core/Avatar';
 import IconButton from '@material-ui/core/IconButton';
 import ShareIcon from '@material-ui/icons/Share';
 import { Progress } from 'react-sweet-progress';
+import "react-sweet-progress/lib/style.css";
 
 import './campaignCard.css';
 
