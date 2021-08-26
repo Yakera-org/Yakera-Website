@@ -30,7 +30,7 @@ function SupportUsVisuals(props) {
                                 <Grid container spacing={2} style={{ alignItems:'flex-start'}}>
                                     {['$20', '$50', '$100', '$150'].map((amount, i) => {
                                         return(
-                                            <Grid item xs={12} sm={4} key={i}>
+                                            <Grid item xs={6} sm={4} key={i}>
                                                 <button name={amount} onClick={bringToDonate} className='amount-box'>
                                                 {amount}
                                                 </button>
@@ -76,7 +76,7 @@ function SupportUsVisuals(props) {
                         </div>
                     </div>
                 </Grid>
-                <Grid item xs={12} sm={6} >
+                <Grid item xs={12} sm={6}>
                     <div className='support-us-content-right'>
                         <div>
                             <h1>You can make a difference</h1>
@@ -84,7 +84,7 @@ function SupportUsVisuals(props) {
                         </div>
                     </div>
                 </Grid>
-                <Grid item xs={12} sm={6} >
+                <Grid item xs={12} sm={6}>
                     <div className='support-us-content-left'>
                         <div>
                             <img src={banner1} alt='img-banner' />
