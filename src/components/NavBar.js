@@ -104,7 +104,7 @@ class NavBar extends Component {
                     </Navbar.Toggle>
                     <Navbar.Collapse id="responsive-navbar-nav">
                         <Nav className="mr-auto">
-                        <Nav.Link id='nav-tab' href="/info" > ABOUT US</Nav.Link>
+                        <Nav.Link id='nav-tab' href="/about" > ABOUT US</Nav.Link>
                         <Nav.Link href="/support" id='nav-tab' > {EN ? 'SUPPORT US' : 'DONAR'}</Nav.Link>
                         <Nav.Link href="/campaigns" id='nav-tab'> {EN ? 'CAMPAIGNS' : 'Campañas'}</Nav.Link>
                         <Nav.Link href="/frequently-asked-questions" id='nav-tab'>FAQ</Nav.Link>

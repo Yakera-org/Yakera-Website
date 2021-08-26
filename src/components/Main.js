@@ -9,7 +9,7 @@ import Terms from './Pages/Terms/terms';
 import Consent from './Pages/Privacy/consent';
 import FAQ from './Pages/FAQ/FAQPage';
 import donate from './Pages/Donate/donate';
-import AboutUs from './Pages/AboutUs/aboutus';
+import AboutUs from './Pages/AboutUs/AboutUs';
 import SupportUs from './Pages/SupportUs/SupportUs';
 import NotFoundPage from './Pages/404/NotFoundPage';
 import Confirmation from './Pages/Confirmation/Confirmation';
@@ -32,7 +32,7 @@ function Main(){
                 <Route exact path="/campaigns" component={donate}/>
                 {/* <Route exact path="/confirmed" component={confirmed}/> */}
                 {/* <Route exact path="/cancelled" component={cancelled}/> */}
-                <Route exact path="/info" component={AboutUs}/>
+                <Route exact path="/about" component={AboutUs}/>
                 <Route exact path="/campaign/:title" component={Campaign}/>
                 <Route exact path="/terms" component={Terms}/>
                 <Route exact path="/consent" component={Consent}/>
