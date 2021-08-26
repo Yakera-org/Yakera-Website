@@ -107,7 +107,7 @@ class NavBar extends Component {
                         <Nav.Link id='nav-tab' href="/info" > ABOUT US</Nav.Link>
                         <Nav.Link href="/support" id='nav-tab' > {EN ? 'SUPPORT US' : 'DONAR'}</Nav.Link>
                         <Nav.Link href="/campaigns" id='nav-tab'> {EN ? 'CAMPAIGNS' : 'Campañas'}</Nav.Link>
-                        <Nav.Link href="/faq" id='nav-tab'>FAQ</Nav.Link>
+                        <Nav.Link href="/frequently-asked-questions" id='nav-tab'>FAQ</Nav.Link>
                         <Nav.Link href="/login" id='nav-tab'>{isAuthenticated ? 'DASHBOARD' : 'LOGIN'}</Nav.Link>
                         {/* <Nav.Link href="/profile" style={{fontSize:'30px'}}>Profile</Nav.Link>
                         <Nav.Link href="/login" style={{fontSize:'30px'}}>Log-in</Nav.Link> */}
