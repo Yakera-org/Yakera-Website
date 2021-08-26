@@ -15,7 +15,7 @@ class PaymentDetails extends PureComponent {
             noTip: false,
             yesTip: true,
             amount: {
-                value: '',
+                value: this.props.presetAmount ? this.props.presetAmount : '',
                 validateOnChange: false,
                 error: '',
               },

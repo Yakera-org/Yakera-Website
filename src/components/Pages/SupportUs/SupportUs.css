@@ -1,6 +1,7 @@
 .support-us-page{
     margin-top: 150px;
     font-family: Intro-Light;
+    padding:0;
     
 }
 .support-us-top-left{
@@ -16,10 +17,13 @@
     border-radius: 10px;
     background-color: #0e325e;
     color: white;
-    font-size: large;    
+    font-size: 18px;    
     margin-left: 10%;
     margin-top: 50px;
     width: 80%;
+}
+.support-us-top-right .donate-box p{
+    font-size: 22px;
 }
 .support-us-top-right .donate-box p{
     padding: 15px 0px 0px 0px;
@@ -27,7 +31,7 @@
 .donate-box .inside-box {
     background-color: rgb(221, 221, 221);
     border-radius: 10px;
-    padding: 10px 10% ;
+    padding: 20px 10% ;
 }
 .donate-box .inside-box .amount-box{
     background-color: rgb(119, 119, 119);
@@ -55,7 +59,27 @@
     padding:10px;
     width: 80%;
     margin-top: 10px;
+    outline: none;
+
 }
 .donate-box .inside-box .donate-btn button:hover{
     opacity: 80%;
+    outline: none;
+}
+.support-us-content-left {
+    text-align: center;
+    background-color: #0e325e;
+}
+.support-us-content-left img{
+    width: 100%;
+}
+.support-us-content-right {
+    text-align: center;
+    font-size: 25px;
+}
+#support-us-bottom-hr{
+    width: 80%;
+    margin-bottom: 10%;
+    margin-top: 50px;
+    margin-bottom: 50px;
 }

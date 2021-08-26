@@ -8,7 +8,7 @@ class PaymentVisual extends Component {
         super(props);
         this.state = {
             hasDetails: false,
-            amount: 0,
+            amount: '',
             name: '',
             email: '',
         }
@@ -30,11 +30,10 @@ class PaymentVisual extends Component {
             hasDetails:false
         })
     }
-    
 
     render() {        
         return (
-            <div className="payment-visual">
+            <div key={this.props.presetAmount} className="payment-visual">
                 <div className="payment-card-sec">
                     {!this.state.hasDetails
                         ? //ask for payment details
@@ -43,6 +42,7 @@ class PaymentVisual extends Component {
                             <PaymentDetails 
                                 language={this.props.language}
                                 onContinue={this.onContinue}
+                                presetAmount={this.props.presetAmount}
                                 />
                         </div>  
 
