@@ -18,6 +18,18 @@
   font-family: 'Intro-Light';
   src: local('Intro'), url(./fonts/Intro-Light-Alt-Regular.otf) format('opentype');
 }
+
+:root {
+  --brand-orange: #eb913b;
+  --brand-black: #252525;
+  --brand-grey: #f0f0f0;
+  --brand-blue: #2f476c;
+  --category-green: #70b88f;
+  --category-red: #ff7d7d;
+  --category-yellow: #edc343;
+  --category-dark-blue: #0e325e;
+}
+
 .nav-bar {
 font-size: 20px;
 }
