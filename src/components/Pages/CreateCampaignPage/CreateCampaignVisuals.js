@@ -11,32 +11,30 @@ function CreateCampaignVisuals(props) {
     return(
         <div className='create-page'>
             <div id='background' >
-                        <h1>
-                            Create your campaign
-                        </h1>
-                        <p>
-                            Yakera is a crowdfunding platform that allows people to tell
-                            their stories and receive donations for healthcare, education,
-                            nutrition, and small business. We believe in people's dignity
-                            and ability to satisfy their own needs via direct transfers.
-                        </p>
-                        <p>
-                            In this form you can tell us your story so that it's featured
-                            in Yakera's website and you can start receiving donations.
-                        </p>
-                        <p>
-                            If you have any questions, text us in WhatsApp at  +1 740-462-2212
-                            or +56 9 5699 7352 or at info@yakera.org. We are here to help you
-                            and answer any questions.
-                        </p>
-                        <Step label="Details" assentColor='#003049'>
-                            <CreatCampaignDetails data={props.data} handleChange={props.handleChange}/>
-                        </Step>
-                        <div id='step-btn'>
-                            <button onClick={props.submit}>
-                                Create Campaign
-                            </button>
-                        </div>
+                <h1>
+                    Create your campaign
+                </h1>
+                <p>
+                    Yakera is a crowdfunding platform that allows people to tell
+                    their stories and receive donations for healthcare, education,
+                    nutrition, and small business. We believe in people's dignity
+                    and ability to satisfy their own needs via direct transfers.
+                </p>
+                <p>
+                    In this form you can tell us your story so that it's featured
+                    in Yakera's website and you can start receiving donations.
+                </p>
+                <p>
+                    If you have any questions, text us in WhatsApp at  +1 740-462-2212
+                    or +56 9 5699 7352 or at info@yakera.org. We are here to help you
+                    and answer any questions.
+                </p>
+                
+                <CreatCampaignDetails data={props.data} handleChange={props.handleChange}/>
+                
+                <button onClick={props.submit}>
+                    Create Campaign
+                </button>
             </div>
         </div>
     )

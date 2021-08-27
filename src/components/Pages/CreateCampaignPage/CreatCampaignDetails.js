@@ -7,15 +7,17 @@ import MyEditor from "../../generics/MyEditor";
 function CreateCampaignDetails(props) {
     return(
         <div className='campaign-details'>
-            <h2>Detais</h2>
+            <h2>Details</h2>
             <hr />
 
-            <Form container spacing={3} style={{ alignItems:'flex-start' }}>
-                <FormGroup item xs={12} sm={6}>
+            <Form container='true' spacing={3} style={{ alignItems:'flex-start' }}>
+                <FormGroup item='true' xs={12} sm={6}>
                     <FormLabel>Campaign Category</FormLabel>
                     {['Healthcare', 'Education', 'Small Business', 'Nutrition'].map((val, index) => (
                         <FormCheck
                             key={index}
+                            name={'campaigncategory'}
+                            value={val.toLowerCase()}
                             type='radio'
                             id={`category`}
                             label={val}
@@ -30,7 +32,7 @@ function CreateCampaignDetails(props) {
                     <FormControl
                         type='campaign-name'
                         as='input'
-                        name='campaign-page'
+                        name='campaignname'
                         placeholder='Enter your campaign name'
                         // value={props.data.campaignName}
                         onChange={props.handleChange}
@@ -47,6 +49,7 @@ function CreateCampaignDetails(props) {
                     <FormControl
                         type='amount'
                         as='input'
+                        name='amount'
                         placeholder='Enter the amount (USD)'
                         // value={props.data.amount}
                         onChange={props.handleChange}
@@ -60,9 +63,10 @@ function CreateCampaignDetails(props) {
                 </FormGroup>
                 <FormGroup>
                     <FormLabel>Your story (we recommend referencing your personal story, the need behind your campaign, why you are opening a campaign, how will you spend the money, and what will the support of people in Yakera allow you to do). Usually successful campaigns have between 3-6 paragraphs.</FormLabel>
-                    <MyEditor
+                    <FormControl
                         type='story'
-                        as='input'
+                        as="textarea"
+                        name='story'
                         placeholder='Tell us your story'
                         // value={props.data.story}
                         onChange={props.handleChange}
@@ -79,7 +83,8 @@ function CreateCampaignDetails(props) {
                     <FormControl
                         type='itemized-budget'
                         as='input'
-                        placeholder='Enter the amount (USD)'
+                        name='itemizedbudget'
+                        placeholder='Enter the amount (USD) and item descriptions'
                         // value={props.data.itemizedBudget}
                         onChange={props.handleChange}
                         className={classnames(
@@ -96,6 +101,7 @@ function CreateCampaignDetails(props) {
                         type="file"
                         multiple
                         as='input'
+                        name='documents'
                         placeholder='Choose files'
                         // value={props.data.supportDocuments}
                         onChange={props.handleChange}
@@ -106,6 +112,7 @@ function CreateCampaignDetails(props) {
                     <FormControl
                         type="file"
                         as='input'
+                        name='mainpic'
                         placeholder='Choose files'
                         // value={props.data.supportDocuments}
                         onChange={props.handleChange}
@@ -116,6 +123,7 @@ function CreateCampaignDetails(props) {
                     <FormControl
                         type="file"
                         as='input'
+                        name='campaignpics'
                         placeholder='Choose files'
                         // value={props.data.supportDocuments}
                         onChange={props.handleChange}

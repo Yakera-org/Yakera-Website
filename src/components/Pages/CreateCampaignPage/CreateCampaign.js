@@ -5,73 +5,33 @@ import CreateCampaignVisuals from "./CreateCampaignVisuals";
 function CreateCampaign() {
 
     const initialState = {
-        campaignName: "",
-        campaignCategory: {
-            healthcare: false,
-            education: false,
-            smallBusiness: false,
-            nutrition: false
-        },
+        campaignname: "",
+        campaigncategory: "",
         amount: "",
         story: "",
-        itemizedBudget: "",
-        supportDocuments: null,
-        mainCampaignPictures: null,
-        campaignPictures: null,
+        itemizedbudget: "",
+        documents: null,
+        mainpic: null,
+        campaignpics: null,
         errors: {
-            campaignName: null,
+            campaignname: null,
             amount: null,
             story: null,
-            itemizedBudget: null
+            itemizedbudget: null
         },
     };
     const [data, setData] = useState(initialState);
 
     const handleChange = event => {
-        if (event.target.name === 'healthcare'){
-            setData({
-                ...data,
-                campaignCategory:{
-                    ...data.check,
-                    [event.target.name]: !data.check.healthcare
-                }
-            })
-            return
-        }
-        if (event.target.name === 'education') {
-            setData({
-                ...data,
-                campaignCategory:{
-                    ...data.check,
-                    [event.target.name]: !data.check.education
-                }
-            })
-            return
-        }
-        if (event.target.name === 'smallBusiness') {
-            setData({
-                ...data,
-                campaignCategory:{
-                    ...data.check,
-                    [event.target.name]: !data.check.smallBusiness
-                }
-            })
-            return
-        }
-        if (event.target.name === 'nutrition') {
-            setData({
-                ...data,
-                campaignCategory:{
-                    ...data.check,
-                    [event.target.name]: !data.check.nutrition
-                }
-            })
-            return
-        }
+        let name = event.target.name;
+        name = name.toLowerCase();
+
+        console.log(name)
         setData({
             ...data,
             [event.target.name]: event.target.value
         },);
+        return
     };
 
     const validateEntry = event => {
