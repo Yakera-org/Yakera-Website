@@ -25,16 +25,17 @@ function CreateCampaignVisuals(props) {
                     in Yakera's website and you can start receiving donations.
                 </p>
                 <p>
-                    If you have any questions, text us in WhatsApp at  +1 740-462-2212
-                    or +56 9 5699 7352 or at info@yakera.org. We are here to help you
+                    If you have any questions, text us in WhatsApp at  <b>+1 740-462-2212 </b> 
+                    or <b>+56 9 5699 7352</b> or at <b>info@yakera.org</b>. We are here to help you
                     and answer any questions.
                 </p>
                 
                 <CreatCampaignDetails data={props.data} handleChange={props.handleChange}/>
-                
-                <button onClick={props.submit}>
-                    Create Campaign
-                </button>
+                <div id='create-campaign'>
+                    <button  onClick={props.submit}>
+                        Create Campaign
+                    </button>
+                </div>
             </div>
         </div>
     )

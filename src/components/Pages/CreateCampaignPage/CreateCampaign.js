@@ -1,6 +1,8 @@
 import React, {useState, useEffect} from "react";
 import { validateCampaignFields } from "./Campaign_Validation";
 import CreateCampaignVisuals from "./CreateCampaignVisuals";
+import Author from '../../author';
+
 
 function CreateCampaign() {
 
@@ -103,7 +105,10 @@ function CreateCampaign() {
         console.log(data);
     }
     return (
-        <CreateCampaignVisuals data={data} handleChange={handleChange} validate={validate} submit={submit}/>
+        <div>
+            <CreateCampaignVisuals data={data} handleChange={handleChange} validate={validate} submit={submit}/>
+            <Author />
+        </div>
     )
 }
 

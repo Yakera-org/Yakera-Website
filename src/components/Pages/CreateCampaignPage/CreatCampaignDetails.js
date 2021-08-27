@@ -47,7 +47,7 @@ function CreateCampaignDetails(props) {
                 <FormGroup>
                     <FormLabel>Amount (in USD)</FormLabel>
                     <FormControl
-                        type='amount'
+                        type='number'
                         as='input'
                         name='amount'
                         placeholder='Enter the amount (USD)'
@@ -67,6 +67,7 @@ function CreateCampaignDetails(props) {
                         type='story'
                         as="textarea"
                         name='story'
+                        style={{minHeight:'100px'}}
                         placeholder='Tell us your story'
                         // value={props.data.story}
                         onChange={props.handleChange}
@@ -82,7 +83,7 @@ function CreateCampaignDetails(props) {
                     <FormLabel>Itemized budget for each item you will purchase with the donations</FormLabel>
                     <FormControl
                         type='itemized-budget'
-                        as='input'
+                        as='textarea'
                         name='itemizedbudget'
                         placeholder='Enter the amount (USD) and item descriptions'
                         // value={props.data.itemizedBudget}
