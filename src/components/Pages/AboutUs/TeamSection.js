@@ -9,7 +9,7 @@ import pic4 from '../../../pics/jang.png'
 import pic5 from '../../../pics/mafer.jpg'
 
 const pics = [pic1, pic3, pic5, pic4, pic2]
-const names = ['Tomas Munoz', 'Raul Romero', 'Mafer Bencoma', 'Jang Belche', 'Aaron `Lambert`']
+const names = ['Tomas Munoz', 'Raul Romero', 'Mafer Bencoma', 'Jang Belche', 'Aaron Lambert']
 const posts = ['CFO', 'Founder & CEO', 'CMO', 'CTO', 'COO']
 const hrefs = ['https://www.linkedin.com/in/tomas-munoz-reyes-7b2202156/',
                 'https://www.linkedin.com/in/raul-romero-martinez/',

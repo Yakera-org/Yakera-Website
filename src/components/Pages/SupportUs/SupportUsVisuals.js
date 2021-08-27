@@ -2,6 +2,7 @@ import React from 'react'
 import { Grid } from '@material-ui/core';
 import titleImg from '../../../pics/y.png'
 import banner1 from '../../../pics/campaigns/ailin/title.jpeg'
+import banner2 from '../../../pics/support.png'
 
 function SupportUsVisuals(props) {
 
@@ -79,15 +80,15 @@ function SupportUsVisuals(props) {
                 <Grid item xs={12} sm={6}>
                     <div className='support-us-content-right'>
                         <div>
-                            <h1>You can make a difference</h1>
-                            <h1><b>Change a life.</b></h1>
+                            <h1>Yakera is a community that embraces innovation, empathy, and individual agency to revolutionize development and humanitarian aid.</h1>
+                            <h1><b>Join us in changing the world, one story at a time.</b></h1>
                         </div>
                     </div>
                 </Grid>
                 <Grid item xs={12} sm={6}>
                     <div className='support-us-content-left'>
                         <div>
-                            <img src={banner1} alt='img-banner' />
+                            <img src={banner2} alt='img-banner' />
                         </div>
                     </div>
                 </Grid>

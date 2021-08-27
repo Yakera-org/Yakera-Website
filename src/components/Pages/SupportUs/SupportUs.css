@@ -29,12 +29,12 @@
     padding: 15px 0px 0px 0px;
 }
 .donate-box .inside-box {
-    background-color: rgb(221, 221, 221);
+    background-color: rgb(235, 235, 235);
     border-radius: 10px;
     padding: 20px 10% ;
 }
 .donate-box .inside-box .amount-box{
-    background-color: rgb(119, 119, 119);
+    background-color: rgb(141, 141, 141);
     padding:10px;
     border-radius: 10px;
     width: 100%;
@@ -68,13 +68,14 @@
 }
 .support-us-content-left {
     text-align: center;
-    background-color: #0e325e;
+    background-color: #ec903b3a;
 }
 .support-us-content-left img{
     width: 100%;
 }
 .support-us-content-right {
     text-align: center;
+    padding: 0 5%;
     font-size: 25px;
 }
 #support-us-bottom-hr{
