@@ -12,9 +12,9 @@ function CreateCampaign() {
         amount: "",
         story: "",
         itemizedbudget: "",
-        documents: null,
+        documents: [],
         mainpic: null,
-        campaignpics: null,
+        campaignpics: [],
         errors: {
             campaignname: null,
             amount: null,
@@ -25,13 +25,20 @@ function CreateCampaign() {
     const [data, setData] = useState(initialState);
 
     const handleChange = event => {
+
         let name = event.target.name;
+        let value = event.target.value;
+
         name = name.toLowerCase();
 
-        console.log(name)
+        if(name === 'campaignpics' || name === 'documents' || name === 'mainpic'){
+            value = event.target.files
+        }
+        
+
         setData({
             ...data,
-            [event.target.name]: event.target.value
+            [name]: value
         },);
         return
     };

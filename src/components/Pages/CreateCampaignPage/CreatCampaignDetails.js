@@ -123,6 +123,7 @@ function CreateCampaignDetails(props) {
                     <FormLabel>Campaign pictures</FormLabel>
                     <FormControl
                         type="file"
+                        multiple
                         as='input'
                         name='campaignpics'
                         placeholder='Choose files'
