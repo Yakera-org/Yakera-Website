@@ -30,7 +30,7 @@ function CreateCampaignVisuals(props) {
                     and answer any questions.
                 </p>
                 
-                <CreatCampaignDetails data={props.data} handleChange={props.handleChange}/>
+                <CreatCampaignDetails data={props.data} handleChange={props.handleChange} handleImageChange={props.handleImageChange}/>
                 <div id='create-campaign'>
                     <button  onClick={props.submit}>
                         Create Campaign

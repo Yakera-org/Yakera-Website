@@ -114,6 +114,8 @@ function CreateCampaignDetails(props) {
                         type="file"
                         as='input'
                         name='mainpic'
+                        accept='image/*'
+                        multiple={true}
                         placeholder='Choose files'
                         // value={props.data.supportDocuments}
                         onChange={props.handleChange}
@@ -126,9 +128,11 @@ function CreateCampaignDetails(props) {
                         multiple
                         as='input'
                         name='campaignpics'
+                        accept='image/*'
+                        multiple={true}
                         placeholder='Choose files'
                         // value={props.data.supportDocuments}
-                        onChange={props.handleChange}
+                        onChange={props.handleImageChange}
                     />
                 </FormGroup>
             </Form>

@@ -2,6 +2,7 @@ import React, {useState, useEffect} from "react";
 import { validateCampaignFields } from "./Campaign_Validation";
 import CreateCampaignVisuals from "./CreateCampaignVisuals";
 import Author from '../../author';
+import * as axios from 'axios'
 
 
 function CreateCampaign() {
@@ -23,6 +24,7 @@ function CreateCampaign() {
         },
     };
     const [data, setData] = useState(initialState);
+    const [images, setImages] = useState([]);
 
     const handleChange = event => {
 
@@ -41,6 +43,23 @@ function CreateCampaign() {
             [name]: value
         },);
         return
+    };
+
+    const handleImageChange = event => {
+        if (event.target.files && event.target.files.length > 0) {
+            for (const file of event.target.files) {
+                const filename = file.name;
+                const reader = new FileReader();
+                reader.readAsDataURL(file);
+                reader.onload = () => {
+                    setImages(images => [...images, { 
+                        filename: filename,
+                        buffer: reader.result,
+                        file: file
+                    }]);
+                }
+            }
+        }
     };
 
     const validateEntry = event => {
@@ -108,12 +127,19 @@ function CreateCampaign() {
         return false;
     }
 
-    function submit(){
-        console.log(data);
+    async function submit(event){
+        event.preventDefault();
+        const formdata = new FormData();
+        for (const image of images) {
+            formdata.append('pictures', image.file);
+        }
+        const url = 'https://express-backend-api.herokuapp.com/api/upload';
+        const res = await axios.post(url, formdata);
+        console.log(res.data);
     }
     return (
         <div>
-            <CreateCampaignVisuals data={data} handleChange={handleChange} validate={validate} submit={submit}/>
+            <CreateCampaignVisuals data={data} handleChange={handleChange} handleImageChange={handleImageChange} validate={validate} submit={submit}/>
             <Author />
         </div>
     )
