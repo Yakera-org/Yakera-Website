@@ -77,6 +77,7 @@ class NavBar extends Component {
         
     render(){
         var EN = true //is english
+        var isAuthenticated = false;
         if(this.state.language === 'en'){
             EN = true
         }else{
@@ -103,10 +104,11 @@ class NavBar extends Component {
                     </Navbar.Toggle>
                     <Navbar.Collapse id="responsive-navbar-nav">
                         <Nav className="mr-auto">
-                        <Nav.Link id='nav-tab' href="/info" > ABOUT US</Nav.Link>
-                        <Nav.Link href="/donate" id='nav-tab' > {EN ? 'SUPPORT US' : 'DONAR'}</Nav.Link>
+                        <Nav.Link id='nav-tab' href="/about" > ABOUT US</Nav.Link>
+                        <Nav.Link href="/support" id='nav-tab' > {EN ? 'SUPPORT US' : 'DONAR'}</Nav.Link>
                         <Nav.Link href="/campaigns" id='nav-tab'> {EN ? 'CAMPAIGNS' : 'Campañas'}</Nav.Link>
-                        <Nav.Link href="/faq" id='nav-tab'>FAQ</Nav.Link>
+                        <Nav.Link href="/frequently-asked-questions" id='nav-tab'>FAQ</Nav.Link>
+                        <Nav.Link href="/login" id='nav-tab'>{isAuthenticated ? 'DASHBOARD' : 'LOGIN'}</Nav.Link>
                         {/* <Nav.Link href="/profile" style={{fontSize:'30px'}}>Profile</Nav.Link>
                         <Nav.Link href="/login" style={{fontSize:'30px'}}>Log-in</Nav.Link> */}
                         <div style={{marginLeft:'25px', marginTop:'-5px'}}>

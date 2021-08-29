@@ -1,68 +1,21 @@
 {
-    "en":{
-        "what": ["Yakera—gratitude in the Venezuelan indigenous language Warao—is a fundraising platform that allows individuals and grassroot organizations in Venezuela to create campaigns on nutrition, education, healthcare, and small businesses. Yakera provides a safe and vetted pathway for Venezuelans to tell their own stories, request immediate support, and receive cash aid directly in their Venezuelan bank accounts using blockchain technology to circumvent government regulations.",
-        "The challenges that Venezuelans face require innovative, specific solutions. Yakera is a specialized fundraising platform that empowers people of all backgrounds to identify their own needs, receive the aid they deserve, and gain the most from each donation."],
-        "mission": "Yakera uplifts the voices of Venezuelan people while providing a safe, vetted, and decentralized pathway to aid motivated by solidarity and freedom in order to help Venezuelans transition from survival to resilience.",
-        "accomplish": "Yakera aims to benefit the nutritional, medical, and financial security of Venezuelans in need by removing barriers to entry that prevent them from accessing global fundraising. Our goal is to create an ethical, functional, and accessible platform that will give people the chance to access options for aid that are off-limits right now. We want to help people purchase food, pay for medicine, and support their livelihoods with the help of generous donors from around the world while giving them the power to advocate for their own needs. Studies have shown that cash transfers are a more effective and efficient form of aid that allows people to focus on their needs and meet them according to their own preferences and local knowledge. We believe that every cent of aid will get farther if Venezuelans are allowed to choose where to purchase goods and services and meet their needs.",
-        "how": "Through Yakera, people in need of support or humanitarian assistance create their accounts and tell their stories in campaigns in one of our categories: nutrition, healthcare, education, and small businesses. We translate the stories and promote them beyond the friends and family circle of the user. Donors can support the campaigns through Paypal or card donations and send words of encouragement to the recipients. Once the recipient decides to withdraw their funds from Yakera, we transfer the donations via AirTM to the recipients’ account. The recipient can choose to withdraw the funds directly into their Venezuelan bank account through AirTM’s local network of cashiers, send payments in USD, or even use their funds in AirTM to pay for goods and services directly. Under AirTM, the funds are held in AirUSD, a digital currency pegged to the US dollar that protects users from inflation. After the recipient receives the donations, they must write a short description of their use of the money, fill out Yakera’s survey and send a picture of the goods and services they have purchased.",
-        "goals": "Yakera will prioritize four categories where we hope to have a measurable impact over time: nutrition, medicine, small businesses, and education. We will target each of these categories with fundable campaigns in addition to conducting a variety of surveys, interviews, and conversations to evaluate our impact on both individuals and the community. As Yakera expands to serve more people, we hope to be a dependable source of aid and a tool for dignity and empowerment that can help Venezuelans make the transition from survival to resilience.",
-        "sdgs": "Our work focuses on Venezuelans in need and fits into the larger international framework for development, closely aligning with the following Sustainable Development Goals (SDGs) outlined by the United Nations:",
-        "sdg1": [
-            "SDG 1: End poverty in all its forms everywhere.",
-            "We chose our four focus areas—food security, medicine, education, and small business—with the goal of mitigating poverty and its consequences in Venezuela. Through contributions in these areas, we believe we will help improve overall quality of life and increase human dignity for the 96% of Venezuelans struggling to eke out a living amidst the crisis. These categories aim to cover necessities ranging from physiological needs to self-actualization. We focus on poverty alleviation and aid where it is most needed and seek to achieve a sustainable impact through expansions in individual agency and investment in human beings."
-        ],
-        "sdg2":[
-            "SDG 2: End hunger, achieve food security and improved nutrition and promote sustainable agriculture.",
-            "Food production, food safety, and food distribution patterns in Venezuela have been interrupted and diminished due to the crisis, directly affecting Venezulan’s right and access to nutritious food. Although Yakera will not distribute food directly, our nutrition category focuses on families who struggle to put food on the table so they can request direct support and receive donations that can help mitigate food insecurity."
-        ],
-        "sdg3": [
-            "SDG 3: Ensure healthy lives and promote well-being for all at all ages.",
-            "A multitude of factors—from medicine shortages to food insecurity to COVID- 19—jeopardize the health of Venezuelan citizens on a daily basis. Through our healthcare category, Yakera will support families struggling to cover medical expenses such as medications and visits to the doctor."
-        ],
-        "sdg4": [
-            "SDG 4: Ensure inclusive and equitable quality education and promote lifelong learning opportunities for all.",
-            "Between 2018 and 2020, school enrollment in Venezuela for students ages 3-24 dropped by 1.7 million. Through our education category, we will help students of all ages gain access to the materials they need for a quality education."
-        ],
-        "sdg8":[
-            "SDG 8: Promote sustained, inclusive and sustainable economic growth, full and productive employment and decent work for all.",
-            "The crisis in Venezuela has proven detrimental to small business, especially family-owned establishments and those working in the informal economy. Through our small business category, we will help those whose livelihoods are at risk cover fixed and variable expenses related to their economic activity and employment."
-        ],
-        "support": "As an emerging 501(c)(4) organization, the team at Yakera also needs a helping hand to continue carrying out our work. With your assistance, we can continue to support Venezuelans and give them a platform to share their stories and request aid from abroad. Donations made through this portal will help us cover our operational expenses which include maintaining our website, initial donations to individual and community campaigns, registration, and administrative costs. Any contribution makes a difference to us and, more importantly, to Venezuelans in need.",
-        "trial":[
-            "In order to test the impact that our platform can have on our platform users, we will partner up with Nutriendo El Futuro, a Caracas-based NGO, in conducting a community pilot in February 2021. This pilot will involve the setup of a dozen fundraising campaigns made of both individuals and community projects that will help to improve the lives of people in the community of El Calvario in the outskirts of Caracas. Our local partners will help contact the community members, introduce them to the Yakera platform and assist them with recording their stories. Once they have fundraised the amounts needed to cover for their campaigns, we will also monitor the impact that these direct transfers had on the daily lives of campaign recipients and the community of El Calvario as a whole. We hope to turn this community pilot into proof of what our platform can do for communities across Venezuela."
-        ]
-    },
-    "sp":{
-        "what": ["Yakera es una plataforma diseñada específicamente para Venezuela que provee a Venezolanos que necesitan ayuda humanitaria con una manera segura y verificada para recibir apoyo directo y contar sus historias a una audiencia internacional. Yakera - que significa gratitud en la lengua indígena, Warao - no discrimina para afiliación política, evita corrupción institucional, y permite que donantes y donadores  cooperen a través de la plataforma a un tipo de cambio justo con la moneda que mejor sirve a sus necesidades. Nos enfocamos  en quienes  están ignorados por ayuda humanitaria e instituciones gubernamentales para ayudarles a lanzar su transición de sobrevivencia a resiliencia.",
-        "Los desafíos que los Venezolanos enfrentan requieren soluciones específicas e innovadoras. Yakera tiene la plataforma más especializada y basada en la comunidad que empodera a Venezolanos de todos orígenes a identificar sus necesidades, recibir la ayuda que merecen, y ganar lo más posible de cada donación."],
-        "mission": "Yakera eleva las voces de la gente venezolana mientras provee un camino seguro, verificado y descentralizado para la ayuda humanitaria, motivada por la solidaridad y la libertad para ayudar a los Venezolanos a transicionar de sobrevivencia a resiliencia.",
-        "accomplish": "Yakera busca beneficiar la seguridad nutricional, médica, y financiera de Venezolanos necesitados removiendo  las barreras de entrada que les prohíben acceder a la recaudación colectiva de fondos. Nuestra meta es crear una plataforma ética, funcional, y accesible que dará a los venezolanos la posibilidad de acceder a opciones de ayuda que actualmente están fuera de su alcance. Queremos ayudarlos  a comprar alimentos, adquirir medicina, y apoyar a sus familias con la ayuda de donantes generosos de todas partes del mundo mientras damos a los venezolanos la agencia para abogar por sus propias necesidades por medio de la gestión de sus propias campañas de crowdfunding.",
-        "how": "Yakera funciona por medio de las transferencias de un pago por PayPal (o la cuenta de AirTM del donante) a la cuenta de AirTM del receptor, quién puede ahorrar o sacar el dinero sin inflación o restricciones sobre la moneda que escoge. Los receptores pueden dejar el dinero en AirTM como una cuenta de ahorros, transferirlo a una cuenta bancaria, o sacarlo en efectivo cuando lo necesiten desde uno de los cajeros en la red de AirTM por todo el país.",
-        "goals": "Yakera va a priorizar cuatro categorías en las que queremos tener un impacto cuantificable  a través  del tiempo: nutrición, medicina, pequeñas empresas, y educación. Vamos a concentrarnos en cada una de estas categorías con campañas financiables  mientras conducimos una variedad de encuestas, entrevistas, y conversaciones para evaluar nuestro impacto en las personas individuales y la comunidad. Mientras Yakera crece para servir a más personas, esperamos ser un recurso  de ayuda fiable que pueda ayudar a los Venezolanos a hacer la transición  de sobrevivencia a resiliencia.",
-        "sdgs": "Nuestro trabajo se enfoca en Venezolanos necesitados y corresponde a la estructura de desarrollo internacional, alineándose estrechamente con las Metas de Desarrollo Sostenible (SDGs por sus siglas en inglés) planteadas por las Naciones Unidas:",
-        "sdg1": [
-            "Meta 1: Poner fin a la pobreza en todas sus formas en todo el mundo.",
-            "Escogimos nuestras áreas de enfoque--seguridad alimentaria, medicinas, educación, y pequeños negocios--con la meta de mitigar la pobreza y  sus consecuencias en Venezuela. Por medio de contribuciones en estas áreas, creemos que vamos a ayudar a mejorar la calidad de vida en general y aumentar la dignidad humana de los 96% de venezolanos que se están esforzando para ganarse la vida en plena crisis en el país. Estas categorías intentan cubrir una serie de necesidades, desde lo físico hasta  la autorealización. Nos enfocamos en el alivio de la pobreza y en el acceso a ayuda donde más se necesitay buscamos lograr un impacto sostenible a través de la  expansión de la agencia individual e inversión en seres humanos."
-        ],
-        "sdg2":[
-            "Meta 2: Poner fin al hambre, lograr seguridad alimentaria y nutrición mejorada y promover la agricultura sostenible.",
-            "La producción de comida, la seguridad de ella, y los patrones de distribución de comida en Venezuela han sido interrumpidos y disminuidos por la crisis, afectando directamente el derecho y acceso de los venezolanos a alimentos nutritivos. Aunque Yakera no distribuirá  comida directamente, nuestra categoría de nutrición se enfoca en las familias que luchan por poner comida en la  mesa para que puedan pedir apoyo directo y recibir donaciones que pueden mitigar la inseguridad alimentaria."
-        ],
-        "sdg3": [
-            "Meta 3: Garantizar vidas sanas y promover el bienestar de toda la gente de cualquier edad.",
-            "Un multitud de factores --desde la escasez de medicinas a la inseguridad alimentaria al COVID-19 --ponen en riesgo la salud de los venezolanos cada día. Por medio de nuestra categoría de medicina, Yakera apoyará  a familias luchando por cubrir gastos médicos, incluyendo medicamentos y visitas al doctor."
-        ],
-        "sdg4": [
-            "Meta 4: Garantizar educación inclusiva, equitativa y de calidad y promover oportunidades de aprendizaje durante toda la vida para todos.",
-            "Desde 2018 a 2020, la matriculación escolar en Venezuela de estudiantes entre 3 y 24 años bajó por 1.7 millones de estudiantes. Con nuestra categoría de educación, ayudaremos  a estudiantes de todas las edades a acceder a los materiales que necesitan para una educación de calidad."
-        ],
-        "sdg8":[
-            "Meta 8: Promover el crecimiento económico continuo, inclusivo y sostenible y el empleo completo, productivo y decente para todos.",
-            "La crisis en Venezuela ha probado ser perjudicial para los pequeños negocios, especialmente para los  que son de propiedad familiar o aquellos trabajando en el sector informal de la economía. Por medio de nuestra categoría de empresas pequeñas, ayudaremos  a aquellos que tienen su sustento en riesgo, a cubrir los gastos fijos y variables relacionados a su actividad económica y empleo."
-        ],
-        "trial":[
-            "Para probar el impacto que nuestra plataforma puede tener en nuestros usuarios, vamos a asociarnos con Nutriendo El Futuro, una ONG basada en Caracas, para conducir un piloto comunitario en enero de 2021. Esta prueba va incluir una docena de campañas compuestas de individuales y proyectos comunitarios que van a mejorar las vidas de la gente de la comunidad  El Calvario en las afueras de Caracas. Nuestros socios locales ayudarán a contactar a  los miembros de la comunidad, introducirles a la plataforma Yakera, y ayudarles a contar sus historias. Cuando hayan recaudado los fondos necesarios para cubrir sus campañas, vamos a monitorear  el impacto que  estas transferencias directas de dinero tuvieron en las vidas diarias  de los receptores y en la comunidad de El Calvario. Esperamos hacer que esta  prueba sea el  ejemplo del impacto que Yakera puede tener en comunidades por toda Venezuela."
-        ]
-
-    }
+    "content":[
+        {
+            "title": "Help Out",
+            "description": "People receive your donations diretly in their bank account via an e-wallet"
+        },
+        {
+            "title": "Share the Campaign",
+            "description": "Unite other to donate and increase support"
+        },
+        {
+            "title": "See your impact",
+            "description": "By checking the updates in the campaigns"
+        },
+        {
+            "title": "Join the Yakera community",
+            "description": "To support other campaigns you are passionate about"
+        }
+    ],
+    "team-text": "We are a highly motivated international team that revolutionizes how humanitarian aid is delivered around the world. Our team was motivated by the Venezuelan crisis and the lack of pathways to deliver direct support to people in need of assistance. Yakera’s technology helps us deliver support directly to people’s bank accounts based on a simple belief: people know their own needs better than anyone else; better than we do."
 }

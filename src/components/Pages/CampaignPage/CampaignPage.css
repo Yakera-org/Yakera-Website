@@ -1,5 +1,6 @@
 .campaignPage{
     margin-top: 10%;
+    font-family: Intro-Regular-Alt;
 }
 .camp-page-vis {
     margin:  0 5% 0 10%;
@@ -12,7 +13,7 @@
 .campaign-page-title-img{
     width: 100%;
     text-align: center;
-    background-color: rgba(204, 205, 212, 0.3);
+    /* background-color: rgba(204, 205, 212, 0.3); */
     padding: 2% 0;
     border-radius: 5px;
 }
@@ -51,28 +52,52 @@
     color: #002453;
 }
 
+/* navbar */
+.camp-page-navbar {
+    font-size: 30px;
+    text-align: center;
+}
+/* .camp-page-navbar a.nav-link {
+    margin: 0% 0%;
+} */
+.camp-page-navbar a.nav-link.active{
+    border-bottom: 5px solid var(--brand-orange);
+}
+
+/* hr */
+.campaignPage hr {
+    background-color: var(--brand-orange);
+    height: 1px;
+}
 
 /* donate card right */
 .donate-page-card {
-    padding: 5% 20%;
+    padding: 5% 0%;
 }
 .donate-page-card h1{
     text-align: center;
 }
 .donate-page-card p{
     text-align: center;
-    font-size: 25px;
+    font-size: 20px;
     color: #808080;
     margin: 20px 0;
 }
 .donate-page-card b{
-    font-size: 30px;
+    font-size: 25px;
     color: #01224d;
 }
+.donate-page-card-text {
+    padding: 0% 5%;
+}
 .donate-page-card-progress {
+    padding: 5% 20%;
     width: 120%;
     margin-left: -8%;
     margin-bottom: 20px;
+}
+.donate-page-card-buttons {
+    padding: 0% 10%;
 }
 .donate-page-card button{
     background-color: #f77f00;
@@ -89,35 +114,46 @@
 }
 
 .payment-visual {
-    margin:  0 5% 0 10%;
+    margin:  0 10% 0 10%;
 }
 /* payments bottom of page */
 .payment-card{
     text-align: center;
-    margin-bottom: 5%;
-    margin-top: 5%;
+    margin: 0%;
     padding: 2%;
+    width: 100%;
+    padding: 2% 35%;
 }
+
+.payment-card #donate-now-hr{
+    width: 100%;
+    background-color: #002453;
+}
+
 .payment-card-sec{
-    text-align: center
+    text-align: center;
+    width: 100%;
+    font-family: Intro-Regular-Alt;
 }
 .payment-card h1{
     font-size: 50px;
+    color: #002453;
 }
 .payment-card p{
-    font-size: 25px;
+    font-size: 20px;
     color: #7c7c7c;
 }
 .payment-card-sec input{
-    width: 30%;
-    margin-left: 35%;
+    width: 100%;
+    margin-left: 0%;
     margin-right: 5px;
     margin-top: 10px;
     height: 50px;
+    color: black;
 }
 .check-text {
     text-align: left;
-    margin-top: 22px;
+    margin-top: 25px;
     height: 50px;
     font-size: 15px;
 }
@@ -128,12 +164,16 @@
     border: none;
 }
 .payment-start-button{
-    width: 20%;
-    margin-left: 40%;
+    width: 50%;
+    margin-left: 25%;
     height: 50px;
     font-size: 20px;
-    background-color: #f77f00;
+    background-color: #002453;
     border: none;
+}
+.payment-start-button:hover{
+    opacity: 80%;
+    background-color: #002453;
 }
 .payment-slit{
     text-align: center;
@@ -144,7 +184,28 @@
     color: #01224d;
     font-size: 30px;
 }
+#required{
+    color: #35383b;
+    font-size: 15px;
+    margin: 5px 0%;
+    text-align: left;
+}
 
+#tip-desc{
+    font-size: 15px;
+    color: rgb(75, 75, 75);
+    text-align: left;
+}
+
+#tip-area input{
+    margin-top: -20px;
+    margin-bottom: 20px;
+}
+#tip-area .label{
+    font-size: 18px;
+    color: #2e2e2e;
+    vertical-align: middle;
+}
 .consent-return{
     width: 20%;
     margin-left: 40%;
@@ -197,6 +258,15 @@
 .airtm-but img{
     height: 100%;
     padding: 5px 0;
+}
+
+.payment-auth {
+    text-align: center;
+}
+
+.payment-auth-card{
+    margin:5%;
+    height: 400px;
 }
 
 @media only screen and (max-width: 600px) {
@@ -260,8 +330,12 @@
         min-width: 40%;
         border-radius: 10px;
     }
-    .payment-card {
-        margin-right: 5%;
+    .payment-card{
+        text-align: center;
+        margin: 0%;
+        padding: 2%;
+        width: 100%;
+        padding: 2%;
     }
     .payment-card h1{
         font-size: 35px;
@@ -281,12 +355,6 @@
     }
     #privacy-button{
         font-size: 14px;
-    }
-    .payment-start-button{
-        width: 60%;
-        margin-left: 20%;
-        margin-top: -10px;
-        margin-bottom: 20px;
     }
     .payment-slit{
         font-size: 20px;
