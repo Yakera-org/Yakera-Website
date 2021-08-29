@@ -13,6 +13,7 @@ import AboutUs from './Pages/AboutUs/AboutUs';
 import SupportUs from './Pages/SupportUs/SupportUs';
 import NotFoundPage from './Pages/404/NotFoundPage';
 import Confirmation from './Pages/Confirmation/Confirmation';
+import CreateCampaign from './Pages/CreateCampaignPage/CreateCampaign';
 import Dashboard from './Pages/Dashboard/Dashboard';
 
 
@@ -32,6 +33,7 @@ function Main(){
                 <Route exact path="/campaigns" component={donate}/>
                 {/* <Route exact path="/confirmed" component={confirmed}/> */}
                 {/* <Route exact path="/cancelled" component={cancelled}/> */}
+                <Route exact path="/create-campaign" component={CreateCampaign} />
                 <Route exact path="/about" component={AboutUs}/>
                 <Route exact path="/campaign/:title" component={Campaign}/>
                 <Route exact path="/terms" component={Terms}/>
@@ -50,4 +52,5 @@ function Main(){
 }
 
 export default Main;
+
 
