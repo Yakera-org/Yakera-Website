@@ -87,7 +87,7 @@ function DashboardVisuals() {
                     <br />
 
                     <div className='dash-btn'>
-                       <button><a href='createCampaign' >Create new campaign</a></button>
+                       <button><a href='create-campaign' >Create new campaign</a></button>
                     </div>
 
                     <div className='dash-campaigns'>
@@ -158,7 +158,7 @@ function DashboardVisuals() {
 
                                     <Grid item xs={12} sm={6} >
                                         <div className='dash-plus-sign'>
-                                            <a href='createCampaign'><i className="fas fa-9x fa-plus-circle"></i></a>
+                                            <a href='create-campaign'><i className="fas fa-9x fa-plus-circle"></i></a>
                                         </div>
                                     </Grid>
 
