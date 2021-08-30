@@ -22,15 +22,34 @@ const colorDic={
     "nutrition": '#ffc19a',
 };
 
+// no way did i write this, so here is an explanation
+// 
+const arrayUnique = (array) => {
+    var a = array.concat();
+    for (var i=0; i<a.length; i++) {
+        for (var j=i+1; j<a.length; ++j) {
+            if (a[i] === a[j])
+                a.splice(j--, 1);
+        }
+    }
+    return a;
+}
+
 const filterCampaignsBySearch = (campaigns, query, lang) => {
     if(!query) {
       return campaigns;
     }
   
-    return campaigns.filter((campaign) => {
-      const campaignTitle = campaign.cam.title[lang].toLowerCase();
-      return campaignTitle.includes(query);
-    })
+    const searchTitles = campaigns.filter((campaign) => {
+        const campaignTitle = campaign.cam.title[lang].toLowerCase();
+        return campaignTitle.includes(query);
+    });
+    const searchDescriptions = campaigns.filter((campaign) => {
+        const campaignDescription = campaign.cam.description[lang].toLowerCase();
+        return campaignDescription.includes(query);
+    });
+
+    return arrayUnique(searchTitles.concat(searchDescriptions));
 };
 
 const filterCampaignsByCategory = (campaigns, categoryState) => {
