@@ -33,6 +33,15 @@ const filterCampaignsBySearch = (campaigns, query, lang) => {
     })
 };
 
+const filterCampaignsByCategory = (campaigns, categoryState) => {
+    let activeFilter = categoryState.replace('Filter', '');
+
+    return campaigns.filter((campaign) => {
+        const campaignCategory = campaign.cam.category;
+        return campaignCategory.includes(activeFilter);
+    })
+};
+
 class SearchBar extends React.Component {
     render () {
         return (
@@ -83,6 +92,7 @@ class donate extends Component{
                 educationFilter: '',
                 businessFilter: '',
                 nutritionFilter: '',
+                activeCategory: '',
             }
     }
 
@@ -144,10 +154,19 @@ class donate extends Component{
     }
 
     setSearchQuery = (e) => {
+        this.setState({
+            healthcareFilter: '',
+            educationFilter: '',
+            businessFilter: '',
+            nutritionFilter: '',
+        });
+
         this.setState({searchQuery : e});
     }
 
     handleFilter = (categoryState) => {
+        this.setState({searchQuery : ''});
+
         if (this.state[categoryState] === 'active') {
             this.setState({
                 healthcareFilter: '',
@@ -164,12 +183,22 @@ class donate extends Component{
             });
     
             this.setState({[categoryState]: 'active'});
+            this.setState({activeCategory: categoryState});
         }
     }
+
+    handleFilteredCampaigns = () => {
+        if (this.state.searchQuery.length !== 0) {
+            return filterCampaignsBySearch(campaigns, this.state.searchQuery, this.state.language);
+        } else if (this.state.healthcareFilter.length !== 0) {
+            return filterCampaignsByCategory(campaigns, this.state.activeCategory);
+        }
+        return campaigns;
+    };
    
     render(){
         var count = 0;
-        var filteredCampaigns = filterCampaignsBySearch(campaigns, this.state.searchQuery, this.state.language);
+        var filteredCampaigns = this.handleFilteredCampaigns();
 
         if(!this.state.loaded){
             return(
@@ -209,7 +238,7 @@ class donate extends Component{
                             width='10%' height='10%'
                             className={this.state.healthcareFilter}
                             onClick={() => {
-                                this.handleFilter('healthcareFilter')
+                                this.handleFilter('healthcareFilter');
                             }} 
                         />
                         <img
@@ -217,7 +246,7 @@ class donate extends Component{
                             width='10%' height='10%'
                             className={this.state.educationFilter}
                             onClick={() => {
-                                this.handleFilter('educationFilter')
+                                this.handleFilter('educationFilter');
                             }} 
                         />
                         <img 
@@ -225,7 +254,7 @@ class donate extends Component{
                             width='10%' height='10%'
                             className={this.state.businessFilter}
                             onClick={() => {
-                                this.handleFilter('businessFilter')
+                                this.handleFilter('businessFilter');
                             }} 
                         />
                         <img
@@ -233,7 +262,7 @@ class donate extends Component{
                             width='10%' height='10%'
                             className={this.state.nutritionFilter}
                             onClick={() => {
-                                this.handleFilter('nutritionFilter')
+                                this.handleFilter('nutritionFilter');
                             }} 
                         />
                     </div>
