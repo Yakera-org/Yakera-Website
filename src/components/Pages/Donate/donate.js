@@ -23,7 +23,7 @@ const colorDic={
 };
 
 // no way did i write this, so here is an explanation
-// 
+// https://stackoverflow.com/questions/1584370/how-to-merge-two-arrays-in-javascript-and-de-duplicate-items
 const arrayUnique = (array) => {
     var a = array.concat();
     for (var i=0; i<a.length; i++) {
@@ -42,11 +42,11 @@ const filterCampaignsBySearch = (campaigns, query, lang) => {
   
     const searchTitles = campaigns.filter((campaign) => {
         const campaignTitle = campaign.cam.title[lang].toLowerCase();
-        return campaignTitle.includes(query);
+        return campaignTitle.includes(query.toLowerCase());
     });
     const searchDescriptions = campaigns.filter((campaign) => {
         const campaignDescription = campaign.cam.description[lang].toLowerCase();
-        return campaignDescription.includes(query);
+        return campaignDescription.includes(query.toLowerCase());
     });
 
     return arrayUnique(searchTitles.concat(searchDescriptions));
@@ -69,7 +69,7 @@ class SearchBar extends React.Component {
                     border: '1px solid #ced4da',
                     borderRadius: '20px',
                     overflow: 'hidden',
-                    width: '40%',
+                    width: '45%',
                     display: 'inline-flex',
                     marginTop: '10px'
                 }}
@@ -248,13 +248,10 @@ class donate extends Component{
                     <h1>
                         {this.state.language === 'en' ? 'CAMPAIGNS' : 'CAMPAÑAS'}
                     </h1>
-                    {/* <p>
-                        {this.state.language === 'en' ? 'Browse campaigns and chip in. Now, more than ever, Venezuelans need your help in education, healthcare, nutrition, and small business. Yakera helps Venezuelans transition from survival to resilience.' : 'Explora campañas y dona directamente. Ahora más que nunca, los venezolanos necesitan tu ayuda en educación, salud, nutrición y pequeños negocios. Yakera asiste a los venezolanos a pasar de supervivencia a resiliencia.'}
-                    </p> */}
                     <div className='campaign-filter'>
                         <img 
                             src={pics.healthcare}
-                            width='10%' height='10%'
+                            width='75px' height='75px'
                             className={this.state.healthcareFilter}
                             onClick={() => {
                                 this.handleFilter('healthcareFilter');
@@ -262,7 +259,7 @@ class donate extends Component{
                         />
                         <img
                             src={pics.education}
-                            width='10%' height='10%'
+                            width='75px' height='75px'
                             className={this.state.educationFilter}
                             onClick={() => {
                                 this.handleFilter('educationFilter');
@@ -270,7 +267,7 @@ class donate extends Component{
                         />
                         <img 
                             src={pics.business}
-                            width='10%' height='10%'
+                            width='75px' height='75px'
                             className={this.state.businessFilter}
                             onClick={() => {
                                 this.handleFilter('businessFilter');
@@ -278,7 +275,7 @@ class donate extends Component{
                         />
                         <img
                             src={pics.nutrition}
-                            width='10%' height='10%'
+                            width='75px' height='75px'
                             className={this.state.nutritionFilter}
                             onClick={() => {
                                 this.handleFilter('nutritionFilter');

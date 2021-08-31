@@ -29,8 +29,8 @@
     text-align: center;
 }
 .header-top h1{
-    font-size: 60px;
-    margin-bottom: 30px;
+    font-size: 45px;
+    margin-bottom: 10px;
     color: #01224d;
     z-index: 9;
 }
@@ -51,14 +51,16 @@
     font-size: 20px;
 }
 .campaign-filter img{
+    /* padding: 2px; */
     margin: 20px;
     cursor: pointer;
 }
+.campaign-filter img:hover{
+    border-radius: 50%;
+    box-shadow: 0 0 0 5px gray;
+}
 .campaign-filter .fade {
     opacity: 0.3;
-}
-.campaign-filter .active {
-    border-color: black;
 }
 @media only screen and (max-width: 600px) {
     .loader {

@@ -71,21 +71,6 @@ class CampaignCard extends Component {
           onMouseLeave={this.handleHover} 
           style={{backgroundColor:this.state.cardColor, borderRadius:'20px'}}
         >
-          {/* <CardHeader
-            avatar={
-              <Avatar aria-label={author}style={{backgroundColor:this.props.color}} >
-                {author}
-              </Avatar>
-            }
-            action={
-            <IconButton aria-label="share">
-              <ShareIcon />      
-            </IconButton>
-            }
-            titleTypographyProps={{variant:'h6' }}
-            title={title}
-            subheader={date}
-          /> */}
           <CardHeader
             titleTypographyProps={{variant:'p' }}
             style={{
@@ -104,7 +89,11 @@ class CampaignCard extends Component {
               padding: '12px',
             }}
             title={
-              <div>
+              <div style={{
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+              }}>
                 <img src={icon} alt='icon' style={{ width: '1.3rem', height: '1.3rem' }} />
                 &nbsp;
                 {this.props.language === "en"
@@ -126,18 +115,6 @@ class CampaignCard extends Component {
             />
           </div>
           <CardContent>
-            {/* <div className="logo-sec">
-              <img src={logo} alt="logo"/>
-              <p>
-                <b>
-                {this.props.language === "en"? 
-                 en_headers[category]
-                 :
-                 sp_headers[category]                
-                }
-               </b>
-              </p>
-            </div> */}
             <div className='logo-sec'>
               <p><b>{title}</b></p>
             </div>
