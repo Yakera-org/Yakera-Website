@@ -16,6 +16,7 @@ class NavBar extends Component {
         this.handleToggle = this.handleToggle.bind(this);
         this.onChange = this.onChange.bind(this);
         this.state = {
+            currentTab: '',
             checked: true,
             language: 'en',
             loaded: false,
@@ -43,7 +44,11 @@ class NavBar extends Component {
                 checked:false //false is VE
             })
         }
+
+        var currentTab = localStorage.getItem('currentTab')
+
         this.setState({
+            currentTab: currentTab,
             loaded: true
         }) 
     }
@@ -73,6 +78,17 @@ class NavBar extends Component {
         }
         window.location.reload(false);
     }
+
+    onTabClick(event){
+        let name = event.target.name
+        this.setState({
+            currentTab:name
+        })
+        console.log(name)
+        localStorage.setItem("currentTab", name)
+        window.location.href = "/"+name;
+    }
+
 
         
     render(){
@@ -104,11 +120,11 @@ class NavBar extends Component {
                     </Navbar.Toggle>
                     <Navbar.Collapse id="responsive-navbar-nav">
                         <Nav className="mr-auto">
-                        <Nav.Link id='nav-tab' href="/about" > ABOUT US</Nav.Link>
-                        <Nav.Link href="/support" id='nav-tab' > {EN ? 'SUPPORT US' : 'DONAR'}</Nav.Link>
-                        <Nav.Link href="/campaigns" id='nav-tab'> {EN ? 'CAMPAIGNS' : 'Campañas'}</Nav.Link>
-                        <Nav.Link href="/frequently-asked-questions" id='nav-tab'>FAQ</Nav.Link>
-                        <Nav.Link href="/login" id='nav-tab'>{isAuthenticated ? 'DASHBOARD' : 'LOGIN'}</Nav.Link>
+                        <Nav.Link id={this.state.currentTab === 'about' ? 'nav-tab-selected': 'nav-tab'}  name='about' onClick={this.onTabClick.bind(this)} >ABOUT US</Nav.Link>
+                        <Nav.Link id={this.state.currentTab === 'support' ? 'nav-tab-selected': 'nav-tab'} name='support'  onClick={this.onTabClick.bind(this)}> {EN ? 'SUPPORT US' : 'DONAR'}</Nav.Link>
+                        <Nav.Link id={this.state.currentTab === 'campaigns' ? 'nav-tab-selected': 'nav-tab'} name='campaigns'  onClick={this.onTabClick.bind(this)}> {EN ? 'CAMPAIGNS' : 'Campañas'}</Nav.Link>
+                        <Nav.Link id={this.state.currentTab === 'frequently-asked-questions' ? 'nav-tab-selected': 'nav-tab'} name='frequently-asked-questions'  onClick={this.onTabClick.bind(this)}>FAQ</Nav.Link>
+                        <Nav.Link id={this.state.currentTab === (isAuthenticated ? 'dashboard' : 'login') ? 'nav-tab-selected': 'nav-tab'} name={isAuthenticated ? 'dashboard' : 'login'}  onClick={this.onTabClick.bind(this)}>{isAuthenticated ? 'DASHBOARD' : 'LOGIN'}</Nav.Link>
                         {/* <Nav.Link href="/profile" style={{fontSize:'30px'}}>Profile</Nav.Link>
                         <Nav.Link href="/login" style={{fontSize:'30px'}}>Log-in</Nav.Link> */}
                         <div style={{marginLeft:'25px', marginTop:'-5px'}}>

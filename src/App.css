@@ -50,11 +50,21 @@ font-size: 20px;
   margin-left: 30px;
   margin-top: 0px;
 }
+#nav-tab-selected {
+  color:#ea8737;
+  font-family:Intro-Regular-Alt;
+  margin-left: 30px;
+  margin-top: 0px;
+}
 #nav-tab:hover {
   color: #ea8737;
 }
-
-
+.navbar-dark .navbar-nav .nav-link{
+  color: #ea8737;
+}
+.isSelected{
+  color: #ea8737
+}
 @media only screen and (max-width: 600px) {
 
   #nav-brand {
