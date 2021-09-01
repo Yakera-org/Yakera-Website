@@ -69,7 +69,6 @@ class SearchBar extends React.Component {
                     border: '1px solid #ced4da',
                     borderRadius: '20px',
                     overflow: 'hidden',
-                    width: '45%',
                     display: 'inline-flex',
                     marginTop: '10px'
                 }}
@@ -250,6 +249,7 @@ class donate extends Component{
                     </h1>
                     <div className='campaign-filter'>
                         <img 
+                            alt='healthcare-pic'
                             src={pics.healthcare}
                             width='75px' height='75px'
                             className={this.state.healthcareFilter}
@@ -258,6 +258,7 @@ class donate extends Component{
                             }} 
                         />
                         <img
+                            alt='education-pic'
                             src={pics.education}
                             width='75px' height='75px'
                             className={this.state.educationFilter}
@@ -266,6 +267,7 @@ class donate extends Component{
                             }} 
                         />
                         <img 
+                        alt='business-pic'
                             src={pics.business}
                             width='75px' height='75px'
                             className={this.state.businessFilter}
@@ -274,6 +276,7 @@ class donate extends Component{
                             }} 
                         />
                         <img
+                            alt='nutrition-pic'
                             src={pics.nutrition}
                             width='75px' height='75px'
                             className={this.state.nutritionFilter}
