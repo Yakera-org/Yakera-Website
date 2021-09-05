@@ -125,8 +125,8 @@
     padding: 2% 35%;
 }
 
-.payment-card #donate-now-hr{
-    width: 100%;
+#donate-now-hr{
+    width: 60%;
     background-color: #002453;
 }
 
@@ -139,7 +139,7 @@
     font-size: 50px;
     color: #002453;
 }
-.payment-card p{
+.payment-card p, .payment-card-sec p{
     font-size: 20px;
     color: #7c7c7c;
 }
@@ -233,26 +233,17 @@
 }
 
 .airtm-but {
-    width: 40%;
-    margin-left: 30%;
+    width: 100%;
+    min-width: 200px;
     margin-bottom: 15px;
     height: 4rem;
-    border: none;
     font-size: 30px;
-    background-color: rgb(223, 240, 255);
+    background-color: white;
+    border: 1px solid rgb(39, 39, 39) 
 }
 
 .airtm-but:hover{
-    background-color:  rgb(178, 199, 216);
-}
-.airtm-but:active{
-    background-color:  rgb(223, 240, 255);
-}
-.airtm-but:focus{
-    background-color:  rgb(223, 240, 255);
-}
-.airtm-but:visited{
-    background-color:  rgb(223, 240, 255);
+    background-color:  rgb(238, 238, 238);
 }
 
 .airtm-but img{
@@ -265,9 +256,23 @@
 }
 
 .payment-auth-card{
-    margin:5%;
-    height: 400px;
+    padding: 50px 25%;
+    height: auto;
 }
+.payment-back-btn{
+    border: none;
+    font-size: 18px;
+    border-radius: 10px;
+    background-color: #002453;
+    color: white;
+    padding: 10px 30px;
+    width: auto;
+    margin: 20px 0;
+}
+.payment-auth-card .payment-back-btn:hover{
+    opacity: 80%;
+}
+
 
 @media only screen and (max-width: 600px) {
     .campaignPage{
@@ -381,5 +386,9 @@
         height: 100%;
         padding: 5px 0;
         width: auto;
+    }
+    .payment-auth-card{
+        padding: 50px 40px;
+        height: auto;
     }
 }

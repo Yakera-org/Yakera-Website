@@ -91,7 +91,7 @@ class PaymentDetails extends PureComponent {
     }
 
     onContinue(){
-        this.props.onContinue(this.state.amount.value, this.state.email.value, this.state.name.value )
+        this.props.onContinue(this.state.amount.value, this.state.email.value, this.state.name.value, this.state.tip.value )
     }
 
     render() {
@@ -105,12 +105,6 @@ class PaymentDetails extends PureComponent {
             <div >
 
                 <ConsentCard open={this.state.openPrivacy} onClose={this.onPrivacy}/>
-
-                <h1 >
-                    {EN ? 'Donate Now' : 'Done ahora'}
-                </h1>
-
-                <hr id='donate-now-hr'/>
 
                 <p>{EN ? 'Please enter details below' : 'Ingrese los detalles a continuación'}</p>
 

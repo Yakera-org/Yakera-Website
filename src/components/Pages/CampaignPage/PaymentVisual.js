@@ -11,17 +11,20 @@ class PaymentVisual extends Component {
             amount: '',
             name: '',
             email: '',
+            tip:''
         }
         this.onContinue = this.onContinue.bind(this);
         this.onClose = this.onClose.bind(this);
+        this.onBack = this.onBack.bind(this);
     }
 
-    onContinue(amount, email, name){
+    onContinue(amount, email, name, tip){
         this.setState({
             hasDetails: true,
             amount: amount,
             name: name,
             email: email,
+            tip: tip
         })
     }
 
@@ -30,15 +33,25 @@ class PaymentVisual extends Component {
             hasDetails:false
         })
     }
+    onBack(){
+        this.setState({
+            hasDetails:false
+        })
+    }
 
     render() {        
         return (
-            <div key={this.props.presetAmount} className="payment-visual">
+            <div key={this.props.presetAmount} className="payment-visual" id="donateRef">
                 <div className="payment-card-sec">
+                <h1 >
+                    Donate Now
+                </h1>
+                <hr id='donate-now-hr'/>
+
                     {!this.state.hasDetails
                         ? //ask for payment details
 
-                        <div id="donateRef" className="payment-card">
+                        <div  className="payment-card">
                             <PaymentDetails 
                                 language={this.props.language}
                                 onContinue={this.onContinue}
@@ -48,10 +61,12 @@ class PaymentVisual extends Component {
 
                         : // else get to payment authentication
 
-                        <PaymentAuth 
+                        <PaymentAuth className="payment-auth"
                             language={this.props.language}
                             onClose={this.onClose}
                             amount={this.state.amount}
+                            tip={this.state.tip}
+                            onBack={this.onBack}
                         />
                     }
                 </div>    
