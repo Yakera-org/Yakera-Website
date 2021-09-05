@@ -88,6 +88,9 @@ class NavBar extends Component {
         localStorage.setItem("currentTab", name)
         window.location.href = "/"+name;
     }
+    onHomeClick(){
+        localStorage.setItem("currentTab", '')        
+    }
 
 
         
@@ -110,7 +113,7 @@ class NavBar extends Component {
                     <Navbar id='navbar' style={{height: this.state.navHeight + 'px'}} inverse="true" collapseOnSelect fixed="top" className='nav-bar' bg='white' variant="dark" expand="lg"
                         onToggle={this.handleToggle}>
 
-                    <Navbar.Brand >
+                    <Navbar.Brand onClick={this.onHomeClick.bind(this)} >
                         <a href="/"><div><object id='nav-brand' data={logo} > </object></div></a>
                     </Navbar.Brand>
                     <Navbar.Toggle aria-controls="responsive-navbar-nav" style={{marginBottom:'10px'}}>
