@@ -263,8 +263,8 @@
 }
 
 .airtm-but img{
-    height: 100%;
-    padding: 5px 0;
+    width: 15%;
+    height: auto;
 }
 
 .payment-auth {
@@ -354,9 +354,8 @@
     .payment-card{
         text-align: center;
         margin: 0%;
-        padding: 2%;
+        padding: 0%;
         width: 100%;
-        padding: 2%;
     }
     .payment-card h1{
         font-size: 35px;
@@ -365,13 +364,14 @@
         font-size: 20px;
     }
     .payment-card-sec input{
-        width: 50%;
-        margin-left: 25%;
-        margin-right: 5px;
+        width: 100%;
         margin-top: 10px;
         height: 40px;
     }
-    .check-text{
+    .check-text {
+        text-align: left;
+        margin-top: 25px;
+        height: 50px;
         font-size: 15px;
     }
     #privacy-button{
@@ -406,5 +406,17 @@
     .payment-auth-card{
         padding: 50px 40px;
         height: auto;
+    }
+    #tip-area input{
+        margin-top: 0px;
+        margin-bottom: 20px;
+        width: 80%;
+        margin-left: 10%;
+    }
+    #tip-area .label{
+        text-align: left;
+        font-size: 18px;
+        color: #2e2e2e;
+        vertical-align: middle;
     }
 }
