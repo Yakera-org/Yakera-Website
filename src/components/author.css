@@ -1,23 +1,32 @@
-#footer-hr{
+.footer{
+    text-align: center;
+}
+.footer hr{
+    width: 90%;
     margin-top: 20px;
+    margin-bottom: 20px;
 }
-#footer-ul{
-    float:right;
-    list-style:none;
-    padding-right: 12%;
-    font-size:30px;
+.footer p{
+    font-size: 20px;
 }
-
-@media only screen and (max-width: 600px) {
-    #footer-item{
-        margin-left: 80px;
-        margin-right: 0px;
-    }     
-    #footer-ul{
-        padding-right: 0%;
-    }
-
-    #footer-hr{
-        margin-top: 200px;
-    }
+.footer .section{
+    padding: 20px 5%;
+}
+.footer img{
+    width: 30%;
+}
+.footer img:hover{
+    cursor: pointer;
+}
+.footer #link{
+    background-color: transparent;
+    border: none;
+    font-size: 18px;
+    color: rgb(80, 80, 80);
+}
+.footer #icon{
+    color: grey;
+}
+.footer #icon:hover{
+    color: rgb(51, 51, 51);
 }

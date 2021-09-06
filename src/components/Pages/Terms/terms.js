@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Author from '../../author';
 import './terms.css';
 
 var terms = "terms.html";
@@ -39,7 +40,8 @@ class Terms extends Component{
                 <div>
                     <iframe src={"../" + terms}
                     title="terms"
-                    className="terms-frame"/>     
+                    className="terms-frame"/> 
+                    <Author />    
                 </div>      
             )
         }
