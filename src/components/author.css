@@ -1,5 +1,6 @@
 .footer{
     text-align: center;
+    font-family: Intro-Light;
 }
 .footer hr{
     width: 90%;
@@ -23,6 +24,12 @@
     border: none;
     font-size: 18px;
     color: rgb(80, 80, 80);
+}
+.footer #link:hover{
+    text-decoration: underline;
+}
+.footer #link:focus{
+    outline: none;
 }
 .footer #icon{
     color: grey;
