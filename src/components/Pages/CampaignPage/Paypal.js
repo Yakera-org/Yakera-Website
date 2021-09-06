@@ -1,10 +1,5 @@
 import React from "react";
 import { PayPalButton } from "react-paypal-button-v2";
-
-
-//sb-hokue3829590@personal.example.com
-//H90%eGiD
-
 class PayPal extends React.Component {
     render() {
         const { amount, onSuccess, onError, onCancel, onClick } = this.props;
@@ -20,7 +15,7 @@ class PayPal extends React.Component {
                 
                 style={{
                     layout:  'vertical',
-                    color:   'gold',
+                    color:   'white',
                     shape:   'rect',
                     label:   'paypal'
                 }}

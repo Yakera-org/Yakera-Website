@@ -3,7 +3,8 @@
     width: 40%;
     text-align: center;
     margin-left: 30%;
-    padding: 20px;
+    font-family: Intro-Regular-Alt;
+    padding: 30px 20px;
 }
 
 .share-dialog h1, .thanks-dialog h1 {
@@ -13,20 +14,19 @@
 .thanks-dialog h1{
     font-size: 45px;
 }
-.thanks-dialog p {
-    font-size: 30px;
-}
 
 .copy-btn {
-    background-color: #02a95c;
+    background-color: #ea8737;
     border: none;
+    min-width: 70px
 }
 .copied {
-    color: #02a95c;
+    color: #ea8737;
     font-size: 20px;
 }
 #share-help {
     font-size: 15px;
+    color: rgb(97, 97, 97);
     margin-bottom: -5px;
 }
 
@@ -43,7 +43,7 @@
     .share-dialog h1, .thanks-dialog h1 {
         margin: 10px;
         margin-top: 20px;
-        font-size: 25px;
+        font-size: 22px;
     }
     .copy-btn {
         font-size: 15px;

@@ -25,6 +25,7 @@
     border-radius: 5px;
 }
 .camp-page-story{
+    margin-top: -50px;
     text-align: justify;
     font-size: 20px;
     padding: 5% 5% 0 0;
@@ -66,7 +67,6 @@
 
 /* hr */
 .campaignPage hr {
-    background-color: var(--brand-orange);
     height: 1px;
 }
 
@@ -125,8 +125,8 @@
     padding: 2% 35%;
 }
 
-.payment-card #donate-now-hr{
-    width: 100%;
+#donate-now-hr{
+    width: 60%;
     background-color: #002453;
 }
 
@@ -135,11 +135,14 @@
     width: 100%;
     font-family: Intro-Regular-Alt;
 }
+.error-msg{
+    color: brown;
+}
 .payment-card h1{
     font-size: 50px;
     color: #002453;
 }
-.payment-card p{
+.payment-card p, .payment-card-sec p{
     font-size: 20px;
     color: #7c7c7c;
 }
@@ -233,31 +236,35 @@
 }
 
 .airtm-but {
-    width: 40%;
-    margin-left: 30%;
+    width: 100%;
+    border-radius: 5px;
+    min-width: 200px;
     margin-bottom: 15px;
     height: 4rem;
-    border: none;
     font-size: 30px;
-    background-color: rgb(223, 240, 255);
+    background-color: white;
+    border: 1px solid rgb(39, 39, 39);
+    outline: none;
 }
 
 .airtm-but:hover{
-    background-color:  rgb(178, 199, 216);
+    background-color:  rgb(238, 238, 238);
+    outline: none;
+
 }
 .airtm-but:active{
-    background-color:  rgb(223, 240, 255);
+    background-color: rgb(238, 238, 238);
+    outline: none;
+
 }
 .airtm-but:focus{
-    background-color:  rgb(223, 240, 255);
-}
-.airtm-but:visited{
-    background-color:  rgb(223, 240, 255);
+    outline: none;
+
 }
 
 .airtm-but img{
-    height: 100%;
-    padding: 5px 0;
+    width: 15%;
+    height: auto;
 }
 
 .payment-auth {
@@ -265,9 +272,23 @@
 }
 
 .payment-auth-card{
-    margin:5%;
-    height: 400px;
+    padding: 20px 25%;
+    height: auto;
 }
+.payment-back-btn{
+    border: none;
+    font-size: 18px;
+    border-radius: 10px;
+    background-color: #002453;
+    color: white;
+    padding: 10px 30px;
+    width: auto;
+    margin: 20px 0;
+}
+.payment-auth-card .payment-back-btn:hover{
+    opacity: 80%;
+}
+
 
 @media only screen and (max-width: 600px) {
     .campaignPage{
@@ -333,9 +354,8 @@
     .payment-card{
         text-align: center;
         margin: 0%;
-        padding: 2%;
+        padding: 0%;
         width: 100%;
-        padding: 2%;
     }
     .payment-card h1{
         font-size: 35px;
@@ -344,13 +364,14 @@
         font-size: 20px;
     }
     .payment-card-sec input{
-        width: 50%;
-        margin-left: 25%;
-        margin-right: 5px;
+        width: 100%;
         margin-top: 10px;
         height: 40px;
     }
-    .check-text{
+    .check-text {
+        text-align: left;
+        margin-top: 25px;
+        height: 50px;
         font-size: 15px;
     }
     #privacy-button{
@@ -381,5 +402,21 @@
         height: 100%;
         padding: 5px 0;
         width: auto;
+    }
+    .payment-auth-card{
+        padding: 50px 40px;
+        height: auto;
+    }
+    #tip-area input{
+        margin-top: 0px;
+        margin-bottom: 20px;
+        width: 80%;
+        margin-left: 10%;
+    }
+    #tip-area .label{
+        text-align: left;
+        font-size: 18px;
+        color: #2e2e2e;
+        vertical-align: middle;
     }
 }

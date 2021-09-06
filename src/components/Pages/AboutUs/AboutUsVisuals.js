@@ -13,6 +13,7 @@ const illustracions = [illustracion4, illustracion3, illustracion2, illustracion
 
 
 function AboutUsVisuals() {
+ 
     return (
         <div className='about-us-visuals'>
             <Grid container spacing={0} alignItems="center">
