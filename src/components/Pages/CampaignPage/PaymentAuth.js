@@ -11,7 +11,7 @@ function PaymentAuth(props) {
     if(language !=="en"){
         EN = false
     }
-    const { getCollapseProps, getToggleProps, isExpanded } = useCollapse({
+    const { getCollapseProps, getToggleProps } = useCollapse({
         defaultExpanded: false,
       });
 
