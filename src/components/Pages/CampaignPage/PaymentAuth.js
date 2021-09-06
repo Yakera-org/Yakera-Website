@@ -15,6 +15,19 @@ function PaymentAuth(props) {
         defaultExpanded: false,
       });
 
+    const [souldShowZelle, setsouldShowZelle] = React.useState(false);
+
+    React.useEffect(()=> {
+        let ranNum = Math.floor(Math.random() * 100);
+        if(ranNum < 20){
+            setsouldShowZelle(true)
+        }
+    }, [])
+
+    function onAirTM(){
+        props.onAirTM(total_amount, props.title, props.name, props.email)
+    }
+
     const total_amount = parseInt(props.amount) + parseInt(props.tip)
     return (
         <div>    
@@ -28,27 +41,35 @@ function PaymentAuth(props) {
                     <p>{EN ? 'Please select a payment method' : 'Please select a payment method.'}</p>
                 </div>
                 <PayPal 
-                    amount={props.amount} 
+                    amount={total_amount} 
                 />
                 <button
                     type="submit"
+                    onClick={onAirTM}
                     className=" airtm-but"    
                                  
                 >
                     <img src={airtmLogo} alt="airtm-logo-button" />
                 </button>
-                <button
-                    type="submit"
-                    className=" airtm-but" 
-                    {...getToggleProps()}   
-                              
-                >
-                    <img src={zelleLogo} alt="zelle-logo-button" />
-                </button>
+                { souldShowZelle
+                ?
+                <div>
+                    <button
+                        type="submit"
+                        className=" airtm-but" 
+                        {...getToggleProps()}   
+                                
+                    >
+                        <img src={zelleLogo} alt="zelle-logo-button" />
+                    </button>
 
-                <p {...getCollapseProps()}>
-                    This service is coming soon...
-                </p>
+                    <p {...getCollapseProps()}>
+                        This service is coming soon...
+                    </p>
+                </div>
+                :
+                ''
+                }
 
 
             </Card>

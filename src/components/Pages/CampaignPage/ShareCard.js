@@ -66,8 +66,12 @@ class ShareCard extends Component{
                     >
                         
                     <h1 >{EN ? 'Help by sharing' : 'Ayuda compartiendo'} </h1>
-                    <p id="share-help"> {EN ? 'Fundraisers shared on social networks raise up to 5 times more!' : '¡Las recaudaciones de fondos compartidas en las redes sociales recaudan hasta 5 veces más!'} </p>
-                    <hr style={{width:'80%'}}/>
+                    <p id="share-help">
+                         {EN ? 'Fundraisers shared on social networks raise up to 5 times more!' : '¡Las recaudaciones de fondos compartidas en las redes sociales recaudan hasta 5 veces más!'}
+                    </p>
+
+                    <hr style={{width:'100%'}}/>
+                    
                     <Grid container spacing={0}>
                         <Grid item xs={8} sm={8}>
                             <input

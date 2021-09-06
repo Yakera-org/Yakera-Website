@@ -101,7 +101,7 @@ class CampaignPageVisual extends Component {
                     campaign.category
                 }</h3>    */}
                 <CampaignCategory categoryType={campaign.category} />
-                <h1 style={{color: 'var(--brand-blue'}}>{campaign.title[language]}</h1>  
+                    <h1 style={{color: 'var(--brand-blue'}}>{campaign.title[language]}</h1>  
                 <Grid container spacing={4} style={{ alignItems:'flex-start'}}>
                     <Grid item xs={12} sm={8} id="left-col">
                         {/* left column  */}

@@ -93,20 +93,18 @@ class CampaignPage extends Component{
       })    
     }
 
-    async AirTM(val, title, actualValue, name, email){
-        this.onPayPalOn();
-        
+    async AirTM(val, title, name, email){        
         var code = Math.random().toString(36).substring(7);
         const requestBody = {
           "code": code,
           "description": title,
           "cancel_uri": window.location.href,
           "confirmation_uri": "https://www.yakera.net/confirm",
-          "amount": actualValue,
+          "amount": val,
           "items": [
             {
               "description": "Yakera donation for: " + title,
-              "amount": actualValue,
+              "amount": val,
               "quantity": 1
             }
           ]
@@ -131,10 +129,9 @@ class CampaignPage extends Component{
         .then(res => {
             var id = res.data.id;
             //this.addAmount("AIRTM: " + id, actualValue, name, email).then( () => {
-                window.location.href = "https://app.airtm.com/checkout/"+id;
+                window.open("https://app.airtm.com/checkout/"+id, "_blank");
                 //https://app.stg.airtm.io/checkout/
                 //https://app.airtm.com/checkout/
-                this.onPayPalOff();
            // })
 
         })
@@ -176,12 +173,11 @@ class CampaignPage extends Component{
                         ))}
                     </div>
 
-                    <hr style={{width:'90%', marginLeft:'6%'}}/>
+                    <hr style={{width:'90%', marginLeft:'5%'}}/>
 
                      <PaymentVisual
                         language={this.state.language}
                         AirTM = {this.AirTM}
-                        addAmount={this.addAmount}
                         title={campaign.title[this.state.language]}
                      />
                     

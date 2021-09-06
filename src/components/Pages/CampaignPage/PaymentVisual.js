@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import  { Card } from '@material-ui/core';
 import PaymentAuth from './PaymentAuth';
 import PaymentDetails from './PaymentDetails';
 class PaymentVisual extends Component {
@@ -19,6 +18,9 @@ class PaymentVisual extends Component {
     }
 
     onContinue(amount, email, name, tip){
+        var element = document.getElementById("donateRef");
+        element.scrollIntoView({behavior: "smooth", block: "end", inline: "nearest"});
+        
         this.setState({
             hasDetails: true,
             amount: amount,
@@ -65,8 +67,12 @@ class PaymentVisual extends Component {
                             language={this.props.language}
                             onClose={this.onClose}
                             amount={this.state.amount}
+                            name={this.state.name}
+                            email={this.state.email}
+                            onAirTM={this.props.AirTM}
                             tip={this.state.tip}
                             onBack={this.onBack}
+                            title={this.props.title}
                         />
                     }
                 </div>    

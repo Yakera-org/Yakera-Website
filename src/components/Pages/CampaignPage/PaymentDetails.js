@@ -230,6 +230,8 @@ class PaymentDetails extends PureComponent {
                         />
                 <div className='error-msg'>{name.error}</div> 
 
+                <p id='required'> * required</p>
+                
                 <input
                     type="text"
                     name="comment"
@@ -247,7 +249,6 @@ class PaymentDetails extends PureComponent {
                         />
                 <div >{comment.error}</div> 
                 
-                <p id='required'> * required</p>
 
                 <hr id='donate-now-hr'/>
 

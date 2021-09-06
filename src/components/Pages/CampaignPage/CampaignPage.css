@@ -25,6 +25,7 @@
     border-radius: 5px;
 }
 .camp-page-story{
+    margin-top: -50px;
     text-align: justify;
     font-size: 20px;
     padding: 5% 5% 0 0;
@@ -66,7 +67,6 @@
 
 /* hr */
 .campaignPage hr {
-    background-color: var(--brand-orange);
     height: 1px;
 }
 
