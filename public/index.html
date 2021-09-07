@@ -65,6 +65,21 @@
     <title>Yakera</title>
   </head>
   <body>
+    <script>
+      if ('serviceWorker' in navigator) {
+      window.addEventListener('load', function() {
+      navigator.serviceWorker.register('serviceWorker.js',{
+        scope: '.' // <--- THIS BIT IS REQUIRED
+    }).then(function(registration) {
+      // Registration was successful
+      console.log('ServiceWorker registration successful with scope: ', registration.scope);
+      }, function(err) {
+      // registration failed :(
+      console.log('ServiceWorker registration failed: ', err);
+      });
+      });
+      }
+      </script>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
     <!--
