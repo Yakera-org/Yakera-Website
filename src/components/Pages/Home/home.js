@@ -9,7 +9,7 @@ import './home.scss';
 
 function Home() {
     React.useEffect(() =>{
-        localStorage.setItem('dic', null)
+        localStorage.setItem('dic', null) 
     }, [])
     return (
         <div>
