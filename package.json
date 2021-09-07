@@ -41,6 +41,7 @@
     "react-switch": "^6.0.0",
     "reactstrap": "^8.9.0",
     "redux": "^4.0.5",
+    "serve": "^12.0.0",
     "validator": "^13.6.0"
   },
   "scripts": {
