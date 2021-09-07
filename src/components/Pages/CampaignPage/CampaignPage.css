@@ -232,7 +232,7 @@
     margin: 10px 2%;
     max-width: 20%;
     min-width: 20%;
-    border-radius: 20px;
+    border-radius: 10px;
 }
 
 .airtm-but {
@@ -299,7 +299,7 @@
         padding: 5% 5%;
     }
     .camp-page-vis {
-        margin-top: 150px;
+        margin-top: 350px;
         margin-right: 10%;
     }
     #exp-img {
@@ -309,16 +309,19 @@
     .campaign-page-title-img img {
         width: 100%;
         object-fit: cover;
-        border-radius: 5px;
+        border-radius: 2px;
     }
     .camp-page-vis h1{
-        font-size: 30px;
+        font-size: 25px;
         text-align: left;
         margin-bottom: -10px;
         margin-top: -10px;
     }
     #author-credit{
         font-size: 17px;
+    }
+    .camp-page-story{
+        margin-top: 0;
     }
     .camp-page-story :is(p, h2){
         text-align: start;
