@@ -1,8 +1,6 @@
 import React from "react";
 import classnames from 'classnames'
-import { Grid } from '@material-ui/core';
 import {Form, FormCheck, FormControl, FormGroup, FormLabel} from "react-bootstrap";
-import MyEditor from "../../generics/MyEditor";
 
 function CreateCampaignDetails(props) {
     return(
@@ -38,11 +36,11 @@ function CreateCampaignDetails(props) {
                         onChange={props.handleChange}
                         className={classnames(
                             'form-control',
-                            {'is-valid': props.data.errors.campaignName === false},
-                            {'is-invalid': props.data.errors.campaignName }
+                            {'is-valid': props.data.errors.campaignname === false},
+                            {'is-invalid': props.data.errors.campaignname }
                         )}
                     />
-                    <div className="invalid-feedback">{props.data.errors.campaignName}</div>
+                    <div className="invalid-feedback">{props.data.errors.campaignname}</div>
                 </FormGroup>
                 <FormGroup>
                     <FormLabel>Amount (in USD)</FormLabel>
@@ -90,11 +88,11 @@ function CreateCampaignDetails(props) {
                         onChange={props.handleChange}
                         className={classnames(
                             'form-control',
-                            {'is-valid': props.data.errors.itemizedBudget === false},
-                            {'is-invalid': props.data.errors.itemizedBudget }
+                            {'is-valid': props.data.errors.itemizedbudget === false},
+                            {'is-invalid': props.data.errors.itemizedbudget }
                         )}
                     />
-                    <div className="invalid-feedback">{props.data.errors.itemizedBudget}</div>
+                    <div className="invalid-feedback">{props.data.errors.itemizedbudget}</div>
                 </FormGroup>
                 <FormGroup className="mb-3">
                     <FormLabel>Documents that support your ask (i.e medical orders or notes, tuition receipt, pictures of your small business, budget, etc.)</FormLabel>
@@ -129,7 +127,6 @@ function CreateCampaignDetails(props) {
                         as='input'
                         name='campaignpics'
                         accept='image/*'
-                        multiple={true}
                         placeholder='Choose files'
                         // value={props.data.supportDocuments}
                         onChange={props.handleImageChange}

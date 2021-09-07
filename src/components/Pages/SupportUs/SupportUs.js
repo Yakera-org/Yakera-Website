@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import SupportUsVisuals from './SupportUsVisuals'
 import PaymentVisual from '../CampaignPage/PaymentVisual'
 import * as axios from 'axios'

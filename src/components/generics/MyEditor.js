@@ -1,5 +1,4 @@
 import React, { useEffect, useState, useRef, Fragment } from 'react';
-import ReactDOM from 'react-dom';
 import {
     Editor,
     EditorState,
@@ -16,8 +15,6 @@ const StyleButton = ({ onToggle, style, active, label }) => {
     };
 
     const [className, setClassName] = useState('MyEditor-styleButton');
-
-    const color = active ? 'white' : '#999';
 
     useEffect(() => {
         if (active) {
@@ -108,21 +105,6 @@ const MyEditor = ({ readOnly = false }) => {
             return true;
         }
         return false;
-    };
-
-    const mapKeyToEditorCommand = (event) => {
-        if (event.keyCode === 9 /* TAB */) {
-            const newEditorState = RichUtils.onTab(
-                event,
-                editorState,
-                4 /* maxDepth */,
-            );
-            if (newEditorState !== editorState) {
-                setEditorState(newEditorState);
-            }
-            return;
-        }
-        return getDefaultKeyBinding(event);
     };
 
     const toggleBlockType = (blockType) => {

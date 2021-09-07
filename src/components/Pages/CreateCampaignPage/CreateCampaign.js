@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react";
+import React, {useState} from "react";
 import { validateCampaignFields } from "./Campaign_Validation";
 import CreateCampaignVisuals from "./CreateCampaignVisuals";
 import Author from '../../author';
@@ -42,6 +42,8 @@ function CreateCampaign() {
             ...data,
             [name]: value
         },);
+
+//        validateData()
         return
     };
 
@@ -61,85 +63,67 @@ function CreateCampaign() {
             }
         }
     };
-
-    const validateEntry = event => {
-        const name = event.target.name;
-        const value = event.target.value;
-        var error;
-
-        if (name === 'campaignName' || name === "story") {
-            error = validateCampaignFields.validateName(value);
-        }else if (name === 'amount' || name === 'itemizedBudget'){
-            error = validateCampaignFields.validateAmount(value);
-        }
-
-        if (error !== null) {
-            setData({
-                ...data,
-                [event.target.name]: event.target.value,
-                errors:{
-                    ...data.errors,
-                    [name]: error
-                }
-            });
-        } else {
-            setData({
-                ...data,
-                [event.target.name]: event.target.value,
-                errors:{
-                    ...data.errors,
-                    [name]: null
-                }
-            });
-        }
-    }
-
-    const validate = () => {
+    function validateData(){
         let emptyWarning = 'This field cannot be empty';
-        let campaignNameError, amountError, storyError, itemizedBudgetError;
+        let nameError, amountError, storyError, budgetError;
 
-        if (!data.campaignName){
-            campaignNameError = emptyWarning;
-        }
-        if (!data.amount){
+        let isValid = false;
+        
+        if(!data.amount){
             amountError = emptyWarning;
+        }else{
+            amountError = validateCampaignFields.validateAmount(data.amount + '')
         }
-        if (!data.story){
-            storyError = emptyWarning;
+        if(!data.campaignname){
+            nameError = emptyWarning;     
+        }else{
+            nameError = validateCampaignFields.validateName(data.campaignname);
         }
-        if (!data.itemizedBudget){
-            itemizedBudgetError = emptyWarning;
+        if(!data.story){
+            storyError = emptyWarning;      
+        }else{
+            storyError = validateCampaignFields.validateName(data.story)
         }
-
+        if(!data.itemizedbudget){
+            budgetError = emptyWarning;      
+        }else{
+        budgetError = validateCampaignFields.validateName(data.itemizedbudget)
+        }
         setData({
             ...data,
             errors: {
-                campaignName: campaignNameError,
+                campaignname: nameError,
                 amount: amountError,
                 story: storyError,
-                itemizedBudget: itemizedBudgetError,
-            }
-        });
+                itemizedbudget: budgetError
+            },
+        })
 
-        if (data.campaignName && data.amount && data.story && data.itemizedBudget){
-            return true;
+        if(isValid && !amountError && !storyError && !nameError && !budgetError){
+            return true
         }
-        return false;
-    }
+        
+        return false
+      }
 
     async function submit(event){
         event.preventDefault();
-        const formdata = new FormData();
-        for (const image of images) {
-            formdata.append('pictures', image.file);
+        let isValidated = validateData()
+        if(isValidated){
+            console.log('all valid')
+            const formdata = new FormData();
+            for (const image of images) {
+                formdata.append('pictures', image.file);
+            }
+            const url = 'https://express-backend-api.herokuapp.com/api/upload';
+            const res = await axios.post(url, formdata);
+            console.log(res.data);
         }
-        const url = 'https://express-backend-api.herokuapp.com/api/upload';
-        const res = await axios.post(url, formdata);
-        console.log(res.data);
+       
     }
     return (
         <div>
-            <CreateCampaignVisuals data={data} handleChange={handleChange} handleImageChange={handleImageChange} validate={validate} submit={submit}/>
+            <CreateCampaignVisuals data={data} handleChange={handleChange} handleImageChange={handleImageChange} validate={validateData} submit={submit}/>
             <Author />
         </div>
     )

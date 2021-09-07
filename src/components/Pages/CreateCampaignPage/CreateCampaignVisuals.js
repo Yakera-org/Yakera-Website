@@ -1,7 +1,4 @@
-import React, {useState} from "react";
-import {Card, CardContent} from "@material-ui/core";
-import { MultiStepForm, Step } from 'react-multi-form';
-import { Grid } from '@material-ui/core';
+import React from "react";
 import CreatCampaignDetails from "./CreatCampaignDetails";
 import './CreateCampaignPage.css'
 // import background from '../../../pics/pattern-yakera-blue.png';
