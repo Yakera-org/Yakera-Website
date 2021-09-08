@@ -9,7 +9,7 @@ import Terms from './Pages/Terms/terms';
 import Consent from './Pages/Privacy/consent';
 import FAQ from './Pages/FAQ/FAQPage';
 import donate from './Pages/Donate/donate';
-import AboutUs from './Pages/AboutUs/AboutUs';
+import AboutUs from './Pages/AboutUs/aboutus';
 import SupportUs from './Pages/SupportUs/SupportUs';
 import NotFoundPage from './Pages/404/NotFoundPage';
 import Confirmation from './Pages/Confirmation/Confirmation';
