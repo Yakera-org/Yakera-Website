@@ -4,7 +4,6 @@ import Author from '../../author';
 import PaymentVisual from './PaymentVisual';
 import './CampaignPage.css';
 import campaigns from '../Donate/allCampaigns';
-import HashLoader from "react-spinners/HashLoader";
 
 const _axios = require('axios');
 const axios = _axios.create();
@@ -22,8 +21,6 @@ class CampaignPage extends Component{
             amount:0,
             target:0
         }
-        this.onPayPalOff = this.onPayPalOff.bind(this);
-        this.onPayPalOn = this.onPayPalOn.bind(this);
         this.addAmount = this.addAmount.bind(this);
     }
 
@@ -96,20 +93,18 @@ class CampaignPage extends Component{
       })    
     }
 
-    async AirTM(val, title, actualValue, name, email){
-        this.onPayPalOn();
-        
+    async AirTM(val, title, name, email){        
         var code = Math.random().toString(36).substring(7);
         const requestBody = {
           "code": code,
           "description": title,
           "cancel_uri": window.location.href,
           "confirmation_uri": "https://www.yakera.net/confirm",
-          "amount": actualValue,
+          "amount": val,
           "items": [
             {
               "description": "Yakera donation for: " + title,
-              "amount": actualValue,
+              "amount": val,
               "quantity": 1
             }
           ]
@@ -134,28 +129,16 @@ class CampaignPage extends Component{
         .then(res => {
             var id = res.data.id;
             //this.addAmount("AIRTM: " + id, actualValue, name, email).then( () => {
-                window.location.href = "https://app.airtm.com/checkout/"+id;
+                window.open("https://app.airtm.com/checkout/"+id, "_blank");
                 //https://app.stg.airtm.io/checkout/
                 //https://app.airtm.com/checkout/
-                this.onPayPalOff();
            // })
 
         })
         .catch(err => {
-          this.onPayPalOff();
+          //this.onPayPalOff();
           console.log(err)            
         })  
-    }
-
-    onPayPalOff(){
-        this.setState({
-            loading: false
-        })
-    }
-    onPayPalOn(){
-        this.setState({
-            loading: true
-        })
     }
    
 
@@ -175,15 +158,6 @@ class CampaignPage extends Component{
 
 
                 <div className="campaignPage">
-                        <div className="donate-page-loading">
-                            <div className="sweet-loading loader">
-                                <HashLoader
-                                    size={150}
-                                    color={"#01224d"}
-                                    loading={this.state.loading}
-                                />
-                            </div>               
-                        </div>
                     <Visual
                         campaign={campaign} 
                         amount={this.state.amount} 
@@ -193,20 +167,17 @@ class CampaignPage extends Component{
                      <hr style={{width:'90%', marginLeft:'6%'}}/>
 
                      {/* Images gallery */}
-                    <div className="gallery">
+                    <div className="gallery" id='gallery'>
                         {campaign.images.map((im, i) =>(
                             <img  src={im} alt={i} key={i} />
                         ))}
                     </div>
 
-                    <hr style={{width:'90%', marginLeft:'6%'}}/>
+                    <hr style={{width:'90%', marginLeft:'5%'}}/>
 
                      <PaymentVisual
                         language={this.state.language}
                         AirTM = {this.AirTM}
-                        onPayPalOff={this.onPayPalOff}
-                        onPayPalOn={this.onPayPalOn}
-                        addAmount={this.addAmount}
                         title={campaign.title[this.state.language]}
                      />
                     

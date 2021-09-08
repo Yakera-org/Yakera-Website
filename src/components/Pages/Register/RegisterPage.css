@@ -1,0 +1,70 @@
+.register-page {
+    margin-top: 50px;
+}
+
+.register-page a{
+    color: #ea8737;
+}
+
+#step-btn {
+    text-align: center;
+}
+
+#step-btn button {
+    font-family: Intro-Light;
+    font-size: 20px;
+    width: 80%;
+    text-align: center;
+    border-radius: 10px;
+    border:none;
+    background-color: #01224d;
+    color: white;
+    font-weight: bold;
+    padding: 10px 5px;
+}
+
+#step-btn button:hover{
+    background-color: #052a5cd2;
+}
+.login-card{
+    text-align: center;
+    padding: 20px 50px;
+}
+.login-card h1{
+    color: #052a5c;
+    font-family: Intro-Regular-Alt;
+    margin-bottom: 20px;
+}
+.login-card h2{
+    font-family: Intro-Regular-Alt;
+    margin-top: 20px;
+}
+.register-confirmation .checks{
+    text-align: left;
+}
+
+.register-confirmation{
+    font-family: Intro-Light;
+}
+
+.register-confirmation .checks label {
+    font-family: Intro-Regular-Alt;
+    margin-left: 5px;
+    font-size: 15px;
+}
+
+@media only screen and (max-width: 600px) {
+
+    .register-page {
+        margin-top: 180px;
+    }
+    
+    .login-card{
+        text-align: center;
+        padding: 0px 25px;
+    }
+
+    .login-card input{
+        width: 100%;
+    }
+}

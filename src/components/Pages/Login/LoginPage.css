@@ -1,0 +1,35 @@
+.login-form{
+    width: 100%;
+    max-width: 500px;
+    padding: 15px;
+    margin: auto;
+    height: 100%;
+}
+
+.login-card{
+    width: 100%;
+    max-width: 550px;
+    padding: 15px;
+    margin: auto;
+    margin-top: 10%;
+    height: 100%;
+    font-family: Intro-Regular-Alt;
+}
+
+.btn-lg{
+    background-color: #01224d;
+}
+
+a {
+    color: #01224d;
+}
+
+a:hover {
+    color: #ea8737;
+}
+
+@media only screen and (max-width: 600px) {
+    .login-form{
+        margin-top: 50px;
+    }
+}

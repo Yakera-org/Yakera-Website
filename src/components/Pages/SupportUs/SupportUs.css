@@ -1,0 +1,98 @@
+.support-us-page{
+    margin-top: 150px;
+    font-family: Intro-Light;
+    padding:0;
+    
+}
+.support-us-top-left{
+    text-align: center;
+    padding: 20px;
+}
+.support-us-top-right{
+    text-align: center;
+    padding: 20px 10% ;
+}
+.support-us-top-right .donate-box{
+    font-family: Intro-Regular-Alt;
+    border-radius: 10px;
+    background-color: #0e325e;
+    color: white;
+    font-size: 18px;    
+    margin-left: 10%;
+    margin-top: 50px;
+    width: 80%;
+}
+.support-us-top-right .donate-box p{
+    font-size: 22px;
+}
+.support-us-top-right .donate-box p{
+    padding: 15px 0px 0px 0px;
+}
+.donate-box .inside-box {
+    background-color: rgb(235, 235, 235);
+    border-radius: 10px;
+    padding: 20px 10% ;
+}
+.donate-box .inside-box .amount-box{
+    background-color: rgb(141, 141, 141);
+    padding:10px;
+    border-radius: 10px;
+    width: 100%;
+    color: white;
+    box-shadow: none;
+    border: none;
+}
+.donate-box .inside-box .amount-box:hover{
+    background-color: rgb(82, 82, 82);
+    cursor: pointer;
+}
+
+.donate-box .inside-box .amount-box:focus{
+    background-color: rgb(71, 71, 71);
+    outline: none;
+}
+.donate-box .inside-box .donate-btn button{
+    background-color: #0e325e;
+    border: none;
+    border-radius: 10px;
+    color: white;
+    padding:10px;
+    width: 80%;
+    margin-top: 10px;
+    outline: none;
+
+}
+.donate-box .inside-box .donate-btn button:hover{
+    opacity: 80%;
+    outline: none;
+}
+.support-us-content-left {
+    text-align: center;
+    background-color: #ec903b3a;
+}
+.support-us-content-left img{
+    width: 100%;
+}
+.support-us-content-right {
+    text-align: center;
+    padding: 0 5%;
+    font-size: 25px;
+}
+#support-us-bottom-hr{
+    width: 80%;
+    margin-bottom: 10%;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+@media only screen and (max-width: 600px) {
+    .support-us-top-left{
+        text-align: center;
+        padding: 10px;
+    }
+    .support-us-top-left img{
+        width: 30%;
+    }
+    .support-us-top-right{
+        padding: 10px ;
+    }
+}

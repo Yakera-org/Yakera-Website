@@ -1,93 +1,86 @@
+import React from 'react';
+import { Grid } from '@material-ui/core';
+import logo from "../svg/logo.svg";
 
 
-import React, { Component } from 'react';
+import './author.css';
 
-class Author extends Component{
-    
-    render(){
-        var lang = localStorage.getItem("lang");
-        if(!lang){
-            lang='en'
-        }
-
-        if(lang === "en"){
-            return(
-                <div className='author-page'>
-                        <hr style={{width:'80%', marginLeft:'10%' }}/>
-                        <div style={{textAlign:'center', padding:'20px'}}>
-                            <p style={{
-                                color:'grey',
-                                fontSize:'20px'
-                            }}>Yakera Inc. is registered as a tax-exempt 501(c)(4) organization. 
-                            <br />
-                            Please note that under our status as 501(c)(4) we are a non for profit organization devoted to social welfare, but donations made to us are not tax deductible.
-                            </p>
-    
-                        </div>  
-
-                        <hr style={{width:'80%', marginLeft:'10%' }}/>
-
-    
-                        <div style={{textAlign:'center', padding:'20px'}}>
-                            <p style={{
-                                color:'grey',
-                                fontSize:'20px'
-                            }}>This page is developed by <b>Jang Belche</b> and <b>Louis Nicaud</b>
-                            
-                            <br />
-    
-                            Both are students and did work on this website in their free time
-    
-                            <br />
-    
-                            You can reach out to them <a style={{color:'grey', textDecoration: "underline"}} href="https://www.linkedin.com/in/jang-belche/">here (Jang)</a> and <a style={{color:'grey', textDecoration: "underline"}} href="https://www.linkedin.com/in/louis-nicaud/">here (Louis)</a>
-                            </p>
-    
-                        </div>         
-                </div>
-           
-            )
-        }else{
-            return(
-                <div className='author-page'>
-                        <hr style={{width:'80%', marginLeft:'10%' }}/>
-
-                        <div style={{textAlign:'center', padding:'20px'}}>
-                            <p style={{
-                                color:'grey',
-                                fontSize:'20px'
-                            }}>Yakera Inc. está resistrada como una organización 501(c)(4) exenta de impuestos.
-                            <br />
-                             Note por favor, que bajo nuestro estatus como 501(c)(4) somos una organización sin fines de lucro dedicada al bienestar social, pero las donaciones que recibimos no son deducibles de impuestos.
-                            </p>
-    
-                        </div>  
-
-                        <hr style={{width:'80%', marginLeft:'10%' }}/>
-    
-                        <div style={{textAlign:'center', padding:'20px'}}>
-                            <p style={{
-                                color:'grey',
-                                fontSize:'20px'
-                            }}>Esta página fue desarrollada por <b>Jang Belche</b> y <b>Louis Nicaud</b>
-                            
-                            <br />
-    
-                            Ambos son estudiantes e hicieron este trabajo en este sitio web durante su tiempo libre. 
-    
-                            <br />
-    
-                            Usted puede contactarlos <a style={{color:'grey', textDecoration: "underline"}} href="https://www.linkedin.com/in/jang-belche/">aquí (Jang)</a> y <a style={{color:'grey', textDecoration: "underline"}} href="https://www.linkedin.com/in/louis-nicaud/">aquí (Louis)</a>
-                            </p>
-    
-                        </div>         
-                </div>
-           
-            )
-        }
-
-       
+function Author() {
+    function onImgClick(){
+        localStorage.setItem("currentTab", '')
+        window.location.href = "/";
     }
+    function onLinkClick(event){
+        console.log(event.target.name)
+        localStorage.setItem("currentTab", event.target.name)
+        window.location.href = "/" + event.target.name;
+    }
+    return (
+        <div className='footer'>
+            <hr />
+            <div className='section'>
+                <Grid container spacing={1} style={{ alignItems:'center', textAlign:'center'}}>
+                    <Grid item xs={12} sm={4} >
+                        <img onClick={onImgClick} src={logo} alt='yakera-logo'/>
+                    </Grid>
+                    <Grid item xs={12} sm={4} >
+                        <Grid container spacing={1} style={{ alignItems:'center', textAlign:'center'}}>
+                            <Grid item xs={12} sm={4} >
+                                <button id='link' name='support' onClick={onLinkClick}>Support Us</button>
+                            </Grid>
+                            <Grid item xs={12} sm={4} >
+                                <button id='link' name='about' onClick={onLinkClick}>About Us</button>
+                            </Grid>
+                            <Grid item xs={12} sm={4} >
+                                <button id='link' name='terms' onClick={onLinkClick}>Terms & Conditions</button>
+                            </Grid>
+                        </Grid>
+                    </Grid>
+                    <Grid item xs={12} sm={1} >
+                        <div></div>
+                    </Grid>
+                    <Grid item xs={12} sm={3} >
+                        <Grid container spacing={0} style={{ alignItems:'center', textAlign:'center'}}>
+                            <Grid item xs={3} sm={3} >
+                                <a id="icon" href={'https://www.facebook.com/Yakera.ve'} rel="noopener noreferrer"  target="_blank">
+                                    <i className="fab fa-facebook-square fa-3x" ></i>
+                                </a>
+                            </Grid>
+                            <Grid item xs={3} sm={3} >
+                                <a id="icon" href={"https://twitter.com/Yakera_ve"} rel="noopener noreferrer"  target="_blank">
+                                    <i className="fab fa-twitter-square fa-3x" ></i>
+                                </a>
+                            </Grid>
+                            <Grid item xs={3} sm={3} >
+                                <a id="icon" href={"https://www.instagram.com/yakera_ve/"} rel="noopener noreferrer"  target="_blank">
+                                    <i className="fab fa-instagram fa-3x" ></i>
+                                </a>
+                            </Grid>
+                            <Grid item xs={3} sm={3} >
+                                <a id="icon" href={"https://medium.com/@yakera.venezuela/yakera-re-imagining-peer-to-peer-aid-for-venezuelans-793024ac9767"} rel="noopener noreferrer"  target="_blank">
+                                    <i className="fab fa-medium fa-3x" ></i>
+                                </a>
+                            </Grid>
+                        </Grid>
+                    </Grid>
+                </Grid>
+            </div>
+            <hr />
+            <div className='section'>
+                <p>
+                    Yakera Inc. is registered as a tax-exempt 501(c)(4) organization.
+                    Please note that under our status as 501(c)(4) we are a non for profit organization devoted to social welfare, but donations made to us are not tax deductible.
+                </p>
+            </div>
+
+            <hr />
+            <div className='section'>
+                <p>
+                    This page is developed by the <b>Software Engineering Team</b> at <b>Yakera</b> and belongs to the Yakera company
+                </p>
+            </div>  
+        </div>
+    )
 }
 
-export default Author;
+export default Author

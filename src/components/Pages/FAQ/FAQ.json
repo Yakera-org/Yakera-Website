@@ -1,0 +1,60 @@
+{
+    "en":[
+            {
+                "title": "About Yakera, our story, and our mission",
+                "questions":[
+                    "What do we do?",
+                    "What’s Yakera’s story?",
+                    "How does Yakera work?",
+                    "How much of my donation goes directly to the recipients?",
+                    "What makes Yakera different from other existing crowdfunding platforms?",
+                    "Why cash transfers?",
+                    "Are you a business or a nonprofit?"
+                ],
+                "answers":[
+                    "Yakera is an innovative platform that leverages the power of individual stories and human connection to unlock global solidarity. In Yakera, people can open crowdfunding campaigns and receive support directly in their bank accounts through the use of innovative technologies that allow easy international transfers.",
+                    "We were founded by <a href='https://www.linkedin.com/in/raul-romero-martinez/'>Raul Romero</a>, who left Venezuela in 2016. He recruited an international team that is now working 24/7 to bring support and enable meaningful and sustainable humanitarian aid around the world. Read more about us <a href='https://www.xplot.se/news/dare-stories-raul-romero-and-yakera'>here</a>.",
+                    "Yakera channels donations to an e-wallet account of the recipient, powered by <a href='https://www.airtm.com/es/'>Airtm</a>. Recipients can withdraw funds in their bank account in local currency or spend it directly via Airtm’s <a href='https://directory.airtm.com/'>network of local partners<a/>.",
+                    "We are committed to ensuring that 100% of donations goes directly to the recipient. Our operational and transaction costs are covered by our advisory board, your tips to Yakera, and your <a href='http://www.yakera.org/supportus'>direct donations<a/>.",
+                    "Yakera is committed to empowering individuals across the world and unlocking global solidarity. Our features and increased accessibility gives people in Venezuela and Latin American countries the opportunity to create crowdfunding campaigns, but what defines us goes beyond our features. We are building a future where individual agency, empathy, and solidarity are what sustains global humanitarian aid.",
+                    "People know how to solve their own problems better than we do. Individual empowerment is at the forefront of Yakera’s mission. Cash transfers expand agency and make humanitarian aid more accessible and efficient.",
+                    "We are a startup-minded team building an innovative nonprofit like no other."
+                ]
+            },
+            {
+                "title": "Create a campaign",
+                "questions":[
+                    "Can I make a campaign?",
+                    "How can you receive the funds once your campaign is completed?",
+                    "What should you include in your campaign?"
+                ],
+                "answers":[
+                    "If you live in Venezuela or Latin America, you need to provide your ID number, your story, a picture, and files or pictures that prove your request.",
+                    "Via Airtm. You will need to open an account, verify your identity, and then you can either spend the money directly or exchange it for other currencies.",
+                    "A story of the issue you have, the causes, what you need money for, and how you would spend the money. Making your campaign more personal and telling your story in detail always helps your cause :)"
+                ]
+            },
+            {
+                "title": "Withdrawing Funds",
+                "questions":[
+                    "How can I withdraw money from my Yakera campaign?",
+                    "Why do I have trouble accessing the Airtm page?",
+                    "How can you use Airtm?"
+                ],
+                "answers":[
+                    "You can visit your profile and follow the steps to withdraw money on your account. Usually it takes us between 1-3 business days to process your request.",
+                    "It's possible, especially on mobile browsers, for Airtm to be blocked. Normally, you can fix this by accessing the page on a desktop computer or on the Airtm app in Android. If you still can´t access Airtm on desktop (or you only have access to a mobile phone), here is an article from Medium (which should not be blocked) explaining how to use a VPN and which ones you could use to access Airtm.        Airtm itself recommends <a href='https://psiphon.ca/es/download.html'>Psiphon<a/> but there are others that work as well: <a href='https://psiphon.ca/es/download.html'>TunnelBear<a/>, <a href='https://www.hotspotshield.com/vpn/'>HotSpot Shield<a/>, <a href='https://speedify.com/'>Speedify<a/>, <a href='https://protonvpn.com/'>ProtonVPN<a/>, <a href='https://hide.me/es/'>Hide.me<a/>, <a href='https://www.privatetunnel.com/'>PrivateTunnel<a/>, <a href='https://play.google.com/store/apps/details?id=com.savagevpn.android&hl=es_MX'>SavageVPN<a/>, <a href='https://www.surfeasy.com/lang/es'>SurfEasy<a/>, <a href='https://windscribe.com/'>Windsribe<a/>, and <a href='http://hola.org/'>HolaVPN<a/>.",
+                    "Airtm has quite a <a href='https://www.youtube.com/playlist?list=PLsLrldF-2m8Hjv-I0qT9tW49bahAgPEP4'>few tutorials</a> that you can watch to learn more about <a href='https://www.youtube.com/playlist?list=PLsLrldF-2m8Hjv-I0qT9tW49bahAgPEP4'>how to do everything</a> on Airtm!"
+                ]
+            },
+            {
+                "title": "Support Us",
+                "questions":[
+                    "What do you do with the money that I donate to Yakera directly (not in campaigns)?"
+                ],
+                "answers":[
+                    "We split the costs between software development and product (around 65%), additional operational costs (5%), legal costs (5%) and marketing (25%). Your donations to Yakera directly allow us to multiply our impact."
+                ]
+            }
+        ]
+}

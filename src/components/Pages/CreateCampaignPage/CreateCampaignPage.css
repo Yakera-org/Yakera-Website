@@ -1,0 +1,102 @@
+/*.create-page {*/
+/*    margin: 150px;*/
+/*}*/
+/*.form {*/
+/*    padding: 6em;*/
+/*}*/
+
+/*@media screen and (max-width: 600px) {*/
+
+/*    .create-page {*/
+/*        margin: 10px;*/
+/*    }*/
+/*    .form {*/
+/*        padding: 1em;*/
+/*    }*/
+/*}*/
+
+.create-page {
+    margin-top: 150px;
+    padding: 3% 8%;
+    font-family: Intro-Regular-Alt;
+}
+.create-page h1{
+    color: #01224d;
+    font-size: 42px;
+}
+.create-page b {
+    color: #ea8737;
+}
+.create-page p{
+    font-family: Intro-Light;
+    font-weight: 500;
+    font-size: 22px;
+}
+
+.create-page a{
+    color: #ea8737;
+}
+.campaign-details h2{
+    margin-top: 10px;
+    color:#01224d;
+}
+.campaign-details .form-label{
+    font-size: 18px;
+}
+.campaign-details{
+    font-size: 16px;
+}
+#submit-btn {
+    text-align: center;
+}
+.create-page #create-campaign{
+    text-align: center;
+}
+.create-page #create-campaign button{
+    border: none;
+    border-radius: 10px;
+    background-color: #ea8737;
+    padding: 30px 40px;
+    color: white;
+    font-size: 25px;
+    outline: none;
+}
+.create-page #create-campaign button:hover{
+    opacity: 90%;
+    outline: none;
+}
+.create-page #create-campaign button:active{
+    opacity: 60%;
+    outline: none;
+}
+
+#submit-btn button {
+    font-family: Intro-Light;
+    font-size: 20px;
+    width: 80%;
+    text-align: center;
+    border-radius: 10px;
+    border:none;
+    background-color: #01224d;
+    color: white;
+    font-weight: bold;
+    padding: 10px 5px;
+}
+
+#submit-btn button:hover{
+    background-color: #052a5cd2;
+}
+
+.create-confirmation .checks{
+    text-align: left;
+}
+
+.create-confirmation{
+    font-family: Intro-Light;
+}
+
+.create-confirmation .checks label {
+    font-family: Intro-Regular-Alt;
+    margin-left: 5px;
+    font-size: 15px;
+}

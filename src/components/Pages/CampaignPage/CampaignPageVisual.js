@@ -1,8 +1,27 @@
 import React, { Component } from 'react';
 import {Dialog, Grid} from '@material-ui/core';
-
-
 import DonateCard from './DonateCard';
+import {capitalizeFirstLetter} from '../../../stringUtils';
+import { Navbar, Container, Nav } from 'react-bootstrap';
+
+const CampaignCategory = ({
+    categoryType,
+}) => {
+    return (
+        <h3
+            style={{
+                color: categoryType === 'education'
+                    ? '#70b88f'
+                    : categoryType === 'healthcare'
+                    ? '#ff7d7d'
+                    : ''
+            }}
+        >
+            {capitalizeFirstLetter(categoryType)}
+        </h3>
+    );
+};
+
 
 var marginOffset = 50;
 
@@ -36,6 +55,11 @@ class CampaignPageVisual extends Component {
         var element = document.getElementById("donateRef");
         element.scrollIntoView({behavior: "smooth", block: "start", inline: "nearest"});
     }
+
+    onClickScroll(id) {
+        let element = document.getElementById(id);
+        element.scrollIntoView({behavior: "smooth", block: "start", inline: "nearest"});
+    };
 
     componentDidMount(){
         if (typeof window !== "undefined") {
@@ -72,36 +96,70 @@ class CampaignPageVisual extends Component {
         const language = this.props.language;
         return (
             <div className = "camp-page-vis">
-                <h1>{campaign.title[language]}</h1>  
+                {/* <h3>{
+                    // TODO: render with styling, eg. capitalize properly and add icon
+                    campaign.category
+                }</h3>    */}
+                <CampaignCategory categoryType={campaign.category} />
+                    <h1 style={{color: 'var(--brand-blue'}}>{campaign.title[language]}</h1>  
                 <Grid container spacing={4} style={{ alignItems:'flex-start'}}>
                     <Grid item xs={12} sm={8} id="left-col">
                         {/* left column  */}
-                        <hr />              
-
-                        <div className="campaign-page-title-img">
-                            <img onClick={this.imgClick} src={campaign.image} alt="title.img"/>
-                            
-                                <Dialog
-                                    fullWidth={true} 
-                                    maxWidth='lg'                                 
-                                    open={this.state.imgClicked}    
-                                    onClose={this.imgClick}                                                                                                                                                    
-                                >            
+                        {/* <hr />*/}
+                        <div
+                            className="campaign-page-title-img"
+                            style={{
+                                borderRadius: '20px',
+                            }}
+                        >
+                            <img
+                                onClick={this.imgClick}
+                                style={{
+                                    borderRadius: '20px',
+                                }}
+                                src={campaign.image}
+                                alt="title.img"
+                            />
+                            <Dialog
+                                fullWidth={true}
+                                maxWidth='lg'
+                                open={this.state.imgClicked}    
+                                onClose={this.imgClick}
+                            >            
                                 <img 
-                                 id="exp-img"
-                                 onClick={this.imgClick}
-                                 src={campaign.image} 
-                                 alt="title.img"
+                                    id="exp-img"
+                                    onClick={this.imgClick}
+                                    src={campaign.image} 
+                                    alt="title.img"
                                 />
-                                </Dialog>
+                            </Dialog>
                              
                         </div>
 
                         <p id="author-credit">{campaign.author} - {campaign.date}</p>
 
-                        <hr style={{marginBottom:'-10px'}}/>    
+                        {/* <hr style={{marginBottom:'-10px'}}/> */}
+                        
+                        <Navbar>
+                            <Container style={{justifyContent: 'center'}}>
+                                <Nav className='camp-page-navbar'>
+                                    <Nav.Link
+                                        href='#1'
+                                        onClick={() => {
+                                            this.onClickScroll('about')
+                                        }}
+                                    >About</Nav.Link>
+                                    <Nav.Link
+                                        href='#2'
+                                        onClick={() => {
+                                            this.onClickScroll('gallery')}
+                                        }
+                                    >Gallery</Nav.Link>
+                                </Nav>
+                            </Container>
+                        </Navbar>
 
-                        <div className="camp-page-story">
+                        <div className="camp-page-story" id='about'>
                             {campaign.headers[language].map((h, i) =>{
                                 return(
                                     <div key={h+i}>
@@ -127,7 +185,7 @@ class CampaignPageVisual extends Component {
                             showShare={this.state.showShare}
                             onShare={this.onShare}
                             onClose={this.onShare}
-                            onDonate={this.onDonate}
+                            onDonate={this.onClickScroll}
                             language={language}
                             />
                          </div>

@@ -1,12 +1,22 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Yakera",
+  "name": "Yakera fundraising platform",
   "icons": [
     {
       "src": "favicon.ico",
       "sizes": "128x128",
       "type": "image/x-icon"
-    }    
+    },
+    {
+      "src": "y.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "y.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }  
   ],
   "start_url": ".",
   "display": "standalone",

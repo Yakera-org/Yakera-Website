@@ -3,10 +3,8 @@ import  { withRouter } from 'react-router-dom'
 import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
 import CardContent from '@material-ui/core/CardContent';
-import Avatar from '@material-ui/core/Avatar';
-import IconButton from '@material-ui/core/IconButton';
-import ShareIcon from '@material-ui/icons/Share';
 import { Progress } from 'react-sweet-progress';
+import "react-sweet-progress/lib/style.css";
 
 import './campaignCard.css';
 
@@ -53,9 +51,7 @@ class CampaignCard extends Component {
   }
 
   render(){
-    const { campaign, logo } = this.props;
-    const date = campaign.date;
-    const author = campaign.authorInitial;
+    const { campaign, icon } = this.props;
     const title = campaign.title[this.props.language];
     const description = campaign.description[this.props.language];
     const image = campaign.image;
@@ -64,45 +60,67 @@ class CampaignCard extends Component {
 
     return (
       <div>
-        <Card className="camp-card" onClick={this.hanldeClick} onMouseEnter={this.handleHover} onMouseLeave={this.handleHover} style={{backgroundColor:this.state.cardColor, borderRadius:'20px'}}>
+        <Card 
+          className="camp-card" 
+          onClick={this.hanldeClick} 
+          onMouseEnter={this.handleHover} 
+          onMouseLeave={this.handleHover} 
+          style={{backgroundColor:this.state.cardColor, borderRadius:'20px'}}
+        >
           <CardHeader
-            avatar={
-              <Avatar aria-label={author}style={{backgroundColor:this.props.color}} >
-                {author}
-              </Avatar>
+            titleTypographyProps={{variant:'p' }}
+            style={{
+              textAlign: 'center',
+              backgroundColor:
+                category === 'education'
+                  ? 'var(--category-green)'
+                  : category === 'healthcare'
+                    ? 'var(--category-red)'
+                    : category === 'nutrition'
+                      ? 'var(--category-yellow)'
+                      : 'var(--category-dark-blue)',
+              color: category === 'nutrition' ? 'black' : 'white',
+              fontFamily: 'Intro-Regular-Alt',
+              fontSize: '20px',
+              padding: '12px',
+            }}
+            title={
+              <div style={{
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+              }}>
+                <img src={icon} alt='icon' style={{ width: '1.3rem', height: '1.3rem' }} />
+                &nbsp;
+                {this.props.language === "en"
+                  ? en_headers[category]
+                  : sp_headers[category]                
+                }
+              </div>
             }
-            action={
-            <IconButton aria-label="share">
-              <ShareIcon />      
-            </IconButton>
-            }
-            titleTypographyProps={{variant:'h6' }}
-            title={title}
-            subheader={date}
+          />
+          <div style={{textAlign:'center', maxHeight:'300px', overflow: 'hidden'}}>
+            <img 
+            style={{
+              minHeight:'100%',
+              minWidht:'100%',
+            }}
+              width="100%"
+              src={image}
+              alt={title}
             />
-            <div style={{textAlign:'center', maxHeight:'300px', overflow: 'hidden',boxShadow:'10px 10px 10px #888'}}>
-              <img 
-              style={{
-                minHeight:'100%',
-                minWidht:'100%',
-              }}
-                width="100%"
-                src={image}
-                alt={title}
-                />
-            </div>
+          </div>
           <CardContent>
-              
-            <div className="logo-sec">
-              <img src={logo} alt="logo"/>
+            <div className='logo-sec'>
+              <p><b>{title}</b></p>
+            </div>
+            <p style={{fontSize:'18px', marginTop:'15px'}}>              
+              {description}
+            </p>
+            <div className='progress-text'>
               <p>
-                <b>
-                {this.props.language === "en"? 
-                 en_headers[category]
-                 :
-                 sp_headers[category]                
-                 }
-               </b>
+                <b>${this.props.amount}</b>
+                {` raised of $${target} target`}
               </p>
             </div>
             <Progress theme={{
@@ -113,16 +131,11 @@ class CampaignCard extends Component {
                 }
               }}
               status="default"
-              percent={ Math.min((100* (this.props.amount/target)).toFixed(1), 100) }            
+              percent={ Math.min((100* (this.props.amount/target)).toFixed(1), 100) }
             />
-            <p style={{fontSize:'18px', marginTop:'15px'}}>              
-              {description}
-            </p>
-
             <div id="read-more">
               {this.props.language==="en" ? 'Click on the card to read more' : 'Haga clic en la tarjeta para leer más'}
             </div>
-
           </CardContent>
         </Card>
       </div>

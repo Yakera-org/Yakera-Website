@@ -1,6 +1,7 @@
 .donate-page{
     padding:20px;
     margin-top: 180px;
+    font-family: Intro-Regular-Alt;
 }
 .donate-page-loading{
     padding:20px;
@@ -28,8 +29,8 @@
     text-align: center;
 }
 .header-top h1{
-    font-size: 60px;
-    margin-bottom: 30px;
+    font-size: 45px;
+    margin-bottom: 10px;
     color: #01224d;
     z-index: 9;
 }
@@ -40,6 +41,9 @@
     margin-left: 30%;
     color: rgb(49, 59, 87);
 }
+.input-group{
+    width: 45%;
+}
 .loading-donate {
     text-align: center;
 }
@@ -48,6 +52,18 @@
 }
 #no-cam{
     font-size: 20px;
+}
+.campaign-filter img{
+    /* padding: 2px; */
+    margin: 20px;
+    cursor: pointer;
+}
+.campaign-filter img:hover{
+    border-radius: 50%;
+    box-shadow: 0 0 0 5px gray;
+}
+.campaign-filter .fade {
+    opacity: 0.3;
 }
 @media only screen and (max-width: 600px) {
     .loader {
@@ -58,9 +74,12 @@
         top:40%;
         left:30%
     }
+    .input-group{
+        width: 90%;
+    }
     .donate-page{
         padding:20px;
-        margin-top: 120px;
+        margin-top: 150px;
     }
     .header-top h1{
         font-size: 40px;
@@ -77,5 +96,7 @@
     }
     #no-cam{
         font-size: 18px;
+        margin-top: 40px;
+        margin-bottom: -20px;
     }
 }
