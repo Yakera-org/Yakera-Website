@@ -21,7 +21,7 @@ function Author() {
             <div className='section'>
                 <Grid container spacing={1} style={{ alignItems:'center', textAlign:'center'}}>
                     <Grid item xs={12} sm={4} >
-                        <img onClick={onImgClick} src={logo} alt='yakera-logo'/>
+                        <img onClick={onImgClick} src={logo} alt='yakera-logo'/> 
                     </Grid>
                     <Grid item xs={12} sm={4} >
                         <Grid container spacing={1} style={{ alignItems:'center', textAlign:'center'}}>
