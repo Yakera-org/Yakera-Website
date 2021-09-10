@@ -6,16 +6,10 @@ import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 
 
-import { Provider } from 'react-redux';
-import store from './app/store';
-
-
 ReactDOM.render(
-  <Provider store={store}>
     <React.StrictMode>
         <App />
-    </React.StrictMode>
-  </Provider>,
+    </React.StrictMode>,
   document.getElementById('root')
   );
   
