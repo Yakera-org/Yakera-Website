@@ -12,7 +12,6 @@ import donate from './Pages/Donate/donate';
 import AboutUs from './Pages/AboutUs/AboutUs';
 import SupportUs from './Pages/SupportUs/SupportUs';
 import NotFoundPage from './Pages/404/NotFoundPage';
-import Confirmation from './Pages/Confirmation/Confirmation';
 import CreateCampaign from './Pages/CreateCampaignPage/CreateCampaign';
 import Dashboard from './Pages/Dashboard/Dashboard';
 
@@ -39,7 +38,6 @@ function Main(){
                 <Route exact path="/terms" component={Terms}/>
                 <Route exact path="/consent" component={Consent}/>
                 <Route exact path="/frequently-asked-questions" component={FAQ}/>
-                <Route exact path="/confirm" component={Confirmation}/>
                 <Route exact path="/dashboard" component={isAuthenticated ? Dashboard : login}/>
                 <Route exact path="/" component={home}/>
                 <Route path="/404" component={NotFoundPage} />
