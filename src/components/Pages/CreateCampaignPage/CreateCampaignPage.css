@@ -27,6 +27,12 @@
 .create-page b {
     color: #ea8737;
 }
+.create-page input{
+    font-family: Intro-Light;
+}
+.create-page .form-control{
+    font-family: Intro-Light;
+}
 .create-page p{
     font-family: Intro-Light;
     font-weight: 500;

@@ -43,7 +43,18 @@ function CreateCampaign() {
             [name]: value
         },);
 
-//        validateData()
+        if(value !== ''){
+            setData({
+                ...data,
+                [name]: value,
+                errors: {
+                    ...data.errors,
+                    [name]: ''
+                },
+            })
+        }
+
+
         return
     };
 
@@ -66,8 +77,6 @@ function CreateCampaign() {
     function validateData(){
         let emptyWarning = 'This field cannot be empty';
         let nameError, amountError, storyError, budgetError;
-
-        let isValid = false;
         
         if(!data.amount){
             amountError = emptyWarning;
@@ -99,15 +108,30 @@ function CreateCampaign() {
             },
         })
 
-        if(isValid && !amountError && !storyError && !nameError && !budgetError){
+        if(!amountError && !storyError && !nameError && !budgetError){
             return true
         }
         
         return false
       }
 
+    function linkify(text) {
+        //copied from https://stackoverflow.com/questions/1500260/detect-urls-in-text-with-javascript
+        var urlRegex =/(\b(https?|ftp|file):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/ig;
+        return text.replace(urlRegex, function(url) {
+            return '<a href="' + url + '">' + url + '</a>';
+        });
+    }
+
     async function submit(event){
         event.preventDefault();
+
+        
+        let formattedStory = linkify(data.story)
+        formattedStory = formattedStory.replace(/\n/g, " <br />");
+        
+        console.log(formattedStory)
+
         let isValidated = validateData()
         if(isValidated){
             console.log('all valid')
