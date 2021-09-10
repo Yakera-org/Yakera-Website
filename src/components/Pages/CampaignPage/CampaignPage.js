@@ -27,8 +27,6 @@ class CampaignPage extends Component{
                 this.setState({
                     campaign : cam.cam
                 })
-                console.log(cam.cam)
-                console.log('cam.cam')
             }
         })
 
@@ -55,7 +53,7 @@ class CampaignPage extends Component{
                 <div className="campaignPage">
                     <Visual
                         campaign={campaign} 
-                        amount={this.state.amount} 
+                        amount={69} 
                         language={'en'}
                      />
 
