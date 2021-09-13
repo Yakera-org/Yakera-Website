@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import DashboardVisuals from './DashboardVisuals';
 import * as axios from 'axios';
 import './Dashboard.css';

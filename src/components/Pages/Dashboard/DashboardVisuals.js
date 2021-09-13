@@ -4,50 +4,6 @@ import {Card, CardContent} from '@material-ui/core';
 import { Progress } from 'react-sweet-progress';
 import Author from '../../author';
 
-const user = {
-    name: 'Jang',
-    email: 'jango@gmail.com',
-    phone: '0789201008',
-    socialNum: '2000271902',
-    address: '99, Venezuela Road',
-    campaigns:[
-        {
-            name: "larys",
-            category:"business",
-            campaignName:"Jubilarse no es el final",
-            target:205,
-            amount:100,
-            title: "Retirement is Not the End",
-            description: "Help me earn an income in my food small business after I was unjustly forced to retire from my education job.",
-            date: "03/13/21",
-            image: require('../../../pics/campaigns/larys/title.jpeg'),
-        },
-        {
-            name: "larys",
-            category:"business",
-            campaignName:"Jubilarse no es el final",
-            target:805,
-            amount:270,
-            title: "Retirement is Not the End",
-            description: "Help me earn an income in my food small business after I was unjustly forced to retire from my education job.",
-            date: "03/13/21",
-            image: require('../../../pics/campaigns/ailin/title.jpeg'),
-        },
-        {
-            name: "larys",
-            category:"business",
-            campaignName:"Jubilarse no es el final",
-            target:205,
-            amount:100,
-            title: "Retirement is Not the End",
-            description: "Help me earn an income in my food small business after I was unjustly forced to retire from my education job.",
-            date: "03/13/21",
-            image: require('../../../pics/campaigns/maria/title.jpeg'),
-        },
-    ]
-}
-
-
 function DashboardVisuals(props) {
     console.log(props.data)
     const user = props.data.user
