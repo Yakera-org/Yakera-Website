@@ -13,9 +13,9 @@ function CreateCampaign() {
         amount: "",
         story: "",
         itemizedbudget: "",
-        documents: [],
-        mainpic: null,
-        campaignpics: [],
+        supportDocs: [],
+        mainPicture: null,
+        pictures: [],
         errors: {
             campaignname: null,
             amount: null,

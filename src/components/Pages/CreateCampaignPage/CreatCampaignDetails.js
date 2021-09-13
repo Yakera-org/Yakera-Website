@@ -98,12 +98,12 @@ function CreateCampaignDetails(props) {
                     <FormLabel>Documents that support your ask (i.e medical orders or notes, tuition receipt, pictures of your small business, budget, etc.)</FormLabel>
                     <FormControl
                         type="file"
-                        multiple
+                        multiple={true}
                         as='input'
-                        name='documents'
+                        name='supportDocs'
                         placeholder='Choose files'
                         // value={props.data.supportDocuments}
-                        onChange={props.handleChange}
+                        onChange={props.handleImageChange}
                     />
                 </FormGroup>
                 <FormGroup className="mb-3">
@@ -111,21 +111,21 @@ function CreateCampaignDetails(props) {
                     <FormControl
                         type="file"
                         as='input'
-                        name='mainpic'
+                        name='mainPicture'
                         accept='image/*'
                         multiple={true}
                         placeholder='Choose files'
                         // value={props.data.supportDocuments}
-                        onChange={props.handleChange}
+                        onChange={props.handleImageChange}
                     />
                 </FormGroup>
                 <FormGroup className="mb-3">
                     <FormLabel>Campaign pictures</FormLabel>
                     <FormControl
                         type="file"
-                        multiple
+                        multiple={true}
                         as='input'
-                        name='campaignpics'
+                        name='pictures'
                         accept='image/*'
                         placeholder='Choose files'
                         // value={props.data.supportDocuments}

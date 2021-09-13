@@ -94,3 +94,11 @@
     margin-left: 25%;
     text-align: center;
 }
+
+
+@media only screen and (max-width: 600px) {
+    .create-page {
+        margin-top: 140px;
+        padding: 5%;
+    }
+}
