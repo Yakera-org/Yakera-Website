@@ -31,6 +31,7 @@ function CreateCampaignDetails(props) {
                         type='campaign-name'
                         as='input'
                         name='campaignname'
+                        autocomplete="off" 
                         placeholder='Enter your campaign name'
                         // value={props.data.campaignName}
                         onChange={props.handleChange}
@@ -48,6 +49,7 @@ function CreateCampaignDetails(props) {
                         type='number'
                         as='input'
                         name='amount'
+                        autocomplete="off" 
                         placeholder='Enter the amount (USD)'
                         // value={props.data.amount}
                         onChange={props.handleChange}
@@ -60,9 +62,27 @@ function CreateCampaignDetails(props) {
                     <div className="invalid-feedback">{props.data.errors.amount}</div>
                 </FormGroup>
                 <FormGroup>
+                    <FormLabel>Short Description</FormLabel>
+                    <FormControl
+                        type='description'
+                        as="input"
+                        autocomplete="off" 
+                        name='description'
+                        placeholder='Short description of your campaign'
+                        onChange={props.handleChange}
+                        className={classnames(
+                            'form-control',
+                            {'is-valid': props.data.errors.description === false},
+                            {'is-invalid': props.data.errors.description }
+                        )}
+                    />
+                    <div className="invalid-feedback">{props.data.errors.description}</div>
+                </FormGroup>
+                <FormGroup>
                     <FormLabel>Your story (we recommend referencing your personal story, the need behind your campaign, why you are opening a campaign, how will you spend the money, and what will the support of people in Yakera allow you to do). Usually successful campaigns have between 3-6 paragraphs.</FormLabel>
                     <FormControl
                         type='story'
+                        autocomplete="off" 
                         as="textarea"
                         name='story'
                         style={{minHeight:'100px'}}
@@ -83,6 +103,7 @@ function CreateCampaignDetails(props) {
                         type='itemized-budget'
                         as='textarea'
                         name='itemizedbudget'
+                        autocomplete="off" 
                         placeholder='Enter the amount (USD) and item descriptions'
                         // value={props.data.itemizedBudget}
                         onChange={props.handleChange}

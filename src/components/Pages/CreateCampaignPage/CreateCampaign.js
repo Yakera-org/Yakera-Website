@@ -12,6 +12,7 @@ function CreateCampaign() {
         campaigncategory: "",
         amount: "",
         story: "",
+        description: "",
         itemizedbudget: "",
         supportDocs: [],
         mainPicture: null,
@@ -20,12 +21,12 @@ function CreateCampaign() {
             campaignname: null,
             amount: null,
             story: null,
+            description: null,
             itemizedbudget: null
         },
     };
     const [data, setData] = useState(initialState);
     const [errorMessage, setError] = useState('');
-    const [formattedStory, setStory] = useState('');
     const [files, setFiles] = useState([]);
 
     const handleChange = event => {
@@ -78,7 +79,7 @@ function CreateCampaign() {
 
     function validateData(){
         let emptyWarning = 'This field cannot be empty';
-        let nameError, amountError, storyError, budgetError;
+        let nameError, amountError, storyError, descriptionError, budgetError;
         
         if(!data.amount){
             amountError = emptyWarning;
@@ -95,6 +96,11 @@ function CreateCampaign() {
         }else{
             storyError = validateCampaignFields.validateName(data.story)
         }
+        if(!data.description){
+            descriptionError = emptyWarning;      
+        }else{
+            descriptionError = validateCampaignFields.validateName(data.description)
+        }
         if(!data.itemizedbudget){
             budgetError = emptyWarning;      
         }else{
@@ -106,11 +112,12 @@ function CreateCampaign() {
                 campaignname: nameError,
                 amount: amountError,
                 story: storyError,
-                itemizedbudget: budgetError
+                itemizedbudget: budgetError,
+                description: descriptionError
             },
         })
 
-        if(!amountError && !storyError && !nameError && !budgetError){
+        if(!amountError && !storyError && !descriptionError && !nameError && !budgetError){
             return true
         }
         
@@ -130,19 +137,17 @@ function CreateCampaign() {
         event.preventDefault();
         let formattedStory = linkify(data.story)
         formattedStory = formattedStory.replace(/\n/g, " <br />");
-        setStory(formattedStory)
 
         let isValidated = validateData()
-        console.log(data)
 
         if(isValidated){
-            submitToBackend()
+            submitToBackend(formattedStory)
         }else{
             setError('Some info is not correct, please check the fields.')
         }
     }
 
-    async function submitToBackend(){
+    async function submitToBackend(story){
         //https://dev.to/fadiamg/multiple-file-inputs-with-one-submit-button-with-react-hooks-kle
         const formdata = new FormData();
         for (const file of files) {
@@ -157,9 +162,9 @@ function CreateCampaign() {
         const payload = {
             title: data.campaignname,
             targetAmount: data.amount,
-            story: formattedStory,
+            story: story,
             category: data.campaigncategory,
-            description: 'Help Nutriendo El Futuro provide books and school supplies to dozens of children in El Calvario and buy chairs and tables for their community kitchen.'
+            description: data.description
         }
         for ( var key in payload ) {
             formdata.append(key, payload[key]);
@@ -169,16 +174,19 @@ function CreateCampaign() {
         // Heroku Local
         // const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxMjcyZTgxZGZkYTc4MTEzYzE5NTBlMCIsImlhdCI6MTYzMTM5NjEzMn0.4vs08muUTucSu9Pi5HUwA6oStxyVrcBYZlh-x0TzAGw'
         const url = 'https://express-backend-api.herokuapp.com/api/campaigns';
-        const res = await axios.post(url, formdata, { 
-            headers: {
-                'Authorization': `Bearer ${token}`
-            }
-        });
-        console.log(res.data);
-        
-    }
 
-            
+        try {
+            const res = await axios.post(url, formdata, { 
+                headers: {
+                    'Authorization': `Bearer ${token}`
+                }
+            });
+            console.log(res.data);
+        } catch (error) {
+            console.log(error.response.data);
+            setError('Something on our server went wrong, please try again')
+        }      
+    }            
        
     return (
         <div>
