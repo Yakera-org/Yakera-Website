@@ -89,3 +89,8 @@
     margin-left: 5px;
     font-size: 15px;
 }
+.create-page #alert{
+    width: 50%;
+    margin-left: 25%;
+    text-align: center;
+}

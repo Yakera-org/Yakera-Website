@@ -2,6 +2,7 @@ import React, {useState} from "react";
 import { validateCampaignFields } from "./Campaign_Validation";
 import CreateCampaignVisuals from "./CreateCampaignVisuals";
 import Author from '../../author';
+
 import * as axios from 'axios'
 
 
@@ -24,6 +25,7 @@ function CreateCampaign() {
         },
     };
     const [data, setData] = useState(initialState);
+    const [errorMessage, setError] = useState('');
     const [images, setImages] = useState([]);
 
     const handleChange = event => {
@@ -44,6 +46,7 @@ function CreateCampaign() {
         },);
 
         if(value !== ''){
+            setError('')
             setData({
                 ...data,
                 [name]: value,
@@ -136,23 +139,18 @@ function CreateCampaign() {
         if(isValidated){
             submitToBackend()
         }else{
-            //todo: send feedback that form is not complete
+            setError('Some info is not correct, please check the fields.')
         }
        
     }
 
     async function submitToBackend(){
-        const formdata = new FormData();
-        for (const image of images) {
-            formdata.append('pictures', image.file);
-        }
-        const url = 'https://express-backend-api.herokuapp.com/api/upload';
-        const res = await axios.post(url, formdata);
+        const res = await axios.post();
         console.log(res.data);
     }
     return (
         <div>
-            <CreateCampaignVisuals data={data} handleChange={handleChange} handleImageChange={handleImageChange} validate={validateData} submit={submit}/>
+            <CreateCampaignVisuals error={errorMessage} data={data} handleChange={handleChange} handleImageChange={handleImageChange} validate={validateData} submit={submit}/>
             <Author />
         </div>
     )
