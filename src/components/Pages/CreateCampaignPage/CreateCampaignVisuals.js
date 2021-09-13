@@ -37,6 +37,16 @@ function CreateCampaignVisuals(props) {
                     :
                     ''
                 }
+                { props.success
+                    ?
+                    <Alert color="success" id='alert'>
+                        {props.success}
+                        <br />
+                        Head to your <a href="/dashboard" style={{color:'darkgreen', textDecoration:'underline'}}> Dashboard</a>.
+                    </Alert>
+                    :
+                    ''
+                }
                
                 <div id='create-campaign'>
                     <button  onClick={props.submit}>

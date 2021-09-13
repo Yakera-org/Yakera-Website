@@ -27,6 +27,7 @@ function CreateCampaign() {
     };
     const [data, setData] = useState(initialState);
     const [errorMessage, setError] = useState('');
+    const [successMessage, setSuccess] = useState('');    
     const [files, setFiles] = useState([]);
 
     const handleChange = event => {
@@ -182,6 +183,7 @@ function CreateCampaign() {
                 }
             });
             console.log(res.data);
+            setSuccess('Your campaign has been created successfully!')
         } catch (error) {
             console.log(error.response.data);
             setError('Something on our server went wrong, please try again')
@@ -190,7 +192,7 @@ function CreateCampaign() {
        
     return (
         <div>
-             <CreateCampaignVisuals error={errorMessage} data={data} handleChange={handleChange} handleImageChange={handleImageChange} validate={validateData} submit={submit}/>
+             <CreateCampaignVisuals success={successMessage} error={errorMessage} data={data} handleChange={handleChange} handleImageChange={handleImageChange} validate={validateData} submit={submit}/>
             <Author />
         </div>
     )
