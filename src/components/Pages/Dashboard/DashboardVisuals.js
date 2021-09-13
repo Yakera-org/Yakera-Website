@@ -7,7 +7,8 @@ import Author from '../../author';
 function DashboardVisuals(props) {
     console.log(props.data)
     const user = props.data.user
-    const campaigns = props.data.campaigns
+    const campaigns = props.data.campaigns ? props.data.campaigns : []
+    
     return (
         <div>
             <Card className='dash-card'>
@@ -57,6 +58,10 @@ function DashboardVisuals(props) {
                                     {
                                         campaigns.map((campaign,i) => {
                                             var hrefLink = '/campaign/' + campaign.slug;
+                                            //preventive
+                                            if(!campaign.mainPicture){
+                                                campaign.mainPicture = {url:'lol'}
+                                            }
                                             return (
                                                 <Grid item xs={12} sm={6} key={i} >
                                                     <Card className='active-cam-card'>
@@ -98,7 +103,7 @@ function DashboardVisuals(props) {
                                                                                         <a href={hrefLink}>Go to campaign</a>
                                                                                     </button>
                                                                                 </Grid>
-                                                                                <Grid item xs={12} sm={6} style={{textAlign:'left'}} >  
+                                                                                <Grid item xs={12} sm={6} style={{textAlign:'center'}} >  
                                                                                     <button id='withdraw'>
                                                                                         Withdraw campaign
                                                                                     </button>
