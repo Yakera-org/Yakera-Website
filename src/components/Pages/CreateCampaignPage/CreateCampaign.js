@@ -134,16 +134,21 @@ function CreateCampaign() {
 
         let isValidated = validateData()
         if(isValidated){
-            console.log('all valid')
-            const formdata = new FormData();
-            for (const image of images) {
-                formdata.append('pictures', image.file);
-            }
-            const url = 'https://express-backend-api.herokuapp.com/api/upload';
-            const res = await axios.post(url, formdata);
-            console.log(res.data);
+            submitToBackend()
+        }else{
+            //todo: send feedback that form is not complete
         }
        
+    }
+
+    async function submitToBackend(){
+        const formdata = new FormData();
+        for (const image of images) {
+            formdata.append('pictures', image.file);
+        }
+        const url = 'https://express-backend-api.herokuapp.com/api/upload';
+        const res = await axios.post(url, formdata);
+        console.log(res.data);
     }
     return (
         <div>
