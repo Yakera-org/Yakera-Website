@@ -1,5 +1,5 @@
 .dashboard-page {
-    margin-top: 180px;
+    margin-top: 160px;
 }
 .dashboard-page a{
     color: white;
@@ -15,6 +15,9 @@
 }
 #dash-name, #dash-stats{
     color: #ea8737;
+}
+#dash-status{
+    color:#ea8737;
 }
 .dash-left {
     font-family: Intro-Regular-Alt;
@@ -97,6 +100,7 @@
     color: white;
 }
 .dash-plus-sign {
+    text-align: center;
     width: 100%;
     margin-top: 15%;
     margin-bottom: 15%;
@@ -166,6 +170,5 @@
     }
     .dash-plus-sign{
         margin-bottom: 5%;
-        margin-top: 0%;
     }
 }
