@@ -104,7 +104,7 @@ function DashboardVisuals(props) {
                                                                                     </button>
                                                                                 </Grid>
                                                                                 <Grid item xs={12} sm={6} style={{textAlign:'center'}} >  
-                                                                                    <button id='withdraw'>
+                                                                                    <button name={campaign.slug} onClick={props.onWithdraw} id='withdraw'>
                                                                                         Withdraw campaign
                                                                                     </button>
                                                                                 </Grid>
