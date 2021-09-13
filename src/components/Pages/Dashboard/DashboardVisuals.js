@@ -51,7 +51,7 @@ function DashboardVisuals(props) {
 
                     <div className='dash-campaigns'>
                         <h2>
-                            Active <span id='dash-stats'>Campaigns</span>
+                            Your <span id='dash-stats'>Campaigns</span>
                             <div className='active-campaigns'>
                                 <Grid container spacing={4} style={{ alignItems:'flex-start', textAlign:'center'}}>
                                     {
@@ -67,11 +67,16 @@ function DashboardVisuals(props) {
                                                                 <hr />
 
                                                                 <Grid container spacing={5} style={{ alignItems:'flex-start'}}>
-                                                                    <Grid item xs={12} sm={6} style={{textAlign:'left'}} >
+                                                                    <Grid item xs={12} sm={12} style={{textAlign:'left'}} >
                                                                         <p><span id='dash-stats'>Created:</span> {campaign.createdAt}</p>
                                                                         <p><span id='dash-stats'>Category:</span> {campaign.category}</p>
                                                                         <p><span id='dash-stats'>Description:</span> {campaign.description}</p>
+                                                                        <p><span id='dash-status'>Status:</span> {campaign.approved ? 'Approved' : 'Pending approval'}</p>
 
+                                                                        <Grid item xs={12} sm={12} style={{textAlign:'center'}} >
+                                                                            <img src={campaign.mainPicture.url} alt='cam-title-img' />
+                                                                        </Grid>
+                                                                        <br />
                                                                         <div id='dash-progress-bar'>
                                                                             <Progress theme={{
                                                                                 default: {
@@ -88,7 +93,7 @@ function DashboardVisuals(props) {
                                                                         <br />
                                                                         <div className='action-btn'>
                                                                             <Grid container spacing={2} style={{ alignItems:'flex-start'}}>
-                                                                                <Grid item xs={12} sm={6} style={{textAlign:'left'}} >  
+                                                                                <Grid item xs={12} sm={6} style={{textAlign:'center'}} >  
                                                                                     <button id='go'>
                                                                                         <a href={hrefLink}>Go to campaign</a>
                                                                                     </button>
@@ -100,11 +105,8 @@ function DashboardVisuals(props) {
                                                                                 </Grid>
                                                                             </Grid>                                                                                
                                                                         </div>  
-
                                                                     </Grid>
-                                                                    <Grid item xs={12} sm={6} >
-                                                                        <img src={campaign.mainPicture.url} alt='cam-title-img' />
-                                                                    </Grid>
+                                                                    
                                                                 </Grid>                                                                    
 
                                                             </div>
@@ -115,9 +117,9 @@ function DashboardVisuals(props) {
                                         })
                                     }
 
-                                    <Grid item xs={12} sm={6} >
+                                    <Grid item xs={12} sm={6} style={{textAlign:'center'}}>
                                         <div className='dash-plus-sign'>
-                                            <a href='create-campaign'><i className="fas fa-9x fa-plus-circle"></i></a>
+                                            <a href='create-campaign'><i className="fas fa-7x fa-plus-circle"></i></a>
                                         </div>
                                     </Grid>
 
