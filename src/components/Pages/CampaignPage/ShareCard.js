@@ -75,14 +75,15 @@ class ShareCard extends Component{
                     <Grid container spacing={0}>
                         <Grid item xs={8} sm={8}>
                             <input
-                            type="text"
-                            name="share-url"
-                            value={window.location.href}
-                            className={classnames(
-                                'form-control'
-                            )} 
-                            style={{marginLeft:'15%', marginBottom:'15px', width:'90%'}}  
-                            onClick={this.hanldeCopy}                                  
+                                type="text"
+                                name="share-url"
+                                readOnly={true}
+                                value={window.location.href}
+                                className={classnames(
+                                    'form-control'
+                                )} 
+                                style={{marginLeft:'15%', marginBottom:'15px', width:'90%'}}  
+                                onClick={this.hanldeCopy}                                  
                             />
                         </Grid>
                         <Grid item xs={4} sm={4}>

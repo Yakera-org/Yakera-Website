@@ -28,6 +28,20 @@ function Dashboard() {
         setLoaded(true)
     }
 
+    async function onWithdraw(event){
+        let slug = event.target.name;
+        const url = backendUrl + 'api/campaigns/' + slug;
+        let config = {
+            headers: {
+              'Authorization': 'Bearer ' + tempAuthToken
+            }
+          }
+        const res = await axios.delete(url, config);
+
+        window.alert('Campiagn successfully withdrawn!')
+        window.location.reload();
+    }
+
     if (!loaded){
         return(
             <p style={{marginTop:'150px'}}>
@@ -37,7 +51,7 @@ function Dashboard() {
     }else{        
         return (
             <div className='dashboard-page'>
-                <DashboardVisuals data={profileData}/>
+                <DashboardVisuals data={profileData} onWithdraw={onWithdraw}/>
             </div>
         )
     }

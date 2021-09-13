@@ -10,6 +10,7 @@ class PaymentDetails extends PureComponent {
 
         this.state = {
             checkError:"",
+            openPrivacy: false,
             age:false,
             consent:false,
             noTip: false,
