@@ -48,34 +48,37 @@ const user = {
 }
 
 
-function DashboardVisuals() {
+function DashboardVisuals(props) {
+    console.log(props.data)
+    const user = props.data.user
+    const campaigns = props.data.campaigns
     return (
         <div>
             <Card className='dash-card'>
                 <CardContent>
                     <div className='dash-card-top'>
-                        <h1> Welcome <span id='dash-name'>{user.name}</span> </h1>
+                        <h1> Welcome <span id='dash-name'>{user.firstName}</span> </h1>
                     </div>
 
                     <hr />
 
                     <Grid container spacing={1} style={{ alignItems:'flex-start', textAlign:'left'}}>
-                        <Grid item xs={12} sm={3} >
+                        <Grid item xs={12} sm={4} >
                             <div className='dash-left'>
                                 <p><span id='dash-stats'>Email:</span> {user.email}</p>
                             </div>
                         </Grid>
-                        <Grid item xs={12} sm={3} >
+                        <Grid item xs={12} sm={4} >
                             <div className='dash-left'>
                                 <p><span id='dash-stats'>Phone:</span> {user.phone}</p>
                             </div>
                         </Grid>
-                        <Grid item xs={12} sm={3} >
+                        {/*<Grid item xs={12} sm={3} >
                             <div className='dash-left'>
                                 <p><span id='dash-stats'>ID Number:</span> {user.socialNum}</p>
                             </div>
-                        </Grid>
-                        <Grid item xs={12} sm={3} >
+                        </Grid> */}
+                        <Grid item xs={12} sm={4} >
                             <div className='dash-left'>
                                 <p><span id='dash-stats'>Adress:</span> {user.address}</p>
                             </div>
@@ -96,20 +99,20 @@ function DashboardVisuals() {
                             <div className='active-campaigns'>
                                 <Grid container spacing={4} style={{ alignItems:'flex-start', textAlign:'center'}}>
                                     {
-                                        user.campaigns.map((campaign,i) => {
-                                            var hrefLink = '/campaign/' + campaign.title;
+                                        campaigns.map((campaign,i) => {
+                                            var hrefLink = '/campaign/' + campaign.slug;
                                             return (
                                                 <Grid item xs={12} sm={6} key={i} >
                                                     <Card className='active-cam-card'>
                                                         <CardContent>
                                                             <div className='dash-active-cam'>
-                                                                {campaign.campaignName}
+                                                                {campaign.title}
 
                                                                 <hr />
 
                                                                 <Grid container spacing={5} style={{ alignItems:'flex-start'}}>
                                                                     <Grid item xs={12} sm={6} style={{textAlign:'left'}} >
-                                                                        <p><span id='dash-stats'>Created:</span> {campaign.date}</p>
+                                                                        <p><span id='dash-stats'>Created:</span> {campaign.createdAt}</p>
                                                                         <p><span id='dash-stats'>Category:</span> {campaign.category}</p>
                                                                         <p><span id='dash-stats'>Description:</span> {campaign.description}</p>
 
@@ -122,10 +125,10 @@ function DashboardVisuals() {
                                                                                 }
                                                                             }}
                                                                             status="default"
-                                                                            percent={ Math.min((100* (campaign.amount/campaign.target)).toFixed(0), 100) }/>
+                                                                            percent={ Math.min((100* (campaign.raised/campaign.targetAmount)).toFixed(0), 100) }/>
                                                                         </div>
                                                                         <br />
-                                                                        <p id='dash-raised'>Raised: <span id='dash-stats'>{campaign.amount}$</span></p>
+                                                                        <p id='dash-raised'>Raised: <span id='dash-stats'>{campaign.raised}$</span></p>
                                                                         <br />
                                                                         <div className='action-btn'>
                                                                             <Grid container spacing={2} style={{ alignItems:'flex-start'}}>
@@ -144,7 +147,7 @@ function DashboardVisuals() {
 
                                                                     </Grid>
                                                                     <Grid item xs={12} sm={6} >
-                                                                        <img src={campaign.image} alt='cam-title-img' />
+                                                                        <img src={campaign.mainPicture.url} alt='cam-title-img' />
                                                                     </Grid>
                                                                 </Grid>                                                                    
 

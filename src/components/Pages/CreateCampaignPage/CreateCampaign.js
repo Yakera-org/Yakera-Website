@@ -110,7 +110,6 @@ function CreateCampaign() {
         event.preventDefault();
         let isValidated = validateData()
         if(isValidated){
-            console.log('all valid')
             const formdata = new FormData();
             for (const image of images) {
                 formdata.append('pictures', image.file);
