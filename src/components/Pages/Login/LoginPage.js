@@ -97,14 +97,20 @@ const LoginPage = () => {
         let token = response.data.access_token
         setWelcome(true)
         //window.location.href = "../dashboard";
+
+        //TODO:
+        // loader
+        // style welcome
+        // store token in local storage
       }
 
     }).catch(error => {
       var errorMessage = null;
       console.log(error);
-
-      if (error.response.data.message) {
-        errorMessage = error.response.data.message;
+      if(error.response){          
+        if (error.response.data.message) {
+          errorMessage = error.response.data.message;
+        }
       } else {
         errorMessage = "Something went wrong. Please try again later.";
       }

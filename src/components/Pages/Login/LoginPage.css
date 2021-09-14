@@ -7,7 +7,6 @@
 }
 .login-form input{
     font-family: Intro-Light;
-
 }
 
 .login-card{
@@ -29,6 +28,20 @@ a {
 }
 
 a:hover {
+    color: #ea8737;
+}
+
+.welcome-dialog {
+    text-align: center;
+}
+.welcome-dialog section{
+    padding: 20px 100px;
+    font-family: Intro-Regular-Alt;
+}
+.welcome-dialog section p{
+    font-size: 20px;
+}
+.welcome-dialog section a{
     color: #ea8737;
 }
 
