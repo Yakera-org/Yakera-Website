@@ -94,9 +94,10 @@ const LoginPage = () => {
       if (response.status === 200) {
         // TODO: set authentication and tokens 
         console.log(response.data)
-        let token = response.data.access_token
+        let token = response.data.refresh_token
         setWelcome(true)
-        //window.location.href = "../dashboard";
+
+        localStorage.setItem('user', token)
 
         //TODO:
         // loader

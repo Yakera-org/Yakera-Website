@@ -5,7 +5,6 @@ import { Progress } from 'react-sweet-progress';
 import Author from '../../author';
 
 function DashboardVisuals(props) {
-    console.log(props.data)
     const user = props.data.user
     const campaigns = props.data.campaigns ? props.data.campaigns : []
     

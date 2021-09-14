@@ -17,6 +17,7 @@ class NavBar extends Component {
         this.onChange = this.onChange.bind(this);
         this.state = {
             currentTab: '',
+            token: '',
             checked: true,
             language: 'en',
             loaded: false,
@@ -46,8 +47,10 @@ class NavBar extends Component {
         }
 
         var currentTab = localStorage.getItem('currentTab')
+        var token = localStorage.getItem('user')
 
         this.setState({
+            token:token,
             currentTab: currentTab,
             loaded: true
         }) 
@@ -97,6 +100,9 @@ class NavBar extends Component {
     render(){
         var EN = true //is english
         var isAuthenticated = false;
+
+        if(this.state.token)isAuthenticated = true
+        
         if(this.state.language === 'en'){
             EN = true
         }else{

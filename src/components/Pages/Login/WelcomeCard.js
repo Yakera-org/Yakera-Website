@@ -8,7 +8,7 @@ class Thankscard extends Component{
             <Fragment >
                 <Dialog
                     maxWidth='lg'                                 
-                    open={true}
+                    open={this.props.open}
                     className="welcome-dialog"  
                                                                                                                                     
                 >

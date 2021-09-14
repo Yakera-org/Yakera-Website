@@ -6,26 +6,37 @@ import './Dashboard.css';
 function Dashboard() {
 
     const [loaded, setLoaded] = useState(false);
+    const [error, setError] = useState('');
     const [profileData, setProfileData] = useState({});
-
+    let token = localStorage.getItem('user');
     const backendUrl = 'https://express-backend-api.herokuapp.com/';
-    const tempAuthToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxMTM1OWExZGE4MTI0MDAwNDc5OGUyOSIsImlhdCI6MTYzMTQxMjI5Nn0.AaOAzUfKvuIyL2j6VSjI0DtCRb7W3nck7ohfxFCu3TE';
 
     React.useEffect(() =>{
-        getCampaign()
-    }, [])
+        if(token){
+            getCampaign()
+        }else{
+            window.location = '/'
+        }
+
+    })
 
     async function getCampaign(){
+        console.log(token)
         const url = backendUrl + 'api/profile';
         let config = {
             headers: {
-              'Authorization': 'Bearer ' + tempAuthToken
+              'Authorization': 'Bearer ' + token
             }
           }
-        const res = await axios.get(url, config);
-
-        setProfileData(res.data.data)
-        setLoaded(true)
+        try{
+            const res = await axios.get(url, config);
+            setProfileData(res.data.data)
+            setLoaded(true)
+        }
+        catch(err){
+            setError('Profile not found')
+            setLoaded(true)
+        }
     }
 
     async function onWithdraw(event){
@@ -33,12 +44,12 @@ function Dashboard() {
         const url = backendUrl + 'api/campaigns/' + slug;
         let config = {
             headers: {
-              'Authorization': 'Bearer ' + tempAuthToken
+              'Authorization': 'Bearer ' + token
             }
           }
         const res = await axios.delete(url, config);
 
-        window.alert('Campiagn successfully withdrawn!')
+        window.alert('Campaign successfully withdrawn!')
         window.location.reload();
     }
 
@@ -46,6 +57,12 @@ function Dashboard() {
         return(
             <p style={{marginTop:'150px'}}>
                 Loading ...
+            </p>
+        )
+    }else if (error){
+        return(
+            <p style={{marginTop:'150px'}}>
+                {error}
             </p>
         )
     }else{        
