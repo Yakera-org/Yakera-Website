@@ -5,6 +5,10 @@
     margin: auto;
     height: 100%;
 }
+.login-form input{
+    font-family: Intro-Light;
+
+}
 
 .login-card{
     width: 100%;

@@ -1,6 +1,8 @@
+import { faLeaf } from '@fortawesome/free-solid-svg-icons';
 import React, { useState } from 'react';
 import LoginTemplate from './LoginTemplate';
 import { validateFields } from './Validation';
+import WelcomeCard from './WelcomeCard';
 
 
 const LoginPage = () => {
@@ -32,6 +34,7 @@ const LoginPage = () => {
 
   const [data, setData] = useState(initialState);
   const [error, setError] = useState(errorState);
+  const [openWelcome, setWelcome] = useState(false);
 
   const handleChange = event => {
     event.persist();
@@ -90,7 +93,10 @@ const LoginPage = () => {
 
       if (response.status === 200) {
         // TODO: set authentication and tokens 
-        window.location.href = "../campaigns";
+        console.log(response.data)
+        let token = response.data.access_token
+        setWelcome(true)
+        //window.location.href = "../dashboard";
       }
 
     }).catch(error => {
@@ -119,12 +125,15 @@ const LoginPage = () => {
   }
 
   return (
-    <LoginTemplate 
-      handleChange = {handleChange}
-      data = {data}
-      error = {error}
-      handleLogin = {handleLogin}
-    />
+    <div>
+      <LoginTemplate 
+        handleChange = {handleChange}
+        data = {data}
+        error = {error}
+        handleLogin = {handleLogin}
+      />
+      <WelcomeCard open={openWelcome} />
+    </div>
   );
 }
 
