@@ -46,7 +46,7 @@ function Dashboard() {
               'Authorization': 'Bearer ' + token
             }
           }
-        const res = await axios.delete(url, config);
+        await axios.delete(url, config);
 
         window.alert('Campaign successfully withdrawn!')
         window.location.reload();

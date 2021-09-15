@@ -7,7 +7,6 @@ import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 
 const _axios = require('axios');
 const axios = _axios.create();
-const qs = require('querystring');
 const yakeraBackUrl = 'https://express-backend-api.herokuapp.com';
 
 function Register() {
@@ -22,6 +21,7 @@ function Register() {
     phone: "",
     socialNum: "",
     airTMNum: "",
+    loaded:false,
     isSubmitting: false,
     error: '',
     check:{
@@ -73,7 +73,7 @@ function Register() {
   };
 
   const validateEntry = event => {
-    const name = event.target.name;
+    var name = event.target.name;
     const value = event.target.value;
     var error;
 
@@ -81,6 +81,13 @@ function Register() {
       error = validateFields.validateEmail(value);
     }else if(name === 'password'){
       error = validateFields.validatePassword(value);
+      if(value === data.password2){
+        name = 'password2'
+        error = false
+      }else{
+        name = 'password'
+        error = validateFields.validatePassword(value);
+      }
     }else if(name==='password2'){
       if(value !== data.password){
         error = 'Passwords do not match'
@@ -116,15 +123,15 @@ function Register() {
 
   
 
-  const validate = (step) =>{
+  const validate = async (step) =>{
     if (step === 1){
-      return validateStep1();
+      return await validateStep1();
     }else if (step === 2){
       return validateStep2();
     }
   }
 
-  const validateStep1 = () => {
+  async function validateStep1(){
     let emptyWarning = 'This field cannot be empty';
     let firstNameError = false;
     let lastNameError = false;
@@ -151,6 +158,8 @@ function Register() {
     if(data.password2 !== data.password || !data.password2){
       password2Error = 'Passwords do not match.';      
     }
+
+   
     setData({
       ...data,
       errors: { 
@@ -163,7 +172,8 @@ function Register() {
     })
 
     if(data.firstName && data.lastName && data.password && data.email && !emailError && !passwordError && !password2Error){
-      return true
+      let valid = await validateEmail(data.email)
+      return valid
     }
     return false
   }
@@ -201,6 +211,43 @@ function Register() {
       return true
     }
     return false
+  }
+  async function validateEmail(email){
+    if(!email)return false
+    const url = yakeraBackUrl + '/api/auth/check-email';
+
+    var payload = JSON.stringify({"email":email});
+
+    var config = {
+      method: 'post',
+      url: url,
+      headers: { 
+        'Content-Type': 'application/json'
+      },
+      data : payload
+    };    
+     
+    try {
+      const res = await axios(config)
+
+      if(res.data){
+        setData({
+          ...data,
+          error: ''
+        })
+        return true
+      }
+    }catch{
+      setData({
+              ...data,
+              error:'Email already taken',
+              errors:{
+                ...data.errors,
+                email: 'Check the email'
+              }
+      })
+      return false
+    }
   }
 
   function register(){

@@ -15,8 +15,8 @@ function RegisterVisuals(props) {
 
     const [step, nextStep] = useState(1);
 
-    function onContinue() {
-        if(props.validate(step)){
+    async function onContinue() {
+        if(await props.validate(step)){
             nextStep(step + 1)
         }
         if(step === 3){
