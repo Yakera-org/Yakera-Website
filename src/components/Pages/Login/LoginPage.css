@@ -18,7 +18,9 @@
     height: 100%;
     font-family: Intro-Regular-Alt;
 }
-
+.loader {
+    text-align: center;
+}
 .btn-lg{
     background-color: #01224d;
 }
