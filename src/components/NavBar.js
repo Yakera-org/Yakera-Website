@@ -110,7 +110,6 @@ class NavBar extends Component {
         const res = await axios.post(url, config);
 
         console.log(res)
-
     }
 
 

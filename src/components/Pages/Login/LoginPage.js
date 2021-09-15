@@ -102,9 +102,6 @@ const LoginPage = () => {
         setWelcome(true)
 
         localStorage.setItem('user', token)
-
-        //TODO:
-        //log out
       }
 
     }).catch(error => {

@@ -2,7 +2,13 @@ import React, {useState} from "react";
 import RegisterVisuals from './RegisterVisuals'
 import { validateFields } from './Validation';
 import Author from "../../author";
+import Loader from "react-loader-spinner";
+import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 
+const _axios = require('axios');
+const axios = _axios.create();
+const qs = require('querystring');
+const yakeraBackUrl = 'https://express-backend-api.herokuapp.com';
 
 function Register() {
 
@@ -17,6 +23,7 @@ function Register() {
     socialNum: "",
     airTMNum: "",
     isSubmitting: false,
+    error: '',
     check:{
       terms:false,
       newsLetter:false
@@ -34,11 +41,13 @@ function Register() {
     },
   };
   const [data, setData] = useState(initialState);
+  const [loading, setLoading] = useState(false);
   
   const handleChange = event => {
     if(event.target.name === 'terms'){
       setData({
         ...data,
+        error:'',
         check:{
           ...data.check,
           [event.target.name]: !data.check.terms
@@ -165,7 +174,6 @@ function Register() {
     let phoneError = false;
     let airTMNumError = false;
     let socialNumError = false;
-
     
     if(!data.address){
       addressError = emptyWarning;      
@@ -196,11 +204,74 @@ function Register() {
   }
 
   function register(){
-    console.log(data)
+    if(!data.check.terms){
+      setData({
+        ...data,
+        error: 'Please accept the terms and conditions.'
+      })
+    }else{
+      //loading
+      setLoading(true)
+      callRegisterBackend()
+    }
   }
+
+  async function callRegisterBackend(){
+    const url = yakeraBackUrl + '/api/auth/register';
+
+    // register credentials
+    const requestBody = {      
+        firstName: data.firstName,
+        lastName: data.lastName,
+        email: data.email,
+        password: data.password,
+        phone: data.phone,
+        address: data.address,
+        IDNumber: data.socialNum
+    }
+
+    let payload = JSON.stringify(requestBody)
+    
+    axios.post(url, payload, {
+      headers: {
+        // Overwrite Axios's automatically set Content-Type
+        'Content-Type': 'application/json'
+      }
+    }).then(response => {
+      setLoading(true)
+
+      if (response.status === 201) {
+        console.log(response.data)
+        console.log("scuess")
+        setLoading(false)
+      }
+
+    }).catch(error => {
+      var errorMessage;
+      console.log(error);
+      if(error.response){  
+        errorMessage = "Something went wrong. Please try again later.";
+      }
+      setLoading(false)
+      setData({
+        ...data,
+        error: errorMessage
+      })
+    });
+}
+
   return (
       <div>
-        <RegisterVisuals data={data} handleChange={handleChange} validate={validate} register={register}/>
+        <div className='loader'>
+          <Loader
+            type="Bars"
+            color="#052a5cd2"
+            height={100}
+            width={100}
+            visible={loading}
+          />
+        </div>
+        <RegisterVisuals data={data} handleChange={handleChange} validate={validate} register={register} error={data.error} setError={setData}/>
         <br />
         <br />
         <br />

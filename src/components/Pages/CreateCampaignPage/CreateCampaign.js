@@ -167,9 +167,7 @@ function CreateCampaign() {
         for ( var key in payload ) {
             formdata.append(key, payload[key]);
         }
-        // Heroku Live
-        const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxMTM1OWExZGE4MTI0MDAwNDc5OGUyOSIsImlhdCI6MTYzMTQxMjI5Nn0.AaOAzUfKvuIyL2j6VSjI0DtCRb7W3nck7ohfxFCu3TE';
-        // Heroku Local
+        const token = localStorage.getItem('user');
         // const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxMjcyZTgxZGZkYTc4MTEzYzE5NTBlMCIsImlhdCI6MTYzMTM5NjEzMn0.4vs08muUTucSu9Pi5HUwA6oStxyVrcBYZlh-x0TzAGw'
         const url = 'https://express-backend-api.herokuapp.com/api/campaigns';
 
