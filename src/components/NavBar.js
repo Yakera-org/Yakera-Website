@@ -1,14 +1,13 @@
 import React, {Component} from 'react';
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faBars } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faBars } from '@fortawesome/free-solid-svg-icons';
+import * as axios from 'axios';
 import ReactCountryFlag from "react-country-flag";
 import Switch from "react-switch";
 import logo from "../svg/logo.svg";
-
 import '../App.css';
-
 
 class NavBar extends Component {
     constructor(props) {
@@ -58,8 +57,8 @@ class NavBar extends Component {
 
     // toggles for mobile, increases size so the dropdown adapts
     handleToggle(){
-        var height = 400
-        if(this.state.navHeight === 400){ //readjust if closed
+        var height = 500
+        if(this.state.navHeight === 500){ //readjust if closed
             height = 150
         }
 
@@ -93,6 +92,25 @@ class NavBar extends Component {
     }
     onHomeClick(){
         localStorage.setItem("currentTab", '')        
+    }
+
+    async onLogOut(){
+        const backendUrl = 'https://express-backend-api.herokuapp.com/';
+        const url = backendUrl + 'auth/logout';
+        const token = localStorage.getItem('user');
+        localStorage.removeItem('user')
+        localStorage.setItem('currentTab', 'home')
+        window.alert('User logged out successfully!')
+        window.location.href = "/";
+        let config = {
+            headers: {
+              'Authorization': 'Bearer ' + token
+            }
+          }
+        const res = await axios.post(url, config);
+
+        console.log(res)
+
     }
 
 
@@ -134,8 +152,16 @@ class NavBar extends Component {
                         <Nav.Link id={this.state.currentTab === 'campaigns' ? 'nav-tab-selected': 'nav-tab'} name='campaigns'  onClick={this.onTabClick.bind(this)}> {EN ? 'CAMPAIGNS' : 'Campañas'}</Nav.Link>
                         <Nav.Link id={this.state.currentTab === 'frequently-asked-questions' ? 'nav-tab-selected': 'nav-tab'} name='frequently-asked-questions'  onClick={this.onTabClick.bind(this)}>FAQ</Nav.Link>
                         <Nav.Link id={this.state.currentTab === (isAuthenticated ? 'dashboard' : 'login') ? 'nav-tab-selected': 'nav-tab'} name={isAuthenticated ? 'dashboard' : 'login'}  onClick={this.onTabClick.bind(this)}>{isAuthenticated ? 'DASHBOARD' : 'LOGIN'}</Nav.Link>
-                        {/* <Nav.Link href="/profile" style={{fontSize:'30px'}}>Profile</Nav.Link>
-                        <Nav.Link href="/login" style={{fontSize:'30px'}}>Log-in</Nav.Link> */}
+                        { isAuthenticated
+                        ?
+                            <Nav.Link >
+                            <div className='logout-mobile' onClick={this.onLogOut.bind(this)}   >
+                                <i className="fas fa-sign-out-alt"></i><label>&nbsp;SIGN OUT</label>
+                            </div>
+                        </Nav.Link>
+                        :
+                        ''
+                        }
                         <div style={{marginLeft:'25px', marginTop:'-5px'}}>
                             <Switch
                             onChange={this.onChange}
@@ -182,7 +208,15 @@ class NavBar extends Component {
                         </Nav>                    
 
                     </Navbar.Collapse>
-                    
+                    { isAuthenticated
+                        ?
+                        <div className='logout' onClick={this.onLogOut.bind(this)}>
+                            <i className="fas fa-sign-out-alt"></i><label>&nbsp;Sign out</label>
+                        </div>
+                        :
+                        ''
+                    }
+                
                     </Navbar>               
                 </div>
             )

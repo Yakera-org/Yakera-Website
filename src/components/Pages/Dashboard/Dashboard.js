@@ -21,7 +21,6 @@ function Dashboard() {
     })
 
     async function getCampaign(){
-        console.log(token)
         const url = backendUrl + 'api/profile';
         let config = {
             headers: {

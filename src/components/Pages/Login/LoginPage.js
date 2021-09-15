@@ -104,7 +104,6 @@ const LoginPage = () => {
         localStorage.setItem('user', token)
 
         //TODO:
-        // loader
         //log out
       }
 
