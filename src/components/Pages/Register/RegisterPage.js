@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import RegisterVisuals from './RegisterVisuals'
 import { validateFields } from './Validation';
+import Author from "../../author";
 
 
 function Register() {
@@ -10,6 +11,7 @@ function Register() {
     lastName: "",
     email: "",
     password: "",
+    password2: "",
     address: "",
     phone: "",
     socialNum: "",
@@ -24,6 +26,7 @@ function Register() {
       lastName: null,
       email: null,
       password: null,
+      password2: null,
       address: null,
       phone: null,
       socialNum: null,
@@ -69,7 +72,14 @@ function Register() {
       error = validateFields.validateEmail(value);
     }else if(name === 'password'){
       error = validateFields.validatePassword(value);
-    }else if(name === 'firstName' || name === 'lastName' || name === 'address' || name === 'phone' || name === 'airTMNum' || name === 'socialNum'){
+    }else if(name==='password2'){
+      if(value !== data.password){
+        error = 'Passwords do not match'
+      }else{
+        error = validateFields.validateName(value)
+      }
+    }
+    else if(name === 'firstName' || name === 'lastName' || name === 'address' || name === 'phone' || name === 'airTMNum' || name === 'socialNum'){
       error = validateFields.validateName(value);
     }
 
@@ -95,6 +105,8 @@ function Register() {
     }   
   }
 
+  
+
   const validate = (step) =>{
     if (step === 1){
       return validateStep1();
@@ -105,8 +117,11 @@ function Register() {
 
   const validateStep1 = () => {
     let emptyWarning = 'This field cannot be empty';
-    let firstNameError, lastNameError, emailError, passwordError;
-
+    let firstNameError = false;
+    let lastNameError = false;
+    let emailError = false;
+    let passwordError = false;
+    let password2Error = false;
     
     if(!data.firstName){
       firstNameError = emptyWarning;
@@ -124,7 +139,9 @@ function Register() {
     }else{
       passwordError = validateFields.validatePassword(data.password);
     }
-    
+    if(data.password2 !== data.password || !data.password2){
+      password2Error = 'Passwords do not match.';      
+    }
     setData({
       ...data,
       errors: { 
@@ -132,17 +149,22 @@ function Register() {
         lastName: lastNameError,
         email: emailError,
         password: passwordError,
+        password2: password2Error,
       }
     })
 
-    if(data.firstName && data.lastName && data.password && data.email && !emailError && !passwordError){
+    if(data.firstName && data.lastName && data.password && data.email && !emailError && !passwordError && !password2Error){
       return true
     }
     return false
   }
   const validateStep2 = () => {
     let emptyWarning = 'Cannot be empty';
-    let addressError, phoneError, airTMNumError, socialNumError;
+    
+    let addressError = false;
+    let phoneError = false;
+    let airTMNumError = false;
+    let socialNumError = false;
 
     
     if(!data.address){
@@ -177,7 +199,14 @@ function Register() {
     console.log(data)
   }
   return (
-      <RegisterVisuals data={data} handleChange={handleChange} validate={validate} register={register}/>
+      <div>
+        <RegisterVisuals data={data} handleChange={handleChange} validate={validate} register={register}/>
+        <br />
+        <br />
+        <br />
+        <br />
+        <Author />
+      </div>
   )
 }
 
