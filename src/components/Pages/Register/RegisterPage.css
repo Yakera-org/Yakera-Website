@@ -2,6 +2,10 @@
     margin-top: 50px;
 }
 
+.register-page input{
+    font-family: Intro-Light;
+}
+
 .register-page a{
     color: #ea8737;
 }
@@ -21,10 +25,15 @@
     color: white;
     font-weight: bold;
     padding: 10px 5px;
+    outline: none;
 }
 
 #step-btn button:hover{
     background-color: #052a5cd2;
+    outline: none;
+}
+#step-btn button:active, #step-btn button:focus{
+    outline: none;
 }
 .login-card{
     text-align: center;
@@ -51,6 +60,9 @@
     font-family: Intro-Regular-Alt;
     margin-left: 5px;
     font-size: 15px;
+}
+.loader {
+    text-align: center;
 }
 
 @media only screen and (max-width: 600px) {

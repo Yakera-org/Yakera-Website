@@ -5,6 +5,9 @@
     margin: auto;
     height: 100%;
 }
+.login-form input{
+    font-family: Intro-Light;
+}
 
 .login-card{
     width: 100%;
@@ -15,7 +18,9 @@
     height: 100%;
     font-family: Intro-Regular-Alt;
 }
-
+.loader {
+    text-align: center;
+}
 .btn-lg{
     background-color: #01224d;
 }
@@ -25,6 +30,20 @@ a {
 }
 
 a:hover {
+    color: #ea8737;
+}
+
+.welcome-dialog {
+    text-align: center;
+}
+.welcome-dialog section{
+    padding: 20px 100px;
+    font-family: Intro-Regular-Alt;
+}
+.welcome-dialog section p{
+    font-size: 20px;
+}
+.welcome-dialog section a{
     color: #ea8737;
 }
 

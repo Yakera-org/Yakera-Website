@@ -1,5 +1,6 @@
 import React, {useState} from "react";
 import {Card, CardContent} from '@material-ui/core';
+import { Alert} from 'reactstrap'
 import { MultiStepForm, Step } from 'react-multi-form';
 import { Grid } from '@material-ui/core';
 import RegisterDetails from "./Register_details";
@@ -14,8 +15,8 @@ function RegisterVisuals(props) {
 
     const [step, nextStep] = useState(1);
 
-    function onContinue() {
-        if(props.validate(step)){
+    async function onContinue() {
+        if(await props.validate(step)){
             nextStep(step + 1)
         }
         if(step === 3){
@@ -24,6 +25,10 @@ function RegisterVisuals(props) {
     }
 
     function onBack() {
+        props.setError({
+            ...props.data,
+            error: ''
+        })
         nextStep(step - 1);
     }
 
@@ -50,6 +55,14 @@ function RegisterVisuals(props) {
 
                             </MultiStepForm>
                             <br /> 
+                            { props.error 
+                            ?
+                                <Alert color="danger">
+                                    { props.error }
+                                </Alert>
+                            :
+                            ''
+                            }
 
                             <Grid container spacing={1} style={{ alignItems:'flex-start'}}>
                                 <Grid item xs={12} sm={6} >

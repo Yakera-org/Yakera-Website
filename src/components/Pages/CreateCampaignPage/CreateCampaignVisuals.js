@@ -1,7 +1,7 @@
 import React from "react";
 import CreatCampaignDetails from "./CreatCampaignDetails";
 import './CreateCampaignPage.css'
-// import background from '../../../pics/pattern-yakera-blue.png';
+import {Alert} from 'reactstrap'
 
 function CreateCampaignVisuals(props) {
 
@@ -28,6 +28,26 @@ function CreateCampaignVisuals(props) {
                 </p>
                 
                 <CreatCampaignDetails data={props.data} handleChange={props.handleChange} handleImageChange={props.handleImageChange}/>
+               
+                { props.error
+                    ?
+                    <Alert color="danger" id='alert'>
+                        {props.error}
+                    </Alert>
+                    :
+                    ''
+                }
+                { props.success
+                    ?
+                    <Alert color="success" id='alert'>
+                        {props.success}
+                        <br />
+                        Head to your <a href="/dashboard" style={{color:'darkgreen', textDecoration:'underline'}}> Dashboard</a>.
+                    </Alert>
+                    :
+                    ''
+                }
+               
                 <div id='create-campaign'>
                     <button  onClick={props.submit}>
                         Create Campaign

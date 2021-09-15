@@ -24,12 +24,6 @@ const LoginTemplate = ({
             <h2>Please Log In</h2>
             <hr />
 
-            { error.errorMessage &&
-              <Alert color="danger">
-                { error.errorMessage }
-              </Alert>
-            }
-
             <FormGroup>
               <Input
                 type='email'
@@ -73,6 +67,11 @@ const LoginTemplate = ({
                 {data.errors.password}
               </Alert>
             )}
+            { error.errorMessage &&
+              <Alert color="danger">
+                { error.errorMessage }
+              </Alert>
+            }
 
             <Button
               className='btn-lg btn-dark btn-block'
@@ -84,7 +83,7 @@ const LoginTemplate = ({
               Login
             </Button>
 
-            <Grid container style={{marginTop:'4%'}}>
+            <Grid container style={{marginTop:'4%', textAlign:'left'}}>
               <Grid item xs>
                 <Link href="/forgot-password">
                   Forgot password?

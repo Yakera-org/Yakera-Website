@@ -61,20 +61,37 @@ function Register_details(props) {
 
                 <br /> 
                 <form>
-                <input
-                    type="password"
-                    name="password"
-                    autoComplete="password"
-                    placeholder="Enter your password"
-                    value={props.data.password}
-                    onChange={props.handleChange}
-                    className={classnames(
-                        'form-control',
-                        { 'is-valid': props.data.errors.password === false },
-                        { 'is-invalid': props.data.errors.password }
-                    )}
-                />
-                <div className="invalid-feedback">{props.data.errors.password}</div>
+                    <input
+                        type="password"
+                        name="password"
+                        autoComplete="password"
+                        placeholder="Enter your password"
+                        value={props.data.password}
+                        onChange={props.handleChange}
+                        className={classnames(
+                            'form-control',
+                            { 'is-valid': props.data.errors.password === false },
+                            { 'is-invalid': props.data.errors.password }
+                        )}
+                    />
+                    <div className="invalid-feedback">{props.data.errors.password}</div>
+
+                    <br /> 
+
+                    <input
+                        type="password"
+                        name="password2"
+                        autoComplete="password"
+                        placeholder="Repeat your password"
+                        value={props.data.password2}
+                        onChange={props.handleChange}
+                        className={classnames(
+                            'form-control',
+                            { 'is-valid': props.data.errors.password2 === false },
+                            { 'is-invalid': props.data.errors.password2 }
+                        )}
+                    />
+                    <div className="invalid-feedback">{props.data.errors.password2}</div>
                 </form>
 
 

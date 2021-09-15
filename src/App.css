@@ -65,11 +65,32 @@ font-size: 20px;
 .isSelected{
   color: #ea8737
 }
+.logout, .logout-mobile {
+  color: #0e325e;
+}
+.logout:hover, .logout-mobile:hover{
+  color: #ea8737;
+}
+.logout label:hover, .logout-mobile label:hover{
+  cursor: pointer;
+}
+.logout i:hover, .logout-mobile i:hover{
+  cursor: pointer;
+}
+.logout-mobile{
+  display: none;
+}
 @media only screen and (max-width: 600px) {
-
   #nav-brand {
     margin-left:0px;
     height:100px
+  }
+  .logout {
+    display: none;
+  }
+  .logout-mobile{
+    display: block;
+    padding-left: 30px;
   }
 
 }

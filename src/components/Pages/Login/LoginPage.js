@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import LoginTemplate from './LoginTemplate';
 import { validateFields } from './Validation';
+import WelcomeCard from './WelcomeCard';
+import Loader from "react-loader-spinner";
+import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 
 
 const LoginPage = () => {
@@ -32,6 +35,8 @@ const LoginPage = () => {
 
   const [data, setData] = useState(initialState);
   const [error, setError] = useState(errorState);
+  const [openWelcome, setWelcome] = useState(false);
+  const [loader, setLoader] = useState(false);
 
   const handleChange = event => {
     event.persist();
@@ -69,6 +74,7 @@ const LoginPage = () => {
   }
 
   const handleLogin = event => {
+    setLoader(true)
     setData(data => ({
       ...data,
       loading: true,
@@ -90,19 +96,25 @@ const LoginPage = () => {
 
       if (response.status === 200) {
         // TODO: set authentication and tokens 
-        window.location.href = "../campaigns";
+        console.log(response.data)
+        let token = response.data.refresh_token
+        setLoader(false)
+        setWelcome(true)
+
+        localStorage.setItem('user', token)
       }
 
     }).catch(error => {
       var errorMessage = null;
       console.log(error);
-
-      if (error.response.data.message) {
-        errorMessage = error.response.data.message;
+      if(error.response){          
+        if (error.response.data.message) {
+          errorMessage = error.response.data.message;
+        }
       } else {
         errorMessage = "Something went wrong. Please try again later.";
       }
-
+      setLoader(false)
       setError({errorMessage: errorMessage});
       setData(data => ({
         email: "",
@@ -119,12 +131,24 @@ const LoginPage = () => {
   }
 
   return (
-    <LoginTemplate 
-      handleChange = {handleChange}
-      data = {data}
-      error = {error}
-      handleLogin = {handleLogin}
-    />
+    <div>
+      <div className='loader'>
+        <Loader
+          type="Bars"
+          color="#ea8737"
+          height={100}
+          width={100}
+          visible={loader}
+        />
+      </div>
+      <LoginTemplate 
+        handleChange = {handleChange}
+        data = {data}
+        error = {error}
+        handleLogin = {handleLogin}
+      />
+      <WelcomeCard open={openWelcome} />
+    </div>
   );
 }
 
