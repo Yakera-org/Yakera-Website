@@ -99,7 +99,7 @@ class CampaignCard extends Component {
               </div>
             }
           />
-          <div style={{textAlign:'center', minHeight:'200px', maxHeight:'200px', overflow: 'hidden',backgroundColor:'#efefef'}}>
+          <div className='cam-img' >
             <img 
             style={{
               minHeight:'100%',

@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import LoginTemplate from './LoginTemplate';
 import { validateFields } from './Validation';
-import WelcomeCard from './WelcomeCard';
 import Loader from "react-loader-spinner";
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 
@@ -35,7 +34,6 @@ const LoginPage = () => {
 
   const [data, setData] = useState(initialState);
   const [error, setError] = useState(errorState);
-  const [openWelcome, setWelcome] = useState(false);
   const [loader, setLoader] = useState(false);
 
   const handleChange = event => {
@@ -99,9 +97,8 @@ const LoginPage = () => {
         console.log(response.data)
         let token = response.data.refresh_token
         setLoader(false)
-        setWelcome(true)
-
         localStorage.setItem('user', token)
+        window.location.href = "/dashboard";
       }
 
     }).catch(error => {
@@ -147,7 +144,6 @@ const LoginPage = () => {
         error = {error}
         handleLogin = {handleLogin}
       />
-      <WelcomeCard open={openWelcome} />
     </div>
   );
 }
