@@ -102,7 +102,6 @@ class NavBar extends Component {
         localStorage.setItem('currentTab', 'home')
         window.alert('User logged out successfully!')
         window.location.href = "/";
-        console.log(token)
         let config = {
             headers: {
               'Authorization': 'Bearer ' + token
