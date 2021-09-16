@@ -36,7 +36,7 @@ function DashboardVisuals(props) {
                         </Grid> */}
                         <Grid item xs={12} sm={4} >
                             <div className='dash-left'>
-                                <p><span id='dash-stats'>Adress:</span> {user.address}</p>
+                                <p><span id='dash-stats'>Address:</span> {user.address}</p>
                             </div>
                         </Grid>                        
                     </Grid> 

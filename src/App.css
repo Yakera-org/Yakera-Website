@@ -68,6 +68,9 @@ font-size: 20px;
 .logout, .logout-mobile {
   color: #0e325e;
 }
+.logout label, .logout-mobile label {
+  font-family:Intro-Regular-Alt;
+}
 .logout:hover, .logout-mobile:hover{
   color: #ea8737;
 }

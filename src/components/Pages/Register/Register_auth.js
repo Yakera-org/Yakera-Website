@@ -42,7 +42,7 @@ function Register_auth(props) {
             <input
                 type="text"
                 name="airTMNum"
-                placeholder="Enter your AirTM Number"
+                placeholder="Enter your AirTM address"
                 value={props.data.airTMNum}
                 onChange={props.handleChange}
                 className={classnames(
@@ -57,7 +57,7 @@ function Register_auth(props) {
             <input
                 type="text"
                 name="socialNum"
-                placeholder="Enter your Social Security Number"
+                placeholder="Enter your ID Number"
                 value={props.data.socialNum}
                 onChange={props.handleChange}
                 className={classnames(

@@ -298,7 +298,7 @@ class donate extends Component{
                     {filteredCampaigns.sort(() => 0.5 - Math.random()).map((cam, i) => {
                             count++;
                             return(
-                                <Grid item xs={12} sm={3} key={i}>
+                                <Grid item xs={12} sm={2} key={i}>
                                     <CampaignCard
                                         campaign={cam.cam}
                                         color={colorDic[cam.cam.category]}

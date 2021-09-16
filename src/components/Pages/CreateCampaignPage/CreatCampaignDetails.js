@@ -122,8 +122,6 @@ function CreateCampaignDetails(props) {
                         multiple={true}
                         as='input'
                         name='supportDocs'
-                        placeholder='Choose files'
-                        // value={props.data.supportDocuments}
                         onChange={props.handleImageChange}
                     />
                 </FormGroup>
@@ -135,8 +133,6 @@ function CreateCampaignDetails(props) {
                         name='mainPicture'
                         accept='image/*'
                         multiple={true}
-                        placeholder='Choose files'
-                        // value={props.data.supportDocuments}
                         onChange={props.handleImageChange}
                     />
                 </FormGroup>
@@ -148,8 +144,6 @@ function CreateCampaignDetails(props) {
                         as='input'
                         name='pictures'
                         accept='image/*'
-                        placeholder='Choose files'
-                        // value={props.data.supportDocuments}
                         onChange={props.handleImageChange}
                     />
                 </FormGroup>

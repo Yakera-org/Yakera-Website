@@ -56,6 +56,7 @@ function CreateCampaign() {
     };
 
     const handleImageChange = event => {
+        if(event.target.files.length === 0)return;
         const name = event.target.name;
         if (event.target.files && event.target.files.length > 1) {
             for (const file of event.target.files) {

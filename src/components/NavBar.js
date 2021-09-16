@@ -96,7 +96,7 @@ class NavBar extends Component {
 
     async onLogOut(){
         const backendUrl = 'https://express-backend-api.herokuapp.com/';
-        const url = backendUrl + 'auth/logout';
+        const url = backendUrl + 'api/auth/logout';
         const token = localStorage.getItem('user');
         localStorage.removeItem('user')
         localStorage.setItem('currentTab', 'home')
@@ -107,9 +107,12 @@ class NavBar extends Component {
               'Authorization': 'Bearer ' + token
             }
           }
-        const res = await axios.post(url, config);
-
-        console.log(res)
+        try{
+            await axios.post(url, {}, config);
+            console.log('logged out')
+        }catch(err){
+            console.log('error: ' + err)
+        }
     }
 
 

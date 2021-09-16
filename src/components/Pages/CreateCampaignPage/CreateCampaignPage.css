@@ -13,6 +13,10 @@
 .create-page input{
     font-family: Intro-Light;
 }
+.create-page input:focus-visible,.create-page textarea:focus-visible {
+    color: black;
+    font-family: Intro-Regular-Alt;
+}
 .create-page .form-control{
     font-family: Intro-Light;
 }

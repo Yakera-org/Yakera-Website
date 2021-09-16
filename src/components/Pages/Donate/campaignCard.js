@@ -99,7 +99,7 @@ class CampaignCard extends Component {
               </div>
             }
           />
-          <div style={{textAlign:'center', maxHeight:'300px', overflow: 'hidden'}}>
+          <div className='cam-img' >
             <img 
             style={{
               minHeight:'100%',
@@ -110,17 +110,19 @@ class CampaignCard extends Component {
               alt={title}
             />
           </div>
-          <CardContent>
+          <CardContent > 
             <div className='logo-sec'>
               <p><b>{title}</b></p>
             </div>
-            <p style={{fontSize:'18px', marginTop:'15px'}}>              
-              {description}
-            </p>
+            <div className='description'>
+              <p>              
+                {description}
+              </p>
+            </div>
             <div className='progress-text'>
               <p>
                 <b>${this.props.amount}</b>
-                {` raised of $${target} target`}
+                {` raised of $${target}`}
               </p>
             </div>
             <Progress theme={{

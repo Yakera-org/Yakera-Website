@@ -1,7 +1,7 @@
 .camp-card{
     cursor: pointer;
-    max-height: 100%;
-    min-height: 100%;
+    max-height: 500px;
+    min-height: 500px;
     font-family: Intro-Regular-Alt;
 }
 .logo-sec img{
@@ -9,19 +9,55 @@
     min-width: 50px;
     float: left;
 }
-
+.camp-card .description {
+    position: relative;
+    overflow: hidden;
+}
+.camp-card .description p{
+    word-break: break-word;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    line-height: 16px; /* fallback */
+    -webkit-line-clamp: 3; /* number of lines to show */
+    -webkit-box-orient: vertical;
+}
+.camp-card .cam-img{
+    text-align:center;
+    min-height:200px;
+    max-height:200px;
+    overflow: hidden;
+    background-color:#efefef;
+}
+.logo-sec{
+    max-height: 70px;
+    min-height: 70px;
+}
 .logo-sec b{
-    font-size: 20px;
+    word-break: break-word;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    line-height: 20px; /* fallback */
+    -webkit-line-clamp: 3; /* number of lines to show */
+    -webkit-box-orient: vertical;
+}
+.logo-sec b{
+    font-size: 18px;
+}
+.progress-text {
+    text-align: center;
 }
 .progress-text b {
-    font-size: 20px;
+    font-size: 18px;
 }
 .progress-text p {
-    font-size: 18px;
+    font-size: 16px;
 }
 
 #read-more {
     text-align: center;
+    font-size: 12px;
     color: rgb(99, 99, 99);
 }
 
@@ -29,6 +65,40 @@
 
     .camp-card{
         border-radius: 20px;
-        width: 100%;    
+        width: 100%;
+        min-height: 0px;
+        max-height: 1000px;
+    }
+    .camp-card .cam-img{
+        text-align:center;
+        min-height:200px;
+        max-height:300px;
+        overflow: hidden;
+        background-color:#efefef;
+    }
+    .camp-card .description p{
+        word-break: break-word;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        line-height: 16px; /* fallback */
+        -webkit-line-clamp: 5; /* number of lines to show */
+        -webkit-box-orient: vertical;
+    }
+    .logo-sec{
+        max-height: 200px;
+        min-height: 0px;
+    }
+    .logo-sec b{
+        word-break: break-word;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        line-height: 20px; /* fallback */
+        -webkit-line-clamp: 3; /* number of lines to show */
+        -webkit-box-orient: vertical;
+    }
+    .logo-sec b{
+        font-size: 20px;
     }
 }
