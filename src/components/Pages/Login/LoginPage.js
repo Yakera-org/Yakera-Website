@@ -3,20 +3,11 @@ import LoginTemplate from './LoginTemplate';
 import { validateFields } from './Validation';
 import Loader from "react-loader-spinner";
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
+import api from "../../../services/api";
+import TokenService from "../../../services/token";
 
 
 const LoginPage = () => {
-
-  const _axios = require('axios');
-  const axios = _axios.create();
-  const qs = require('querystring');
-  const yakeraBackUrl = 'https://express-backend-api.herokuapp.com';
-
-  const config = {
-    headers: {
-      'Content-Type': 'application/x-www-form-urlencoded'
-    }
-  }
 
   const initialState = {
     email: "",
@@ -81,26 +72,21 @@ const LoginPage = () => {
     // validate credentials
     const requestBody = {      
       email: data.email,
-      password: data.password,
+      password: data.password
     }
 
-    const url = yakeraBackUrl + "/api/auth/login";
-    
-    axios.post(url, qs.stringify(requestBody), config).then(response => {
+    api.post("/auth/login", requestBody).then(response => {
       setData(data => ({
         ...data,
         loading: false,
       }));
 
       if (response.status === 200) {
-        // TODO: set authentication and tokens 
-        console.log(response.data)
-        let token = response.data.refresh_token
         setLoader(false)
-        localStorage.setItem('user', token)
+        TokenService.setAccessToken(response.data.access_token);
+        TokenService.setRefreshToken(response.data.refresh_token);
         window.location.href = "/dashboard";
       }
-
     }).catch(error => {
       var errorMessage = null;
       console.log(error);

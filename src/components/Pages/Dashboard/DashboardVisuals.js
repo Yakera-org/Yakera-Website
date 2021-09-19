@@ -72,7 +72,7 @@ function DashboardVisuals(props) {
 
                                                                 <Grid container spacing={5} style={{ alignItems:'flex-start'}}>
                                                                     <Grid item xs={12} sm={12} style={{textAlign:'left'}} >
-                                                                        <p><span id='dash-stats'>Created:</span> {campaign.createdAt}</p>
+                                                                        <p><span id='dash-stats'>Created:</span> {campaign.created}</p>
                                                                         <p><span id='dash-stats'>Category:</span> {campaign.category}</p>
                                                                         <p><span id='dash-stats'>Description:</span> {campaign.description}</p>
                                                                         <p><span id='dash-status'>Status:</span> {campaign.approved ? 'Approved' : 'Pending approval'}</p>
