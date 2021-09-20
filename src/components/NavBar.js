@@ -74,7 +74,7 @@ class NavBar extends Component {
             checked: !this.state.checked
         })
         if(this.state.language=== 'en'){
-            localStorage.setItem("lang", 'sp');
+            localStorage.setItem("lang", 'es');
         }else{
             localStorage.setItem("lang", 'en');
         }

@@ -3,6 +3,7 @@ import {Dialog, Grid} from '@material-ui/core';
 import DonateCard from './DonateCard';
 import {capitalizeFirstLetter} from '../../../stringUtils';
 import { Navbar, Container, Nav } from 'react-bootstrap';
+import getHumanReadableDate from '../../../dateUtils';
 
 const CampaignCategory = ({
     categoryType,
@@ -92,7 +93,7 @@ class CampaignPageVisual extends Component {
     render() {
         const campaign = this.props.campaign;
         const amount = this.props.amount;
-        const target = campaign.target;
+        const target = campaign.targetAmount;
         const language = this.props.language;
         return (
             <div className = "camp-page-vis">
@@ -101,7 +102,7 @@ class CampaignPageVisual extends Component {
                     campaign.category
                 }</h3>    */}
                 <CampaignCategory categoryType={campaign.category} />
-                    <h1 style={{color: 'var(--brand-blue'}}>{campaign.title[language]}</h1>  
+                    <h1 style={{color: 'var(--brand-blue'}}>{campaign.translations[language].title}</h1>  
                 <Grid container spacing={4} style={{ alignItems:'flex-start'}}>
                     <Grid item xs={12} sm={8} id="left-col">
                         {/* left column  */}
@@ -117,7 +118,7 @@ class CampaignPageVisual extends Component {
                                 style={{
                                     borderRadius: '20px',
                                 }}
-                                src={campaign.image}
+                                src={campaign.mainPicture.url}
                                 alt="title.img"
                             />
                             <Dialog
@@ -129,14 +130,14 @@ class CampaignPageVisual extends Component {
                                 <img 
                                     id="exp-img"
                                     onClick={this.imgClick}
-                                    src={campaign.image} 
+                                    src={campaign.mainPicture.url} 
                                     alt="title.img"
                                 />
                             </Dialog>
                              
                         </div>
 
-                        <p id="author-credit">{campaign.author} - {campaign.date}</p>
+                        <p id="author-credit">{campaign._user.firstName} - {getHumanReadableDate(campaign.createdAt)}</p>
 
                         {/* <hr style={{marginBottom:'-10px'}}/> */}
                         
@@ -160,7 +161,7 @@ class CampaignPageVisual extends Component {
                         </Navbar>
 
                         <div className="camp-page-story" id='about'>
-                            {campaign.headers[language].map((h, i) =>{
+                            {/* {campaign.headers[language].map((h, i) =>{
                                 return(
                                     <div key={h+i}>
                                         <h2 key={i}>{h}</h2>
@@ -172,8 +173,10 @@ class CampaignPageVisual extends Component {
                                 <a href={campaign.links[0]}>https://assembly.malala.org/stories</a>
                                 : 
                                 ''
-                            }
-                            
+                            } */}
+                            <p>
+                                {campaign.translations[language].story}
+                            </p>
                         </div>
                     </Grid>
                     <Grid item xs={12} sm={4}>

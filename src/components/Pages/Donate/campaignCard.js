@@ -34,7 +34,7 @@ class CampaignCard extends Component {
   
   hanldeClick(){    
     const { campaign } = this.props;
-    let redirect = `/campaign/${campaign.title.en}`;
+    let redirect = `/campaign/${campaign.slug}`;
     this.props.history.push(redirect);
   }
 
@@ -52,11 +52,11 @@ class CampaignCard extends Component {
 
   render(){
     const { campaign, icon } = this.props;
-    const title = campaign.title[this.props.language];
-    const description = campaign.description[this.props.language];
-    const image = campaign.image;
+    const title = campaign.translations[this.props.language].title;
+    const description = campaign.translations[this.props.language].description;
+    const image = campaign.mainPicture.url;
     const category = campaign.category;
-    const target = campaign.target;
+    const target = campaign.targetAmount;
 
     return (
       <div>

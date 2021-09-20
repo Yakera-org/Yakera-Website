@@ -3,17 +3,18 @@ import CampaignCard from './campaignCard';
 import Author from '../../author';
 import  { Grid } from '@material-ui/core';
 import HashLoader from "react-spinners/HashLoader";
-import campaigns from './allCampaigns';
 import pics from './pics';
 import icons from './icons';
 import SearchIcon from '@material-ui/icons/Search';
 import { Form, InputGroup } from 'react-bootstrap';
+import { unauthenticatedGet } from '../../../utils';
 
 import './donate.css';
 
-const _axios = require('axios');
-const axios = _axios.create();
-const yakeraBackUrl = 'https://api.yakera.net';
+// const _axios = require('axios');
+// const axios = _axios.create();
+// const yakeraBackUrl = 'https://api.yakera.net';
+const yakeraBackendUrl = 'https://express-backend-api.herokuapp.com/api/campaigns/';
 
 const colorDic={
     "education": '#71b98f',
@@ -41,11 +42,11 @@ const filterCampaignsBySearch = (campaigns, query, lang) => {
     }
   
     const searchTitles = campaigns.filter((campaign) => {
-        const campaignTitle = campaign.cam.title[lang].toLowerCase();
+        const campaignTitle = campaign.translations[lang].title.toLowerCase();
         return campaignTitle.includes(query.toLowerCase());
     });
     const searchDescriptions = campaigns.filter((campaign) => {
-        const campaignDescription = campaign.cam.description[lang].toLowerCase();
+        const campaignDescription = campaign.translations[lang].description.toLowerCase();
         return campaignDescription.includes(query.toLowerCase());
     });
 
@@ -56,7 +57,7 @@ const filterCampaignsByCategory = (campaigns, categoryState) => {
     let activeFilter = categoryState.replace('Filter', '');
 
     return campaigns.filter((campaign) => {
-        const campaignCategory = campaign.cam.category;
+        const campaignCategory = campaign.category;
         return campaignCategory.includes(activeFilter);
     })
 };
@@ -105,6 +106,7 @@ class donate extends Component{
                 language: 'en',
                 tab:'education',
                 dicAmount:{},
+                campaigns: [],
                 searchQuery:'',
                 healthcareFilter: '',
                 educationFilter: '',
@@ -120,56 +122,72 @@ class donate extends Component{
             localStorage.setItem("lang", "en");
         }
 
-        var dicStorage = JSON.parse(localStorage.getItem("dic"));
-        if(!dicStorage){
-            var dic = {}
-            for(let i in campaigns){
-                let name = campaigns[i].cam.name;
-                await this.getCurrentAmount(name).then((res) => {
-                    dic[name] = res
-                })
-            }
-    
-            localStorage.setItem("dic", JSON.stringify(dic));
-            this.setState({
-                dicAmount: dic,
+        await unauthenticatedGet(yakeraBackendUrl, {})
+            .then(data => {
+                console.log(data)
+                this.setState({
+                    campaigns: data.data.campaigns,
+                });
             })
-        }else{
-            this.setState({
-                dicAmount: dicStorage,
+            .catch(error => {
+                console.log(error);
             })
-        }
+            .finally(() => {
+                this.setState({
+                    language: lang,
+                    loaded:true
+                });
+            });
 
-        this.setState({
-            language: lang,
-            loaded:true
-        })
+        // var dicStorage = JSON.parse(localStorage.getItem("dic"));
+        // if(!dicStorage){
+        //     var dic = {}
+        //     for(let i in campaigns){
+        //         let name = campaigns[i].cam.name;
+        //         await this.getCurrentAmount(name).then((res) => {
+        //             dic[name] = res
+        //         })
+        //     }
+    
+        //     localStorage.setItem("dic", JSON.stringify(dic));
+        //     this.setState({
+        //         dicAmount: dic,
+        //     })
+        // }else{
+        //     this.setState({
+        //         dicAmount: dicStorage,
+        //     })
+        // }
+
+
+
+        
     }
     
     handle_change = (value) => {
         this.setState({ value })
     }    
 
-    async getCurrentAmount(name){
+    // async getCurrentAmount(name){
 
-        var result = 0;
-        const config = {
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        }
-        const url = yakeraBackUrl + "/api/campaign/?email=" + name;
+    //     var result = 0;
+    //     const config = {
+    //         headers: {
+    //             'Content-Type': 'application/json'
+    //         }
+    //     }
+    //     const url = yakeraBackUrl + "/api/campaign/?email=" + name;
         
-        await axios.get(url, config)
-        .then(res => {
-                result =  res.data[0].amount
-        })
-        .catch(err => {
-            console.log("error: " + err.message);
-        })
+    //     await axios.get(url, config)
+    //     .then(res => {
+    //             result =  res.data[0].amount
+    //     })
+    //     .catch(err => {
+    //         console.log("error: " + err.message);
+    //     })
     
-        return result;   
-    }
+    //     return result;   
+    // }
 
     setSearchQuery = (e) => {
         this.setState({
@@ -207,16 +225,17 @@ class donate extends Component{
 
     handleFilteredCampaigns = () => {
         if (this.state.searchQuery.length !== 0) {
-            return filterCampaignsBySearch(campaigns, this.state.searchQuery, this.state.language);
+            return filterCampaignsBySearch(this.state.campaigns, this.state.searchQuery, this.state.language);
         } else if (this.state.healthcareFilter.length !== 0) {
-            return filterCampaignsByCategory(campaigns, this.state.activeCategory);
+            return filterCampaignsByCategory(this.state.campaigns, this.state.activeCategory);
         }
-        return campaigns;
+        return this.state.campaigns;
     };
    
     render(){
         var count = 0;
         var filteredCampaigns = this.handleFilteredCampaigns();
+        console.log(this.state.campaigns);
 
         if(!this.state.loaded){
             return(
@@ -300,12 +319,12 @@ class donate extends Component{
                             return(
                                 <Grid item xs={12} sm={2} key={i}>
                                     <CampaignCard
-                                        campaign={cam.cam}
-                                        color={colorDic[cam.cam.category]}
+                                        campaign={cam}
+                                        color={colorDic[cam.category]}
                                         language={this.state.language}
-                                        logo={pics[cam.cam.category]}  // make this pass the whole thing
-                                        amount={this.state.dicAmount[cam.cam.name]}
-                                        icon={icons[cam.cam.category]}
+                                        logo={pics[cam.category]}  // make this pass the whole thing
+                                        amount={cam.raised}
+                                        icon={icons[cam.category]}
                                     />
                                 </Grid>
                             )                       
