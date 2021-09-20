@@ -2,36 +2,18 @@ import React from 'react'
 import pics from './picsHome.json';
 import ReactPlayer from 'react-player'
 import { Grid } from '@material-ui/core';
-import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import Author from '../../author';
+import CampaignCarousel from './CampaignCarousel';
 import './home.scss';
 
-//for carousel 
-const responsive = {
-    superLargeDesktop: {
-      // the naming can be any, depends on you.
-      breakpoint: { max: 4000, min: 3000 },
-      items: 5
-    },
-    desktop: {
-      breakpoint: { max: 3000, min: 1024 },
-      items: 5
-    },
-    tablet: {
-      breakpoint: { max: 1024, min: 464 },
-      items: 5
-    },
-    mobile: {
-      breakpoint: { max: 464, min: 0 },
-      items: 1
-    }
-  };
+
 
 function Home() {
     React.useEffect(() =>{
-        localStorage.setItem('dic', null) 
+        localStorage.setItem('dic', null);
     }, [])
+
     return (
         <div>
             <div className='home-page'>
@@ -75,7 +57,7 @@ function Home() {
                         }
 
                     </Grid> 
-                    <Grid container spacing={0} className='video-section'>                    
+                    <Grid container spacing={0} className='video-section'> 
                         <Grid item xs={12} sm={7} >
                             <section>
                                 <ReactPlayer
@@ -102,39 +84,12 @@ function Home() {
                                 </p>
                             </section>
                         </Grid>   
+                        </Grid> 
+                    <Grid container spacing={0} className='carousel-section'>       
+                        <CampaignCarousel />
                     </Grid> 
-
-                    <Grid container spacing={0} className='carousel-section'>                    
-                        <Grid item xs={12} sm={12} >
-                            <h1>
-                                Extiende una mano
-                            </h1>                           
-                        </Grid>  
-                        <Grid item xs={12} sm={12} >                            
-                            <Carousel
-                                swipeable={true}
-                                draggable={true}
-                                showDots={false}
-                                responsive={responsive}
-                                ssr={true} // means to render carousel on server-side.
-                                infinite={true}
-                                autoPlay={true}
-                                autoPlaySpeed={2000}
-                                keyBoardControl={true}
-                                customTransition="all .5"
-                                transitionDuration={500}
-                                containerClass="carousel-container"
-                                removeArrowOnDeviceType={''}
-                                deviceType={"mobile"}
-                                dotListClass="custom-dot-list-style"
-                                itemClass="carousel-item-padding-40-px"
-                            >    
-                                <div>item1</div>
-                            </Carousel>             
-                        </Grid>  
-                    </Grid>
                 </Grid> 
-            
+            <Author />
             </div>
             
         
