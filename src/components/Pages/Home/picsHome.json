@@ -3,8 +3,8 @@
     "illustrations":[
          "https://yakera-files.s3.us-east-2.amazonaws.com/yakera/verify.svg",
          "https://yakera-files.s3.us-east-2.amazonaws.com/yakera/story-icon.svg",
-         "https://yakera-files.s3.us-east-2.amazonaws.com/yakera/save-money-icon.svg",
-         "https://yakera-files.s3.us-east-2.amazonaws.com/yakera/group-icon.svg"
+         "https://yakera-files.s3.us-east-2.amazonaws.com/yakera/group-icon.svg",
+         "https://yakera-files.s3.us-east-2.amazonaws.com/yakera/save-money-icon.svg"
     ],
     "dotted-line":"https://yakera-files.s3.us-east-2.amazonaws.com/yakera/steps-line.svg",
     "illustration-texts":[
@@ -12,5 +12,6 @@
         "<span style='font-weight: bold'>Cuenta</span> tu historia y envía tu campaña",
         "<span style='font-weight: bold'>Compártela</span> con personas que puedan apoyar tu campaña",
         "<span style='font-weight: bold'>Retira</span> los fondos en tu cuenta de banco o paga directamente"
-    ]
+    ],
+    "video-img": "https://yakera-files.s3.us-east-2.amazonaws.com/yakera/Artboard+12-100.jpg"
 }
