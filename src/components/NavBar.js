@@ -96,11 +96,11 @@ class NavBar extends Component {
     }
 
     async onLogOut(){
-        TokenService.removeAccessToken();
-        TokenService.removeRefreshToken()
         try{
             await api.post('/auth/logout');
             window.alert('User logged out successfully!')
+            TokenService.removeAccessToken();
+            TokenService.removeRefreshToken();
             localStorage.setItem('currentTab', 'home')
             window.location.href = "/"; 
         }catch(err){
