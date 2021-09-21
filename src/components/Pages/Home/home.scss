@@ -41,6 +41,9 @@
     margin-top: -25%;
     object-fit: cover;    
 }
+.home-page .illustrations-mobile{
+    display: none;
+}
 .home-page .illustrations{
     margin-top: 70px;
     text-align: center;
@@ -119,6 +122,14 @@
 @media only screen and (max-width: 600px) {
     .home-page .illustrations{
         display: none;
+    }
+    .home-page .illustrations-mobile{
+        display: block;
+        margin: 50px 10px 20px 10px;
+        width: 100%;
+    }
+    .home-page .illustrations-mobile img{
+        width: 100%;
     }
 
     .home-page .top-left{

@@ -6,6 +6,7 @@
          "https://yakera-files.s3.us-east-2.amazonaws.com/yakera/group-icon.svg",
          "https://yakera-files.s3.us-east-2.amazonaws.com/yakera/save-money-icon.svg"
     ],
+    "mobile-illustration": "https://yakera-files.s3.us-east-2.amazonaws.com/yakera/illustrations.png",
     "dotted-line":"https://yakera-files.s3.us-east-2.amazonaws.com/yakera/steps-line.svg",
     "illustration-texts":[
         "<span style='font-weight: bold'>Regístrate</span> en Yakera y confirma tu usuario",

@@ -1,9 +1,10 @@
 import React from 'react';
 import {Card} from '@material-ui/core';
-import useCollapse from 'react-collapsed';
 import PayPal from './Paypal';
 import airtmLogo from '../../../pics/airtmbutton.png';
 import zelleLogo from '../../../pics/zelle.png';
+import api from "../../../services/api";
+
 
 function PaymentAuth(props) {
     const language = props.language;
@@ -11,11 +12,9 @@ function PaymentAuth(props) {
     if(language !=="en"){
         EN = false
     }
-    const { getCollapseProps, getToggleProps } = useCollapse({
-        defaultExpanded: false,
-      });
 
     const [souldShowZelle, setsouldShowZelle] = React.useState(false);
+    const [openZelle, setOpenZelle] = React.useState(false);
 
     React.useEffect(()=> {
         let ranNum = Math.floor(Math.random() * 100);
@@ -26,6 +25,15 @@ function PaymentAuth(props) {
 
     function onAirTM(){
         props.onAirTM(total_amount, props.title, props.name, props.email)
+    }
+    async function onZelle(){
+        setOpenZelle(!openZelle)
+        try {
+            const res = await api.get('/zelle');
+            console.log(res)
+        } catch (err) {
+            console.log(err)
+        }
     }
 
     const total_amount = parseInt(props.amount) + parseInt(props.tip)
@@ -53,19 +61,23 @@ function PaymentAuth(props) {
                 </button>
                 { souldShowZelle
                 ?
-                <div>
+                <div >
                     <button
                         type="submit"
                         className=" airtm-but" 
-                        {...getToggleProps()}   
-                                
+                        onClick={onZelle}
                     >
                         <img src={zelleLogo} alt="zelle-logo-button" />
                     </button>
-
-                    <p {...getCollapseProps()}>
-                        This service is coming soon...
-                    </p>
+                    {
+                        openZelle
+                        ?
+                        <p>
+                            This service is coming soon...
+                        </p>
+                        :
+                        ''
+                    }
                 </div>
                 :
                 ''

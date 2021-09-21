@@ -10,7 +10,7 @@ const banner_pic = 'https://yakera-files.s3.us-east-2.amazonaws.com/yakera/faq-t
 
 function FAQVisuals() {
 
-    const [searchQuery, setSearchQuery] = useState('');
+    const [searchQuery] = useState('');
     const filterCampaignsBySearch = (content, query) => {
         if(!query) {
             return content.en;
@@ -43,7 +43,6 @@ function FAQVisuals() {
                         </Grid>
                     </div>
                 </Grid>
-
                 
                 <Grid item xs={12} sm={12} >
                     <div className='faq-drawer-area'>
@@ -76,40 +75,3 @@ function FAQVisuals() {
 
 export default FAQVisuals
 
-
-class SearchBar extends React.Component {
-    
-    render () {
-        return (
-            <InputGroup
-                style={{
-                    border: '1px solid #ced4da',
-                    borderRadius: '20px',
-                    overflow: 'hidden',
-                    width: '100%',
-                    display: 'inline-flex',
-                    marginTop: '10px'
-                }}
-            >
-                <InputGroup.Text
-                    style={{
-                        border: 'none',
-                        backgroundColor: 'white',
-                    }}
-                >
-                    <SearchIcon />
-                </InputGroup.Text>
-                <Form.Control
-                    type='search'
-                    placeholder='Search...'
-                    value={this.props.searchQuery.toLowerCase()}
-                    onChange={e => this.props.setSearchQuery(e.target.value)}
-                    style={{
-                        border: 'none',
-                        backgroundColor: 'white',
-                    }}
-                />
-            </InputGroup>
-        )
-    }
-};
