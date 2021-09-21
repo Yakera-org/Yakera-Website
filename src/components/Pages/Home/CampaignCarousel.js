@@ -3,17 +3,7 @@ import { Grid } from '@material-ui/core';
 import Carousel from 'react-multi-carousel';
 import api from "../../../services/api";
 import CampaignCard from '../Donate/campaignCard';
-import tempCams from '../Donate/allCampaigns';
-import pics from '../Donate/pics'
-import icons from '../Donate/icons'
 import './home.scss';
-
-const colorDic={
-    "education": '#71b98f',
-    "healthcare": '#ff7d7d',
-    "business":'#7099d0',
-    "nutrition": '#ffc19a',
-};
 
 
 //for carousel 
@@ -89,27 +79,19 @@ function CampaignCarousel(props) {
                         dotListClass="custom-dot-list-style"
                         itemClass="carousel-item-padding-40-px"
                     >    
-                    {/* {
+                    {
                         campaigns.map(cam => {
-                            return(
-                               <p>Campaign here</p>
-                            )                           
-                        })
-                    } */}
-                    {tempCams.map((cam, i) => {
                             return(
                                 <div id='card-container'>
                                     <CampaignCard
-                                        campaign={cam.cam}
-                                        color={colorDic[cam.cam.category]}
-                                        language={'sp'}
-                                        logo={pics[cam.cam.category]}  // make this pass the whole thing
-                                        amount={200}
-                                        icon={icons[cam.cam.category]}
+                                        campaign={cam}
+                                        language={'en'}
+                                        amount={cam.raised}
                                     />
                                 </div>
-                            )                       
-                    })}  
+                            )                           
+                        })
+                    }
                     </Carousel>             
                 </Grid>  
             </Grid>
