@@ -161,22 +161,7 @@ class CampaignPageVisual extends Component {
                         </Navbar>
 
                         <div className="camp-page-story" id='about'>
-                            {/* {campaign.headers[language].map((h, i) =>{
-                                return(
-                                    <div key={h+i}>
-                                        <h2 key={i}>{h}</h2>
-                                        <p key={h}>{campaign.story[language][i]}</p>
-                                    </div>
-                                )
-                            })}
-                            {campaign.links ? 
-                                <a href={campaign.links[0]}>https://assembly.malala.org/stories</a>
-                                : 
-                                ''
-                            } */}
-                            <p>
-                                {campaign.translations[language].story}
-                            </p>
+                            <p dangerouslySetInnerHTML={{ __html: campaign.translations[language].story }} />
                         </div>
                     </Grid>
                     <Grid item xs={12} sm={4}>

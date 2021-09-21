@@ -22,15 +22,6 @@ class CampaignPage extends Component{
             localStorage.setItem("lang", "en");
         }
         let found = false;
-        //loop through all local campaigns and store the one needed
-        // campaigns.forEach( (cam) => {
-        //     if (cam.cam.title.en === this.props.match.params.title){
-        //         found = true
-        //         this.setState({
-        //             campaign : cam.cam
-        //         })
-        //     }
-        // })
         await unauthenticatedGet(yakeraBackendUrl, {})
             .then(data => {
                 console.log(data)
