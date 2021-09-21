@@ -5,6 +5,7 @@ import CardHeader from '@material-ui/core/CardHeader';
 import CardContent from '@material-ui/core/CardContent';
 import { Progress } from 'react-sweet-progress';
 import "react-sweet-progress/lib/style.css";
+import icons from './icons';
 
 import './campaignCard.css';
 
@@ -21,6 +22,12 @@ const en_headers = {
   "nutrition":"Nutrition",
   "business":"Small Business"
 }
+const colorDic={
+  "education": '#71b98f',
+  "healthcare": '#ff7d7d',
+  "business":'#7099d0',
+  "nutrition": '#ffc19a',
+};
 
 class CampaignCard extends Component {
   constructor(props) {
@@ -51,11 +58,13 @@ class CampaignCard extends Component {
   }
 
   render(){
-    const { campaign, icon } = this.props;
+    const { campaign } = this.props;
     const title = campaign.translations[this.props.language].title;
     const description = campaign.translations[this.props.language].description;
     const image = campaign.mainPicture.url;
     const category = campaign.category;
+    const icon = icons[category] ;
+
     const target = campaign.targetAmount;
 
     return (
@@ -129,7 +138,7 @@ class CampaignCard extends Component {
                 default: {
                     trailColor: 'lightgrey',
                     symbol: '',
-                    color: this.props.color
+                    color: colorDic[category]
                 }
               }}
               status="default"

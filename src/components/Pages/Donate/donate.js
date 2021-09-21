@@ -4,7 +4,6 @@ import Author from '../../author';
 import  { Grid } from '@material-ui/core';
 import HashLoader from "react-spinners/HashLoader";
 import pics from './pics';
-import icons from './icons';
 import SearchIcon from '@material-ui/icons/Search';
 import { Form, InputGroup } from 'react-bootstrap';
 import { unauthenticatedGet } from '../../../utils';
@@ -16,12 +15,6 @@ import './donate.css';
 // const yakeraBackUrl = 'https://api.yakera.net';
 const yakeraBackendUrl = 'https://express-backend-api.herokuapp.com/api/campaigns/';
 
-const colorDic={
-    "education": '#71b98f',
-    "healthcare": '#ff7d7d',
-    "business":'#7099d0',
-    "nutrition": '#ffc19a',
-};
 
 // no way did i write this, so here is an explanation
 // https://stackoverflow.com/questions/1584370/how-to-merge-two-arrays-in-javascript-and-de-duplicate-items
@@ -157,11 +150,7 @@ class donate extends Component{
         //     this.setState({
         //         dicAmount: dicStorage,
         //     })
-        // }
-
-
-
-        
+        // }        
     }
     
     handle_change = (value) => {
@@ -320,11 +309,8 @@ class donate extends Component{
                                 <Grid item xs={12} sm={2} key={i}>
                                     <CampaignCard
                                         campaign={cam}
-                                        color={colorDic[cam.category]}
                                         language={this.state.language}
-                                        logo={pics[cam.category]}  // make this pass the whole thing
                                         amount={cam.raised}
-                                        icon={icons[cam.category]}
                                     />
                                 </Grid>
                             )                       
