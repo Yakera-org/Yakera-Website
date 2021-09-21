@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import { validateCampaignFields } from "./Campaign_Validation";
 import CreateCampaignVisuals from "./CreateCampaignVisuals";
 import Author from '../../author';
-import * as axios from 'axios'
+import api from "../../../services/api";
 
 
 function CreateCampaign() {
@@ -168,17 +168,9 @@ function CreateCampaign() {
         for ( var key in payload ) {
             formdata.append(key, payload[key]);
         }
-        const token = localStorage.getItem('user');
-        // const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxMjcyZTgxZGZkYTc4MTEzYzE5NTBlMCIsImlhdCI6MTYzMTM5NjEzMn0.4vs08muUTucSu9Pi5HUwA6oStxyVrcBYZlh-x0TzAGw'
-        const url = 'https://express-backend-api.herokuapp.com/api/campaigns';
 
         try {
-            const res = await axios.post(url, formdata, { 
-                headers: {
-                    'Authorization': `Bearer ${token}`
-                }
-            });
-            console.log(res.data);
+            await api.post('/campaigns', formdata);
             setSuccess('Your campaign has been created successfully!')
         } catch (error) {
             console.log(error.response.data);
