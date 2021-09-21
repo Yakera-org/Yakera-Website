@@ -113,7 +113,6 @@ class donate extends Component{
 
         await unauthenticatedGet(yakeraBackendUrl, {})
             .then(data => {
-                console.log(data)
                 this.setState({
                     campaigns: data.data.campaigns,
                 });
@@ -179,8 +178,6 @@ class donate extends Component{
     render(){
         var count = 0;
         var filteredCampaigns = this.handleFilteredCampaigns();
-        console.log(this.state.campaigns);
-
         if(!this.state.loaded){
             return(
                 <div className="donate-page-loading">

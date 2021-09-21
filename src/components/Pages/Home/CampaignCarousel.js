@@ -80,9 +80,9 @@ function CampaignCarousel(props) {
                         itemClass="carousel-item-padding-40-px"
                     >    
                     {
-                        campaigns.map(cam => {
+                        campaigns.map((cam, i) => {
                             return(
-                                <div id='card-container'>
+                                <div id='card-container' key={i}>
                                     <CampaignCard
                                         campaign={cam}
                                         language={'en'}

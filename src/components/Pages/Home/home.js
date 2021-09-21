@@ -35,10 +35,10 @@ function Home() {
                     </Grid> 
                     <Grid container spacing={0} className='illustrations'>
                         {
-                            pics.illustrations.map(pic => {
+                            pics.illustrations.map((pic, i) => {
                                 return(
-                                    <Grid item xs={12} sm={3} >
-                                        <img id='illustration' src={pic} alt='illustration'/>
+                                    <Grid item xs={12} sm={3} key={i}>
+                                        <img id='illustration' src={pic} alt='illustration' />
                                     </Grid> 
                                 )                            
                             })
@@ -47,9 +47,9 @@ function Home() {
                             <img id='dotted-line' src={pics['dotted-line']} alt='illustration'/>
                         </Grid> 
                         {
-                            pics['illustration-texts'].map(text => {
+                            pics['illustration-texts'].map((text, i) => {
                                 return(
-                                    <Grid item xs={12} sm={3} >
+                                    <Grid item xs={12} sm={3} key={i}>
                                        <div id='text' dangerouslySetInnerHTML={{__html:text }}></div>
                                     </Grid> 
                                 )                            

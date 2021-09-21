@@ -114,3 +114,82 @@
 .home-page .carousel-section .carousel #card-container{
     padding:20px;
 }
+
+
+@media only screen and (max-width: 600px) {
+    .home-page .illustrations{
+        display: none;
+    }
+
+    .home-page .top-left{
+        padding: 5% 10%;
+        text-align: center;
+    }
+    .home-page .top-left p{
+        font-size: 23px;
+        text-align: left;
+        font-weight: 580;
+    }
+    .home-page .top-left button{
+        border: none;
+        outline: none;
+        border-radius: 10px;
+        background-color: #01224d;
+        font-family: Intro-Thin;
+        color: white;
+        padding: 10px 35px;
+        font-size: 18px;
+        font-weight: 100;
+    }
+    .home-page .top-right{
+        padding: 0%;
+        text-align: center;
+        max-height: 300px;
+        overflow: hidden;
+    
+    }
+    .home-page .top-right img{
+        width: 120%;
+        margin-right: -25%;
+        margin-top: -15%;
+        object-fit: cover;    
+    }
+    .home-page .video-section{
+        margin-top: 30px;
+    }
+    .home-page .video-section section{
+        padding: 10% 5%;
+    }
+    .home-page .video-section .right-section section{
+        border: none;
+        border-top: 3px solid hsla(200, 10%, 50%,100);
+        margin: 0%;
+        margin-left: 10%;
+        margin-right: 10%;
+    }
+    .home-page .video-section .right-section h3{
+        color: #ea8737;
+        font-size: 25px;
+        font-weight: 600;
+        width: 120%;
+        margin-left: -10%;
+    }
+    .home-page .video-section .right-section p{
+        font-size: 20px;
+        font-weight: 500;
+        width: 120%;
+        margin-left: -10%;
+    }
+    .home-page .video-section #play-btn{
+        border: none;
+        outline: none;
+        background-color: transparent;
+        text-align: center;
+    }
+    .home-page .video-section #play-btn i{
+        color: #ea8737
+    }
+    .home-page .video-section #play-btn i:hover{
+        color: #c2712f
+    }
+}

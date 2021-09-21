@@ -77,7 +77,7 @@ class CampaignCard extends Component {
           style={{backgroundColor:this.state.cardColor, borderRadius:'20px'}}
         >
           <CardHeader
-            titleTypographyProps={{variant:'p' }}
+            titleTypographyProps={{variant:'body1' }}
             style={{
               textAlign: 'center',
               backgroundColor:
