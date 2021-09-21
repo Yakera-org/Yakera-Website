@@ -9,10 +9,6 @@ import { Form, InputGroup } from 'react-bootstrap';
 import { unauthenticatedGet } from '../../../utils';
 
 import './donate.css';
-
-// const _axios = require('axios');
-// const axios = _axios.create();
-// const yakeraBackUrl = 'https://api.yakera.net';
 const yakeraBackendUrl = 'https://express-backend-api.herokuapp.com/api/campaigns/';
 
 
@@ -130,53 +126,12 @@ class donate extends Component{
                     language: lang,
                     loaded:true
                 });
-            });
-
-        // var dicStorage = JSON.parse(localStorage.getItem("dic"));
-        // if(!dicStorage){
-        //     var dic = {}
-        //     for(let i in campaigns){
-        //         let name = campaigns[i].cam.name;
-        //         await this.getCurrentAmount(name).then((res) => {
-        //             dic[name] = res
-        //         })
-        //     }
-    
-        //     localStorage.setItem("dic", JSON.stringify(dic));
-        //     this.setState({
-        //         dicAmount: dic,
-        //     })
-        // }else{
-        //     this.setState({
-        //         dicAmount: dicStorage,
-        //     })
-        // }        
+        });       
     }
     
     handle_change = (value) => {
         this.setState({ value })
     }    
-
-    // async getCurrentAmount(name){
-
-    //     var result = 0;
-    //     const config = {
-    //         headers: {
-    //             'Content-Type': 'application/json'
-    //         }
-    //     }
-    //     const url = yakeraBackUrl + "/api/campaign/?email=" + name;
-        
-    //     await axios.get(url, config)
-    //     .then(res => {
-    //             result =  res.data[0].amount
-    //     })
-    //     .catch(err => {
-    //         console.log("error: " + err.message);
-    //     })
-    
-    //     return result;   
-    // }
 
     setSearchQuery = (e) => {
         this.setState({
@@ -306,7 +261,7 @@ class donate extends Component{
                     {filteredCampaigns.sort(() => 0.5 - Math.random()).map((cam, i) => {
                             count++;
                             return(
-                                <Grid item xs={12} sm={2} key={i}>
+                                <Grid item xs={12} sm={3} key={i}>
                                     <CampaignCard
                                         campaign={cam}
                                         language={this.state.language}
