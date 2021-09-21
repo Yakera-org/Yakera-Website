@@ -35,7 +35,7 @@ function CampaignCarousel(props) {
     }, [])
 
     const [loaded, setLoaded] = React.useState(false);
-    const [campaigns, setCampaigns] = React.useState({});
+    const [campaigns, setCampaigns] = React.useState([]);
 
 
     async function getCampaigns() {
@@ -79,7 +79,7 @@ function CampaignCarousel(props) {
                         dotListClass="custom-dot-list-style"
                         itemClass="carousel-item-padding-40-px"
                     >    
-                    {
+                    { campaigns !== [] ?
                         campaigns.map((cam, i) => {
                             return(
                                 <div id='card-container' key={i}>
@@ -90,7 +90,8 @@ function CampaignCarousel(props) {
                                     />
                                 </div>
                             )                           
-                        })
+                        }) 
+                        : ''
                     }
                     </Carousel>             
                 </Grid>  

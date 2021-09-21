@@ -101,12 +101,11 @@ class NavBar extends Component {
         try{
             await api.post('/auth/logout');
             window.alert('User logged out successfully!')
-            console.log('logged out');
             localStorage.setItem('currentTab', 'home')
+            window.location.href = "/"; 
         }catch(err){
             console.log('error: ' + err);
         }
-        window.location.href = "/";
     }
 
 

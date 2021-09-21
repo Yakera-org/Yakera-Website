@@ -6,7 +6,6 @@ import { Grid } from '@material-ui/core';
 import RegisterDetails from "./Register_details";
 import RegisterAuth from "./Register_auth";
 import RegisterConf from "./Register_confirmation";
-import background from '../../../pics/pattern-yakera-blue.png'
 
 
 import './RegisterPage.css'
@@ -34,7 +33,7 @@ function RegisterVisuals(props) {
 
     return (
         <div className='register-page'>
-            <div id='background' style={{ backgroundImage: `url(${background})`}}>
+            <div id='background' style={{ backgroundImage: `url(https://yakera-files.s3.us-east-2.amazonaws.com/yakera/pattern-yakera-blue.png)`}}>
                     <Card className='login-card'>
                         <CardContent>
 

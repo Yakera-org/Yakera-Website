@@ -13,7 +13,7 @@ function PaymentAuth(props) {
         EN = false
     }
 
-    const [souldShowZelle, setsouldShowZelle] = React.useState(false);
+    const [shouldShowZelle, setsouldShowZelle] = React.useState(false);
     const [openZelle, setOpenZelle] = React.useState(false);
 
     React.useEffect(()=> {
@@ -29,7 +29,7 @@ function PaymentAuth(props) {
     async function onZelle(){
         setOpenZelle(!openZelle)
         try {
-            const res = await api.get('/zelle');
+            const res = await api.post('/campaigns/zelle');
             console.log(res)
         } catch (err) {
             console.log(err)
@@ -59,7 +59,7 @@ function PaymentAuth(props) {
                 >
                     <img src={airtmLogo} alt="airtm-logo-button" />
                 </button>
-                { souldShowZelle
+                { shouldShowZelle
                 ?
                 <div >
                     <button

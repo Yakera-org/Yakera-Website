@@ -3,7 +3,6 @@ import { Button, Form, FormGroup, Input, Alert} from 'reactstrap'
 import { Grid, Link, Card, CardContent} from '@material-ui/core';
 import './LoginPage.css';
 import classnames from 'classnames';
-import background from '../../../pics/pattern-yakera-orange.png'
 
 const LoginTemplate = ({
   handleChange,
@@ -13,7 +12,7 @@ const LoginTemplate = ({
 }) => {
 
   return (
-    <div style={{ backgroundImage: `url(${background})`}}>
+    <div style={{ backgroundImage: `url(https://yakera-files.s3.us-east-2.amazonaws.com/yakera/pattern-yakera-orange.png)`}}>
       <Card className='login-card'>
         <CardContent>
 
