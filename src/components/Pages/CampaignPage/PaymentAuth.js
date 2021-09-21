@@ -17,10 +17,11 @@ function PaymentAuth(props) {
     const [openZelle, setOpenZelle] = React.useState(false);
 
     React.useEffect(()=> {
-        let ranNum = Math.floor(Math.random() * 100);
-        if(ranNum < 20){
-            setsouldShowZelle(true)
-        }
+        setsouldShowZelle(true);
+        // let ranNum = Math.floor(Math.random() * 100);
+        // if(ranNum < 20){
+        //     setsouldShowZelle(true)
+        // }
     }, [])
 
     function onAirTM(){
@@ -29,8 +30,17 @@ function PaymentAuth(props) {
     async function onZelle(){
         setOpenZelle(!openZelle)
         try {
-            const res = await api.post('/campaigns/zelle');
-            console.log(res)
+            const payload = {
+                'slug': 'yakera',
+                'email': props.email,
+                'name': props.name,
+                'amount': parseInt(props.amount),
+                'tip': parseInt(props.tip),
+                'paymentID': Math.random().toString(36).slice(2),
+                'paymentMethod': 'zelle',
+                'comment': props.comment
+            }
+            await api.post('/campaigns/donate', payload);
         } catch (err) {
             console.log(err)
         }

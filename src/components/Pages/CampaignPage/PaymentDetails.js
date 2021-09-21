@@ -94,13 +94,13 @@ class PaymentDetails extends PureComponent {
     onContinue(){
         let isValidated = this.validateData()
         if(isValidated){
-            this.props.onContinue(this.state.amount.value, this.state.email.value, this.state.name.value, this.state.tip.value )
+            this.props.onContinue(this.state.amount.value, this.state.email.value, this.state.name.value, this.state.tip.value, this.state.comment.value);
         }
     }
 
     validateData(){
         let emptyWarning = 'This field cannot be empty';
-        let amountError, emailError, nameError, tipError;
+        let amountError, emailError, nameError, tipError, commentError;
 
         let isValid = false;
     
@@ -119,6 +119,11 @@ class PaymentDetails extends PureComponent {
           nameError = emptyWarning;      
         }else{
             nameError = validateFields.validateName(this.state.name.value)
+        }
+        if(!this.state.comment.value){
+            commentError = emptyWarning;      
+        }else{
+            commentError = validateFields.validateName(this.state.comment.value); // TODO: Validate comment
         }
 
         if(this.state.yesTip){
@@ -145,6 +150,10 @@ class PaymentDetails extends PureComponent {
             tip:{
                 ...state['tip'],
                 error: tipError
+            },
+            comment:{
+                ...state['comment'],
+                error: commentError
             }
         }))
 
@@ -237,7 +246,7 @@ class PaymentDetails extends PureComponent {
                     type="text"
                     name="comment"
                     value={comment.value}
-                    placeholder={EN ? 'Leave a supportive comment' : 'Comment'}
+                    placeholder={EN ? 'Leave a supportive comment' : 'Deja un comentario de apoyo'}
                     className={classnames(
                         'form-control',
                         { 'is-valid': comment.error === false },

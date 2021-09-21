@@ -10,14 +10,15 @@ class PaymentVisual extends Component {
             amount: '',
             name: '',
             email: '',
-            tip:''
+            tip: '',
+            comment: ''
         }
         this.onContinue = this.onContinue.bind(this);
         this.onClose = this.onClose.bind(this);
         this.onBack = this.onBack.bind(this);
     }
 
-    onContinue(amount, email, name, tip){
+    onContinue(amount, email, name, tip, comment){
         var element = document.getElementById("donateRef");
         element.scrollIntoView({behavior: "smooth", block: "end", inline: "nearest"});
         
@@ -26,7 +27,8 @@ class PaymentVisual extends Component {
             amount: amount,
             name: name,
             email: email,
-            tip: tip
+            tip: tip,
+            comment: comment
         })
     }
 
@@ -73,6 +75,7 @@ class PaymentVisual extends Component {
                             tip={this.state.tip}
                             onBack={this.onBack}
                             title={this.props.title}
+                            comment={this.state.comment}
                         />
                     }
                 </div>    
