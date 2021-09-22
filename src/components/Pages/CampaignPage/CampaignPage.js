@@ -37,14 +37,14 @@ class CampaignPage extends Component{
                 console.log(error);
             })
             .finally(() => {
+                if (!found){
+                    window.location.replace("/campaigns");
+                }
                 this.setState({
                     loaded:true
                 });
             });
 
-        if (!found){
-            window.location.replace("/campaigns");
-        }
     }
 
     render(){
