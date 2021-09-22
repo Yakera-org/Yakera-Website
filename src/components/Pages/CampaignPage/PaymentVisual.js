@@ -3,7 +3,7 @@ import PaymentAuth from './PaymentAuth';
 import PaymentDetails from './PaymentDetails';
 import Loader from "react-loader-spinner";
 import api from "../../../services/api";
-import ThanksCard from './ThanksCard';
+import ThanksCard from './thanksCard';
 import AirTM from './AirTM';
 
 class PaymentVisual extends Component {
