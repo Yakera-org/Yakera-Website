@@ -289,9 +289,15 @@
 .payment-auth-card .payment-back-btn:hover{
     opacity: 80%;
 }
-
+.payment-visual .loader{
+    margin-left: 0%;
+    z-index: 100000;
+}
 
 @media only screen and (max-width: 600px) {
+    .payment-visual .loader{
+        margin-left: 5%;
+    }
     .campaignPage{
         margin-top: -50%;
     }

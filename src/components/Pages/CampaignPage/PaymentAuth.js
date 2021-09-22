@@ -41,6 +41,7 @@ function PaymentAuth(props) {
                 'paymentMethod': 'zelle',
                 'comment': props.comment
             }
+            console.log(payload)
             await api.post('/campaigns/donate', payload);
         } catch (err) {
             console.log(err);
@@ -61,6 +62,10 @@ function PaymentAuth(props) {
                 </div>
                 <PayPal 
                     amount={total_amount} 
+                    onSuccess={props.OnSuccessPayment}
+                    onClick={props.OnPaymentClick} 
+                    onError={props.OnPaymentError} 
+                    onCancel={props.OnPaymentError}
                 />
                 <button
                     type="submit"
