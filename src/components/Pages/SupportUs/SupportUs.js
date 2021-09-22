@@ -22,6 +22,7 @@ function SupportUs() {
                 AirTM={AirTM}
                 presetAmount={amount}  
                 title={"Yakera support"}
+                slug={'yakera'} // 'yakera' slug is a global campaign for tracking donations to Yakera website
             />
 
             <Author />

@@ -1,52 +1,36 @@
 import React, {useState} from 'react';
 import DashboardVisuals from './DashboardVisuals';
-import * as axios from 'axios';
 import './Dashboard.css';
+import api from "../../../services/api";
 
 function Dashboard() {
 
     const [loaded, setLoaded] = useState(false);
     const [error, setError] = useState('');
     const [profileData, setProfileData] = useState({});
-    let token = localStorage.getItem('user');
-    const backendUrl = 'https://express-backend-api.herokuapp.com/';
 
-    React.useEffect(() =>{
-        if(token){
-            getCampaign()
-        }else{
-            window.location = '/'
+    React.useEffect(() => {
+        if (localStorage.getItem('accessToken')) {
+            getCampaign();
+        } else {
+            window.location = '/';
         }
+    }, []);
 
-    })
-
-    async function getCampaign(){
-        const url = backendUrl + 'api/profile';
-        let config = {
-            headers: {
-              'Authorization': 'Bearer ' + token
-            }
-          }
-        try{
-            const res = await axios.get(url, config);
-            setProfileData(res.data.data)
-            setLoaded(true)
-        }
-        catch(err){
-            setError('Profile not found')
-            setLoaded(true)
+    async function getCampaign() {
+        try {
+            const res = await api.get('/profile');
+            setProfileData(res.data.data);
+            setLoaded(true);
+        } catch (err) {
+            setError('Profile not found');
+            setLoaded(true);
         }
     }
 
     async function onWithdraw(event){
         let slug = event.target.name;
-        const url = backendUrl + 'api/campaigns/' + slug;
-        let config = {
-            headers: {
-              'Authorization': 'Bearer ' + token
-            }
-          }
-        await axios.delete(url, config);
+        await api.delete(`/campaigns/${slug}`);
 
         window.alert('Campaign successfully withdrawn!')
         window.location.reload();

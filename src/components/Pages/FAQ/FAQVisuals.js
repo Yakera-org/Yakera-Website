@@ -1,22 +1,20 @@
 import React, { useState } from 'react';
 import { Grid } from '@material-ui/core';
-import banner_pic from '../../../pics/pattern-yakera.png'
 import Drawer from './FAQDrawer'
-import SearchIcon from '@material-ui/icons/Search';
-import { Form, InputGroup } from 'react-bootstrap';
 import Author from '../../author';
 import content from './FAQ.json'
 
+const banner_pic = 'https://yakera-files.s3.us-east-2.amazonaws.com/yakera/faq-title.jpg';
 
 function FAQVisuals() {
 
-    const [searchQuery, setSearchQuery] = useState('');
+    const [searchQuery] = useState('');
     const filterCampaignsBySearch = (content, query) => {
         if(!query) {
             return content.en;
         }
         const result = content.en.filter(drawer => {
-            return(drawer.questions[0].includes(query))
+            return(drawer.questions[0].toLowerCase().includes(query))
         });
         console.log(result)
         return result;
@@ -43,15 +41,14 @@ function FAQVisuals() {
                         </Grid>
                     </div>
                 </Grid>
-
                 
                 <Grid item xs={12} sm={12} >
                     <div className='faq-drawer-area'>
                         <h1>What can we help you with?</h1>
-                        <SearchBar 
+                        {/* <SearchBar 
                             searchQuery={searchQuery}
                             setSearchQuery={setSearchQuery}
-                        />
+                        /> */}
                         {
                             filteredContent.map((element, i) => {
                                 return(
@@ -75,41 +72,3 @@ function FAQVisuals() {
 }
 
 export default FAQVisuals
-
-
-class SearchBar extends React.Component {
-    
-    render () {
-        return (
-            <InputGroup
-                style={{
-                    border: '1px solid #ced4da',
-                    borderRadius: '20px',
-                    overflow: 'hidden',
-                    width: '100%',
-                    display: 'inline-flex',
-                    marginTop: '10px'
-                }}
-            >
-                <InputGroup.Text
-                    style={{
-                        border: 'none',
-                        backgroundColor: 'white',
-                    }}
-                >
-                    <SearchIcon />
-                </InputGroup.Text>
-                <Form.Control
-                    type='search'
-                    placeholder='Search...'
-                    value={this.props.searchQuery}
-                    onChange={e => this.props.setSearchQuery(e.target.value)}
-                    style={{
-                        border: 'none',
-                        backgroundColor: 'white',
-                    }}
-                />
-            </InputGroup>
-        )
-    }
-};

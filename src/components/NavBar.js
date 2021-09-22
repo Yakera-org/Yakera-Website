@@ -3,11 +3,12 @@ import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
-import * as axios from 'axios';
 import ReactCountryFlag from "react-country-flag";
 import Switch from "react-switch";
 import logo from "../svg/logo.svg";
 import '../App.css';
+import api from "../services/api";
+import TokenService from "../services/token";
 
 class NavBar extends Component {
     constructor(props) {
@@ -46,7 +47,7 @@ class NavBar extends Component {
         }
 
         var currentTab = localStorage.getItem('currentTab')
-        var token = localStorage.getItem('user')
+        var token = localStorage.getItem('accessToken')
 
         this.setState({
             token:token,
@@ -74,7 +75,7 @@ class NavBar extends Component {
             checked: !this.state.checked
         })
         if(this.state.language=== 'en'){
-            localStorage.setItem("lang", 'sp');
+            localStorage.setItem("lang", 'es');
         }else{
             localStorage.setItem("lang", 'en');
         }
@@ -95,23 +96,15 @@ class NavBar extends Component {
     }
 
     async onLogOut(){
-        const backendUrl = 'https://express-backend-api.herokuapp.com/';
-        const url = backendUrl + 'api/auth/logout';
-        const token = localStorage.getItem('user');
-        localStorage.removeItem('user')
-        localStorage.setItem('currentTab', 'home')
-        window.alert('User logged out successfully!')
-        window.location.href = "/";
-        let config = {
-            headers: {
-              'Authorization': 'Bearer ' + token
-            }
-          }
         try{
-            await axios.post(url, {}, config);
-            console.log('logged out')
+            await api.post('/auth/logout');
+            window.alert('User logged out successfully!')
+            TokenService.removeAccessToken();
+            TokenService.removeRefreshToken();
+            localStorage.setItem('currentTab', 'home')
+            window.location.href = "/"; 
         }catch(err){
-            console.log('error: ' + err)
+            console.log('error: ' + err);
         }
     }
 

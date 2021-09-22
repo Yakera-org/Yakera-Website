@@ -1,9 +1,10 @@
 import React from 'react';
 import {Card} from '@material-ui/core';
-import useCollapse from 'react-collapsed';
 import PayPal from './Paypal';
 import airtmLogo from '../../../pics/airtmbutton.png';
 import zelleLogo from '../../../pics/zelle.png';
+import api from "../../../services/api";
+
 
 function PaymentAuth(props) {
     const language = props.language;
@@ -11,21 +12,40 @@ function PaymentAuth(props) {
     if(language !=="en"){
         EN = false
     }
-    const { getCollapseProps, getToggleProps } = useCollapse({
-        defaultExpanded: false,
-      });
 
-    const [souldShowZelle, setsouldShowZelle] = React.useState(false);
+    const [shouldShowZelle, setsouldShowZelle] = React.useState(false);
+    const [openZelle, setOpenZelle] = React.useState(false);
 
     React.useEffect(()=> {
-        let ranNum = Math.floor(Math.random() * 100);
-        if(ranNum < 20){
-            setsouldShowZelle(true)
-        }
+        setsouldShowZelle(true);
+        // let ranNum = Math.floor(Math.random() * 100);
+        // if(ranNum < 20){
+        //     setsouldShowZelle(true)
+        // }
     }, [])
 
     function onAirTM(){
         props.onAirTM(total_amount, props.title, props.name, props.email)
+    }
+    async function onZelle(){
+        setOpenZelle(!openZelle)
+        try {
+            const payload = {
+                'slug': props.slug,
+                'status': 'error', // status is a field to know if the transaction was successful. Valid values are 'success', 'cancel' & 'error' 
+                'email': props.email,
+                'name': props.name,
+                'amount': parseInt(props.amount),
+                'tip': parseInt(props.tip),
+                'paymentID': Math.random().toString(36).slice(2),
+                'paymentMethod': 'zelle',
+                'comment': props.comment
+            }
+            console.log(payload)
+            await api.post('/campaigns/donate', payload);
+        } catch (err) {
+            console.log(err);
+        }
     }
 
     const total_amount = parseInt(props.amount) + parseInt(props.tip)
@@ -42,6 +62,10 @@ function PaymentAuth(props) {
                 </div>
                 <PayPal 
                     amount={total_amount} 
+                    onSuccess={props.OnSuccessPayment}
+                    onClick={props.OnPaymentClick} 
+                    onError={props.OnPaymentError} 
+                    onCancel={props.OnPaymentError}
                 />
                 <button
                     type="submit"
@@ -51,21 +75,25 @@ function PaymentAuth(props) {
                 >
                     <img src={airtmLogo} alt="airtm-logo-button" />
                 </button>
-                { souldShowZelle
+                { shouldShowZelle
                 ?
-                <div>
+                <div >
                     <button
                         type="submit"
                         className=" airtm-but" 
-                        {...getToggleProps()}   
-                                
+                        onClick={onZelle}
                     >
                         <img src={zelleLogo} alt="zelle-logo-button" />
                     </button>
-
-                    <p {...getCollapseProps()}>
-                        This service is coming soon...
-                    </p>
+                    {
+                        openZelle
+                        ?
+                        <p>
+                            This service is coming soon...
+                        </p>
+                        :
+                        ''
+                    }
                 </div>
                 :
                 ''

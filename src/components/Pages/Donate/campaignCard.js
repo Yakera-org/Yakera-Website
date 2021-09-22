@@ -5,6 +5,7 @@ import CardHeader from '@material-ui/core/CardHeader';
 import CardContent from '@material-ui/core/CardContent';
 import { Progress } from 'react-sweet-progress';
 import "react-sweet-progress/lib/style.css";
+import icons from './icons';
 
 import './campaignCard.css';
 
@@ -21,6 +22,12 @@ const en_headers = {
   "nutrition":"Nutrition",
   "business":"Small Business"
 }
+const colorDic={
+  "education": '#71b98f',
+  "healthcare": '#ff7d7d',
+  "business":'#7099d0',
+  "nutrition": '#ffc19a',
+};
 
 class CampaignCard extends Component {
   constructor(props) {
@@ -34,7 +41,7 @@ class CampaignCard extends Component {
   
   hanldeClick(){    
     const { campaign } = this.props;
-    let redirect = `/campaign/${campaign.title.en}`;
+    let redirect = `/campaign/${campaign.slug}`;
     this.props.history.push(redirect);
   }
 
@@ -51,12 +58,21 @@ class CampaignCard extends Component {
   }
 
   render(){
-    const { campaign, icon } = this.props;
-    const title = campaign.title[this.props.language];
-    const description = campaign.description[this.props.language];
-    const image = campaign.image;
+    const { campaign } = this.props;
+    let title, description;
+
+    try {
+      title = campaign.translations[this.props.language].title;
+      description = campaign.translations[this.props.language].description;
+    } catch (err) {
+      title = campaign.title;
+      description = campaign.description;
+    }
+    const image = campaign.mainPicture.url;
     const category = campaign.category;
-    const target = campaign.target;
+    const icon = icons[category] ;
+
+    const target = campaign.targetAmount;
 
     return (
       <div>
@@ -68,7 +84,7 @@ class CampaignCard extends Component {
           style={{backgroundColor:this.state.cardColor, borderRadius:'20px'}}
         >
           <CardHeader
-            titleTypographyProps={{variant:'p' }}
+            titleTypographyProps={{variant:'body1' }}
             style={{
               textAlign: 'center',
               backgroundColor:
@@ -129,7 +145,7 @@ class CampaignCard extends Component {
                 default: {
                     trailColor: 'lightgrey',
                     symbol: '',
-                    color: this.props.color
+                    color: colorDic[category]
                 }
               }}
               status="default"
