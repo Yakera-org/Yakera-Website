@@ -62,27 +62,35 @@ class PaymentVisual extends Component {
         console.log('click')
         this.switchLoader(true);
     }
-    OnPaymentError(){
-        console.log('payment failed')
+    async OnPaymentCancel() {
+        console.log('payment canceled');
+        await this.addAmount({}, 'cancel');
+        this.switchLoader(false);
+    }
+    async OnPaymentError(){
+        console.log('payment failed');
+        await this.addAmount({}, 'error');
         this.switchLoader(false);
     }
     async OnSuccessPayment(details, data){
         console.log("payment successful")
-        await this.addAmount(details);
+        // Pass data instead of details to get orderID as described here: https://luehangs.site/lue_hang/projects/react-paypal-button-v2
+        await this.addAmount(data, 'success');
         this.openThanks()
         console.log(details)
         console.log(data)
         this.switchLoader(false);
     }
-    async addAmount(details){
+    async addAmount(data, status){
         try {
             const payload = {
                 "slug": this.props.slug,
                 "email": this.state.email,
                 "name": this.state.name,
                 "amount": this.state.amount,
+                "status": status,
                 "tip": this.state.tip,
-                "paymentID": details.id,
+                "paymentID": data.orderID,
                 "comment": this.state.comment
             }
             console.log(await api.post(`/campaigns/donate`, payload))
@@ -155,6 +163,7 @@ class PaymentVisual extends Component {
                             OnSuccessPayment={this.OnSuccessPayment.bind(this)}
                             OnPaymentClick={this.OnPaymentClick.bind(this)} 
                             OnPaymentError={this.OnPaymentError.bind(this)} 
+                            OnPaymentCancel={this.OnPaymentCancel.bind(this)}
                         />
                     }
                 </div>    

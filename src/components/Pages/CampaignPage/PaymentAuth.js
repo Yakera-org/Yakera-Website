@@ -65,7 +65,7 @@ function PaymentAuth(props) {
                     onSuccess={props.OnSuccessPayment}
                     onClick={props.OnPaymentClick} 
                     onError={props.OnPaymentError} 
-                    onCancel={props.OnPaymentError}
+                    onCancel={props.OnPaymentCancel}
                 />
                 <button
                     type="submit"
