@@ -96,7 +96,7 @@ const ResetPasswordPage = () => {
       password: data.password1
     }
 
-    api.post("/auth/reset-password", requestBody).then(response => {
+    api.post(`/auth/reset-password?token=${token}`, requestBody).then(response => {
       setData(data => ({
         ...data,
         loading: false,

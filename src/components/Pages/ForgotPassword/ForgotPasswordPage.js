@@ -3,7 +3,6 @@ import Loader from "react-loader-spinner";
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 import { validateFields } from './Validation';
 import api from "../../../services/api";
-import TokenService from "../../../services/token";
 import ForgotPasswordTemplate from './ForgotPasswordTemplate';
 
 
