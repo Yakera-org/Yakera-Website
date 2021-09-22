@@ -4,6 +4,7 @@ import PaymentDetails from './PaymentDetails';
 import Loader from "react-loader-spinner";
 import api from "../../../services/api";
 import ThanksCard from './ThanksCard';
+import AirTM from './AirTM';
 
 class PaymentVisual extends Component {
 
@@ -97,6 +98,10 @@ class PaymentVisual extends Component {
     closeThanks(){
         window.location.reload(false);
     }
+    onAirTM(val, title){
+        AirTM(val, title)
+        //this.switchLoader(true)
+    }
 
 
     render() {        
@@ -142,7 +147,7 @@ class PaymentVisual extends Component {
                             name={this.state.name}
                             email={this.state.email}
                             slug={this.props.slug}
-                            onAirTM={this.props.AirTM}
+                            onAirTM={this.onAirTM.bind(this)}
                             tip={this.state.tip}
                             onBack={this.onBack}
                             title={this.props.title}
