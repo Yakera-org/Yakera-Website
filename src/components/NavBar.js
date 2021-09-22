@@ -75,7 +75,7 @@ class NavBar extends Component {
             checked: !this.state.checked
         })
         if(this.state.language=== 'en'){
-            localStorage.setItem("lang", 'sp');
+            localStorage.setItem("lang", 'es');
         }else{
             localStorage.setItem("lang", 'en');
         }
@@ -98,12 +98,11 @@ class NavBar extends Component {
     async onLogOut(){
         try{
             await api.post('/auth/logout');
-            TokenService.removeAccessToken();
-            TokenService.removeRefreshToken()
             window.alert('User logged out successfully!')
-            console.log('logged out');
+            TokenService.removeAccessToken();
+            TokenService.removeRefreshToken();
             localStorage.setItem('currentTab', 'home')
-            window.location.href = "/";
+            window.location.href = "/"; 
         }catch(err){
             console.log('error: ' + err);
         }
