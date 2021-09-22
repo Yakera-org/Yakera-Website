@@ -76,6 +76,7 @@ class PaymentVisual extends Component {
                             onBack={this.onBack}
                             title={this.props.title}
                             comment={this.state.comment}
+                            slug={this.props.slug}
                         />
                     }
                 </div>    

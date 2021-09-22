@@ -81,6 +81,7 @@ class CampaignPage extends Component{
                         language={'en'}
                         AirTM = {AirTM}
                         title={campaign.title['en']}
+                        slug={campaign.slug}
                      />
                     
                     <Author />

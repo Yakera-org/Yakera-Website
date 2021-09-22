@@ -31,7 +31,7 @@ function PaymentAuth(props) {
         setOpenZelle(!openZelle)
         try {
             const payload = {
-                'slug': 'yakera', // 'yakera' slug is a global campaign for tracking donations to Yakera website
+                'slug': props.slug,
                 'status': 'error', // status is a field to know if the transaction was successful. Valid values are 'success', 'cancel' & 'error' 
                 'email': props.email,
                 'name': props.name,
