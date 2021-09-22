@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import { Grid } from '@material-ui/core';
 import Drawer from './FAQDrawer'
-import SearchIcon from '@material-ui/icons/Search';
-import { Form, InputGroup } from 'react-bootstrap';
 import Author from '../../author';
 import content from './FAQ.json'
 
@@ -74,4 +72,3 @@ function FAQVisuals() {
 }
 
 export default FAQVisuals
-
