@@ -57,7 +57,6 @@ class CampaignPage extends Component{
         }else{
         const campaign = this.state.campaign
             return(
-                //NOTE: ACTIVATE ANALYTICS BEFORE PUSHING
                 <div className="campaignPage">
                     <Visual
                         campaign={campaign} 
