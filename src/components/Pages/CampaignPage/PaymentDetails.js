@@ -93,8 +93,12 @@ class PaymentDetails extends PureComponent {
 
     onContinue(){
         let isValidated = this.validateData()
+        var tip = this.state.tip.value
+        if(this.state.noTip){
+            tip = 0
+        }
         if(isValidated){
-            this.props.onContinue(this.state.amount.value, this.state.email.value, this.state.name.value, this.state.tip.value, this.state.comment.value);
+            this.props.onContinue(this.state.amount.value, this.state.email.value, this.state.name.value, tip, this.state.comment.value);
         }
     }
 

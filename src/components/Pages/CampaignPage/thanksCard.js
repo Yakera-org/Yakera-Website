@@ -1,22 +1,10 @@
 import React, { Component, Fragment } from 'react';
 import {Dialog} from '@material-ui/core';
 
-import bg_pic_en from '../../../pics/thankyoucard.png';
-import bg_pic_sp from '../../../pics/thankyoucard_sp.png';
-
-var bg_pic = bg_pic_en;
-
-
-class Thankscard extends Component{
+const bg_pic = "https://yakera-files.s3.us-east-2.amazonaws.com/yakera/thankyoucard.png"
+class ThanksCard extends Component{
   
     render(){ 
-        var EN = this.props.EN;
-        if(EN==="en"){
-            bg_pic = bg_pic_en;
-        }else{
-            bg_pic = bg_pic_sp;
-        }
-
         return(
             <Fragment >
                 <Dialog
@@ -29,14 +17,34 @@ class Thankscard extends Component{
                 >
                     <img src={bg_pic} width="100%" alt="background-pic" />
                     
-                <h1 style={{marginTop:'10px', color:'#072147'}}> {EN ? 'Thank you!' : 'Gracias!'}</h1>
-                <p> {EN ? 'Thank you for your donation of' : 'Gracias por tu donación de'} <b>{this.props.amount}$</b> {EN ? 'To the campaign: ' : 'A la campaña: '} {this.props.title} </p>
+                <h1 style={{marginTop:'10px', color:'#072147'}}> {true ? 'Thank you!' : 'Gracias!'}</h1>
+                <p> {true ? 'Thank you for your donation of' : 'Gracias por tu donación de'} <b>{this.props.amount}$</b> {true ? 'To the campaign: ' : 'A la campaña: '} {this.props.title} </p>
                 
+                <a
+                    href="https://yakera.formstack.com/forms/user_feedback"
+                    title="Feedback"
+                    
+                >
+                    Click<b style={{ color: "#FF9800" }}> here </b>to leave us feedback!
+                </a>
+
+                <button onClick={this.props.onClose} style={{
+                    width:'50%',
+                    margin:'10px',
+                    marginLeft:'25%',
+                    border:'none',
+                    backgroundColor:'#01224d',
+                    borderRadius:'10px',
+                    color:'white',
+                    padding:'10px',
+                }}>
+                    Return to Campaign
+                </button>
                   
                 </Dialog>
-                </Fragment>                   
+            </Fragment>                   
         )
     }
 }
 
-export default Thankscard;
+export default ThanksCard;

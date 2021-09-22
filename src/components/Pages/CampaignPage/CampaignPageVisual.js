@@ -95,6 +95,14 @@ class CampaignPageVisual extends Component {
         const amount = this.props.amount;
         const target = campaign.targetAmount;
         const language = this.props.language;
+        let title, story;
+        try {
+            title = campaign.translations[language].title;
+            story = campaign.translations[language].story;
+        } catch (err) {
+            title = campaign.title;
+            story = campaign.story;
+        }
         return (
             <div className = "camp-page-vis">
                 {/* <h3>{
@@ -102,7 +110,7 @@ class CampaignPageVisual extends Component {
                     campaign.category
                 }</h3>    */}
                 <CampaignCategory categoryType={campaign.category} />
-                    <h1 style={{color: 'var(--brand-blue'}}>{campaign.translations[language].title}</h1>  
+                    <h1 style={{color: 'var(--brand-blue'}}>{title}</h1>  
                 <Grid container spacing={4} style={{ alignItems:'flex-start'}}>
                     <Grid item xs={12} sm={8} id="left-col">
                         {/* left column  */}
@@ -161,7 +169,7 @@ class CampaignPageVisual extends Component {
                         </Navbar>
 
                         <div className="camp-page-story" id='about'>
-                            <p dangerouslySetInnerHTML={{ __html: campaign.translations[language].story }} />
+                            <p dangerouslySetInnerHTML={{ __html: story }} />
                         </div>
                     </Grid>
                     <Grid item xs={12} sm={4}>

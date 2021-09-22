@@ -31,7 +31,7 @@ function PaymentAuth(props) {
         setOpenZelle(!openZelle)
         try {
             const payload = {
-                'slug': 'yakera', // 'yakera' slug is a global campaign for tracking donations to Yakera website
+                'slug': props.slug,
                 'status': 'error', // status is a field to know if the transaction was successful. Valid values are 'success', 'cancel' & 'error' 
                 'email': props.email,
                 'name': props.name,
@@ -41,6 +41,7 @@ function PaymentAuth(props) {
                 'paymentMethod': 'zelle',
                 'comment': props.comment
             }
+            console.log(payload)
             await api.post('/campaigns/donate', payload);
         } catch (err) {
             console.log(err);
@@ -61,6 +62,10 @@ function PaymentAuth(props) {
                 </div>
                 <PayPal 
                     amount={total_amount} 
+                    onSuccess={props.OnSuccessPayment}
+                    onClick={props.OnPaymentClick} 
+                    onError={props.OnPaymentError} 
+                    onCancel={props.OnPaymentError}
                 />
                 <button
                     type="submit"

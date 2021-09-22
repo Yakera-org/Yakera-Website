@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import Visual from './CampaignPageVisual';
 import Author from '../../author';
 import PaymentVisual from './PaymentVisual';
-import AirTM from './AirTM';
 import './CampaignPage.css';
 import { unauthenticatedGet } from '../../../utils';
 
@@ -79,8 +78,8 @@ class CampaignPage extends Component{
 
                      <PaymentVisual
                         language={'en'}
-                        AirTM = {AirTM}
                         title={campaign.title['en']}
+                        slug={campaign.slug}
                      />
                     
                     <Author />
