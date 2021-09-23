@@ -1,9 +1,9 @@
 import React from 'react';
 import { Button, Form, FormGroup, Input, Alert} from 'reactstrap'
-import { Grid, Link, Card, CardContent} from '@material-ui/core';
+import { Card, CardContent} from '@material-ui/core';
 import './ResetPasswordPage.css';
 import classnames from 'classnames';
-import background from '../../../pics/pattern-yakera-blue.png'
+import background from '../../../pics/pattern-yakera-orange.png'
 
 const ResetPasswordTemplate = ({
   handleChange,
@@ -14,10 +14,10 @@ const ResetPasswordTemplate = ({
 
   return (
     <div style={{ backgroundImage: `url(${background})`}}>
-      <Card className='forgot-password-card'>
+      <Card className='reset-password-card'>
         <CardContent>
 
-          <Form noValidate className='forgot-password-form' onSubmit={handleResetPassword}>
+          <Form noValidate className='reset-password-form' onSubmit={handleResetPassword}>
             <h1>
               <span className='font-weight-bold'>Reset your password</span>
             </h1>

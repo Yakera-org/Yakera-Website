@@ -4,7 +4,7 @@ import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 import { validateFields } from './Validation';
 import api from "../../../services/api";
 import TokenService from "../../../services/token";
-import ForgotPasswordTemplate from './ResetPasswordTemplate';
+import ResetPasswordTemplate from './ResetPasswordTemplate';
 
 
 
@@ -81,7 +81,6 @@ const ResetPasswordPage = () => {
           password2: null,
         }
       }));
-
       return;
     }
 
@@ -91,7 +90,6 @@ const ResetPasswordPage = () => {
       loading: true,
     }));
 
-    // validate credentials
     const requestBody = {      
       password: data.password1
     }
@@ -102,7 +100,6 @@ const ResetPasswordPage = () => {
         loading: false,
       }));
       setLoader(false);
-      
 
       if (response.status === 200) {
         setLoader(false)
@@ -110,9 +107,6 @@ const ResetPasswordPage = () => {
         TokenService.setRefreshToken(response.data.refresh_token);
         window.location.href = "/dashboard";
       }
-      // else {
-      //   setError({errorMessage: response.data.message});
-      // }
     }).catch(error => {
       var errorMessage = null;
       if(error.response){          
@@ -133,9 +127,7 @@ const ResetPasswordPage = () => {
           password2: null,
         }
       }));
-
     });
-    
   }
 
   return (
@@ -149,7 +141,7 @@ const ResetPasswordPage = () => {
           visible={loader}
         />
       </div>
-      <ForgotPasswordTemplate 
+      <ResetPasswordTemplate 
         handleChange = {handleChange}
         data = {data}
         error = {error}

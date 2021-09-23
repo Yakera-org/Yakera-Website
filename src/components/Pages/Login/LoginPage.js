@@ -89,7 +89,6 @@ const LoginPage = () => {
       }
     }).catch(error => {
       var errorMessage = null;
-      console.log(error);
       if(error.response){          
         if (error.response.data.message) {
           errorMessage = error.response.data.message;
