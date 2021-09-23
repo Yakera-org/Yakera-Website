@@ -3,7 +3,6 @@ import { Button, Form, FormGroup, Input, Alert} from 'reactstrap'
 import { Grid, Link, Card, CardContent} from '@material-ui/core';
 import './ForgotPasswordPage.css';
 import classnames from 'classnames';
-import background from '../../../pics/pattern-yakera-blue.png'
 
 const ForgotPasswordTemplate = ({
   handleChange,
@@ -14,7 +13,7 @@ const ForgotPasswordTemplate = ({
 }) => {
 
   return (
-    <div style={{ backgroundImage: `url(${background})`}}>
+    <div style={{ backgroundImage: `url(https://yakera-files.s3.us-east-2.amazonaws.com/yakera/pattern-yakera-blue.png)`}}>
       <Card className='forgot-password-card'>
         <CardContent>
 
