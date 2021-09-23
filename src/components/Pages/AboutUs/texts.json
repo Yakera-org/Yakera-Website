@@ -2,20 +2,20 @@
     "content":[
         {
             "title": "Help Out",
-            "description": "People receive your donations diretly in their bank account via an e-wallet"
+            "description": "People receive your donations diretly in their bank account via an e-wallet."
         },
         {
             "title": "Share the Campaign",
-            "description": "Unite other to donate and increase support"
+            "description": "Unite other to donate and increase support."
         },
         {
             "title": "See your impact",
-            "description": "By checking the updates in the campaigns"
+            "description": "By checking the updates in the campaigns."
         },
         {
             "title": "Join the Yakera community",
-            "description": "To support other campaigns you are passionate about"
+            "description": "To support other campaigns you are passionate about."
         }
     ],
-    "team-text": "We are a highly motivated international team that revolutionizes how humanitarian aid is delivered around the world. Our team was motivated by the Venezuelan crisis and the lack of pathways to deliver direct support to people in need of assistance. Yakera’s technology helps us deliver support directly to people’s bank accounts based on a simple belief: people know their own needs better than anyone else; better than we do."
+    "team-text": "Our team was motivated by the Venezuelan crisis and the lack of pathways to deliver direct support to people in need of assistance. Yakera’s technology helps us deliver support directly to people’s bank accounts based on a simple belief: people know their own needs better than anyone else; better than we do."
 }

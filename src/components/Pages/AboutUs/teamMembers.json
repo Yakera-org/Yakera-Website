@@ -1,0 +1,72 @@
+{
+    "executive":[
+        {
+            "name":"Raul Romero",
+            "position":"CEO & Founder",
+            "link": "https://www.linkedin.com/in/raul-romero-martinez/",
+            "picture": ""            
+        },
+        {
+            "name":"Tomas Munoz",
+            "position":"CFO",
+            "link": "https://www.linkedin.com/in/tomas-munoz-reyes-7b2202156/",
+            "picture": ""            
+        },
+        {
+            "name":"Mafer Bencoma",
+            "position":"CMO",
+            "link": "https://www.linkedin.com/in/maferbencomo/",
+            "picture": ""            
+        },
+        {
+            "name":"Aaron Lambert",
+            "position":"COO",
+            "link": "https://www.linkedin.com/in/aaron-lambert-b8b4b9183/",
+            "picture": ""            
+        },
+        {
+            "name":"jang Belche",
+            "position":"CTO",
+            "link": "https://www.linkedin.com/in/jang-belche/"            
+        }
+    ],
+    "communications":[
+        {
+            "name":"Aaron Lambert",
+            "position":"COO",
+            "link": "https://www.linkedin.com/in/aaron-lambert-b8b4b9183/",
+            "picture": ""            
+        },
+        {
+            "name":"jang Belche",
+            "position":"CTO",
+            "link": "https://www.linkedin.com/in/jang-belche/"            
+        }
+    ],
+    "legal":[
+        {
+            "name":"Aaron Lambert",
+            "position":"COO",
+            "link": "https://www.linkedin.com/in/aaron-lambert-b8b4b9183/",
+            "picture": ""            
+        },
+        {
+            "name":"jang Belche",
+            "position":"CTO",
+            "link": "https://www.linkedin.com/in/jang-belche/"            
+        }
+    ],
+    "development":[
+        {
+            "name":"Aaron Lambert",
+            "position":"COO",
+            "link": "https://www.linkedin.com/in/aaron-lambert-b8b4b9183/",
+            "picture": ""            
+        },
+        {
+            "name":"jang Belche",
+            "position":"CTO",
+            "link": "https://www.linkedin.com/in/jang-belche/"            
+        }
+    ]
+}

@@ -6,11 +6,24 @@
     padding:50px;
 }
 .about-us-top-img{
+    width: 100%;
     text-align: center;
+    margin: -100px 0px;
+}
+.about-us-top-img img{
+    width: 100%;
+}
+.about-title-text {
+    padding: 5%;
+}
+.about-title-text p{
+    margin-top: -50px;
+    font-size: 35px;
+    font-weight: 550;
 }
 .about-us-top-text{
     text-align: center;
-    padding:20px;
+    padding: 50px 10% 10px 10%;
 }
 .about-us-top-text #labels a{
     font-weight: 600;
@@ -40,6 +53,19 @@
     font-family: Intro-Regular-Alt;
     color: white;
 }
+.about-world-text section{
+    text-align: left;
+    padding: 5% 22%;
+}
+.about-world-text section #percent{
+    color: #71B98F;
+    font-size: 130px;
+    font-weight: 1000;
+}
+.about-world-text section p{
+    font-size: 27px;
+    text-align: left;
+}
 .about-us-content-section{
     text-align: center;
     margin-top: 50px;
@@ -48,57 +74,38 @@
 .content-area{
     text-align: center;
     padding: 10px;
+    margin-top: -50px;
 }
 .content-area-inside{
     text-align: left;
+    max-height: 150px;
+    min-height: 150px;
 }
 .about-us-content-section h2{
     font-family: Intro-Regular-Alt;
     color: #ea8737;
-    font-size: 35px;
-    padding-left: 20%;
-
-
-}
-.about-us-content-section p{
     font-size: 25px;
     padding-left: 20%;
 
 }
+.about-us-content-section p{
+    font-size: 20px;
+    padding-left: 20%;
+}
 .about-us-content-section img{
-    width: 50%;
+    width: 80%;
+    margin-top: 20px;
 }
 .about-us-team{
     text-align: center;
     font-family: Intro-Regular-Alt;
     padding: 20px 60px;
+    margin-top: -40px;
 }
 .about-us-team h1{
-    font-size: 52px;
+    font-size: 32px;
 }
 .about-us-team p{
-    font-size: 32px;
+    font-size: 22px;
     font-family: Intro-Light;
-}
-.about-us-team img{
-    width: 100%;
-    max-width: 350px;
-    max-height: 350px;
-    border-radius: 100%;
-    overflow: hidden;
-    object-fit: cover;
-    margin: 20px;
-    border: #ea8737 20px solid
-}
-.about-us-team-pics{
-    margin-top: 60px;
-}
-.outside-img .name{
-    color: #ea8737;
-}
-.outside-img #icon{
-    color: rgb(63, 63, 63);
-}
-.outside-img #icon:hover{
-    color: #ea8737
 }
