@@ -27,7 +27,7 @@ function Register_auth(props) {
             <input
                 type="text"
                 name="phone"
-                placeholder="Enter your phone"
+                placeholder="Enter your phone number"
                 value={props.data.phone}
                 onChange={props.handleChange}
                 className={classnames(
@@ -38,7 +38,7 @@ function Register_auth(props) {
             />
             <div className="invalid-feedback">{props.data.errors.phone}</div>
 
-            <br /> 
+            {/* <br /> 
             <input
                 type="text"
                 name="airTMNum"
@@ -51,7 +51,7 @@ function Register_auth(props) {
                     { 'is-invalid': props.data.errors.airTMNum }
                 )}
             />
-            <div className="invalid-feedback">{props.data.errors.airTMNum}</div>
+            <div className="invalid-feedback">{props.data.errors.airTMNum}</div> */}
 
             <br /> 
             <input

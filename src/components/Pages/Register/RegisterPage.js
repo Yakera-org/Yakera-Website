@@ -42,6 +42,7 @@ function Register() {
   };
   const [data, setData] = useState(initialState);
   const [loading, setLoading] = useState(false);
+  const [success, setSuccess] = useState(false);
   
   const handleChange = event => {
     if(event.target.name === 'terms'){
@@ -182,7 +183,7 @@ function Register() {
     
     let addressError = false;
     let phoneError = false;
-    let airTMNumError = false;
+    //let airTMNumError = false;
     let socialNumError = false;
     
     if(!data.address){
@@ -191,9 +192,9 @@ function Register() {
     if(!data.phone){
       phoneError = emptyWarning;      
     }
-    if(!data.airTMNum){
-      airTMNumError = emptyWarning;      
-    }
+    // if(!data.airTMNum){
+    //   airTMNumError = emptyWarning;      
+    // }
     if(!data.socialNum){
       socialNumError = emptyWarning;      
     }
@@ -202,12 +203,12 @@ function Register() {
       ...data,
       errors: { 
         phone: phoneError,
-        airTMNum: airTMNumError,
+        // airTMNum: airTMNumError,
         address: addressError,
         socialNum: socialNumError,
       }
     })
-    if(data.address && data.airTMNum && data.socialNum && data.phone){
+    if(data.address && data.socialNum && data.phone){
       return true
     }
     return false
@@ -289,7 +290,8 @@ function Register() {
 
       if (response.status === 201) {
         console.log(response.data)
-        console.log("scuess")
+        console.log("sucess")
+        setSuccess(response.data.message)
         setLoading(false)
       }
 
@@ -318,7 +320,7 @@ function Register() {
             visible={loading}
           />
         </div>
-        <RegisterVisuals data={data} handleChange={handleChange} validate={validate} register={register} error={data.error} setError={setData}/>
+        <RegisterVisuals data={data} handleChange={handleChange} validate={validate} register={register} error={data.error} success={success} setError={setData}/>
         <br />
         <br />
         <br />

@@ -62,6 +62,14 @@ function RegisterVisuals(props) {
                             :
                             ''
                             }
+                            { props.success 
+                            ?
+                                <Alert color="success">
+                                    { props.success }
+                                </Alert>
+                            :
+                            ''
+                            }
 
                             <Grid container spacing={1} style={{ alignItems:'flex-start'}}>
                                 <Grid item xs={12} sm={6} >
