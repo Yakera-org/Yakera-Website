@@ -109,3 +109,47 @@
     font-size: 22px;
     font-family: Intro-Light;
 }
+.member-pic {
+    width: 100%;
+}
+.img-wrapper{
+    padding: 20px;
+}
+.member-pic img{
+    width: 250px;
+    height: 250px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 50%; 
+    object-fit: cover; 
+    border: 15px solid #ea8737;
+    outline: none;
+
+}
+.about-us-team-pics h2{
+    color: #ea8737;
+    text-align: left;    
+    margin-top: 25px;
+
+}
+.about-us-team-pics p{
+    text-align: center; 
+    font-family: Intro-Regular-Alt;
+    font-size: 22px;
+    margin-top: 10px;
+
+}
+.about-us-team-pics #position{
+    text-align: center; 
+    font-family: Intro-Light;
+    font-size: 20px;
+    vertical-align: top;
+}
+.about-us-team-pics #icon{
+    color: grey;
+    margin-left: 15px;
+}
+.about-us-team-pics #icon:hover{
+    color: #ea8737;
+    cursor: pointer;
+}
