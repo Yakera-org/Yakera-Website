@@ -24,6 +24,7 @@
 .about-us-top-text{
     text-align: center;
     padding: 50px 10% 10px 10%;
+    width: 100%;
 }
 .about-us-top-text #labels a{
     font-weight: 600;
@@ -152,4 +153,182 @@
 .about-us-team-pics #icon:hover{
     color: #ea8737;
     cursor: pointer;
+}
+
+/* mobile */
+@media only screen and (max-width: 600px) {
+    .about-us-visuals{
+        padding:0px;
+    }
+    .about-us-top-img{
+        width: 100%;
+        text-align: center;
+        margin: -50px -10%  0 0%;
+        overflow: hidden;
+    }
+    .about-us-top-img img{
+        width: 100%;
+    }
+    .about-title-text {
+        padding: 5% 10% ;
+    }
+    .about-title-text p{
+        margin-top: -50px;
+        margin-bottom: -50px;
+        font-size: 20px;
+        font-weight: 550;
+    }
+    .about-us-top-text{
+        text-align: center;
+        width: 100%;
+        padding: 15px 0;
+        margin-top: 50px;
+        overflow: hidden;
+        background-color: rgb(238, 238, 238);
+        border-radius: 15px;
+    }
+    .about-us-top-text h1{
+        font-size: 18px;
+    }
+    .about-us-top-text #labels a{
+        font-weight: 600;
+        font-size: 16px;
+        cursor: pointer;
+    }
+        
+    .about-us-banner{
+        margin-top: 20px;
+        border-radius: 10px;
+    }
+    .about-us-banner p {
+        padding: 20px 5px;
+        font-size: 15px;
+        font-family: Intro-Thin;
+        color: white;
+        font-weight: 600;
+
+    }
+    .about-world-text section{
+        text-align: left;
+        padding: 0px 30px ;
+        text-align: center;
+    }
+    .about-world-text section #percent{
+        color: #71B98F;
+        font-size: 100px;
+        font-weight: 1000;
+    }
+    .about-world-text section p{
+        font-size: 20px;
+        text-align: left;
+    }
+    .about-us-world-img {
+        width: 100%;
+        padding: 20px;
+    }
+    .about-us-world-img img{
+        width: 100%;
+    }
+    .about-us-content-section{
+        text-align: center;
+        margin-top: 50px;
+        padding: 0px;
+    }
+    .content-area{
+        text-align: center;
+        padding: 10px;
+        margin-top: -50px;
+    }
+    .content-area-inside{
+        text-align: left;
+        max-height: 500px;
+        min-height: 0px;
+    }
+    .about-us-content-section{
+        padding-left: 20px;
+        margin-top: 70px;
+    }
+    .about-us-content-section h2{
+        font-family: Intro-Regular-Alt;
+        color: #ea8737;
+        font-size: 25px;
+        padding-left: 0%;
+    }
+    .about-us-content-section p{
+        font-size: 20px;
+        padding-left: 0%;
+    }
+    .about-us-content-section img{
+        width: 60%;
+        margin-bottom: 10px;
+        margin-top: -10px;
+    }
+    .about-us-team{
+        text-align: center;
+        font-family: Intro-Regular-Alt;
+        padding: 20px;
+        margin-top: -50px;
+        text-align: left;
+    }
+    .about-us-team h1{
+        font-size: 30px;
+        text-align: center;
+    }
+    .about-us-team p{
+        font-family: Intro-Light;
+        padding: 0px ;
+        font-size: 20px;
+    }
+    .member-pic {
+        width: 100%;
+    }
+    .img-wrapper{
+        padding: 0px;
+        text-align: center;
+    }
+    .member-pic img{
+        width: 130px;
+        height: 130px;
+        position: relative;
+        overflow: hidden;
+        border-radius: 50%; 
+        object-fit: cover; 
+        border: 10px solid #ea8737;
+        outline: none;
+
+    }
+    .about-us-team-pics h2{
+        color: #ea8737;
+        text-align: left;    
+        margin-top: 15px;
+    }
+    .about-us-team-pics p{
+        text-align: center; 
+        font-family: Intro-Regular-Alt;
+        font-size: 20px;
+        margin-top: 0px;
+
+    }
+    .about-us-team-pics #position{
+        text-align: center; 
+        width: 50%;
+        margin-left: 25%;
+        margin-top: -15px;
+        font-family: Intro-Light;
+        font-size: 15px;
+        vertical-align: top;
+    }
+    .about-us-team-pics #icon{
+        color: grey;
+        margin-left: 0px;
+    }
+    .about-us-team-pics #icon i{
+        color: grey;
+        margin-top:-50px;
+    }
+    .about-us-team-pics #icon:hover{
+        color: #ea8737;
+        cursor: pointer;
+    }
+
 }

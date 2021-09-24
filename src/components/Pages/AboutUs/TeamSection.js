@@ -24,7 +24,7 @@ function TeamSection() {
                                 {
                                     division.members.map((member,i) => {
                                         return(
-                                            <Grid item xs={12} sm={3} className='member-pic' key={i}>
+                                            <Grid item xs={6} sm={3} className='member-pic' key={i}>
                                                 <div className='img-wrapper'>
                                                     <img src={member.picture} alt='profile' />
                                                 </div>

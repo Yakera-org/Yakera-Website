@@ -82,7 +82,7 @@ function AboutUsVisuals() {
 
             </Grid>
 
-            <hr style={{margin:' 50px 0 '}}/>
+            <hr style={{margin:' 50px 10px '}}/>
 
             <TeamSection />
         </div>
