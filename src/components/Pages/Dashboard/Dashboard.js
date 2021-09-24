@@ -1,5 +1,7 @@
 import React, {useState} from 'react';
 import DashboardVisuals from './DashboardVisuals';
+import { validateFields } from '../Register/Validation';
+
 import './Dashboard.css';
 import api from "../../../services/api";
 
@@ -39,10 +41,12 @@ function Dashboard() {
     }
 
     function handleChange(event){
+        var tempError;
+        tempError = validateFields.validateEmail(event.target.value);
+        setEmailError(tempError)
         setAirTMEmail(event.target.value)
     }
     function onSubmitEmail(){
-        setEmailError('nope')
         console.log(airTMemail)
     }
     if (!loaded){
