@@ -38,11 +38,11 @@ function Register_auth(props) {
             />
             <div className="invalid-feedback">{props.data.errors.phone}</div>
 
-            {/* <br /> 
+            <br /> 
             <input
                 type="text"
                 name="airTMNum"
-                placeholder="Enter your AirTM address"
+                placeholder="Enter your AirTM address (if available)"
                 value={props.data.airTMNum}
                 onChange={props.handleChange}
                 className={classnames(
@@ -51,7 +51,7 @@ function Register_auth(props) {
                     { 'is-invalid': props.data.errors.airTMNum }
                 )}
             />
-            <div className="invalid-feedback">{props.data.errors.airTMNum}</div> */}
+            <div className="invalid-feedback">{props.data.errors.airTMNum}</div>
 
             <br /> 
             <input

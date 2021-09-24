@@ -6,6 +6,8 @@ import api from "../../../services/api";
 function Dashboard() {
 
     const [loaded, setLoaded] = useState(false);
+    const [airTMemail, setAirTMEmail] = useState('');
+    const [emailError, setEmailError] = useState('');
     const [error, setError] = useState('');
     const [profileData, setProfileData] = useState({});
 
@@ -36,6 +38,13 @@ function Dashboard() {
         window.location.reload();
     }
 
+    function handleChange(event){
+        setAirTMEmail(event.target.value)
+    }
+    function onSubmitEmail(){
+        setEmailError('nope')
+        console.log(airTMemail)
+    }
     if (!loaded){
         return(
             <p style={{marginTop:'150px'}}>
@@ -51,7 +60,7 @@ function Dashboard() {
     }else{        
         return (
             <div className='dashboard-page'>
-                <DashboardVisuals data={profileData} onWithdraw={onWithdraw}/>
+                <DashboardVisuals data={profileData} onWithdraw={onWithdraw} handleChange={handleChange} emailError={emailError} onSubmitEmail={onSubmitEmail}/>
             </div>
         )
     }

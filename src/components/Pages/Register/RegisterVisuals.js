@@ -71,6 +71,9 @@ function RegisterVisuals(props) {
                             ''
                             }
 
+                           { 
+                            !props.success
+                            ?
                             <Grid container spacing={1} style={{ alignItems:'flex-start'}}>
                                 <Grid item xs={12} sm={6} >
                                 { step > 1 
@@ -92,6 +95,9 @@ function RegisterVisuals(props) {
                                     </div>
                                 </Grid>
                             </Grid> 
+                            :
+                            ''
+                            }
 
                             <br />
 

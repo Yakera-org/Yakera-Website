@@ -3,6 +3,8 @@ import { Grid } from '@material-ui/core';
 import {Card, CardContent} from '@material-ui/core';
 import { Progress } from 'react-sweet-progress';
 import Author from '../../author';
+import classnames from 'classnames'
+
 
 function DashboardVisuals(props) {
     const user = props.data.user
@@ -18,7 +20,7 @@ function DashboardVisuals(props) {
 
                     <hr />
 
-                    <Grid container spacing={1} style={{ alignItems:'flex-start', textAlign:'left'}}>
+                    <Grid container spacing={0} style={{ alignItems:'flex-start', textAlign:'left'}}>
                         <Grid item xs={12} sm={4} >
                             <div className='dash-left'>
                                 <p><span id='dash-stats'>Email:</span> {user.email}</p>
@@ -34,14 +36,40 @@ function DashboardVisuals(props) {
                                 <p><span id='dash-stats'>ID Number:</span> {user.socialNum}</p>
                             </div>
                         </Grid> */}
-                        <Grid item xs={12} sm={4} >
+                        <Grid item xs={12} sm={3} >
                             <div className='dash-left'>
                                 <p><span id='dash-stats'>Address:</span> {user.address}</p>
                             </div>
-                        </Grid>                        
+                        </Grid>   
+                            <Grid item xs={12} sm={3} id='airTM'>
+                                <div className='dash-left'>
+                                    <p id='dash-stats'>AirTM email account:</p>
+                                </div>
+                                <Grid container spacing={0}>
+                                    <Grid item xs={12} sm={10} >
+                                            <input
+                                                type="email"
+                                                name="airTMemail"
+                                                placeholder="Enter your AirTM email"
+                                                onChange={props.handleChange}
+                                                className={classnames(
+                                                    'form-control',
+                                                    { 'is-valid': props.emailError === false },
+                                                    { 'is-invalid': props.emailError }
+                                                )}
+                                            />
+                                            <p className="invalid-feedback">{props.emailError}</p>
+                                    </Grid> 
+                                    <Grid item xs={12} sm={2} >
+                                        <button  onClick={props.onSubmitEmail}>
+                                            Submit
+                                        </button> 
+                                    </Grid> 
+                                    </Grid> 
+                            </Grid> 
                     </Grid> 
 
-                    <hr style={{marginTop:'-10px'}}/>  
+                    <hr style={{marginTop:'30px'}}/>  
 
                     <br />
 
