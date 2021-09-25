@@ -29,10 +29,6 @@ const ResetPasswordPage = () => {
     errorMessage: null,
   }
 
-  const messageState = {
-    message: null,
-  }
-
   const [data, setData] = useState(initialState);
   const [error, setError] = useState(errorState);
   const [loader, setLoader] = useState(false);
