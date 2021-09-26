@@ -4,6 +4,7 @@ import { validateFields } from './Validation';
 import Author from "../../author";
 import Loader from "react-loader-spinner";
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
+import LanguageService from "../../../services/language";
 
 const _axios = require('axios');
 const axios = _axios.create();
@@ -275,7 +276,8 @@ function Register() {
         password: data.password,
         phone: data.phone,
         address: data.address,
-        IDNumber: data.socialNum
+        IDNumber: data.socialNum,
+        language: LanguageService.getLanguage()
     }
 
     let payload = JSON.stringify(requestBody)

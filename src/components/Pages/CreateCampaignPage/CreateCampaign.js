@@ -3,6 +3,7 @@ import { validateCampaignFields } from "./Campaign_Validation";
 import CreateCampaignVisuals from "./CreateCampaignVisuals";
 import Author from '../../author';
 import api from "../../../services/api";
+import LanguageService from "../../../services/language";
 
 
 function CreateCampaign() {
@@ -163,7 +164,8 @@ function CreateCampaign() {
             targetAmount: data.amount,
             story: story,
             category: data.campaigncategory,
-            description: data.description
+            description: data.description,
+            language: LanguageService.getLanguage()
         }
         for ( var key in payload ) {
             formdata.append(key, payload[key]);

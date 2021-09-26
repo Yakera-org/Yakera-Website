@@ -5,6 +5,7 @@ import Loader from "react-loader-spinner";
 import api from "../../../services/api";
 import ThanksCard from './thanksCard';
 import AirTM from './AirTM';
+import LanguageService from '../../../services/language';
 
 class PaymentVisual extends Component {
 
@@ -91,7 +92,8 @@ class PaymentVisual extends Component {
                 "status": status,
                 "tip": this.state.tip,
                 "paymentID": data.orderID,
-                "comment": this.state.comment
+                "comment": this.state.comment,
+                "language": LanguageService.getLanguage()
             }
             console.log(await api.post(`/campaigns/donate`, payload))
         } catch (err) {
