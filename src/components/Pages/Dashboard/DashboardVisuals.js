@@ -10,6 +10,14 @@ function DashboardVisuals(props) {
     const user = props.data.user
     const campaigns = props.data.campaigns ? props.data.campaigns : []
     
+function onWithdraw(event){
+    if(!user.airTMNum){
+        window.alert("Please update yur AirTM email address. Without this email, we don't know where you want the money to be transferred to. Thanks")
+    }else{
+        props.onWithdraw(event)
+    }
+}
+
     return (
         <div>
             <Card className='dash-card'>
@@ -45,27 +53,36 @@ function DashboardVisuals(props) {
                                 <div className='dash-left'>
                                     <p id='dash-stats'>AirTM email account:</p>
                                 </div>
-                                <Grid container spacing={0}>
-                                    <Grid item xs={12} sm={10} >
-                                            <input
-                                                type="email"
-                                                name="airTMemail"
-                                                placeholder="Enter your AirTM email"
-                                                onChange={props.handleChange}
-                                                className={classnames(
-                                                    'form-control',
-                                                    { 'is-valid': props.emailError === false },
-                                                    { 'is-invalid': props.emailError }
-                                                )}
-                                            />
-                                            <p className="invalid-feedback">{props.emailError}</p>
+                                {
+                                    !user.airTMNum
+                                    ?
+                                    <Grid container spacing={0}>
+                                        <Grid item xs={12} sm={10} >
+                                                <input
+                                                    type="email"
+                                                    name="airTMemail"
+                                                    placeholder="Enter your AirTM email"
+                                                    onChange={props.handleChange}
+                                                    className={classnames(
+                                                        'form-control',
+                                                        { 'is-valid': props.emailError === false },
+                                                        { 'is-invalid': props.emailError }
+                                                    )}
+                                                />
+                                                <p className="invalid-feedback">{props.emailError}</p>
+                                        </Grid> 
+                                        <Grid item xs={12} sm={2} >
+                                            <button  onClick={props.onSubmitEmail}>
+                                                Submit
+                                            </button> 
+                                        </Grid> 
                                     </Grid> 
-                                    <Grid item xs={12} sm={2} >
-                                        <button  onClick={props.onSubmitEmail}>
-                                            Submit
-                                        </button> 
-                                    </Grid> 
-                                    </Grid> 
+                                    :
+                                    <div className='dash-left'>
+                                        <p>{user.airTMNum}</p>
+                                    </div>
+                                }
+                               
                             </Grid> 
                     </Grid> 
 
@@ -131,7 +148,7 @@ function DashboardVisuals(props) {
                                                                                     </button>
                                                                                 </Grid>
                                                                                 <Grid item xs={12} sm={6} style={{textAlign:'center'}} >  
-                                                                                    <button name={campaign.slug} onClick={props.onWithdraw} id='withdraw'>
+                                                                                    <button name={campaign.slug} onClick={onWithdraw} id='withdraw'>
                                                                                         Withdraw campaign
                                                                                     </button>
                                                                                 </Grid>

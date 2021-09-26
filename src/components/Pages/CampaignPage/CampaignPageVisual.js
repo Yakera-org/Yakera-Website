@@ -95,13 +95,15 @@ class CampaignPageVisual extends Component {
         const amount = this.props.amount;
         const target = campaign.targetAmount;
         const language = this.props.language;
-        let title, story;
+        let title, story, mainPicture;
         try {
             title = campaign.translations[language].title;
             story = campaign.translations[language].story;
+            mainPicture = campaign.mainPicture.url;
         } catch (err) {
             title = campaign.title;
             story = campaign.story;
+            mainPicture = ''
         }
         return (
             <div className = "camp-page-vis">
@@ -126,7 +128,7 @@ class CampaignPageVisual extends Component {
                                 style={{
                                     borderRadius: '20px',
                                 }}
-                                src={campaign.mainPicture.url}
+                                src={mainPicture}
                                 alt="title.img"
                             />
                             <Dialog
@@ -138,7 +140,7 @@ class CampaignPageVisual extends Component {
                                 <img 
                                     id="exp-img"
                                     onClick={this.imgClick}
-                                    src={campaign.mainPicture.url} 
+                                    src={mainPicture} 
                                     alt="title.img"
                                 />
                             </Dialog>

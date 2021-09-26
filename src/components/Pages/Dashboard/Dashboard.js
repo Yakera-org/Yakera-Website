@@ -24,6 +24,7 @@ function Dashboard() {
     async function getCampaign() {
         try {
             const res = await api.get('/profile');
+            console.log(res.data.data)
             setProfileData(res.data.data);
             setLoaded(true);
         } catch (err) {
@@ -34,21 +35,46 @@ function Dashboard() {
 
     async function onWithdraw(event){
         let slug = event.target.name;
-        await api.delete(`/campaigns/${slug}`);
-
-        window.alert('Campaign successfully withdrawn!')
-        window.location.reload();
+        try {
+            await api.delete(`/campaigns/${slug}`);
+            window.alert('Campaign successfully withdrawn!')
+            window.location.reload();
+        } catch (err) {
+            console.log('Error. ' + err)
+        }
     }
 
     function handleChange(event){
-        var tempError;
-        tempError = validateFields.validateEmail(event.target.value);
-        setEmailError(tempError)
+        validate(event.target.value)
         setAirTMEmail(event.target.value)
     }
-    function onSubmitEmail(){
-        console.log(airTMemail)
+    function validate(email){
+        var tempError;
+        tempError = validateFields.validateEmail(email);
+        setEmailError(tempError)
+        if(!tempError){
+            return true
+        }
     }
+    function onSubmitEmail(){
+        if(validate(airTMemail)){
+            backendPatch()
+        }
+    }
+
+    async function backendPatch(){
+        try {
+            const requestBody = {      
+                airTMNum: airTMemail
+              }
+          
+            await api.patch('/profile/update', requestBody);
+            window.location.reload();   
+        } catch (err) {
+            console.log('Error. ' + err)
+        }
+    }
+
     if (!loaded){
         return(
             <p style={{marginTop:'150px'}}>
