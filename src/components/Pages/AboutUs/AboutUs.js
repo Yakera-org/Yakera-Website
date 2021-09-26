@@ -4,6 +4,7 @@ import './AboutUs.css'
 import AboutUsVisuals from './AboutUsVisuals'
 
 function AboutUs() {
+
     return (
         <div className='about-us-page'>
             <AboutUsVisuals />

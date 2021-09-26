@@ -83,8 +83,8 @@ function SupportUsVisuals(props) {
                         <div>
                             <h1>
                             You can make a difference. Your direct donation to Yakera allows us to develop our technology and serve our communities.
-                            <h1><b>We are change multipliers.</b> </h1>
                             </h1>
+                            <h1><b>We are change multipliers.</b> </h1>
                         </div>
                     </div>
                 </Grid>

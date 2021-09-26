@@ -10,10 +10,6 @@ import './home.scss';
 
 
 function Home() {
-    React.useEffect(() =>{
-        localStorage.setItem('dic', null);
-    }, [])
-
     return (
         <div>
             <div className='home-page'>

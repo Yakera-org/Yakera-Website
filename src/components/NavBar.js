@@ -9,6 +9,7 @@ import logo from "../svg/logo.svg";
 import '../App.css';
 import api from "../services/api";
 import TokenService from "../services/token";
+import LanguageService from "../services/language";
 
 class NavBar extends Component {
     constructor(props) {
@@ -27,14 +28,7 @@ class NavBar extends Component {
 
     componentDidMount() {
         //setting language
-        var lang = localStorage.getItem("lang");
-        if(lang){
-            this.setState({
-                language: lang
-            })
-        }else{
-            localStorage.setItem("lang", this.state.language);
-        }
+        var lang = LanguageService.getLanguage()
         
         if(lang === 'en'){
             this.setState({
@@ -71,14 +65,7 @@ class NavBar extends Component {
     }
 
     onChange(){
-        this.setState({
-            checked: !this.state.checked
-        })
-        if(this.state.language=== 'en'){
-            localStorage.setItem("lang", 'es');
-        }else{
-            localStorage.setItem("lang", 'en');
-        }
+        LanguageService.setLanguage()
         window.location.reload(false);
     }
 
@@ -105,6 +92,10 @@ class NavBar extends Component {
             window.location.href = "/"; 
         }catch(err){
             console.log('error: ' + err);
+            TokenService.removeAccessToken();
+            TokenService.removeRefreshToken();
+            localStorage.setItem('currentTab', 'home')
+            window.location.href = "/"; 
         }
     }
 
