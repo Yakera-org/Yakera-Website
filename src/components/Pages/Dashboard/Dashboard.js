@@ -24,7 +24,6 @@ function Dashboard() {
     async function getCampaign() {
         try {
             const res = await api.get('/profile');
-            console.log(res.data.data)
             setProfileData(res.data.data);
             setLoaded(true);
         } catch (err) {
