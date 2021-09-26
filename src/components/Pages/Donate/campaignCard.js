@@ -59,16 +59,17 @@ class CampaignCard extends Component {
 
   render(){
     const { campaign } = this.props;
-    let title, description;
+    let title, description, image;
 
     try {
       title = campaign.translations[this.props.language].title;
       description = campaign.translations[this.props.language].description;
+      image = campaign.mainPicture.url;
     } catch (err) {
       title = campaign.title;
       description = campaign.description;
+      image = ''
     }
-    const image = campaign.mainPicture.url;
     const category = campaign.category;
     const icon = icons[category] ;
 
