@@ -13,8 +13,10 @@ const titleImg = 'https://yakera-files.s3.us-east-2.amazonaws.com/yakera/photos-
 const worldImg = 'https://yakera-files.s3.us-east-2.amazonaws.com/yakera/worldmap.png'
 
 
-function AboutUsVisuals() {
- 
+function AboutUsVisuals(props) {
+    const EN = props.EN
+    const language = EN?'en':'es' 
+
     return (
         <div className='about-us-visuals'>
             <Grid container spacing={0} alignItems="center">
@@ -25,37 +27,63 @@ function AboutUsVisuals() {
                     </Grid>
                     <Grid item xs={12} sm={6} className='about-title-text' >
                         <p>
-                            Yakera unlocks international solidarity through empathy and storytelling. We revolutionize humanitarian aid, one story at a time.
+                            {EN ? 'Yakera unlocks international solidarity through empathy and storytelling. We revolutionize humanitarian aid, one story at a time.': 'Yakera desbloquea la solidaridad internacional a través de la empatía y la narración. Revolucionamos la ayuda humanitaria, una historia a la vez.'}
+                            
                         </p>
                     </Grid>
                     <Grid item xs={12} sm={12} >
-                        <div className='about-us-top-text'>
-                            <h1>Check out the <b>Campaigns</b> in
-                            </h1>
-                            <h1 id='labels'>
-                                <a id='green' href='/campaigns'>Education</a>,&nbsp;
-                                <a id='yellow' href='/campaigns'>Nutrition</a>,&nbsp;
-                                <a id='red' href='/campaigns'>Healthcare</a>&nbsp;and&nbsp;
-                                <a id='blue' href='/campaigns'>Small Business</a>
-                            </h1>
-                        </div>
+                        { EN ?
+                            <div className='about-us-top-text'>
+                                <h1>Check out the <b>Campaigns</b> in
+                                </h1>
+                                <h1 id='labels'>
+                                    <a id='green' href='/campaigns'>Education</a>,&nbsp;
+                                    <a id='yellow' href='/campaigns'>Nutrition</a>,&nbsp;
+                                    <a id='red' href='/campaigns'>Healthcare</a>&nbsp;and&nbsp;
+                                    <a id='blue' href='/campaigns'>Small Business</a>
+                                </h1>
+                            </div>
+                            :
+                            <div className='about-us-top-text'>
+                                <h1>Chequee nuestras <b>campañas </b> en las categorías de
+                                </h1>
+                                <h1 id='labels'>
+                                    <a id='green' href='/campaigns'>Educación</a>,&nbsp;
+                                    <a id='yellow' href='/campaigns'>Alimentación</a>,&nbsp;
+                                    <a id='red' href='/campaigns'>Salud</a>&nbsp;y&nbsp;
+                                    <a id='blue' href='/campaigns'>Pequeños negocios</a>.
+                                </h1>
+                            </div>                            
+                        }
                     </Grid>                
                 <Grid item xs={12} sm={12} >
                     <div className='about-us-banner'>
-                        <p>Read the stories written by people on the platform</p>
+                        <p>{EN ? 'Read the stories written by people on the platform' : 'Lee las historias escritas por usuarios de la plataforma.'}</p>
                     </div>
                 </Grid>
                 
                 <Grid item xs={12} sm={6} className='about-world-text' >
-                    <section>
-                        <div id='percent'>
-                            100%
-                        </div>
-                        <p>
-                            <b>Of what you chip in goes to people directly:</b>
-                            &nbsp;no overhead costs, no fees. We are changing how humanitarian aid is delivered around the world.
-                        </p>
-                    </section>
+                    {EN ?
+                        <section>
+                            <div id='percent'>
+                                100%
+                            </div>
+                            <p>
+                                <b>Of what you chip in goes to people directly:</b>
+                                &nbsp;no overhead costs, no fees. We are changing how humanitarian aid is delivered around the world.
+                            </p>
+                        </section>
+                        :
+                        <section>
+                            <div id='percent'>
+                                100%
+                            </div>
+                            <p>
+                                <b>De lo que aportas va directamente a las personas:</b>
+                                &nbsp;sin gastos generales, sin comisiones. Estamos cambiando la forma en que se entrega la ayuda humanitaria en todo el mundo.
+                            </p>
+                        </section>
+                    }
                 </Grid>
                 <Grid item xs={12} sm={6} >
                     <div className='about-us-world-img'>
@@ -64,7 +92,7 @@ function AboutUsVisuals() {
                 </Grid>
                 <Grid container spacing={0} style={{ alignItems:'flex-start', textAlign:'left'}}>
                 {
-                    content.content.map((element,i) => {
+                    content[language].map((element,i) => {
                         return(
                             <Grid key={i} item xs={12} sm={3} >
                                 <div className='about-us-content-section'>
@@ -84,7 +112,7 @@ function AboutUsVisuals() {
 
             <hr style={{margin:' 50px 10px '}}/>
 
-            <TeamSection />
+            <TeamSection EN={EN}/>
         </div>
     )
 }

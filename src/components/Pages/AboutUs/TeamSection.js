@@ -4,13 +4,14 @@ import './AboutUs.css'
 import text from './texts.json'
 import members from './teamMembers.json' 
 
-function TeamSection() {
+function TeamSection(props) {
+    const EN = props.EN
     return (
         <div className='about-us-team'>
-            <h1>Our Team</h1>
+            <h1>{EN ? 'Our Team' : 'Nuestro equipo'}</h1>
             <br />
             <p>
-                {text['team-text']}
+                {EN ? text['team-text_en'] : text['team-text_es']}
             </p>
             <div className='about-us-team-pics'>
                 { members.divisions.map((division, i) => {

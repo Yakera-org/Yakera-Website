@@ -44,7 +44,12 @@ function Register(props) {
   const [data, setData] = useState(initialState);
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
-  const EN = props.EN
+  const [EN, setEN] = React.useState(false);
+
+  React.useEffect(() => {
+      if(LanguageService.getLanguage()==='en')setEN(true)
+      else setEN(false)
+  }, []);
   const handleChange = event => {
     if(event.target.name === 'terms'){
       setData({

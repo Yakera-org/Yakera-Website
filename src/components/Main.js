@@ -14,24 +14,10 @@ import SupportUs from './Pages/SupportUs/SupportUs';
 import NotFoundPage from './Pages/404/NotFoundPage';
 import CreateCampaign from './Pages/CreateCampaignPage/CreateCampaign';
 import Dashboard from './Pages/Dashboard/Dashboard';
-import LanguageService from "../services/language";
 
 
 
 function Main(){
-
-    React.useEffect(() =>{
-        setLanguage(LanguageService.getLanguage());
-    }, [])
-
-    const [language, setLanguage] = React.useState('');
-
-    var EN;
-    if(language === "en"){
-        EN = true
-    }else{
-        EN = false
-    }
 
     let isAuthenticated = true;
 
@@ -39,19 +25,19 @@ function Main(){
         <BrowserRouter>
             <div style={{marginTop: '100px'}}>
             <Switch>
-                <Route exact path="/login" component={login}  EN={EN}/>
-                <Route exact path="/register" component={register}  EN={EN}/>
-                <Route exact path="/support" component={SupportUs}  EN={EN}/>
-                <Route exact path="/campaigns" component={donate}  EN={EN}/>
-                <Route exact path="/create-campaign" component={CreateCampaign} EN={EN} />
-                <Route exact path="/about" component={AboutUs}  EN={EN}/>
-                <Route exact path="/campaign/:title" component={Campaign}  EN={EN}/>
-                <Route exact path="/terms" component={Terms}  EN={EN}/>
-                <Route exact path="/consent" component={Consent}  EN={EN}/>
-                <Route exact path="/frequently-asked-questions" component={FAQ}  EN={EN}/>
-                <Route exact path="/dashboard" component={isAuthenticated ? Dashboard : login}  EN={EN}/>
-                <Route exact path="/" component={home}  EN={EN}/>
-                <Route path="/404" component={NotFoundPage}  EN={EN} />
+                <Route exact path="/login" component={login} />
+                <Route exact path="/register" component={register} />
+                <Route exact path="/support" component={SupportUs} />
+                <Route exact path="/campaigns" component={donate}/>
+                <Route exact path="/create-campaign" component={CreateCampaign} />
+                <Route exact path="/about" component={AboutUs}/>
+                <Route exact path="/campaign/:title" component={Campaign}/>
+                <Route exact path="/terms" component={Terms}/>
+                <Route exact path="/consent" component={Consent}/>
+                <Route exact path="/frequently-asked-questions" component={FAQ}/>
+                <Route exact path="/dashboard" component={isAuthenticated ? Dashboard : login}/>
+                <Route exact path="/" component={home}/>
+                <Route path="/404" component={NotFoundPage} />
                 <Redirect to="/404" />
 
             </Switch>

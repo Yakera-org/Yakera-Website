@@ -5,6 +5,7 @@ import Loader from "react-loader-spinner";
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 import api from "../../../services/api";
 import TokenService from "../../../services/token";
+import LanguageService from '../../../services/language';
 
 
 const LoginPage = (props) => {
@@ -26,7 +27,12 @@ const LoginPage = (props) => {
   const [data, setData] = useState(initialState);
   const [error, setError] = useState(errorState);
   const [loader, setLoader] = useState(false);
-  const EN = props.EN
+  const [EN, setEN] = React.useState(false);
+
+  React.useEffect(() => {
+      if(LanguageService.getLanguage()==='en')setEN(true)
+      else setEN(false)
+  }, []);
 
   const handleChange = event => {
     event.persist();
