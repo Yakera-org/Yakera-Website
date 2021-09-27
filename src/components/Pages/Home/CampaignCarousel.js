@@ -36,7 +36,7 @@ function CampaignCarousel(props) {
 
     const [loaded, setLoaded] = React.useState(false);
     const [campaigns, setCampaigns] = React.useState([]);
-
+    const EN = props.EN
 
     async function getCampaigns() {
         try {
@@ -57,7 +57,7 @@ function CampaignCarousel(props) {
             <Grid container spacing={0}>                    
                 <Grid item xs={12} sm={12} >
                     <h1>
-                        Extiende una mano
+                       {EN ? 'Reach out a hand' : 'Extiende una mano'} 
                     </h1>                           
                 </Grid>  
                 <Grid item xs={12} sm={12} className='carousel'>                            
@@ -85,7 +85,7 @@ function CampaignCarousel(props) {
                                 <div id='card-container' key={i}>
                                     <CampaignCard
                                         campaign={cam}
-                                        language={'en'}
+                                        language={EN ? 'en' : 'es'}
                                         amount={cam.raised}
                                     />
                                 </div>

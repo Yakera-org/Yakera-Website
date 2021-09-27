@@ -8,11 +8,19 @@
     ],
     "mobile-illustration": "https://yakera-files.s3.us-east-2.amazonaws.com/yakera/illustrations.png",
     "dotted-line":"https://yakera-files.s3.us-east-2.amazonaws.com/yakera/steps-line.svg",
-    "illustration-texts":[
-        "<span style='font-weight: bold'>Regístrate</span> en Yakera y confirma tu usuario",
-        "<span style='font-weight: bold'>Cuenta</span> tu historia y envía tu campaña",
-        "<span style='font-weight: bold'>Compártela</span> con personas que puedan apoyar tu campaña",
-        "<span style='font-weight: bold'>Retira</span> los fondos en tu cuenta de banco o paga directamente"
-    ],
+    "illustration-texts":{
+        "en":[
+        "<span style='font-weight: bold'>Register</span> at Yakera and confirm your data",
+        "<span style='font-weight: bold'>Tell</span>your story",
+        "<span style='font-weight: bold'>Share</span> with people that will help your campaign",
+        "<span style='font-weight: bold'>Withdraw</span> your funds immediately to your bank"
+        ],
+        "es":
+        [   "<span style='font-weight: bold'>Regístrate</span> en Yakera y confirma tu usuario",
+            "<span style='font-weight: bold'>Cuenta</span> tu historia y envía tu campaña",
+            "<span style='font-weight: bold'>Compártela</span> con personas que puedan apoyar tu campaña",
+            "<span style='font-weight: bold'>Retira</span> los fondos en tu cuenta de banco o paga directamente"
+        ]
+    },
     "video-img": "https://yakera-files.s3.us-east-2.amazonaws.com/yakera/Artboard+12-100.jpg"
 }
