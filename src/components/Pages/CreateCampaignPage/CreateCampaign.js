@@ -85,7 +85,7 @@ function CreateCampaign(props) {
         if(!data.amount){
             amountError = emptyWarning;
         }else{
-            amountError = validateFields.validateAmount(data.amount + '')
+            amountError = validateFields.validateNumber(data.amount + '')
         }
         if(!data.campaignname){
             nameError = emptyWarning;     
@@ -154,24 +154,31 @@ function CreateCampaign(props) {
         for (const file of files) {
             formdata.append(file.name, file.uploadedFile);
         }
-        // const categories = {
-        //     'Small Business': 'small_business',
-        //     'Healthcare': 'healthcare',
-        //     'Education': 'education',
-        //     'Nutrition': 'nutrition'
-        // }
+
+        // TODO: Remove this. Temp solution for getting campaign categories 
+        const categories = {
+            'small business': 'small_business',
+            'healthcare': 'healthcare',
+            'education': 'education',
+            'nutrition': 'nutrition',
+
+            'pequeños negocios': 'small_business',
+            'salud': 'healthcare',
+            'educación': 'education',
+            'alimentación': 'nutrition'
+        }
+
         const payload = {
             title: data.campaignname,
             targetAmount: data.amount,
             story: story,
-            category: data.campaigncategory,
+            category: categories[ data.campaigncategory ],
             description: data.description,
             language: LanguageService.getLanguage()
         }
         for ( var key in payload ) {
             formdata.append(key, payload[key]);
         }
-
         try {
             await api.post('/campaigns', formdata);
             setSuccess(EN ? 'Your campaign has been created successfully!' : '¡Tu campaña se ha creado con éxito!')
