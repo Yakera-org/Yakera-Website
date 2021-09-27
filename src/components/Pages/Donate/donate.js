@@ -113,6 +113,7 @@ class donate extends Component{
 
         await unauthenticatedGet(yakeraBackendUrl, {})
             .then(data => {
+                console.log(data.data.campaigns)
                 this.setState({
                     campaigns: data.data.campaigns,
                 });

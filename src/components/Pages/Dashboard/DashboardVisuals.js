@@ -132,40 +132,51 @@ function onWithdraw(event){
                                                                         <p><span id='dash-stats'>{EN ? "Created: " : "Creada: "}</span> {campaign.created}</p>
                                                                         <p><span id='dash-stats'>{EN ? "Category: " : "Categoría: "}</span> {campaign.category}</p>
                                                                         <p><span id='dash-stats'>{EN ? "Description: " : "Descripción: "}</span> {campaign.description}</p>
-                                                                        <p><span id='dash-status'>{EN ? "Status: " : "Estado: "}</span> {campaign.approved ? 'Approved' : 'Pending approval'}</p>
+                                                                        <p><span id='dash-status'>{EN ? "Status: " : "Estado: "}</span> {campaign.approved ? 
+                                                                                <span style={{color:'#71B98F'}}>{EN ? "Approved" : "Aprobada"} </span> 
+                                                                                :    
+                                                                                <span style={{color:'orange'}}>{EN ? "Pending approval" : "Aprobación pendiente"}  </span>
+                                                                            }</p>
 
                                                                         <Grid item xs={12} sm={12} style={{textAlign:'center'}} >
                                                                             <img src={mainPicture} alt='cam-title-img' />
                                                                         </Grid>
                                                                         <br />
-                                                                        <div id='dash-progress-bar'>
-                                                                            <Progress theme={{
-                                                                                default: {
-                                                                                    trailColor: 'lightrey',
-                                                                                    symbol: '',
-                                                                                    color: '#ea8737'
-                                                                                }
-                                                                            }}
-                                                                            status="default"
-                                                                            percent={ Math.min((100* (campaign.raised/campaign.targetAmount)).toFixed(0), 100) }/>
-                                                                        </div>
-                                                                        <br />
-                                                                        <p id='dash-raised'>{EN ? "Raised: " : "Elevado: "} <span id='dash-stats'>{campaign.raised}$</span></p>
-                                                                        <br />
-                                                                        <div className='action-btn'>
-                                                                            <Grid container spacing={2} style={{ alignItems:'flex-start'}}>
-                                                                                <Grid item xs={12} sm={6} style={{textAlign:'center'}} >  
-                                                                                    <button id='go'>
-                                                                                        <a href={hrefLink}>{EN ? "Go to campaign" : "Ir a campaña"}</a>
-                                                                                    </button>
-                                                                                </Grid>
-                                                                                <Grid item xs={12} sm={6} style={{textAlign:'center'}} >  
-                                                                                    <button name={campaign.slug} onClick={onWithdraw} id='withdraw'>
-                                                                                        {EN ? "Withdraw campaign" : "Retirar campaña"}
-                                                                                    </button>
-                                                                                </Grid>
-                                                                            </Grid>                                                                                
-                                                                        </div>  
+                                                                        {campaign.approved
+                                                                            ?
+                                                                            <>
+                                                                            <div id='dash-progress-bar'>
+                                                                                <Progress theme={{
+                                                                                    default: {
+                                                                                        trailColor: 'lightrey',
+                                                                                        symbol: '',
+                                                                                        color: '#ea8737'
+                                                                                    }
+                                                                                }}
+                                                                                status="default"
+                                                                                percent={ Math.min((100* (campaign.raised/campaign.targetAmount)).toFixed(0), 100) }/>
+                                                                            </div>
+                                                                            <br />
+                                                                            <p id='dash-raised'>{EN ? "Raised: " : "Elevado: "} <span id='dash-stats'>{campaign.raised}$</span></p>
+                                                                            <br />
+                                                                            <div className='action-btn'>
+                                                                                <Grid container spacing={2} style={{ alignItems:'flex-start'}}>
+                                                                                    <Grid item xs={12} sm={6} style={{textAlign:'center'}} >  
+                                                                                        <button id='go'>
+                                                                                            <a href={hrefLink}>{EN ? "Go to campaign" : "Ir a campaña"}</a>
+                                                                                        </button>
+                                                                                    </Grid>
+                                                                                    <Grid item xs={12} sm={6} style={{textAlign:'center'}} >  
+                                                                                        <button name={campaign.slug} onClick={onWithdraw} id='withdraw'>
+                                                                                            {EN ? "Withdraw campaign" : "Retirar campaña"}
+                                                                                        </button>
+                                                                                    </Grid>
+                                                                                </Grid>                                                                              
+                                                                            </div>  
+                                                                        </>
+                                                                        :
+                                                                        ''
+                                                                        }
                                                                     </Grid>
                                                                     
                                                                 </Grid>                                                                    

@@ -4,17 +4,20 @@ import { validateFields } from '../Register/Validation';
 
 import './Dashboard.css';
 import api from "../../../services/api";
+import LanguageService from '../../../services/language';
 
-function Dashboard(props) {
+function Dashboard() {
 
     const [loaded, setLoaded] = useState(false);
+    const [EN, setEN] = useState(false);
     const [airTMemail, setAirTMEmail] = useState('');
     const [emailError, setEmailError] = useState('');
     const [error, setError] = useState('');
     const [profileData, setProfileData] = useState({});
-    const EN = props.EN
 
     React.useEffect(() => {
+        if(LanguageService.getLanguage()==='en')setEN(true)
+        else setEN(false)
         if (localStorage.getItem('accessToken')) {
             getCampaign();
         } else {
