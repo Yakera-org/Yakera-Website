@@ -4,7 +4,7 @@ import Drawer from './FAQDrawer'
 import Author from '../../author';
 import content from './FAQ.json'
 
-const banner_pic = 'https://yakera-files.s3.us-east-2.amazonaws.com/yakera/faq-title.jpg';
+const banner_pic = 'https://assets.yakera.org/yakera/faq-title.jpg';
 
 function FAQVisuals(props) {
 

@@ -13,7 +13,7 @@ const LoginTemplate = ({
 }) => {
 
   return (
-    <div style={{ backgroundImage: `url(https://yakera-files.s3.us-east-2.amazonaws.com/yakera/pattern-yakera-orange.png)`}}>
+    <div style={{ backgroundImage: `url(https://assets.yakera.org/yakera/pattern-yakera-orange.png)`}}>
       <Card className='login-card'>
         <CardContent>
 

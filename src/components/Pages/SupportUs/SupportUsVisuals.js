@@ -1,9 +1,9 @@
 import React from 'react'
 import { Grid } from '@material-ui/core';
 
-const titleImg =  'https://yakera-files.s3.us-east-2.amazonaws.com/yakera/nuevopost-12.jpg';
-const banner1 = 'https://yakera-files.s3.us-east-2.amazonaws.com/yakera/Ivana+Duran.jpeg'
-const banner2 = 'https://yakera-files.s3.us-east-2.amazonaws.com/yakera/support.png'
+const titleImg =  'https://assets.yakera.org/yakera/nuevopost-12.jpg';
+const banner1 = 'https://assets.yakera.org/yakera/Ivana+Duran.jpeg'
+const banner2 = 'https://assets.yakera.org/yakera/support.png'
 
 function SupportUsVisuals(props) {
     const EN = props.EN
