@@ -8,7 +8,7 @@ import TokenService from "../../../services/token";
 import LanguageService from '../../../services/language';
 
 
-const LoginPage = (props) => {
+const LoginPage = () => {
 
   const initialState = {
     email: "",
