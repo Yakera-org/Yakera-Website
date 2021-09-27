@@ -9,7 +9,7 @@ class DonateCard extends Component {
         const target = this.props.target;
         const language = this.props.language;
         var EN = true;
-
+        
         if(language ==="en"){
             EN=true
         }else{
@@ -74,7 +74,7 @@ class DonateCard extends Component {
                     </div> 
                 </Card>
 
-                <ShareCard open={this.props.showShare} onClose={this.props.onClose}/>
+                <ShareCard open={this.props.showShare} onClose={this.props.onClose} EN={EN}/>
             </div>
         );
     }

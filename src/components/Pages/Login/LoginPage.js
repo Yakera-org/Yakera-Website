@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import LoginTemplate from './LoginTemplate';
-import { validateFields } from './Validation';
+import { validateFields } from '../Register/Validation';
 import Loader from "react-loader-spinner";
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 import api from "../../../services/api";
 import TokenService from "../../../services/token";
+import LanguageService from '../../../services/language';
 
 
 const LoginPage = () => {
@@ -26,6 +27,12 @@ const LoginPage = () => {
   const [data, setData] = useState(initialState);
   const [error, setError] = useState(errorState);
   const [loader, setLoader] = useState(false);
+  const [EN, setEN] = React.useState(false);
+
+  React.useEffect(() => {
+      if(LanguageService.getLanguage()==='en')setEN(true)
+      else setEN(false)
+  }, []);
 
   const handleChange = event => {
     event.persist();
@@ -49,7 +56,7 @@ const LoginPage = () => {
     if (event.target.name === "email") {
       error = validateFields.validateEmail(event.target.value);
     } else {
-      error = validateFields.validatePassword(event.target.value);
+      error = validateFields.validateName(event.target.value);
     }
     
     setData(data => ({
@@ -95,7 +102,7 @@ const LoginPage = () => {
           errorMessage = error.response.data.message;
         }
       } else {
-        errorMessage = "Something went wrong. Please try again later.";
+        errorMessage = EN ? "Something went wrong. Please try again later." : "Se produjo un error. Vuelva a intentarlo más tarde";
       }
       setLoader(false)
       setError({errorMessage: errorMessage});
@@ -129,6 +136,7 @@ const LoginPage = () => {
         data = {data}
         error = {error}
         handleLogin = {handleLogin}
+        EN={EN}
       />
     </div>
   );

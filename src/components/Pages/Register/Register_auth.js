@@ -2,17 +2,18 @@ import React from 'react'
 import classnames from 'classnames'
 
 function Register_auth(props) {
+    const EN = props.EN
     return (
         <div className='register-authentication'>
 
-            <h2>Authentication</h2>
+            <h2>{EN ? 'Authentication' : 'Autenticación' }</h2>
             <hr />
 
             <br /> 
             <input
                 type="text"
                 name="address"
-                placeholder="Enter your address"
+                placeholder={EN ? "Enter your address" : "Dirección" }
                 value={props.data.address}
                 onChange={props.handleChange}
                 className={classnames(
@@ -27,7 +28,7 @@ function Register_auth(props) {
             <input
                 type="text"
                 name="phone"
-                placeholder="Enter your phone"
+                placeholder={EN ? "Enter your phone number" : "Número telefónico" }
                 value={props.data.phone}
                 onChange={props.handleChange}
                 className={classnames(
@@ -42,7 +43,7 @@ function Register_auth(props) {
             <input
                 type="text"
                 name="airTMNum"
-                placeholder="Enter your AirTM address"
+                placeholder={EN ? "Enter your AirTM address (if available)" : "Ingrese su dirección AirTM (si está disponible)" }
                 value={props.data.airTMNum}
                 onChange={props.handleChange}
                 className={classnames(
@@ -57,7 +58,7 @@ function Register_auth(props) {
             <input
                 type="text"
                 name="socialNum"
-                placeholder="Enter your ID Number"
+                placeholder={EN ? "Enter your ID Number" : "Número de identificación" }
                 value={props.data.socialNum}
                 onChange={props.handleChange}
                 className={classnames(

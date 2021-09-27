@@ -9,6 +9,7 @@ import logo from "../svg/logo.svg";
 import '../App.css';
 import api from "../services/api";
 import TokenService from "../services/token";
+import LanguageService from "../services/language";
 
 class NavBar extends Component {
     constructor(props) {
@@ -27,14 +28,7 @@ class NavBar extends Component {
 
     componentDidMount() {
         //setting language
-        var lang = localStorage.getItem("lang");
-        if(lang){
-            this.setState({
-                language: lang
-            })
-        }else{
-            localStorage.setItem("lang", this.state.language);
-        }
+        var lang = LanguageService.getLanguage()
         
         if(lang === 'en'){
             this.setState({
@@ -51,6 +45,7 @@ class NavBar extends Component {
 
         this.setState({
             token:token,
+            language: lang,
             currentTab: currentTab,
             loaded: true
         }) 
@@ -62,23 +57,13 @@ class NavBar extends Component {
         if(this.state.navHeight === 500){ //readjust if closed
             height = 150
         }
-
-        //set state
         this.setState({
             navHeight: height
         })
-
     }
 
     onChange(){
-        this.setState({
-            checked: !this.state.checked
-        })
-        if(this.state.language=== 'en'){
-            localStorage.setItem("lang", 'es');
-        }else{
-            localStorage.setItem("lang", 'en');
-        }
+        LanguageService.setLanguage()
         window.location.reload(false);
     }
 
@@ -105,6 +90,10 @@ class NavBar extends Component {
             window.location.href = "/"; 
         }catch(err){
             console.log('error: ' + err);
+            TokenService.removeAccessToken();
+            TokenService.removeRefreshToken();
+            localStorage.setItem('currentTab', 'home')
+            window.location.href = "/"; 
         }
     }
 
@@ -142,16 +131,16 @@ class NavBar extends Component {
                     </Navbar.Toggle>
                     <Navbar.Collapse id="responsive-navbar-nav">
                         <Nav className="mr-auto">
-                        <Nav.Link id={this.state.currentTab === 'about' ? 'nav-tab-selected': 'nav-tab'}  name='about' onClick={this.onTabClick.bind(this)} >ABOUT US</Nav.Link>
-                        <Nav.Link id={this.state.currentTab === 'support' ? 'nav-tab-selected': 'nav-tab'} name='support'  onClick={this.onTabClick.bind(this)}> {EN ? 'SUPPORT US' : 'DONAR'}</Nav.Link>
-                        <Nav.Link id={this.state.currentTab === 'campaigns' ? 'nav-tab-selected': 'nav-tab'} name='campaigns'  onClick={this.onTabClick.bind(this)}> {EN ? 'CAMPAIGNS' : 'Campañas'}</Nav.Link>
-                        <Nav.Link id={this.state.currentTab === 'frequently-asked-questions' ? 'nav-tab-selected': 'nav-tab'} name='frequently-asked-questions'  onClick={this.onTabClick.bind(this)}>FAQ</Nav.Link>
-                        <Nav.Link id={this.state.currentTab === (isAuthenticated ? 'dashboard' : 'login') ? 'nav-tab-selected': 'nav-tab'} name={isAuthenticated ? 'dashboard' : 'login'}  onClick={this.onTabClick.bind(this)}>{isAuthenticated ? 'DASHBOARD' : 'LOGIN'}</Nav.Link>
+                        <Nav.Link id={this.state.currentTab === 'about' ? 'nav-tab-selected': 'nav-tab'}  name='about' onClick={this.onTabClick.bind(this)} >{EN ? 'ABOUT US' : 'SOBRE NOSOTROS'}</Nav.Link>
+                        <Nav.Link id={this.state.currentTab === 'support' ? 'nav-tab-selected': 'nav-tab'} name='support'  onClick={this.onTabClick.bind(this)}> {EN ? 'SUPPORT US' : 'APOYAR'}</Nav.Link>
+                        <Nav.Link id={this.state.currentTab === 'campaigns' ? 'nav-tab-selected': 'nav-tab'} name='campaigns'  onClick={this.onTabClick.bind(this)}> {EN ? 'CAMPAIGNS' : 'CAMPANAS'}</Nav.Link>
+                        <Nav.Link id={this.state.currentTab === 'frequently-asked-questions' ? 'nav-tab-selected': 'nav-tab'} name='frequently-asked-questions'  onClick={this.onTabClick.bind(this)}>{EN ? 'FAQ' : 'PREGUNTAS'}</Nav.Link>
+                        <Nav.Link id={this.state.currentTab === (isAuthenticated ? 'dashboard' : 'login') ? 'nav-tab-selected': 'nav-tab'} name={isAuthenticated ? 'dashboard' : 'login'}  onClick={this.onTabClick.bind(this)}>{isAuthenticated ? EN ? 'DASHBOARD': 'TABLERO' : EN ? 'LOG IN' : 'INICIAR SESION'}</Nav.Link>
                         { isAuthenticated
                         ?
                             <Nav.Link >
                             <div className='logout-mobile' onClick={this.onLogOut.bind(this)}   >
-                                <i className="fas fa-sign-out-alt"></i><label>&nbsp;SIGN OUT</label>
+                                <i className="fas fa-sign-out-alt"></i><label>&nbsp;{EN ? 'SIGN OUT' : 'DESCONECTAR'}</label>
                             </div>
                         </Nav.Link>
                         :
@@ -206,7 +195,7 @@ class NavBar extends Component {
                     { isAuthenticated
                         ?
                         <div className='logout' onClick={this.onLogOut.bind(this)}>
-                            <i className="fas fa-sign-out-alt"></i><label>&nbsp;Sign out</label>
+                            <i className="fas fa-sign-out-alt"></i><label>&nbsp;{EN ? 'SIGN OUT' : 'DESCONECTAR'}</label>
                         </div>
                         :
                         ''

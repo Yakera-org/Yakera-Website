@@ -5,14 +5,23 @@ import { Grid } from '@material-ui/core';
 import 'react-multi-carousel/lib/styles.css';
 import Author from '../../author';
 import CampaignCarousel from './CampaignCarousel';
+import LanguageService from '../../../services/language';
 import './home.scss';
 
-
-
 function Home() {
-    React.useEffect(() =>{
-        localStorage.setItem('dic', null);
-    }, [])
+    const [EN, setEN] = React.useState(false);
+    const [language, setLanguage] = React.useState('en');
+
+    React.useEffect(() => {
+        if(LanguageService.getLanguage()==='en'){
+            setEN(true)
+            setLanguage('en')
+        }
+        else{
+            setEN(false)
+            setLanguage('es')
+        } 
+    }, []);
 
     return (
         <div>
@@ -21,10 +30,10 @@ function Home() {
                     <Grid item xs={12} sm={6} >
                         <section className='top-left'>
                             <p>
-                                Reinventando la distribución de ayuda humanitaria en el mundo, una historia a la vez.
+                                {EN ? 'Reinventing the distribution of humanitarian aid around the world, one story at a time. ':'Reinventando la distribución de ayuda humanitaria en el mundo, una historia a la vez.' }
                             </p>
                             <button>
-                                <a href='/about'>Mas info</a>
+                                <a href='/about'>{EN ? 'More info' : 'Mas info'}</a>
                             </button>
                         </section>
                     </Grid> 
@@ -54,7 +63,7 @@ function Home() {
                             <img id='dotted-line' src={pics['dotted-line']} alt='illustration'/>
                         </Grid> 
                         {
-                            pics['illustration-texts'].map((text, i) => {
+                            pics['illustration-texts'][language].map((text, i) => {
                                 return(
                                     <Grid item xs={12} sm={3} key={i}>
                                        <div id='text' dangerouslySetInnerHTML={{__html:text }}></div>
@@ -84,16 +93,16 @@ function Home() {
                         <Grid item xs={12} sm={5} className='right-section' >
                             <section>
                                 <h3>
-                                    El 100% de las donaciones te llegarán de manera rápida y segura.
+                                    {EN? '100% of the donations will reach you quickly and safely.' : 'El 100% de las donaciones te llegarán de manera rápida y segura.'}
                                 </h3>
                                 <p>
-                                    A través de una experiencia en realidad virtual, conocerás a Alexandra de El Calvario, Venezuela. En 360 grados, entérate de como Alexandra utilizó Yakera para recaudar el dinero necesario para cumplir su sueño: acceder a una educación de calidad.
+                                    {EN ? 'Through a virtual reality experience, you will meet Alexandra from El Calvario, Venezuela. In 360 degrees, find out how Alexandra used Yakera to raise the money necessary to fulfill her dream: to access a quality education.' :'A través de una experiencia en realidad virtual, conocerás a Alexandra de El Calvario, Venezuela. En 360 grados, entérate de como Alexandra utilizó Yakera para recaudar el dinero necesario para cumplir su sueño: acceder a una educación de calidad.'}
                                 </p>
                             </section>
                         </Grid>   
                         </Grid> 
                     <Grid container spacing={0} className='carousel-section'>       
-                        <CampaignCarousel />
+                        <CampaignCarousel EN={EN}/>
                     </Grid> 
                 </Grid> 
             <Author />

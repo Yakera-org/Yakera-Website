@@ -5,6 +5,7 @@ import Loader from "react-loader-spinner";
 import api from "../../../services/api";
 import ThanksCard from './thanksCard';
 import AirTM from './AirTM';
+import LanguageService from '../../../services/language';
 
 class PaymentVisual extends Component {
 
@@ -18,13 +19,27 @@ class PaymentVisual extends Component {
             tip: '',
             comment: '',
             loading: false,
-            thanksOpen: false
+            thanksOpen: false,
+            EN: true
         }
         this.onContinue = this.onContinue.bind(this);
         this.onClose = this.onClose.bind(this);
         this.onBack = this.onBack.bind(this);
         this.switchLoader = this.switchLoader.bind(this);
         this.addAmount = this.addAmount.bind(this);
+    }
+
+    componentDidMount(){
+        const language = LanguageService.getLanguage()
+        if (language === 'en'){
+            this.setState({
+                EN: true
+            })
+        }else{
+            this.setState({
+                EN: false
+            })
+        }
     }
 
     onContinue(amount, email, name, tip, comment){
@@ -62,28 +77,37 @@ class PaymentVisual extends Component {
         console.log('click')
         this.switchLoader(true);
     }
-    OnPaymentError(){
-        console.log('payment failed')
+    async OnPaymentCancel() {
+        console.log('payment canceled');
+        await this.addAmount({}, 'cancel');
+        this.switchLoader(false);
+    }
+    async OnPaymentError(){
+        console.log('payment failed');
+        await this.addAmount({}, 'error');
         this.switchLoader(false);
     }
     async OnSuccessPayment(details, data){
         console.log("payment successful")
-        await this.addAmount(details);
+        // Pass data instead of details to get orderID as described here: https://luehangs.site/lue_hang/projects/react-paypal-button-v2
+        await this.addAmount(data, 'success');
         this.openThanks()
         console.log(details)
         console.log(data)
         this.switchLoader(false);
     }
-    async addAmount(details){
+    async addAmount(data, status){
         try {
             const payload = {
                 "slug": this.props.slug,
                 "email": this.state.email,
                 "name": this.state.name,
                 "amount": this.state.amount,
+                "status": status,
                 "tip": this.state.tip,
-                "paymentID": details.id,
-                "comment": this.state.comment
+                "paymentID": data.orderID,
+                "comment": this.state.comment,
+                "language": LanguageService.getLanguage()
             }
             console.log(await api.post(`/campaigns/donate`, payload))
         } catch (err) {
@@ -104,7 +128,8 @@ class PaymentVisual extends Component {
     }
 
 
-    render() {        
+    render() {    
+        const EN = this.state.EN    
         return (
             <div key={this.props.presetAmount} className="payment-visual" id="donateRef">
                 <ThanksCard 
@@ -123,7 +148,7 @@ class PaymentVisual extends Component {
                         />
                     </div>
                 <h1 >
-                    Donate Now
+                    {EN ? 'Donate Now' : 'Donar Ahora' }
                 </h1>
                 <hr id='donate-now-hr'/>
 
@@ -132,7 +157,7 @@ class PaymentVisual extends Component {
 
                         <div  className="payment-card">
                             <PaymentDetails 
-                                language={this.props.language}
+                                EN={EN}
                                 onContinue={this.onContinue}
                                 presetAmount={this.props.presetAmount}
                                 />
@@ -141,6 +166,7 @@ class PaymentVisual extends Component {
                         : // else get to payment authentication
 
                         <PaymentAuth className="payment-auth"
+                            EN={EN}
                             language={this.props.language}
                             onClose={this.onClose}
                             amount={this.state.amount}
@@ -155,6 +181,7 @@ class PaymentVisual extends Component {
                             OnSuccessPayment={this.OnSuccessPayment.bind(this)}
                             OnPaymentClick={this.OnPaymentClick.bind(this)} 
                             OnPaymentError={this.OnPaymentError.bind(this)} 
+                            OnPaymentCancel={this.OnPaymentCancel.bind(this)}
                         />
                     }
                 </div>    

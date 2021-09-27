@@ -2,56 +2,48 @@ import React from 'react'
 import { Grid } from '@material-ui/core';
 import './AboutUs.css'
 import text from './texts.json'
-import pic1 from '../../../pics/raul.jpeg'
-import pic2 from '../../../pics/aron.jpeg'
-import pic3 from '../../../pics/thomas.JPG'
-import pic4 from '../../../pics/jang.png'
-import pic5 from '../../../pics/mafer.jpg'
+import members from './teamMembers.json' 
 
-const pics = [pic1, pic3, pic5, pic4, pic2]
-const names = ['Tomas Munoz', 'Raul Romero', 'Mafer Bencoma', 'Jang Belche', 'Aaron Lambert']
-const posts = ['CFO', 'Founder & CEO', 'CMO', 'CTO', 'COO']
-const hrefs = ['https://www.linkedin.com/in/tomas-munoz-reyes-7b2202156/',
-                'https://www.linkedin.com/in/raul-romero-martinez/',
-                'https://www.linkedin.com/in/maferbencomo/',
-                'https://www.linkedin.com/in/jang-belche/',
-                'https://www.linkedin.com/in/aaron-lambert-b8b4b9183/']
-
-function TeamSection() {
+function TeamSection(props) {
+    const EN = props.EN
     return (
         <div className='about-us-team'>
-            <h1>Our Team</h1>
+            <h1>{EN ? 'Our Team' : 'Nuestro equipo'}</h1>
             <br />
             <p>
-                {text['team-text']}
+                {EN ? text['team-text_en'] : text['team-text_es']}
             </p>
             <div className='about-us-team-pics'>
-                <Grid container spacing={0}>
-                    {
-                        pics.map((pic,i) => {
-                            let sm;
-                            if(i<3){
-                                sm = 4
-                            }else{
-                                sm = 6
-                            }
-                            return(
-                                <Grid key={i} item xs={12} sm={sm}>
-                                    <div className='outside-img'>
-                                        <img src={pic} alt='profile-pics' /> 
-                                        <h1 className='name'>{names[i]}&nbsp;
-                                            <a id="icon" href={hrefs[i]} rel="noopener noreferrer"  target="_blank">
-                                                <i className="fab fa-linkedin" ></i>
-                                            </a>
-                                        </h1>
-                                        <h2 className='post'>{posts[i]}</h2>
-                                    </div>
-                                </Grid>
-                            )
-                        })
-                    }
-                    
-                </Grid>
+                { members.divisions.map((division, i) => {
+                    console.log(division)
+                    return(
+                        <div key={i}>                
+                            <h2>
+                                {division.name}
+                            </h2>
+                            <Grid container spacing={0} direction="row" style={{ display: 'flex'}}>
+                                {
+                                    division.members.map((member,i) => {
+                                        return(
+                                            <Grid item xs={6} sm={3} className='member-pic' key={i}>
+                                                <div className='img-wrapper'>
+                                                    <img src={member.picture} alt='profile' />
+                                                </div>
+                                                <p>{member.name}</p>
+                                                <label id='position'>{member.position}</label>
+                                                <a id="icon" href={member.link} rel="noopener noreferrer"  target="_blank">
+                                                    <i className="fab fa-linkedin fa-2x" ></i>
+                                                </a>
+                                            </Grid>
+                                        )                                        
+                                    })
+                                }                                
+                            </Grid> 
+                        </div>
+                        )
+                    })
+                }
+                
             </div>
         </div>
     )

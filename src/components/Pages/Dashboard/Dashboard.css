@@ -24,6 +24,24 @@
     font-size: 20px;
     padding: 10px;
 }
+.dash-left input{
+    font-family: Intro-Light;
+}
+#airTM .dash-left{
+    margin-bottom: -20px;
+}
+#airTM button{
+    background-color: #ea8737;
+    border: none;
+    outline: none;
+    border-radius: 15px;
+    color: white;
+    padding: 10px 15px ;
+    margin-left: 5px;
+}
+#airTM button:hover{
+   background-color: #c5793a;
+}
 .dash-btn{
     text-align: center;
 }
@@ -130,6 +148,7 @@
         width: 100%;
         padding: 0%;
     }
+    
     .dash-btn button {
         border: none;
         padding: 10px;

@@ -4,6 +4,7 @@ import Author from '../../author';
 import PaymentVisual from './PaymentVisual';
 import './CampaignPage.css';
 import { unauthenticatedGet } from '../../../utils';
+import LanguageService from '../../../services/language';
 
 const yakeraBackendUrl = 'https://express-backend-api.herokuapp.com/api/campaigns/';
 
@@ -16,10 +17,7 @@ class CampaignPage extends Component{
     }
 
     async componentDidMount(){
-        var lang = localStorage.getItem("lang");
-        if(!lang){
-            localStorage.setItem("lang", "en");
-        }
+        var language = LanguageService.getLanguage()
         let found = false;
         await unauthenticatedGet(yakeraBackendUrl, {})
             .then(data => {
@@ -41,7 +39,8 @@ class CampaignPage extends Component{
                     window.location.replace("/campaigns");
                 }
                 this.setState({
-                    loaded:true
+                    loaded:true,
+                    language: language
                 });
             });
 
@@ -57,12 +56,11 @@ class CampaignPage extends Component{
         }else{
         const campaign = this.state.campaign
             return(
-                //NOTE: ACTIVATE ANALYTICS BEFORE PUSHING
                 <div className="campaignPage">
                     <Visual
                         campaign={campaign} 
                         amount={campaign.raised} 
-                        language={'en'}
+                        language={this.state.language}
                      />
 
                      <hr style={{width:'90%', marginLeft:'6%'}}/>

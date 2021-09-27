@@ -1,11 +1,18 @@
 import React from 'react';
 import { Grid } from '@material-ui/core';
 import logo from "../svg/logo.svg";
-
+import LanguageService from "../services/language";
 
 import './author.css';
 
 function Author() {
+
+    React.useEffect(() =>{
+        setLanguage(LanguageService.getLanguage());
+    }, [])
+
+    const [language, setLanguage] = React.useState('');
+
     function onImgClick(){
         localStorage.setItem("currentTab", '')
         window.location.href = "/";
@@ -14,6 +21,13 @@ function Author() {
         console.log(event.target.name)
         localStorage.setItem("currentTab", event.target.name)
         window.location.href = "/" + event.target.name;
+    }
+
+    var EN;
+    if(language === "en"){
+        EN = true
+    }else{
+        EN = false
     }
     return (
         <div className='footer'>
@@ -26,13 +40,13 @@ function Author() {
                     <Grid item xs={12} sm={4} >
                         <Grid container spacing={1} style={{ alignItems:'center', textAlign:'center'}}>
                             <Grid item xs={12} sm={4} >
-                                <button id='link' name='support' onClick={onLinkClick}>Support Us</button>
+                                <button id='link' name='support' onClick={onLinkClick}>{EN ? 'Support Us' : 'Apoyanos'}</button>
                             </Grid>
                             <Grid item xs={12} sm={4} >
-                                <button id='link' name='about' onClick={onLinkClick}>About Us</button>
+                                <button id='link' name='about' onClick={onLinkClick}>{EN ? 'About Us' : 'Sobre nosotros'}</button>
                             </Grid>
                             <Grid item xs={12} sm={4} >
-                                <button id='link' name='terms' onClick={onLinkClick}>Terms & Conditions</button>
+                                <button id='link' name='terms' onClick={onLinkClick}>{EN ? 'Terms & Conditions' : 'Términos y condiciones'}</button>
                             </Grid>
                         </Grid>
                     </Grid>
@@ -68,16 +82,15 @@ function Author() {
             <hr />
             <div className='section'>
                 <p>
-                    Yakera Inc. is registered as a tax-exempt 501(c)(4) organization.
-                    Please note that under our status as 501(c)(4) we are a non for profit organization devoted to social welfare, but donations made to us are not tax deductible.
+                    {EN ? 'Yakera Inc. is registered as a tax-exempt 501(c)(4) organization.' : 'Yakera Inc. está registrada como una organización 501 (c) (4) exenta de impuestos.'}
+                    {EN ? 'Please note that under our status as 501(c)(4) we are a non for profit organization devoted to social welfare, but donations made to us are not tax deductible.' : 'Tenga en cuenta que, en virtud de nuestra condición de 501 (c) (4), somos una organización sin fines de lucro dedicada al bienestar social, pero las donaciones que se nos hagan no son deducibles de impuestos.'}
+                    
                 </p>
             </div>
 
             <hr />
             <div className='section'>
-                <p>
-                    This page is developed by the <b>Software Engineering Team</b> at <b>Yakera</b> and belongs to the Yakera company
-                </p>
+                {EN ? <p>This page is developed by the <b>Software Engineering Team</b> at <b>Yakera</b> and belongs to the Yakera company</p> : <p>Esta página está desarrollada por el <b> Equipo de Ingeniería de Software </b> en <b> Yakera </b> y pertenece a la empresa Yakera</p>} 
             </div>  
         </div>
     )

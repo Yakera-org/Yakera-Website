@@ -1,15 +1,23 @@
 import React, {useState} from 'react';
 import DashboardVisuals from './DashboardVisuals';
+import { validateFields } from '../Register/Validation';
+
 import './Dashboard.css';
 import api from "../../../services/api";
+import LanguageService from '../../../services/language';
 
 function Dashboard() {
 
     const [loaded, setLoaded] = useState(false);
+    const [EN, setEN] = useState(false);
+    const [airTMemail, setAirTMEmail] = useState('');
+    const [emailError, setEmailError] = useState('');
     const [error, setError] = useState('');
     const [profileData, setProfileData] = useState({});
 
     React.useEffect(() => {
+        if(LanguageService.getLanguage()==='en')setEN(true)
+        else setEN(false)
         if (localStorage.getItem('accessToken')) {
             getCampaign();
         } else {
@@ -30,10 +38,44 @@ function Dashboard() {
 
     async function onWithdraw(event){
         let slug = event.target.name;
-        await api.delete(`/campaigns/${slug}`);
+        try {
+            await api.delete(`/campaigns/${slug}`);
+            window.alert(EN ? 'Campaign successfully withdrawn!' : '¡Campaña retirada con éxito!')
+            window.location.reload();
+        } catch (err) {
+            console.log('Error. ' + err)
+        }
+    }
 
-        window.alert('Campaign successfully withdrawn!')
-        window.location.reload();
+    function handleChange(event){
+        validate(event.target.value)
+        setAirTMEmail(event.target.value)
+    }
+    function validate(email){
+        var tempError;
+        tempError = validateFields.validateEmail(email);
+        setEmailError(tempError)
+        if(!tempError){
+            return true
+        }
+    }
+    function onSubmitEmail(){
+        if(validate(airTMemail)){
+            backendPatch()
+        }
+    }
+
+    async function backendPatch(){
+        try {
+            const requestBody = {      
+                airTMNum: airTMemail
+              }
+          
+            await api.patch('/profile/update', requestBody);
+            window.location.reload();   
+        } catch (err) {
+            console.log('Error. ' + err)
+        }
     }
 
     if (!loaded){
@@ -51,7 +93,7 @@ function Dashboard() {
     }else{        
         return (
             <div className='dashboard-page'>
-                <DashboardVisuals data={profileData} onWithdraw={onWithdraw}/>
+                <DashboardVisuals EN={EN} data={profileData} onWithdraw={onWithdraw} handleChange={handleChange} emailError={emailError} onSubmitEmail={onSubmitEmail}/>
             </div>
         )
     }

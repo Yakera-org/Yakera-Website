@@ -56,5 +56,63 @@
                     "We split the costs between software development and product (around 65%), additional operational costs (5%), legal costs (5%) and marketing (25%). Your donations to Yakera directly allow us to multiply our impact."
                 ]
             }
+        ],
+    "es":[
+            {
+                "title": "Sobre Yakera, nosotros, y nuestra misión",
+                "questions":[
+                    "¿Qué hacemos?",
+                    "¿Qué es la historia de Yakera?",
+                    "¿Cómo funciona Yakera",
+                    "¿Cuánta de mi donación llegará al organizador de la campaña?",
+                    "¿Cómo es Yakera diferente de otras plataformas?",
+                    "¿Por qué transferencias directas?",
+                    "¿Yakera es un negocio u organización sin fines de lucro?"
+                ],
+                "answers":[
+                    "Yakera es una plataforma innovadora que utiliza el poder de las historias de individuos y la conexión humana para abrir las posibilidades de la solidaridad global. Con Yakera, los usuarios pueden abrir campañas y recibir apoyo directamente a sus cuentas de banco a través de tecnologías innovadoras que permiten el envío de fondos por todo el mundo.",
+                    "Fuimos fundado por <a href='https://www.linkedin.com/in/raul-romero-martinez/'>Raul Romero</a>               quien dejó Venezuela en 2016. Desde entonces, ha reclutado un equipo internacional que ahora trabaja 24/7 para traer apoyo y revolucionar el envío de ayuda humanitaria en el mundo. Lea más sobre nosotros <a href='https://www.xplot.se/news/dare-stories-raul-romero-and-yakera'>aqui</a>",
+                    "Yakera dirige donaciones a una e-billetera conectado a la cuenta del usuario, facilitado por Airtm. Usuarios pueden sacar los fondos a una cuenta bancaria en la moneda local o gastarlos directamente a través del red de organizaciones asociadas con Airtm.",
+                    "Nos aseguramos que el 100% de tu donación llegue a la persona que creó la campaña. Nuestros costos de operación son cubiertos por las donaciones hechas a Yakera.",
+                    "Yakera se compromete a empoderar a individuos por todo el mundo y a abrir las posibilidades de la solidaridad global. Nuestros servicios y gran accesibilidad le dan a las personas en Venezuela y Latinoamérica la oportunidad de crear campañas de crowdfunding, pero lo que define nos define va más allá. Estamos construyendo un futuro en el cual la agencia humana, la empatía, y la solidaridad sean los componentes que sostienen la ayuda humanitaria global.",
+                    "Las personas saben cómo resolver sus propios problemas mejor que nosotros. El empoderamiento individual es una parte central de nuestra misión. Las transferencias directas expanden la eficiencia y hacen la ayuda humanitaria más accesible y eficiente.",
+                    "Somos un equipo con mentalidad de start-up construyendo una organización sin fines de lucro."
+                ]
+            },
+            {
+                "title": "Crear una campaña",
+                "questions":[
+                    "¿Yo puedo crear una campaña?",
+                    "¿Cómo sacar los fondos de una campaña?",
+                    "¿Qué debe incluir en la campaña?"
+                ],
+                "answers":[
+                    "Si usted vive en Venezuela o Latinoamérica, tendrá que proveer el número de su cédula de identidad, su historia, una foto, y archivos o fotos que sostienen su aplicación para crear la campaña.",
+                    "A través de Airtm. Tendrá que abrir una cuenta, verificar su identidad, y podrá gastar los fondos directamente o cambiarlos a otras monedas.",
+                    "Una historia de su problema, las causas, para qué necesita el dinero, y cómo gastaría los fondos. Haciendo la campaña más personal y contando la historia con detalle siempre ayuda :)"
+                ]
+            },
+            {
+                "title": "Sacando Los Fondos",
+                "questions":[
+                    "¿Cómo puedo sacar los fondos de mi campaña?",
+                    "¿Por qué tengo problemas de acceso a Airtm?",
+                    "¿Qué más se puede hacer con Airtm?"
+                ],
+                "answers":[
+                    "Usted puede visitar su perfil y seguir los pasos para sacar el dinero a su cuenta. Típicamente las transferencias se procesan en 1-3 días.",
+                    "Es posible, especialmente con navegadores móviles, que Airtm esté bloqueado. Típicamente se puede resolver esto por acceder a la página desde una computadora de escritorio o por la aplicación de Airtm en Android. Si todavía no se puede acceder a Airtm (o si usted sólo tenga acceso a una versión móvil), aquí está un artículo de Medium (que no debe estar bloqueado) que explica cómo usar un VPN y cuáles podría usar para acceder a Airtm. ",
+                    " Airtm ofrece muchas lecciones que usted puede mirar para aprender más de los servicios que ofrece Airtm."
+                ]
+            },
+            {
+                "title": "Apoyar a Nosotros",
+                "questions":[
+                    "Qué hacen con las donaciones directas a Yakera?"
+                ],
+                "answers":[
+                    "Dividimos las donaciones entre el desarrollo de software y producto (apx. 65%), costos adicionales de operación (apx. 5%), costos legales (apx. 5%), y marketing (apx. 25%). Sus donaciones a Yakera directamente nos ayudan a expandir nuestro impacto. "
+                ]
+            }
         ]
 }
