@@ -9,6 +9,7 @@ import { Form, InputGroup } from 'react-bootstrap';
 import { unauthenticatedGet } from '../../../utils';
 
 import './donate.css';
+import LanguageService from '../../../services/language';
 const yakeraBackendUrl = 'https://express-backend-api.herokuapp.com/api/campaigns/';
 
 
@@ -73,7 +74,7 @@ class SearchBar extends React.Component {
                 </InputGroup.Text>
                 <Form.Control
                     type='search'
-                    placeholder='Search...'
+                    placeholder={this.props.language==='en' ? 'Search...' : 'Buscar...'}
                     value={this.props.searchQuery}
                     onChange={e => this.props.setSearchQuery(e.target.value)}
                     style={{
@@ -106,10 +107,7 @@ class donate extends Component{
     }
 
     async componentDidMount(){
-        var lang = localStorage.getItem("lang");
-        if(!lang){
-            localStorage.setItem("lang", "en");
-        }
+        var lang = LanguageService.getLanguage()
 
         await unauthenticatedGet(yakeraBackendUrl, {})
             .then(data => {
@@ -249,6 +247,7 @@ class donate extends Component{
                     <SearchBar 
                         searchQuery={this.state.searchQuery}
                         setSearchQuery={this.setSearchQuery}
+                        language={this.state.language}
                     />
                 </div>
 
