@@ -25,13 +25,10 @@ function Main(){
         <BrowserRouter>
             <div style={{marginTop: '100px'}}>
             <Switch>
-                <Route exact path="/login" component={login}/>
-                <Route exact path="/register" component={register}/>
-                {/* <Route exact path="/profile" component={profile}/> */}
-                <Route exact path="/support" component={SupportUs}/>
+                <Route exact path="/login" component={login} />
+                <Route exact path="/register" component={register} />
+                <Route exact path="/support" component={SupportUs} />
                 <Route exact path="/campaigns" component={donate}/>
-                {/* <Route exact path="/confirmed" component={confirmed}/> */}
-                {/* <Route exact path="/cancelled" component={cancelled}/> */}
                 <Route exact path="/create-campaign" component={CreateCampaign} />
                 <Route exact path="/about" component={AboutUs}/>
                 <Route exact path="/campaign/:title" component={Campaign}/>

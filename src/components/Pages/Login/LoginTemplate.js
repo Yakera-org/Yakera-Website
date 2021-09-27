@@ -9,6 +9,7 @@ const LoginTemplate = ({
   data,
   error,
   handleLogin,
+  EN
 }) => {
 
   return (
@@ -18,15 +19,15 @@ const LoginTemplate = ({
 
           <Form noValidate className='login-form' onSubmit={handleLogin}>
             <h1>
-              <span className='font-weight-bold'>Welcome to Yakera</span>
+              <span className='font-weight-bold'>{EN ? 'Welcome to Yakera' : 'Bienvenido a Yakera'} </span>
             </h1>
-            <h2>Please Log In</h2>
+            <h2>{EN ? 'Please Log In' : 'Iniciar Sesión'}</h2>
             <hr />
 
             <FormGroup>
               <Input
                 type='email'
-                placeholder='Enter your email address'
+                placeholder={EN ? 'Enter your email address' : 'Correo electrónico '}
                 name="email"
                 value={data.email}
                 onChange={handleChange}
@@ -48,7 +49,7 @@ const LoginTemplate = ({
             <FormGroup>
               <Input
                 type='password'
-                placeholder='Enter your password'
+                placeholder={EN ? 'Enter your password' : 'Contraseña'}
                 name="password"
                 value={data.password}
                 onChange={handleChange}
@@ -79,18 +80,18 @@ const LoginTemplate = ({
               value={data.loading ? 'Loading...' : 'Login'}
               onClick={handleLogin}
             >
-              Login
+              {EN ? 'Login' : 'Iniciar'}
             </Button>
 
             <Grid container style={{marginTop:'4%', textAlign:'left'}}>
               <Grid item xs>
                 <Link href="/forgot-password">
-                  Forgot password?
+                  {EN ? 'Forgot password?' : '¿Olvidó su contraseña?'}
                 </Link>
               </Grid>
               <Grid item>
                 <Link href="/register">
-                  Don't have an account? Sign Up
+                  {EN ? 'Don\'t have an account? Sign Up' : '¿No tienes una cuenta? Regístrate'}
                 </Link>
               </Grid>
             </Grid>

@@ -4,14 +4,23 @@ import PaymentVisual from '../CampaignPage/PaymentVisual'
 import AirTM from '../CampaignPage/AirTM';
 import './SupportUs.css'
 import Author from '../../author'
+import LanguageService from '../../../services/language';
 
 
 function SupportUs() {
 
     const [amount, setAmount] = useState('');
+
+    const [EN, setEN] = React.useState(false);
+
+    React.useEffect(() => {
+        if(LanguageService.getLanguage()==='en')setEN(true)
+        else setEN(false)
+    }, []);
     return (
         <div className='support-us-page'>
             <SupportUsVisuals 
+                EN={EN}
                 setAmount={setAmount}
             />
             

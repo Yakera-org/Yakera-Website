@@ -3,10 +3,11 @@ import classnames from 'classnames'
 import { Grid } from '@material-ui/core';
 
 function Register_details(props) {
+    const EN = props.EN
     return (
         <div className='register-details'>
 
-            <h2>Details</h2>
+            <h2>{EN ? 'Details' : 'Detalles'}</h2>
             <hr />
 
             <Grid container spacing={3} style={{ alignItems:'flex-start'}}>
@@ -14,7 +15,7 @@ function Register_details(props) {
                         <input
                             type="text"
                             name="firstName"
-                            placeholder="Enter your first name"
+                            placeholder={EN ? "Enter your first name" : 'Nombre'}
                             value={props.data.firstName}
                             onChange={props.handleChange}
                             className={classnames(
@@ -29,7 +30,7 @@ function Register_details(props) {
                         <input
                             type="text"
                             name="lastName"
-                            placeholder="Enter your last name"
+                            placeholder={EN ? "Enter your last name" : 'Apellido'}
                             value={props.data.lastName}
                             onChange={props.handleChange}
                             className={classnames(
@@ -47,7 +48,7 @@ function Register_details(props) {
                 <input
                     type="text"
                     name="email"
-                    placeholder="Enter your email"
+                    placeholder={EN ? "Enter your email": 'Correo electrónico'}
                     value={props.data.email}
                     onChange={props.handleChange}
                     className={classnames(
@@ -65,7 +66,7 @@ function Register_details(props) {
                         type="password"
                         name="password"
                         autoComplete="password"
-                        placeholder="Enter your password"
+                        placeholder={EN ? "Enter your password": 'Contraseña'}
                         value={props.data.password}
                         onChange={props.handleChange}
                         className={classnames(
@@ -82,7 +83,7 @@ function Register_details(props) {
                         type="password"
                         name="password2"
                         autoComplete="password"
-                        placeholder="Repeat your password"
+                        placeholder={EN ? "Repeat your password": 'Repite la contraseña'}
                         value={props.data.password2}
                         onChange={props.handleChange}
                         className={classnames(

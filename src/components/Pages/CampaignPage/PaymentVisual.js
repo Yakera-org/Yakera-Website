@@ -19,13 +19,27 @@ class PaymentVisual extends Component {
             tip: '',
             comment: '',
             loading: false,
-            thanksOpen: false
+            thanksOpen: false,
+            EN: true
         }
         this.onContinue = this.onContinue.bind(this);
         this.onClose = this.onClose.bind(this);
         this.onBack = this.onBack.bind(this);
         this.switchLoader = this.switchLoader.bind(this);
         this.addAmount = this.addAmount.bind(this);
+    }
+
+    componentDidMount(){
+        const language = LanguageService.getLanguage()
+        if (language === 'en'){
+            this.setState({
+                EN: true
+            })
+        }else{
+            this.setState({
+                EN: false
+            })
+        }
     }
 
     onContinue(amount, email, name, tip, comment){
@@ -114,7 +128,8 @@ class PaymentVisual extends Component {
     }
 
 
-    render() {        
+    render() {    
+        const EN = this.state.EN    
         return (
             <div key={this.props.presetAmount} className="payment-visual" id="donateRef">
                 <ThanksCard 
@@ -133,7 +148,7 @@ class PaymentVisual extends Component {
                         />
                     </div>
                 <h1 >
-                    Donate Now
+                    {EN ? 'Donate Now' : 'Donar Ahora' }
                 </h1>
                 <hr id='donate-now-hr'/>
 
@@ -142,7 +157,7 @@ class PaymentVisual extends Component {
 
                         <div  className="payment-card">
                             <PaymentDetails 
-                                language={this.props.language}
+                                EN={EN}
                                 onContinue={this.onContinue}
                                 presetAmount={this.props.presetAmount}
                                 />
@@ -151,6 +166,7 @@ class PaymentVisual extends Component {
                         : // else get to payment authentication
 
                         <PaymentAuth className="payment-auth"
+                            EN={EN}
                             language={this.props.language}
                             onClose={this.onClose}
                             amount={this.state.amount}

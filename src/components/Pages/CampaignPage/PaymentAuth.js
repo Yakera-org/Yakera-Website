@@ -7,21 +7,16 @@ import api from "../../../services/api";
 
 
 function PaymentAuth(props) {
-    const language = props.language;
-    var EN = true;
-    if(language !=="en"){
-        EN = false
-    }
-
+    const EN = props.EN
     const [shouldShowZelle, setsouldShowZelle] = React.useState(false);
     const [openZelle, setOpenZelle] = React.useState(false);
 
     React.useEffect(()=> {
         setsouldShowZelle(true);
-        // let ranNum = Math.floor(Math.random() * 100);
-        // if(ranNum < 20){
-        //     setsouldShowZelle(true)
-        // }
+        let ranNum = Math.floor(Math.random() * 100);
+        if(ranNum < 20){
+            setsouldShowZelle(true)
+        }
     }, [])
 
     function onAirTM(){
@@ -51,14 +46,14 @@ function PaymentAuth(props) {
     const total_amount = parseInt(props.amount) + parseInt(props.tip)
     return (
         <div>    
-             <p>{EN ? 'Payment Authentication' : 'Payment Authentication'}</p>
+             <p>{EN ? 'Payment Authentication' : 'Autenticación de pago'}</p>
             <Card className='payment-auth-card'>
 
                 <div className='auth-axplanation'>
                     <h4>
-                        Amount to be donated: <label style={{color:'#ea8737'}}>{total_amount} $ </label>
+                    {EN ? 'Amount to be donated:' : 'Monto a donar:'} <label style={{color:'#ea8737'}}>{total_amount} $ </label>
                     </h4>
-                    <p>{EN ? 'Please select a payment method' : 'Please select a payment method.'}</p>
+                    <p>{EN ? 'Please select a payment method' : 'Por favor seleccione un método de pago.'}</p>
                 </div>
                 <PayPal 
                     amount={total_amount} 
@@ -89,7 +84,7 @@ function PaymentAuth(props) {
                         openZelle
                         ?
                         <p>
-                            This service is coming soon...
+                            {EN ? 'This service is coming soon...' : 'Este servicio llegará pronto ...'}                            
                         </p>
                         :
                         ''
@@ -102,7 +97,7 @@ function PaymentAuth(props) {
 
             </Card>
             <button className='payment-back-btn' onClick={props.onBack}>
-                Return
+                {EN ? 'Return' : 'Regreso'}
             </button>
         </div>
     )

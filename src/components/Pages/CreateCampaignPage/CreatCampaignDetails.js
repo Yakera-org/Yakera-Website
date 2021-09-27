@@ -3,15 +3,24 @@ import classnames from 'classnames'
 import {Form, FormCheck, FormControl, FormGroup, FormLabel} from "react-bootstrap";
 
 function CreateCampaignDetails(props) {
+
+    const EN = props.EN
     return(
         <div className='campaign-details'>
-            <h2>Details</h2>
+            <h2>
+                {EN ? 'Details' : 'Detalles'}
+            </h2>
             <hr />
 
             <Form container='true' spacing={3} style={{ alignItems:'flex-start' }}>
                 <FormGroup item='true' xs={12} sm={6}>
-                    <FormLabel>Campaign Category</FormLabel>
-                    {['Healthcare', 'Education', 'Small Business', 'Nutrition'].map((val, index) => (
+                    <FormLabel>
+                        {EN ? 'Campaign Category' : 'Categoría de campaña'}
+                    </FormLabel>
+                    {[EN ? 'Healthcare' : 'Salud',
+                     EN ? 'Education' : 'Educación',
+                     EN ? 'Small Business' : 'Pequeños negocios',
+                     EN ? 'Nutrition' : 'Alimentación'].map((val, index) => (
                         <FormCheck
                             key={index}
                             name={'campaigncategory'}
@@ -26,13 +35,13 @@ function CreateCampaignDetails(props) {
                     ))}
                 </FormGroup>
                 <FormGroup>
-                    <FormLabel>Name of your Campaign</FormLabel>
+                    <FormLabel>{EN ? 'Name of your Campaign' : 'Título de su campaña'}</FormLabel>
                     <FormControl
                         type='campaign-name'
                         as='input'
                         name='campaignname'
-                        autocomplete="off" 
-                        placeholder='Enter your campaign name'
+                        autoComplete="off" 
+                        placeholder={EN ? 'Enter your campaign name' : 'Llene el título de su campaña'}
                         // value={props.data.campaignName}
                         onChange={props.handleChange}
                         className={classnames(
@@ -44,13 +53,13 @@ function CreateCampaignDetails(props) {
                     <div className="invalid-feedback">{props.data.errors.campaignname}</div>
                 </FormGroup>
                 <FormGroup>
-                    <FormLabel>Amount (in USD)</FormLabel>
+                    <FormLabel>{EN ? 'Amount (in USD)' : 'Cantidad ($USD)'}</FormLabel>
                     <FormControl
                         type='number'
                         as='input'
                         name='amount'
-                        autocomplete="off" 
-                        placeholder='Enter the amount (USD)'
+                        autoComplete="off" 
+                        placeholder={EN ? 'Enter the amount (USD)' : 'Llene con la cantidad de su campaña en $USD'}
                         // value={props.data.amount}
                         onChange={props.handleChange}
                         className={classnames(
@@ -62,13 +71,13 @@ function CreateCampaignDetails(props) {
                     <div className="invalid-feedback">{props.data.errors.amount}</div>
                 </FormGroup>
                 <FormGroup>
-                    <FormLabel>Short Description</FormLabel>
+                    <FormLabel>{EN ? 'Short Description' : 'Breve descripción'}</FormLabel>
                     <FormControl
                         type='description'
                         as="input"
-                        autocomplete="off" 
+                        autoComplete="off" 
                         name='description'
-                        placeholder='Short description of your campaign'
+                        placeholder={EN ? 'Short description of your campaign' : 'Breve descripción de su campaña'}
                         onChange={props.handleChange}
                         className={classnames(
                             'form-control',
@@ -79,14 +88,16 @@ function CreateCampaignDetails(props) {
                     <div className="invalid-feedback">{props.data.errors.description}</div>
                 </FormGroup>
                 <FormGroup>
-                    <FormLabel>Your story (we recommend referencing your personal story, the need behind your campaign, why you are opening a campaign, how will you spend the money, and what will the support of people in Yakera allow you to do). Usually successful campaigns have between 3-6 paragraphs.</FormLabel>
+                    <FormLabel>
+                        {EN ? 'Your story (we recommend referencing your personal story, the need behind your campaign, why you are opening a campaign, how will you spend the money, and what will the support of people in Yakera allow you to do). Usually successful campaigns have between 3-6 paragraphs.' : 'Su historia (recomendamos que usted refiera a su propia historia, las necesidades que quiere cubrir con los fondos, por qué está abriendo una campaña, cómo va a gastar los fondos, y qué podrá hacer con los fondos). Típicamente, campañas exitosas tienen entre 3-6 párrafos.'}
+                    </FormLabel>
                     <FormControl
                         type='story'
-                        autocomplete="off" 
+                        autoComplete="off" 
                         as="textarea"
                         name='story'
                         style={{minHeight:'100px'}}
-                        placeholder='Tell us your story'
+                        placeholder={EN ? 'Tell us your story' : 'Cuéntanos su historia'}
                         // value={props.data.story}
                         onChange={props.handleChange}
                         className={classnames(
@@ -98,13 +109,13 @@ function CreateCampaignDetails(props) {
                     <div className="invalid-feedback">{props.data.errors.story}</div>
                 </FormGroup>
                 <FormGroup>
-                    <FormLabel>Itemized budget for each item you will purchase with the donations</FormLabel>
+                    <FormLabel>{EN ? 'Itemized budget for each item you will purchase with the donations.' : 'Presupuesto específico de cada cosa que comprará con los fondos.'}</FormLabel>
                     <FormControl
                         type='itemized-budget'
                         as='textarea'
                         name='itemizedbudget'
-                        autocomplete="off" 
-                        placeholder='Enter the amount (USD) and item descriptions'
+                        autoComplete="off" 
+                        placeholder={EN ? 'Enter the amount (USD) and item descriptions' : 'Llene con las cosas que comprará y los precios en $USD'}
                         // value={props.data.itemizedBudget}
                         onChange={props.handleChange}
                         className={classnames(
@@ -116,7 +127,7 @@ function CreateCampaignDetails(props) {
                     <div className="invalid-feedback">{props.data.errors.itemizedbudget}</div>
                 </FormGroup>
                 <FormGroup className="mb-3">
-                    <FormLabel>Documents that support your ask (i.e medical orders or notes, tuition receipt, pictures of your small business, budget, etc.)</FormLabel>
+                    <FormLabel>{EN ? 'Documents that support your ask (i.e medical orders or notes, tuition receipt, pictures of your small business, budget, etc.)' : 'Documentos que apoyen y documenten su aplicación'}</FormLabel>
                     <FormControl
                         type="file"
                         multiple={true}
@@ -126,7 +137,7 @@ function CreateCampaignDetails(props) {
                     />
                 </FormGroup>
                 <FormGroup className="mb-3">
-                    <FormLabel>Main Campaign picture</FormLabel>
+                    <FormLabel>{EN ? 'Main Campaign picture' : 'Foto primaria'}</FormLabel>
                     <FormControl
                         type="file"
                         as='input'
@@ -137,7 +148,7 @@ function CreateCampaignDetails(props) {
                     />
                 </FormGroup>
                 <FormGroup className="mb-3">
-                    <FormLabel>Campaign pictures</FormLabel>
+                    <FormLabel>{EN ? 'Campaign pictures' : 'Otras fotos de la campaña'}</FormLabel>
                     <FormControl
                         type="file"
                         multiple={true}

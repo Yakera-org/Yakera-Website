@@ -95,7 +95,7 @@
 }
 .about-us-content-section img{
     width: 80%;
-    margin-top: 20px;
+    margin-top: 50px;
 }
 .about-us-team{
     text-align: center;
@@ -125,7 +125,6 @@
     object-fit: cover; 
     border: 15px solid #ea8737;
     outline: none;
-
 }
 .about-us-team-pics h2{
     color: #ea8737;
