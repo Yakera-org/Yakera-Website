@@ -10,7 +10,7 @@ const _axios = require('axios');
 const axios = _axios.create();
 const yakeraBackUrl = 'https://express-backend-api.herokuapp.com';
 
-function Register() {
+function Register(props) {
 
   const initialState = {
     firstName: "",
@@ -44,7 +44,7 @@ function Register() {
   const [data, setData] = useState(initialState);
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
-  
+  const EN = props.EN
   const handleChange = event => {
     if(event.target.name === 'terms'){
       setData({
@@ -92,7 +92,7 @@ function Register() {
       }
     }else if(name==='password2'){
       if(value !== data.password){
-        error = 'Passwords do not match'
+        error = EN ? 'Passwords do not match' : 'Las contraseñas no coinciden'
       }else{
         error = validateFields.validateName(value)
       }
@@ -134,7 +134,7 @@ function Register() {
   }
 
   async function validateStep1(){
-    let emptyWarning = 'This field cannot be empty';
+    let emptyWarning = EN ? 'This field cannot be empty' : 'Este campo no puede estar vacío';
     let firstNameError = false;
     let lastNameError = false;
     let emailError = false;
@@ -158,7 +158,7 @@ function Register() {
       passwordError = validateFields.validatePassword(data.password);
     }
     if(data.password2 !== data.password || !data.password2){
-      password2Error = 'Passwords do not match.';      
+      password2Error = EN ? 'Passwords do not match.' : 'Las contraseñas no coinciden';      
     }
 
    
@@ -180,7 +180,7 @@ function Register() {
     return false
   }
   const validateStep2 = () => {
-    let emptyWarning = 'Cannot be empty';
+    let emptyWarning = EN ? 'Cannot be empty' : 'No puede estar vacío';
     
     let addressError = false;
     let phoneError = false;
@@ -242,10 +242,10 @@ function Register() {
     }catch{
       setData({
               ...data,
-              error:'Email already taken',
+              error: EN ? 'Email already taken' : 'Correo electrónico ya tomado',
               errors:{
                 ...data.errors,
-                email: 'Check the email'
+                email: EN ? 'Check the email' : 'Revisa el correo electrónico'
               }
       })
       return false
@@ -256,7 +256,7 @@ function Register() {
     if(!data.check.terms){
       setData({
         ...data,
-        error: 'Please accept the terms and conditions.'
+        error: EN ? 'Please accept the terms and conditions.' : 'Por favor, acepte los términos y condiciones.'
       })
     }else{
       //loading
@@ -291,9 +291,7 @@ function Register() {
       setLoading(true)
 
       if (response.status === 201) {
-        console.log(response.data)
-        console.log("sucess")
-        setSuccess(response.data.message)
+        setSuccess(EN ? 'Signed up successfully. Email verification was sent.' : 'Se registró correctamente. Se envió la verificación por correo electrónico.')
         setLoading(false)
       }
 
@@ -301,7 +299,7 @@ function Register() {
       var errorMessage;
       console.log(error);
       if(error.response){  
-        errorMessage = "Something went wrong. Please try again later.";
+        errorMessage = EN ? "Something went wrong. Please try again later." : "Se produjo un error. Vuelva a intentarlo más tarde.";
       }
       setLoading(false)
       setData({
@@ -322,7 +320,7 @@ function Register() {
             visible={loading}
           />
         </div>
-        <RegisterVisuals data={data} handleChange={handleChange} validate={validate} register={register} error={data.error} success={success} setError={setData}/>
+        <RegisterVisuals EN={EN} data={data} handleChange={handleChange} validate={validate} register={register} error={data.error} success={success} setError={setData}/>
         <br />
         <br />
         <br />
