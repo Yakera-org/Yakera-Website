@@ -6,17 +6,18 @@ import content from './FAQ.json'
 
 const banner_pic = 'https://yakera-files.s3.us-east-2.amazonaws.com/yakera/faq-title.jpg';
 
-function FAQVisuals() {
+function FAQVisuals(props) {
 
     const [searchQuery] = useState('');
+    const EN = props.EN
+    const language = EN ? 'en' : 'es'
     const filterCampaignsBySearch = (content, query) => {
         if(!query) {
-            return content.en;
+            return content[language];
         }
-        const result = content.en.filter(drawer => {
+        const result = content[language].filter(drawer => {
             return(drawer.questions[0].toLowerCase().includes(query))
         });
-        console.log(result)
         return result;
     };
 
@@ -30,7 +31,7 @@ function FAQVisuals() {
                     <div className='faq-banner'>
                         <Grid container spacing={0} style={{ alignItems:'flex-start'}}>
                             <Grid item xs={12} sm={4} >    
-                                    Frequently Asked Questions
+                                    {EN ? 'Frequently Asked Questions' : 'Preguntas frecuentes'}
                             </Grid>
                             <Grid item xs={12} sm={8} >   
                                 <div className='img-wrapper'>
@@ -44,7 +45,9 @@ function FAQVisuals() {
                 
                 <Grid item xs={12} sm={12} >
                     <div className='faq-drawer-area'>
-                        <h1>What can we help you with?</h1>
+                        <h1>
+                            {EN ? 'What can we help you with?' : 'Cómo le podemos ayudar?'}
+                        </h1>
                         {/* <SearchBar 
                             searchQuery={searchQuery}
                             setSearchQuery={setSearchQuery}

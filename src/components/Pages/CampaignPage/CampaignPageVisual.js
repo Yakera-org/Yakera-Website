@@ -96,14 +96,19 @@ class CampaignPageVisual extends Component {
         const target = campaign.targetAmount;
         const language = this.props.language;
         let title, story, mainPicture;
+        try{
+            mainPicture = campaign.mainPicture.url;
+        }
+        catch{
+            mainPicture = ''
+        }
+
         try {
             title = campaign.translations[language].title;
             story = campaign.translations[language].story;
-            mainPicture = campaign.mainPicture.url;
         } catch (err) {
             title = campaign.title;
             story = campaign.story;
-            mainPicture = ''
         }
         return (
             <div className = "camp-page-vis">

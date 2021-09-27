@@ -2,10 +2,11 @@ import React from 'react'
 import FAQVisuals from './FAQVisuals'
 import './FAQPage.css'
 
-function FAQPage() {
+function FAQPage(props) {
+    const EN = props.EN
     return (
         <div className='faq-page'>
-            <FAQVisuals />
+            <FAQVisuals EN={EN}/>
         </div>
     )
 }
