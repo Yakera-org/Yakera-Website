@@ -84,7 +84,7 @@ function PaymentAuth(props) {
                         openZelle
                         ?
                         <p>
-                            {EN ? 'This service is coming soon...' : 'Este servicio llegará pronto ...'}                            
+                            {EN ? 'This service is coming soon. Please try using your credit or debit card, Paypal or Airtm.' : 'Este servicio llegará pronto. Por favor efectua tu pago usando tu tarjeta de debito o credito, Paypal o Airtm.'}                            
                         </p>
                         :
                         ''

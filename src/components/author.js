@@ -56,17 +56,17 @@ function Author() {
                     <Grid item xs={12} sm={3} >
                         <Grid container spacing={0} style={{ alignItems:'center', textAlign:'center'}}>
                             <Grid item xs={3} sm={3} >
-                                <a id="icon" href={'https://www.facebook.com/Yakera.ve'} rel="noopener noreferrer"  target="_blank">
+                                <a id="icon" href={'https://www.facebook.com/yakeraorg'} rel="noopener noreferrer"  target="_blank">
                                     <i className="fab fa-facebook-square fa-3x" ></i>
                                 </a>
                             </Grid>
                             <Grid item xs={3} sm={3} >
-                                <a id="icon" href={"https://twitter.com/Yakera_ve"} rel="noopener noreferrer"  target="_blank">
+                                <a id="icon" href={"https://twitter.com/yakeraorg"} rel="noopener noreferrer"  target="_blank">
                                     <i className="fab fa-twitter-square fa-3x" ></i>
                                 </a>
                             </Grid>
                             <Grid item xs={3} sm={3} >
-                                <a id="icon" href={"https://www.instagram.com/yakera_ve/"} rel="noopener noreferrer"  target="_blank">
+                                <a id="icon" href={"https://www.instagram.com/yakeraorg"} rel="noopener noreferrer"  target="_blank">
                                     <i className="fab fa-instagram fa-3x" ></i>
                                 </a>
                             </Grid>
