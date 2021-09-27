@@ -91,10 +91,17 @@ class CampaignPageVisual extends Component {
     }
 
     render() {
+        var EN = true;
+        const language = this.props.language;
+
+        if(language ==="en"){
+            EN=true
+        }else{
+            EN=false
+        }
         const campaign = this.props.campaign;
         const amount = this.props.amount;
         const target = campaign.targetAmount;
-        const language = this.props.language;
         let title, story, mainPicture;
         try{
             mainPicture = campaign.mainPicture.url;
@@ -164,13 +171,17 @@ class CampaignPageVisual extends Component {
                                         onClick={() => {
                                             this.onClickScroll('about')
                                         }}
-                                    >About</Nav.Link>
+                                    >
+                                        {EN ? 'About' : 'Sobre'}
+                                    </Nav.Link>
                                     <Nav.Link
                                         href='#2'
                                         onClick={() => {
                                             this.onClickScroll('gallery')}
                                         }
-                                    >Gallery</Nav.Link>
+                                    >
+                                        {EN ? 'Gallery' : 'Galería'}
+                                    </Nav.Link>
                                 </Nav>
                             </Container>
                         </Navbar>

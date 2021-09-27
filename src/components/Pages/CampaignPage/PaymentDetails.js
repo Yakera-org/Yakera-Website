@@ -103,8 +103,8 @@ class PaymentDetails extends PureComponent {
     }
 
     validateData(){
-        let emptyWarning = 'This field cannot be empty';
-        let amountError, emailError, nameError, tipError, commentError;
+        let emptyWarning = this.props.EN ? 'This field cannot be empty': 'Este campo no puede estar vacío';
+        let amountError, emailError, nameError, tipError;
 
         let isValid = false;
     
@@ -123,11 +123,6 @@ class PaymentDetails extends PureComponent {
           nameError = emptyWarning;      
         }else{
             nameError = validateFields.validateName(this.state.name.value)
-        }
-        if(!this.state.comment.value){
-            commentError = emptyWarning;      
-        }else{
-            commentError = validateFields.validateName(this.state.comment.value); // TODO: Validate comment
         }
 
         if(this.state.yesTip){
@@ -154,17 +149,13 @@ class PaymentDetails extends PureComponent {
             tip:{
                 ...state['tip'],
                 error: tipError
-            },
-            comment:{
-                ...state['comment'],
-                error: commentError
             }
         }))
 
         if(!this.state.age || !this.state.consent){
             isValid = false
             this.setState({
-                checkError: 'These checkboxes must be ticked.'
+                checkError: this.props.EN ? 'These checkboxes must be ticked.' : "Estas casillas de verificación deben estar marcadas."
             })
         }else if (this.state.age && this.state.consent){
             isValid = true
@@ -181,11 +172,7 @@ class PaymentDetails extends PureComponent {
 
     render() {
         const { amount, name, email, comment, tip } = this.state;
-        const language = this.props.language;
-        var EN = true;
-        if(language !=="en"){
-            EN = false
-        }
+        const EN = this.props.EN
         return (
             <div >
 
@@ -198,7 +185,7 @@ class PaymentDetails extends PureComponent {
                     type="number"
                     name="amount"
                     value={amount.value}
-                    placeholder="Amount ($)*"
+                    placeholder={EN ? "Amount ($)*" : 'Cantidad ($)'}
                     className={classnames(
                         'form-control',
                         { 'is-valid': amount.error === false },
@@ -214,7 +201,7 @@ class PaymentDetails extends PureComponent {
                     type="text"
                     name="email"
                     value={email.value}
-                    placeholder="Email*"
+                    placeholder={EN ? "Email*" : 'Email*'}
                     className={classnames(
                         'form-control',
                         { 'is-valid': email.error === false },
@@ -244,7 +231,7 @@ class PaymentDetails extends PureComponent {
                         />
                 <div className='error-msg'>{name.error}</div> 
 
-                <p id='required'> * required</p>
+                <p id='required'>{EN ? ' * required' : '* requerido'}</p>
                 
                 <input
                     type="text"
@@ -260,13 +247,12 @@ class PaymentDetails extends PureComponent {
                             this.handleChange(validateFields.validateName, evt)
                         }                                  
                         
-                        />
-                <div >{comment.error}</div> 
+                />
                 
 
                 <hr id='donate-now-hr'/>
 
-                <p>Would you like to leave a tip?* </p>
+                <p>{EN ? 'Would you like to leave a tip?*' : 'Quisiera dejar una propina?'} </p>
 
                 <input
                     name="tip-yes"
@@ -289,14 +275,14 @@ class PaymentDetails extends PureComponent {
                     <div id='tip-area'>
                         <Grid container spacing={0} style={{ alignItems:'flex-start', padding:'0 10%', marginTop:'-10px'}}>
                             <Grid item xs={12} sm={4} >
-                                <div className='label'>Tip ($):</div>
+                                <div className='label'>{EN ? 'Tip ($)' : 'Propina ($)'}:</div>
                             </Grid>
                             <Grid item xs={12} sm={8} style={{marginTop:'8px'}}>
                                 <input
                                     type="number"
                                     name="tip"
                                     value={tip.value}
-                                    placeholder="Tip ($)*"
+                                    placeholder={EN ? 'Tip ($)' : 'Propina ($)'}
                                     className={classnames(
                                         'form-control',
                                         { 'is-valid': tip.error === false },
@@ -329,10 +315,10 @@ class PaymentDetails extends PureComponent {
                         )}
                 />
                 <div className="check-text" style={{marginTop:'0px'}} >
-                    {EN ? "No, I don't want to leave a tip" : 'No'}   
+                    {EN ? "No, I don't want to leave a tip" : 'No, no quiero dejar propina.'}   
                 </div>
 
-                <p id='tip-desc'>*Leaving a tip helps us maintain and bring you new features</p>
+                <p id='tip-desc'>{EN ? "*Leaving a tip helps us maintain and bring you new features" : '*Dejando propina nos ayuda a mantener y traerle nuevas opciones y servicios.'}   </p>
 
                 <hr id='donate-now-hr'/>
                 
@@ -348,12 +334,12 @@ class PaymentDetails extends PureComponent {
                         )}
                 />  
                 <div className="check-text" style={{marginTop:'30px'}}>
-                        {EN ? 'I consent to the' : 'Consiento al'}
+                        {EN ? 'I consent to the' : 'Asiento a la'}
                     <button
                         id="privacy-button" 
                         onClick={this.onPrivacy}
                         >
-                        {EN ? 'privacy form *' : 'contrato de privacidad'}
+                        {EN ? 'privacy form *' : 'forma de privacidad *'}
                     </button>  
                 </div>
 
@@ -367,7 +353,7 @@ class PaymentDetails extends PureComponent {
                         )}
                 />
                 <div className="check-text" style={{marginTop:'0px'}} >
-                    {EN ? 'I confirm to be 18 or over*' : 'Confirmo tener 18 años o más'}   
+                    {EN ? 'I confirm to be 18 or over *' : 'Tengo más de 18 años de edad *'}   
                 </div>
 
                 <div className='error-msg' style={{marginTop:'-20px', textAlign:'left', marginLeft:'20px'}}>{this.state.checkError}</div>
