@@ -3,24 +3,15 @@ import CampaignCard from './campaignCard';
 import Author from '../../author';
 import  { Grid } from '@material-ui/core';
 import HashLoader from "react-spinners/HashLoader";
-import campaigns from './allCampaigns';
 import pics from './pics';
-import icons from './icons';
 import SearchIcon from '@material-ui/icons/Search';
 import { Form, InputGroup } from 'react-bootstrap';
+import { unauthenticatedGet } from '../../../utils';
 
 import './donate.css';
+import LanguageService from '../../../services/language';
+const yakeraBackendUrl = 'https://express-backend-api.herokuapp.com/api/campaigns/';
 
-const _axios = require('axios');
-const axios = _axios.create();
-const yakeraBackUrl = 'https://api.yakera.net';
-
-const colorDic={
-    "education": '#71b98f',
-    "healthcare": '#ff7d7d',
-    "business":'#7099d0',
-    "nutrition": '#ffc19a',
-};
 
 // no way did i write this, so here is an explanation
 // https://stackoverflow.com/questions/1584370/how-to-merge-two-arrays-in-javascript-and-de-duplicate-items
@@ -41,11 +32,11 @@ const filterCampaignsBySearch = (campaigns, query, lang) => {
     }
   
     const searchTitles = campaigns.filter((campaign) => {
-        const campaignTitle = campaign.cam.title[lang].toLowerCase();
+        const campaignTitle = campaign.translations[lang].title.toLowerCase();
         return campaignTitle.includes(query.toLowerCase());
     });
     const searchDescriptions = campaigns.filter((campaign) => {
-        const campaignDescription = campaign.cam.description[lang].toLowerCase();
+        const campaignDescription = campaign.translations[lang].description.toLowerCase();
         return campaignDescription.includes(query.toLowerCase());
     });
 
@@ -56,7 +47,7 @@ const filterCampaignsByCategory = (campaigns, categoryState) => {
     let activeFilter = categoryState.replace('Filter', '');
 
     return campaigns.filter((campaign) => {
-        const campaignCategory = campaign.cam.category;
+        const campaignCategory = campaign.category;
         return campaignCategory.includes(activeFilter);
     })
 };
@@ -83,7 +74,7 @@ class SearchBar extends React.Component {
                 </InputGroup.Text>
                 <Form.Control
                     type='search'
-                    placeholder='Search...'
+                    placeholder={this.props.language==='en' ? 'Search...' : 'Buscar...'}
                     value={this.props.searchQuery}
                     onChange={e => this.props.setSearchQuery(e.target.value)}
                     style={{
@@ -105,6 +96,7 @@ class donate extends Component{
                 language: 'en',
                 tab:'education',
                 dicAmount:{},
+                campaigns: [],
                 searchQuery:'',
                 healthcareFilter: '',
                 educationFilter: '',
@@ -115,61 +107,29 @@ class donate extends Component{
     }
 
     async componentDidMount(){
-        var lang = localStorage.getItem("lang");
-        if(!lang){
-            localStorage.setItem("lang", "en");
-        }
+        var lang = LanguageService.getLanguage()
 
-        var dicStorage = JSON.parse(localStorage.getItem("dic"));
-        if(!dicStorage){
-            var dic = {}
-            for(let i in campaigns){
-                let name = campaigns[i].cam.name;
-                await this.getCurrentAmount(name).then((res) => {
-                    dic[name] = res
-                })
-            }
-    
-            localStorage.setItem("dic", JSON.stringify(dic));
-            this.setState({
-                dicAmount: dic,
+        await unauthenticatedGet(yakeraBackendUrl, {})
+            .then(data => {
+                console.log(data.data.campaigns)
+                this.setState({
+                    campaigns: data.data.campaigns,
+                });
             })
-        }else{
-            this.setState({
-                dicAmount: dicStorage,
+            .catch(error => {
+                console.log(error);
             })
-        }
-
-        this.setState({
-            language: lang,
-            loaded:true
-        })
+            .finally(() => {
+                this.setState({
+                    language: lang,
+                    loaded:true
+                });
+        });       
     }
     
     handle_change = (value) => {
         this.setState({ value })
     }    
-
-    async getCurrentAmount(name){
-
-        var result = 0;
-        const config = {
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        }
-        const url = yakeraBackUrl + "/api/campaign/?email=" + name;
-        
-        await axios.get(url, config)
-        .then(res => {
-                result =  res.data[0].amount
-        })
-        .catch(err => {
-            console.log("error: " + err.message);
-        })
-    
-        return result;   
-    }
 
     setSearchQuery = (e) => {
         this.setState({
@@ -207,17 +167,16 @@ class donate extends Component{
 
     handleFilteredCampaigns = () => {
         if (this.state.searchQuery.length !== 0) {
-            return filterCampaignsBySearch(campaigns, this.state.searchQuery, this.state.language);
+            return filterCampaignsBySearch(this.state.campaigns, this.state.searchQuery, this.state.language);
         } else if (this.state.healthcareFilter.length !== 0) {
-            return filterCampaignsByCategory(campaigns, this.state.activeCategory);
+            return filterCampaignsByCategory(this.state.campaigns, this.state.activeCategory);
         }
-        return campaigns;
+        return this.state.campaigns;
     };
    
     render(){
         var count = 0;
         var filteredCampaigns = this.handleFilteredCampaigns();
-
         if(!this.state.loaded){
             return(
                 <div className="donate-page-loading">
@@ -288,6 +247,7 @@ class donate extends Component{
                     <SearchBar 
                         searchQuery={this.state.searchQuery}
                         setSearchQuery={this.setSearchQuery}
+                        language={this.state.language}
                     />
                 </div>
 
@@ -298,14 +258,11 @@ class donate extends Component{
                     {filteredCampaigns.sort(() => 0.5 - Math.random()).map((cam, i) => {
                             count++;
                             return(
-                                <Grid item xs={12} sm={2} key={i}>
+                                <Grid item xs={12} sm={3} key={i}>
                                     <CampaignCard
-                                        campaign={cam.cam}
-                                        color={colorDic[cam.cam.category]}
+                                        campaign={cam}
                                         language={this.state.language}
-                                        logo={pics[cam.cam.category]}  // make this pass the whole thing
-                                        amount={this.state.dicAmount[cam.cam.name]}
-                                        icon={icons[cam.cam.category]}
+                                        amount={cam.raised}
                                     />
                                 </Grid>
                             )                       

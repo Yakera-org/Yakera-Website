@@ -2,9 +2,11 @@ import React from 'react'
 
 function Register_conf(props) {
 
+    const EN = props.EN
+
     return (
         <div className='register-confirmation'>
-            <h2>Confirmation</h2>
+            <h2>{EN ? 'Confirmation' : 'Confirmación'}</h2>
             <hr /> 
 
             <div className='checks'>
@@ -14,7 +16,7 @@ function Register_conf(props) {
                     checked={props.data.check.terms}
                     onChange={props.handleChange}
                 />
-                <label>I agree to the terms and conditions *</label>
+                <label>{EN ? 'I agree to the terms and conditions *' : 'Estoy de acuerdo con los términos y condiciones *'}</label>
 
                 <br />
 
@@ -24,10 +26,10 @@ function Register_conf(props) {
                     checked={props.data.check.newsLetter}
                     onChange={props.handleChange}
                 />
-                <label>I want to be added to the Yakera Newsletter</label>
+                <label>{EN ? 'I want to be added to the Yakera Newsletter' : 'Quiero ser agregado a la Newsletter de Yakera'}</label>
             </div>   
 
-            <div style={{fontSize:'15px'}}> * required</div>         
+            <div style={{fontSize:'15px'}}>{EN ? '* required' : '* requerido'} </div>         
         </div>
     )
 }

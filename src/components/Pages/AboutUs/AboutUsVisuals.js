@@ -1,49 +1,100 @@
 import React from 'react'
 import { Grid } from '@material-ui/core';
-import titleImg from '../../../pics/y.png'
 import ContentSection from './ContentSection';
-import illustracion1 from '../../../pics/ill_1.PNG'
-import illustracion2 from '../../../pics/ill_2.PNG'
-import illustracion3 from '../../../pics/ill_3.PNG'
-import illustracion4 from '../../../pics/ill_4.PNG'
 import content from './texts.json'
 import TeamSection from './TeamSection';
 
+const illustracion1 = 'https://assets.yakera.org/yakera/illustration-aboutus-1.png'
+const illustracion2 = 'https://assets.yakera.org/yakera/illustration-aboutus-2.png'
+const illustracion3 = 'https://assets.yakera.org/yakera/illustration-aboutus-3.png'
+const illustracion4 = 'https://assets.yakera.org/yakera/illustration-aboutus-4.png'
 const illustracions = [illustracion4, illustracion3, illustracion2, illustracion1]
+const titleImg = 'https://assets.yakera.org/yakera/photos-aboutus.png'
+const worldImg = 'https://assets.yakera.org/yakera/worldmap.png'
 
 
-function AboutUsVisuals() {
- 
+function AboutUsVisuals(props) {
+    const EN = props.EN
+    const language = EN?'en':'es' 
+
     return (
         <div className='about-us-visuals'>
             <Grid container spacing={0} alignItems="center">
-                    <Grid item xs={12} sm={6} >
-                        <div className='about-us-top-text'>
-                            <h1>Check out the <b>Campaigns</b> in
-                            </h1>
-                            <h1 id='labels'>
-                                <a id='green' href='/campaigns'>Education</a>,&nbsp;
-                                <a id='yellow' href='/campaigns'> Nutrition</a>,&nbsp;
-                                <a id='red' href='/campaigns'> Healthcare</a>&nbsp;and&nbsp;
-                                <a id='blue' href='/campaigns'> Small Business</a>
-                            </h1>
-                        </div>
-                    </Grid>
                     <Grid item xs={12} sm={6} >
                         <div className='about-us-top-img'>
                             <img src={titleImg} alt='top-img' />
                         </div>
                     </Grid>
-
+                    <Grid item xs={12} sm={6} className='about-title-text' >
+                        <p>
+                            {EN ? 'Yakera unlocks international solidarity through empathy and storytelling. We revolutionize humanitarian aid, one story at a time.': 'Yakera desbloquea la solidaridad internacional a través de la empatía y la narración. Revolucionamos la ayuda humanitaria, una historia a la vez.'}
+                            
+                        </p>
+                    </Grid>
+                    <Grid item xs={12} sm={12} >
+                        { EN ?
+                            <div className='about-us-top-text'>
+                                <h1>Check out the <b>Campaigns</b> in
+                                </h1>
+                                <h1 id='labels'>
+                                    <a id='green' href='/campaigns'>Education</a>,&nbsp;
+                                    <a id='yellow' href='/campaigns'>Nutrition</a>,&nbsp;
+                                    <a id='red' href='/campaigns'>Healthcare</a>&nbsp;and&nbsp;
+                                    <a id='blue' href='/campaigns'>Small Business</a>
+                                </h1>
+                            </div>
+                            :
+                            <div className='about-us-top-text'>
+                                <h1>Chequee nuestras <b>campañas </b> en las categorías de
+                                </h1>
+                                <h1 id='labels'>
+                                    <a id='green' href='/campaigns'>Educación</a>,&nbsp;
+                                    <a id='yellow' href='/campaigns'>Alimentación</a>,&nbsp;
+                                    <a id='red' href='/campaigns'>Salud</a>&nbsp;y&nbsp;
+                                    <a id='blue' href='/campaigns'>Pequeños negocios</a>.
+                                </h1>
+                            </div>                            
+                        }
+                    </Grid>                
                 <Grid item xs={12} sm={12} >
                     <div className='about-us-banner'>
-                        <p>Read the stories written by people on the platform</p>
+                        <p>{EN ? 'Read the stories written by people on the platform' : 'Lee las historias escritas por usuarios de la plataforma.'}</p>
                     </div>
                 </Grid>
+                
+                <Grid item xs={12} sm={6} className='about-world-text' >
+                    {EN ?
+                        <section>
+                            <div id='percent'>
+                                100%
+                            </div>
+                            <p>
+                                <b>Of what you chip in goes to people directly:</b>
+                                &nbsp;no overhead costs, no fees. We are changing how humanitarian aid is delivered around the world.
+                            </p>
+                        </section>
+                        :
+                        <section>
+                            <div id='percent'>
+                                100%
+                            </div>
+                            <p>
+                                <b>De lo que aportas va directamente a las personas:</b>
+                                &nbsp;sin gastos generales, sin comisiones. Estamos cambiando la forma en que se entrega la ayuda humanitaria en todo el mundo.
+                            </p>
+                        </section>
+                    }
+                </Grid>
+                <Grid item xs={12} sm={6} >
+                    <div className='about-us-world-img'>
+                        <img src={worldImg} alt='top-img' />
+                    </div>
+                </Grid>
+                <Grid container spacing={0} style={{ alignItems:'flex-start', textAlign:'left'}}>
                 {
-                    content.content.map((element,i) => {
+                    content[language].map((element,i) => {
                         return(
-                            <Grid key={i} item xs={12} sm={6} >
+                            <Grid key={i} item xs={12} sm={3} >
                                 <div className='about-us-content-section'>
                                     <ContentSection
                                         title={element.title}
@@ -55,12 +106,13 @@ function AboutUsVisuals() {
                         )                        
                     })
                 }
+                </Grid>
 
             </Grid>
 
-            <hr style={{margin:' 50px 0 '}}/>
+            <hr style={{margin:' 50px 10px '}}/>
 
-            <TeamSection />
+            <TeamSection EN={EN}/>
         </div>
     )
 }

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import LanguageService from '../../../services/language';
 import './consent.css';
 
 var terms = "consent.html";
@@ -12,10 +13,7 @@ class Terms extends Component{
     }
 
     componentDidMount(){
-        var lang = localStorage.getItem("lang");
-        if(!lang){
-            localStorage.setItem("lang", "en");
-        }
+        var lang = LanguageService.getLanguage()
         if(lang === "en"){
             terms= "consent.html"
         }else{

@@ -1,6 +1,12 @@
 import React, { Component } from 'react';
 import PaymentAuth from './PaymentAuth';
 import PaymentDetails from './PaymentDetails';
+import Loader from "react-loader-spinner";
+import api from "../../../services/api";
+import ThanksCard from './thanksCard';
+import AirTM from './AirTM';
+import LanguageService from '../../../services/language';
+
 class PaymentVisual extends Component {
 
     constructor(props) {
@@ -10,14 +16,33 @@ class PaymentVisual extends Component {
             amount: '',
             name: '',
             email: '',
-            tip:''
+            tip: '',
+            comment: '',
+            loading: false,
+            thanksOpen: false,
+            EN: true
         }
         this.onContinue = this.onContinue.bind(this);
         this.onClose = this.onClose.bind(this);
         this.onBack = this.onBack.bind(this);
+        this.switchLoader = this.switchLoader.bind(this);
+        this.addAmount = this.addAmount.bind(this);
     }
 
-    onContinue(amount, email, name, tip){
+    componentDidMount(){
+        const language = LanguageService.getLanguage()
+        if (language === 'en'){
+            this.setState({
+                EN: true
+            })
+        }else{
+            this.setState({
+                EN: false
+            })
+        }
+    }
+
+    onContinue(amount, email, name, tip, comment){
         var element = document.getElementById("donateRef");
         element.scrollIntoView({behavior: "smooth", block: "end", inline: "nearest"});
         
@@ -26,7 +51,8 @@ class PaymentVisual extends Component {
             amount: amount,
             name: name,
             email: email,
-            tip: tip
+            tip: tip,
+            comment: comment
         })
     }
 
@@ -41,12 +67,88 @@ class PaymentVisual extends Component {
         })
     }
 
-    render() {        
+    switchLoader(status){
+        this.setState({
+            loading: status
+        })
+    }
+
+    OnPaymentClick(){
+        console.log('click')
+        this.switchLoader(true);
+    }
+    async OnPaymentCancel() {
+        console.log('payment canceled');
+        await this.addAmount({}, 'cancel');
+        this.switchLoader(false);
+    }
+    async OnPaymentError(){
+        console.log('payment failed');
+        await this.addAmount({}, 'error');
+        this.switchLoader(false);
+    }
+    async OnSuccessPayment(details, data){
+        console.log("payment successful")
+        // Pass data instead of details to get orderID as described here: https://luehangs.site/lue_hang/projects/react-paypal-button-v2
+        await this.addAmount(data, 'success');
+        this.openThanks()
+        console.log(details)
+        console.log(data)
+        this.switchLoader(false);
+    }
+    async addAmount(data, status){
+        try {
+            const payload = {
+                "slug": this.props.slug,
+                "email": this.state.email,
+                "name": this.state.name,
+                "amount": this.state.amount,
+                "status": status,
+                "tip": this.state.tip,
+                "paymentID": data.orderID,
+                "comment": this.state.comment,
+                "language": LanguageService.getLanguage()
+            }
+            console.log(await api.post(`/campaigns/donate`, payload))
+        } catch (err) {
+            console.log(err);
+        }
+    }
+    openThanks(){
+        this.setState({
+            thanksOpen: true
+        })
+    }
+    closeThanks(){
+        window.location.reload(false);
+    }
+    onAirTM(val, title){
+        AirTM(val, title)
+        //this.switchLoader(true)
+    }
+
+
+    render() {    
+        const EN = this.state.EN    
         return (
             <div key={this.props.presetAmount} className="payment-visual" id="donateRef">
+                <ThanksCard 
+                    open={this.state.thanksOpen} 
+                    amount={this.state.amount+this.state.tip}
+                    onClose={this.closeThanks.bind(this)}
+                    />
                 <div className="payment-card-sec">
+                    <div className='loader'>
+                        <Loader
+                            type="Bars"
+                            color="#ea8737"
+                            height={100}
+                            width={100}
+                            visible={this.state.loading}
+                        />
+                    </div>
                 <h1 >
-                    Donate Now
+                    {EN ? 'Donate Now' : 'Donar Ahora' }
                 </h1>
                 <hr id='donate-now-hr'/>
 
@@ -55,7 +157,7 @@ class PaymentVisual extends Component {
 
                         <div  className="payment-card">
                             <PaymentDetails 
-                                language={this.props.language}
+                                EN={EN}
                                 onContinue={this.onContinue}
                                 presetAmount={this.props.presetAmount}
                                 />
@@ -64,15 +166,22 @@ class PaymentVisual extends Component {
                         : // else get to payment authentication
 
                         <PaymentAuth className="payment-auth"
+                            EN={EN}
                             language={this.props.language}
                             onClose={this.onClose}
                             amount={this.state.amount}
                             name={this.state.name}
                             email={this.state.email}
-                            onAirTM={this.props.AirTM}
+                            slug={this.props.slug}
+                            onAirTM={this.onAirTM.bind(this)}
                             tip={this.state.tip}
                             onBack={this.onBack}
                             title={this.props.title}
+                            comment={this.state.comment}
+                            OnSuccessPayment={this.OnSuccessPayment.bind(this)}
+                            OnPaymentClick={this.OnPaymentClick.bind(this)} 
+                            OnPaymentError={this.OnPaymentError.bind(this)} 
+                            OnPaymentCancel={this.OnPaymentCancel.bind(this)}
                         />
                     }
                 </div>    

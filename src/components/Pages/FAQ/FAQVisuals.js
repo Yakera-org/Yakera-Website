@@ -1,24 +1,23 @@
 import React, { useState } from 'react';
 import { Grid } from '@material-ui/core';
-import banner_pic from '../../../pics/pattern-yakera.png'
 import Drawer from './FAQDrawer'
-import SearchIcon from '@material-ui/icons/Search';
-import { Form, InputGroup } from 'react-bootstrap';
 import Author from '../../author';
 import content from './FAQ.json'
 
+const banner_pic = 'https://assets.yakera.org/yakera/faq-title.jpg';
 
-function FAQVisuals() {
+function FAQVisuals(props) {
 
-    const [searchQuery, setSearchQuery] = useState('');
+    const [searchQuery] = useState('');
+    const EN = props.EN
+    const language = EN ? 'en' : 'es'
     const filterCampaignsBySearch = (content, query) => {
         if(!query) {
-            return content.en;
+            return content[language];
         }
-        const result = content.en.filter(drawer => {
-            return(drawer.questions[0].includes(query))
+        const result = content[language].filter(drawer => {
+            return(drawer.questions[0].toLowerCase().includes(query))
         });
-        console.log(result)
         return result;
     };
 
@@ -32,7 +31,7 @@ function FAQVisuals() {
                     <div className='faq-banner'>
                         <Grid container spacing={0} style={{ alignItems:'flex-start'}}>
                             <Grid item xs={12} sm={4} >    
-                                    Frequently Asked Questions
+                                    {EN ? 'Frequently Asked Questions' : 'Preguntas frecuentes'}
                             </Grid>
                             <Grid item xs={12} sm={8} >   
                                 <div className='img-wrapper'>
@@ -43,15 +42,16 @@ function FAQVisuals() {
                         </Grid>
                     </div>
                 </Grid>
-
                 
                 <Grid item xs={12} sm={12} >
                     <div className='faq-drawer-area'>
-                        <h1>What can we help you with?</h1>
-                        <SearchBar 
+                        <h1>
+                            {EN ? 'What can we help you with?' : 'Cómo le podemos ayudar?'}
+                        </h1>
+                        {/* <SearchBar 
                             searchQuery={searchQuery}
                             setSearchQuery={setSearchQuery}
-                        />
+                        /> */}
                         {
                             filteredContent.map((element, i) => {
                                 return(
@@ -75,41 +75,3 @@ function FAQVisuals() {
 }
 
 export default FAQVisuals
-
-
-class SearchBar extends React.Component {
-    
-    render () {
-        return (
-            <InputGroup
-                style={{
-                    border: '1px solid #ced4da',
-                    borderRadius: '20px',
-                    overflow: 'hidden',
-                    width: '100%',
-                    display: 'inline-flex',
-                    marginTop: '10px'
-                }}
-            >
-                <InputGroup.Text
-                    style={{
-                        border: 'none',
-                        backgroundColor: 'white',
-                    }}
-                >
-                    <SearchIcon />
-                </InputGroup.Text>
-                <Form.Control
-                    type='search'
-                    placeholder='Search...'
-                    value={this.props.searchQuery}
-                    onChange={e => this.props.setSearchQuery(e.target.value)}
-                    style={{
-                        border: 'none',
-                        backgroundColor: 'white',
-                    }}
-                />
-            </InputGroup>
-        )
-    }
-};

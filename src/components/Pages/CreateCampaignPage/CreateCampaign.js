@@ -1,11 +1,12 @@
 import React, {useState} from "react";
-import { validateCampaignFields } from "./Campaign_Validation";
+import {validateFields} from "../Register/Validation";
 import CreateCampaignVisuals from "./CreateCampaignVisuals";
 import Author from '../../author';
 import api from "../../../services/api";
+import LanguageService from "../../../services/language";
 
 
-function CreateCampaign() {
+function CreateCampaign(props) {
 
     const initialState = {
         campaignname: "",
@@ -26,6 +27,7 @@ function CreateCampaign() {
     const [errorMessage, setError] = useState('');
     const [successMessage, setSuccess] = useState('');    
     const [files, setFiles] = useState([]);
+    const EN = props.EN
 
     const handleChange = event => {
 
@@ -77,33 +79,33 @@ function CreateCampaign() {
     };
 
     function validateData(){
-        let emptyWarning = 'This field cannot be empty';
+        let emptyWarning = EN ? 'This field cannot be empty' : 'Este campo no puede estar vacío' ;
         let nameError, amountError, storyError, descriptionError, budgetError;
         
         if(!data.amount){
             amountError = emptyWarning;
         }else{
-            amountError = validateCampaignFields.validateAmount(data.amount + '')
+            amountError = validateFields.validateNumber(data.amount + '')
         }
         if(!data.campaignname){
             nameError = emptyWarning;     
         }else{
-            nameError = validateCampaignFields.validateName(data.campaignname);
+            nameError = validateFields.validateName(data.campaignname);
         }
         if(!data.story){
             storyError = emptyWarning;      
         }else{
-            storyError = validateCampaignFields.validateName(data.story)
+            storyError = validateFields.validateName(data.story)
         }
         if(!data.description){
             descriptionError = emptyWarning;      
         }else{
-            descriptionError = validateCampaignFields.validateName(data.description)
+            descriptionError = validateFields.validateName(data.description)
         }
         if(!data.itemizedbudget){
             budgetError = emptyWarning;      
         }else{
-        budgetError = validateCampaignFields.validateName(data.itemizedbudget)
+        budgetError = validateFields.validateName(data.itemizedbudget)
         }
         setData({
             ...data,
@@ -142,7 +144,7 @@ function CreateCampaign() {
         if(isValidated){
             submitToBackend(formattedStory)
         }else{
-            setError('Some info is not correct, please check the fields.')
+            setError(EN ? 'Some info is not correct, please check the fields.' : 'Alguna información no es correcta, por favor revise los campos.')
         }
     }
 
@@ -152,35 +154,43 @@ function CreateCampaign() {
         for (const file of files) {
             formdata.append(file.name, file.uploadedFile);
         }
-        // const categories = {
-        //     'Small Business': 'small_business',
-        //     'Healthcare': 'healthcare',
-        //     'Education': 'education',
-        //     'Nutrition': 'nutrition'
-        // }
+
+        // TODO: Remove this. Temp solution for getting campaign categories 
+        const categories = {
+            'small business': 'small_business',
+            'healthcare': 'healthcare',
+            'education': 'education',
+            'nutrition': 'nutrition',
+
+            'pequeños negocios': 'small_business',
+            'salud': 'healthcare',
+            'educación': 'education',
+            'alimentación': 'nutrition'
+        }
+
         const payload = {
             title: data.campaignname,
             targetAmount: data.amount,
             story: story,
-            category: data.campaigncategory,
-            description: data.description
+            category: categories[ data.campaigncategory ],
+            description: data.description,
+            language: LanguageService.getLanguage()
         }
         for ( var key in payload ) {
             formdata.append(key, payload[key]);
         }
-
         try {
             await api.post('/campaigns', formdata);
-            setSuccess('Your campaign has been created successfully!')
+            setSuccess(EN ? 'Your campaign has been created successfully!' : '¡Tu campaña se ha creado con éxito!')
         } catch (error) {
             console.log(error.response.data);
-            setError('Something on our server went wrong, please try again')
+            setError(EN ? 'Something on our server went wrong, please try again' : 'Se produjo un error en nuestro servidor. Vuelve a intentarlo.')
         }      
     }            
        
     return (
         <div>
-             <CreateCampaignVisuals success={successMessage} error={errorMessage} data={data} handleChange={handleChange} handleImageChange={handleImageChange} validate={validateData} submit={submit}/>
+             <CreateCampaignVisuals EN={EN} success={successMessage} error={errorMessage} data={data} handleChange={handleChange} handleImageChange={handleImageChange} validate={validateData} submit={submit}/>
             <Author />
         </div>
     )

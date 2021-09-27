@@ -10,7 +10,7 @@ class ShareCard extends Component{
         this.state = {
             copied: false,
             loaded: false,
-            language: "en"
+            EN: this.props.EN
         }
         this.hanldeCopy = this.hanldeCopy.bind(this);
     }
@@ -22,22 +22,17 @@ class ShareCard extends Component{
         })
     }
     componentDidMount(){
-        var lang = localStorage.getItem("lang");
-        if(!lang){
-            localStorage.setItem("lang", "en");
-        }
-
         this.setState({
             loaded: true,
-            language: lang,
             copied: false
         })
     }
     render(){ 
         let copied;
+        const EN = this.state.EN
        
         if(this.state.copied){
-            copied = <p className="copied">{this.state.language==="en" ? 'Copied!' : 'Copia!'}</p>
+            copied = <p className="copied">{EN ? 'Copied!' : 'Copia!'}</p>
         }
         if(!this.state.loaded){
             return(
@@ -46,13 +41,6 @@ class ShareCard extends Component{
                 </div>
             )
         }else{
-
-            var EN = true //is english
-            if(this.state.language === 'en'){
-                EN = true
-            }else{
-                EN = false
-            }
 
             return(
                 <Fragment >

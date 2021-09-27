@@ -1,21 +1,40 @@
 {
-    "content":[
+    "en":[
         {
             "title": "Help Out",
-            "description": "People receive your donations diretly in their bank account via an e-wallet"
+            "description": "People receive your donations diretly in their bank account via an e-wallet."
         },
         {
             "title": "Share the Campaign",
-            "description": "Unite other to donate and increase support"
+            "description": "Unite others to donate and increase support."
         },
         {
             "title": "See your impact",
-            "description": "By checking the updates in the campaigns"
+            "description": "By checking the updates in the campaigns."
         },
         {
             "title": "Join the Yakera community",
-            "description": "To support other campaigns you are passionate about"
+            "description": "To support other campaigns you are passionate about."
         }
     ],
-    "team-text": "We are a highly motivated international team that revolutionizes how humanitarian aid is delivered around the world. Our team was motivated by the Venezuelan crisis and the lack of pathways to deliver direct support to people in need of assistance. Yakera’s technology helps us deliver support directly to people’s bank accounts based on a simple belief: people know their own needs better than anyone else; better than we do."
+    "es":[
+        {
+            "title": "Ayuda",
+            "description": "A usuarios a recibir donaciones directamente a sus cuentos bancarios a través de un “e-wallet”"
+        },
+        {
+            "title": "Comparte la campaña",
+            "description": "Invite a otros donantes para donar y aumentar el apoyo a cada campaña"
+        },
+        {
+            "title": "Ve tu impacto",
+            "description": "A través de actualizaciones en las páginas de las campañas"
+        },
+        {
+            "title": "Únete a la comunidad de Yakera",
+            "description": "Para apoyar otras campañas que le encantan"
+        }
+    ],
+    "team-text_en": "Our team was motivated by the Venezuelan crisis and the lack of pathways to deliver direct support to people in need of assistance. Yakera’s technology helps us deliver support directly to people’s bank accounts based on a simple belief: people know their own needs better than anyone else; better than we do.",
+    "team-text_es": "Somos un equipo internacional de personas bien motivadas que quiere revolucionar la entrega de ayuda humanitaria al mundo. Nuestra iniciativa fue impulsada por la crisis en Venezuela y la falta de posibilidades para apoyar directamente a las personas afectadas. La tecnología de Yakera nos ayuda a entregar fondos directamente a los cuentos bancarios de nuestros usuarios. Yakera se basa en una idea simple: nuestros usuarios saben sus propias necesidades mejor que cualquier otra persona u organización, incluso nosotros."
 }

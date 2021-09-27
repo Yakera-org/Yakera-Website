@@ -1,0 +1,92 @@
+{
+    "divisions":[
+        {   
+            "name": "Executive",
+            "members":[
+                {
+                    "name":"Raul Romero",
+                    "position":"CEO & Founder",
+                    "link": "https://www.linkedin.com/in/raul-romero-martinez/",
+                    "picture": "https://assets.yakera.org/yakera/raul.jpg"            
+                },
+                {
+                    "name":"Tomas Munoz",
+                    "position":"CFO",
+                    "link": "https://www.linkedin.com/in/tomas-munoz-reyes-7b2202156/",
+                    "picture": "https://assets.yakera.org/yakera/thomas.jpg"            
+                },
+                {
+                    "name":"Mafer Bencoma",
+                    "position":"CMO",
+                    "link": "https://www.linkedin.com/in/maferbencomo/",
+                    "picture": "https://assets.yakera.org/yakera/mafer.jpg"            
+                },
+                {
+                    "name":"Aaron Lambert",
+                    "position":"COO",
+                    "link": "https://www.linkedin.com/in/aaron-lambert-b8b4b9183/",
+                    "picture": "https://assets.yakera.org/yakera/raul.jpg"            
+                },
+                {
+                    "name":"Jang Belche",
+                    "position":"CTO & Head of development",
+                    "link": "https://www.linkedin.com/in/jang-belche/",
+                    "picture": "https://assets.yakera.org/yakera/jang.jpg"            
+                },
+                {
+                    "name":"Mariana Romero",
+                    "position":"Head of Design",
+                    "link": "https://www.linkedin.com/company/yakera",
+                    "picture": "https://assets.yakera.org/yakera/raul.jpg"            
+                }
+            ]
+        },
+        {
+            "name": "Development",
+            "members":[
+                {
+                    "name":"Zeynep Tezduyar",
+                    "position":"Front end co-lead",
+                    "link": "https://www.linkedin.com/in/zeyneptezduyar/",
+                    "picture": "https://assets.yakera.org/yakera/raul.jpg"                     
+                },
+                {
+                    "name":"Haikal Khairul",
+                    "position":"Front end co-lead",
+                    "link": "https://www.linkedin.com/in/haikalkhairul/",
+                    "picture": "https://assets.yakera.org/yakera/raul.jpg"            
+                },
+                {
+                    "name":"Andrés Bravo",
+                    "position":"Back end lead",
+                    "link": "https://www.linkedin.com/in/andres-bravor/",
+                    "picture": "https://assets.yakera.org/yakera/raul.jpg"            
+                },
+                {
+                    "name":"Andrés Sanchez",
+                    "position":"Back end developer",
+                    "link": "https://www.linkedin.com/in/andresdst/",
+                    "picture": "https://assets.yakera.org/yakera/raul.jpg"            
+                },
+                {
+                    "name":"Pedro Sousa",
+                    "position":"Full stack developer",
+                    "link": "https://www.linkedin.com/in/pedro-marques-sousa/",
+                    "picture": "https://assets.yakera.org/yakera/raul.jpg"            
+                },
+                {
+                    "name":"Ali Hindy",
+                    "position":"Full stack developer",
+                    "link": "https://www.linkedin.com/in/ali-hindy-6484a6208/",
+                    "picture": "https://assets.yakera.org/yakera/ali.jpg"            
+                },
+                {
+                    "name":"Louis Nicaud",
+                    "position":"Back end Architect",
+                    "link": "https://www.linkedin.com/in/louis-nicaud/",
+                    "picture": "https://assets.yakera.org/yakera/raul.jpg"            
+                }
+            ]
+        }
+    ]    
+}
