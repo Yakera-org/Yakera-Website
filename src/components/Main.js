@@ -39,22 +39,19 @@ function Main(){
         <BrowserRouter>
             <div style={{marginTop: '100px'}}>
             <Switch>
-                <Route exact path="/login" component={login}/>
-                <Route exact path="/register" component={register}/>
-                {/* <Route exact path="/profile" component={profile}/> */}
-                <Route exact path="/support" component={SupportUs}/>
-                <Route exact path="/campaigns" component={donate}/>
-                {/* <Route exact path="/confirmed" component={confirmed}/> */}
-                {/* <Route exact path="/cancelled" component={cancelled}/> */}
+                <Route exact path="/login" component={login}  EN={EN}/>
+                <Route exact path="/register" component={register}  EN={EN}/>
+                <Route exact path="/support" component={SupportUs}  EN={EN}/>
+                <Route exact path="/campaigns" component={donate}  EN={EN}/>
                 <Route exact path="/create-campaign" component={CreateCampaign} EN={EN} />
-                <Route exact path="/about" component={AboutUs}/>
-                <Route exact path="/campaign/:title" component={Campaign}/>
-                <Route exact path="/terms" component={Terms}/>
-                <Route exact path="/consent" component={Consent}/>
-                <Route exact path="/frequently-asked-questions" component={FAQ}/>
-                <Route exact path="/dashboard" component={isAuthenticated ? Dashboard : login}/>
-                <Route exact path="/" component={home}/>
-                <Route path="/404" component={NotFoundPage} />
+                <Route exact path="/about" component={AboutUs}  EN={EN}/>
+                <Route exact path="/campaign/:title" component={Campaign}  EN={EN}/>
+                <Route exact path="/terms" component={Terms}  EN={EN}/>
+                <Route exact path="/consent" component={Consent}  EN={EN}/>
+                <Route exact path="/frequently-asked-questions" component={FAQ}  EN={EN}/>
+                <Route exact path="/dashboard" component={isAuthenticated ? Dashboard : login}  EN={EN}/>
+                <Route exact path="/" component={home}  EN={EN}/>
+                <Route path="/404" component={NotFoundPage}  EN={EN} />
                 <Redirect to="/404" />
 
             </Switch>
