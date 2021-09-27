@@ -5,13 +5,14 @@ import { validateFields } from '../Register/Validation';
 import './Dashboard.css';
 import api from "../../../services/api";
 
-function Dashboard() {
+function Dashboard(props) {
 
     const [loaded, setLoaded] = useState(false);
     const [airTMemail, setAirTMEmail] = useState('');
     const [emailError, setEmailError] = useState('');
     const [error, setError] = useState('');
     const [profileData, setProfileData] = useState({});
+    const EN = props.EN
 
     React.useEffect(() => {
         if (localStorage.getItem('accessToken')) {
@@ -36,7 +37,7 @@ function Dashboard() {
         let slug = event.target.name;
         try {
             await api.delete(`/campaigns/${slug}`);
-            window.alert('Campaign successfully withdrawn!')
+            window.alert(EN ? 'Campaign successfully withdrawn!' : '¡Campaña retirada con éxito!')
             window.location.reload();
         } catch (err) {
             console.log('Error. ' + err)
@@ -89,7 +90,7 @@ function Dashboard() {
     }else{        
         return (
             <div className='dashboard-page'>
-                <DashboardVisuals data={profileData} onWithdraw={onWithdraw} handleChange={handleChange} emailError={emailError} onSubmitEmail={onSubmitEmail}/>
+                <DashboardVisuals EN={EN} data={profileData} onWithdraw={onWithdraw} handleChange={handleChange} emailError={emailError} onSubmitEmail={onSubmitEmail}/>
             </div>
         )
     }

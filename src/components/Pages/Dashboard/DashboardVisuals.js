@@ -9,10 +9,11 @@ import classnames from 'classnames'
 function DashboardVisuals(props) {
     const user = props.data.user
     const campaigns = props.data.campaigns ? props.data.campaigns : []
+    const EN = props.EN
     
 function onWithdraw(event){
     if(!user.airTMNum){
-        window.alert("Please update yur AirTM email address. Without this email, we don't know where you want the money to be transferred to. Thanks")
+        window.alert(EN ? "Please update yur AirTM email address. Without this email, we don't know where you want the money to be transferred to. Thanks" : "Actualice su dirección de correo electrónico de AirTM. Sin este correo electrónico, no sabemos a dónde desea que se transfiera el dinero. Gracias" )
     }else{
         props.onWithdraw(event)
     }
@@ -23,7 +24,7 @@ function onWithdraw(event){
             <Card className='dash-card'>
                 <CardContent>
                     <div className='dash-card-top'>
-                        <h1> Welcome <span id='dash-name'>{user.firstName}</span> </h1>
+                        <h1> {EN ?'Welcome ' : 'Bienvenido ' }  <span id='dash-name'>{user.firstName}</span> </h1>
                     </div>
 
                     <hr />
@@ -36,7 +37,7 @@ function onWithdraw(event){
                         </Grid>
                         <Grid item xs={12} sm={4} >
                             <div className='dash-left'>
-                                <p><span id='dash-stats'>Phone:</span> {user.phone}</p>
+                                <p><span id='dash-stats'>{EN ?'Phone: ' : 'Teléfono: ' }</span> {user.phone}</p>
                             </div>
                         </Grid>
                         {/*<Grid item xs={12} sm={3} >
@@ -46,12 +47,12 @@ function onWithdraw(event){
                         </Grid> */}
                         <Grid item xs={12} sm={3} >
                             <div className='dash-left'>
-                                <p><span id='dash-stats'>Address:</span> {user.address}</p>
+                                <p><span id='dash-stats'>{EN ?'Address: ' : 'Dirección: ' }</span> {user.address}</p>
                             </div>
                         </Grid>   
                             <Grid item xs={12} sm={3} id='airTM'>
                                 <div className='dash-left'>
-                                    <p id='dash-stats'>AirTM email account:</p>
+                                    <p id='dash-stats'>AirTM email:</p>
                                 </div>
                                 {
                                     !user.airTMNum
@@ -61,7 +62,7 @@ function onWithdraw(event){
                                                 <input
                                                     type="email"
                                                     name="airTMemail"
-                                                    placeholder="Enter your AirTM email"
+                                                    placeholder={EN ? "Enter your AirTM email" : "Ingrese su correo electrónico AirTM"}
                                                     onChange={props.handleChange}
                                                     className={classnames(
                                                         'form-control',
@@ -73,7 +74,7 @@ function onWithdraw(event){
                                         </Grid> 
                                         <Grid item xs={12} sm={2} >
                                             <button  onClick={props.onSubmitEmail}>
-                                                Submit
+                                                {EN ? "Submit" : "Enviar"}
                                             </button> 
                                         </Grid> 
                                     </Grid> 
@@ -91,39 +92,50 @@ function onWithdraw(event){
                     <br />
 
                     <div className='dash-btn'>
-                       <button><a href='create-campaign' >Create new campaign</a></button>
+                       <button><a href='create-campaign' >{EN ? "Create new campaign" : "Crear nueva campaña"}</a></button>
                     </div>
 
                     <div className='dash-campaigns'>
                         <h2>
-                            Your <span id='dash-stats'>Campaigns</span>
+                            Your <span id='dash-stats'>{EN ? "Campaigns" : "Campañas"}</span>
                             <div className='active-campaigns'>
                                 <Grid container spacing={4} style={{ alignItems:'flex-start', textAlign:'center'}}>
                                     {
                                         campaigns.map((campaign,i) => {
                                             var hrefLink = '/campaign/' + campaign.slug;
-                                            //preventive
-                                            if(!campaign.mainPicture){
-                                                campaign.mainPicture = {url:'lol'}
+                                            const language = EN ? 'en':'es'
+                                            let title, mainPicture;
+                                            try{
+                                                mainPicture = campaign.mainPicture.url;
                                             }
+                                            catch{
+                                                mainPicture = ''
+                                            }
+
+                                            try {
+                                                title = campaign.translations[language].title;
+                                            } catch (err) {
+                                                title = campaign.title;
+                                            }
+                                            console.log(campaign)
                                             return (
                                                 <Grid item xs={12} sm={6} key={i} >
                                                     <Card className='active-cam-card'>
                                                         <CardContent>
                                                             <div className='dash-active-cam'>
-                                                                {campaign.title}
+                                                                {title}
 
                                                                 <hr />
 
                                                                 <Grid container spacing={5} style={{ alignItems:'flex-start'}}>
                                                                     <Grid item xs={12} sm={12} style={{textAlign:'left'}} >
-                                                                        <p><span id='dash-stats'>Created:</span> {campaign.created}</p>
-                                                                        <p><span id='dash-stats'>Category:</span> {campaign.category}</p>
-                                                                        <p><span id='dash-stats'>Description:</span> {campaign.description}</p>
-                                                                        <p><span id='dash-status'>Status:</span> {campaign.approved ? 'Approved' : 'Pending approval'}</p>
+                                                                        <p><span id='dash-stats'>{EN ? "Created: " : "Creada: "}</span> {campaign.created}</p>
+                                                                        <p><span id='dash-stats'>{EN ? "Category: " : "Categoría: "}</span> {campaign.category}</p>
+                                                                        <p><span id='dash-stats'>{EN ? "Description: " : "Descripción: "}</span> {campaign.description}</p>
+                                                                        <p><span id='dash-status'>{EN ? "Status: " : "Estado: "}</span> {campaign.approved ? 'Approved' : 'Pending approval'}</p>
 
                                                                         <Grid item xs={12} sm={12} style={{textAlign:'center'}} >
-                                                                            <img src={campaign.mainPicture.url} alt='cam-title-img' />
+                                                                            <img src={mainPicture} alt='cam-title-img' />
                                                                         </Grid>
                                                                         <br />
                                                                         <div id='dash-progress-bar'>
@@ -138,18 +150,18 @@ function onWithdraw(event){
                                                                             percent={ Math.min((100* (campaign.raised/campaign.targetAmount)).toFixed(0), 100) }/>
                                                                         </div>
                                                                         <br />
-                                                                        <p id='dash-raised'>Raised: <span id='dash-stats'>{campaign.raised}$</span></p>
+                                                                        <p id='dash-raised'>{EN ? "Raised: " : "Elevado: "} <span id='dash-stats'>{campaign.raised}$</span></p>
                                                                         <br />
                                                                         <div className='action-btn'>
                                                                             <Grid container spacing={2} style={{ alignItems:'flex-start'}}>
                                                                                 <Grid item xs={12} sm={6} style={{textAlign:'center'}} >  
                                                                                     <button id='go'>
-                                                                                        <a href={hrefLink}>Go to campaign</a>
+                                                                                        <a href={hrefLink}>{EN ? "Go to campaign" : "Ir a campaña"}</a>
                                                                                     </button>
                                                                                 </Grid>
                                                                                 <Grid item xs={12} sm={6} style={{textAlign:'center'}} >  
                                                                                     <button name={campaign.slug} onClick={onWithdraw} id='withdraw'>
-                                                                                        Withdraw campaign
+                                                                                        {EN ? "Withdraw campaign" : "Retirar campaña"}
                                                                                     </button>
                                                                                 </Grid>
                                                                             </Grid>                                                                                

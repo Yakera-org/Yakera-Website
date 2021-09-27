@@ -140,7 +140,7 @@ class NavBar extends Component {
                         ?
                             <Nav.Link >
                             <div className='logout-mobile' onClick={this.onLogOut.bind(this)}   >
-                                <i className="fas fa-sign-out-alt"></i><label>&nbsp;SIGN OUT</label>
+                                <i className="fas fa-sign-out-alt"></i><label>&nbsp;{EN ? 'SIGN OUT' : 'DESCONECTAR'}</label>
                             </div>
                         </Nav.Link>
                         :
@@ -195,7 +195,7 @@ class NavBar extends Component {
                     { isAuthenticated
                         ?
                         <div className='logout' onClick={this.onLogOut.bind(this)}>
-                            <i className="fas fa-sign-out-alt"></i><label>&nbsp;Sign out</label>
+                            <i className="fas fa-sign-out-alt"></i><label>&nbsp;{EN ? 'SIGN OUT' : 'DESCONECTAR'}</label>
                         </div>
                         :
                         ''
