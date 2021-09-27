@@ -14,10 +14,24 @@ import SupportUs from './Pages/SupportUs/SupportUs';
 import NotFoundPage from './Pages/404/NotFoundPage';
 import CreateCampaign from './Pages/CreateCampaignPage/CreateCampaign';
 import Dashboard from './Pages/Dashboard/Dashboard';
+import LanguageService from "../services/language";
 
 
 
 function Main(){
+
+    React.useEffect(() =>{
+        setLanguage(LanguageService.getLanguage());
+    }, [])
+
+    const [language, setLanguage] = React.useState('');
+
+    var EN;
+    if(language === "en"){
+        EN = true
+    }else{
+        EN = false
+    }
 
     let isAuthenticated = true;
 
@@ -32,7 +46,7 @@ function Main(){
                 <Route exact path="/campaigns" component={donate}/>
                 {/* <Route exact path="/confirmed" component={confirmed}/> */}
                 {/* <Route exact path="/cancelled" component={cancelled}/> */}
-                <Route exact path="/create-campaign" component={CreateCampaign} />
+                <Route exact path="/create-campaign" component={CreateCampaign} EN={EN} />
                 <Route exact path="/about" component={AboutUs}/>
                 <Route exact path="/campaign/:title" component={Campaign}/>
                 <Route exact path="/terms" component={Terms}/>
