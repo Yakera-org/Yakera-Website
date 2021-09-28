@@ -117,7 +117,6 @@ function onWithdraw(event){
                                             } catch (err) {
                                                 title = campaign.title;
                                             }
-                                            console.log(campaign)
                                             return (
                                                 <Grid item xs={12} sm={6} key={i} >
                                                     <Card className='active-cam-card'>
