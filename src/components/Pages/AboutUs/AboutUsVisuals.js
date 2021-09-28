@@ -27,7 +27,7 @@ function AboutUsVisuals(props) {
                     </Grid>
                     <Grid item xs={12} sm={6} className='about-title-text' >
                         <p>
-                            {EN ? 'Yakera unlocks international solidarity through empathy and storytelling. We revolutionize humanitarian aid, one story at a time.': 'Yakera desbloquea la solidaridad internacional a través de la empatía y la narración. Revolucionamos la ayuda humanitaria, una historia a la vez.'}
+                            {EN ? 'Yakera unlocks international solidarity through empathy and storytelling. We revolutionize humanitarian aid, one story at a time.': 'Yakera abre las puertas a la solidaridad internacional. Cambiamos cómo se distribuye la ayuda humanitaria en el mundo, una historia a la vez.'}
                             
                         </p>
                     </Grid>
