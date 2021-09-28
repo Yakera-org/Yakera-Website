@@ -6,7 +6,7 @@ import api from "../../../services/api";
 import LanguageService from "../../../services/language";
 
 
-function CreateCampaign(props) {
+function CreateCampaign() {
 
     const initialState = {
         campaignname: "",
@@ -27,7 +27,19 @@ function CreateCampaign(props) {
     const [errorMessage, setError] = useState('');
     const [successMessage, setSuccess] = useState('');    
     const [files, setFiles] = useState([]);
-    const EN = props.EN
+    const [EN, setEN] = React.useState(false);
+    const [language, setLanguage] = React.useState('en');
+
+    React.useEffect(() => {
+        if(LanguageService.getLanguage()==='en'){
+            setEN(true)
+            setLanguage('en')
+        }
+        else{
+            setEN(false)
+            setLanguage('es')
+        } 
+    }, []);
 
     const handleChange = event => {
 
@@ -174,7 +186,7 @@ function CreateCampaign(props) {
             story: story,
             category: categories[ data.campaigncategory ],
             description: data.description,
-            language: LanguageService.getLanguage()
+            language: language
         }
         for ( var key in payload ) {
             formdata.append(key, payload[key]);
