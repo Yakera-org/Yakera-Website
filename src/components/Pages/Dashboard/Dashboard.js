@@ -17,15 +17,22 @@ function Dashboard() {
     const [profileData, setProfileData] = useState({});
 
     React.useEffect(() => {
-        if(LanguageService.getLanguage()==='en')setEN(true)
-        else setEN(false)
+        startup()
+        
+    });
+    function startup(){
+        if(LanguageService.getLanguage()==='en'){
+            setEN(true)
+        }
+        else {
+            setEN(false)
+        }
         if (localStorage.getItem('accessToken')) {
             getCampaign();
         } else {
             window.location = '/';
         }
-    }, []);
-
+    }
     async function getCampaign() {
         try {
             const res = await api.get('/profile');
