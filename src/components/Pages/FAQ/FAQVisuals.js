@@ -46,7 +46,7 @@ function FAQVisuals(props) {
                 <Grid item xs={12} sm={12} >
                     <div className='faq-drawer-area'>
                         <h1>
-                            {EN ? 'What can we help you with?' : 'Cómo le podemos ayudar?'}
+                            {EN ? 'What can we help you with?' : '¿Cómo le podemos ayudar?'}
                         </h1>
                         {/* <SearchBar 
                             searchQuery={searchQuery}

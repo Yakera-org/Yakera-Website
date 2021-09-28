@@ -40,7 +40,7 @@ function Author() {
                     <Grid item xs={12} sm={4} >
                         <Grid container spacing={1} style={{ alignItems:'center', textAlign:'center'}}>
                             <Grid item xs={12} sm={4} >
-                                <button id='link' name='support' onClick={onLinkClick}>{EN ? 'Support Us' : 'Apoyanos'}</button>
+                                <button id='link' name='support' onClick={onLinkClick}>{EN ? 'Support Us' : 'Apóyanos'}</button>
                             </Grid>
                             <Grid item xs={12} sm={4} >
                                 <button id='link' name='about' onClick={onLinkClick}>{EN ? 'About Us' : 'Sobre nosotros'}</button>

@@ -45,7 +45,7 @@ function AboutUsVisuals(props) {
                             </div>
                             :
                             <div className='about-us-top-text'>
-                                <h1>Chequee nuestras <b>campañas </b> en las categorías de
+                                <h1>Chequea nuestras <b>campañas </b> en las categorías de
                                 </h1>
                                 <h1 id='labels'>
                                     <a id='green' href='/campaigns'>Educación</a>,&nbsp;

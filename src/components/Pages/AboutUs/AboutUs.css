@@ -137,13 +137,14 @@
     font-family: Intro-Regular-Alt;
     font-size: 22px;
     margin-top: 10px;
+    margin-bottom: 0px;
 
 }
 .about-us-team-pics #position{
     text-align: center; 
     font-family: Intro-Light;
     font-size: 20px;
-    vertical-align: top;
+    vertical-align: top;    
 }
 .about-us-team-pics #icon{
     color: grey;

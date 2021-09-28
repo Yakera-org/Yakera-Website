@@ -11,12 +11,12 @@
                 },
                 {
                     "name":"Tomas Munoz",
-                    "position":"CFO",
+                    "position":"CFO & Co-founder",
                     "link": "https://www.linkedin.com/in/tomas-munoz-reyes-7b2202156/",
                     "picture": "https://assets.yakera.org/yakera/thomas.jpg"            
                 },
                 {
-                    "name":"Mafer Bencoma",
+                    "name":"Mafer Bencomo",
                     "position":"CMO",
                     "link": "https://www.linkedin.com/in/maferbencomo/",
                     "picture": "https://assets.yakera.org/yakera/mafer.jpg"            
@@ -32,13 +32,8 @@
                     "position":"CTO & Head of development",
                     "link": "https://www.linkedin.com/in/jang-belche/",
                     "picture": "https://assets.yakera.org/yakera/jang.jpg"            
-                },
-                {
-                    "name":"Mariana Romero",
-                    "position":"Head of Design",
-                    "link": "https://www.linkedin.com/company/yakera",
-                    "picture": "https://assets.yakera.org/yakera/raul.jpg"            
                 }
+                
             ]
         },
         {
@@ -87,6 +82,18 @@
                     "picture": "https://assets.yakera.org/yakera/raul.jpg"            
                 }
             ]
+        },
+        {
+            "name": "Marketing",
+            "members":[
+                {
+                    "name":"Mariana Romero",
+                    "position":"Head of Design",
+                    "link": "https://www.linkedin.com/company/yakera",
+                    "picture": "https://assets.yakera.org/yakera/raul.jpg"            
+                }
+            ]
         }
     ]    
 }
+

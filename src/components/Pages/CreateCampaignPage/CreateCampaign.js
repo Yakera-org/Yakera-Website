@@ -199,7 +199,7 @@ function CreateCampaign() {
             setSuccess(EN ? 'Your campaign has been created successfully!' : '¡Tu campaña se ha creado con éxito!')
             setLoader(false)
         } catch (error) {
-            console.log(error.response.data);
+            console.log('Error: '+ error);
             setError(EN ? 'Something on our server went wrong, please try again' : 'Se produjo un error en nuestro servidor. Vuelve a intentarlo.')
             setLoader(false)
         }      
