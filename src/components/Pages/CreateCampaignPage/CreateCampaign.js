@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import {validateFields} from "../Register/Validation";
 import CreateCampaignVisuals from "./CreateCampaignVisuals";
+import Loader from "react-loader-spinner";
 import Author from '../../author';
 import api from "../../../services/api";
 import LanguageService from "../../../services/language";
@@ -29,6 +30,7 @@ function CreateCampaign() {
     const [files, setFiles] = useState([]);
     const [EN, setEN] = React.useState(false);
     const [language, setLanguage] = React.useState('en');
+    const [loader, setLoader] = React.useState(false);
 
     React.useEffect(() => {
         if(LanguageService.getLanguage()==='en'){
@@ -150,10 +152,11 @@ function CreateCampaign() {
         event.preventDefault();
         let formattedStory = linkify(data.story)
         formattedStory = formattedStory.replace(/\n/g, " <br />");
-
+        
         let isValidated = validateData()
-
+        
         if(isValidated){
+            setLoader(true)
             submitToBackend(formattedStory)
         }else{
             setError(EN ? 'Some info is not correct, please check the fields.' : 'Alguna información no es correcta, por favor revise los campos.')
@@ -187,21 +190,32 @@ function CreateCampaign() {
             category: categories[ data.campaigncategory ],
             description: data.description,
             language: language
-        }
+        }   
         for ( var key in payload ) {
             formdata.append(key, payload[key]);
         }
         try {
             await api.post('/campaigns', formdata);
             setSuccess(EN ? 'Your campaign has been created successfully!' : '¡Tu campaña se ha creado con éxito!')
+            setLoader(false)
         } catch (error) {
             console.log(error.response.data);
             setError(EN ? 'Something on our server went wrong, please try again' : 'Se produjo un error en nuestro servidor. Vuelve a intentarlo.')
+            setLoader(false)
         }      
     }            
        
     return (
         <div>
+            <div className='loader'>
+                <Loader
+                type="Bars"
+                color="#ea8737"
+                height={100}
+                width={100}
+                visible={loader}
+                />
+            </div>
              <CreateCampaignVisuals EN={EN} success={successMessage} error={errorMessage} data={data} handleChange={handleChange} handleImageChange={handleImageChange} validate={validateData} submit={submit}/>
             <Author />
         </div>
