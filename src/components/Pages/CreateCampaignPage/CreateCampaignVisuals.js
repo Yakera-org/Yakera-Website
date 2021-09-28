@@ -59,7 +59,7 @@ function CreateCampaignVisuals(props) {
                     <Alert color="success" id='alert'>
                         {props.success}
                         <br />
-                        {EN ? <>Head to your <a href="/dashboard" style={{color:'darkgreen', textDecoration:'underline'}}> Dashboard</a>.</> : <>Dirígete a tu <a href="/dashboard" style={{color:'darkgreen', textDecoration:'underline'}}> Tablero</a>.</>}                                            
+                        {EN ? <>Head to your <a href="/dashboard" style={{color:'darkgreen', textDecoration:'underline'}}> Dashboard</a>.</> : <>Dirígete a tu <a href="/dashboard" style={{color:'darkgreen', textDecoration:'underline'}}> Mi Cuenta</a>.</>}                                            
                     </Alert>
                     :
                     ''

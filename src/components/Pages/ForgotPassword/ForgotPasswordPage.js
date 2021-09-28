@@ -1,22 +1,19 @@
 import React, { useState } from 'react';
-import LoginTemplate from './LoginTemplate';
-import { validateFields } from '../Register/Validation';
 import Loader from "react-loader-spinner";
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
+import { validateFields } from './Validation';
 import api from "../../../services/api";
-import TokenService from "../../../services/token";
-import LanguageService from '../../../services/language';
+import ForgotPasswordTemplate from './ForgotPasswordTemplate';
 
 
-const LoginPage = () => {
+
+const ForgotPasswordPage = () => {
 
   const initialState = {
     email: "",
-    password: "",
     loading: false,
     errors: {
       email: null,
-      password: null,
     },
   };
 
@@ -24,15 +21,14 @@ const LoginPage = () => {
     errorMessage: null,
   }
 
+  const messageState = {
+    message: null,
+  }
+
   const [data, setData] = useState(initialState);
   const [error, setError] = useState(errorState);
+  const [message, setMessage] = useState(messageState);
   const [loader, setLoader] = useState(false);
-  const [EN, setEN] = React.useState(false);
-
-  React.useEffect(() => {
-      if(LanguageService.getLanguage()==='en')setEN(true)
-      else setEN(false)
-  }, []);
 
   const handleChange = event => {
     event.persist();
@@ -52,12 +48,7 @@ const LoginPage = () => {
 
   const validateForm = event => {
     var error = null;
-
-    if (event.target.name === "email") {
-      error = validateFields.validateEmail(event.target.value);
-    } else {
-      error = validateFields.validateName(event.target.value);
-    }
+    error = validateFields.validateEmail(event.target.value);
     
     setData(data => ({
       ...data,
@@ -69,7 +60,7 @@ const LoginPage = () => {
 
   }
 
-  const handleLogin = event => {
+  const handleForgotPassword = event => {
     setLoader(true)
     setData(data => ({
       ...data,
@@ -78,22 +69,17 @@ const LoginPage = () => {
 
     // validate credentials
     const requestBody = {      
-      email: data.email,
-      password: data.password
+      email: data.email
     }
 
-    api.post("/auth/login", requestBody).then(response => {
+    api.post("/auth/forgot-password", requestBody).then(response => {
       setData(data => ({
         ...data,
         loading: false,
       }));
+      setLoader(false);
+      setMessage({message: response.data.message});
 
-      if (response.status === 200) {
-        setLoader(false)
-        TokenService.setAccessToken(response.data.access_token);
-        TokenService.setRefreshToken(response.data.refresh_token);
-        window.location.href = "/dashboard";
-      }
     }).catch(error => {
       var errorMessage = null;
       if(error.response){          
@@ -101,17 +87,15 @@ const LoginPage = () => {
           errorMessage = error.response.data.message;
         }
       } else {
-        errorMessage = EN ? "Something went wrong. Please try again later." : "Se produjo un error. Vuelva a intentarlo más tarde";
+        errorMessage = "Something went wrong. Please try again later.";
       }
       setLoader(false)
       setError({errorMessage: errorMessage});
       setData(data => ({
         email: "",
-        password: "",
         loading: false,
         errors: {
           email: null,
-          password: null
         }
       }));
 
@@ -130,15 +114,15 @@ const LoginPage = () => {
           visible={loader}
         />
       </div>
-      <LoginTemplate 
+      <ForgotPasswordTemplate 
         handleChange = {handleChange}
         data = {data}
         error = {error}
-        handleLogin = {handleLogin}
-        EN={EN}
+        message = {message}
+        handleForgotPassword = {handleForgotPassword}
       />
     </div>
   );
 }
 
-export default LoginPage;
+export default ForgotPasswordPage;

@@ -1,22 +1,27 @@
 import React, { useState } from 'react';
-import LoginTemplate from './LoginTemplate';
-import { validateFields } from '../Register/Validation';
 import Loader from "react-loader-spinner";
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
+import { validateFields } from './Validation';
 import api from "../../../services/api";
 import TokenService from "../../../services/token";
-import LanguageService from '../../../services/language';
+import ResetPasswordTemplate from './ResetPasswordTemplate';
 
 
-const LoginPage = () => {
+
+const ResetPasswordPage = () => {
+  // if the token is not there then show 404 not found
+  const token = new URLSearchParams(window.location.search).get('token');
+  if (!token) {
+    window.location.href = "/404";
+  }
 
   const initialState = {
-    email: "",
-    password: "",
+    password1: "",
+    password2: "",
     loading: false,
     errors: {
-      email: null,
-      password: null,
+      password1: null,
+      password2: null,
     },
   };
 
@@ -27,12 +32,6 @@ const LoginPage = () => {
   const [data, setData] = useState(initialState);
   const [error, setError] = useState(errorState);
   const [loader, setLoader] = useState(false);
-  const [EN, setEN] = React.useState(false);
-
-  React.useEffect(() => {
-      if(LanguageService.getLanguage()==='en')setEN(true)
-      else setEN(false)
-  }, []);
 
   const handleChange = event => {
     event.persist();
@@ -52,12 +51,7 @@ const LoginPage = () => {
 
   const validateForm = event => {
     var error = null;
-
-    if (event.target.name === "email") {
-      error = validateFields.validateEmail(event.target.value);
-    } else {
-      error = validateFields.validateName(event.target.value);
-    }
+    error = validateFields.validatePassword(event.target.value);
     
     setData(data => ({
       ...data,
@@ -69,24 +63,39 @@ const LoginPage = () => {
 
   }
 
-  const handleLogin = event => {
-    setLoader(true)
+  const handleResetPassword = event => {
+    const validateEquals = validateFields.validatePasswordEquals(data.password1, data.password2);
+    setError({errorMessage: validateEquals});
+
+    if (validateEquals) {
+      setData(data => ({
+        password1: "",
+        password2: "",
+        loading: false,
+        errors: {
+          password1: null,
+          password2: null,
+        }
+      }));
+      return;
+    }
+
+    setLoader(true);
     setData(data => ({
       ...data,
       loading: true,
-    })); 
+    }));
 
-    // validate credentials
     const requestBody = {      
-      email: data.email,
-      password: data.password
+      password: data.password1
     }
 
-    api.post("/auth/login", requestBody).then(response => {
+    api.post(`/auth/reset-password?token=${token}`, requestBody).then(response => {
       setData(data => ({
         ...data,
         loading: false,
       }));
+      setLoader(false);
 
       if (response.status === 200) {
         setLoader(false)
@@ -101,22 +110,20 @@ const LoginPage = () => {
           errorMessage = error.response.data.message;
         }
       } else {
-        errorMessage = EN ? "Something went wrong. Please try again later." : "Se produjo un error. Vuelva a intentarlo más tarde";
+        errorMessage = "Something went wrong. Please try again later.";
       }
       setLoader(false)
       setError({errorMessage: errorMessage});
       setData(data => ({
-        email: "",
-        password: "",
+        password1: "",
+        password2: "",
         loading: false,
         errors: {
-          email: null,
-          password: null
+          password1: null,
+          password2: null,
         }
       }));
-
     });
-    
   }
 
   return (
@@ -130,15 +137,14 @@ const LoginPage = () => {
           visible={loader}
         />
       </div>
-      <LoginTemplate 
+      <ResetPasswordTemplate 
         handleChange = {handleChange}
         data = {data}
         error = {error}
-        handleLogin = {handleLogin}
-        EN={EN}
+        handleResetPassword = {handleResetPassword}
       />
     </div>
   );
 }
 
-export default LoginPage;
+export default ResetPasswordPage;

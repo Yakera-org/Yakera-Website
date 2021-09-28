@@ -133,14 +133,14 @@ class NavBar extends Component {
                         <Nav className="mr-auto">
                         <Nav.Link id={this.state.currentTab === 'about' ? 'nav-tab-selected': 'nav-tab'}  name='about' onClick={this.onTabClick.bind(this)} >{EN ? 'ABOUT US' : 'SOBRE NOSOTROS'}</Nav.Link>
                         <Nav.Link id={this.state.currentTab === 'support' ? 'nav-tab-selected': 'nav-tab'} name='support'  onClick={this.onTabClick.bind(this)}> {EN ? 'SUPPORT US' : 'APOYAR'}</Nav.Link>
-                        <Nav.Link id={this.state.currentTab === 'campaigns' ? 'nav-tab-selected': 'nav-tab'} name='campaigns'  onClick={this.onTabClick.bind(this)}> {EN ? 'CAMPAIGNS' : 'CAMPANAS'}</Nav.Link>
+                        <Nav.Link id={this.state.currentTab === 'campaigns' ? 'nav-tab-selected': 'nav-tab'} name='campaigns'  onClick={this.onTabClick.bind(this)}> {EN ? 'CAMPAIGNS' : 'CAMPAÑAS'}</Nav.Link>
                         <Nav.Link id={this.state.currentTab === 'frequently-asked-questions' ? 'nav-tab-selected': 'nav-tab'} name='frequently-asked-questions'  onClick={this.onTabClick.bind(this)}>{EN ? 'FAQ' : 'PREGUNTAS'}</Nav.Link>
-                        <Nav.Link id={this.state.currentTab === (isAuthenticated ? 'dashboard' : 'login') ? 'nav-tab-selected': 'nav-tab'} name={isAuthenticated ? 'dashboard' : 'login'}  onClick={this.onTabClick.bind(this)}>{isAuthenticated ? EN ? 'DASHBOARD': 'TABLERO' : EN ? 'LOG IN' : 'INICIAR SESION'}</Nav.Link>
+                        <Nav.Link id={this.state.currentTab === (isAuthenticated ? 'dashboard' : 'login') ? 'nav-tab-selected': 'nav-tab'} name={isAuthenticated ? 'dashboard' : 'login'}  onClick={this.onTabClick.bind(this)}>{isAuthenticated ? EN ? 'DASHBOARD': 'MI CUENTA' : EN ? 'LOG IN' : 'INICIAR SESIÓN'}</Nav.Link>
                         { isAuthenticated
                         ?
                             <Nav.Link >
                             <div className='logout-mobile' onClick={this.onLogOut.bind(this)}   >
-                                <i className="fas fa-sign-out-alt"></i><label>&nbsp;{EN ? 'SIGN OUT' : 'DESCONECTAR'}</label>
+                                <i className="fas fa-sign-out-alt"></i><label>&nbsp;{EN ? 'SIGN OUT' : 'CERRAR SESIÓN'}</label>
                             </div>
                         </Nav.Link>
                         :
@@ -195,7 +195,7 @@ class NavBar extends Component {
                     { isAuthenticated
                         ?
                         <div className='logout' onClick={this.onLogOut.bind(this)}>
-                            <i className="fas fa-sign-out-alt"></i><label>&nbsp;{EN ? 'SIGN OUT' : 'DESCONECTAR'}</label>
+                            <i className="fas fa-sign-out-alt"></i><label>&nbsp;{EN ? 'SIGN OUT' : 'CERRAR SESIÓN'}</label>
                         </div>
                         :
                         ''

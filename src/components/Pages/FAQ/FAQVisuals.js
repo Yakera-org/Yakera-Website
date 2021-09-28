@@ -4,7 +4,7 @@ import Drawer from './FAQDrawer'
 import Author from '../../author';
 import content from './FAQ.json'
 
-const banner_pic = 'https://yakera-files.s3.us-east-2.amazonaws.com/yakera/faq-title.jpg';
+const banner_pic = 'https://assets.yakera.org/yakera/faq-title.jpg';
 
 function FAQVisuals(props) {
 
@@ -46,7 +46,7 @@ function FAQVisuals(props) {
                 <Grid item xs={12} sm={12} >
                     <div className='faq-drawer-area'>
                         <h1>
-                            {EN ? 'What can we help you with?' : 'Cómo le podemos ayudar?'}
+                            {EN ? 'What can we help you with?' : '¿Cómo le podemos ayudar?'}
                         </h1>
                         {/* <SearchBar 
                             searchQuery={searchQuery}

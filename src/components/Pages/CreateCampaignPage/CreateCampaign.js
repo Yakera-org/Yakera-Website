@@ -1,12 +1,13 @@
 import React, {useState} from "react";
 import {validateFields} from "../Register/Validation";
 import CreateCampaignVisuals from "./CreateCampaignVisuals";
+import Loader from "react-loader-spinner";
 import Author from '../../author';
 import api from "../../../services/api";
 import LanguageService from "../../../services/language";
 
 
-function CreateCampaign(props) {
+function CreateCampaign() {
 
     const initialState = {
         campaignname: "",
@@ -27,7 +28,20 @@ function CreateCampaign(props) {
     const [errorMessage, setError] = useState('');
     const [successMessage, setSuccess] = useState('');    
     const [files, setFiles] = useState([]);
-    const EN = props.EN
+    const [EN, setEN] = React.useState(false);
+    const [language, setLanguage] = React.useState('en');
+    const [loader, setLoader] = React.useState(false);
+
+    React.useEffect(() => {
+        if(LanguageService.getLanguage()==='en'){
+            setEN(true)
+            setLanguage('en')
+        }
+        else{
+            setEN(false)
+            setLanguage('es')
+        } 
+    }, []);
 
     const handleChange = event => {
 
@@ -85,7 +99,7 @@ function CreateCampaign(props) {
         if(!data.amount){
             amountError = emptyWarning;
         }else{
-            amountError = validateFields.validateAmount(data.amount + '')
+            amountError = validateFields.validateNumber(data.amount + '')
         }
         if(!data.campaignname){
             nameError = emptyWarning;     
@@ -138,10 +152,11 @@ function CreateCampaign(props) {
         event.preventDefault();
         let formattedStory = linkify(data.story)
         formattedStory = formattedStory.replace(/\n/g, " <br />");
-
+        
         let isValidated = validateData()
-
+        
         if(isValidated){
+            setLoader(true)
             submitToBackend(formattedStory)
         }else{
             setError(EN ? 'Some info is not correct, please check the fields.' : 'Alguna información no es correcta, por favor revise los campos.')
@@ -154,35 +169,53 @@ function CreateCampaign(props) {
         for (const file of files) {
             formdata.append(file.name, file.uploadedFile);
         }
-        // const categories = {
-        //     'Small Business': 'small_business',
-        //     'Healthcare': 'healthcare',
-        //     'Education': 'education',
-        //     'Nutrition': 'nutrition'
-        // }
+
+        // TODO: Remove this. Temp solution for getting campaign categories 
+        const categories = {
+            'small business': 'small_business',
+            'healthcare': 'healthcare',
+            'education': 'education',
+            'nutrition': 'nutrition',
+
+            'pequeños negocios': 'small_business',
+            'salud': 'healthcare',
+            'educación': 'education',
+            'alimentación': 'nutrition'
+        }
+
         const payload = {
             title: data.campaignname,
             targetAmount: data.amount,
             story: story,
-            category: data.campaigncategory,
+            category: categories[ data.campaigncategory ],
             description: data.description,
-            language: LanguageService.getLanguage()
-        }
+            language: language
+        }   
         for ( var key in payload ) {
             formdata.append(key, payload[key]);
         }
-
         try {
             await api.post('/campaigns', formdata);
             setSuccess(EN ? 'Your campaign has been created successfully!' : '¡Tu campaña se ha creado con éxito!')
+            setLoader(false)
         } catch (error) {
-            console.log(error.response.data);
+            console.log('Error: '+ error);
             setError(EN ? 'Something on our server went wrong, please try again' : 'Se produjo un error en nuestro servidor. Vuelve a intentarlo.')
+            setLoader(false)
         }      
     }            
        
     return (
         <div>
+            <div className='loader'>
+                <Loader
+                type="Bars"
+                color="#ea8737"
+                height={100}
+                width={100}
+                visible={loader}
+                />
+            </div>
              <CreateCampaignVisuals EN={EN} success={successMessage} error={errorMessage} data={data} handleChange={handleChange} handleImageChange={handleImageChange} validate={validateData} submit={submit}/>
             <Author />
         </div>

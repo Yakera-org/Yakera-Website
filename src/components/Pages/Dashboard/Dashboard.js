@@ -5,6 +5,7 @@ import { validateFields } from '../Register/Validation';
 import './Dashboard.css';
 import api from "../../../services/api";
 import LanguageService from '../../../services/language';
+import TokenService from '../../../services/token';
 
 function Dashboard() {
 
@@ -16,15 +17,22 @@ function Dashboard() {
     const [profileData, setProfileData] = useState({});
 
     React.useEffect(() => {
-        if(LanguageService.getLanguage()==='en')setEN(true)
-        else setEN(false)
+        startup()
+        
+    });
+    function startup(){
+        if(LanguageService.getLanguage()==='en'){
+            setEN(true)
+        }
+        else {
+            setEN(false)
+        }
         if (localStorage.getItem('accessToken')) {
             getCampaign();
         } else {
             window.location = '/';
         }
-    }, []);
-
+    }
     async function getCampaign() {
         try {
             const res = await api.get('/profile');
@@ -33,6 +41,10 @@ function Dashboard() {
         } catch (err) {
             setError('Profile not found');
             setLoaded(true);
+            window.alert(EN ? "Profile not found, please login again" : "Perfil no encontrado, por favor inicie sesión nuevamente")
+            TokenService.removeAccessToken()
+            TokenService.removeRefreshToken()
+            window.location.replace('/login')
         }
     }
 

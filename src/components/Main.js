@@ -2,6 +2,8 @@ import React from 'react';
 import {Redirect, BrowserRouter, Switch, Route } from "react-router-dom";
 import login from './Pages/Login/LoginPage';
 import register from './Pages/Register/RegisterPage'; 
+import ForgotPassword from './Pages/ForgotPassword/ForgotPasswordPage';
+import ResetPassword from './Pages/ResetPassword/ResetPasswordPage';
 import home from './Pages/Home/home';
 import Campaign from './Pages/CampaignPage/CampaignPage';
 // import profile from './Pages/Profile/profile';
@@ -16,7 +18,6 @@ import CreateCampaign from './Pages/CreateCampaignPage/CreateCampaign';
 import Dashboard from './Pages/Dashboard/Dashboard';
 
 
-
 function Main(){
 
     let isAuthenticated = true;
@@ -25,9 +26,11 @@ function Main(){
         <BrowserRouter>
             <div style={{marginTop: '100px'}}>
             <Switch>
-                <Route exact path="/login" component={login} />
-                <Route exact path="/register" component={register} />
-                <Route exact path="/support" component={SupportUs} />
+                <Route exact path="/login" component={login}/>
+                <Route exact path="/register" component={register}/>
+                <Route exact path="/forgot-password" component={ForgotPassword}/>
+                <Route exact path="/reset-password" component={ResetPassword}/>
+                <Route exact path="/support" component={SupportUs}/>
                 <Route exact path="/campaigns" component={donate}/>
                 <Route exact path="/create-campaign" component={CreateCampaign} />
                 <Route exact path="/about" component={AboutUs}/>

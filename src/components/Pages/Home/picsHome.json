@@ -1,13 +1,13 @@
 {
-    "phones": "https://yakera-files.s3.us-east-2.amazonaws.com/yakera/phones.png",
+    "phones": "https://assets.yakera.org/yakera/phones.png",
     "illustrations":[
-         "https://yakera-files.s3.us-east-2.amazonaws.com/yakera/verify.svg",
-         "https://yakera-files.s3.us-east-2.amazonaws.com/yakera/story-icon.svg",
-         "https://yakera-files.s3.us-east-2.amazonaws.com/yakera/group-icon.svg",
-         "https://yakera-files.s3.us-east-2.amazonaws.com/yakera/save-money-icon.svg"
+         "https://assets.yakera.org/yakera/verify.svg",
+         "https://assets.yakera.org/yakera/story-icon.svg",
+         "https://assets.yakera.org/yakera/group-icon.svg",
+         "https://assets.yakera.org/yakera/save-money-icon.svg"
     ],
-    "mobile-illustration": "https://yakera-files.s3.us-east-2.amazonaws.com/yakera/illustrations.png",
-    "dotted-line":"https://yakera-files.s3.us-east-2.amazonaws.com/yakera/steps-line.svg",
+    "mobile-illustration": "https://assets.yakera.org/yakera/illustrations.png",
+    "dotted-line":"https://assets.yakera.org/yakera/steps-line.svg",
     "illustration-texts":{
         "en":[
         "<span style='font-weight: bold'>Register</span> at Yakera and confirm your data",
@@ -22,5 +22,5 @@
             "<span style='font-weight: bold'>Retira</span> los fondos en tu cuenta de banco o paga directamente"
         ]
     },
-    "video-img": "https://yakera-files.s3.us-east-2.amazonaws.com/yakera/Artboard+12-100.jpg"
+    "video-img": "https://assets.yakera.org/yakera/Artboard+12-100.jpg"
 }

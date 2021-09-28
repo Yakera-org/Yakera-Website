@@ -7,38 +7,33 @@
                     "name":"Raul Romero",
                     "position":"CEO & Founder",
                     "link": "https://www.linkedin.com/in/raul-romero-martinez/",
-                    "picture": "https://yakera-files.s3.us-east-2.amazonaws.com/yakera/raul.jpg"            
+                    "picture": "https://assets.yakera.org/yakera/raul.jpg"            
                 },
                 {
                     "name":"Tomas Munoz",
-                    "position":"CFO",
+                    "position":"CFO & Co-founder",
                     "link": "https://www.linkedin.com/in/tomas-munoz-reyes-7b2202156/",
-                    "picture": "https://yakera-files.s3.us-east-2.amazonaws.com/yakera/thomas.jpg"            
+                    "picture": "https://assets.yakera.org/yakera/thomas.jpg"            
                 },
                 {
-                    "name":"Mafer Bencoma",
+                    "name":"Mafer Bencomo",
                     "position":"CMO",
                     "link": "https://www.linkedin.com/in/maferbencomo/",
-                    "picture": "https://yakera-files.s3.us-east-2.amazonaws.com/yakera/mafer.jpg"            
+                    "picture": "https://assets.yakera.org/yakera/mafer.jpg"            
                 },
                 {
                     "name":"Aaron Lambert",
                     "position":"COO",
                     "link": "https://www.linkedin.com/in/aaron-lambert-b8b4b9183/",
-                    "picture": "https://yakera-files.s3.us-east-2.amazonaws.com/yakera/raul.jpg"            
+                    "picture": "https://assets.yakera.org/yakera/raul.jpg"            
                 },
                 {
                     "name":"Jang Belche",
                     "position":"CTO & Head of development",
                     "link": "https://www.linkedin.com/in/jang-belche/",
-                    "picture": "https://yakera-files.s3.us-east-2.amazonaws.com/yakera/jang.jpg"            
-                },
-                {
-                    "name":"Mariana Romero",
-                    "position":"Head of Design",
-                    "link": "https://www.linkedin.com/company/yakera",
-                    "picture": "https://yakera-files.s3.us-east-2.amazonaws.com/yakera/raul.jpg"            
+                    "picture": "https://assets.yakera.org/yakera/jang.jpg"            
                 }
+                
             ]
         },
         {
@@ -48,45 +43,57 @@
                     "name":"Zeynep Tezduyar",
                     "position":"Front end co-lead",
                     "link": "https://www.linkedin.com/in/zeyneptezduyar/",
-                    "picture": "https://yakera-files.s3.us-east-2.amazonaws.com/yakera/raul.jpg"                     
+                    "picture": "https://assets.yakera.org/yakera/raul.jpg"                     
                 },
                 {
                     "name":"Haikal Khairul",
                     "position":"Front end co-lead",
                     "link": "https://www.linkedin.com/in/haikalkhairul/",
-                    "picture": "https://yakera-files.s3.us-east-2.amazonaws.com/yakera/raul.jpg"            
+                    "picture": "https://assets.yakera.org/yakera/raul.jpg"            
                 },
                 {
                     "name":"Andrés Bravo",
                     "position":"Back end lead",
                     "link": "https://www.linkedin.com/in/andres-bravor/",
-                    "picture": "https://yakera-files.s3.us-east-2.amazonaws.com/yakera/raul.jpg"            
+                    "picture": "https://assets.yakera.org/yakera/raul.jpg"            
                 },
                 {
                     "name":"Andrés Sanchez",
                     "position":"Back end developer",
                     "link": "https://www.linkedin.com/in/andresdst/",
-                    "picture": "https://yakera-files.s3.us-east-2.amazonaws.com/yakera/raul.jpg"            
+                    "picture": "https://assets.yakera.org/yakera/raul.jpg"            
                 },
                 {
                     "name":"Pedro Sousa",
                     "position":"Full stack developer",
                     "link": "https://www.linkedin.com/in/pedro-marques-sousa/",
-                    "picture": "https://yakera-files.s3.us-east-2.amazonaws.com/yakera/raul.jpg"            
+                    "picture": "https://assets.yakera.org/yakera/raul.jpg"            
                 },
                 {
                     "name":"Ali Hindy",
                     "position":"Full stack developer",
                     "link": "https://www.linkedin.com/in/ali-hindy-6484a6208/",
-                    "picture": "https://yakera-files.s3.us-east-2.amazonaws.com/yakera/ali.jpg"            
+                    "picture": "https://assets.yakera.org/yakera/ali.jpg"            
                 },
                 {
                     "name":"Louis Nicaud",
                     "position":"Back end Architect",
                     "link": "https://www.linkedin.com/in/louis-nicaud/",
-                    "picture": "https://yakera-files.s3.us-east-2.amazonaws.com/yakera/raul.jpg"            
+                    "picture": "https://assets.yakera.org/yakera/raul.jpg"            
+                }
+            ]
+        },
+        {
+            "name": "Marketing",
+            "members":[
+                {
+                    "name":"Mariana Romero",
+                    "position":"Head of Design",
+                    "link": "https://www.linkedin.com/company/yakera",
+                    "picture": "https://assets.yakera.org/yakera/raul.jpg"            
                 }
             ]
         }
     ]    
 }
+

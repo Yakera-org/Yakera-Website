@@ -1,9 +1,9 @@
 import React from 'react'
 import { Grid } from '@material-ui/core';
 
-const titleImg =  'https://yakera-files.s3.us-east-2.amazonaws.com/yakera/nuevopost-12.jpg';
-const banner1 = 'https://yakera-files.s3.us-east-2.amazonaws.com/yakera/Ivana+Duran.jpeg'
-const banner2 = 'https://yakera-files.s3.us-east-2.amazonaws.com/yakera/support.png'
+const titleImg =  'https://assets.yakera.org/yakera/nuevopost-12.jpg';
+const banner1 = 'https://assets.yakera.org/yakera/Ivana+Duran.jpeg'
+const banner2 = 'https://assets.yakera.org/yakera/support.png'
 
 function SupportUsVisuals(props) {
     const EN = props.EN
@@ -25,7 +25,7 @@ function SupportUsVisuals(props) {
                 </Grid>
                 <Grid item xs={12} sm={6} >
                     <div className='support-us-top-right'>
-                        <h1>{EN ? 'Changing how humanitarian aid is delivered around the world' : 'Cambiando la forma en que se entrega la ayuda humanitaria en todo el mundo'}</h1>
+                        <h1>{EN ? 'Changing how humanitarian aid is delivered around the world' : 'Cambiando la forma en que se distribuye la ayuda humanitaria en todo el mundo'}</h1>
                         <div className='donate-box'>
                             <p>{EN ? 'Choose an amount to donate' : 'Elija una cantidad para donar'} </p>
                             <div className='inside-box'>
@@ -100,7 +100,7 @@ function SupportUsVisuals(props) {
                             :
                             <div>
                                 <h1>
-                                Tu puedes hacer la diferencia. Su donación directa a Yakera nos permite desarrollar nuestra tecnología y servir a nuestras comunidades.
+                                Tú puedes hacer la diferencia. Su donación directa a Yakera nos permite desarrollar nuestra tecnología y servir a nuestras comunidades.
                                 </h1>
                                 <h1><b>Somos multiplicadores del cambio.</b> </h1>
                             </div>

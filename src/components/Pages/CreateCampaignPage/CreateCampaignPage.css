@@ -55,11 +55,11 @@
     outline: none;
 }
 .create-page #create-campaign button:hover{
-    opacity: 90%;
+    background-color: #e99e60;
     outline: none;
 }
 .create-page #create-campaign button:active{
-    opacity: 60%;
+    background-color: #e9b488;
     outline: none;
 }
 
