@@ -30,7 +30,7 @@ function Home() {
                     <Grid item xs={12} sm={6} >
                         <section className='top-left'>
                             <p>
-                                {EN ? 'Reinventing the distribution of humanitarian aid around the world, one story at a time. ':'Reinventando la distribución de ayuda humanitaria en el mundo, una historia a la vez.' }
+                                {EN ? 'Reimagining the distribution of humanitarian aid around the world, one story at a time. ':'Reinventando la distribución de ayuda humanitaria en el mundo, una historia a la vez.' }
                             </p>
                             <button>
                                 <a href='/about'>{EN ? 'More info' : 'Mas info'}</a>
