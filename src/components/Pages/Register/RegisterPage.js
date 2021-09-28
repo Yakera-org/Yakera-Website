@@ -8,7 +8,7 @@ import LanguageService from "../../../services/language";
 
 const _axios = require('axios');
 const axios = _axios.create();
-const yakeraBackUrl = 'https://express-backend-api.herokuapp.com';
+const yakeraBackUrl = 'https://api.yakera.org';
 
 function Register(props) {
 

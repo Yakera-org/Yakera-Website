@@ -41,7 +41,6 @@ function Dashboard() {
         } catch (err) {
             setError('Profile not found');
             setLoaded(true);
-            window.alert(EN ? "Profile not found, please login again" : "Perfil no encontrado, por favor inicie sesión nuevamente")
             TokenService.removeAccessToken()
             TokenService.removeRefreshToken()
             window.location.replace('/login')
