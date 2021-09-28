@@ -16,6 +16,7 @@ import SupportUs from './Pages/SupportUs/SupportUs';
 import NotFoundPage from './Pages/404/NotFoundPage';
 import CreateCampaign from './Pages/CreateCampaignPage/CreateCampaign';
 import Dashboard from './Pages/Dashboard/Dashboard';
+import EmailVerification from './Pages/EmailVerification/EmailVerificationPage';
 
 
 function Main(){
@@ -39,6 +40,7 @@ function Main(){
                 <Route exact path="/consent" component={Consent}/>
                 <Route exact path="/frequently-asked-questions" component={FAQ}/>
                 <Route exact path="/dashboard" component={isAuthenticated ? Dashboard : login}/>
+                <Route exact path="/verify-email" component={EmailVerification}/>
                 <Route exact path="/" component={home}/>
                 <Route path="/404" component={NotFoundPage} />
                 <Redirect to="/404" />
