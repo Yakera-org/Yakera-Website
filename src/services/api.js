@@ -3,7 +3,7 @@ import TokenService from "./token";
 
 
 const instance = axios.create({
-    baseURL: "https://express-backend-api.herokuapp.com/api",
+    baseURL: "https://api.yakera.org/api",
     headers: {
       "Content-Type": "application/json",
     },

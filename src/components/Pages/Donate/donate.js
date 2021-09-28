@@ -10,7 +10,7 @@ import { unauthenticatedGet } from '../../../utils';
 
 import './donate.css';
 import LanguageService from '../../../services/language';
-const yakeraBackendUrl = 'https://express-backend-api.herokuapp.com/api/campaigns/';
+const yakeraBackendUrl = 'https://api.yakera.org/campaigns/';
 
 
 // no way did i write this, so here is an explanation
