@@ -32,7 +32,7 @@ class DonateCard extends Component {
                                 ${amount}
                             </b>
                             &nbsp;
-                            {EN ? 'raised of ' : 'levantado de '} ${target} {EN ? ' target' : 'objetivo'}   
+                            {EN ? 'raised of ' : 'recaudado de '} ${target} {EN ? ' target' : ''}   
                         </p> 
                     </div>
                     <div className="donate-page-card-progress">
