@@ -6,11 +6,10 @@ import HashLoader from "react-spinners/HashLoader";
 import pics from './pics';
 import SearchIcon from '@material-ui/icons/Search';
 import { Form, InputGroup } from 'react-bootstrap';
-import { unauthenticatedGet } from '../../../utils';
 
 import './donate.css';
+import api from '../../../services/api';
 import LanguageService from '../../../services/language';
-const yakeraBackendUrl = 'https://api.yakera.org/campaigns/';
 
 
 // no way did i write this, so here is an explanation
@@ -108,23 +107,21 @@ class donate extends Component{
 
     async componentDidMount(){
         var lang = LanguageService.getLanguage()
-
-        await unauthenticatedGet(yakeraBackendUrl, {})
-            .then(data => {
-                console.log(data.data.campaigns)
+        try {
+            const res = await api.get('/campaigns/');
+            if (res.data.data.campaigns) {
                 this.setState({
-                    campaigns: data.data.campaigns,
+                    campaigns: res.data.data.campaigns,
                 });
-            })
-            .catch(error => {
-                console.log(error);
-            })
-            .finally(() => {
-                this.setState({
-                    language: lang,
-                    loaded:true
-                });
-        });       
+            }    
+        } catch (err) {
+            console.log('err');
+        } finally {
+            this.setState({
+                language: lang,
+                loaded:true
+            });
+        } 
     }
     
     handle_change = (value) => {

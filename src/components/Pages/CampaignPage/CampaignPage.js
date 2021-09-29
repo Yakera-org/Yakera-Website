@@ -3,10 +3,8 @@ import Visual from './CampaignPageVisual';
 import Author from '../../author';
 import PaymentVisual from './PaymentVisual';
 import './CampaignPage.css';
-import { unauthenticatedGet } from '../../../utils';
+import api from '../../../services/api';
 import LanguageService from '../../../services/language';
-
-const yakeraBackendUrl = 'https://api.yakera.org/api/campaigns/';
 
 class CampaignPage extends Component{
     constructor(props) {
@@ -19,31 +17,25 @@ class CampaignPage extends Component{
     async componentDidMount(){
         var language = LanguageService.getLanguage()
         let found = false;
-        await unauthenticatedGet(yakeraBackendUrl, {})
-            .then(data => {
-                console.log(data)
-                data.data.campaigns.forEach((cam) => {
-                    if (cam.slug === this.props.match.params.title) {
-                        found = true;
-                        this.setState({
-                            campaign: cam,
-                        });
-                    }
-                });
-            })
-            .catch(error => {
-                console.log(error);
-            })
-            .finally(() => {
-                if (!found){
-                    window.location.replace("/campaigns");
-                }
+        try {
+            const res = await api.get(`/campaigns/${this.props.match.params.title}`);
+            if (res.data.data) {
+                found = true;
                 this.setState({
-                    loaded:true,
-                    language: language
+                    campaign: res.data.data,
                 });
+            } 
+        } catch (err) {
+            console.log('err');
+        } finally {
+            if (!found) {
+                window.location.replace("/campaigns");
+            }
+            this.setState({
+                loaded:true,
+                language: language
             });
-
+        }
     }
 
     render(){
