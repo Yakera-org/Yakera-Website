@@ -6,7 +6,7 @@ import './CampaignPage.css';
 import { unauthenticatedGet } from '../../../utils';
 import LanguageService from '../../../services/language';
 
-const yakeraBackendUrl = 'https://api.yakera.org//campaigns/';
+const yakeraBackendUrl = 'https://api.yakera.org/campaigns/';
 
 class CampaignPage extends Component{
     constructor(props) {
