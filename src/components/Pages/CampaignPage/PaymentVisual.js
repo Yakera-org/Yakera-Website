@@ -75,7 +75,7 @@ class PaymentVisual extends Component {
 
     OnPaymentClick(){
         console.log('click')
-        this.switchLoader(true);
+        this.switchLoader(false);
     }
     async OnPaymentCancel() {
         console.log('payment canceled');
