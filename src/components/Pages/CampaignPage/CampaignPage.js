@@ -68,7 +68,7 @@ class CampaignPage extends Component{
 
                      <PaymentVisual
                         language={'en'}
-                        title={campaign.title['en']}
+                        title={campaign.title}
                         slug={campaign.slug}
                      />
                     
