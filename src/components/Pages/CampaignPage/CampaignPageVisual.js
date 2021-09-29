@@ -185,7 +185,7 @@ class CampaignPageVisual extends Component {
                              
                         </div>
 
-                        <p id="author-credit">{campaign._user.firstName} - {getHumanReadableDate(campaign.createdAt)}</p>
+                        <p id="author-credit">{capitalizeFirstLetter(campaign._user.firstName)} {capitalizeFirstLetter(campaign._user.lastName)} - {getHumanReadableDate(campaign.createdAt)}</p>
 
                         {/* <hr style={{marginBottom:'-10px'}}/> */}
                         
