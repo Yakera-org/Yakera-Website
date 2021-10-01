@@ -89,7 +89,7 @@ function CreateCampaignDetails(props) {
                 </FormGroup>
                 <FormGroup>
                     <FormLabel>
-                        {EN ? 'Your story (we recommend referencing your personal story, the need behind your campaign, why you are opening a campaign, how will you spend the money, and what will the support of people in Yakera allow you to do). Usually successful campaigns have between 3-6 paragraphs.' : 'Su historia (recomendamos que usted refiera a su propia historia, las necesidades que quiere cubrir con los fondos, por qué está abriendo una campaña, cómo va a gastar los fondos, y qué podrá hacer con los fondos). Típicamente, campañas exitosas tienen entre 3-6 párrafos.'}
+                        {EN ? 'Your story (we recommend referencing your personal story, the need behind your campaign, why you are opening a campaign, how will you spend the money, and what will the support of people in Yakera allow you to do). Usually successful campaigns have between 3-6 paragraphs.' : 'Su historia (recomendamos se refiera a su propia historia, las necesidades que quiere cubrir con los fondos, por qué está abriendo una campaña, cómo va a gastar los fondos, y qué podrá hacer con los fondos). Escriba de 2 a 6 párrafos añadiendo detalles.'}
                     </FormLabel>
                     <FormControl
                         type='story'
@@ -127,7 +127,7 @@ function CreateCampaignDetails(props) {
                     <div className="invalid-feedback">{props.data.errors.itemizedbudget}</div>
                 </FormGroup>
                 <FormGroup className="mb-3">
-                    <FormLabel>{EN ? 'Documents that support your ask (i.e medical orders or notes, tuition receipt, pictures of your small business, budget, etc.)' : 'Documentos que apoyen y documenten su aplicación'}</FormLabel>
+                    <FormLabel>{EN ? 'Documents that support your ask (i.e medical orders or notes, tuition receipt, pictures of your small business, budget, etc.)' : 'Documentos que apoyen su aplicación (historia médica, récipe médico, fotos de su negocio pequeño, etc.)'}</FormLabel>
                     <FormControl
                         type="file"
                         multiple={true}
@@ -137,7 +137,7 @@ function CreateCampaignDetails(props) {
                     />
                 </FormGroup>
                 <FormGroup className="mb-3">
-                    <FormLabel>{EN ? 'Main Campaign picture' : 'Foto primaria'}</FormLabel>
+                    <FormLabel>{EN ? 'Main Campaign picture' : 'Fotos de usted y su familia'}</FormLabel>
                     <FormControl
                         type="file"
                         as='input'
