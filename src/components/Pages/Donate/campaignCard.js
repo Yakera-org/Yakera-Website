@@ -13,19 +13,20 @@ const sp_headers = {
   "education":"Educación",
   "healthcare":"Atención Médica",
   "nutrition":"Nutrición",
-  "business":"Pequeños Negocios"
+  "small_business":"Pequeños Negocios"
 }
 
 const en_headers = {
   "education":"Education",
   "healthcare":"Healthcare",
   "nutrition":"Nutrition",
-  "business":"Small Business"
+  "small_business":"Small Business"
 }
-const colorDic={
+
+const colorDic = {
   "education": '#71b98f',
   "healthcare": '#ff7d7d',
-  "business":'#7099d0',
+  "small_business":'#7099d0',
   "nutrition": '#ffc19a',
 };
 
