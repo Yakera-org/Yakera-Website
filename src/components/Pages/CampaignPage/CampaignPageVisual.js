@@ -11,10 +11,14 @@ const CampaignCategory = ({
     return (
         <h3
             style={{
-                color: categoryType === 'education'
+                color: categoryType === 'education' || 'educación'
                     ? '#70b88f'
-                    : categoryType === 'healthcare'
+                    : categoryType === 'healthcare' || 'salud'
                     ? '#ff7d7d'
+                    : categoryType === 'small business' || 'pequeños negocios'
+                    ? '#0e325e'
+                    : categoryType === 'nutrition' || 'alimentación'
+                    ? '#edc343'
                     : ''
             }}
         >
@@ -22,6 +26,21 @@ const CampaignCategory = ({
         </h3>
     );
 };
+
+const categories = {
+    'en': {
+        'small_business': 'small business',
+        'healthcare': 'healthcare',
+        'education': 'education',
+        'nutrition': 'nutrition',
+    },
+    'es': {
+        'small_business': 'pequeños negocios',
+        'healthcare': 'salud',
+        'education': 'educación',
+        'nutrition': 'alimentación',
+    }
+}
 
 
 var marginOffset = 50;
@@ -102,7 +121,14 @@ class CampaignPageVisual extends Component {
         const campaign = this.props.campaign;
         const amount = this.props.amount;
         const target = campaign.targetAmount;
-        let title, story, mainPicture;
+        let title, story, mainPicture, category;
+
+        try {
+            category = categories[language][campaign.category]
+        } catch (err) {
+            category = campaign.category
+        }
+        
         try{
             mainPicture = campaign.mainPicture.url;
         }
@@ -123,7 +149,7 @@ class CampaignPageVisual extends Component {
                     // TODO: render with styling, eg. capitalize properly and add icon
                     campaign.category
                 }</h3>    */}
-                <CampaignCategory categoryType={campaign.category} />
+                <CampaignCategory categoryType={category} />
                     <h1 style={{color: 'var(--brand-blue'}}>{title}</h1>  
                 <Grid container spacing={4} style={{ alignItems:'flex-start'}}>
                     <Grid item xs={12} sm={8} id="left-col">
@@ -159,7 +185,7 @@ class CampaignPageVisual extends Component {
                              
                         </div>
 
-                        <p id="author-credit">{campaign._user.firstName} - {getHumanReadableDate(campaign.createdAt)}</p>
+                        <p id="author-credit">{capitalizeFirstLetter(campaign._user.firstName)} {capitalizeFirstLetter(campaign._user.lastName)} - {getHumanReadableDate(campaign.createdAt)}</p>
 
                         {/* <hr style={{marginBottom:'-10px'}}/> */}
                         

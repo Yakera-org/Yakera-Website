@@ -143,7 +143,7 @@ class CampaignCard extends Component {
             <div className='progress-text'>
               <p>
                 <b>${this.props.amount}</b>
-                {` raised of $${target}`}
+                {this.props.language==="en" ? ` raised of $${target}` : ` recaudado de $${target}`}
               </p>
             </div>
             <Progress theme={{

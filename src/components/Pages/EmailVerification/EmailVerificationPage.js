@@ -20,7 +20,7 @@ function EmailVerificationPage() {
         }
 
         try {
-            await api.post(`/auth/verify-email?token=${token}`);
+            await api.get(`/auth/verify-email?token=${token}`);
             setSuccess(
                 EN 
                 ? 'Your account has been verified successfully!'

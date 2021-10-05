@@ -97,7 +97,7 @@ function onWithdraw(event){
 
                     <div className='dash-campaigns'>
                         <h2>
-                            Your <span id='dash-stats'>{EN ? "Campaigns" : "Campañas"}</span>
+                            {EN ? "Your " : "Tus "}<span id='dash-stats'>{EN ? "Campaigns" : "Campañas"}</span>
                             <div className='active-campaigns'>
                                 <Grid container spacing={4} style={{ alignItems:'flex-start', textAlign:'center'}}>
                                     {

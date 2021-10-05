@@ -75,7 +75,7 @@ class PaymentVisual extends Component {
 
     OnPaymentClick(){
         console.log('click')
-        this.switchLoader(true);
+        this.switchLoader(false);
     }
     async OnPaymentCancel() {
         console.log('payment canceled');
@@ -134,7 +134,8 @@ class PaymentVisual extends Component {
             <div key={this.props.presetAmount} className="payment-visual" id="donateRef">
                 <ThanksCard 
                     open={this.state.thanksOpen} 
-                    amount={this.state.amount+this.state.tip}
+                    amount={Number(this.state.amount) + Number(this.state.tip)}
+                    title={this.props.title}
                     onClose={this.closeThanks.bind(this)}
                     />
                 <div className="payment-card-sec">

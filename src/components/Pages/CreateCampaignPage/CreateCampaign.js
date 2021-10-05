@@ -189,6 +189,7 @@ function CreateCampaign() {
             story: story,
             category: categories[ data.campaigncategory ],
             description: data.description,
+            itemizedBudget: data.itemizedbudget,
             language: language
         }   
         for ( var key in payload ) {

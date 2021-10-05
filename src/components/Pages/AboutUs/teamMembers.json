@@ -58,6 +58,18 @@
                     "picture": "https://assets.yakera.org/yakera/andresBravo.jpg"            
                 },
                 {
+                    "name":"Andrés David Sanchez",
+                    "position":"Back end developer",
+                    "link": "https://www.linkedin.com/in/andresdst/",
+                    "picture": "https://assets.yakera.org/yakera/andresSanchez.jpg"            
+                },
+                {
+                    "name":"Carlos Zerpa",
+                    "position":"Back end developer",
+                    "link": "https://www.linkedin.com/in/carlos-zerpa-651995171/",
+                    "picture": "https://assets.yakera.org/yakera/carlos.jpg"            
+                },
+                {
                     "name":"Ali Hindy",
                     "position":"Full stack developer",
                     "link": "https://www.linkedin.com/in/ali-hindy-6484a6208/",

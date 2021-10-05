@@ -18,7 +18,7 @@ class ThanksCard extends Component{
                     <img src={bg_pic} width="100%" alt="background-pic" />
                     
                 <h1 style={{marginTop:'10px', color:'#072147'}}> {true ? 'Thank you!' : 'Gracias!'}</h1>
-                <p> {true ? 'Thank you for your donation of' : 'Gracias por tu donación de'} <b>{this.props.amount}$</b> {true ? 'To the campaign: ' : 'A la campaña: '} {this.props.title} </p>
+                <p> {true ? 'Thank you for your donation of' : 'Gracias por tu donación de'} <b>${this.props.amount}</b> {true ? 'To the campaign: ' : 'A la campaña: '} {this.props.title} </p>
                 
                 <a
                     href="https://yakera.formstack.com/forms/user_feedback"
