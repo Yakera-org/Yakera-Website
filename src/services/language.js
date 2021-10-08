@@ -15,10 +15,14 @@ const setLanguage = () => {
 
     localStorage.setItem('language', newLanguage)
 };
-const defaultLanguage = "es"
+const setLanguageFromIP = (IPLang) => {
+    localStorage.setItem('language', IPLang)
+}
+const defaultLanguage = "en"
 const LanguageService = {
-getLanguage,
-setLanguage
+    getLanguage,
+    setLanguage,
+    setLanguageFromIP
 };
   
   export default LanguageService;
