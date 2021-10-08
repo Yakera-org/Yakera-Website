@@ -31,11 +31,13 @@ const filterCampaignsBySearch = (campaigns, query, lang) => {
     }
   
     const searchTitles = campaigns.filter((campaign) => {
-        const campaignTitle = campaign.translations[lang].title.toLowerCase();
+        const campaignTitle = campaign.translations[lang]?.title.toLowerCase() 
+                                || campaign.title.toLowerCase();
         return campaignTitle.includes(query.toLowerCase());
     });
     const searchDescriptions = campaigns.filter((campaign) => {
-        const campaignDescription = campaign.translations[lang].description.toLowerCase();
+        const campaignDescription = campaign.translations[lang]?.description.toLowerCase() 
+                                    || campaign.description.toLowerCase();
         return campaignDescription.includes(query.toLowerCase());
     });
 

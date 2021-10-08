@@ -1,19 +1,27 @@
 {
     "phones": "https://assets.yakera.org/yakera/phones.png",
-    "illustrations":[
-         "https://assets.yakera.org/yakera/verify.svg",
-         "https://assets.yakera.org/yakera/story-icon.svg",
-         "https://assets.yakera.org/yakera/group-icon.svg",
-         "https://assets.yakera.org/yakera/save-money-icon.svg"
-    ],
+    "illustrations":{
+        "en": [
+            "https://assets.yakera.org/yakera/donate-icon.png",
+            "https://assets.yakera.org/yakera/share-icon.png",
+            "https://assets.yakera.org/yakera/impact-icon.png",
+            "https://assets.yakera.org/yakera/save-money-icon.svg"
+        ],
+        "es": [
+            "https://assets.yakera.org/yakera/verify.svg",
+            "https://assets.yakera.org/yakera/story-icon.svg",
+            "https://assets.yakera.org/yakera/group-icon.svg",
+            "https://assets.yakera.org/yakera/save-money-icon.svg"
+        ]
+    },
     "mobile-illustration": "https://assets.yakera.org/yakera/illustrations.png",
     "dotted-line":"https://assets.yakera.org/yakera/steps-line.svg",
     "illustration-texts":{
         "en":[
-        "<span style='font-weight: bold'>Register</span> at Yakera and confirm your data",
-        "<span style='font-weight: bold'>Tell</span>your story",
-        "<span style='font-weight: bold'>Share</span> with people that will help your campaign",
-        "<span style='font-weight: bold'>Withdraw</span> your funds immediately to your bank"
+        "Explore the stories and <span style='font-weight: bold'> Donate to a Campaign</span>",
+        "<span style='font-weight: bold'>Share</span> the campaign",
+        "<span style='font-weight: bold'>See</span> your <span style='font-weight: bold'>Impact</span>",
+        "<span style='font-weight: bold'>Join</span> the Yakera <span style='font-weight: bold'>Community</span>"
         ],
         "es":
         [   "<span style='font-weight: bold'>Regístrate</span> en Yakera y confirma tu usuario",

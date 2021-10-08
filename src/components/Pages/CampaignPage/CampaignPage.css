@@ -176,7 +176,7 @@
     border: none;
 }
 .payment-start-button:hover{
-    opacity: 80%;
+    opacity: 0.8;
     background-color: #002453;
 }
 .payment-slit{
@@ -287,7 +287,7 @@
     margin: 20px 0;
 }
 .payment-auth-card .payment-back-btn:hover{
-    opacity: 80%;
+    opacity: 0.8;
 }
 .payment-visual .loader{
     margin-left: 0%;
