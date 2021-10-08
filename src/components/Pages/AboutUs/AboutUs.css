@@ -313,18 +313,18 @@
         text-align: center; 
         width: 50%;
         margin-left: 25%;
-        margin-top: -15px;
+        margin-top: 5px;
         font-family: Intro-Light;
         font-size: 15px;
         vertical-align: top;
     }
     .about-us-team-pics #icon{
         color: grey;
-        margin-left: 0px;
+        margin-left: 10px;
     }
     .about-us-team-pics #icon i{
         color: grey;
-        margin-top:-50px;
+        margin-top:10px;
     }
     .about-us-team-pics #icon:hover{
         color: #ea8737;
