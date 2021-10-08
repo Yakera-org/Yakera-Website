@@ -1,7 +1,7 @@
 .camp-card{
     cursor: pointer;
-    max-height: 500px;
-    min-height: 500px;
+    max-height: 600px;
+    min-height: 600px;
     font-family: Intro-Regular-Alt;
 }
 .logo-sec img{
@@ -24,10 +24,14 @@
 }
 .camp-card .cam-img{
     text-align:center;
-    min-height:200px;
-    max-height:200px;
     overflow: hidden;
     background-color:#efefef;
+}
+.camp-card .cam-img img{
+    min-height:300px;
+    max-height:300px;
+    object-fit: cover;
+    border-radius: 0px 0px 20px 20px;
 }
 .logo-sec{
     max-height: 70px;
