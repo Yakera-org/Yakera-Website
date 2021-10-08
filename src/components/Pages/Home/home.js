@@ -50,7 +50,13 @@ function Home() {
                     <Grid container spacing={0} className='illustrations-mobile'>
                         <Grid item xs={12} sm={12} >
                             <section>
-                                <img src={pics["mobile-illustration"]} alt='phones'/>
+                                {EN
+                                ?
+                                    <img src={pics["mobile-illustration_alt"]} alt='phones'/>
+                                :
+                                    <img src={pics["mobile-illustration"]} alt='phones'/>
+                                }
+                                
                             </section>
                         </Grid> 
                     </Grid>
