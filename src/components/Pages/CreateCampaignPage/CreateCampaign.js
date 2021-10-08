@@ -33,14 +33,22 @@ function CreateCampaign() {
     const [loader, setLoader] = React.useState(false);
 
     React.useEffect(() => {
-        if(LanguageService.getLanguage()==='en'){
-            setEN(true)
-            setLanguage('en')
+        function startup(){
+            if(LanguageService.getLanguage()==='en'){
+                setEN(true)
+                setLanguage('en')
+            }
+            else{
+                setEN(false)
+                setLanguage('es')
+            } 
+            if (localStorage.getItem('accessToken')) {
+                //all good, nothin gneeds to be done
+            } else {
+                window.location = '/login';
+            }
         }
-        else{
-            setEN(false)
-            setLanguage('es')
-        } 
+        startup(); 
     }, []);
 
     const handleChange = event => {

@@ -33,7 +33,12 @@ function Home() {
                                 {EN ? 'Changing how humanitarian aid is delivered around the world, one story at a time.':'Reinventando la distribución de ayuda humanitaria en el mundo, una historia a la vez.' }
                             </p>
                             <button>
-                                <a href='/about'>{EN ? 'More info' : ' Ver más'}</a>
+                                {EN
+                                ?
+                                    <a href='/campaigns'>Donate Now!</a>
+                                :
+                                    <a href='/create-campaign'>Abre mi campaña</a>
+                                }
                             </button>
                         </section>
                     </Grid> 
@@ -51,7 +56,7 @@ function Home() {
                     </Grid>
                     <Grid container spacing={0} className='illustrations'>
                         {
-                            pics.illustrations.map((pic, i) => {
+                            pics.illustrations[language].map((pic, i) => {
                                 return(
                                     <Grid item xs={12} sm={3} key={i}>
                                         <img id='illustration' src={pic} alt='illustration' />
