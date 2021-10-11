@@ -58,7 +58,7 @@ function Register_auth(props) {
             <input
                 type="text"
                 name="socialNum"
-                placeholder={EN ? "Enter your ID Number" : "Número de identificación" }
+                placeholder={EN ? "Enter your ID Number" : "Número de cédula" }
                 value={props.data.socialNum}
                 onChange={props.handleChange}
                 className={classnames(
