@@ -8,7 +8,6 @@ import getHumanReadableDate from '../../../dateUtils';
 const CampaignCategory = ({
     categoryType,
 }) => {
-    console.log(categoryType)
     return (
         <h3
             style={{
