@@ -1,205 +1,237 @@
-.home-page{
-    margin-top: 150px;
-    font-family: Intro-Light;
+.home-page {
+  margin-top: 150px;
+  font-family: Intro-Light;
 }
-.home-page .top-left{
-    padding: 15% 20%;
+.home-page .top-left {
+  padding: 15% 20%;
 }
-.home-page .top-left p{
-    font-size: 35px;
+.home-page .top-left p {
+  font-size: 35px;
+  text-align: left;
+  font-weight: 580;
+}
+.home-page .top-left button {
+  border: none;
+  outline: none;
+  border-radius: 20px;
+  background-color: #01224d;
+  color: white;
+  padding: 10px 20px;
+  font-size: 20px;
+  font-weight: 200;
+}
+.home-page .top-left button a {
+  color: white;
+  text-decoration: none;
+}
+.home-page .top-left button:hover {
+  opacity: 0.8;
+}
+.home-page .top-right {
+  padding: 0%;
+  padding-top: 5%;
+  text-align: right;
+  max-height: 500px;
+  overflow: hidden;
+}
+.home-page .top-right img {
+  width: 130%;
+  margin-right: -25%;
+  margin-top: -25%;
+  object-fit: cover;
+}
+.home-page .illustrations-mobile {
+  display: none;
+}
+.home-page .illustrations {
+  margin-top: 70px;
+  text-align: center;
+  width: 80%;
+  margin-left: 10%;
+}
+.home-page .illustrations #illustration {
+  width: 40%;
+  max-width: 200px;
+  min-width: 100px;
+}
+.home-page .illustrations #dotted-line {
+  width: 100%;
+  margin-top: -30px;
+}
+.home-page .illustrations #text {
+  margin-top: -50px;
+  font-size: 20px;
+  color: #01224d;
+  padding: 0px 20px;
+}
+.home-page .video-section {
+  margin-top: 50px;
+  background-color: rgb(236, 236, 236);
+}
+.home-page .video-section section {
+  padding: 10%;
+}
+.home-page .video-section .right-section section {
+  border: none;
+  border-left: 3px solid hsla(200, 10%, 50%, 100);
+  margin-top: 12%;
+  margin-bottom: 10%;
+}
+.home-page .video-section .right-section h3 {
+  color: #ea8737;
+  font-size: 35px;
+  font-weight: 600;
+}
+.home-page .video-section .right-section p {
+  font-size: 25px;
+  font-weight: 500;
+}
+.home-page .video-section #play-btn {
+  border: none;
+  outline: none;
+  background-color: transparent;
+  text-align: center;
+}
+.home-page .video-section #play-btn i {
+  color: #ea8737;
+}
+.home-page .video-section #play-btn i:hover {
+  color: #c2712f;
+}
+.home-page .carousel-section {
+  padding-top: 50px;
+  padding-bottom: 50px;
+  text-align: center;
+  background-color: light-grey;
+}
+.home-page .carousel-section h1 {
+  font-size: 35px;
+  font-weight: 650;
+  color: #01224d;
+}
+.home-page .carousel-section .carousel {
+  margin-top: 40px;
+  background-color: rgb(236, 236, 236);
+}
+.home-page .carousel-section .carousel #card-container {
+  padding: 20px;
+}
+
+.button {
+  position: fixed;
+  right: 0;
+  top: 150px;
+  transform: rotate(90deg);
+  z-index: 1;
+}
+
+.contact-us-button,
+.not-visible-button {
+  border: none;
+  border-radius: 0 0 20px 20px;
+  position: fixed;
+  background-color: #01224d;
+  color: white;
+  font-weight: bold;
+  font-size: 22px;
+  width: 190px;
+  height: 30px;
+  cursor: pointer;
+  padding: 5%;
+  z-index: 1;
+  transition: 0.3s;
+}
+
+#icon {
+  margin-left: 10px;
+  color: rgb(8, 204, 8);
+}
+
+.not-visible-button {
+  transition: 0.3s;
+  opacity: 0;
+}
+
+@media only screen and (max-width: 600px) {
+  .home-page .illustrations {
+    display: none;
+  }
+  .home-page .illustrations-mobile {
+    display: block;
+    margin: 50px 10px 20px 10px;
+    width: 100%;
+  }
+  .home-page .illustrations-mobile img {
+    width: 100%;
+  }
+
+  .home-page .top-left {
+    padding: 5% 10%;
+    text-align: center;
+  }
+  .home-page .top-left p {
+    font-size: 23px;
     text-align: left;
-    font-weight: 580;
-}
-.home-page .top-left button{
+  }
+  .home-page .top-left button {
     border: none;
     outline: none;
-    border-radius: 20px;
+    border-radius: 10px;
     background-color: #01224d;
+    font-family: Intro-Thin;
     color: white;
-    padding: 10px 20px;
-    font-size: 20px;
-    font-weight: 200;
-}
-.home-page .top-left button a{
-    color: white;
-    text-decoration: none;
-}
-.home-page .top-left button:hover{
-    opacity: 0.8;
-}
-.home-page .top-right{
+    padding: 10px 35px;
+    font-size: 18px;
+    font-weight: 1000;
+  }
+  .home-page .top-right {
     padding: 0%;
-    padding-top: 5%;
-    text-align: right;
-    max-height: 500px;
-    overflow: hidden;
-
-}
-.home-page .top-right img{
-    width: 130%;
-    margin-right: -25%;
-    margin-top: -25%;
-    object-fit: cover;    
-}
-.home-page .illustrations-mobile{
-    display: none;
-}
-.home-page .illustrations{
-    margin-top: 70px;
     text-align: center;
-    width: 80%;
-    margin-left: 10%;
-}
-.home-page .illustrations #illustration{
-    width: 40%;
-    max-width: 200px;
-    min-width: 100px;
-}
-.home-page .illustrations #dotted-line{
-    width: 100%;
-    margin-top: -30px;
-}
-.home-page .illustrations #text{
-    margin-top:-50px;
-    font-size: 20px;
-    color: #01224d;
-    padding: 0px 20px;
-}
-.home-page .video-section{
-    margin-top: 50px;
-    background-color: rgb(236, 236, 236);
-}
-.home-page .video-section section{
-    padding: 10%;
-}
-.home-page .video-section .right-section section{
+    max-height: 300px;
+    overflow: hidden;
+  }
+  .home-page .top-right img {
+    width: 120%;
+    margin-right: -25%;
+    margin-top: -15%;
+    object-fit: cover;
+  }
+  .home-page .video-section {
+    margin-top: 30px;
+  }
+  .home-page .video-section section {
+    padding: 10% 5%;
+  }
+  .home-page .video-section .right-section section {
     border: none;
-    border-left: 3px solid hsla(200, 10%, 50%,100);
-    margin-top: 12% ;
-    margin-bottom: 10% ;
-}
-.home-page .video-section .right-section h3{
+    border-top: 3px solid hsla(200, 10%, 50%, 100);
+    margin: 0%;
+    margin-left: 10%;
+    margin-right: 10%;
+  }
+  .home-page .video-section .right-section h3 {
     color: #ea8737;
-    font-size: 35px;
-    font-weight: 600;
-}
-.home-page .video-section .right-section p{
     font-size: 25px;
+    font-weight: 600;
+    width: 120%;
+    margin-left: -10%;
+  }
+  .home-page .video-section .right-section p {
+    font-size: 20px;
     font-weight: 500;
-}
-.home-page .video-section #play-btn{
+    width: 120%;
+    margin-left: -10%;
+  }
+  .home-page .video-section #play-btn {
     border: none;
     outline: none;
     background-color: transparent;
     text-align: center;
-}
-.home-page .video-section #play-btn i{
-    color: #ea8737
-}
-.home-page .video-section #play-btn i:hover{
-    color: #c2712f
-}
-.home-page .carousel-section{
-    padding-top: 50px;
-    padding-bottom: 50px;
-    text-align: center;
-    background-color: light-grey;
-}
-.home-page .carousel-section h1{
-    font-size: 35px;
-    font-weight: 650;
-    color: #01224d;
-}
-.home-page .carousel-section .carousel{
-    margin-top: 40px;   
-    background-color: rgb(236, 236, 236);
-}
-.home-page .carousel-section .carousel #card-container{
-    padding:20px;
-}
-
-
-@media only screen and (max-width: 600px) {
-    .home-page .illustrations{
-        display: none;
-    }
-    .home-page .illustrations-mobile{
-        display: block;
-        margin: 50px 10px 20px 10px;
-        width: 100%;
-    }
-    .home-page .illustrations-mobile img{
-        width: 100%;
-    }
-
-    .home-page .top-left{
-        padding: 5% 10%;
-        text-align: center;
-    }
-    .home-page .top-left p{
-        font-size: 23px;
-        text-align: left;
-    }
-    .home-page .top-left button{
-        border: none;
-        outline: none;
-        border-radius: 10px;
-        background-color: #01224d;
-        font-family: Intro-Thin;
-        color: white;
-        padding: 10px 35px;
-        font-size: 18px;
-        font-weight: 1000;
-    }
-    .home-page .top-right{
-        padding: 0%;
-        text-align: center;
-        max-height: 300px;
-        overflow: hidden;
-    
-    }
-    .home-page .top-right img{
-        width: 120%;
-        margin-right: -25%;
-        margin-top: -15%;
-        object-fit: cover;    
-    }
-    .home-page .video-section{
-        margin-top: 30px;
-    }
-    .home-page .video-section section{
-        padding: 10% 5%;
-    }
-    .home-page .video-section .right-section section{
-        border: none;
-        border-top: 3px solid hsla(200, 10%, 50%,100);
-        margin: 0%;
-        margin-left: 10%;
-        margin-right: 10%;
-    }
-    .home-page .video-section .right-section h3{
-        color: #ea8737;
-        font-size: 25px;
-        font-weight: 600;
-        width: 120%;
-        margin-left: -10%;
-    }
-    .home-page .video-section .right-section p{
-        font-size: 20px;
-        font-weight: 500;
-        width: 120%;
-        margin-left: -10%;
-    }
-    .home-page .video-section #play-btn{
-        border: none;
-        outline: none;
-        background-color: transparent;
-        text-align: center;
-    }
-    .home-page .video-section #play-btn i{
-        color: #ea8737
-    }
-    .home-page .video-section #play-btn i:hover{
-        color: #c2712f
-    }
+  }
+  .home-page .video-section #play-btn i {
+    color: #ea8737;
+  }
+  .home-page .video-section #play-btn i:hover {
+    color: #c2712f;
+  }
 }
