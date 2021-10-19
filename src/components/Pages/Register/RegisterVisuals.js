@@ -67,6 +67,9 @@ function RegisterVisuals(props) {
                             ?
                                 <Alert color="success">
                                     { props.success }
+                                    <div style={{fontSize:'15px'}}>
+                                        { EN ? 'Please make sure to check your spam folder.' : 'Asegúrese de revisar su carpeta de correo no deseado.' }
+                                    </div>
                                 </Alert>
                             :
                             ''
