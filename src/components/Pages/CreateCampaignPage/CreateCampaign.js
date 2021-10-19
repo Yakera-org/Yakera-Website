@@ -103,13 +103,9 @@ function CreateCampaign() {
     function validateData(){
         let emptyWarning = EN ? 'This field cannot be empty' : 'Este campo no puede estar vacío' ;
         let nameError, amountError, storyError, descriptionError, budgetError;
-        let fileNum = 0
-        for (const file of files) {
-            fileNum ++
-            console.log(file)
-        }
+        const fileNum = files.length;
 
-        if(fileNum === 0){
+        if(fileNum !== 3){
             setError(EN ? 'No pictures upload.' : 'No se cargan imágenes.')
         }
 
@@ -149,7 +145,7 @@ function CreateCampaign() {
             },
         })
 
-        if(!amountError && !storyError && !descriptionError && !nameError && !budgetError && fileNum > 0){
+        if(!amountError && !storyError && !descriptionError && !nameError && !budgetError && fileNum === 3){
             return true
         }
         
@@ -182,7 +178,7 @@ function CreateCampaign() {
                 console.log(file)
             }
 
-            if(fileNum === 0){
+            if(fileNum !== 3){
                 setError(EN ? 'No pictures uploaded.' : 'No se cargan imágenes.')
             }else{
                 setError(EN ? 'Some info is not correct, please check the fields.' : 'Alguna información no es correcta, por favor revise los campos.')
