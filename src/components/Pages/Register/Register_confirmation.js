@@ -13,20 +13,26 @@ function Register_conf(props) {
                 <input
                     name="terms"
                     type="checkbox"
+                    id='terms'
                     checked={props.data.check.terms}
                     onChange={props.handleChange}
                 />
-                <label>{EN ? 'I agree to the terms and conditions *' : 'Estoy de acuerdo con los términos y condiciones *'}</label>
+                <label for='terms'>
+                    {EN ? 'I agree to the terms and conditions *' : 'Estoy de acuerdo con los términos y condiciones *'}
+                </label>
 
                 <br />
 
                 <input
                     name="newsLetter"
                     type="checkbox"
+                    id='newsletter'
                     checked={props.data.check.newsLetter}
                     onChange={props.handleChange}
                 />
-                <label>{EN ? 'I want to be added to the Yakera Newsletter' : 'Quiero ser agregado a la Newsletter de Yakera'}</label>
+                <label for='newsletter'>
+                    {EN ? 'I want to be added to the Yakera Newsletter' : 'Quiero ser agregado a la Newsletter de Yakera'}
+                </label>
             </div>   
 
             <div style={{fontSize:'15px'}}>{EN ? '* required' : '* requerido'} </div>         
