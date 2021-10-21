@@ -1,39 +1,39 @@
-.footer{
-    text-align: center;
-    font-family: Intro-Light;
+.footer {
+  text-align: center;
+  font-family: Intro-Light;
 }
-.footer hr{
-    width: 90%;
-    margin-top: 20px;
-    margin-bottom: 20px;
+.footer hr {
+  width: 90%;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
-.footer p{
-    font-size: 20px;
+.footer p {
+  font-size: 20px;
 }
-.footer .section{
-    padding: 20px 5%;
+.footer .section {
+  padding: 20px 5%;
 }
-.footer img{
-    width: 30%;
+.footer img {
+  width: 40%;
 }
-.footer img:hover{
-    cursor: pointer;
+.footer img:hover {
+  cursor: pointer;
 }
-.footer #link{
-    background-color: transparent;
-    border: none;
-    font-size: 18px;
-    color: rgb(80, 80, 80);
+.footer #link {
+  background-color: transparent;
+  border: none;
+  font-size: 18px;
+  color: rgb(80, 80, 80);
 }
-.footer #link:hover{
-    text-decoration: underline;
+.footer #link:hover {
+  text-decoration: underline;
 }
-.footer #link:focus{
-    outline: none;
+.footer #link:focus {
+  outline: none;
 }
-.footer #icon{
-    color: grey;
+.footer #icon {
+  color: grey;
 }
-.footer #icon:hover{
-    color: rgb(51, 51, 51);
+.footer #icon:hover {
+  color: rgb(51, 51, 51);
 }

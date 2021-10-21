@@ -21,7 +21,7 @@ class ThanksCard extends Component{
                 <p> {true ? 'Thank you for your donation of' : 'Gracias por tu donación de'} <b>${this.props.amount}</b> {true ? 'To the campaign: ' : 'A la campaña: '} {this.props.title} </p>
                 
                 <a
-                    href="https://yakera.formstack.com/forms/user_feedback"
+                    href="https://form.jotform.com/212647238863160"
                     title="Feedback"
                     
                 >

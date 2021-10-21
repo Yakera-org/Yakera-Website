@@ -23,6 +23,14 @@ function Author() {
         window.location.href = "/" + event.target.name;
     }
 
+    const contactUs = () => {
+        window.location.href = 'https://chat.whatsapp.com/LcSFQzsohaC1hmlgdbij3D';
+    }
+
+    const sendMail = () => {
+        window.location.href = 'mailto: raul@yakera.org'
+    }
+
     var EN;
     if(language === "en"){
         EN = true
@@ -34,18 +42,21 @@ function Author() {
             <hr />
             <div className='section'>
                 <Grid container spacing={1} style={{ alignItems:'center', textAlign:'center'}}>
-                    <Grid item xs={12} sm={4} >
+                    <Grid item xs={12} sm={3} >
                         <img onClick={onImgClick} src={logo} alt='yakera-logo'/>
                     </Grid>
-                    <Grid item xs={12} sm={4} >
+                    <Grid item xs={12} sm={5} >
                         <Grid container spacing={1} style={{ alignItems:'center', textAlign:'center'}}>
-                            <Grid item xs={12} sm={4} >
+                            <Grid item xs={3} sm={3} >
+                                <button id='link' name='contact' onClick={EN ? sendMail : contactUs}>{EN ? 'Contact Us' : 'Contáctanos'}</button>
+                            </Grid>
+                            <Grid item xs={3} sm={3} >
                                 <button id='link' name='support' onClick={onLinkClick}>{EN ? 'Support Us' : 'Apóyanos'}</button>
                             </Grid>
-                            <Grid item xs={12} sm={4} >
+                            <Grid item xs={3} sm={3} >
                                 <button id='link' name='about' onClick={onLinkClick}>{EN ? 'About Us' : 'Sobre nosotros'}</button>
                             </Grid>
-                            <Grid item xs={12} sm={4} >
+                            <Grid item xs={3} sm={3} >
                                 <button id='link' name='terms' onClick={onLinkClick}>{EN ? 'Terms & Conditions' : 'Términos y condiciones'}</button>
                             </Grid>
                         </Grid>

@@ -8,16 +8,17 @@ import getHumanReadableDate from '../../../dateUtils';
 const CampaignCategory = ({
     categoryType,
 }) => {
+    console.log(categoryType)
     return (
         <h3
             style={{
-                color: categoryType === 'education' || 'educación'
+                color: categoryType === 'education' || categoryType === 'educación'
                     ? '#70b88f'
-                    : categoryType === 'healthcare' || 'salud'
+                    : categoryType === 'healthcare' || categoryType === 'salud'
                     ? '#ff7d7d'
-                    : categoryType === 'small business' || 'pequeños negocios'
+                    : categoryType === 'small business' || categoryType === 'pequeños negocios'
                     ? '#0e325e'
-                    : categoryType === 'nutrition' || 'alimentación'
+                    : categoryType === 'nutrition' || categoryType === 'alimentación'
                     ? '#edc343'
                     : ''
             }}
@@ -128,7 +129,6 @@ class CampaignPageVisual extends Component {
         } catch (err) {
             category = campaign.category
         }
-        
         try{
             mainPicture = campaign.mainPicture.url;
         }
@@ -145,10 +145,6 @@ class CampaignPageVisual extends Component {
         }
         return (
             <div className = "camp-page-vis">
-                {/* <h3>{
-                    // TODO: render with styling, eg. capitalize properly and add icon
-                    campaign.category
-                }</h3>    */}
                 <CampaignCategory categoryType={category} />
                     <h1 style={{color: 'var(--brand-blue'}}>{title}</h1>  
                 <Grid container spacing={4} style={{ alignItems:'flex-start'}}>

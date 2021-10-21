@@ -12,6 +12,39 @@ function Home() {
     const [EN, setEN] = React.useState(false);
     const [language, setLanguage] = React.useState('en');
 
+    const [isVisible, setIsVisible] = React.useState(false)
+
+    const cbFunction = (entries) => {
+      const [entry] = entries;
+      setIsVisible(entry.isIntersecting)
+    }
+
+    const options = React.useMemo(() => {
+      return{
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.3
+      }
+    }, []);
+
+    const targetRef = React.useRef(null);
+
+    React.useEffect(() => {
+      const observer = new IntersectionObserver(cbFunction, options);
+      const currentTarget = targetRef.current;
+      if(currentTarget) observer.observe(currentTarget);
+
+      return () => {
+        if(currentTarget) observer.unobserve(currentTarget)
+      }
+    }, [targetRef, options])
+
+    
+
+    const contactUs = () => {
+        window.location.href = 'https://chat.whatsapp.com/LcSFQzsohaC1hmlgdbij3D';
+    }
+    
     React.useEffect(() => {
         if(LanguageService.getLanguage()==='en'){
             setEN(true)
@@ -26,6 +59,12 @@ function Home() {
     return (
         <div>
             <div className='home-page'>
+                <div className= {EN ? 'not-visible' : 'button'}>
+                    <button onClick={contactUs} className={!isVisible ? 'contact-us-button' : 'not-visible-button'} >
+                    {EN ? 'Contact Us' : 'Contáctanos'}
+                    <i id='icon' className='fab fa-whatsapp'></i>
+                    </button>
+                </div>
                 <Grid container spacing={0} style={{ alignItems:'flex-start'}}>
                     <Grid item xs={12} sm={6} >
                         <section className='top-left'>
@@ -50,7 +89,13 @@ function Home() {
                     <Grid container spacing={0} className='illustrations-mobile'>
                         <Grid item xs={12} sm={12} >
                             <section>
-                                <img src={pics["mobile-illustration"]} alt='phones'/>
+                                {EN
+                                ?
+                                    <img src={pics["mobile-illustration_alt"]} alt='phones'/>
+                                :
+                                    <img src={pics["mobile-illustration"]} alt='phones'/>
+                                }
+                                
                             </section>
                         </Grid> 
                     </Grid>
@@ -110,7 +155,9 @@ function Home() {
                         <CampaignCarousel EN={EN}/>
                     </Grid> 
                 </Grid> 
-            <Author />
+                <div ref={targetRef}>
+                    <Author />           
+                </div>
             </div>
             
         
