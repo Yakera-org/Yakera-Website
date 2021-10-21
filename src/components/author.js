@@ -27,6 +27,10 @@ function Author() {
         window.location.href = 'https://chat.whatsapp.com/LcSFQzsohaC1hmlgdbij3D';
     }
 
+    const sendMail = () => {
+        window.location.href = 'mailto: raul@yakera.org'
+    }
+
     var EN;
     if(language === "en"){
         EN = true
@@ -44,7 +48,7 @@ function Author() {
                     <Grid item xs={12} sm={5} >
                         <Grid container spacing={1} style={{ alignItems:'center', textAlign:'center'}}>
                             <Grid item xs={3} sm={3} >
-                                <button id='link' name='contact' onClick={contactUs}>{EN ? 'Contact Us' : 'Contáctanos'}</button>
+                                <button id='link' name='contact' onClick={EN ? sendMail : contactUs}>{EN ? 'Contact Us' : 'Contáctanos'}</button>
                             </Grid>
                             <Grid item xs={3} sm={3} >
                                 <button id='link' name='support' onClick={onLinkClick}>{EN ? 'Support Us' : 'Apóyanos'}</button>
