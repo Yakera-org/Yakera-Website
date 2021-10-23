@@ -5,43 +5,28 @@ import PaymentVisual from './PaymentVisual';
 import './CampaignPage.css';
 import api from '../../../services/api';
 import LanguageService from '../../../services/language';
-import { TagCloud } from 'react-tagcloud'
-var randomColor = require('randomcolor'); // import the script
-
 
 class CampaignPage extends Component{
     constructor(props) {
         super(props);
         this.state = {
-            loaded: false,
-            comments:[]
+            loaded: false
         }
     }
 
     async componentDidMount(){
         var language = LanguageService.getLanguage()
         let found = false;
-        let coms = []
         try {
             const res = await api.get(`/campaigns/${this.props.match.params.title}`);
             if (res.data.data) {
-                res.data.data.donations.forEach(donation => {
-                    try{
-                        if(donation.comment !== ''){
-                            coms.push({value: donation.comment, count: 1})
-                        }
-                    } catch (err) {
-                        console.log('error');
-                    }
-                });
                 found = true;
                 this.setState({
                     campaign: res.data.data,
-                    comments: coms
                 });
             } 
         } catch (err) {
-            console.log(err);
+            console.log('err');
         } finally {
             if (!found) {
                 window.location.replace("/campaigns");
@@ -80,19 +65,6 @@ class CampaignPage extends Component{
                     </div>
 
                     <hr style={{width:'90%', marginLeft:'5%'}}/>
-
-                    <TagCloud
-                        minSize={10}
-                        maxSize={40}
-                        tags={this.state.comments}
-                        colorOptions= {randomColor({
-                            luminosity: 'light',
-                            hue: 'blue'
-                         })}
-                        style={{textAlign:'center',  color: 'red'}}
-                    />
-                    <hr style={{width:'90%', marginLeft:'5%'}}/>
-                    
 
                      <PaymentVisual
                         language={'en'}
