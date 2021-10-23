@@ -52,7 +52,7 @@ class CampaignPageVisual extends Component {
         this.state = {
             marginCard:marginOffset,
             showShare:false,
-            imgClicked: false
+            imgClicked: false,
         }
         this.onShare = this.onShare.bind(this);
         this.onDonate = this.onDonate.bind(this);
@@ -89,7 +89,7 @@ class CampaignPageVisual extends Component {
                 let currentScrollPos = window.pageYOffset;  
                 
                 if(document.getElementById('left-col')){
-                    var lowerBoundary = document.getElementById('left-col').offsetHeight - 500;
+                    var lowerBoundary = document.getElementById('left-col').offsetHeight - 800;
                 }
 
                 if(currentScrollPos > lowerBoundary){
@@ -228,6 +228,74 @@ class CampaignPageVisual extends Component {
                             onDonate={this.onClickScroll}
                             language={language}
                             />
+                         </div>
+                         <div className='comment-section'>
+                             <h2>
+                                 Recent donations
+                             </h2>
+                             <div >
+                                <Grid container spacing={0} className='ind-comment'>
+                                    <Grid item xs={2} sm={2} className='img-wrapper'>
+                                        <img src='https://assets.yakera.org/yakera/illustration-aboutus-3.png' alt='comment-profile' />
+                                    </Grid>
+                                    <Grid item xs={10} sm={10} >
+                                        <div className='cmt-wrapper'>
+                                            <h3 className='name'>
+                                                Luisa Perez, $50
+                                            </h3>
+                                            <p className='comment'>
+                                                Vamos Yakera!
+                                            </p>
+                                        </div>
+                                    </Grid>
+                                </Grid>
+                                <Grid container spacing={0} className='ind-comment'>
+                                    <Grid item xs={2} sm={2} className='img-wrapper'>
+                                        <img src='https://assets.yakera.org/yakera/illustration-aboutus-3.png' alt='comment-profile' />
+                                    </Grid>
+                                    <Grid item xs={10} sm={10} >
+                                        <div className='cmt-wrapper'>
+                                            <h3 className='name'>
+                                                Luisa Perez, $50
+                                            </h3>
+                                            <p className='comment'>
+                                                Vamos Yakera!
+                                            </p>
+                                        </div>
+                                    </Grid>
+                                </Grid>
+                                <Grid container spacing={0} className='ind-comment'>
+                                    <Grid item xs={2} sm={2} className='img-wrapper'>
+                                        <img src='https://assets.yakera.org/yakera/illustration-aboutus-3.png' alt='comment-profile' />
+                                    </Grid>
+                                    <Grid item xs={10} sm={10} >
+                                        <div className='cmt-wrapper'>
+                                            <h3 className='name'>
+                                                Luisa Perez, $50
+                                            </h3>
+                                            <p className='comment'>
+                                                Vamos Yakera!
+                                            </p>
+                                        </div>
+                                    </Grid>
+                                </Grid>
+                                <Grid container spacing={0} className='ind-comment'>
+                                    <Grid item xs={2} sm={2} className='img-wrapper'>
+                                        <img src='https://assets.yakera.org/yakera/illustration-aboutus-3.png' alt='comment-profile' />
+                                    </Grid>
+                                    <Grid item xs={10} sm={10} >
+                                        <div className='cmt-wrapper'>
+                                            <h3 className='name'>
+                                                Luisa Perez, $50
+                                            </h3>
+                                            <p className='comment'>
+                                                Vamos Yakera!
+                                            </p>
+                                        </div>
+                                    </Grid>
+                                </Grid>
+
+                             </div> 
                          </div>
                              
                         
