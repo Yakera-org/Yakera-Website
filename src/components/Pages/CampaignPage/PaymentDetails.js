@@ -13,6 +13,7 @@ class PaymentDetails extends PureComponent {
             openPrivacy: false,
             age:false,
             consent:false,
+            anon:false,
             noTip: false,
             yesTip: true,
             amount: {
@@ -48,6 +49,7 @@ class PaymentDetails extends PureComponent {
         this.onNoTipCheck = this.onNoTipCheck.bind(this);
         this.onPrivacy = this.onPrivacy.bind(this);
         this.onContinue = this.onContinue.bind(this);
+        this.onAnonCheck = this.onAnonCheck.bind(this);
     }
 
     handleChange(validationFunc, evt) {
@@ -61,6 +63,12 @@ class PaymentDetails extends PureComponent {
           }
         }));
       }
+    
+    onAnonCheck(){
+        this.setState({
+            anon: !this.state.anon
+        })
+    }
 
     onConsentCheck(){
         this.setState({
@@ -98,7 +106,7 @@ class PaymentDetails extends PureComponent {
             tip = 0
         }
         if(isValidated){
-            this.props.onContinue(this.state.amount.value, this.state.email.value, this.state.name.value, tip, this.state.comment.value);
+            this.props.onContinue(this.state.amount.value, this.state.email.value, this.state.name.value, tip, this.state.comment.value, this.state.anon);
         }
     }
 
@@ -248,6 +256,21 @@ class PaymentDetails extends PureComponent {
                         }                                  
                         
                 />
+
+                <br />  
+                <input
+                    name="anonymous"
+                    type="checkbox"
+                    checked={this.state.anon}
+                    onChange={this.onAnonCheck}
+                    style={{ marginBottom:'5px', marginTop:'-15px', width:'15px', float:'left', clear:'both'}}
+                    className={classnames(
+                        'form-control'
+                        )}
+                />
+                <div className="check-text" style={{margin:'0px'}} >
+                    {EN ? 'I would like to stay anonymous' : 'Me gustaría permanecer en el anonimato'}   
+                </div>
                 
 
                 <hr id='donate-now-hr'/>

@@ -17,6 +17,7 @@ class PaymentVisual extends Component {
             name: '',
             email: '',
             tip: '',
+            isAnon: false,
             comment: '',
             loading: false,
             thanksOpen: false,
@@ -42,7 +43,8 @@ class PaymentVisual extends Component {
         }
     }
 
-    onContinue(amount, email, name, tip, comment){
+    onContinue(amount, email, name, tip, comment, anon){
+        console.log(anon)
         var element = document.getElementById("donateRef");
         element.scrollIntoView({behavior: "smooth", block: "end", inline: "nearest"});
         
@@ -52,7 +54,8 @@ class PaymentVisual extends Component {
             name: name,
             email: email,
             tip: tip,
-            comment: comment
+            comment: comment,
+            isAnon: anon
         })
     }
 
@@ -107,7 +110,8 @@ class PaymentVisual extends Component {
                 "tip": this.state.tip,
                 "paymentID": data.orderID,
                 "comment": this.state.comment,
-                "language": LanguageService.getLanguage()
+                "language": LanguageService.getLanguage(),
+                "isAnonymous": this.state.isAnon
             }
             console.log(await api.post(`/campaigns/donate`, payload))
         } catch (err) {
