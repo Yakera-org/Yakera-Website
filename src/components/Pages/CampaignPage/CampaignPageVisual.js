@@ -5,6 +5,19 @@ import {capitalizeFirstLetter} from '../../../stringUtils';
 import { Navbar, Container, Nav } from 'react-bootstrap';
 import getHumanReadableDate from '../../../dateUtils';
 
+const comment_pics = [
+    "https://assets.yakera.org/yakera/comment_pic.webp",
+    "https://assets.yakera.org/yakera/comment_pic2.webp",
+    "https://assets.yakera.org/yakera/comment_pic3.webp",
+    "https://assets.yakera.org/yakera/comment_pic4.webp",
+    "https://assets.yakera.org/yakera/comment_pic5.webp",
+    "https://assets.yakera.org/yakera/comment_pic6.webp"
+]
+for (let i = comment_pics.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [comment_pics[i], comment_pics[j]] = [comment_pics[j], comment_pics[i]];
+}
+
 const CampaignCategory = ({
     categoryType,
 }) => {
@@ -234,67 +247,55 @@ class CampaignPageVisual extends Component {
                                  Recent donations
                              </h2>
                              <div >
-                                <Grid container spacing={0} className='ind-comment'>
-                                    <Grid item xs={2} sm={2} className='img-wrapper'>
-                                        <img src='https://assets.yakera.org/yakera/illustration-aboutus-3.png' alt='comment-profile' />
-                                    </Grid>
-                                    <Grid item xs={10} sm={10} >
-                                        <div className='cmt-wrapper'>
-                                            <h3 className='name'>
-                                                Luisa Perez, $50
-                                            </h3>
-                                            <p className='comment'>
-                                                Vamos Yakera!
-                                            </p>
-                                        </div>
-                                    </Grid>
-                                </Grid>
-                                <Grid container spacing={0} className='ind-comment'>
-                                    <Grid item xs={2} sm={2} className='img-wrapper'>
-                                        <img src='https://assets.yakera.org/yakera/illustration-aboutus-3.png' alt='comment-profile' />
-                                    </Grid>
-                                    <Grid item xs={10} sm={10} >
-                                        <div className='cmt-wrapper'>
-                                            <h3 className='name'>
-                                                Luisa Perez, $50
-                                            </h3>
-                                            <p className='comment'>
-                                                Vamos Yakera!
-                                            </p>
-                                        </div>
-                                    </Grid>
-                                </Grid>
-                                <Grid container spacing={0} className='ind-comment'>
-                                    <Grid item xs={2} sm={2} className='img-wrapper'>
-                                        <img src='https://assets.yakera.org/yakera/illustration-aboutus-3.png' alt='comment-profile' />
-                                    </Grid>
-                                    <Grid item xs={10} sm={10} >
-                                        <div className='cmt-wrapper'>
-                                            <h3 className='name'>
-                                                Luisa Perez, $50
-                                            </h3>
-                                            <p className='comment'>
-                                                Vamos Yakera!
-                                            </p>
-                                        </div>
-                                    </Grid>
-                                </Grid>
-                                <Grid container spacing={0} className='ind-comment'>
-                                    <Grid item xs={2} sm={2} className='img-wrapper'>
-                                        <img src='https://assets.yakera.org/yakera/illustration-aboutus-3.png' alt='comment-profile' />
-                                    </Grid>
-                                    <Grid item xs={10} sm={10} >
-                                        <div className='cmt-wrapper'>
-                                            <h3 className='name'>
-                                                Luisa Perez, $50
-                                            </h3>
-                                            <p className='comment'>
-                                                Vamos Yakera!
-                                            </p>
-                                        </div>
-                                    </Grid>
-                                </Grid>
+                                 {
+                                     campaign.donations.map((donation, i) => {
+                                         if(i < 6){
+                                            if(donation === null)return ''
+                                            var name = donation.name
+                                            var amount = donation.amount
+                                            var comment = donation.comment
+                                            var isAnon = donation.isAnonymous
+                                            var pic_url = comment_pics[i];
 
+                                            if (isAnon){
+                                                name = 'Anonymous'
+                                            }
+                                            
+                                            return(
+                                               <Grid key={i} container spacing={0} className='ind-comment'>
+                                                   <Grid item xs={2} sm={2} className='img-wrapper'>
+                                                       <img src={pic_url} alt='comment-profile' />
+                                                   </Grid>
+                                                   {
+                                                       comment 
+                                                       ?
+                                                       <Grid item xs={10} sm={10} >
+                                                           <div className='cmt-wrapper'>
+                                                               <h3 className='name'>
+                                                                   {name}, ${amount}
+                                                               </h3>
+                                                               <p className='comment'>
+                                                                   {comment}
+                                                               </p>
+                                                           </div>
+                                                       </Grid>
+                                                       :
+                                                       <Grid item xs={10} sm={10} style={{marginTop:'15px'}} >
+                                                           <div className='cmt-wrapper'>
+                                                               <h3 className='name'>
+                                                                   {name}, ${amount}
+                                                               </h3>
+                                                           </div>
+                                                       </Grid>
+                                                   }
+                                                   
+                                               </Grid>
+                                            )
+                                        }else return ''
+                                    })
+                                        
+                                 }
+                                
                              </div> 
                          </div>
                              
