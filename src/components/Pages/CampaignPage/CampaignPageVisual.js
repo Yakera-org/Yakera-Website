@@ -253,7 +253,7 @@ class CampaignPageVisual extends Component {
                                  :
                                      campaign.donations.filter(d => d !== null).map((donation, i) => {
                                          if(i < 5){
-                                            var name = donation.name
+                                            var name;
                                             var amount = donation.amount
                                             var comment = donation.comment
                                             var isAnon = donation.isAnonymous
@@ -261,6 +261,8 @@ class CampaignPageVisual extends Component {
 
                                             if (isAnon){
                                                 name = 'Anonymous'
+                                            }else {
+                                                name = donation.name;
                                             }
                                             
                                             return(
