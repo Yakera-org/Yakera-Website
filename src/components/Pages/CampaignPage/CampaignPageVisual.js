@@ -247,10 +247,12 @@ class CampaignPageVisual extends Component {
                                  Recent donations
                              </h2>
                              <div >
-                                 {
-                                     campaign.donations.map((donation, i) => {
-                                         if(i < 6){
-                                            if(donation === null)return ''
+                                 {  campaign.donations === {}
+                                 ?
+                                    <p>No donations submitted</p>
+                                 :
+                                     campaign.donations.filter(d => d !== null).map((donation, i) => {
+                                         if(i < 5){
                                             var name = donation.name
                                             var amount = donation.amount
                                             var comment = donation.comment
@@ -262,14 +264,14 @@ class CampaignPageVisual extends Component {
                                             }
                                             
                                             return(
-                                               <Grid key={i} container spacing={0} className='ind-comment'>
-                                                   <Grid item xs={2} sm={2} className='img-wrapper'>
+                                               <Grid key={i} container spacing={0} className='ind-comment' style={{justifyContent: 'center'}}>
+                                                   <Grid item xs={3} sm={2} className='img-wrapper'>
                                                        <img src={pic_url} alt='comment-profile' />
                                                    </Grid>
                                                    {
                                                        comment 
                                                        ?
-                                                       <Grid item xs={10} sm={10} >
+                                                       <Grid item xs={9} sm={10} >
                                                            <div className='cmt-wrapper'>
                                                                <h3 className='name'>
                                                                    {name}, ${amount}
@@ -280,7 +282,7 @@ class CampaignPageVisual extends Component {
                                                            </div>
                                                        </Grid>
                                                        :
-                                                       <Grid item xs={10} sm={10} style={{marginTop:'15px'}} >
+                                                       <Grid item xs={9} sm={10} style={{marginTop:'15px'}} >
                                                            <div className='cmt-wrapper'>
                                                                <h3 className='name'>
                                                                    {name}, ${amount}

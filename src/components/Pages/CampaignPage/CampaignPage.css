@@ -388,6 +388,39 @@
         margin: 10px 0;
         height: 40px;
     }
+    .comment-section{
+        margin-left: 0px;
+    }
+    .comment-section h2{
+        padding: 20px 0;
+        color: #002453;
+    }
+    .comment-section .img-wrapper{
+        padding: 0px;
+    }
+    .comment-section .ind-comment{
+        padding: 0px;
+        margin-bottom: 20px;
+    }
+    .comment-section .ind-comment .cmt-wrapper{
+        margin-left: 20px;
+    }
+    .comment-section .ind-comment h3{
+        font-size: 20px;
+        font-weight: 500;
+    }
+    .comment-section .ind-comment p{
+        padding: 0;
+        margin: 0;
+        font-size: 15px;
+        font-family: Intro-Light;
+    }
+    .comment-section .ind-comment img{
+        background-color: rgb(238, 235, 231);
+        width: 100%;
+        border-radius: 50%;
+        object-fit: cover;
+    }
     .gallery img{
         margin: 10px 2%;
         max-width: 40%;
