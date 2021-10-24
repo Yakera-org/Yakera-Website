@@ -244,12 +244,12 @@ class CampaignPageVisual extends Component {
                          </div>
                          <div className='comment-section'>
                              <h2>
-                                 Recent donations
+                             {EN ? 'Recent donations' : 'Donaciones recientes'}
                              </h2>
                              <div >
                                  {  campaign.donations === {}
                                  ?
-                                    <p>No donations submitted</p>
+                                    <p> {EN ? 'No donations submitted' : 'No se enviaron donaciones'}</p>
                                  :
                                      campaign.donations.filter(d => d !== null).map((donation, i) => {
                                          if(i < 5){
