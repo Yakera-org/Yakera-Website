@@ -106,7 +106,7 @@ function CreateCampaign() {
         const fileNum = files.length;
 
         if(fileNum !== 3){
-            setError(EN ? 'No pictures upload.' : 'No se cargan imágenes.')
+            setError(EN ? 'Please upload a document for each image field.' : 'Sube un documento para cada campo de imagen.')
         }
 
         if(!data.amount){
@@ -179,7 +179,7 @@ function CreateCampaign() {
             }
 
             if(fileNum !== 3){
-                setError(EN ? 'No pictures uploaded.' : 'No se cargan imágenes.')
+                setError(EN ? 'Please upload a document for each image field.' : 'Sube un documento para cada campo de imagen.')
             }else{
                 setError(EN ? 'Some info is not correct, please check the fields.' : 'Alguna información no es correcta, por favor revise los campos.')
             }
