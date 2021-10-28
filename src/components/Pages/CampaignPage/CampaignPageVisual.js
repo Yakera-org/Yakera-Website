@@ -21,7 +21,6 @@ for (let i = comment_pics.length - 1; i > 0; i--) {
 const CampaignCategory = ({
     categoryType,
 }) => {
-    console.log(categoryType)
     return (
         <h3
             style={{
@@ -243,7 +242,7 @@ class CampaignPageVisual extends Component {
                              {EN ? 'Recent donations' : 'Donaciones recientes'}
                              </h2>
                              <div >
-                                 {  campaign.donations === {}
+                                 {  campaign.donations.length === 0
                                  ?
                                     <p> {EN ? 'No donations submitted. Be the first one!' : 'Sin donaciones aún. ¡Sé el primero!'}</p>
                                  :
