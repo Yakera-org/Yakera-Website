@@ -249,7 +249,7 @@ class CampaignPageVisual extends Component {
                              <div >
                                  {  campaign.donations === {}
                                  ?
-                                    <p> {EN ? 'No donations submitted' : 'No se enviaron donaciones'}</p>
+                                    <p> {EN ? 'No donations submitted. Be the first one!' : 'Sin donaciones aún. ¡Sé el primero!'}</p>
                                  :
                                      campaign.donations.filter(d => d !== null).map((donation, i) => {
                                          if(i < 5){
@@ -260,7 +260,7 @@ class CampaignPageVisual extends Component {
                                             var pic_url = comment_pics[i];
 
                                             if (isAnon){
-                                                name = 'Anonymous'
+                                                name = EN ? 'Anonymous' : 'Anónimo'
                                             }else {
                                                 name = donation.name;
                                             }
