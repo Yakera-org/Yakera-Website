@@ -5,6 +5,19 @@ import {capitalizeFirstLetter} from '../../../stringUtils';
 import { Navbar, Container, Nav } from 'react-bootstrap';
 import getHumanReadableDate from '../../../dateUtils';
 
+const comment_pics = [
+    "https://assets.yakera.org/yakera/comment_pic.webp",
+    "https://assets.yakera.org/yakera/comment_pic2.webp",
+    "https://assets.yakera.org/yakera/comment_pic3.webp",
+    "https://assets.yakera.org/yakera/comment_pic4.webp",
+    "https://assets.yakera.org/yakera/comment_pic5.webp",
+    "https://assets.yakera.org/yakera/comment_pic6.webp"
+]
+for (let i = comment_pics.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [comment_pics[i], comment_pics[j]] = [comment_pics[j], comment_pics[i]];
+}
+
 const CampaignCategory = ({
     categoryType,
 }) => {
@@ -53,7 +66,7 @@ class CampaignPageVisual extends Component {
         this.state = {
             marginCard:marginOffset,
             showShare:false,
-            imgClicked: false
+            imgClicked: false,
         }
         this.onShare = this.onShare.bind(this);
         this.onDonate = this.onDonate.bind(this);
@@ -90,7 +103,7 @@ class CampaignPageVisual extends Component {
                 let currentScrollPos = window.pageYOffset;  
                 
                 if(document.getElementById('left-col')){
-                    var lowerBoundary = document.getElementById('left-col').offsetHeight - 500;
+                    var lowerBoundary = document.getElementById('left-col').offsetHeight - 800;
                 }
 
                 if(currentScrollPos > lowerBoundary){
@@ -224,6 +237,66 @@ class CampaignPageVisual extends Component {
                             onDonate={this.onClickScroll}
                             language={language}
                             />
+                         </div>
+                         <div className='comment-section'>
+                             <h2>
+                             {EN ? 'Recent donations' : 'Donaciones recientes'}
+                             </h2>
+                             <div >
+                                 {  campaign.donations === {}
+                                 ?
+                                    <p> {EN ? 'No donations submitted. Be the first one!' : 'Sin donaciones aún. ¡Sé el primero!'}</p>
+                                 :
+                                     campaign.donations.filter(d => d !== null).map((donation, i) => {
+                                         if(i < 5){
+                                            var name;
+                                            var amount = donation.amount
+                                            var comment = donation.comment
+                                            var isAnon = donation.isAnonymous
+                                            var pic_url = comment_pics[i];
+
+                                            if (isAnon){
+                                                name = EN ? 'Anonymous' : 'Anónimo'
+                                            }else {
+                                                name = donation.name;
+                                            }
+                                            
+                                            return(
+                                               <Grid key={i} container spacing={0} className='ind-comment' style={{justifyContent: 'center'}}>
+                                                   <Grid item xs={3} sm={2} className='img-wrapper'>
+                                                       <img src={pic_url} alt='comment-profile' />
+                                                   </Grid>
+                                                   {
+                                                       comment 
+                                                       ?
+                                                       <Grid item xs={9} sm={10} >
+                                                           <div className='cmt-wrapper'>
+                                                               <h3 className='name'>
+                                                                   {name}, ${amount}
+                                                               </h3>
+                                                               <p className='comment'>
+                                                                   {comment}
+                                                               </p>
+                                                           </div>
+                                                       </Grid>
+                                                       :
+                                                       <Grid item xs={9} sm={10} style={{marginTop:'15px'}} >
+                                                           <div className='cmt-wrapper'>
+                                                               <h3 className='name'>
+                                                                   {name}, ${amount}
+                                                               </h3>
+                                                           </div>
+                                                       </Grid>
+                                                   }
+                                                   
+                                               </Grid>
+                                            )
+                                        }else return ''
+                                    })
+                                        
+                                 }
+                                
+                             </div> 
                          </div>
                              
                         
