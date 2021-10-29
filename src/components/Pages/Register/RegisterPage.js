@@ -102,7 +102,9 @@ function Register(props) {
         error = validateFields.validateName(value)
       }
     }
-    else if(name === 'firstName' || name === 'lastName' || name === 'address' || name === 'phone' || name === 'airTMNum' || name === 'socialNum'){
+    // line below could be used later when airTM account number is required
+    // else if(name === 'firstName' || name === 'lastName' || name === 'address' || name === 'phone' || name === 'airTMNum' || name === 'socialNum'){
+    else if(name === 'firstName' || name === 'lastName' || name === 'address' || name === 'phone' || name === 'socialNum'){
       error = validateFields.validateName(value);
     }
 
