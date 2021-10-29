@@ -55,7 +55,7 @@
   width: 160px;
   height: auto;
   position: absolute;
-  left: 30%;
+  left: 32%;
   bottom: 20%;
 }
 
@@ -67,6 +67,10 @@
     text-align: center;
     margin-left: -5%;
     padding: 20px 15px;
+  }
+
+  #share-help {
+    font-size: 20px;
   }
 
   .share-dialog h1,
@@ -96,7 +100,7 @@
   width: 160px;
   height: auto;
   position: absolute;
-  left: 34%;
-  bottom: 20%;
+  left: 23%;
+  bottom: 22%;
 }
 }
