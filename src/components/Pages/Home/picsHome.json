@@ -1,10 +1,10 @@
 {
-    "phones": "https://assets.yakera.org/yakera/phones.png",
+    "phones": "https://assets.yakera.org/yakera/phones.webp",
     "illustrations":{
         "en": [
-            "https://assets.yakera.org/yakera/donate-icon.png",
-            "https://assets.yakera.org/yakera/share-icon.png",
-            "https://assets.yakera.org/yakera/impact-icon.png",
+            "https://assets.yakera.org/yakera/donate-icon.webp",
+            "https://assets.yakera.org/yakera/share-icon.webp",
+            "https://assets.yakera.org/yakera/impact-icon.webp",
             "https://assets.yakera.org/yakera/save-money-icon.svg"
         ],
         "es": [
@@ -14,8 +14,8 @@
             "https://assets.yakera.org/yakera/save-money-icon.svg"
         ]
     },
-    "mobile-illustration": "https://assets.yakera.org/yakera/illustrations.png",
-    "mobile-illustration_alt": "https://assets.yakera.org/yakera/illustrations_alt.png",
+    "mobile-illustration": "https://assets.yakera.org/yakera/illustrations.webp",
+    "mobile-illustration_alt": "https://assets.yakera.org/yakera/illustrations_alt.webp",
     "dotted-line":"https://assets.yakera.org/yakera/steps-line.svg",
     "illustration-texts":{
         "en":[
@@ -31,5 +31,5 @@
             "<span style='font-weight: bold'>Retira</span> los fondos en tu cuenta de banco o paga directamente"
         ]
     },
-    "video-img": "https://assets.yakera.org/yakera/Artboard+12-100.jpg"
+    "video-img": "https://assets.yakera.org/yakera/Artboard+12-100.webp"
 }

@@ -4,13 +4,13 @@ import ContentSection from './ContentSection';
 import content from './texts.json'
 import TeamSection from './TeamSection';
 
-const illustracion1 = 'https://assets.yakera.org/yakera/illustration-aboutus-1.png'
-const illustracion2 = 'https://assets.yakera.org/yakera/illustration-aboutus-2.png'
-const illustracion3 = 'https://assets.yakera.org/yakera/illustration-aboutus-3.png'
-const illustracion4 = 'https://assets.yakera.org/yakera/illustration-aboutus-4.png'
+const illustracion1 = 'https://assets.yakera.org/yakera/illustration-aboutus-1.webp'
+const illustracion2 = 'https://assets.yakera.org/yakera/illustration-aboutus-2.webp'
+const illustracion3 = 'https://assets.yakera.org/yakera/illustration-aboutus-3.webp'
+const illustracion4 = 'https://assets.yakera.org/yakera/illustration-aboutus-4.webp'
 const illustracions = [illustracion4, illustracion3, illustracion2, illustracion1]
-const titleImg = 'https://assets.yakera.org/yakera/photos-aboutus.png'
-const worldImg = 'https://assets.yakera.org/yakera/worldmap.png'
+const titleImg = 'https://assets.yakera.org/yakera/photos-aboutus.webp'
+const worldImg = 'https://assets.yakera.org/yakera/worldmap.webp'
 
 
 function AboutUsVisuals(props) {

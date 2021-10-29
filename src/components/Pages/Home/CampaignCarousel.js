@@ -30,7 +30,6 @@ const responsive = {
 function CampaignCarousel(props) {
 
     React.useEffect(() =>{
-        localStorage.setItem('dic', null);
         getCampaigns();
     }, [])
 
