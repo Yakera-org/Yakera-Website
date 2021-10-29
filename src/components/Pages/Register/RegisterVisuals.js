@@ -34,7 +34,7 @@ function RegisterVisuals(props) {
 
     return (
         <div className='register-page'>
-            <div id='background' style={{ backgroundImage: `url(https://assets.yakera.org/yakera/pattern-yakera-blue.png)`}}>
+            <div id='background' style={{ backgroundImage: `url(https://assets.yakera.org/yakera/pattern-yakera-blue.webp)`}}>
                     <Card className='login-card'>
                         <CardContent>
 
