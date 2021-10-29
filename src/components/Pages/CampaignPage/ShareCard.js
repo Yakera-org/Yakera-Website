@@ -98,7 +98,7 @@ class ShareCard extends Component {
                                 </button>
                             </Grid>
                             {copied}
-                            <Grid item xs={12}>
+                            <Grid item xs={12} sm={12}>
                                 <div>
                                     <img src='https://assets.yakera.org/yakera/illustration-email.png' alt='gratitudImage' className='share-img' />
                                     <img src='https://assets.yakera.org/yakera/pattern-email.png' alt='gratitud' className='share-img-2' />

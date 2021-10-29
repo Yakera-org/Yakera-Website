@@ -55,11 +55,11 @@
   width: 160px;
   height: auto;
   position: absolute;
-  left: 37%;
+  left: 30%;
   bottom: 20%;
 }
 
-@media only screen and (max-width: 600px) {
+@media screen and (max-width: 600px) {
   .share-dialog,
   .thanks-dialog {
     height: 100%;
@@ -92,4 +92,11 @@
   .thanks-dialog p {
     font-size: 20px;
   }
+  .share-img-2 {
+  width: 160px;
+  height: auto;
+  position: absolute;
+  left: 34%;
+  bottom: 20%;
+}
 }
