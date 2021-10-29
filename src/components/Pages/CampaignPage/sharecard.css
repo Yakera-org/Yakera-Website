@@ -1,65 +1,95 @@
-.share-dialog, .thanks-dialog {
-    height: 100%;
-    width: 40%;
-    text-align: center;
-    margin-left: 30%;
-    font-family: Intro-Regular-Alt;
-    padding: 30px 20px;
+.share-dialog,
+.thanks-dialog {
+  height: 100%;
+  width: 40%;
+  text-align: center;
+  margin-left: 30%;
+  font-family: Intro-Regular-Alt;
+  padding: 30px 20px;
 }
 
-.share-dialog h1, .thanks-dialog h1 {
-    margin: 10px;
-    margin-top: 20px;
+.share-dialog h1,
+.thanks-dialog h1 {
+  margin: 10px;
+  margin-top: 20px;
+  color: #002453;
 }
-.thanks-dialog h1{
-    font-size: 45px;
+.thanks-dialog h1 {
+  font-size: 45px;
 }
 
 .copy-btn {
-    background-color: #ea8737;
-    border: none;
-    min-width: 70px
+  background-color: #ea8737;
+  border: none;
+  min-width: 70px;
+  height: 38px;
 }
 .copied {
-    color: #ea8737;
-    font-size: 20px;
+  color: #ea8737;
+  font-size: 20px;
+  margin-top: 7px;
 }
+
 #share-help {
-    font-size: 15px;
-    color: rgb(97, 97, 97);
-    margin-bottom: -5px;
+  font-size: 30px;
+  color: #ea8737;
+  margin-bottom: -5px;
+}
+
+.social-button {
+  margin: 3% 1%;
+}
+
+.share-img, .share-img-2 {
+  width: 300px;
+  height: 200px;
+  margin-top: 50px;
+}
+
+.share-img {
+  z-index: 2;
+  position: relative;
+}
+
+.share-img-2 {
+  width: 160px;
+  height: auto;
+  position: absolute;
+  left: 37%;
+  bottom: 20%;
 }
 
 @media only screen and (max-width: 600px) {
+  .share-dialog,
+  .thanks-dialog {
+    height: 100%;
+    width: 110%;
+    text-align: center;
+    margin-left: -5%;
+    padding: 20px 15px;
+  }
 
-    .share-dialog, .thanks-dialog {
-        height: 100%;
-        width: 110%;
-        text-align: center;
-        margin-left: -5%;
-        padding: 20px 15px;
-    }
-
-    .share-dialog h1, .thanks-dialog h1 {
-        margin: 10px;
-        margin-top: 20px;
-        font-size: 22px;
-    }
-    .copy-btn {
-        font-size: 15px;
-        text-align: center;
-        padding-right: 50px;
-    }
-    .copied {
-        font-size: 15px;
-    }
-    .thanks-dialog {
-        padding: 30px 10px;
-    }
-    .thanks-dialog h1 {
-        font-size: 25px;
-    }
-    .thanks-dialog p {
-        font-size: 20px;
-    }
+  .share-dialog h1,
+  .thanks-dialog h1 {
+    margin: 10px;
+    margin-top: 20px;
+    font-size: 22px;
+  }
+  .copy-btn {
+    font-size: 15px;
+    text-align: center;
+    padding-right: 50px;
+  }
+  .copied {
+    font-size: 15px;
+  }
+  .thanks-dialog {
+    padding: 30px 10px;
+  }
+  .thanks-dialog h1 {
+    font-size: 25px;
+  }
+  .thanks-dialog p {
+    font-size: 20px;
+  }
 }
