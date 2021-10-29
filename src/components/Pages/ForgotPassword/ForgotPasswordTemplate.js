@@ -13,7 +13,7 @@ const ForgotPasswordTemplate = ({
 }) => {
 
   return (
-    <div style={{ backgroundImage: `url(https://yakera-files.s3.us-east-2.amazonaws.com/yakera/pattern-yakera-blue.png)`}}>
+    <div style={{ backgroundImage: `url(https://yakera-files.s3.us-east-2.amazonaws.com/yakera/pattern-yakera-blue.webp)`}}>
       <Card className='forgot-password-card'>
         <CardContent>
 

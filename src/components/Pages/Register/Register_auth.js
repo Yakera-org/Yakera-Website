@@ -43,7 +43,7 @@ function Register_auth(props) {
             <input
                 type="text"
                 name="airTMNum"
-                placeholder={EN ? "Enter your AirTM address (if available)" : "Ingrese su dirección AirTM (si está disponible)" }
+                placeholder={EN ? "Enter your AirTM address (if available)" : "Correo electrónico de AirTM (si está disponible)" }
                 value={props.data.airTMNum}
                 onChange={props.handleChange}
                 className={classnames(
@@ -58,7 +58,7 @@ function Register_auth(props) {
             <input
                 type="text"
                 name="socialNum"
-                placeholder={EN ? "Enter your ID Number" : "Número de identificación" }
+                placeholder={EN ? "Enter your ID Number" : "Número de cédula" }
                 value={props.data.socialNum}
                 onChange={props.handleChange}
                 className={classnames(

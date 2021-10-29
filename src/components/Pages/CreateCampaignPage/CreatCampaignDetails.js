@@ -26,7 +26,7 @@ function CreateCampaignDetails(props) {
                             name={'campaigncategory'}
                             value={val.toLowerCase()}
                             type='radio'
-                            id={`category`}
+                            id={`category${index}`}
                             label={val}
                             group='category'
                             // defaultChecked= {props.data.campaignCategory}

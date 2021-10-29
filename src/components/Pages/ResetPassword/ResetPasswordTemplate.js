@@ -12,7 +12,7 @@ const ResetPasswordTemplate = ({
 }) => {
 
   return (
-    <div style={{ backgroundImage: `url(https://yakera-files.s3.us-east-2.amazonaws.com/yakera/pattern-yakera-orange.png)`}}>
+    <div style={{ backgroundImage: `url(https://yakera-files.s3.us-east-2.amazonaws.com/yakera/pattern-yakera-orange.webp)`}}>
       <Card className='reset-password-card'>
         <CardContent>
 
