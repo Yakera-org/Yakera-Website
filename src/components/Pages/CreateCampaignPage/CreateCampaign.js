@@ -105,7 +105,7 @@ function CreateCampaign() {
         let nameError, amountError, storyError, descriptionError, budgetError;
         const fileNum = files.length;
 
-        if(fileNum !== 3){
+        if(fileNum < 3){
             setError(EN ? 'Please upload a document for each image field.' : 'Sube un documento para cada campo de imagen.')
         }
 
@@ -145,7 +145,7 @@ function CreateCampaign() {
             },
         })
 
-        if(!amountError && !storyError && !descriptionError && !nameError && !budgetError && fileNum === 3){
+        if(!amountError && !storyError && !descriptionError && !nameError && !budgetError && fileNum >= 3){
             return true
         }
         
@@ -178,7 +178,7 @@ function CreateCampaign() {
                 console.log(file)
             }
 
-            if(fileNum !== 3){
+            if(fileNum < 3){
                 setError(EN ? 'Please upload a document for each image field.' : 'Sube un documento para cada campo de imagen.')
             }else{
                 setError(EN ? 'Some info is not correct, please check the fields.' : 'Alguna información no es correcta, por favor revise los campos.')
