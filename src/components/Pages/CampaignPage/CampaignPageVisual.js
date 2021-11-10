@@ -246,7 +246,6 @@ class CampaignPageVisual extends Component {
                                     <p> {EN ? 'No donations submitted. Be the first one!' : 'Sin donaciones aún. ¡Sé el primero!'}</p>
                                  :
                                      campaign.donations.reverse().filter(d => d !== null).map((donation, i) => {
-                                         console.log(campaign.donations)
                                          if(i < 5){
                                             var name;
                                             var amount = donation.amount
