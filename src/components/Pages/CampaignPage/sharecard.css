@@ -1,9 +1,9 @@
 .share-dialog,
 .thanks-dialog {
   height: 100%;
-  width: 40%;
+  width: 50%;
   text-align: center;
-  margin-left: 30%;
+  margin-left: 25%;
   font-family: Intro-Regular-Alt;
   padding: 30px 20px;
 }
@@ -25,9 +25,11 @@
   height: 38px;
 }
 .copied {
-  color: #ea8737;
-  font-size: 20px;
-  margin-top: 7px;
+  color: #002453;
+  font-size: 18px;
+  margin-top: 1px;
+  margin-bottom: -5px;
+  width: 100%;
 }
 
 #share-help {
@@ -35,9 +37,21 @@
   color: #ea8737;
   margin-bottom: -5px;
 }
+.close-icon {
+  text-align: right;
+  padding: 10px 20px 0 0;
+  color: #002453;
+}
+.close-icon:hover {
+  opacity: 0.8;
+  cursor: pointer;
+}
 
 .social-button {
   margin: 3% 1%;
+}
+.social-button:hover {
+  opacity: 0.8;
 }
 
 .share-img, .share-img-2 {
@@ -45,7 +59,9 @@
   height: 200px;
   margin-top: 50px;
 }
-
+.images {
+  padding: 20px;
+}
 .share-img {
   z-index: 2;
   position: relative;
@@ -70,7 +86,7 @@
   }
 
   #share-help {
-    font-size: 20px;
+    font-size: 16px;
   }
 
   .share-dialog h1,

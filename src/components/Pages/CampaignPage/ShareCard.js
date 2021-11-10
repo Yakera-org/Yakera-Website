@@ -53,6 +53,9 @@ class ShareCard extends Component {
                         className="share-dialog"
 
                     >
+                        <div className='close-icon' onClick={this.props.onClose}>
+                            <i className="fas fa-2x fa-times"></i>
+                        </div>
 
                         <h1 >{EN ? 'Multiply your impact' : 'Multiplica tu impacto'}</h1>
                         <p id="share-help">
@@ -74,7 +77,7 @@ class ShareCard extends Component {
                                     <EmailIcon size={50} logoFillColor='white' round={true} />
                                 </EmailShareButton>
                             </Grid>
-                            <Grid item xs={6} sm={6}>
+                            <Grid item xs={8} sm={8}>
                                 <input
                                     type="text"
                                     name="share-url"
@@ -83,15 +86,15 @@ class ShareCard extends Component {
                                     className={classnames(
                                         'form-control'
                                     )}
-                                    style={{ marginLeft: '55%', marginBottom: '15px', width: '60%' }}
+                                    style={{ marginLeft: '15%', marginBottom: '15px', width: '80%' }}
                                     onClick={this.hanldeCopy}
                                 />
                             </Grid>
-                            <Grid item xs={3} sm={3}>
+                            <Grid item xs={4} sm={4}>
                                 <button
                                     type="submit"
                                     className="btn btn-secondary btn-block copy-btn"
-                                    style={{ marginLeft: '35%', width: '50%' }}
+                                    style={{ marginLeft: '5%', width: '50%' }}
                                     onClick={this.hanldeCopy}
                                 >
                                     {EN ? 'Copy!' : 'Copia!'}
@@ -99,9 +102,9 @@ class ShareCard extends Component {
                             </Grid>
                             {copied}
                             <Grid item xs={12} sm={12}>
-                                <div>
-                                    <img src='https://assets.yakera.org/yakera/illustration-email.png' alt='gratitudImage' className='share-img' />
-                                    <img src='https://assets.yakera.org/yakera/pattern-email.png' alt='gratitud' className='share-img-2' />
+                                <div className='images'>
+                                    <img src='https://assets.yakera.org/yakera/illustration-email.webp' alt='gratitudImage' className='share-img' />
+                                    <img src='https://assets.yakera.org/yakera/pattern-email.webp' alt='gratitud' className='share-img-2' />
                                 </div>
                             </Grid>
                         </Grid>
