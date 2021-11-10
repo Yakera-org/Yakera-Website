@@ -332,9 +332,10 @@
         margin-left: 5%;
     }
     .campaignPage{
-        margin: -50% 10px 0 0;
+        overflow: hidden;
+        margin-top:  -280px;
     }
-   
+    
     .campaign-page-title-img{
         padding: 5% 0%;
     }
