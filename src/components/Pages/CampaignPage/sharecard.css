@@ -84,7 +84,11 @@
     margin-left: -5%;
     padding: 20px 15px;
   }
-
+  .close-icon {
+    text-align: right;
+    padding: 10px 10px 0 0;
+    color: #002453;
+  }
   #share-help {
     font-size: 16px;
   }
@@ -92,7 +96,7 @@
   .share-dialog h1,
   .thanks-dialog h1 {
     margin: 10px;
-    margin-top: 20px;
+    margin-top: 0px;
     font-size: 22px;
   }
   .copy-btn {
@@ -112,11 +116,16 @@
   .thanks-dialog p {
     font-size: 20px;
   }
+  .share-img {
+    z-index: 2;
+    position: relative;
+    width: 100%;
+  }
   .share-img-2 {
-  width: 160px;
-  height: auto;
-  position: absolute;
-  left: 23%;
-  bottom: 22%;
-}
+    width: 50%;
+    height: auto;
+    position: absolute;
+    left: 23%;
+    bottom: 22%;
+  }
 }
