@@ -3,6 +3,30 @@ import classnames from 'classnames'
 import {Form, FormCheck, FormControl, FormGroup, FormLabel} from "react-bootstrap";
 import {useDropzone} from 'react-dropzone';
 
+const thumb = {
+    display: 'inline-flex',
+    borderRadius: 2,
+    border: '1px solid #eaeaea',
+    marginBottom: 8,
+    marginRight: 8,
+    width: 100,
+    height: 100,
+    padding: 4,
+    boxSizing: 'border-box'
+};
+
+const thumbInner = {
+    display: 'flex',
+    minWidth: 0,
+    overflow: 'hidden'
+};
+
+const img = {
+    display: 'block',
+    width: 'auto',
+    height: '100%'
+};
+
 function CreateCampaignDetails(props) {
     const [files, setFiles] = useState([]);
     const {getRootProps, getInputProps} = useDropzone({
@@ -13,16 +37,18 @@ function CreateCampaignDetails(props) {
           })));
         }
     });
-  
+
+    // https://github.com/react-dropzone/react-dropzone/tree/master/examples/previews
     const thumbs = files.map(file => (
         // <li key={file.path}>
         // {file.path} - {file.size} bytes
         // <img src={file.preview} />
         // </li>
-        <div key={file.name}>
-            <div>
+        <div style={thumb} key={file.name}>
+            <div style={thumbInner}>
                 <img
                     src={file.preview}
+                    style={img}
                 />
             </div>
         </div>
