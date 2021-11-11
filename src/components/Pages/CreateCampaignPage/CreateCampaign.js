@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import {validateFields} from "../Register/Validation";
 import CreateCampaignVisuals from "./CreateCampaignVisuals";
 import Loader from "react-loader-spinner";
@@ -32,7 +32,7 @@ function CreateCampaign() {
     const [language, setLanguage] = React.useState('en');
     const [loader, setLoader] = React.useState(false);
 
-    React.useEffect(() => {
+    useEffect(() => {
         function startup(){
             if(LanguageService.getLanguage()==='en'){
                 setEN(true)
@@ -233,14 +233,23 @@ function CreateCampaign() {
         <div>
             <div className='loader'>
                 <Loader
-                type="Bars"
-                color="#ea8737"
-                height={100}
-                width={100}
-                visible={loader}
+                    type="Bars"
+                    color="#ea8737"
+                    height={100}
+                    width={100}
+                    visible={loader}
                 />
             </div>
-             <CreateCampaignVisuals EN={EN} success={successMessage} error={errorMessage} data={data} handleChange={handleChange} handleImageChange={handleImageChange} validate={validateData} submit={submit}/>
+            <CreateCampaignVisuals
+                EN={EN}
+                success={successMessage}
+                error={errorMessage}
+                data={data}
+                handleChange={handleChange}
+                handleImageChange={handleImageChange}
+                validate={validateData}
+                submit={submit}
+            />
             <Author />
         </div>
     )

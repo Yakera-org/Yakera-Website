@@ -1,8 +1,32 @@
-import React from "react";
+import React, {useState} from "react";
 import classnames from 'classnames'
 import {Form, FormCheck, FormControl, FormGroup, FormLabel} from "react-bootstrap";
+import {useDropzone} from 'react-dropzone';
 
 function CreateCampaignDetails(props) {
+    const [files, setFiles] = useState([]);
+    const {getRootProps, getInputProps} = useDropzone({
+        accept: 'image/*',
+        onDrop: acceptedFiles => {
+          setFiles(acceptedFiles.map(file => Object.assign(file, {
+            preview: URL.createObjectURL(file)
+          })));
+        }
+    });
+  
+    const thumbs = files.map(file => (
+        // <li key={file.path}>
+        // {file.path} - {file.size} bytes
+        // <img src={file.preview} />
+        // </li>
+        <div key={file.name}>
+            <div>
+                <img
+                    src={file.preview}
+                />
+            </div>
+        </div>
+    ));
 
     const EN = props.EN
     return(
@@ -158,6 +182,16 @@ function CreateCampaignDetails(props) {
                         onChange={props.handleImageChange}
                     />
                 </FormGroup>
+                <section className="container">
+                    <div {...getRootProps({className: 'dropzone'})}>
+                        <input {...getInputProps()} />
+                        <p>Drag 'n' drop some files here, or click to select files</p>
+                    </div>
+                    <aside>
+                        <h4>Files</h4>
+                        <ul>{thumbs}</ul>
+                    </aside>
+                </section>
             </Form>
 
         </div>
