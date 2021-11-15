@@ -332,11 +332,12 @@
         margin-left: 5%;
     }
     .campaignPage{
-        margin-top: -50%;
+        overflow: hidden;
+        margin-top:  -280px;
     }
-   
+    
     .campaign-page-title-img{
-        padding: 5% 5%;
+        padding: 5% 0%;
     }
     .camp-page-vis {
         margin-top: 350px;
@@ -368,6 +369,7 @@
     }
     .camp-page-story p{
         font-size: 17px;
+        overflow: hidden;
     }
     .camp-page-story h2{
         font-size: 28px;
@@ -397,6 +399,7 @@
     }
     .comment-section .img-wrapper{
         padding: 0px;
+        overflow: hidden;
     }
     .comment-section .ind-comment{
         padding: 0px;

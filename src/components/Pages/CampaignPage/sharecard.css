@@ -1,65 +1,117 @@
-.share-dialog, .thanks-dialog {
-    height: 100%;
-    width: 40%;
-    text-align: center;
-    margin-left: 30%;
-    font-family: Intro-Regular-Alt;
-    padding: 30px 20px;
+.share-dialog,
+.thanks-dialog {
+  height: 100%;
+  width: 50%;
+  text-align: center;
+  margin-left: 25%;
+  font-family: Intro-Regular-Alt;
+  padding: 30px 20px;
 }
 
-.share-dialog h1, .thanks-dialog h1 {
-    margin: 10px;
-    margin-top: 20px;
+.share-dialog h1,
+.thanks-dialog h1 {
+  margin: 10px;
+  margin-top: 0px;
+  color: #002453;
 }
-.thanks-dialog h1{
-    font-size: 45px;
+.thanks-dialog h1 {
+  font-size: 45px;
 }
 
 .copy-btn {
-    background-color: #ea8737;
-    border: none;
-    min-width: 70px
+  background-color: #ea8737;
+  border: none;
+  min-width: 70px;
+  height: 38px;
 }
 .copied {
-    color: #ea8737;
-    font-size: 20px;
+  color: #002453;
+  font-size: 18px;
+  margin-top: 1px;
+  margin-bottom: -5px;
+  width: 100%;
 }
+
 #share-help {
-    font-size: 15px;
-    color: rgb(97, 97, 97);
-    margin-bottom: -5px;
+  font-size: 30px;
+  color: #ea8737;
+  margin-bottom: -5px;
+}
+.close-icon {
+  text-align: right;
+  padding: 10px 20px 0 0;
+  color: #002453;
+}
+.close-icon:hover {
+  opacity: 0.8;
+  cursor: pointer;
 }
 
-@media only screen and (max-width: 600px) {
+.social-button {
+  margin: 3% 1%;
+}
+.social-button:hover {
+  opacity: 0.8;
+}
 
-    .share-dialog, .thanks-dialog {
-        height: 100%;
-        width: 110%;
-        text-align: center;
-        margin-left: -5%;
-        padding: 20px 15px;
-    }
+.share-img {
+  width: 50%;
+  height: auto;
+  margin-top: 0px;
+  text-align: center;
+}
+.images {
+  padding: 20px;
+  text-align: center;
+}
+.share-img {
+  object-fit: cover;
+}
 
-    .share-dialog h1, .thanks-dialog h1 {
-        margin: 10px;
-        margin-top: 20px;
-        font-size: 22px;
-    }
-    .copy-btn {
-        font-size: 15px;
-        text-align: center;
-        padding-right: 50px;
-    }
-    .copied {
-        font-size: 15px;
-    }
-    .thanks-dialog {
-        padding: 30px 10px;
-    }
-    .thanks-dialog h1 {
-        font-size: 25px;
-    }
-    .thanks-dialog p {
-        font-size: 20px;
-    }
+@media screen and (max-width: 600px) {
+  .share-dialog,
+  .thanks-dialog {
+    height: 100%;
+    width: 110%;
+    text-align: center;
+    margin-left: -5%;
+    padding: 20px 15px;
+  }
+  .close-icon {
+    text-align: right;
+    padding: 10px 10px 0 0;
+    color: #002453;
+  }
+  #share-help {
+    font-size: 16px;
+  }
+
+  .share-dialog h1,
+  .thanks-dialog h1 {
+    margin: 10px;
+    margin-top: 0px;
+    font-size: 22px;
+  }
+  .copy-btn {
+    font-size: 15px;
+    text-align: center;
+    padding-right: 50px;
+  }
+  .copied {
+    font-size: 15px;
+  }
+  .thanks-dialog {
+    padding: 30px 10px;
+  }
+  .thanks-dialog h1 {
+    font-size: 25px;
+  }
+  .thanks-dialog p {
+    font-size: 20px;
+  }
+  .share-img {
+    z-index: 2;
+    position: relative;
+    width: 100%;
+  }
 }
