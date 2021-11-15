@@ -11,7 +11,7 @@
 .share-dialog h1,
 .thanks-dialog h1 {
   margin: 10px;
-  margin-top: 20px;
+  margin-top: 0px;
   color: #002453;
 }
 .thanks-dialog h1 {
@@ -54,25 +54,18 @@
   opacity: 0.8;
 }
 
-.share-img, .share-img-2 {
-  width: 300px;
-  height: 200px;
-  margin-top: 50px;
+.share-img {
+  width: 50%;
+  height: auto;
+  margin-top: 0px;
+  text-align: center;
 }
 .images {
   padding: 20px;
+  text-align: center;
 }
 .share-img {
-  z-index: 2;
-  position: relative;
-}
-
-.share-img-2 {
-  width: 160px;
-  height: auto;
-  position: absolute;
-  left: 32%;
-  bottom: 20%;
+  object-fit: cover;
 }
 
 @media screen and (max-width: 600px) {
@@ -120,12 +113,5 @@
     z-index: 2;
     position: relative;
     width: 100%;
-  }
-  .share-img-2 {
-    width: 50%;
-    height: auto;
-    position: absolute;
-    left: 23%;
-    bottom: 22%;
   }
 }
