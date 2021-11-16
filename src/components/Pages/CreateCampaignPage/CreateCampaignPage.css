@@ -20,7 +20,7 @@
 .create-page .form-control{
     font-family: Intro-Light;
 }
-.create-page p{
+.create-page #background #info-text{
     font-family: Intro-Light;
     font-weight: 500;
     font-size: 22px;
@@ -142,6 +142,11 @@
 }
 aside h6{
     margin-left: 50px;
+    font-size: 18px;
+}
+.pictures-info{
+    margin-left: 20px;
+    font-family: Intro-Light ;
     font-size: 18px;
 }
 @media only screen and (max-width: 600px) {

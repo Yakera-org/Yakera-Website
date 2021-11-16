@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import classnames from 'classnames'
 import {Form, FormCheck, FormControl, FormGroup, FormLabel} from "react-bootstrap";
+import {Alert} from 'reactstrap'
 import {useDropzone} from 'react-dropzone';
 import Dropzone from "react-dropzone";
 
@@ -32,6 +33,9 @@ function CreateCampaignDetails(props) {
     const [mainFile, setMainFile] = useState([]);
     const [documentFiles, setDocumentFiles] = useState([]);
     const [campaignFiles, setCampaignFiles] = useState([]);
+
+    const [documentError, setDocumentError] = useState("");
+    const [campaignPicturesError, setcampaignPicturesError] = useState("");
 
     // https://github.com/react-dropzone/react-dropzone/tree/master/examples/previews
     const mainThumbs = mainFile.map(file => (
@@ -230,7 +234,10 @@ function CreateCampaignDetails(props) {
                 </FormGroup>
 
                 <FormGroup className="mb-3">
-                    <FormLabel>{EN ? 'Main Campaign picture' : 'Fotos de usted y su familia'}</FormLabel>
+                    <FormLabel>{EN ? 'Main Campaign picture' : 'Imagen principal de la campaña'}</FormLabel>
+                    <p className="pictures-info">
+                        {EN ? 'Your title picture that represents your campaign.' : 'Su imagen de título que representa su campaña.'}
+                    </p>
                     <Dropzone accept='image/*' onDrop={(acceptedFiles) => {
                             setMainFile(acceptedFiles.map(file => Object.assign(file, {
                                 preview: URL.createObjectURL(file)
@@ -254,11 +261,46 @@ function CreateCampaignDetails(props) {
                 </FormGroup>
 
                 <FormGroup className="mb-3">
-                    <FormLabel>{EN ? 'Documents that support your ask (i.e medical orders or notes, tuition receipt, pictures of your small business, budget, etc.)' : 'Documentos que apoyen su aplicación (historia médica, récipe médico, fotos de su negocio pequeño, etc.)'}</FormLabel>
+                    <FormLabel>{EN ? 'Documents' : 'Documentos '}</FormLabel>
+                    <p className="pictures-info">
+                        {EN ? 'Documents that support your ask (i.e medical orders or notes, tuition receipt, pictures of your small business, budget, etc.)' : 'Documentos que apoyen su aplicación (historia médica, récipe médico, fotos de su negocio pequeño, etc.)'}  <br />
+                        {EN ? 'These docuemnts are only seen by Yakera to validate your campaign. They will not be posted on the site.' : 'Solomente Yakera ve estos documentos para validar su campaña. No se publicarán en el sitio.'}
+                        {
+                            EN
+                        ?
+                            <div><br />Requirements:
+                                <ul>
+                                    <li>Maximum of 2 pictures</li>
+                                    <li>Maximum size: 1 MB</li>
+                                </ul>
+                            </div>
+                        :
+                            <div><br />Requisitos:
+                                <ul>
+                                    <li>Máximo de 2 imágenes</li>
+                                    <li>Tamaño máximo: 1 MB</li>
+                                </ul>
+                            </div>
+                        }                              
+                    </p>
                     <Dropzone accept='image/*' onDrop={(acceptedFiles) => {
-                            setDocumentFiles(acceptedFiles.concat(documentFiles).map(file => Object.assign(file, {
-                                preview: URL.createObjectURL(file)
-                            })));
+                        if (acceptedFiles.concat(documentFiles).length <= 2){
+                            var totalSize = 0
+                            acceptedFiles.concat(campaignFiles).forEach(file => {
+                                totalSize += file.size
+                                
+                            });
+                            if(totalSize < 1000000){
+                                setDocumentFiles(acceptedFiles.concat(documentFiles).map(file => Object.assign(file, {
+                                    preview: URL.createObjectURL(file)
+                                })));
+                                setDocumentError('')
+                            }else{
+                                setDocumentError(EN ? 'Files too big' : 'Los archivos son demasiado grandes')
+                            }
+                        }else{
+                            setDocumentError(EN ? 'Only 2 pictures allowed.' : 'Solo se permiten 2 imágenes. ')
+                        }
                         }} name="documents" multiple={true}>
                         {({getRootProps, getInputProps}) => (
                              <section className="container" id="upload-zone">
@@ -270,6 +312,15 @@ function CreateCampaignDetails(props) {
                          </section>
                         )}
                     </Dropzone>
+
+                    { documentError
+                    ?
+                        <Alert color="danger" id='alert'>
+                            {documentError}
+                        </Alert>
+                    :
+                        ''
+                    }
                     
                     <aside>
                         <h6>Files: </h6>
@@ -279,10 +330,45 @@ function CreateCampaignDetails(props) {
 
                 <FormGroup className="mb-3">
                     <FormLabel>{EN ? 'Campaign pictures' : 'Otras fotos de la campaña'}</FormLabel>
+                    <p className="pictures-info">
+                        {EN ? 'Pictures that support your campaign. These pictures will get uploaded to the site.' : 'Imágenes que apoyan su campaña. Estas imágenes se subirán al sitio.'}
+                        
+                        {
+                            EN
+                        ?
+                            <div><br />Requirements:
+                                <ul>
+                                    <li>Maximum of 4 pictures</li>
+                                    <li>Maximum size: 2 MB</li>
+                                </ul>
+                            </div>
+                        :
+                            <div><br />Requisitos:
+                                <ul>
+                                    <li>Máximo de 4 imágenes</li>
+                                    <li>Tamaño máximo: 2 MB</li>
+                                </ul>
+                            </div>
+                        }                    
+                    </p>
                     <Dropzone accept='image/*' onDrop={(acceptedFiles) => {
-                            setCampaignFiles(acceptedFiles.concat(campaignFiles).map(file => Object.assign(file, {
-                                preview: URL.createObjectURL(file)
-                            })));
+                        if (acceptedFiles.concat(campaignFiles).length <= 4){
+                            var totalSize = 0
+                            acceptedFiles.concat(campaignFiles).forEach(file => {
+                                totalSize += file.size
+                                
+                            });
+                            if(totalSize < 2000000){
+                                setCampaignFiles(acceptedFiles.concat(campaignFiles).map(file => Object.assign(file, {
+                                    preview: URL.createObjectURL(file)
+                                })));
+                                setcampaignPicturesError("")
+                            }else{
+                                setcampaignPicturesError(EN ? 'Files too big' : 'Los archivos son demasiado grandes')
+                            }
+                        }else{
+                            setcampaignPicturesError(EN ? 'Only 4 pictures allowed.' : 'Solo se permiten 4 imágenes. ')
+                        }
                         }} name="campaignImages" multiple={true}>
                         {({getRootProps, getInputProps}) => (
                              <section className="container" id="upload-zone">
@@ -294,6 +380,15 @@ function CreateCampaignDetails(props) {
                             </section>
                         )}
                     </Dropzone>
+
+                    { campaignPicturesError
+                    ?
+                        <Alert color="danger" id='alert'>
+                            {campaignPicturesError}
+                        </Alert>
+                    :
+                        ''
+                    }
                    
                     <aside>
                         <h6>Files: </h6>

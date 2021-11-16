@@ -25,20 +25,20 @@ function CreateCampaignVisuals(props) {
                 <h1>
                     {EN ? 'Create your campaign' : 'Crea tu campaña'}
                 </h1>
-                <p>
+                <p id="info-text">
                     {EN ? 'Yakera is a crowdfunding platform that allows people to tell their stories and receive donations for healthcare, education, nutrition, and small business. We believe in people\'s dignity and ability to satisfy their own needs via direct transfers.' : 'Yakera es una plataforma de crowdfunding que empodera a los usuarios a contar sus historias y recibir donaciones a campañas que se enfocan en las categorías de salud, educación, alimentación, y pequeños negocios. Creemos en la dignidad de nuestros usuarios y su capacidad de satisfacer sus propias necesidades a través de transferencias directas.'}
                     
                 </p>
-                <p>
+                <p id="info-text">
                     {EN ? 'In this form you can tell us your story so that it\'s featured in Yakera\'s website and you can start receiving donations.' : 'Con esta forma usted puede contarnos su historia para que aparezca en el sitio de Yakera para recibir donaciones.'}
                 </p>
                 {EN ? 
-                <p>
+                <p id="info-text">
                     If you have any questions, text us in WhatsApp at  <b>+1 740-462-2212 </b> 
                     or <b>+56 9 5699 7352</b> or at <b>info@yakera.org</b>. We are here to help you
                     and answer any questions.
                 </p> : 
-                <p>
+                <p id="info-text">
                    Si tiene más dudas, envíe un mensaje al WhatsApp <b>+1 (740)462-2212</b> o <b>+56 9 5699 7352</b>. También puede enviar un correo electrónico a <b>info@yakera.org</b>
                 </p>
                 }
