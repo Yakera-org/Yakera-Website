@@ -44,15 +44,27 @@ function CreateCampaignDetails(props) {
         // {file.path} - {file.size} bytes
         // <img src={file.preview} />
         // </li>
-        <div style={thumb} key={file.name}>
+        <div style={thumb} key={file.name} id="files">
             <div style={thumbInner}>
                 <img
+                    alt="dropzone-img"
                     src={file.preview}
                     style={img}
                 />
             </div>
+            <div id="remove-btn">
+                <i name={file.name} onClick={onRemove} className="far fa-2x fa-times-circle"></i>
+            </div>
         </div>
     ));
+
+    function onRemove(e){
+        e.preventDefault()
+        var newFiles = files.filter(function(item) {
+            return item.path !==  e.target.getAttribute('name')
+        })
+        setFiles(newFiles)
+    }
 
     const EN = props.EN
     return(
@@ -208,13 +220,13 @@ function CreateCampaignDetails(props) {
                         onChange={props.handleImageChange}
                     />
                 </FormGroup>
-                <section className="container">
+                <section className="container" id="upload-zone">
                     <div {...getRootProps({className: 'dropzone'})}>
                         <input {...getInputProps()} />
                         <p>Drag 'n' drop some files here, or click to select files</p>
                     </div>
                     <aside>
-                        <h4>Files</h4>
+                        <h4>Files: </h4>
                         <ul>{thumbs}</ul>
                     </aside>
                 </section>

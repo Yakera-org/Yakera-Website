@@ -98,7 +98,37 @@
     margin-left: 25%;
     text-align: center;
 }
-
+#files{
+    margin: 20px;
+}
+#remove-btn {
+    border: none;
+    position: relative;
+}
+#remove-btn button{
+    border: none;
+}
+#remove-btn i{
+    color: rgb(168, 72, 72);
+    background-color: rgb(228, 228, 228);
+    position: absolute;
+    border-radius: 50%;
+    z-index: 1;
+    top: -25px;
+    right: -25px;
+}
+#remove-btn i:hover{
+    border: none;
+    color: rgb(128, 17, 17);
+    cursor: pointer;
+}
+#upload-zone {
+    background-color: #f3f3f3;
+    border-radius: 10px;
+    border: solid #ea8737;
+    margin-top: 10px ;
+    margin-bottom: 10px ;
+}
 
 @media only screen and (max-width: 600px) {
     .create-page {
