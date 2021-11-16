@@ -275,7 +275,12 @@ function CreateCampaignDetails(props) {
                              <section className="container" id="upload-zone">
                                 <div {...getRootProps({className: 'dropzone'})}>
                                     <input {...getInputProps()} />
-                                    <p>Drag 'n' drop files here, or click <b>here</b> to select files.</p>
+                                    {EN
+                                    ?
+                                        <p id="info-text" >Drag 'n' drop files here, or click <b>here</b> to select files. </p>
+                                    :
+                                        <p id="info-text" >Arrastra y suelta archivos aquí, o haz clic <b>aquí</b> para seleccionar archivos</p>
+                                    }
                                     <i className="fas fa-4x fa-file-upload"></i>
                                 </div>
                             </section>
@@ -292,7 +297,7 @@ function CreateCampaignDetails(props) {
                     }
                    
                     <aside>
-                        <h6>Files: </h6>
+                        <h6>{EN ? "Files:" : "Archivos:" }</h6>
                         <ul>{mainThumbs}</ul>
                     </aside>                   
                 </FormGroup>
@@ -343,7 +348,12 @@ function CreateCampaignDetails(props) {
                              <section className="container" id="upload-zone">
                              <div {...getRootProps({className: 'dropzone'})}>
                                  <input {...getInputProps()} />
-                                 <p>Drag 'n' drop files here, or click <b>here</b> to select files.</p>
+                                 {EN
+                                    ?
+                                        <p id="info-text" >Drag 'n' drop files here, or click <b>here</b> to select files. </p>
+                                    :
+                                        <p id="info-text" >Arrastra y suelta archivos aquí, o haz clic <b>aquí</b> para seleccionar archivos</p>
+                                    }
                                  <i className="fas fa-4x fa-file-upload"></i>
                              </div>
                          </section>
@@ -360,7 +370,7 @@ function CreateCampaignDetails(props) {
                     }
                     
                     <aside>
-                        <h6>Files: </h6>
+                        <h6>{EN ? "Files:" : "Archivos:" }</h6>
                         <ul>{documentThumbs}</ul>
                     </aside>
                 </FormGroup>
@@ -411,7 +421,14 @@ function CreateCampaignDetails(props) {
                              <section className="container" id="upload-zone">
                                 <div {...getRootProps({className: 'dropzone'})}>
                                     <input {...getInputProps()} />
-                                    <p>Drag 'n' drop files here, or click <b>here</b> to select files.</p>
+                                    
+                                    {EN
+                                    ?
+                                        <p id="info-text" >Drag 'n' drop files here, or click <b>here</b> to select files. </p>
+                                    :
+                                        <p id="info-text" >Arrastra y suelta archivos aquí, o haz clic <b>aquí</b> para seleccionar archivos</p>
+                                    }
+                                   
                                     <i className="fas fa-4x fa-file-upload"></i>
                                 </div>
                             </section>
@@ -428,7 +445,7 @@ function CreateCampaignDetails(props) {
                     }
                    
                     <aside>
-                        <h6>Files: </h6>
+                        <h6>{EN ? "Files:" : "Archivos:" }</h6>
                         <ul>{campaignThumbs}</ul>
                     </aside> 
                 </FormGroup>
