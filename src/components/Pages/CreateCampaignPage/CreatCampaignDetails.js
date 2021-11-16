@@ -313,6 +313,7 @@ function CreateCampaignDetails(props) {
                             <div><br />Requirements:
                                 <ul>
                                     <li>Maximum of 2 pictures</li>
+                                    <li>Minimum of 1 picture</li>
                                     <li>Maximum size: 1 MB</li>
                                 </ul>
                             </div>
@@ -320,6 +321,7 @@ function CreateCampaignDetails(props) {
                             <div><br />Requisitos:
                                 <ul>
                                     <li>Máximo de 2 imágenes</li>
+                                    <li>Mínimo de 1 imagen</li>
                                     <li>Tamaño máximo: 1 MB</li>
                                 </ul>
                             </div>
@@ -386,6 +388,7 @@ function CreateCampaignDetails(props) {
                             <div><br />Requirements:
                                 <ul>
                                     <li>Maximum of 4 pictures</li>
+                                    <li>Minimum of 1 picture</li>
                                     <li>Maximum size: 2 MB</li>
                                 </ul>
                             </div>
@@ -393,6 +396,7 @@ function CreateCampaignDetails(props) {
                             <div><br />Requisitos:
                                 <ul>
                                     <li>Máximo de 4 imágenes</li>
+                                    <li>Mínimo de 1 imagen</li>
                                     <li>Tamaño máximo: 2 MB</li>
                                 </ul>
                             </div>
