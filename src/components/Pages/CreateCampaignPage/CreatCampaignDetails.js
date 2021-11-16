@@ -2,7 +2,6 @@ import React, {useState} from "react";
 import classnames from 'classnames'
 import {Form, FormCheck, FormControl, FormGroup, FormLabel} from "react-bootstrap";
 import {Alert} from 'reactstrap'
-import {useDropzone} from 'react-dropzone';
 import Dropzone from "react-dropzone";
 
 const thumb = {
@@ -34,6 +33,7 @@ function CreateCampaignDetails(props) {
     const [documentFiles, setDocumentFiles] = useState([]);
     const [campaignFiles, setCampaignFiles] = useState([]);
 
+    const [mainError, setMainError] = useState("");
     const [documentError, setDocumentError] = useState("");
     const [campaignPicturesError, setcampaignPicturesError] = useState("");
 
@@ -237,11 +237,39 @@ function CreateCampaignDetails(props) {
                     <FormLabel>{EN ? 'Main Campaign picture' : 'Imagen principal de la campaña'}</FormLabel>
                     <p className="pictures-info">
                         {EN ? 'Your title picture that represents your campaign.' : 'Su imagen de título que representa su campaña.'}
+                        {
+                            EN
+                        ?
+                            <div><br />Requirements:
+                                <ul>
+                                    <li>Maximum of 1 picture</li>
+                                    <li>Maximum size: 1 MB</li>
+                                </ul>
+                            </div>
+                        :
+                            <div><br />Requisitos:
+                                <ul>
+                                    <li>Máximo de 1 imágen</li>
+                                    <li>Tamaño máximo: 1 MB</li>
+                                </ul>
+                            </div>
+                        }     
                     </p>
                     <Dropzone accept='image/*' onDrop={(acceptedFiles) => {
+                        var totalSize = 0
+                        acceptedFiles.concat(campaignFiles).forEach(file => {
+                            totalSize += file.size
+                            
+                        });
+                        if(totalSize < 1000000){
                             setMainFile(acceptedFiles.map(file => Object.assign(file, {
                                 preview: URL.createObjectURL(file)
                             })));
+                            setMainError('')
+                        }else{
+                            setMainError(EN ? 'File too big' : 'La imágen son demasiado grandes')
+                        }
+                            
                         }} name="mainImage" multiple={false}>
                         {({getRootProps, getInputProps}) => (
                              <section className="container" id="upload-zone">
@@ -253,6 +281,15 @@ function CreateCampaignDetails(props) {
                             </section>
                         )}
                     </Dropzone>
+
+                    { mainError
+                    ?
+                        <Alert color="danger" id='alert'>
+                            {mainError}
+                        </Alert>
+                    :
+                        ''
+                    }
                    
                     <aside>
                         <h6>Files: </h6>
@@ -296,7 +333,7 @@ function CreateCampaignDetails(props) {
                                 })));
                                 setDocumentError('')
                             }else{
-                                setDocumentError(EN ? 'Files too big' : 'Los archivos son demasiado grandes')
+                                setDocumentError(EN ? 'Files too big' : 'Las imágenes son demasiado grandes')
                             }
                         }else{
                             setDocumentError(EN ? 'Only 2 pictures allowed.' : 'Solo se permiten 2 imágenes. ')
@@ -364,7 +401,7 @@ function CreateCampaignDetails(props) {
                                 })));
                                 setcampaignPicturesError("")
                             }else{
-                                setcampaignPicturesError(EN ? 'Files too big' : 'Los archivos son demasiado grandes')
+                                setcampaignPicturesError(EN ? 'Files too big' : 'Las imágenes son demasiado grandes')
                             }
                         }else{
                             setcampaignPicturesError(EN ? 'Only 4 pictures allowed.' : 'Solo se permiten 4 imágenes. ')
