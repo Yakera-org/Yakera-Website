@@ -2,6 +2,7 @@ import React, {useState} from "react";
 import classnames from 'classnames'
 import {Form, FormCheck, FormControl, FormGroup, FormLabel} from "react-bootstrap";
 import {useDropzone} from 'react-dropzone';
+import Dropzone from "react-dropzone";
 
 const thumb = {
     display: 'inline-flex',
@@ -28,18 +29,12 @@ const img = {
 };
 
 function CreateCampaignDetails(props) {
-    const [files, setFiles] = useState([]);
-    const {getRootProps, getInputProps} = useDropzone({
-        accept: 'image/*',
-        onDrop: acceptedFiles => {
-          setFiles(acceptedFiles.map(file => Object.assign(file, {
-            preview: URL.createObjectURL(file)
-          })));
-        }
-    });
+    const [mainFile, setMainFile] = useState([]);
+    const [documentFiles, setDocumentFiles] = useState([]);
+    const [campaignFiles, setCampaignFiles] = useState([]);
 
     // https://github.com/react-dropzone/react-dropzone/tree/master/examples/previews
-    const thumbs = files.map(file => (
+    const mainThumbs = mainFile.map(file => (
         // <li key={file.path}>
         // {file.path} - {file.size} bytes
         // <img src={file.preview} />
@@ -53,17 +48,62 @@ function CreateCampaignDetails(props) {
                 />
             </div>
             <div id="remove-btn">
-                <i name={file.name} onClick={onRemove} className="far fa-2x fa-times-circle"></i>
+                <i name={file.name} id="main" onClick={onRemove} className="far fa-2x fa-times-circle"></i>
+            </div>
+        </div>
+    ));
+
+    const documentThumbs = documentFiles.map(file => (
+        <div style={thumb} key={file.name} id="files">
+            <div style={thumbInner}>
+                <img
+                    alt="dropzone-img"
+                    src={file.preview}
+                    style={img}
+                />
+            </div>
+            <div id="remove-btn">
+                <i name={file.name} id="document" onClick={onRemove} className="far fa-2x fa-times-circle"></i>
+            </div>
+        </div>
+    ));
+
+    const campaignThumbs = campaignFiles.map(file => (
+        <div style={thumb} key={file.name} id="files">
+            <div style={thumbInner}>
+                <img
+                    alt="dropzone-img"
+                    src={file.preview}
+                    style={img}
+                />
+            </div>
+            <div id="remove-btn">
+                <i name={file.name} id="campaign" onClick={onRemove} className="far fa-2x fa-times-circle"></i>
             </div>
         </div>
     ));
 
     function onRemove(e){
         e.preventDefault()
-        var newFiles = files.filter(function(item) {
-            return item.path !==  e.target.getAttribute('name')
-        })
-        setFiles(newFiles)
+        var newFiles;
+        if (e.target.getAttribute('id') === "main"){
+            newFiles = mainFile.filter(function(item) {
+                return item.path !==  e.target.getAttribute('name')
+            })
+            setMainFile(newFiles)
+        }
+        else if (e.target.getAttribute('id') === "document"){
+             newFiles = documentFiles.filter(function(item) {
+                return item.path !==  e.target.getAttribute('name')
+            })
+            setDocumentFiles(newFiles)
+        }
+        else if (e.target.getAttribute('id') === "campaign"){
+            newFiles = campaignFiles.filter(function(item) {
+               return item.path !==  e.target.getAttribute('name')
+           })
+           setCampaignFiles(newFiles)
+       }
     }
 
     const EN = props.EN
@@ -188,48 +228,78 @@ function CreateCampaignDetails(props) {
                     />
                     <div className="invalid-feedback">{props.data.errors.itemizedbudget}</div>
                 </FormGroup>
-                <FormGroup className="mb-3">
-                    <FormLabel>{EN ? 'Documents that support your ask (i.e medical orders or notes, tuition receipt, pictures of your small business, budget, etc.)' : 'Documentos que apoyen su aplicación (historia médica, récipe médico, fotos de su negocio pequeño, etc.)'}</FormLabel>
-                    <FormControl
-                        type="file"
-                        multiple={true}
-                        as='input'
-                        name='supportDocs'
-                        onChange={props.handleImageChange}
-                    />
-                </FormGroup>
+
                 <FormGroup className="mb-3">
                     <FormLabel>{EN ? 'Main Campaign picture' : 'Fotos de usted y su familia'}</FormLabel>
-                    <FormControl
-                        type="file"
-                        as='input'
-                        name='mainPicture'
-                        accept='image/*'
-                        multiple={true}
-                        onChange={props.handleImageChange}
-                    />
+                    <Dropzone accept='image/*' onDrop={(acceptedFiles) => {
+                            setMainFile(acceptedFiles.map(file => Object.assign(file, {
+                                preview: URL.createObjectURL(file)
+                            })));
+                        }} name="mainImage" multiple={false}>
+                        {({getRootProps, getInputProps}) => (
+                             <section className="container" id="upload-zone">
+                                <div {...getRootProps({className: 'dropzone'})}>
+                                    <input {...getInputProps()} />
+                                    <p>Drag 'n' drop files here, or click <b>here</b> to select files.</p>
+                                    <i className="fas fa-4x fa-file-upload"></i>
+                                </div>
+                            </section>
+                        )}
+                    </Dropzone>
+                   
+                    <aside>
+                        <h6>Files: </h6>
+                        <ul>{mainThumbs}</ul>
+                    </aside>                   
                 </FormGroup>
+
+                <FormGroup className="mb-3">
+                    <FormLabel>{EN ? 'Documents that support your ask (i.e medical orders or notes, tuition receipt, pictures of your small business, budget, etc.)' : 'Documentos que apoyen su aplicación (historia médica, récipe médico, fotos de su negocio pequeño, etc.)'}</FormLabel>
+                    <Dropzone accept='image/*' onDrop={(acceptedFiles) => {
+                            setDocumentFiles(acceptedFiles.concat(documentFiles).map(file => Object.assign(file, {
+                                preview: URL.createObjectURL(file)
+                            })));
+                        }} name="documents" multiple={true}>
+                        {({getRootProps, getInputProps}) => (
+                             <section className="container" id="upload-zone">
+                             <div {...getRootProps({className: 'dropzone'})}>
+                                 <input {...getInputProps()} />
+                                 <p>Drag 'n' drop files here, or click <b>here</b> to select files.</p>
+                                 <i className="fas fa-4x fa-file-upload"></i>
+                             </div>
+                         </section>
+                        )}
+                    </Dropzone>
+                    
+                    <aside>
+                        <h6>Files: </h6>
+                        <ul>{documentThumbs}</ul>
+                    </aside>
+                </FormGroup>
+
                 <FormGroup className="mb-3">
                     <FormLabel>{EN ? 'Campaign pictures' : 'Otras fotos de la campaña'}</FormLabel>
-                    <FormControl
-                        type="file"
-                        multiple={true}
-                        as='input'
-                        name='pictures'
-                        accept='image/*'
-                        onChange={props.handleImageChange}
-                    />
-                </FormGroup>
-                <section className="container" id="upload-zone">
-                    <div {...getRootProps({className: 'dropzone'})}>
-                        <input {...getInputProps()} />
-                        <p>Drag 'n' drop some files here, or click to select files</p>
-                    </div>
+                    <Dropzone accept='image/*' onDrop={(acceptedFiles) => {
+                            setCampaignFiles(acceptedFiles.concat(campaignFiles).map(file => Object.assign(file, {
+                                preview: URL.createObjectURL(file)
+                            })));
+                        }} name="campaignImages" multiple={true}>
+                        {({getRootProps, getInputProps}) => (
+                             <section className="container" id="upload-zone">
+                                <div {...getRootProps({className: 'dropzone'})}>
+                                    <input {...getInputProps()} />
+                                    <p>Drag 'n' drop files here, or click <b>here</b> to select files.</p>
+                                    <i className="fas fa-4x fa-file-upload"></i>
+                                </div>
+                            </section>
+                        )}
+                    </Dropzone>
+                   
                     <aside>
-                        <h4>Files: </h4>
-                        <ul>{thumbs}</ul>
-                    </aside>
-                </section>
+                        <h6>Files: </h6>
+                        <ul>{campaignThumbs}</ul>
+                    </aside> 
+                </FormGroup>
             </Form>
 
         </div>
