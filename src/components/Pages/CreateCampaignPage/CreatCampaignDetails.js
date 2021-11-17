@@ -235,7 +235,7 @@ function CreateCampaignDetails(props) {
 
                 <FormGroup className="mb-3">
                     <FormLabel>{EN ? 'Main Campaign picture' : 'Imagen principal de la campaña'}</FormLabel>
-                    <p className="pictures-info">
+                    <div className="pictures-info">
                         {EN ? 'Your title picture that represents your campaign.' : 'Su imagen de título que representa su campaña.'}
                         {
                             EN
@@ -254,7 +254,7 @@ function CreateCampaignDetails(props) {
                                 </ul>
                             </div>
                         }     
-                    </p>
+                    </div>
                     <Dropzone accept='image/*' onDrop={(acceptedFiles) => {
                         var totalSize = 0
                         acceptedFiles.concat(campaignFiles).forEach(file => {
@@ -266,6 +266,7 @@ function CreateCampaignDetails(props) {
                                 preview: URL.createObjectURL(file)
                             })));
                             setMainError('')
+                            props.setMainPicture(acceptedFiles)
                         }else{
                             setMainError(EN ? 'File too big' : 'La imágen son demasiado grandes')
                         }
@@ -304,7 +305,7 @@ function CreateCampaignDetails(props) {
 
                 <FormGroup className="mb-3">
                     <FormLabel>{EN ? 'Documents' : 'Documentos '}</FormLabel>
-                    <p className="pictures-info">
+                    <div className="pictures-info">
                         {EN ? 'Documents that support your ask (i.e medical orders or notes, tuition receipt, pictures of your small business, budget, etc.)' : 'Documentos que apoyen su aplicación (historia médica, récipe médico, fotos de su negocio pequeño, etc.)'}  <br />
                         {EN ? 'These docuemnts are only seen by Yakera to validate your campaign. They will not be posted on the site.' : 'Solomente Yakera ve estos documentos para validar su campaña. No se publicarán en el sitio.'}
                         {
@@ -326,7 +327,7 @@ function CreateCampaignDetails(props) {
                                 </ul>
                             </div>
                         }                              
-                    </p>
+                    </div>
                     <Dropzone accept='image/*' onDrop={(acceptedFiles) => {
                         if (acceptedFiles.concat(documentFiles).length <= 2){
                             var totalSize = 0
@@ -339,6 +340,7 @@ function CreateCampaignDetails(props) {
                                     preview: URL.createObjectURL(file)
                                 })));
                                 setDocumentError('')
+                                props.setDocuments(acceptedFiles)
                             }else{
                                 setDocumentError(EN ? 'Files too big' : 'Las imágenes son demasiado grandes')
                             }
@@ -379,7 +381,7 @@ function CreateCampaignDetails(props) {
 
                 <FormGroup className="mb-3">
                     <FormLabel>{EN ? 'Campaign pictures' : 'Otras fotos de la campaña'}</FormLabel>
-                    <p className="pictures-info">
+                    <div className="pictures-info">
                         {EN ? 'Pictures that support your campaign. These pictures will get uploaded to the site.' : 'Imágenes que apoyan su campaña. Estas imágenes se subirán al sitio.'}
                         
                         {
@@ -401,7 +403,7 @@ function CreateCampaignDetails(props) {
                                 </ul>
                             </div>
                         }                    
-                    </p>
+                    </div>
                     <Dropzone accept='image/*' onDrop={(acceptedFiles) => {
                         if (acceptedFiles.concat(campaignFiles).length <= 4){
                             var totalSize = 0
@@ -414,6 +416,7 @@ function CreateCampaignDetails(props) {
                                     preview: URL.createObjectURL(file)
                                 })));
                                 setcampaignPicturesError("")
+                                props.setCampaignPics(acceptedFiles)
                             }else{
                                 setcampaignPicturesError(EN ? 'Files too big' : 'Las imágenes son demasiado grandes')
                             }

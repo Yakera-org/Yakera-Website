@@ -161,8 +161,12 @@ function CreateCampaign() {
     }
 
 
-    async function submit(event){
+    async function submit(event, main, docs, pics){
         event.preventDefault();
+        console.log("Main: " + main)
+        console.log("Docs: " + docs)
+        console.log("Pics: " + pics)
+        
         let formattedStory = linkify(data.story)
         formattedStory = formattedStory.replace(/\n/g, " <br />");
         

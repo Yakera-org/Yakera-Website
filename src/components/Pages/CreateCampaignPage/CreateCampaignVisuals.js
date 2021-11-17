@@ -11,12 +11,19 @@ function CreateCampaignVisuals(props) {
     }, [])
 
     const [language, setLanguage] = React.useState('');
+    const [mainPicture, setMainPicture] = React.useState('');
+    const [documents, setDocuments] = React.useState('');
+    const [campaignPics, setCampaignPics] = React.useState('');
 
     var EN;
     if(language === "en"){
         EN = true
     }else{
         EN = false
+    }
+
+    function onSubmit(e){
+        props.submit(e, mainPicture, documents, campaignPics)
     }
 
     return(
@@ -44,7 +51,11 @@ function CreateCampaignVisuals(props) {
                 }
                 
                 
-                <CreatCampaignDetails EN={EN} data={props.data} handleChange={props.handleChange} handleImageChange={props.handleImageChange}/>
+                <CreatCampaignDetails EN={EN} data={props.data} handleChange={props.handleChange} handleImageChange={props.handleImageChange}
+                 setMainPicture={setMainPicture}
+                 setDocuments={setDocuments}
+                 setCampaignPics={setCampaignPics}
+                 />
                
                 { props.error
                     ?
@@ -66,7 +77,7 @@ function CreateCampaignVisuals(props) {
                 }
                
                 <div id='create-campaign'>
-                    <button  onClick={props.submit}>
+                    <button  onClick={onSubmit}>
                     {EN ? 'Create Campaign' : 'Crear Campaña'}
                     </button>
                 </div>
