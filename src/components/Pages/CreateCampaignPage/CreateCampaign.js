@@ -139,7 +139,7 @@ function CreateCampaign() {
         setError("")
         let formattedStory = linkify(data.story)
         formattedStory = formattedStory.replace(/\n/g, " <br />");
-        console.log(mainPicture)
+
         let isValidated = validateData();
         if(mainPicture.length === 0 || !mainPicture){
             setError(EN ? 'Please upload a main picture.' : 'Por favor, sube la imágen principal.')

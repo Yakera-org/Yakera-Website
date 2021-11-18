@@ -239,7 +239,7 @@ function CreateCampaignDetails(props) {
                 <FormGroup className="mb-3">
                     <FormLabel>{EN ? 'Main Campaign picture' : 'Imagen principal de la campaña'}</FormLabel>
                     <div className="pictures-info">
-                        {EN ? 'Your title picture that represents your campaign.' : 'Su imagen de título que representa su campaña.'}
+                        {EN ? 'Your title picture that represents your campaign.' : 'Imagen que representará su campaña.'}
                         {
                             EN
                         ?
@@ -274,7 +274,7 @@ function CreateCampaignDetails(props) {
                                 setMainError(EN ? 'File too big.' : 'La imágen son demasiado grandes.')
                             }
                         }else{
-                            setMainError(EN ? 'Only 1 picture allowed.' : 'Solo se permiten 1 imágen. ')
+                            setMainError(EN ? 'Only 1 picture allowed.' : 'Solo se permite 1 imágen.')
                         }
                         
                             
