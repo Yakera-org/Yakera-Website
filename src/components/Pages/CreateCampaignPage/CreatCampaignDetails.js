@@ -271,7 +271,7 @@ function CreateCampaignDetails(props) {
                             setMainError(EN ? 'File too big' : 'La imágen son demasiado grandes')
                         }
                             
-                        }} name="mainImage" multiple={false}>
+                        }} name="mainImage" multiple={true}>
                         {({getRootProps, getInputProps}) => (
                              <section className="container" id="upload-zone">
                                 <div {...getRootProps({className: 'dropzone'})}>

@@ -51,7 +51,7 @@ function CreateCampaignVisuals(props) {
                 }
                 
                 
-                <CreatCampaignDetails EN={EN} data={props.data} handleChange={props.handleChange} handleImageChange={props.handleImageChange}
+                <CreatCampaignDetails EN={EN} data={props.data} handleChange={props.handleChange}
                  setMainPicture={setMainPicture}
                  setDocuments={setDocuments}
                  setCampaignPics={setCampaignPics}
