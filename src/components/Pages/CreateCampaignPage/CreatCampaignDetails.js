@@ -259,20 +259,24 @@ function CreateCampaignDetails(props) {
                         }     
                     </div>
                     <Dropzone accept='image/*' onDrop={(acceptedFiles) => {
-                        var totalSize = 0
-                        acceptedFiles.concat(campaignFiles).forEach(file => {
-                            totalSize += file.size
-                            
-                        });
-                        if(totalSize < 1000000){
-                            setMainFile(acceptedFiles.map(file => Object.assign(file, {
-                                preview: URL.createObjectURL(file)
-                            })));
-                            setMainError('')
-                            props.setMainPicture(acceptedFiles)
+                         if (acceptedFiles.concat(mainFile).length <= 1){
+                            var totalSize = 0
+                            acceptedFiles.concat(mainFile).forEach(file => {
+                                totalSize += file.size
+                            });
+                            if(totalSize < 1000000){
+                                setMainFile(acceptedFiles.map(file => Object.assign(file, {
+                                    preview: URL.createObjectURL(file)
+                                })));
+                                setMainError('')
+                                props.setMainPicture(acceptedFiles)
+                            }else{
+                                setMainError(EN ? 'File too big.' : 'La imágen son demasiado grandes.')
+                            }
                         }else{
-                            setMainError(EN ? 'File too big' : 'La imágen son demasiado grandes')
+                            setMainError(EN ? 'Only 1 picture allowed.' : 'Solo se permiten 1 imágen. ')
                         }
+                        
                             
                         }} name="mainImage" multiple={true}>
                         {({getRootProps, getInputProps}) => (
@@ -301,7 +305,7 @@ function CreateCampaignDetails(props) {
                     }
                    
                     <aside>
-                        <h6>{EN ? "Files:" : "Archivos:" }</h6>
+                        <h6>{EN ? "File:" : "Archivo:" }</h6>
                         <ul>{mainThumbs}</ul>
                     </aside>                   
                 </FormGroup>
