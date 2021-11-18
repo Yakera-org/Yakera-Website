@@ -136,12 +136,23 @@ function CreateCampaign() {
 
     async function submit(event, mainPicture, documents, campaignPics){
         event.preventDefault();
-
+        setError("")
         let formattedStory = linkify(data.story)
         formattedStory = formattedStory.replace(/\n/g, " <br />");
-        
+        console.log(mainPicture)
         let isValidated = validateData();
-        
+        if(mainPicture.length === 0 || !mainPicture){
+            setError(EN ? 'Please upload a main picture' : 'Por favor, sube la imágen principal.')
+            isValidated = false
+        }
+        if(documents.length === 0 || !documents){
+            setError(EN ? 'Please upload a document' : 'Por favor, sube un documento.')
+            isValidated = false
+        }
+        if(campaignPics.length === 0 || !campaignPics){
+            setError(EN ? 'Please upload a campaign picture' : 'Por favor, sube una imágen de tu campaña.')
+            isValidated = false
+        }
         if(isValidated){
             setLoader(true);
             submitToBackend(formattedStory, mainPicture, documents, campaignPics);

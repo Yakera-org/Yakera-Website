@@ -95,18 +95,21 @@ function CreateCampaignDetails(props) {
                 return item.path !==  e.target.getAttribute('name')
             })
             setMainFile(newFiles)
+            props.setMainPicture(newFiles)
         }
         else if (e.target.getAttribute('id') === "document"){
              newFiles = documentFiles.filter(function(item) {
                 return item.path !==  e.target.getAttribute('name')
             })
             setDocumentFiles(newFiles)
+            props.setDocuments(newFiles)
         }
         else if (e.target.getAttribute('id') === "campaign"){
             newFiles = campaignFiles.filter(function(item) {
                return item.path !==  e.target.getAttribute('name')
            })
            setCampaignFiles(newFiles)
+           props.setCampaignPics(newFiles)
        }
     }
 
