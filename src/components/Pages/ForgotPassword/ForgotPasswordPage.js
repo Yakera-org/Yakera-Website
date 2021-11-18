@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import Loader from "react-loader-spinner";
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
-import { validateFields } from './Validation';
+import { validateFields } from '../Register/Validation';
 import api from "../../../services/api";
 import ForgotPasswordTemplate from './ForgotPasswordTemplate';
+import LanguageService from '../../../services/language';
 
 
 
@@ -25,10 +26,16 @@ const ForgotPasswordPage = () => {
     message: null,
   }
 
+  React.useEffect(() => {
+    if(LanguageService.getLanguage()==='en')setEN(true)
+    else setEN(false)
+}, []);
+
   const [data, setData] = useState(initialState);
   const [error, setError] = useState(errorState);
   const [message, setMessage] = useState(messageState);
   const [loader, setLoader] = useState(false);
+  const [EN, setEN] = React.useState(false);
 
   const handleChange = event => {
     event.persist();
@@ -120,6 +127,7 @@ const ForgotPasswordPage = () => {
         error = {error}
         message = {message}
         handleForgotPassword = {handleForgotPassword}
+        EN={EN}
       />
     </div>
   );

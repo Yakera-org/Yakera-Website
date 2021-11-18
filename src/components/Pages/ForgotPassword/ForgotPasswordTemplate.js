@@ -10,6 +10,7 @@ const ForgotPasswordTemplate = ({
   error,
   message,
   handleForgotPassword,
+  EN
 }) => {
 
   return (
@@ -19,15 +20,15 @@ const ForgotPasswordTemplate = ({
 
           <Form noValidate className='forgot-password-form' onSubmit={handleForgotPassword}>
             <h1>
-              <span className='font-weight-bold'>Forgot your password?</span>
+              <span className='font-weight-bold'>{EN ? 'Forgot your password?' : '¿Olvidaste tu contraseña?'}</span>
             </h1>
-            <h2>We will send you a reset link</h2>
+            <h2>{EN ? 'We will send you a reset link' : 'Le enviaremos un enlace de restablecimiento'}</h2>
             <hr />
 
             <FormGroup>
               <Input
                 type='email'
-                placeholder='Enter your email address'
+                placeholder={EN ? 'Enter your email address' : 'correo electrónico'}
                 name="email"
                 value={data.email}
                 onChange={handleChange}
@@ -65,18 +66,18 @@ const ForgotPasswordTemplate = ({
               value={data.loading ? 'Loading...' : 'Login'}
               onClick={handleForgotPassword}
             >
-              Send Email
+              {EN ? 'Send Email' : 'Enviar correo electrónico'}
             </Button>
 
             <Grid container style={{marginTop:'4%', textAlign:'left'}}>
               <Grid item xs>
                 <Link href="/login">
-                  Remembered? Go to Login
+                  {EN ? 'Remembered? Go to Login' : '¿Recordado? Ir a Iniciar sesión'}
                 </Link>
               </Grid>
               <Grid item>
                 <Link href="/register">
-                  Don't have an account? Sign Up
+                  {EN ? "Don't have an account? Sign Up" : '¿No tienes una cuenta? Inscribirse'}
                 </Link>
               </Grid>
             </Grid>
