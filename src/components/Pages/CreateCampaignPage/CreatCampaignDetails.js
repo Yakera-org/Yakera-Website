@@ -1,8 +1,117 @@
-import React from "react";
+import React, {useState} from "react";
 import classnames from 'classnames'
 import {Form, FormCheck, FormControl, FormGroup, FormLabel} from "react-bootstrap";
+import {Alert} from 'reactstrap'
+import Dropzone from "react-dropzone";
+
+const thumb = {
+    display: 'inline-flex',
+    borderRadius: 2,
+    border: '1px solid #eaeaea',
+    marginBottom: 8,
+    marginRight: 8,
+    width: 100,
+    height: 100,
+    padding: 4,
+    boxSizing: 'border-box'
+};
+
+const thumbInner = {
+    display: 'flex',
+    minWidth: 0,
+    overflow: 'hidden'
+};
+
+const img = {
+    display: 'block',
+    width: 'auto',
+    height: '100%'
+};
 
 function CreateCampaignDetails(props) {
+    const [mainFile, setMainFile] = useState([]);
+    const [documentFiles, setDocumentFiles] = useState([]);
+    const [campaignFiles, setCampaignFiles] = useState([]);
+
+    const [mainError, setMainError] = useState("");
+    const [documentError, setDocumentError] = useState("");
+    const [campaignPicturesError, setcampaignPicturesError] = useState("");
+
+    // https://github.com/react-dropzone/react-dropzone/tree/master/examples/previews
+    const mainThumbs = mainFile.map(file => (
+        // <li key={file.path}>
+        // {file.path} - {file.size} bytes
+        // <img src={file.preview} />
+        // </li>
+        <div style={thumb} key={file.name} id="files">
+            <div style={thumbInner}>
+                <img
+                    alt="dropzone-img"
+                    src={file.preview}
+                    style={img}
+                />
+            </div>
+            <div id="remove-btn">
+                <i name={file.name} id="main" onClick={onRemove} className="far fa-2x fa-times-circle"></i>
+            </div>
+        </div>
+    ));
+
+    const documentThumbs = documentFiles.map(file => (
+        <div style={thumb} key={file.name} id="files">
+            <div style={thumbInner}>
+                <img
+                    alt="dropzone-img"
+                    src={file.preview}
+                    style={img}
+                />
+            </div>
+            <div id="remove-btn">
+                <i name={file.name} id="document" onClick={onRemove} className="far fa-2x fa-times-circle"></i>
+            </div>
+        </div>
+    ));
+
+    const campaignThumbs = campaignFiles.map(file => (
+        <div style={thumb} key={file.name} id="files">
+            <div style={thumbInner}>
+                <img
+                    alt="dropzone-img"
+                    src={file.preview}
+                    style={img}
+                />
+            </div>
+            <div id="remove-btn">
+                <i name={file.name} id="campaign" onClick={onRemove} className="far fa-2x fa-times-circle"></i>
+            </div>
+        </div>
+    ));
+
+    function onRemove(e){
+        e.preventDefault()
+        var newFiles;
+        if (e.target.getAttribute('id') === "main"){
+            newFiles = mainFile.filter(function(item) {
+                return item.path !==  e.target.getAttribute('name')
+            })
+            setMainFile(newFiles)
+            props.setMainPicture(newFiles)
+        }
+        else if (e.target.getAttribute('id') === "document"){
+             newFiles = documentFiles.filter(function(item) {
+                return item.path !==  e.target.getAttribute('name')
+            })
+            setDocumentFiles(newFiles)
+            props.setDocuments(newFiles)
+        }
+        else if (e.target.getAttribute('id') === "campaign"){
+            newFiles = campaignFiles.filter(function(item) {
+               return item.path !==  e.target.getAttribute('name')
+           })
+           setCampaignFiles(newFiles)
+           props.setCampaignPics(newFiles)
+       }
+    }
 
     const EN = props.EN
     return(
@@ -126,37 +235,233 @@ function CreateCampaignDetails(props) {
                     />
                     <div className="invalid-feedback">{props.data.errors.itemizedbudget}</div>
                 </FormGroup>
+
                 <FormGroup className="mb-3">
-                    <FormLabel>{EN ? 'Documents that support your ask (i.e medical orders or notes, tuition receipt, pictures of your small business, budget, etc.)' : 'Documentos que apoyen su aplicación (historia médica, récipe médico, fotos de su negocio pequeño, etc.)'}</FormLabel>
-                    <FormControl
-                        type="file"
-                        multiple={true}
-                        as='input'
-                        name='supportDocs'
-                        onChange={props.handleImageChange}
-                    />
+                    <FormLabel>{EN ? 'Main Campaign picture' : 'Imagen principal de la campaña'}</FormLabel>
+                    <div className="pictures-info">
+                        {EN ? 'Your title picture that represents your campaign.' : 'Imagen que representará su campaña.'}
+                        {
+                            EN
+                        ?
+                            <div><br />Requirements:
+                                <ul>
+                                    <li>Maximum of 1 picture</li>
+                                    <li>Maximum size: 1 MB</li>
+                                </ul>
+                            </div>
+                        :
+                            <div><br />Requisitos:
+                                <ul>
+                                    <li>Máximo de 1 imágen</li>
+                                    <li>Tamaño máximo: 1 MB</li>
+                                </ul>
+                            </div>
+                        }     
+                    </div>
+                    <Dropzone accept='image/*' onDrop={(acceptedFiles) => {
+                         if (acceptedFiles.concat(mainFile).length <= 1){
+                            var totalSize = 0
+                            acceptedFiles.concat(mainFile).forEach(file => {
+                                totalSize += file.size
+                            });
+                            if(totalSize < 1000000){
+                                setMainFile(acceptedFiles.map(file => Object.assign(file, {
+                                    preview: URL.createObjectURL(file)
+                                })));
+                                setMainError('')
+                                props.setMainPicture(acceptedFiles)
+                            }else{
+                                setMainError(EN ? 'File too big.' : 'La imágen son demasiado grandes.')
+                            }
+                        }else{
+                            setMainError(EN ? 'Only 1 picture allowed.' : 'Solo se permite 1 imágen.')
+                        }
+                        
+                            
+                        }} name="mainImage" multiple={true}>
+                        {({getRootProps, getInputProps}) => (
+                             <section className="container" id="upload-zone">
+                                <div {...getRootProps({className: 'dropzone'})}>
+                                    <input {...getInputProps()} />
+                                    {EN
+                                    ?
+                                        <p id="info-text" >Drag 'n' drop files here, or click <b>here</b> to select files. </p>
+                                    :
+                                        <p id="info-text" >Arrastra y suelta archivos aquí, o haz clic <b>aquí</b> para seleccionar archivos</p>
+                                    }
+                                    <i className="fas fa-4x fa-file-upload"></i>
+                                </div>
+                            </section>
+                        )}
+                    </Dropzone>
+
+                    { mainError
+                    ?
+                        <Alert color="danger" id='alert'>
+                            {mainError}
+                        </Alert>
+                    :
+                        ''
+                    }
+                   
+                    <aside>
+                        <h6>{EN ? "File:" : "Archivo:" }</h6>
+                        <ul>{mainThumbs}</ul>
+                    </aside>                   
                 </FormGroup>
+
                 <FormGroup className="mb-3">
-                    <FormLabel>{EN ? 'Main Campaign picture' : 'Fotos de usted y su familia'}</FormLabel>
-                    <FormControl
-                        type="file"
-                        as='input'
-                        name='mainPicture'
-                        accept='image/*'
-                        multiple={true}
-                        onChange={props.handleImageChange}
-                    />
+                    <FormLabel>{EN ? 'Documents' : 'Documentos '}</FormLabel>
+                    <div className="pictures-info">
+                        {EN ? 'Documents that support your ask (i.e medical orders or notes, tuition receipt, pictures of your small business, budget, etc.)' : 'Documentos que apoyen su aplicación (historia médica, récipe médico, fotos de su negocio pequeño, etc.)'}  <br />
+                        {EN ? 'These docuemnts are only seen by Yakera to validate your campaign. They will not be posted on the site.' : 'Solomente Yakera ve estos documentos para validar su campaña. No se publicarán en el sitio.'}
+                        {
+                            EN
+                        ?
+                            <div><br />Requirements:
+                                <ul>
+                                    <li>Maximum of 2 pictures</li>
+                                    <li>Minimum of 1 picture</li>
+                                    <li>Maximum size: 1 MB</li>
+                                </ul>
+                            </div>
+                        :
+                            <div><br />Requisitos:
+                                <ul>
+                                    <li>Máximo de 2 imágenes</li>
+                                    <li>Mínimo de 1 imagen</li>
+                                    <li>Tamaño máximo: 1 MB</li>
+                                </ul>
+                            </div>
+                        }                              
+                    </div>
+                    <Dropzone accept='image/*' onDrop={(acceptedFiles) => {
+                        if (acceptedFiles.concat(documentFiles).length <= 2){
+                            var totalSize = 0
+                            acceptedFiles.concat(campaignFiles).forEach(file => {
+                                totalSize += file.size
+                                
+                            });
+                            if(totalSize < 1000000){
+                                setDocumentFiles(acceptedFiles.concat(documentFiles).map(file => Object.assign(file, {
+                                    preview: URL.createObjectURL(file)
+                                })));
+                                setDocumentError('')
+                                props.setDocuments(acceptedFiles)
+                            }else{
+                                setDocumentError(EN ? 'Files too big' : 'Las imágenes son demasiado grandes')
+                            }
+                        }else{
+                            setDocumentError(EN ? 'Only 2 pictures allowed.' : 'Solo se permiten 2 imágenes. ')
+                        }
+                        }} name="documents" multiple={true}>
+                        {({getRootProps, getInputProps}) => (
+                             <section className="container" id="upload-zone">
+                             <div {...getRootProps({className: 'dropzone'})}>
+                                 <input {...getInputProps()} />
+                                 {EN
+                                    ?
+                                        <p id="info-text" >Drag 'n' drop files here, or click <b>here</b> to select files. </p>
+                                    :
+                                        <p id="info-text" >Arrastra y suelta archivos aquí, o haz clic <b>aquí</b> para seleccionar archivos</p>
+                                    }
+                                 <i className="fas fa-4x fa-file-upload"></i>
+                             </div>
+                         </section>
+                        )}
+                    </Dropzone>
+
+                    { documentError
+                    ?
+                        <Alert color="danger" id='alert'>
+                            {documentError}
+                        </Alert>
+                    :
+                        ''
+                    }
+                    
+                    <aside>
+                        <h6>{EN ? "Files:" : "Archivos:" }</h6>
+                        <ul>{documentThumbs}</ul>
+                    </aside>
                 </FormGroup>
+
                 <FormGroup className="mb-3">
                     <FormLabel>{EN ? 'Campaign pictures' : 'Otras fotos de la campaña'}</FormLabel>
-                    <FormControl
-                        type="file"
-                        multiple={true}
-                        as='input'
-                        name='pictures'
-                        accept='image/*'
-                        onChange={props.handleImageChange}
-                    />
+                    <div className="pictures-info">
+                        {EN ? 'Pictures that support your campaign. These pictures will get uploaded to the site.' : 'Imágenes que apoyan su campaña. Estas imágenes se subirán al sitio.'}
+                        
+                        {
+                            EN
+                        ?
+                            <div><br />Requirements:
+                                <ul>
+                                    <li>Maximum of 4 pictures</li>
+                                    <li>Minimum of 1 picture</li>
+                                    <li>Maximum size: 2 MB</li>
+                                </ul>
+                            </div>
+                        :
+                            <div><br />Requisitos:
+                                <ul>
+                                    <li>Máximo de 4 imágenes</li>
+                                    <li>Mínimo de 1 imagen</li>
+                                    <li>Tamaño máximo: 2 MB</li>
+                                </ul>
+                            </div>
+                        }                    
+                    </div>
+                    <Dropzone accept='image/*' onDrop={(acceptedFiles) => {
+                        if (acceptedFiles.concat(campaignFiles).length <= 4){
+                            var totalSize = 0
+                            acceptedFiles.concat(campaignFiles).forEach(file => {
+                                totalSize += file.size
+                                
+                            });
+                            if(totalSize < 2000000){
+                                setCampaignFiles(acceptedFiles.concat(campaignFiles).map(file => Object.assign(file, {
+                                    preview: URL.createObjectURL(file)
+                                })));
+                                setcampaignPicturesError("")
+                                props.setCampaignPics(acceptedFiles)
+                            }else{
+                                setcampaignPicturesError(EN ? 'Files too big' : 'Las imágenes son demasiado grandes')
+                            }
+                        }else{
+                            setcampaignPicturesError(EN ? 'Only 4 pictures allowed.' : 'Solo se permiten 4 imágenes. ')
+                        }
+                        }} name="campaignImages" multiple={true}>
+                        {({getRootProps, getInputProps}) => (
+                             <section className="container" id="upload-zone">
+                                <div {...getRootProps({className: 'dropzone'})}>
+                                    <input {...getInputProps()} />
+                                    
+                                    {EN
+                                    ?
+                                        <p id="info-text" >Drag 'n' drop files here, or click <b>here</b> to select files. </p>
+                                    :
+                                        <p id="info-text" >Arrastra y suelta archivos aquí, o haz clic <b>aquí</b> para seleccionar archivos</p>
+                                    }
+                                   
+                                    <i className="fas fa-4x fa-file-upload"></i>
+                                </div>
+                            </section>
+                        )}
+                    </Dropzone>
+
+                    { campaignPicturesError
+                    ?
+                        <Alert color="danger" id='alert'>
+                            {campaignPicturesError}
+                        </Alert>
+                    :
+                        ''
+                    }
+                   
+                    <aside>
+                        <h6>{EN ? "Files:" : "Archivos:" }</h6>
+                        <ul>{campaignThumbs}</ul>
+                    </aside> 
                 </FormGroup>
             </Form>
 
