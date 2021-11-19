@@ -133,6 +133,7 @@ class CampaignPageVisual extends Component {
         const campaign = this.props.campaign;
         const amount = this.props.amount;
         const target = campaign.targetAmount;
+        const donations = campaign.donations.reverse();
         let title, story, mainPicture, category;
 
         try {
@@ -245,7 +246,7 @@ class CampaignPageVisual extends Component {
                                  ?
                                     <p> {EN ? 'No donations submitted. Be the first one!' : 'Sin donaciones aún. ¡Sé el primero!'}</p>
                                  :
-                                     campaign.donations.reverse().filter(d => d !== null).map((donation, i) => {
+                                     donations.filter(d => d !== null).map((donation, i) => {
                                          if(i < 5){
                                             var name;
                                             var amount = donation.amount
@@ -278,7 +279,7 @@ class CampaignPageVisual extends Component {
                                                            </div>
                                                        </Grid>
                                                        :
-                                                       <Grid item xs={9} sm={10} style={{marginTop:'15px'}} >
+                                                       <Grid item xs={9} sm={10}  >
                                                            <div className='cmt-wrapper'>
                                                                <h3 className='name'>
                                                                    {name}, ${amount}
