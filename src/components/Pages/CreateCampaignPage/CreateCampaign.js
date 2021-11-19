@@ -156,7 +156,10 @@ function CreateCampaign() {
         if(isValidated){
             setLoader(true);
             submitToBackend(formattedStory, mainPicture, documents, campaignPics);
+        }else{
+            setError(EN ? 'Some fields are not valid.' : 'Algunos campos no son válidos.')
         }
+        
     }
 
     async function submitToBackend(story, mainPicture, documents, campaignPics){
