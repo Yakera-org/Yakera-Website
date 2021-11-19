@@ -6,12 +6,11 @@ import { Navbar, Container, Nav } from 'react-bootstrap';
 import getHumanReadableDate from '../../../dateUtils';
 
 const comment_pics = [
-    "https://assets.yakera.org/yakera/comment_pic.webp",
-    "https://assets.yakera.org/yakera/comment_pic2.webp",
-    "https://assets.yakera.org/yakera/comment_pic3.webp",
-    "https://assets.yakera.org/yakera/comment_pic4.webp",
-    "https://assets.yakera.org/yakera/comment_pic5.webp",
-    "https://assets.yakera.org/yakera/comment_pic6.webp"
+    "https://assets.yakera.org/yakera/profile-icon-1.webp",
+    "https://assets.yakera.org/yakera/profile-icon-2.webp",
+    "https://assets.yakera.org/yakera/profile-icon-3.webp",
+    "https://assets.yakera.org/yakera/profile-icon-4.webp",
+    "https://assets.yakera.org/yakera/profile-icon-5.webp"
 ]
 for (let i = comment_pics.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
@@ -246,7 +245,7 @@ class CampaignPageVisual extends Component {
                                  ?
                                     <p> {EN ? 'No donations submitted. Be the first one!' : 'Sin donaciones aún. ¡Sé el primero!'}</p>
                                  :
-                                     campaign.donations.filter(d => d !== null).map((donation, i) => {
+                                     campaign.donations.reverse().filter(d => d !== null).map((donation, i) => {
                                          if(i < 5){
                                             var name;
                                             var amount = donation.amount

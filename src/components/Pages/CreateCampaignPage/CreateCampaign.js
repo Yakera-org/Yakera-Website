@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import {validateFields} from "../Register/Validation";
 import CreateCampaignVisuals from "./CreateCampaignVisuals";
 import Loader from "react-loader-spinner";
@@ -27,12 +27,11 @@ function CreateCampaign() {
     const [data, setData] = useState(initialState);
     const [errorMessage, setError] = useState('');
     const [successMessage, setSuccess] = useState('');    
-    const [files, setFiles] = useState([]);
     const [EN, setEN] = React.useState(false);
     const [language, setLanguage] = React.useState('en');
     const [loader, setLoader] = React.useState(false);
 
-    React.useEffect(() => {
+    useEffect(() => {
         function startup(){
             if(LanguageService.getLanguage()==='en'){
                 setEN(true)
@@ -79,35 +78,10 @@ function CreateCampaign() {
         return
     };
 
-    const handleImageChange = event => {
-        if(event.target.files.length === 0)return;
-        const name = event.target.name;
-        if (event.target.files && event.target.files.length > 1) {
-            for (const file of event.target.files) {
-                const reader = new FileReader();
-                reader.readAsDataURL(file);
-                reader.onload = () => {
-                    setFiles(files => [...files, { name: name, uploadedFile: file }]);
-                };
-            }
-            return;
-        }
-        const reader = new FileReader();
-        const file = event.target.files[0];
-        reader.readAsDataURL(file);
-        reader.onload = () => {
-            setFiles(files => [...files, { name: name, uploadedFile: file }]);
-        };
-    };
 
     function validateData(){
         let emptyWarning = EN ? 'This field cannot be empty' : 'Este campo no puede estar vacío' ;
         let nameError, amountError, storyError, descriptionError, budgetError;
-        const fileNum = files.length;
-
-        if(fileNum < 3){
-            setError(EN ? 'Please upload a document for each image field.' : 'Sube un documento para cada campo de imagen.')
-        }
 
         if(!data.amount){
             amountError = emptyWarning;
@@ -145,7 +119,7 @@ function CreateCampaign() {
             },
         })
 
-        if(!amountError && !storyError && !descriptionError && !nameError && !budgetError && fileNum >= 3){
+        if(!amountError && !storyError && !descriptionError && !nameError && !budgetError){
             return true
         }
         
@@ -160,37 +134,43 @@ function CreateCampaign() {
         }); 
     }
 
-
-    async function submit(event){
+    async function submit(event, mainPicture, documents, campaignPics){
         event.preventDefault();
+        setError("")
         let formattedStory = linkify(data.story)
         formattedStory = formattedStory.replace(/\n/g, " <br />");
-        
-        let isValidated = validateData()
-        
-        if(isValidated){
-            setLoader(true)
-            submitToBackend(formattedStory)
-        }else{
-            let fileNum = 0
-            for (const file of files) {
-                fileNum ++
-                console.log(file)
-            }
 
-            if(fileNum < 3){
-                setError(EN ? 'Please upload a document for each image field.' : 'Sube un documento para cada campo de imagen.')
-            }else{
-                setError(EN ? 'Some info is not correct, please check the fields.' : 'Alguna información no es correcta, por favor revise los campos.')
-            }
+        let isValidated = validateData();
+        if(mainPicture.length === 0 || !mainPicture){
+            setError(EN ? 'Please upload a main picture.' : 'Por favor, sube la imágen principal.')
+            isValidated = false
         }
+        if(documents.length === 0 || !documents){
+            setError(EN ? 'Please upload a document.' : 'Por favor, sube un documento.')
+            isValidated = false
+        }
+        if(campaignPics.length === 0 || !campaignPics){
+            setError(EN ? 'Please upload a campaign picture.' : 'Por favor, sube una imágen de tu campaña.')
+            isValidated = false
+        }
+        if(isValidated){
+            setLoader(true);
+            submitToBackend(formattedStory, mainPicture, documents, campaignPics);
+        }else{
+            setError(EN ? 'Some fields are not valid.' : 'Algunos campos no son válidos.')
+        }
+        
     }
 
-    async function submitToBackend(story){
+    async function submitToBackend(story, mainPicture, documents, campaignPics){
         //https://dev.to/fadiamg/multiple-file-inputs-with-one-submit-button-with-react-hooks-kle
         const formdata = new FormData();
-        for (const file of files) {
-            formdata.append(file.name, file.uploadedFile);
+        formdata.append('mainPicture', mainPicture[0]);
+        for (const file of documents) {
+            formdata.append('supportDocs', file);
+        }
+        for (const file of campaignPics) {
+            formdata.append('pictures', file);
         }
 
         // TODO: Remove this. Temp solution for getting campaign categories 
@@ -233,14 +213,22 @@ function CreateCampaign() {
         <div>
             <div className='loader'>
                 <Loader
-                type="Bars"
-                color="#ea8737"
-                height={100}
-                width={100}
-                visible={loader}
+                    type="Bars"
+                    color="#ea8737"
+                    height={100}
+                    width={100}
+                    visible={loader}
                 />
             </div>
-             <CreateCampaignVisuals EN={EN} success={successMessage} error={errorMessage} data={data} handleChange={handleChange} handleImageChange={handleImageChange} validate={validateData} submit={submit}/>
+            <CreateCampaignVisuals
+                EN={EN}
+                success={successMessage}
+                error={errorMessage}
+                data={data}
+                handleChange={handleChange}
+                validate={validateData}
+                submit={submit}
+            />
             <Author />
         </div>
     )

@@ -20,7 +20,7 @@
 .create-page .form-control{
     font-family: Intro-Light;
 }
-.create-page p{
+.create-page #background #info-text{
     font-family: Intro-Light;
     font-weight: 500;
     font-size: 22px;
@@ -98,8 +98,59 @@
     margin-left: 25%;
     text-align: center;
 }
-
-
+#files{
+    margin: 20px;
+}
+#remove-btn {
+    border: none;
+    position: relative;
+}
+#remove-btn button{
+    border: none;
+}
+#remove-btn i{
+    color: rgb(170, 170, 170);
+    background-color: rgb(236, 236, 236);
+    position: absolute;
+    border-radius: 50%;
+    z-index: 10;
+    top: -25px;
+    right: -25px;
+}
+#remove-btn i:hover{
+    border: none;
+    color: rgb(204, 82, 82);
+    cursor: pointer;
+}
+#upload-zone {
+    background-color: #f3f3f3;
+    border-radius: 10px;
+    border: dotted #ea8737;
+    margin: 10px 20px ;
+    width: 100%;
+    max-width: 80%;
+    padding: 20px;
+    cursor: pointer;
+}
+#upload-zone b:hover {
+    text-decoration: underline;
+}
+#upload-zone i{
+    color: #ea883760;
+    margin: 10px;
+}
+#upload-zone i:hover{
+    color: #ea8837d7;
+}
+aside h6{
+    margin-left: 50px;
+    font-size: 18px;
+}
+.pictures-info{
+    margin-left: 20px;
+    font-family: Intro-Light ;
+    font-size: 18px;
+}
 @media only screen and (max-width: 600px) {
     .create-page {
         margin-top: 140px;
