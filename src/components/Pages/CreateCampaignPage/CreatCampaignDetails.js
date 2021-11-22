@@ -29,7 +29,6 @@ const img = {
 };
 function FilePreview(props){
     const file = props.file
-    console.log(file.name)
     return(
         <div style={thumb} key={file.name} id="files">
             <div style={thumbInner}>
@@ -40,7 +39,7 @@ function FilePreview(props){
                 />
             </div>
             <div id="remove-btn">
-                <i name={file.name} id="main" onClick={props.onRemove} className="far fa-2x fa-times-circle"></i>
+                <i name={file.name} id={props.id} onClick={props.onRemove} className="far fa-2x fa-times-circle"></i>
             </div>
         </div>
     )
@@ -57,19 +56,19 @@ function CreateCampaignDetails(props) {
     // https://github.com/react-dropzone/react-dropzone/tree/master/examples/previews
     const mainThumbs = mainFile.map(file => {
         return(
-            <FilePreview key={file.name} file={file} onRemove={onRemove}/>
+            <FilePreview key={file.name} file={file} onRemove={onRemove} id="main"/>
         )
     });
 
     const documentThumbs = documentFiles.map(file => {
         return(
-            <FilePreview key={file.name} file={file} onRemove={onRemove}/>
+            <FilePreview key={file.name} file={file} onRemove={onRemove} id="document"/>
         )
     });
 
     const campaignThumbs = campaignFiles.map(file => {
         return(
-            <FilePreview key={file.name} file={file} onRemove={onRemove}/>
+            <FilePreview key={file.name} file={file} onRemove={onRemove} id="campaign"/>
         )
     });
 
@@ -255,7 +254,7 @@ function CreateCampaignDetails(props) {
                                     preview: URL.createObjectURL(file)
                                 })));
                                 setMainError('')
-                                props.setMainPicture(acceptedFiles)
+                                props.setMainPicture(acceptedFiles.concat(mainFile))
                             }else{
                                 setMainError(EN ? 'File too big.' : 'La imágen son demasiado grandes.')
                             }
@@ -333,7 +332,7 @@ function CreateCampaignDetails(props) {
                                     preview: URL.createObjectURL(file)
                                 })));
                                 setDocumentError('')
-                                props.setDocuments(acceptedFiles)
+                                props.setDocuments(acceptedFiles.concat(documentFiles))
                             }else{
                                 setDocumentError(EN ? 'Files too big' : 'Las imágenes son demasiado grandes')
                             }
@@ -409,7 +408,7 @@ function CreateCampaignDetails(props) {
                                     preview: URL.createObjectURL(file)
                                 })));
                                 setcampaignPicturesError("")
-                                props.setCampaignPics(acceptedFiles)
+                                props.setCampaignPics(acceptedFiles.concat(campaignFiles))
                             }else{
                                 setcampaignPicturesError(EN ? 'Files too big' : 'Las imágenes son demasiado grandes')
                             }
