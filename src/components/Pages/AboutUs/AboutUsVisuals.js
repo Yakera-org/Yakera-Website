@@ -3,6 +3,7 @@ import { Grid } from '@material-ui/core';
 import ContentSection from './ContentSection';
 import content from './texts.json'
 import TeamSection from './TeamSection';
+import AdvisoryBoardSection from './AdvisoryBoardSection';
 
 const illustracion1 = 'https://assets.yakera.org/yakera/illustration-aboutus-1.webp'
 const illustracion2 = 'https://assets.yakera.org/yakera/illustration-aboutus-2.webp'
@@ -113,6 +114,8 @@ function AboutUsVisuals(props) {
             <hr style={{margin:' 50px 10px '}}/>
 
             <TeamSection EN={EN}/>
+
+            <AdvisoryBoardSection EN={EN} />
         </div>
     )
 }

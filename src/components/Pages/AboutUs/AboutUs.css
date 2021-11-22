@@ -155,6 +155,32 @@
     cursor: pointer;
 }
 
+.about-us-advisory-board h1{
+    text-align: center;
+}
+.about-us-advisory-board-pics p{
+    margin-bottom: 15px;
+}
+.about-us-advisory-board-pics #name{
+    font-family: Intro-Regular-Alt;
+    font-size: 22px;
+    margin-top: 10px;
+    margin-bottom: 0px;
+}
+.about-us-advisory-board-pics #title{
+    font-family: Intro-Light;
+    font-size: 20px;
+    vertical-align: top;
+    margin-bottom: 0px;
+}
+.about-us-advisory-board-pics #description{
+    font-family: Intro-Light;
+    font-size: 17px;
+    vertical-align: top;
+    margin-top: 20px;
+    margin-bottom: 0px;
+}
+
 /* mobile */
 @media only screen and (max-width: 600px) {
     .about-us-visuals{
