@@ -251,7 +251,7 @@ function CreateCampaignDetails(props) {
                                 totalSize += file.size
                             });
                             if(totalSize < 1000000){
-                                setMainFile(acceptedFiles.map(file => Object.assign(file, {
+                                setMainFile(acceptedFiles.concat(mainFile).map(file => Object.assign(file, {
                                     preview: URL.createObjectURL(file)
                                 })));
                                 setMainError('')
@@ -324,7 +324,7 @@ function CreateCampaignDetails(props) {
                     <Dropzone accept='image/*' onDrop={(acceptedFiles) => {
                         if (acceptedFiles.concat(documentFiles).length <= 2){
                             var totalSize = 0
-                            acceptedFiles.concat(campaignFiles).forEach(file => {
+                            acceptedFiles.concat(documentFiles).forEach(file => {
                                 totalSize += file.size
                                 
                             });
