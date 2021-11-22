@@ -27,7 +27,23 @@ const img = {
     width: 'auto',
     height: '100%'
 };
-
+function FilePreview(props){
+    const file = props.file
+    return(
+        <div style={thumb} key={file.name} id="files">
+            <div style={thumbInner}>
+                <img
+                    alt="dropzone-img"
+                    src={file.preview}
+                    style={img}
+                />
+            </div>
+            <div id="remove-btn">
+                <i name={file.name} id="main" onClick={props.onRemove} className="far fa-2x fa-times-circle"></i>
+            </div>
+        </div>
+    )
+}
 function CreateCampaignDetails(props) {
     const [mainFile, setMainFile] = useState([]);
     const [documentFiles, setDocumentFiles] = useState([]);
@@ -38,54 +54,23 @@ function CreateCampaignDetails(props) {
     const [campaignPicturesError, setcampaignPicturesError] = useState("");
 
     // https://github.com/react-dropzone/react-dropzone/tree/master/examples/previews
-    const mainThumbs = mainFile.map(file => (
-        // <li key={file.path}>
-        // {file.path} - {file.size} bytes
-        // <img src={file.preview} />
-        // </li>
-        <div style={thumb} key={file.name} id="files">
-            <div style={thumbInner}>
-                <img
-                    alt="dropzone-img"
-                    src={file.preview}
-                    style={img}
-                />
-            </div>
-            <div id="remove-btn">
-                <i name={file.name} id="main" onClick={onRemove} className="far fa-2x fa-times-circle"></i>
-            </div>
-        </div>
-    ));
+    const mainThumbs = mainFile.map(file => {
+        return(
+            <FilePreview key={file.name} file={file} onRemove={onRemove}/>
+        )
+    });
 
-    const documentThumbs = documentFiles.map(file => (
-        <div style={thumb} key={file.name} id="files">
-            <div style={thumbInner}>
-                <img
-                    alt="dropzone-img"
-                    src={file.preview}
-                    style={img}
-                />
-            </div>
-            <div id="remove-btn">
-                <i name={file.name} id="document" onClick={onRemove} className="far fa-2x fa-times-circle"></i>
-            </div>
-        </div>
-    ));
+    const documentThumbs = documentFiles.map(file => {
+        return(
+            <FilePreview key={file.name} file={file} onRemove={onRemove}/>
+        )
+    });
 
-    const campaignThumbs = campaignFiles.map(file => (
-        <div style={thumb} key={file.name} id="files">
-            <div style={thumbInner}>
-                <img
-                    alt="dropzone-img"
-                    src={file.preview}
-                    style={img}
-                />
-            </div>
-            <div id="remove-btn">
-                <i name={file.name} id="campaign" onClick={onRemove} className="far fa-2x fa-times-circle"></i>
-            </div>
-        </div>
-    ));
+    const campaignThumbs = campaignFiles.map(file => {
+        return(
+            <FilePreview key={file.name} file={file} onRemove={onRemove}/>
+        )
+    });
 
     function onRemove(e){
         e.preventDefault()
