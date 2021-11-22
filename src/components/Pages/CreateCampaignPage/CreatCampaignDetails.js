@@ -29,6 +29,7 @@ const img = {
 };
 function FilePreview(props){
     const file = props.file
+    console.log(file.name)
     return(
         <div style={thumb} key={file.name} id="files">
             <div style={thumbInner}>
