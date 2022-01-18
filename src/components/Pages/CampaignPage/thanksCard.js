@@ -1,7 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import {Dialog} from '@material-ui/core';
 
-const bg_pic = "https://assets.yakera.org/yakera/thankyoucard.webp"
 class ThanksCard extends Component{
   
     render(){ 
