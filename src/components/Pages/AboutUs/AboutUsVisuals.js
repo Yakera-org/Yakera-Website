@@ -2,7 +2,6 @@ import React from 'react'
 import { Grid } from '@material-ui/core';
 import ContentSection from './ContentSection';
 import content from './texts.json'
-import TeamSection from './TeamSection';
 import AdvisoryBoardSection from './AdvisoryBoardSection';
 
 const illustracion1 = 'https://assets.yakera.org/yakera/illustration-aboutus-1.webp'
@@ -112,8 +111,6 @@ function AboutUsVisuals(props) {
             </Grid>
 
             <hr style={{margin:' 50px 10px '}}/>
-
-            <TeamSection EN={EN}/>
 
             <AdvisoryBoardSection EN={EN} />
         </div>
