@@ -1,22 +1,13 @@
 .share-dialog,
 .thanks-dialog {
   height: 100%; 
-  width: 50%;
+  width: 60%;
   text-align: center;
-  margin-left: 25%;
+  margin-left: 20%;
   font-family: Intro-Regular-Alt;
   padding: 30px 20px;
   /* changes */
   
-}
-.thanks-dialog-wrapper{
-  background-color: #fbefe2;
-  height: 100%;
-  width: 100%;
-}
-
-.thanks-text-wrapper{
-  width : 50%;
 }
 
 .share-dialog h1,
@@ -82,10 +73,10 @@
 @media screen and (max-width: 600px) {
   .share-dialog,
   .thanks-dialog {
-    height: 100%;
-    width: 110%;
+    height: 90%;
+    width: 90%;
     text-align: center;
-    margin-left: -5%;
+    margin-left: 5%;
     padding: 20px 15px;
   }
   .close-icon {
