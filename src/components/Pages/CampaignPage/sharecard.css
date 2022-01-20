@@ -7,6 +7,16 @@
   font-family: Intro-Regular-Alt;
   padding: 30px 20px;
   /* changes */
+  
+}
+.thanks-dialog-wrapper{
+  background-color: #fbefe2;
+  height: 100%;
+  width: 100%;
+}
+
+.thanks-text-wrapper{
+  width : 50%;
 }
 
 .share-dialog h1,

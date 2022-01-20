@@ -14,7 +14,9 @@ class ThanksCard extends Component{
                     className="thanks-dialog"  
                                                                                                                                     
                 >
-                    <img src={bg_pic} width="100%" alt="background-pic" />
+                <div className = 'thanks-dialog-wrapper'>
+                
+                <div className = 'thanks-text-wrapper'>
                     
                 <h1 style={{marginTop:'10px', color:'#072147'}}> {true ? 'Thank you!' : 'Gracias!'}</h1>
                 <p> {true ? 'Thank you for your donation of' : 'Gracias por tu donación de'} <b>${this.props.amount}</b> {true ? 'To the campaign: ' : 'A la campaña: '} {this.props.title} </p>
@@ -33,13 +35,15 @@ class ThanksCard extends Component{
                     marginLeft:'25%',
                     border:'none',
                     backgroundColor:'#01224d',
-                    borderRadius:'10px',
+                    borderRadius:'30px',
                     color:'white',
                     padding:'10px',
                 }}>
                     Return to Campaign
                 </button>
-                  
+                </div>
+                <img src='https://assets.yakera.org/yakera/illustration-share.webp' alt='gratitudImage' className='share-img' />
+                </div>
                 </Dialog>
             </Fragment>                   
         )
