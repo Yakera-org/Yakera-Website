@@ -162,6 +162,11 @@
 }
 
 @media only screen and (max-width: 600px) {
+  .carousel-item-padding-40-px{
+    min-width: 90vw;
+    max-width: 90vw;
+  }
+
   .home-page .illustrations {
     display: none;
   }
