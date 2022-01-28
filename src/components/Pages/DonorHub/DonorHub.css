@@ -1,10 +1,507 @@
-.donorhub-container {
-  margin-top: 7.8%;
+.donorhub-page {
+  font-family: Intro-Regular-Alt;
 }
 
-.donorhubvisual-container{
+.donorhub-container{
   margin: 0 auto;
-  width: 100%;
-  height: 800px;
+  margin-top: 7.8%;
+  width: 70%;
+  height: 100%;
   background-color: white;
 }
+
+.banner{
+  background-color: #ffe7c3;
+  height: 250px;
+}
+
+.user-info{
+  background-color: white;
+  height: 400px;
+  padding: 2%;
+  margin: 0 auto;
+}
+
+.user-info .user-img{
+  border: solid #ea8737 10px;
+  border-radius: 100%;
+  width: 150px;
+  height: 150px;
+  margin-top: -8.7%;
+  margin-left: 44.4%;
+  margin-bottom: 1%;
+}
+.user-info hr{
+  width: 15%;
+  height: 1.5px;
+  background-color: #ea8737;
+}
+
+.user-info p {
+  text-align: center;
+  font-size: 16px;
+}
+
+.user-info #user-desc{
+  width: 35%;
+  margin: 0 auto;
+}
+
+.user-info #user-friends {
+  color: #01224d;
+  margin-top: 1%;
+  font-size: 22px;
+}
+
+.user-info #user-friends span{
+  font-weight: bolder;
+}
+
+.buttons-container hr{
+  margin-top: -2px;
+  width: 80%;
+}
+
+.button-1 button, .button-2 button{
+  border: none;
+  background-color: white;
+  color: #ea8737;
+  font-size: 20px;
+}
+
+.button-1 button:hover, .button-2 button:hover{
+  color: black;
+}
+
+.button-1 button{
+  margin-left: 80%;
+}
+
+.button-2 button{
+  margin-right: 80%;
+}
+
+.total-donations hr {
+  background-color: #ea8737;
+  height: 10px;
+  width: 8%;
+  border-radius: 16px;
+  transform: rotate(90deg);
+  margin-right: 85.5%; 
+  margin-top: 100px;
+}
+
+.total-donations h5{
+  margin-top: -46px;
+  margin-left: 12%;
+  width: 35%;
+  text-align: justify;
+}
+
+.esp-txt{
+  font-size: 20px;
+  color: #ea8737;
+  margin-top: -32px;
+  margin-left: -326px;
+}
+
+.en-txt{
+  font-size: 20px;
+  color: #ea8737;
+  margin-top: -32px;
+  margin-left: -275px;
+}
+
+.campaigns-preview{
+  display: flex;
+  margin-left: 12.2%;
+  margin-top: 1%;
+  margin-bottom: -5%;
+}
+
+.campaigns-preview .campaign-circle {
+  color:#ea8737;
+  background-color: #ea8737;
+  border-radius: 100%;
+  width: 50px;
+  height: 50px;
+  margin-right: 1%;
+}
+
+.campaigns-preview button {
+  border-radius: 100%;
+  border: none;
+  font-size: 40px;
+  color: #01224d;
+  width : 50px;
+  height: 50px;
+}
+
+.donations-info {
+  background-color: none;
+  width:100%;
+  height: 800px;
+  margin: 0 auto;
+  margin-top: -50px;
+}
+
+.donation-circles, .donation-circle {
+ padding: 10%;
+}
+
+.circle-1{
+  width: 200px;
+  height: 200px;
+  background-color: #ea8737;
+  border-radius: 100%;
+  margin-left: 55%;
+  margin-top: 20%;
+  padding-top: 45%;
+  color: white;
+  font-weight: bolder;
+  font-size: 30px;
+}
+
+.circle-1 p{
+  font-size: 13px;
+  font-weight: normal;
+  margin-bottom: -5px;
+  margin-top: -10px;
+}
+
+.circle-2, .circle-3, .circle-4 {
+  width: 70px;
+  height: 70px;
+  border-radius: 100%;
+  margin-top: 15px;
+  margin-left: 10%;
+  padding-top: 11%;
+  padding-left: 1%;
+  color: white;
+}
+
+.circle-2 {
+  background-color: #01224d;
+  border: 5px solid #b6d0f3d2;
+}
+
+.circle-3 {
+  background-color: rgb(245, 151, 167);
+  border: 5px solid rgb(250, 200, 200);
+  margin-left: 20%;
+}
+
+.circle-4{
+  background-color: rgb(117, 212, 117);
+  border: 5px solid rgb(202, 241, 202);
+}
+
+.progress-txt {
+  margin-top: -20px;
+  text-align: left;
+  margin-left:27%;
+  font-size: 18px;
+}
+
+.progress-text, .progress-text2 {
+  margin-top: 2%;
+  text-align: left;
+  margin-left: 27%;
+  font-size: 18px;
+  width:40%;
+}
+
+.progress-text span {
+  font-size: 25px;
+}
+
+.donor-progress {
+  display: flex;
+  position: relative;
+  width: 40%;
+  margin-left: 27%;
+}
+
+.donation-progress, .progress-bar{
+  background-color: rgb(201, 200, 200);
+  position: absolute;
+  height: 8px;
+  width: 100%;
+  border-radius: 16px;
+}
+
+.progress-bar{
+  background-color: #ea8737;
+  z-index: 1;
+}
+
+.recent-act {
+  padding: 10%;
+}
+
+.recent-act h3 , .recent-act p{
+  text-align:left;
+}
+
+.recent-act p {
+  font-size: 16px;
+}
+
+.recent-act h3{
+  color: #ea8737;
+}
+
+.recent-act hr{
+  background-color: rgb(184, 184, 184);
+  width: 75%;
+  height: 1px;
+  margin-left: 0;
+  margin-top: -10px;
+}
+
+.recent-act p {
+  margin-top: -12px;
+}
+
+.recent-box{
+  background-color: rgb(184, 184, 184);
+  margin-top: 10px;
+  width: 75%;
+  height: 50%;
+  border-radius: 16px;
+}
+
+@media only screen and (max-width: 1600px) {
+
+  .donorhub-container{
+  margin: 0 auto;
+  margin-top: 10%;
+  width: 70%;
+  height: 100%;
+  background-color: white;
+}
+
+  .user-info .user-img{
+  margin-top: -10%;
+  margin-left: 43%;
+}
+  .esp-txt{
+  font-size: 20px;
+  color: #ea8737;
+  margin-top: -32px;
+  margin-left: -326px;
+}
+
+.en-txt{
+  font-size: 20px;
+  color: #ea8737;
+  margin-top: -32px;
+  margin-left: -80px;
+}
+
+.total-donations hr {
+  background-color: #ea8737;
+  height: 10px;
+  width: 8%;
+  border-radius: 16px;
+  transform: rotate(90deg);
+  margin-right: 85.5%; 
+  margin-top: 100px;
+}
+}
+
+@media only screen and (max-width: 600px) {
+
+  .donorhub-container{
+  margin: 0 auto;
+  margin-top: 37%;
+  width: 100%;
+  height: 1800px;
+  background-color: white;
+}
+
+.banner{
+  height: 200px;
+}
+
+.user-info{
+  background-color: white;
+  height: 500px;
+  margin: 0 auto;
+}
+
+.user-info .user-img{
+  border: solid #ea8737 10px;
+  border-radius: 100%;
+  width: 150px;
+  height: 150px;
+  margin-top: -23%;
+  margin-left: 32%;
+  margin-bottom: 1%;
+}
+.user-info hr{
+  width: 50%;
+  height: 1.5px;
+  background-color: #ea8737;
+}
+
+.user-info p {
+  text-align: center;
+  font-size: 16px;
+}
+
+.user-info #user-desc{
+  width: 70%;
+  margin: 0 auto;
+}
+
+.user-info #user-friends {
+  color: #01224d;
+  margin-top: 1%;
+  font-size: 18px;
+}
+
+.donations-info{
+  height: 100%;
+}
+
+.esp-txt{
+  font-size: 20px;
+  color: #ea8737;
+  margin-top: -32px;
+  margin-left: 0px;
+}
+
+.en-txt{
+  font-size: 20px;
+  color: #ea8737;
+  margin-top: -32px;
+  margin-left: -20px;
+}
+
+.total-donations hr {
+  background-color: #ea8737;
+  height: 10px;
+  width: 11%;
+  border-radius: 16px;
+  transform: rotate(90deg);
+  margin-right: 80%; 
+  margin-top: 100px;
+}
+
+.donation-circles, .donation-circle {
+ padding: 10%;
+}
+
+.circle-1{
+  width: 200px;
+  height: 200px;
+  background-color: #ea8737;
+  border-radius: 100%;
+  margin-left: 10%;
+  margin-top: 25%;
+  padding-top: 45%;
+  color: white;
+  font-weight: bolder;
+  font-size: 30px;
+}
+
+.circle-1 p{
+  font-size: 13px;
+  font-weight: normal;
+  margin-bottom: -5px;
+  margin-top: 15px;
+}
+
+.circle-2, .circle-3, .circle-4 {
+  width: 70px;
+  height: 70px;
+  border-radius: 100%;
+  margin-top: 15px;
+  margin-left: 10%;
+  padding-top: 17%;
+  padding-left: 1%;
+  color: white;
+}
+
+.circle-3 {
+  margin-left: 23%;
+}
+
+.donor-progress {
+  display: flex;
+  position: relative;
+  width: 70%;
+  margin-left: 15%;
+}
+
+.donation-progress, .progress-bar{
+  background-color: rgb(201, 200, 200);
+  position: absolute;
+  height: 8px;
+  width: 100%;
+  border-radius: 16px;
+}
+
+.progress-bars{
+  margin-bottom: -50px;
+}
+
+.progress-bar{
+  background-color: #ea8737;
+  z-index: 1;
+}
+
+.progress-text, .progress-text2 {
+  margin-top: 2%;
+  text-align: left;
+  margin-left: 15%;
+  font-size: 18px;
+  width:70%;
+}
+
+.progress-txt {
+  margin-top: -20px;
+  text-align: left;
+  margin-left:15%;
+  font-size: 18px;
+}
+
+.total-donations h5{
+  margin-left: 18%;
+  width: 60%;
+}
+
+.recent-act h3 , .recent-act p{
+  text-align:left;
+}
+
+.recent-act p {
+  margin-top: -10px;
+  font-size: 16px;
+  margin-left: 4%;
+}
+
+.recent-act h3{
+  color: #ea8737;
+  margin-left: 4%;
+}
+
+.recent-act hr{
+  background-color: rgb(184, 184, 184);
+  width: 97%;
+  height: 1px;
+  margin-left: 4%;
+  margin-top: -10px;
+}
+
+.recent-box{
+  background-color: rgb(184, 184, 184);
+  margin-top: 10px;
+  width: 90%;
+  height: 50%;
+  border-radius: 16px;
+  margin-left: 5%;
+}
+}
+
