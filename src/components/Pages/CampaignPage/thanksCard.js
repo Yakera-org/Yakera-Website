@@ -2,20 +2,20 @@ import React, { Component, Fragment } from 'react';
 import {Dialog, Grid, Hidden} from '@material-ui/core';
 
 class ThanksCard extends Component{
-  
-    render(){ 
+
+    render(){
         return(
             <Fragment >
                 <Dialog
-                    fullWidth={true} 
-                    maxWidth='lg'                                 
+                    fullWidth={true}
+                    maxWidth='lg'
                     open={this.props.open}
                     onClose={this.props.onClose}
-                    className="thanks-dialog"  
-                                                                                                                                    
+                    className="thanks-dialog"
+
                 >
-                <Grid container spacing={0} bgcolor= "#fbefe2" style = {{backgroundColor : "#fbefe2", padding: "30px 60px"}}>
-                
+                <Grid container spacing={0} bgcolor= "#fbefe2" style = {{backgroundColor : "#fbefe2", padding: "5px 60px"}}>
+
                     <Grid container
                         spacing={0}
                         direction="column"
@@ -26,30 +26,34 @@ class ThanksCard extends Component{
                     >
 
                         <div>
-                        
-                        <h1 style={{marginTop:'10px', color:'#ea8737'}}> {true ? 'Thank you!' : 'Gracias!'}</h1>
+
+                        <h1 style={{marginTop:'10px', color:'#ea8737'}}> {true ? <b>Thank you!</b> : <b>Gracias!</b>}</h1>
                         <p style = {{color : "#ea8737"}}>
-                            Yakera means gratitude in Warao,<br/> and we send you gratitude!
+                            {true ?
+                              <div>Yakera means gratitude in Warao,<br/> and we send you gratitude!</div>
+                                  :
+                              <div>Yakera significa gratitud en warao,<br/> y te mandamos nuestra Yakera</div>
+                            }
                         </p>
 
                         <hr width = "50%" color = "#ea8737"/>
 
-                        <p> 
-                            
-                            {true ? 'Thank you for your donation of ' : 'Gracias por tu donación de'} 
-                            
+                        <p>
+
+                            {true ? 'Thank you for your donation of ' : 'Gracias por tu donación de'}
+
                                 <b>
                                     ${this.props.amount}
-                                </b> 
+                                </b>
                                 {true ? ' to the campaign: ' : 'A la campaña: '} <br/>
-                                
+
                                 <b>{this.props.title} </b>
                         </p>
-                        
+
                         <a
                             href="https://form.jotform.com/212647238863160"
                             title="Feedback"
-                            
+
                         >
                             <b style={{ color: "#FF9800" }}>Click here </b>to leave us feedback!
                         </a>
@@ -68,7 +72,7 @@ class ThanksCard extends Component{
                             Return to Campaign
                         </button>
                         </div>
-                        
+
                     </Grid>
                     <Hidden xsDown>
                     <Grid container
@@ -82,13 +86,13 @@ class ThanksCard extends Component{
 
                     >
                         <img src='https://assets.yakera.org/yakera/illustration-share.webp' alt='gratitudImage' width = "90%"/>
-                    
+
                     </Grid>
                     </Hidden>
-                
+
                 </Grid>
                 </Dialog>
-            </Fragment>                   
+            </Fragment>
         )
     }
 }
