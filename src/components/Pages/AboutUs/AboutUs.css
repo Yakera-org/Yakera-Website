@@ -106,10 +106,34 @@
 .about-us-team h1{
     font-size: 32px;
 }
+.about-us-team-pics p{
+    text-align: center; 
+    font-family: Intro-Regular-Alt;
+    font-size: 22px;
+    margin-top: 10px;
+    margin-bottom: 0px;
+
+}
 .about-us-team p{
     font-size: 22px;
     font-family: Intro-Light;
 }
+.member-text{
+    text-align: left;
+    padding: 10px;
+}
+.member-text #name{
+    color: #ea8737;
+    text-align: left;
+    font-weight: bold;
+    font-size: 28px;
+}
+
+.member-text p{
+    text-align: left;
+    font-size: 18px;
+}
+
 .member-pic {
     width: 100%;
 }
@@ -132,14 +156,6 @@
     margin-top: 25px;
 
 }
-.about-us-team-pics p{
-    text-align: center; 
-    font-family: Intro-Regular-Alt;
-    font-size: 22px;
-    margin-top: 10px;
-    margin-bottom: 0px;
-
-}
 .about-us-team-pics #position{
     text-align: center; 
     font-family: Intro-Light;
@@ -153,6 +169,32 @@
 .about-us-team-pics #icon:hover{
     color: #ea8737;
     cursor: pointer;
+}
+
+.about-us-advisory-board h1{
+    text-align: center;
+}
+.about-us-advisory-board-pics p{
+    margin-bottom: 15px;
+}
+.about-us-advisory-board-pics #name{
+    font-family: Intro-Regular-Alt;
+    font-size: 22px;
+    margin-top: 10px;
+    margin-bottom: 0px;
+}
+.about-us-advisory-board-pics #title{
+    font-family: Intro-Light;
+    font-size: 20px;
+    vertical-align: top;
+    margin-bottom: 0px;
+}
+.about-us-advisory-board-pics #description{
+    font-family: Intro-Light;
+    font-size: 17px;
+    vertical-align: top;
+    margin-top: 20px;
+    margin-bottom: 0px;
 }
 
 /* mobile */
@@ -279,44 +321,45 @@
         padding: 0px ;
         font-size: 20px;
     }
+    .member-text {
+        text-align: justify;
+    }
+    .member-text #name {
+        text-align: center;
+    }
+    .member-text #position{
+        width: 100%;
+        font-weight: 400;
+    }
+    .member-text p{
+        font-size: 18px;
+    }
     .member-pic {
         width: 100%;
+        text-align: center;
+        margin: 0%;
     }
     .img-wrapper{
         padding: 0px;
         text-align: center;
     }
     .member-pic img{
-        width: 130px;
-        height: 130px;
+        width: 160px;
+        height: 160px;
         position: relative;
         overflow: hidden;
         border-radius: 50%; 
         object-fit: cover; 
         border: 10px solid #ea8737;
         outline: none;
+        text-align: center;
+        margin: 40px 0 0 0;
 
     }
     .about-us-team-pics h2{
         color: #ea8737;
         text-align: left;    
         margin-top: 15px;
-    }
-    .about-us-team-pics p{
-        text-align: center; 
-        font-family: Intro-Regular-Alt;
-        font-size: 20px;
-        margin-top: 0px;
-
-    }
-    .about-us-team-pics #position{
-        text-align: center; 
-        width: 50%;
-        margin-left: 25%;
-        margin-top: 5px;
-        font-family: Intro-Light;
-        font-size: 15px;
-        vertical-align: top;
     }
     .about-us-team-pics #icon{
         color: grey;
