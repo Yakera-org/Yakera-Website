@@ -10,14 +10,22 @@ class ThanksCard extends Component{
         // console.log(this.state.EN);
     }
     componentDidMount() {
+
         this.setState({
-            loaded: true
+            loaded: true,
         })
+
+
     }
 
 
     render(){
+        var token = localStorage.getItem('accessToken');
+        var loggedIn = false;
 
+        if(token === null){
+          loggedIn = true;
+        }
         if (!this.state.loaded) {
             return (
                 <div>
@@ -95,6 +103,7 @@ class ThanksCard extends Component{
 
                           </a><br/><br/>
 
+                          {loggedIn &&
                           <button onClick={this.props.onClose} clasName = "thanks-button" style={{
                               margin:'10px',
                               width:'65%',
@@ -106,12 +115,9 @@ class ThanksCard extends Component{
                               padding:'7px',
                               fontSize: '13px'
                           }}>
-                            {true ?
-                              'Create an Account'
-                                  :
-                              'Crear una Cuenta'
-                            }
+                              Create an Account
                           </button>
+                          }
                           </div>
 
                       </Grid>
