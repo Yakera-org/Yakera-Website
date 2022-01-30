@@ -1,5 +1,7 @@
 import React, { Component, Fragment } from 'react';
+import Button from '@material-ui/core/Button';
 import {Dialog, Grid, Hidden} from '@material-ui/core';
+import { Link } from 'react-router-dom';
 
 class ThanksCard extends Component{
     constructor(props) {
@@ -104,7 +106,10 @@ class ThanksCard extends Component{
                           </a><br/><br/>
 
                           {loggedIn &&
-                          <button onClick={this.props.onClose} clasName = "thanks-button" style={{
+                          <Button clasName = "thanks-button"
+                              component={Link}
+                              to="/register"
+                              style={{
                               margin:'10px',
                               width:'65%',
                               // marginLeft:'25%',
@@ -112,11 +117,12 @@ class ThanksCard extends Component{
                               backgroundColor:'#ea8737',
                               borderRadius:'30px',
                               color:'white',
-                              padding:'7px',
-                              fontSize: '13px'
+                              padding:'10px',
+                              fontSize: '13px',
+
                           }}>
-                              Create an Account
-                          </button>
+                              <a style = {{fontFamily: 'Intro-Regular-Alt'}}>Create an Account</a>
+                          </Button>
                           }
                           </div>
 
