@@ -69,6 +69,11 @@
 .share-img {
   object-fit: cover;
 }
+
+.thanks-grid{
+  background-color : #fbefe2;
+  padding: 0px 60px 30px 60px;
+}
 @media screen and (max-width: 900px) {
   .thanks-dialog {
     height: 100%;
@@ -80,13 +85,15 @@
   .thanks-dialog h1 {
     margin: 10px;
     margin-top: 0px;
-    font-size: 22px;
+    font-size: 30px;
+  }
+  .thanks-grid{
+    padding: 0px 15px 30px 15px;
   }
 }
 
 @media screen and (max-width: 600px) {
-  .share-dialog,
-  .thanks-dialog {
+  .share-dialog{
     height: 100%;
     width: 90%;
     text-align: center;
@@ -102,8 +109,7 @@
     font-size: 16px;
   }
 
-  .share-dialog h1,
-  .thanks-dialog h1 {
+  .share-dialog h1{
     margin: 10px;
     margin-top: 0px;
     font-size: 22px;

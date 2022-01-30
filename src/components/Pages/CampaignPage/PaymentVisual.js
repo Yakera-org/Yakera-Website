@@ -32,7 +32,7 @@ class PaymentVisual extends Component {
 
     componentDidMount(){
         const language = LanguageService.getLanguage()
-        if (language === 'en'){
+        if (language === "en"){
             this.setState({
                 EN: true
             })
@@ -137,8 +137,10 @@ class PaymentVisual extends Component {
         return (
             <div key={this.props.presetAmount} className="payment-visual" id="donateRef">
                 <ThanksCard
-                    // open={this.state.thanksOpen}
+                    EN={EN}
                     open = {true}
+                    //open={this.state.thanksOpen}
+
                     amount={Number(this.state.amount)}
                     title={this.props.title}
                     onClose={this.closeThanks.bind(this)}

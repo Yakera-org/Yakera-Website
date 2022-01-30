@@ -36,7 +36,7 @@ class ThanksCard extends Component{
 
                 >
                 <div style = {{backgroundColor : "#fbefe2"}}>
-                <div className='close-icon' onClick={this.props.onClose} style = {{float: "right"}}>
+                <div className='close-icon' onClick={this.props.onClose} style = {{color:"#252525", float: "right"}}>
                     <i className="fas fa-2x fa-times"></i>
                 </div>
                 </div>
@@ -44,7 +44,7 @@ class ThanksCard extends Component{
                 <Grid container
                  spacing={0}
                  bgcolor= "#fbefe2"
-                 style = {{backgroundColor : "#fbefe2", padding: "0px 60px 30px 60px"}}
+                 className = "thanks-grid"
                 >
 
                       <Grid container
@@ -80,7 +80,7 @@ class ThanksCard extends Component{
                                   </b>
                                   {this.props.EN ? ' to the campaign: ' : ' A la campaña: '} <br/>
 
-                                  <b  style={{fontSize:'20px'}}>{this.props.title} </b>
+                                  <b  style={{fontSize:'23px'}}>{this.props.title} </b>
                           </p>
 
                           <a
@@ -88,22 +88,22 @@ class ThanksCard extends Component{
                               title="Feedback"
 
                           ><br/>
-                              {this.props.EN ? <b style={{ color: "#FF9800" }}>Click here to leave us feedback! </b>
+                              {this.props.EN ? <b style={{ color: "#ea8737" }}>Click here to leave us feedback! </b>
                               :
-                                <b style={{ color: "#FF9800" }}>Haz click aquí para dejarnos tu feedback! </b>
+                                <b style={{ color: "#ea8737" }}>Haz click aquí para dejarnos tu feedback! </b>
                               }
 
                           </a><br/><br/>
 
-                          <button onClick={this.props.onClose} style={{
-                              width:'50%',
+                          <button onClick={this.props.onClose} clasName = "thanks-button" style={{
                               margin:'10px',
+                              width:'65%',
                               // marginLeft:'25%',
                               border:'none',
                               backgroundColor:'#ea8737',
                               borderRadius:'30px',
                               color:'white',
-                              padding:'10px',
+                              padding:'7px',
                               fontSize: '13px'
                           }}>
                             {true ?
