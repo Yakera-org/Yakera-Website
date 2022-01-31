@@ -111,18 +111,18 @@ class ThanksCard extends Component{
                               to="/register"
                               style={{
                               margin:'10px',
-                              width:'65%',
+                              width:'80%',
                               // marginLeft:'25%',
                               border:'none',
                               backgroundColor:'#ea8737',
                               borderRadius:'30px',
                               color:'white',
-                              padding:'10px',
+                              padding:'5px',
                               fontSize: '13px',
 
                           }}>
                               <a style = {{fontFamily: 'Intro-Regular-Alt'}}>
-                                {this.props.EN ? 'Create an Account' : 'crea una cuenta'}
+                                {this.props.EN ? 'Create a donor account' : 'Crear una cuenta de donante'}
                               </a>
                           </Button>
                           }
