@@ -12,11 +12,11 @@ function PaymentAuth(props) {
     const [openZelle, setOpenZelle] = React.useState(false);
 
     React.useEffect(()=> {
-        setsouldShowZelle(true);
-        let ranNum = Math.floor(Math.random() * 100);
-        if(ranNum < 20){
-            setsouldShowZelle(true)
-        }
+        setsouldShowZelle(false);
+        // let ranNum = Math.floor(Math.random() * 100);
+        // if(ranNum < 20){
+        //     setsouldShowZelle(false)
+        // }
     }, [])
 
     function onAirTM(){
