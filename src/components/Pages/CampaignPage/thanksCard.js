@@ -122,7 +122,7 @@ class ThanksCard extends Component{
 
                           }}>
                               <a style = {{fontFamily: 'Intro-Regular-Alt'}}>
-                                {this.props.EN ? 'Create a donor account' : 'Crear una cuenta de donante'}
+                                {this.props.EN ? 'Create a donor account' : 'Crea tu cuenta de donante'}
                               </a>
                           </Button>
                           }
