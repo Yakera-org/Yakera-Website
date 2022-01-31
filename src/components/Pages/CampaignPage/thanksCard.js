@@ -121,7 +121,9 @@ class ThanksCard extends Component{
                               fontSize: '13px',
 
                           }}>
-                              <a style = {{fontFamily: 'Intro-Regular-Alt'}}>Create an Account</a>
+                              <a style = {{fontFamily: 'Intro-Regular-Alt'}}>
+                                {this.props.EN ? 'Create an Account' : 'crea una cuenta'}
+                              </a>
                           </Button>
                           }
                           </div>
