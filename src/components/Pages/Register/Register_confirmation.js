@@ -17,7 +17,7 @@ function Register_conf(props) {
                     checked={props.data.check.terms}
                     onChange={props.handleChange}
                 />
-                <label for='terms'>
+                <label htmlFor='terms'>
                     {EN ? 'I agree to the terms and conditions *' : 'Estoy de acuerdo con los términos y condiciones *'}
                 </label>
 
@@ -30,7 +30,7 @@ function Register_conf(props) {
                     checked={props.data.check.newsLetter}
                     onChange={props.handleChange}
                 />
-                <label for='newsletter'>
+                <label htmlFor='newsletter'>
                     {EN ? 'I want to be added to the Yakera Newsletter' : 'Quiero ser agregado a la Newsletter de Yakera'}
                 </label>
             </div>   

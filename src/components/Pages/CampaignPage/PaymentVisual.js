@@ -32,7 +32,7 @@ class PaymentVisual extends Component {
 
     componentDidMount(){
         const language = LanguageService.getLanguage()
-        if (language === 'en'){
+        if (language === "en"){
             this.setState({
                 EN: true
             })
@@ -47,7 +47,7 @@ class PaymentVisual extends Component {
         console.log(anon)
         var element = document.getElementById("donateRef");
         element.scrollIntoView({behavior: "smooth", block: "end", inline: "nearest"});
-        
+
         this.setState({
             hasDetails: true,
             amount: amount,
@@ -132,13 +132,16 @@ class PaymentVisual extends Component {
     }
 
 
-    render() {    
-        const EN = this.state.EN    
+    render() {
+        const EN = this.state.EN
         return (
             <div key={this.props.presetAmount} className="payment-visual" id="donateRef">
-                <ThanksCard 
-                    open={this.state.thanksOpen} 
-                    amount={Number(this.state.amount) + Number(this.state.tip)}
+                <ThanksCard
+                    EN={EN}
+                    //open = {true}
+                    open={this.state.thanksOpen}
+
+                    amount={Number(this.state.amount)}
                     title={this.props.title}
                     onClose={this.closeThanks.bind(this)}
                     />
@@ -161,12 +164,12 @@ class PaymentVisual extends Component {
                         ? //ask for payment details
 
                         <div  className="payment-card">
-                            <PaymentDetails 
+                            <PaymentDetails
                                 EN={EN}
                                 onContinue={this.onContinue}
                                 presetAmount={this.props.presetAmount}
                                 />
-                        </div>  
+                        </div>
 
                         : // else get to payment authentication
 
@@ -184,12 +187,12 @@ class PaymentVisual extends Component {
                             title={this.props.title}
                             comment={this.state.comment}
                             OnSuccessPayment={this.OnSuccessPayment.bind(this)}
-                            OnPaymentClick={this.OnPaymentClick.bind(this)} 
-                            OnPaymentError={this.OnPaymentError.bind(this)} 
+                            OnPaymentClick={this.OnPaymentClick.bind(this)}
+                            OnPaymentError={this.OnPaymentError.bind(this)}
                             OnPaymentCancel={this.OnPaymentCancel.bind(this)}
                         />
                     }
-                </div>    
+                </div>
             </div>
         );
     }

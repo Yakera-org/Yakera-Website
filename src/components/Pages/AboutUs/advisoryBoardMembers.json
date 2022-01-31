@@ -14,7 +14,7 @@
         {
             "name": "Matt Winkler",
             "titles": [
-                "Co-Found and Editor Emeritus, Bloomberg News"
+                "Co-Founder and Editor Emeritus, Bloomberg News"
             ],
             "descriptions": [
                 "Matthew A. Winkler is co-founder of Bloomberg News (1990) and editor-in-chief emeritus; Bloomberg Opinion columnist since 2015; Co-founder of Bloomberg Business Journalism Diversity program in 2017. During his 25 years as editor-in-chief, Bloomberg News was a three-time finalist and winner of the Pulitzer Prize for Explanatory Reporting and received numerous George Polk, Gerald Loeb, Overseas Press Club and Society of Professional Journalists and Editors (Sabew) awards. His career in journalism began as editor in chief of the Kenyon Collegian followed by reporting for the Mount Vernon News, Bond Buyer, Wall Street Journal, Dow Jones Capital Markets Report and Forbes Magazine as a columnist. He received lifetime achievement awards from the National Academy of Arts and Sciences (Emmy), Loeb Foundation, City University of New York, New York Financial Writers Association and is a director of the Committee to Protect Journalists, International Center for Journalists, International Women's Media Foundation and member of the board of Bloomberg LP. He is trustee of Kenyon College and the Kenyon Review."
@@ -22,9 +22,9 @@
             "picture": "https://assets.yakera.org/yakera/matt-winkler.webp"
         },
         {
-            "name": "John Chun",
+            "name": "Jon Chun",
             "titles": [
-                "Former CEO, Safeweb",
+                "Former CEO of Safeweb, ",
                 "Professor of Digital Humanities, Kenyon College"
             ],
             "descriptions": [
@@ -65,10 +65,9 @@
                 "Engineering Lead, Waze Ads"
             ],
             "descriptions": [
-                "Emilio, a native of Venezuela, has been a leading software engineer at Google since 2009. Since 2019 he has also been a leading software engineer at Waze.",
-                "He has received degrees in computer science from the Universidad Simón Bolívar in Caracas and from Penn State University, where he attained his Masters. He began his career as a Director of Research and Development at Merlin, a multinational firm which specializes in the design, development, and implementation of technological solutions and services. He continued to work for VideoMining Corporation, which specializes in analysis of customer behavior in stores using video technology, as a software developer and architect."
+                "Lead of Infrastructure Engineering at Clear Street, building infrastructure that will power global trading in 2030 and beyond. Ex-Googler. Emilio is the founder of two Google Cloud Platform services, Pub/Sub and IoT Core. Previously engineering lead for Waze Ads & Monetization. Has led teams of 60+ engineers working on Cloud Infrastructure. Founding member of VideoMining Inc., using ML and Computer Vision for passive customer behavior research. Has a Master in Computer Science and Engineering from Penn State University and a Bachelor in Computer Science from Universidad Simon Bolivar in Venezuela."
             ],
-            "picture": "https://assets.yakera.org/yakera/emilio-schapira.webp"
+            "picture": "https://assets.yakera.org/yakera/emilio-schapira2.webp"
         },
         {
             "name": "Rupert Millington",
