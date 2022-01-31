@@ -27,7 +27,23 @@ const img = {
     width: 'auto',
     height: '100%'
 };
-
+function FilePreview(props){
+    const file = props.file
+    return(
+        <div style={thumb} key={file.name} id="files">
+            <div style={thumbInner}>
+                <img
+                    alt="dropzone-img"
+                    src={file.preview}
+                    style={img}
+                />
+            </div>
+            <div id="remove-btn">
+                <i name={file.name} id={props.id} onClick={props.onRemove} className="far fa-2x fa-times-circle"></i>
+            </div>
+        </div>
+    )
+}
 function CreateCampaignDetails(props) {
     const [mainFile, setMainFile] = useState([]);
     const [documentFiles, setDocumentFiles] = useState([]);
@@ -38,54 +54,23 @@ function CreateCampaignDetails(props) {
     const [campaignPicturesError, setcampaignPicturesError] = useState("");
 
     // https://github.com/react-dropzone/react-dropzone/tree/master/examples/previews
-    const mainThumbs = mainFile.map(file => (
-        // <li key={file.path}>
-        // {file.path} - {file.size} bytes
-        // <img src={file.preview} />
-        // </li>
-        <div style={thumb} key={file.name} id="files">
-            <div style={thumbInner}>
-                <img
-                    alt="dropzone-img"
-                    src={file.preview}
-                    style={img}
-                />
-            </div>
-            <div id="remove-btn">
-                <i name={file.name} id="main" onClick={onRemove} className="far fa-2x fa-times-circle"></i>
-            </div>
-        </div>
-    ));
+    const mainThumbs = mainFile.map(file => {
+        return(
+            <FilePreview key={file.name} file={file} onRemove={onRemove} id="main"/>
+        )
+    });
 
-    const documentThumbs = documentFiles.map(file => (
-        <div style={thumb} key={file.name} id="files">
-            <div style={thumbInner}>
-                <img
-                    alt="dropzone-img"
-                    src={file.preview}
-                    style={img}
-                />
-            </div>
-            <div id="remove-btn">
-                <i name={file.name} id="document" onClick={onRemove} className="far fa-2x fa-times-circle"></i>
-            </div>
-        </div>
-    ));
+    const documentThumbs = documentFiles.map(file => {
+        return(
+            <FilePreview key={file.name} file={file} onRemove={onRemove} id="document"/>
+        )
+    });
 
-    const campaignThumbs = campaignFiles.map(file => (
-        <div style={thumb} key={file.name} id="files">
-            <div style={thumbInner}>
-                <img
-                    alt="dropzone-img"
-                    src={file.preview}
-                    style={img}
-                />
-            </div>
-            <div id="remove-btn">
-                <i name={file.name} id="campaign" onClick={onRemove} className="far fa-2x fa-times-circle"></i>
-            </div>
-        </div>
-    ));
+    const campaignThumbs = campaignFiles.map(file => {
+        return(
+            <FilePreview key={file.name} file={file} onRemove={onRemove} id="campaign"/>
+        )
+    });
 
     function onRemove(e){
         e.preventDefault()
@@ -265,11 +250,11 @@ function CreateCampaignDetails(props) {
                                 totalSize += file.size
                             });
                             if(totalSize < 1000000){
-                                setMainFile(acceptedFiles.map(file => Object.assign(file, {
+                                setMainFile(acceptedFiles.concat(mainFile).map(file => Object.assign(file, {
                                     preview: URL.createObjectURL(file)
                                 })));
                                 setMainError('')
-                                props.setMainPicture(acceptedFiles)
+                                props.setMainPicture(acceptedFiles.concat(mainFile))
                             }else{
                                 setMainError(EN ? 'File too big.' : 'La imágen son demasiado grandes.')
                             }
@@ -338,7 +323,7 @@ function CreateCampaignDetails(props) {
                     <Dropzone accept='image/*' onDrop={(acceptedFiles) => {
                         if (acceptedFiles.concat(documentFiles).length <= 2){
                             var totalSize = 0
-                            acceptedFiles.concat(campaignFiles).forEach(file => {
+                            acceptedFiles.concat(documentFiles).forEach(file => {
                                 totalSize += file.size
                                 
                             });
@@ -347,7 +332,7 @@ function CreateCampaignDetails(props) {
                                     preview: URL.createObjectURL(file)
                                 })));
                                 setDocumentError('')
-                                props.setDocuments(acceptedFiles)
+                                props.setDocuments(acceptedFiles.concat(documentFiles))
                             }else{
                                 setDocumentError(EN ? 'Files too big' : 'Las imágenes son demasiado grandes')
                             }
@@ -423,7 +408,7 @@ function CreateCampaignDetails(props) {
                                     preview: URL.createObjectURL(file)
                                 })));
                                 setcampaignPicturesError("")
-                                props.setCampaignPics(acceptedFiles)
+                                props.setCampaignPics(acceptedFiles.concat(campaignFiles))
                             }else{
                                 setcampaignPicturesError(EN ? 'Files too big' : 'Las imágenes son demasiado grandes')
                             }
