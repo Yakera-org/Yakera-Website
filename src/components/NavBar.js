@@ -70,13 +70,13 @@ class NavBar extends Component {
     }
 
     onTabClick(event){
-        let name = event.target.name
+        let name = event.target.getAttribute('name')
         this.setState({
             currentTab:name
         })
-        console.log(name)
+
         localStorage.setItem("currentTab", name)
-        window.location.href = "/"+name;
+        window.location.href = "/"+ name;
     }
     onHomeClick(){
         localStorage.setItem("currentTab", '')
@@ -133,11 +133,11 @@ class NavBar extends Component {
                     </Navbar.Toggle>
                     <Navbar.Collapse id="responsive-navbar-nav">
                         <Nav className="mr-auto">
-                        <Nav.Link id={this.state.currentTab === 'about' ? 'nav-tab-selected': 'nav-tab'}  name='about' onClick={this.onTabClick.bind(this)} >{EN ? 'ABOUT US' : <div className = "nav-spanish-text">SOBRE NOSOTROS</div>}</Nav.Link>
-                        <Nav.Link id={this.state.currentTab === 'support' ? 'nav-tab-selected': 'nav-tab'} name='support'  onClick={this.onTabClick.bind(this)}> {EN ? 'SUPPORT US' : <div className = "nav-spanish-text">APÓYANOS </div>}</Nav.Link>
-                        <Nav.Link id={this.state.currentTab === 'campaigns' ? 'nav-tab-selected': 'nav-tab'} name='campaigns'  onClick={this.onTabClick.bind(this)}> {EN ? 'CAMPAIGNS' : <div className = "nav-spanish-text">CAMPAÑAS</div>}</Nav.Link>
-                        <Nav.Link id={this.state.currentTab === 'frequently-asked-questions' ? 'nav-tab-selected': 'nav-tab'} name='frequently-asked-questions'  onClick={this.onTabClick.bind(this)}>{EN ? 'FAQ' : <div className = "nav-spanish-text">PREGUNTAS</div>}</Nav.Link>
-                        <Nav.Link id={this.state.currentTab === (isAuthenticated ? 'dashboard' : 'login') ? 'nav-tab-selected': 'nav-tab'} name={isAuthenticated ? 'dashboard' : 'login'}  onClick={this.onTabClick.bind(this)}>{isAuthenticated ? EN ? 'DASHBOARD': <div className = "nav-spanish-text">MI CUENTA</div> : EN ? 'LOG IN' : <div className = "nav-spanish-text">INICIAR SESIÓN</div>}</Nav.Link>
+                        <Nav.Link id={this.state.currentTab === 'about' ? 'nav-tab-selected': 'nav-tab'}  name='about' onClick={this.onTabClick.bind(this)} >{EN ? 'ABOUT US' : <div name='about' className = "nav-spanish-text">SOBRE NOSOTROS</div>}</Nav.Link>
+                        <Nav.Link id={this.state.currentTab === 'support' ? 'nav-tab-selected': 'nav-tab'} name='support'  onClick={this.onTabClick.bind(this)}> {EN ? 'SUPPORT US' : <div name='support' className = "nav-spanish-text">APÓYANOS </div>}</Nav.Link>
+                        <Nav.Link id={this.state.currentTab === 'campaigns' ? 'nav-tab-selected': 'nav-tab'} name='campaigns'  onClick={this.onTabClick.bind(this)}> {EN ? 'CAMPAIGNS' : <div name='campaigns' className = "nav-spanish-text">CAMPAÑAS</div>}</Nav.Link>
+                        <Nav.Link id={this.state.currentTab === 'frequently-asked-questions' ? 'nav-tab-selected': 'nav-tab'} name='frequently-asked-questions'  onClick={this.onTabClick.bind(this)}>{EN ? 'FAQ' : <div name='frequently-asked-questions' className = "nav-spanish-text">PREGUNTAS</div>}</Nav.Link>
+                        <Nav.Link id={this.state.currentTab === (isAuthenticated ? 'dashboard' : 'login') ? 'nav-tab-selected': 'nav-tab'} name={isAuthenticated ? 'dashboard' : 'login'}  onClick={this.onTabClick.bind(this)}>{isAuthenticated ? EN ? 'DASHBOARD': <div name={isAuthenticated ? 'dashboard' : 'login'} className = "nav-spanish-text">MI CUENTA</div> : EN ? 'LOG IN' : <div name={isAuthenticated ? 'dashboard' : 'login'} className = "nav-spanish-text">INICIAR SESIÓN</div>}</Nav.Link>
                         { isAuthenticated
                         ?
                             <Nav.Link >

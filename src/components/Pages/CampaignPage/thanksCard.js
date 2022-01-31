@@ -22,12 +22,8 @@ class ThanksCard extends Component{
 
 
     render(){
-        var token = localStorage.getItem('accessToken');
+        //var token = localStorage.getItem('accessToken');
         var loggedIn = false;
-
-        if(token === null){
-          loggedIn = true;
-        }
         if (!this.state.loaded) {
             return (
                 <div>
@@ -72,10 +68,10 @@ class ThanksCard extends Component{
                           <h1 style={{marginTop:'10px', color:'#ea8737'}}> {this.props.EN ? <b>Thank you!</b> : <b>Gracias!</b>}</h1>
                           <br/>
                           <p style = {{color : "#ea8737"}}>
-                              {this.props.EN ?
-                                <a>Yakera means gratitude in Warao,<br/> and we send you gratitude!</a>
+                              {this.props.EN ? 
+                                <div>Yakera means gratitude in Warao,<br/> and we send you gratitude!</div>
                                     :
-                                <a>Yakera significa gratitud en warao,<br/> y te mandamos nuestra Yakera</a>
+                                <div>Yakera significa gratitud en warao,<br/> y te mandamos nuestra Yakera</div>
                               }
                           </p>
 
@@ -106,24 +102,22 @@ class ThanksCard extends Component{
                           </a><br/><br/>
 
                           {loggedIn &&
-                          <Button clasName = "thanks-button"
+                          <Button className = "thanks-button"
                               component={Link}
                               to="/register"
                               style={{
-                              margin:'10px',
-                              width:'80%',
-                              // marginLeft:'25%',
-                              border:'none',
-                              backgroundColor:'#ea8737',
-                              borderRadius:'30px',
-                              color:'white',
-                              padding:'5px',
-                              fontSize: '13px',
-
-                          }}>
-                              <a style = {{fontFamily: 'Intro-Regular-Alt'}}>
+                                margin:'10px',
+                                width:'60%',
+                                border:'none',
+                                backgroundColor:'#ea8737',
+                                borderRadius:'30px',
+                                color:'white',
+                                padding:'10px',
+                                fontSize: '13px',
+                              }}
+                            >
                                 {this.props.EN ? 'Create a donor account' : 'Crea tu cuenta de donante'}
-                              </a>
+                              
                           </Button>
                           }
                           </div>
