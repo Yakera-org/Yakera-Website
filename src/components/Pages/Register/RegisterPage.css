@@ -65,6 +65,54 @@
     text-align: center;
 }
 
+.switch button{
+    background-color: transparent;
+    width: 30%;
+    padding: 10px;
+    border-color: #c9c9c9;
+    box-shadow: transparent;
+    outline: none;
+    font-family: Intro-Light;
+    border-style: solid;
+    border-width: 1px;
+    color: #494949;
+}
+.switch #left{
+    border-radius: 5px 0 0 5px;
+    border-right: 1px solid #c9c9c9;
+}
+.switch #right{
+    border-radius: 0 5px 5px 0;
+    border-left: 1px solid #c9c9c9;
+}
+.switch button:hover{
+    background-color: #e3e3e3;
+}
+.switch button:active, .switch button:focus, .switch .on{
+    background-color: #052a5cd2;
+    color: white;
+    border: none;
+}
+.switch .off{
+    background-color: transparent;
+    border-color: #c9c9c9;
+    color: #494949;
+}
+.switch-area{
+    text-align: left;
+    padding: 20px 0;
+    font-family: Intro-Light;
+    font-size: 18px;
+    margin-bottom: -20px;
+}
+.switch-area b{
+    font-weight: 900;
+    font-family: Intro-Light;
+    color: #052a5c;
+}
+.switch{
+    text-align: center;
+}
 @media only screen and (max-width: 600px) {
 
     .register-page {
@@ -79,4 +127,17 @@
     .login-card input{
         width: 100%;
     }
+    .switch button{
+        background-color: transparent;
+        width: 50%;
+        padding: 10px;
+        border-color: #c9c9c9;
+        box-shadow: transparent;
+        outline: none;
+        font-family: Intro-Light;
+        border-style: solid;
+        border-width: 1px;
+        color: #494949;
+    }
+    
 }

@@ -43,6 +43,7 @@
     "react-springy-parallax": "^1.3.0",
     "react-sweet-progress": "^1.1.2",
     "react-switch": "^6.0.0",
+    "react-use-boolean": "^1.0.1",
     "reactstrap": "^8.9.0",
     "redux": "^4.0.5",
     "sass": "^1.48.0",

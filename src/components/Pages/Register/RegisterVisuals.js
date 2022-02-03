@@ -6,6 +6,7 @@ import { Grid } from '@material-ui/core';
 import RegisterDetails from "./Register_details";
 import RegisterAuth from "./Register_auth";
 import RegisterConf from "./Register_confirmation";
+import { useBoolean } from "react-use-boolean";
 
 
 import './RegisterPage.css'
@@ -34,7 +35,7 @@ function RegisterVisuals(props) {
 
     return (
         <div className='register-page'>
-            <div id='background' style={{ backgroundImage: `url(https://assets.yakera.org/yakera/pattern-yakera-blue.webp)`}}>
+            <div id='background'>
                     <Card className='login-card'>
                         <CardContent>
 
@@ -43,6 +44,7 @@ function RegisterVisuals(props) {
                             <MultiStepForm activeStep={step} accentColor='#003049'>
                                 <Step label={EN ? "Details" : 'Detalles'}>
                                     <RegisterDetails EN={EN} data={props.data} handleChange={props.handleChange}/>
+                                    <DetailsSwitch />
                                 </Step>
 
                                 <Step label={EN ? "Authentication" : 'Autenticación'} >
@@ -116,3 +118,20 @@ function RegisterVisuals(props) {
 }
 
 export default RegisterVisuals
+
+
+
+export function DetailsSwitch() {
+    const [value, actions] = useBoolean();
+
+    return (
+    <div className="switch-area">
+        <p>I am a {value ? <b>Recipient</b> : <b>Donor</b>} </p>
+
+        <div className="switch">            
+            <button id="left" className={value ? "on" : "off"} onClick={actions.on}>Recipient</button>
+            <button id="right" className={value ? "off" : "on"} onClick={actions.off}>Donor</button>
+        </div>
+    </div>
+    );
+};
