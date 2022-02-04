@@ -10,10 +10,12 @@ import { useBoolean } from "react-use-boolean";
 
 
 import './RegisterPage.css'
+import RegisterAuthDonor from "./Register_auth_donor";
 
 function RegisterVisuals(props) {
 
-    const [step, nextStep] = useState(1);
+    const [step, nextStep] = useState(2);
+    const [value, actions] = useBoolean();
     const EN = props.EN
 
     async function onContinue() {
@@ -44,11 +46,16 @@ function RegisterVisuals(props) {
                             <MultiStepForm activeStep={step} accentColor='#003049'>
                                 <Step label={EN ? "Details" : 'Detalles'}>
                                     <RegisterDetails EN={EN} data={props.data} handleChange={props.handleChange}/>
-                                    <DetailsSwitch />
+                                    <DetailsSwitch value={value} actions={actions}/>
                                 </Step>
 
                                 <Step label={EN ? "Authentication" : 'Autenticación'} >
-                                    <RegisterAuth EN={EN} data={props.data} handleChange={props.handleChange}/>
+                                    {value
+                                        ?
+                                        <RegisterAuth EN={EN} data={props.data} handleChange={props.handleChange}/>
+                                        :
+                                        <RegisterAuthDonor EN={EN} data={props.data} handleChange={props.handleChange}/>
+                                    }
                                 </Step>
 
                                 <Step label={EN ? "Confirmation" : 'Confirmación'} >
@@ -121,9 +128,9 @@ export default RegisterVisuals
 
 
 
-export function DetailsSwitch() {
-    const [value, actions] = useBoolean();
-
+export function DetailsSwitch(props) {
+    var value = props.value
+    var actions = props.actions
     return (
     <div className="switch-area">
         <p>I am a {value ? <b>Recipient</b> : <b>Donor</b>} </p>

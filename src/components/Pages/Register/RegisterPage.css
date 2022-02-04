@@ -88,8 +88,8 @@
 .switch button:hover{
     background-color: #e3e3e3;
 }
-.switch button:active, .switch button:focus, .switch .on{
-    background-color: #052a5cd2;
+.switch .on, .switch .on:hover{
+    background-color: #052b5cec;
     color: white;
     border: none;
 }
@@ -113,6 +113,43 @@
 .switch{
     text-align: center;
 }
+
+.register-authentication .profile {
+    width: 100%;
+}
+
+.register-authentication .profile img{
+    max-width: 200px;
+    min-width: 200px;
+    max-height: 200px;
+    min-height: 200px;
+    border-radius: 50%;
+    border: #052a5c 10px solid;
+    margin: 10px 0;
+    object-fit:cover;
+}
+.register-authentication .profile img:hover{
+    cursor: pointer;
+    opacity: 0.8;
+}
+.register-authentication #photo-upload{
+    display: none;
+}
+.register-authentication label button{
+    background-color: transparent;
+    border-radius: 10px;
+    pointer-events: none;
+    padding: 5px;
+    border: 2px #a1a1a1 solid
+}
+.register-authentication label:hover{
+    cursor: pointer;
+}
+.register-authentication #pic-name{
+    max-width: 200px;
+    overflow: hidden;
+}
+
 @media only screen and (max-width: 600px) {
 
     .register-page {
