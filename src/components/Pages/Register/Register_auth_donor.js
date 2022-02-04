@@ -58,14 +58,15 @@ const ImgUpload =({
 class CardProfile extends React.Component {
     state = {
       file: '',
-      imagePreviewUrl: random_profiles[1]
+      imagePreviewUrl: random_profiles[Math.floor(Math.random()*random_profiles.length)],
+      reader: new FileReader()
     }
-  
+    
     photoUpload = e =>{
-      e.preventDefault();
+        e.preventDefault();
+        var reader = this.state.reader
 
-      if(e.target.files.length > 0){
-        const reader = new FileReader();
+        if(e.target.files.length > 0){
         const file = e.target.files[0];
         reader.onloadend = () => {
             this.setState({
@@ -80,33 +81,38 @@ class CardProfile extends React.Component {
     resetPhoto = e =>{
         e.preventDefault();
   
-        if(e.target.files.length > 0){
-          const reader = new FileReader();
-          const file = e.target.files[0];
-          reader.onloadend = () => {
-              this.setState({
-              file: file,
-              imagePreviewUrl: reader.result
-              });
-          }
-          reader.readAsDataURL(file);
-          }
-      }
+       this.setState({
+                file: '',
+                imagePreviewUrl: random_profiles[Math.floor(Math.random()*random_profiles.length)],
+                reader: new FileReader()
+            })
+    }
+    randomPhoto = e =>{
+        e.preventDefault();
+        var index = random_profiles.indexOf(this.state.imagePreviewUrl)+1
+        if(index >=5){
+            index = 0
+        }
+       this.setState({
+                file: '',
+                imagePreviewUrl: random_profiles[index]
+            })
+    }
     
     render() {
       const {imagePreviewUrl, file} = this.state;
       return (
         <div className='profile'>           
             <ImgUpload onChange={this.photoUpload} src={imagePreviewUrl} file={file} />      
-            <button>Random Profile Picture</button>
             {
                 file
                 ?
-                <button onClick={this.resetPhoto}>Reset</button>
+                <button id="reset" onClick={this.resetPhoto}>Reset</button>
                 :
                 ""
             }
 
+            <button id="random" onClick={this.randomPhoto}>Random Profile Picture</button>
         </div>
       )
     }

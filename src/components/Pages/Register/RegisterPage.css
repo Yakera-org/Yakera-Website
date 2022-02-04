@@ -149,6 +149,37 @@
     max-width: 200px;
     overflow: hidden;
 }
+.register-authentication .profile #random{
+    background-color: transparent;
+    width: 100%;
+    border-radius: 10px;
+    padding: 5px;
+    border: 2px #a1a1a1 solid;
+    outline: none;
+    margin-bottom: 5px;
+}
+.register-authentication .profile #random:hover{
+    background-color: #f1f1f1;
+}
+.register-authentication .profile #random:active{
+    background-color: #052b5c57;
+}
+
+.register-authentication .profile #reset{
+    background-color: transparent;
+    width: 100%;
+    border-radius: 10px;
+    padding: 5px;
+    border: 2px #ca7a7a solid;
+    outline: none;
+    margin-bottom: 5px;
+}
+.register-authentication .profile #reset:hover{
+    background-color: #ffe2e2;
+}
+.register-authentication .profile #reset:active{
+    background-color: #052b5c57;
+}
 
 @media only screen and (max-width: 600px) {
 
