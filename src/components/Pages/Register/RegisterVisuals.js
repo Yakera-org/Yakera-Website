@@ -15,15 +15,26 @@ import RegisterAuthDonor from "./Register_auth_donor";
 function RegisterVisuals(props) {
 
     const [step, nextStep] = useState(2);
-    const [value, actions] = useBoolean();
+    const [isRecipient, actions] = useBoolean();
     const EN = props.EN
 
     async function onContinue() {
-        if(await props.validate(step)){
-            nextStep(step + 1)
+        if(step === 1){
+            if(await props.validate(step)){
+                nextStep(step + 1)
+            } 
+        }
+        if(step === 2){
+            if(isRecipient){
+                if(await props.validate(step)){
+                    nextStep(step + 1)
+                }
+            }else{
+                nextStep(step + 1)                
+            }
         }
         if(step === 3){
-            props.register();
+            props.register(isRecipient);
         }
     }
 
@@ -46,11 +57,11 @@ function RegisterVisuals(props) {
                             <MultiStepForm activeStep={step} accentColor='#003049'>
                                 <Step label={EN ? "Details" : 'Detalles'}>
                                     <RegisterDetails EN={EN} data={props.data} handleChange={props.handleChange}/>
-                                    <DetailsSwitch value={value} actions={actions}/>
+                                    <DetailsSwitch isRecipient={isRecipient} actions={actions}/>
                                 </Step>
 
                                 <Step label={EN ? "Authentication" : 'Autenticación'} >
-                                    {value
+                                    {isRecipient
                                         ?
                                         <RegisterAuth EN={EN} data={props.data} handleChange={props.handleChange}/>
                                         :
@@ -64,7 +75,7 @@ function RegisterVisuals(props) {
 
                             </MultiStepForm>
                             <br /> 
-                            { props.error 
+                            { props.error
                             ?
                                 <Alert color="danger">
                                     { props.error }
@@ -129,15 +140,15 @@ export default RegisterVisuals
 
 
 export function DetailsSwitch(props) {
-    var value = props.value
+    var isRecipient = props.isRecipient
     var actions = props.actions
     return (
     <div className="switch-area">
-        <p>I am a {value ? <b>Recipient</b> : <b>Donor</b>} </p>
+        <p>I am a {isRecipient ? <b>Recipient</b> : <b>Donor</b>} </p>
 
         <div className="switch">            
-            <button id="left" className={value ? "on" : "off"} onClick={actions.on}>Recipient</button>
-            <button id="right" className={value ? "off" : "on"} onClick={actions.off}>Donor</button>
+            <button id="left" className={isRecipient ? "on" : "off"} onClick={actions.on}>Recipient</button>
+            <button id="right" className={isRecipient ? "off" : "on"} onClick={actions.off}>Donor</button>
         </div>
     </div>
     );

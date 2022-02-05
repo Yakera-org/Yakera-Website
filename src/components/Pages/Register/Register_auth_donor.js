@@ -26,7 +26,7 @@ function Register_auth_donor(props) {
                     <input
                         type="text"
                         name="location"
-                        maxlength="50"
+                        maxLength="50"
                         placeholder={EN ? "Enter your location" : "Dirección" }
                         value={props.data.location}
                         onChange={props.handleChange}
@@ -41,7 +41,7 @@ function Register_auth_donor(props) {
                     <input
                         type="text"
                         name="donor_phone"
-                        maxlength="20"
+                        maxLength="20"
                         placeholder={EN ? "Enter your number" : "Número telefónico" }
                         value={props.data.donor_phone}
                         onChange={props.handleChange}
@@ -73,7 +73,7 @@ function Register_auth_donor(props) {
                     <textarea
                         type="textarea"
                         name="bio"
-                        maxlength="500"
+                        maxLength="500"
                         placeholder={EN ? "Enter a short description about yourself" : "Número telefónico" }
                         value={props.data.bio}
                         onChange={props.handleChange}
@@ -171,9 +171,9 @@ class CardProfile extends React.Component {
             {
                 file
                 ?
-                <button id="reset" onClick={this.resetPhoto}>Reset</button>
+                <button id="reset" onClick={this.resetPhoto}>Reset Picture</button>
                 :
-                <button id="random" onClick={this.randomPhoto}>Random Profile Picture</button>
+                <button id="random" onClick={this.randomPhoto}>Select Random Picture</button>
                 
             }
 

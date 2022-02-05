@@ -263,7 +263,7 @@ function Register(props) {
     }
   }
 
-  function register(){
+  function register(isRecipient){
     if(!data.check.terms){
       setData({
         ...data,
@@ -272,7 +272,11 @@ function Register(props) {
     }else{
       //loading
       setLoading(true)
-      callRegisterBackend()
+      if(isRecipient){
+        callRegisterBackend()
+      }else{
+        console.log("hio ")
+      }
     }
   }
 

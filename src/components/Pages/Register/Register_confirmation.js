@@ -18,7 +18,7 @@ function Register_conf(props) {
                     onChange={props.handleChange}
                 />
                 <label htmlFor='terms'>
-                    {EN ? 'I agree to the terms and conditions *' : 'Estoy de acuerdo con los términos y condiciones *'}
+                    {EN ? <>I agree to the <a href="terms" target="_blank" rel="noopener">terms and conditions</a> *</> : <>Estoy de acuerdo con los <a href="terms" target="_blank" rel="noopener">términos y condiciones</a> *</>}
                 </label>
 
                 <br />

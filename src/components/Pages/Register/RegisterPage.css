@@ -15,15 +15,13 @@
 }
 
 #step-btn button {
-    font-family: Intro-Light;
     font-size: 20px;
     width: 80%;
     text-align: center;
     border-radius: 10px;
     border:none;
-    background-color: #01224d;
+    background-color: #052a5c;
     color: white;
-    font-weight: bold;
     padding: 10px 5px;
     outline: none;
 }
@@ -51,6 +49,11 @@
 .register-confirmation .checks{
     text-align: left;
 }
+.register-confirmation .checks a{
+    color: #052a5c;
+    text-decoration: underline;
+}
+
 
 .register-confirmation{
     font-family: Intro-Light;
@@ -149,6 +152,8 @@
 .register-authentication #pic-name{
     max-width: 200px;
     overflow: hidden;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 .register-authentication .profile #random{
     background-color: transparent;
@@ -222,6 +227,19 @@
         border-style: solid;
         border-width: 1px;
         color: #494949;
+    }
+    .register-authentication #details{
+        margin-top: -15px;
+        padding: 5px;
+        text-align: left;
+    }
+    .register-authentication .profile #random{
+        width: 50%;
+        margin-bottom: 15px;
+    }
+    .register-authentication .profile #reset{
+        width: 50%;
+        margin-bottom: 15px;
     }
     
 }
