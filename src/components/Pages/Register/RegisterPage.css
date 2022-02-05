@@ -140,7 +140,8 @@
     border-radius: 10px;
     pointer-events: none;
     padding: 5px;
-    border: 2px #a1a1a1 solid
+    border: 2px #a1a1a1 solid;
+    margin-bottom: -10px;
 }
 .register-authentication label:hover{
     cursor: pointer;
@@ -179,6 +180,21 @@
 }
 .register-authentication .profile #reset:active{
     background-color: #052b5c57;
+}
+.register-authentication #details{
+    margin-top: -15px;
+    padding: 10px 0 0 20px;
+    text-align: left;
+}
+.register-authentication input{
+    width: 100%;
+}
+.register-authentication textarea{
+    font-family: Intro-Light;
+    min-height: 100px;
+}
+.register-authentication #details label{
+    padding-top: 10px;
 }
 
 @media only screen and (max-width: 600px) {

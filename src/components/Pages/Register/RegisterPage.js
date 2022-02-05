@@ -18,6 +18,10 @@ function Register(props) {
     email: "",
     password: "",
     password2: "",
+    location: "",
+    age: "",
+    donor_phone: "",
+    bio: "",
     address: "",
     phone: "",
     socialNum: "",
@@ -104,7 +108,7 @@ function Register(props) {
     }
     // line below could be used later when airTM account number is required
     // else if(name === 'firstName' || name === 'lastName' || name === 'address' || name === 'phone' || name === 'airTMNum' || name === 'socialNum'){
-    else if(name === 'firstName' || name === 'lastName' || name === 'address' || name === 'phone' || name === 'socialNum'){
+    else if(name === 'firstName' || name === 'lastName' || name === 'address' || name === 'phone' || name === 'socialNum' || name === 'location' || name === 'donor_phone' || name === 'age' || name === 'bio'){
       error = validateFields.validateName(value);
     }
 

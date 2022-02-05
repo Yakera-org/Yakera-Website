@@ -1,5 +1,6 @@
 import React from 'react'
 import { Grid } from '@material-ui/core';
+import classnames from 'classnames'
 
 const random_profiles = [
     "https://assets.yakera.org/yakera/profile-icon-1.webp",
@@ -20,8 +21,71 @@ function Register_auth_donor(props) {
                 <Grid item xs={12} sm={6} >
                     <CardProfile />
                 </Grid>
-                <Grid item xs={12} sm={6} >
-                    dets
+                <Grid item xs={12} sm={6} id="details" >
+                    <label>Location (optional):</label>
+                    <input
+                        type="text"
+                        name="location"
+                        maxlength="50"
+                        placeholder={EN ? "Enter your location" : "Dirección" }
+                        value={props.data.location}
+                        onChange={props.handleChange}
+                        className={classnames(
+                            'form-control',
+                            { 'is-valid': props.data.errors.location === false }
+                        )}
+                    />
+                    <div className="invalid-feedback">{props.data.errors.location}</div>
+
+                    <label>Phone (optional):</label>
+                    <input
+                        type="text"
+                        name="donor_phone"
+                        maxlength="20"
+                        placeholder={EN ? "Enter your number" : "Número telefónico" }
+                        value={props.data.donor_phone}
+                        onChange={props.handleChange}
+                        className={classnames(
+                            'form-control',
+                            { 'is-valid': props.data.errors.donor_phone === false }
+                        )}
+                    />
+                    <div className="invalid-feedback">{props.data.errors.donor_phone}</div>
+
+
+                    <label>Age (optional):</label>
+                    <input
+                        type="number"
+                        name="age"
+                        min="1" max="5"
+                        placeholder={EN ? "Enter your age" : "Número telefónico" }
+                        value={props.data.age}
+                        onChange={props.handleChange}
+                        className={classnames(
+                            'form-control',
+                            { 'is-valid': props.data.errors.age === false }
+                        )}
+                    />
+                    <div className="invalid-feedback">{props.data.errors.age}</div>
+
+                    
+                    <label>Bio (optional):</label>
+                    <textarea
+                        type="textarea"
+                        name="bio"
+                        maxlength="500"
+                        placeholder={EN ? "Enter a short description about yourself" : "Número telefónico" }
+                        value={props.data.bio}
+                        onChange={props.handleChange}
+                        className={classnames(
+                            'form-control',
+                            { 'is-valid': props.data.errors.bio === false }
+                        )}
+                    />
+                    <div className="invalid-feedback">{props.data.errors.bio}</div>
+
+                    <br /> 
+
                 </Grid>
             </Grid>
 
@@ -109,10 +173,10 @@ class CardProfile extends React.Component {
                 ?
                 <button id="reset" onClick={this.resetPhoto}>Reset</button>
                 :
-                ""
+                <button id="random" onClick={this.randomPhoto}>Random Profile Picture</button>
+                
             }
 
-            <button id="random" onClick={this.randomPhoto}>Random Profile Picture</button>
         </div>
       )
     }
