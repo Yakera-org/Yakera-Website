@@ -14,6 +14,8 @@ import RegisterAuthDonor from "./Register_auth_donor";
 
 function RegisterVisuals(props) {
 
+    let step3ref = React.useRef()
+
     const [step, nextStep] = useState(2);
     const [isRecipient, actions] = useBoolean();
     const EN = props.EN
@@ -32,6 +34,7 @@ function RegisterVisuals(props) {
             }else{
                 nextStep(step + 1)                
             }
+            window.scrollTo({ behavior: 'smooth', top: step3ref})
         }
         if(step === 3){
             props.register(isRecipient);
@@ -70,7 +73,7 @@ function RegisterVisuals(props) {
                                 </Step>
 
                                 <Step label={EN ? "Confirmation" : 'Confirmación'} >
-                                    <RegisterConf EN={EN} data={props.data} handleChange={props.handleChange}/>
+                                    <RegisterConf EN={EN} data={props.data} handleChange={props.handleChange} ref={step3ref}/>
                                 </Step>
 
                             </MultiStepForm>
