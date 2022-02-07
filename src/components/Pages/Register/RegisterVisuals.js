@@ -16,7 +16,7 @@ function RegisterVisuals(props) {
 
     let step3ref = React.useRef()
 
-    const [step, nextStep] = useState(2);
+    const [step, nextStep] = useState(1);
     const [isRecipient, actions] = useBoolean();
     const EN = props.EN
 

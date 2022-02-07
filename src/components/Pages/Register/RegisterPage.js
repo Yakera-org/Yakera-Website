@@ -345,6 +345,7 @@ async function callDonorRegister(){
   var profile = data.profile_pic
   if(typeof data.profile_pic !== 'string'){
     profile = "https://yakera-files.s3.us-east-2.amazonaws.com/profile-pictures/" + data.profile_pic.name
+    handleUpload(data.profile_pic)
   }
   // register credentials
   const requestBody = {      
@@ -363,9 +364,6 @@ async function callDonorRegister(){
   }
 
   let payload = JSON.stringify(requestBody)
-  console.log(requestBody)
-  //handleUpload(data.profile_pic)
-  return
   axios.post(url, payload, {
     headers: {
       // Overwrite Axios's automatically set Content-Type
