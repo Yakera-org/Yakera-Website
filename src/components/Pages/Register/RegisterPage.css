@@ -18,7 +18,7 @@
     font-size: 20px;
     width: 80%;
     text-align: center;
-    border-radius: 10px;
+    border-radius: 5px;
     border:none;
     background-color: #052a5c;
     color: white;
@@ -35,7 +35,7 @@
 }
 .login-card{
     text-align: center;
-    padding: 20px 50px;
+    padding: 10px 50px;
 }
 .login-card h1{
     color: #052a5c;

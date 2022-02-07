@@ -360,6 +360,7 @@ async function callDonorRegister(){
         age: data.age,
         bio: data.bio
       },
+      userType: "donor",
       language: LanguageService.getLanguage()
   }
 
