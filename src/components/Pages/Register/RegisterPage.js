@@ -5,10 +5,25 @@ import Author from "../../author";
 import Loader from "react-loader-spinner";
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 import LanguageService from "../../../services/language";
+import { uploadFile } from 'react-s3';
 
 const _axios = require('axios');
 const axios = _axios.create();
 const yakeraBackUrl = 'https://api.yakera.org';
+
+const S3_BUCKET ='yakera-files';
+const REGION ='us-east-2';
+const ACCESS_KEY ='AKIAU4TU5VD7SRZU66HO';
+const SECRET_ACCESS_KEY ='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';
+
+const config_aws = {
+    bucketName: S3_BUCKET,
+    region: REGION,
+    dirName: 'profile-pictures',
+    accessKeyId: ACCESS_KEY,
+    secretAccessKey: SECRET_ACCESS_KEY
+}
+
 
 function Register(props) {
 
@@ -21,6 +36,7 @@ function Register(props) {
     location: "",
     age: "",
     donor_phone: "",
+    profile_pic: "",
     bio: "",
     address: "",
     phone: "",
@@ -275,7 +291,7 @@ function Register(props) {
       if(isRecipient){
         callRegisterBackend()
       }else{
-        console.log("hio ")
+        callDonorRegister()
       }
     }
   }
@@ -324,6 +340,64 @@ function Register(props) {
     });
 }
 
+async function callDonorRegister(){
+  const url = yakeraBackUrl + '/api/auth/register';
+  var profile = data.profile_pic
+  if(typeof data.profile_pic !== 'string'){
+    profile = "https://yakera-files.s3.us-east-2.amazonaws.com/profile-pictures/" + data.profile_pic.name
+  }
+  // register credentials
+  const requestBody = {      
+      firstName: data.firstName,
+      lastName: data.lastName,
+      email: data.email,
+      password: data.password,
+      phone: data.donor_phone,
+      profilePicture: profile,
+      donorInfo:{
+        location: data.location,
+        age: data.age,
+        bio: data.bio
+      },
+      language: LanguageService.getLanguage()
+  }
+
+  let payload = JSON.stringify(requestBody)
+  console.log(requestBody)
+  //handleUpload(data.profile_pic)
+  return
+  axios.post(url, payload, {
+    headers: {
+      // Overwrite Axios's automatically set Content-Type
+      'Content-Type': 'application/json'
+    }
+  }).then(response => {
+    setLoading(true)
+
+    if (response.status === 201) {
+      setSuccess(EN ? 'Signed up successfully. Email verification was sent.' : 'Se registró correctamente. Se envió la verificación por correo electrónico.')
+      setLoading(false)
+    }
+
+  }).catch(error => {
+    var errorMessage;
+    console.log(error);
+    if(error.response){  
+      errorMessage = EN ? "Something went wrong. Please try again later." : "Se produjo un error. Vuelva a intentarlo más tarde.";
+    }
+    setLoading(false)
+    setData({
+      ...data,
+      error: errorMessage
+    })
+  });
+}
+
+async function handleUpload (file){
+  uploadFile(file, config_aws)
+      .then(data => console.log(data))
+      .catch(err => console.error(err))
+}
   return (
       <div>
         <div className='loader'>

@@ -19,7 +19,7 @@ function Register_auth_donor(props) {
             <hr />
             <Grid container spacing={0}>
                 <Grid item xs={12} sm={6} >
-                    <CardProfile />
+                    <CardProfile data={props.data} seed={Math.floor(Math.random()*random_profiles.length)}/>
                 </Grid>
                 <Grid item xs={12} sm={6} id="details" >
                     <label>Location (optional):</label>
@@ -122,10 +122,12 @@ const ImgUpload =({
 class CardProfile extends React.Component {
     state = {
       file: '',
-      imagePreviewUrl: random_profiles[Math.floor(Math.random()*random_profiles.length)],
+      imagePreviewUrl: random_profiles[this.props.seed],
       reader: new FileReader()
     }
-    
+    componentDidMount(){        
+      this.props.data.profile_pic = random_profiles[this.props.seed]
+    }
     photoUpload = e =>{
         e.preventDefault();
         var reader = this.state.reader
@@ -139,17 +141,19 @@ class CardProfile extends React.Component {
             });
         }
         reader.readAsDataURL(file);
+        this.props.data.profile_pic = file
         }
     }
 
     resetPhoto = e =>{
         e.preventDefault();
-  
-       this.setState({
+        var random_pic = random_profiles[Math.floor(Math.random()*random_profiles.length)]
+        this.setState({
                 file: '',
-                imagePreviewUrl: random_profiles[Math.floor(Math.random()*random_profiles.length)],
+                imagePreviewUrl: random_pic,
                 reader: new FileReader()
             })
+        this.props.data.profile_pic = random_pic
     }
     randomPhoto = e =>{
         e.preventDefault();
@@ -157,10 +161,11 @@ class CardProfile extends React.Component {
         if(index >=5){
             index = 0
         }
-       this.setState({
+        this.setState({
                 file: '',
                 imagePreviewUrl: random_profiles[index]
             })
+        this.props.data.profile_pic = random_profiles[index]
     }
     
     render() {
