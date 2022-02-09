@@ -20,6 +20,27 @@ function Register_auth_donor(props) {
             <Grid container spacing={0}>
                 <Grid item xs={12} sm={6} >
                     <CardProfile data={props.data} seed={Math.floor(Math.random()*random_profiles.length)}/>
+                    <hr />
+                    <label>How would you like to hear about Yakera?:</label>
+                    <select
+                        name="preference"
+                        placeholder={EN ? "Choose preference" : "Número telefónico" }
+                        value={props.data.preference}
+                        onChange={props.handleChange}
+                        className={classnames(
+                            'form-control',
+                            { 'is-valid': props.data.errors.preference === false }
+                        )}
+                    >
+                        <option value="email">E-mail</option>
+                        <option value="instagram">Instagram</option>
+                        <option value="linkedin">LinkedIn</option>
+                        <option value="twitter">Twitter</option>
+                        <option value="facebook">Facebook</option>
+                    </select>
+                    <div className="invalid-feedback">{props.data.errors.preference}</div>
+                    <hr />
+
                 </Grid>
                 <Grid item xs={12} sm={6} id="details" >
                     <label>Location (optional):</label>
@@ -178,7 +199,7 @@ class CardProfile extends React.Component {
                 ?
                 <button id="reset" onClick={this.resetPhoto}>Reset Picture</button>
                 :
-                <button id="random" onClick={this.randomPhoto}>Select Random Picture</button>
+                <button id="random" onClick={this.randomPhoto}>Select Yakera Avatar</button>
                 
             }
 

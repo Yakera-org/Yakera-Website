@@ -37,6 +37,7 @@ function Register(props) {
     age: "",
     donor_phone: "",
     profile_pic: "",
+    preference:"email",
     bio: "",
     address: "",
     phone: "",
@@ -124,7 +125,7 @@ function Register(props) {
     }
     // line below could be used later when airTM account number is required
     // else if(name === 'firstName' || name === 'lastName' || name === 'address' || name === 'phone' || name === 'airTMNum' || name === 'socialNum'){
-    else if(name === 'firstName' || name === 'lastName' || name === 'address' || name === 'phone' || name === 'socialNum' || name === 'location' || name === 'donor_phone' || name === 'age' || name === 'bio'){
+    else if(name === 'firstName' || name === 'lastName' || name === 'address' || name === 'phone' || name === 'socialNum' || name === 'location' || name === 'donor_phone' || name === 'age' || name === 'bio' || name === 'preference'){
       error = validateFields.validateName(value);
     }
 
@@ -361,9 +362,10 @@ async function callDonorRegister(){
         bio: data.bio
       },
       userType: "donor",
-      language: LanguageService.getLanguage()
+      language: LanguageService.getLanguage(),
+      preference: data.preference
   }
-
+  
   let payload = JSON.stringify(requestBody)
   axios.post(url, payload, {
     headers: {

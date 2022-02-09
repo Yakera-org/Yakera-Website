@@ -140,11 +140,18 @@
 }
 .register-authentication label button{
     background-color: transparent;
-    border-radius: 10px;
-    pointer-events: none;
-    padding: 5px;
-    border: 2px #a1a1a1 solid;
+    border-radius: 15px;
+    padding: 10px;
+    border: 1px #c5c5c5 solid;
     margin-bottom: -10px;
+    outline: none;
+}
+.register-authentication label button:hover{
+    background-color: #052b5c21;
+}
+.register-authentication label button:active{
+    pointer-events: none;
+    background-color: #052b5c48;
 }
 .register-authentication label:hover{
     cursor: pointer;
@@ -158,33 +165,34 @@
 .register-authentication .profile #random{
     background-color: transparent;
     width: 100%;
-    border-radius: 10px;
+    border-radius: 15px;
     padding: 5px;
-    border: 2px #a1a1a1 solid;
+    border: 1px #c5c5c5 solid;
     outline: none;
     margin-bottom: 5px;
 }
 .register-authentication .profile #random:hover{
-    background-color: #f1f1f1;
+    background-color: #052b5c21;
 }
 .register-authentication .profile #random:active{
-    background-color: #052b5c57;
+    background-color: #052b5c48;
 }
 
 .register-authentication .profile #reset{
     background-color: transparent;
     width: 100%;
-    border-radius: 10px;
+    border-radius: 15px;
     padding: 5px;
-    border: 2px #ca7a7a solid;
+    border: 1px #ca7a7a solid;
     outline: none;
-    margin-bottom: 5px;
+    margin-bottom: 0px;
+    margin-top: -20px;
 }
 .register-authentication .profile #reset:hover{
     background-color: #ffe2e2;
 }
 .register-authentication .profile #reset:active{
-    background-color: #052b5c57;
+    background-color: rgb(212, 150, 150);
 }
 .register-authentication #details{
     margin-top: -15px;
@@ -193,13 +201,18 @@
 }
 .register-authentication input{
     width: 100%;
+    margin: 5px 0;
+    font-size: 15px;
 }
 .register-authentication textarea{
     font-family: Intro-Light;
-    min-height: 100px;
+    min-height: 150px;
 }
 .register-authentication #details label{
     padding-top: 10px;
+}
+.register-authentication option, .register-authentication select{
+    font-family: Intro-Light;
 }
 
 @media only screen and (max-width: 600px) {
