@@ -4,7 +4,8 @@ import LanguageService from '../../../services/language';
 
 import DonorHubBars from './DonorHubBars';
 
-function DonorHubVisual() {
+function DonorHubVisual(props) {
+  const user = props.data.user
 
   const [language, setLanguage] = useState('');
 
@@ -36,7 +37,7 @@ function DonorHubVisual() {
               </div>
             </Grid>
             <Grid item xs={12} sm={12}>
-              <h2>Mariana Romero</h2>
+              <h2>{user.firstName} {user.lastName}</h2>
             </Grid>
             <Grid item xs={12} sm={12}>
               <h6>Caracas, Venezuela</h6>
@@ -111,8 +112,8 @@ function DonorHubVisual() {
               <Grid container spacing={0} >
                 <Grid item xs={12} sm={12} className='total-donations'>
                   <hr />
-                  <h5>{EN ? 'You have donated to a total' : 'Has donado a un total de'}</h5>
-                  <h4 className={EN ? 'en-txt' : 'esp-txt'}>{EN ? '7 campaigns' : '7 campañas'}</h4>
+                  <h5 style = {{padding: '3px 0px 0px 10px'}}>{EN ? 'You have donated to a total of ' : 'Has donado a un total de '}
+                  <b style = {{color: "#eb913b"}}>{EN ? '7 campaigns' : '7 campañas'}</b></h5>
                 </Grid>
                 <Grid item xs={12} sm={12} >
                   <div className='campaigns-preview'>

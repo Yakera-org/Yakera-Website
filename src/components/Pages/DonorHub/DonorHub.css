@@ -87,14 +87,14 @@
   width: 8%;
   border-radius: 16px;
   transform: rotate(90deg);
-  margin-right: 85.5%; 
+  margin-right: 85.5%;
   margin-top: 100px;
 }
 
 .total-donations h5{
   margin-top: -46px;
   margin-left: 12%;
-  width: 35%;
+  width: 50%;
   text-align: justify;
 }
 
@@ -305,7 +305,7 @@
   width: 8%;
   border-radius: 16px;
   transform: rotate(90deg);
-  margin-right: 85.5%; 
+  margin-right: 85.5%;
   margin-top: 100px;
 }
 }
@@ -385,7 +385,7 @@
   width: 11%;
   border-radius: 16px;
   transform: rotate(90deg);
-  margin-right: 80%; 
+  margin-right: 80%;
   margin-top: 100px;
 }
 
@@ -504,4 +504,3 @@
   margin-left: 5%;
 }
 }
-
