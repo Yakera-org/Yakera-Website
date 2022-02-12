@@ -12,8 +12,6 @@ function DonorHub() {
 
   const [loaded, setLoaded] = useState(false);
   const [EN, setEN] = useState(false);
-  const [airTMemail, setAirTMEmail] = useState('');
-  const [emailError, setEmailError] = useState('');
   const [error, setError] = useState('');
   const [profileData, setProfileData] = useState({});
 
@@ -25,8 +23,14 @@ function DonorHub() {
           else {
               setEN(false)
           }
-          if (localStorage.getItem('accessToken')) {
-              getInfo();
+          if (TokenService.getLocalAccessToken()) {
+              if(TokenService.getUserType() === "donor"){
+                  // only allow donors to this page
+                  getInfo();
+              }else{
+                  // redirect rcipients to their page
+                  window.location = '/dashboard';
+              }
           } else {
               window.location = '/';
           }
