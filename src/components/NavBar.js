@@ -133,37 +133,130 @@ class NavBar extends Component {
                     </Navbar.Toggle>
                     <Navbar.Collapse id="responsive-navbar-nav">
                         <Nav className="mr-auto">
-                        <Nav.Link id={this.state.currentTab === 'about' ? 'nav-tab-selected': 'nav-tab'}  name='about' onClick={this.onTabClick.bind(this)} >{EN ? 'ABOUT US' : <div name='about' className = "nav-spanish-text">SOBRE NOSOTROS</div>}</Nav.Link>
-                        <Nav.Link id={this.state.currentTab === 'support' ? 'nav-tab-selected': 'nav-tab'} name='support'  onClick={this.onTabClick.bind(this)}> {EN ? 'SUPPORT US' : <div name='support' className = "nav-spanish-text">APÓYANOS </div>}</Nav.Link>
-                        <Nav.Link id={this.state.currentTab === 'campaigns' ? 'nav-tab-selected': 'nav-tab'} name='campaigns'  onClick={this.onTabClick.bind(this)}> {EN ? 'CAMPAIGNS' : <div name='campaigns' className = "nav-spanish-text">CAMPAÑAS</div>}</Nav.Link>
-                        <Nav.Link id={this.state.currentTab === 'frequently-asked-questions' ? 'nav-tab-selected': 'nav-tab'} name='frequently-asked-questions'  onClick={this.onTabClick.bind(this)}>{EN ? 'FAQ' : <div name='frequently-asked-questions' className = "nav-spanish-text">PREGUNTAS</div>}</Nav.Link>
-                        <Nav.Link id={this.state.currentTab === (isAuthenticated ? 'dashboard' : 'login') ? 'nav-tab-selected': 'nav-tab'} name={isAuthenticated ? 'dashboard' : 'login'}  onClick={this.onTabClick.bind(this)}>{isAuthenticated ? EN ? 'DASHBOARD': <div name={isAuthenticated ? 'dashboard' : 'login'} className = "nav-spanish-text">MI CUENTA</div> : EN ? 'LOG IN' : <div name={isAuthenticated ? 'dashboard' : 'login'} className = "nav-spanish-text">INICIAR SESIÓN</div>}</Nav.Link>
-                        { isAuthenticated
-                        ?
-                            <Nav.Link >
-                            <div className='logout-mobile' onClick={this.onLogOut.bind(this)}   >
-                                <i className="fas fa-sign-out-alt"></i><label>&nbsp;{EN ? 'SIGN OUT' : 'CERRAR SESIÓN'}</label>
-                            </div>
-                        </Nav.Link>
-                        :
-                        ''
-                        }
-                        <div style={{marginLeft:'25px', marginTop:'-5px'}}>
-                            <Switch
-                            onChange={this.onChange}
-                            checked={this.state.checked}
-                            handleDiameter={20}
-                            offColor="#eeeeee"
-                            onColor="#eeeeee"
-                            offHandleColor="#01224d"
-                            onHandleColor="#01224d"
-                            height={50}
-                            width={100}
-                            borderRadius={10}
-                            uncheckedIcon={
-                                <div>
-                                <ReactCountryFlag
-                                        countryCode="VE"
+
+                            <Nav.Link 
+                                id={this.state.currentTab === 'about' ? 'nav-tab-selected': 'nav-tab'}  
+                                name='about' 
+                                onClick={this.onTabClick.bind(this)}
+                                >
+                                    {EN 
+                                    ?
+                                    'ABOUT US'
+                                    :
+                                    <div name='about' className = "nav-spanish-text">SOBRE NOSOTROS</div>
+                                    }
+                            </Nav.Link>
+
+                            <Nav.Link 
+                                id={this.state.currentTab === 'support' ? 'nav-tab-selected': 'nav-tab'} 
+                                name='support'  
+                                onClick={this.onTabClick.bind(this)}
+                                > 
+                                    {EN 
+                                    ?
+                                    'SUPPORT US'
+                                    :
+                                    <div name='support' className = "nav-spanish-text">APÓYANOS </div>
+                                    }
+                            </Nav.Link>
+
+                            <Nav.Link 
+                                id={this.state.currentTab === 'campaigns' ? 'nav-tab-selected': 'nav-tab'} 
+                                name='campaigns'  
+                                onClick={this.onTabClick.bind(this)}
+                                > 
+                                    {EN
+                                    ?
+                                    'CAMPAIGNS'
+                                    :
+                                    <div name='campaigns' className = "nav-spanish-text">CAMPAÑAS</div>
+                                    }
+                            </Nav.Link>
+
+                            <Nav.Link 
+                                id={this.state.currentTab === 'frequently-asked-questions' ? 'nav-tab-selected': 'nav-tab'} 
+                                name='frequently-asked-questions'  
+                                onClick={this.onTabClick.bind(this)}
+                                >
+                                    {EN 
+                                    ?
+                                    'FAQ'
+                                    :
+                                    <div name='frequently-asked-questions' className = "nav-spanish-text">PREGUNTAS</div>
+                                    }
+                            </Nav.Link>
+
+                            <Nav.Link 
+                                id={this.state.currentTab === (isAuthenticated ? 'dashboard' : 'login') ? 'nav-tab-selected': 'nav-tab'} 
+                                name={isAuthenticated ? 'dashboard' : 'login'}  
+                                onClick={this.onTabClick.bind(this)}
+                                >
+                                    {isAuthenticated 
+                                    ? 
+                                    EN
+                                        ? 
+                                        'DASHBOARD'
+                                        :
+                                        <div 
+                                            name={isAuthenticated ? 'dashboard' : 'login'} 
+                                            className = "nav-spanish-text"
+                                        >
+                                            MI CUENTA
+                                        </div>
+                                    :
+                                    EN 
+                                        ?
+                                        'LOG IN'
+                                        :
+                                        <div 
+                                            name={isAuthenticated ? 'dashboard' : 'login'} 
+                                            className = "nav-spanish-text"
+                                        >
+                                            INICIAR SESIÓN
+                                        </div>
+                                    }
+                            </Nav.Link>
+                            
+                            { isAuthenticated
+                            ?
+                                <Nav.Link >
+                                <div className='logout-mobile' onClick={this.onLogOut.bind(this)}   >
+                                    <i className="fas fa-sign-out-alt"></i><label>&nbsp;{EN ? 'SIGN OUT' : 'CERRAR SESIÓN'}</label>
+                                </div>
+                            </Nav.Link>
+                            :
+                            ''
+                            }
+                            <div style={{marginLeft:'25px', marginTop:'-5px'}}>
+                                <Switch
+                                onChange={this.onChange}
+                                checked={this.state.checked}
+                                handleDiameter={20}
+                                offColor="#eeeeee"
+                                onColor="#eeeeee"
+                                offHandleColor="#01224d"
+                                onHandleColor="#01224d"
+                                height={50}
+                                width={100}
+                                borderRadius={10}
+                                uncheckedIcon={
+                                    <div>
+                                    <ReactCountryFlag
+                                            countryCode="VE"
+                                            svg
+                                            style={{
+                                                width: '50px',
+                                                height: '50px',
+                                                borderRadius:'15px',
+                                                paddingLeft:'5px'
+                                            }}
+                                            title="VE"
+                                        />
+                                    </div>
+                                }
+                                checkedIcon={
+                                    <ReactCountryFlag
+                                        countryCode="US"
                                         svg
                                         style={{
                                             width: '50px',
@@ -171,26 +264,12 @@ class NavBar extends Component {
                                             borderRadius:'15px',
                                             paddingLeft:'5px'
                                         }}
-                                        title="VE"
+                                        title="US"
                                     />
-                                </div>
-                            }
-                            checkedIcon={
-                                <ReactCountryFlag
-                                    countryCode="US"
-                                    svg
-                                    style={{
-                                        width: '50px',
-                                        height: '50px',
-                                        borderRadius:'15px',
-                                        paddingLeft:'5px'
-                                    }}
-                                    title="US"
-                                />
-                            }
+                                }
 
-                            />
-                        </div>
+                                />
+                            </div>
                         </Nav>
 
                     </Navbar.Collapse>

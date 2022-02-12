@@ -24,8 +24,15 @@ function Dashboard() {
             else {
                 setEN(false)
             }
-            if (localStorage.getItem('accessToken')) {
-                getCampaign();
+            if (TokenService.getLocalAccessToken()) {
+                if(TokenService.getUserType() === "recipient"){
+                    // only allow recipients to this page
+                    getCampaign();
+                }else{
+                    // redirect donors to their page
+                    window.location = '/donor-hub';
+                }
+                
             } else {
                 window.location = '/';
             }
