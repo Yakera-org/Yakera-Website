@@ -89,10 +89,24 @@ const LoginPage = () => {
       }));
 
       if (response.status === 200) {
+        var type = response.data.user.role
+        var redirect = ""
         setLoader(false)
         TokenService.setAccessToken(response.data.access_token);
         TokenService.setRefreshToken(response.data.refresh_token);
-        window.location.href = "/dashboard";
+        TokenService.setUserType(type)
+
+        if(TokenService.getUserType() === "recipient"){
+          redirect = "/dashboard";
+        }else if(TokenService.getUserType() === "donor"){
+          redirect = "/donor-hub";
+        }
+        else{
+          redirect = ""
+        }
+
+        window.location.href = redirect
+
       }
     }).catch(error => {
       var errorMessage = null;

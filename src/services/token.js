@@ -15,12 +15,10 @@ const updateLocalAccessToken = (token) => {
 };
 
 const setAccessToken = (token) => {
-    console.log(token);
     localStorage.setItem("accessToken", token);
 };
 
 const setRefreshToken = (token) => {
-    console.log(token);
     localStorage.setItem("refreshToken", token);
 };
 
@@ -31,6 +29,21 @@ const removeAccessToken = () => {
 const removeRefreshToken = () => {
     localStorage.removeItem("refreshToken");
 };
+const setUserType = (type) => {
+        localStorage.setItem("userType", type)
+};
+const getUserType = (type) => {
+    var userType = localStorage.getItem("userType");
+
+    if (userType === "user" || userType === "admin"){
+        return("recipient")
+    }else if(userType === "donor"){
+        return("donor")
+    }
+    else {
+        return(null)
+    }
+};
 
 const TokenService = {
 getLocalRefreshToken,
@@ -40,6 +53,8 @@ setAccessToken,
 setRefreshToken,
 removeAccessToken,
 removeRefreshToken,
+getUserType,
+setUserType
 };
   
   export default TokenService;
