@@ -1,11 +1,13 @@
 .share-dialog,
 .thanks-dialog {
   height: 100%;
-  width: 50%;
+  width: 60%;
   text-align: center;
-  margin-left: 25%;
+  margin-left: 20%;
   font-family: Intro-Regular-Alt;
   padding: 30px 20px;
+  /* changes */
+
 }
 
 .share-dialog h1,
@@ -68,13 +70,34 @@
   object-fit: cover;
 }
 
-@media screen and (max-width: 600px) {
-  .share-dialog,
+.thanks-grid{
+  background-color : #fbefe2;
+  padding: 0px 60px 30px 60px;
+}
+@media screen and (max-width: 900px) {
   .thanks-dialog {
     height: 100%;
-    width: 110%;
+    width: 90%;
     text-align: center;
-    margin-left: -5%;
+    margin-left: 5%;
+    padding: 20px 15px;
+  }
+  .thanks-dialog h1 {
+    margin: 10px;
+    margin-top: 0px;
+    font-size: 30px;
+  }
+  .thanks-grid{
+    padding: 0px 15px 30px 15px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .share-dialog{
+    height: 100%;
+    width: 90%;
+    text-align: center;
+    margin-left: 5%;
     padding: 20px 15px;
   }
   .close-icon {
@@ -86,8 +109,7 @@
     font-size: 16px;
   }
 
-  .share-dialog h1,
-  .thanks-dialog h1 {
+  .share-dialog h1{
     margin: 10px;
     margin-top: 0px;
     font-size: 22px;

@@ -6,21 +6,38 @@ import { Grid } from '@material-ui/core';
 import RegisterDetails from "./Register_details";
 import RegisterAuth from "./Register_auth";
 import RegisterConf from "./Register_confirmation";
+import { useBoolean } from "react-use-boolean";
 
 
 import './RegisterPage.css'
+import RegisterAuthDonor from "./Register_auth_donor";
 
 function RegisterVisuals(props) {
 
+    let step3ref = React.useRef()
+
     const [step, nextStep] = useState(1);
+    const [isRecipient, actions] = useBoolean();
     const EN = props.EN
 
     async function onContinue() {
-        if(await props.validate(step)){
-            nextStep(step + 1)
+        if(step === 1){
+            if(await props.validate(step)){
+                nextStep(step + 1)
+            } 
+        }
+        if(step === 2){
+            if(isRecipient){
+                if(await props.validate(step)){
+                    nextStep(step + 1)
+                }
+            }else{
+                nextStep(step + 1)                
+            }
+            window.scrollTo({ behavior: 'smooth', top: step3ref})
         }
         if(step === 3){
-            props.register();
+            props.register(isRecipient);
         }
     }
 
@@ -34,7 +51,7 @@ function RegisterVisuals(props) {
 
     return (
         <div className='register-page'>
-            <div id='background' style={{ backgroundImage: `url(https://assets.yakera.org/yakera/pattern-yakera-blue.webp)`}}>
+            <div id='background'>
                     <Card className='login-card'>
                         <CardContent>
 
@@ -43,19 +60,25 @@ function RegisterVisuals(props) {
                             <MultiStepForm activeStep={step} accentColor='#003049'>
                                 <Step label={EN ? "Details" : 'Detalles'}>
                                     <RegisterDetails EN={EN} data={props.data} handleChange={props.handleChange}/>
+                                    <DetailsSwitch isRecipient={isRecipient} actions={actions}/>
                                 </Step>
 
                                 <Step label={EN ? "Authentication" : 'Autenticación'} >
-                                    <RegisterAuth EN={EN} data={props.data} handleChange={props.handleChange}/>
+                                    {isRecipient
+                                        ?
+                                        <RegisterAuth EN={EN} data={props.data} handleChange={props.handleChange}/>
+                                        :
+                                        <RegisterAuthDonor EN={EN} data={props.data} handleChange={props.handleChange}/>
+                                    }
                                 </Step>
 
                                 <Step label={EN ? "Confirmation" : 'Confirmación'} >
-                                    <RegisterConf EN={EN} data={props.data} handleChange={props.handleChange}/>
+                                    <RegisterConf EN={EN} data={props.data} handleChange={props.handleChange} ref={step3ref}/>
                                 </Step>
 
                             </MultiStepForm>
                             <br /> 
-                            { props.error 
+                            { props.error
                             ?
                                 <Alert color="danger">
                                     { props.error }
@@ -116,3 +139,20 @@ function RegisterVisuals(props) {
 }
 
 export default RegisterVisuals
+
+
+
+export function DetailsSwitch(props) {
+    var isRecipient = props.isRecipient
+    var actions = props.actions
+    return (
+    <div className="switch-area">
+        <p>I am a {isRecipient ? <b>Recipient</b> : <b>Donor</b>} </p>
+
+        <div className="switch">            
+            <button id="left" className={isRecipient ? "on" : "off"} onClick={actions.on}>Recipient</button>
+            <button id="right" className={isRecipient ? "off" : "on"} onClick={actions.off}>Donor</button>
+        </div>
+    </div>
+    );
+};

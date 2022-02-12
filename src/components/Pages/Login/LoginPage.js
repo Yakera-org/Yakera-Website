@@ -6,6 +6,7 @@ import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 import api from "../../../services/api";
 import TokenService from "../../../services/token";
 import LanguageService from '../../../services/language';
+import Author from '../../author';
 
 
 const LoginPage = () => {
@@ -151,6 +152,20 @@ const LoginPage = () => {
         handleLogin = {handleLogin}
         EN={EN}
       />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+    
+      <Author />
     </div>
   );
 }

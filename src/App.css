@@ -83,6 +83,10 @@ font-size: 20px;
 .logout-mobile{
   display: none;
 }
+
+.nav-spanish-text{
+  font-size: 20px;
+}
 @media only screen and (max-width: 600px) {
   #nav-brand {
     margin-left:0px;
