@@ -11,10 +11,10 @@ const _axios = require('axios');
 const axios = _axios.create();
 const yakeraBackUrl = 'https://api.yakera.org';
 
-const S3_BUCKET ='yakera-files';
-const REGION ='us-east-2';
-const ACCESS_KEY ='AKIAU4TU5VD7SRZU66HO';
-const SECRET_ACCESS_KEY ='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';
+const S3_BUCKET = process.env.S3_BUCKET
+const REGION = process.env.REGION
+const ACCESS_KEY = process.env.ACCESS_KEY
+const SECRET_ACCESS_KEY = process.env.SECRET_ACCESS_KEY
 
 const config_aws = {
     bucketName: S3_BUCKET,
