@@ -24,9 +24,6 @@ const config_aws = {
     secretAccessKey: SECRET_ACCESS_KEY
 }
 
-console.log(config_aws)
-
-
 function Register() {
 
   const initialState = {
