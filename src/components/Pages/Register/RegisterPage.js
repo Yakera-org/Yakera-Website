@@ -11,10 +11,10 @@ const _axios = require('axios');
 const axios = _axios.create();
 const yakeraBackUrl = 'https://api.yakera.org';
 
-const S3_BUCKET = process.env.S3_BUCKET
-const REGION = process.env.REGION
-const ACCESS_KEY = process.env.ACCESS_KEY
-const SECRET_ACCESS_KEY = process.env.SECRET_ACCESS_KEY
+const S3_BUCKET = process.env.REACT_APP_S3_BUCKET
+const REGION = process.env.REACT_APP_REGION
+const ACCESS_KEY = process.env.REACT_APP_ACCESS_KEY
+const SECRET_ACCESS_KEY = process.env.REACT_APP_SECRET_ACCESS_KEY
 
 const config_aws = {
     bucketName: S3_BUCKET,
@@ -24,8 +24,10 @@ const config_aws = {
     secretAccessKey: SECRET_ACCESS_KEY
 }
 
+console.log(config_aws)
 
-function Register(props) {
+
+function Register() {
 
   const initialState = {
     firstName: "",
