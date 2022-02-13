@@ -25,7 +25,7 @@ function Dashboard() {
                 setEN(false)
             }
             if (TokenService.getLocalAccessToken()) {
-                if(TokenService.getUserType() === "recipient"){
+                if(TokenService.isRecipient()){
                     // only allow recipients to this page
                     getCampaign();
                 }else{

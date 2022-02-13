@@ -21,10 +21,12 @@ class NavBar extends Component {
         this.state = {
             currentTab: '',
             token: '',
+            isRecipient: true,
             checked: true,
             language: 'en',
             loaded: false,
             navHeight: 150,
+            EN: true
         }
     }
 
@@ -34,22 +36,30 @@ class NavBar extends Component {
 
         if(lang === 'en'){
             this.setState({
-                checked:true // true is US
+                checked:true, // true is US
+                EN: true
             })
         }else{
             this.setState({
-                checked:false //false is VE
+                checked:false, //false is VE
+                EN: false
             })
         }
 
-        var currentTab = localStorage.getItem('currentTab')
-        var token = localStorage.getItem('accessToken')
+        var currentTab = localStorage.getItem('currentTab');
+        var token = TokenService.getLocalAccessToken();
+        var isRec = true;
+
+        if(TokenService.isDonor()){
+            isRec = false
+        }
 
         this.setState({
             token:token,
             language: lang,
             currentTab: currentTab,
-            loaded: true
+            loaded: true,
+            isRecipient: isRec
         })
     }
 
@@ -102,16 +112,11 @@ class NavBar extends Component {
 
 
     render(){
-        var EN = true //is english
+        var EN = this.state.EN
+        var isRecipient = this.state.isRecipient
         var isAuthenticated = false;
 
         if(this.state.token)isAuthenticated = true
-
-        if(this.state.language === 'en'){
-            EN = true
-        }else{
-            EN = false
-        }
 
         if(!this.state.loaded){
             return(
@@ -187,36 +192,49 @@ class NavBar extends Component {
                             </Nav.Link>
 
                             <Nav.Link 
-                                id={this.state.currentTab === (isAuthenticated ? 'dashboard' : 'login') ? 'nav-tab-selected': 'nav-tab'} 
-                                name={isAuthenticated ? 'dashboard' : 'login'}  
+                                id={this.state.currentTab === (isAuthenticated ? isRecipient ? 'dashboard' : 'donor-hub' : 'login') ? 'nav-tab-selected': 'nav-tab'} 
+                                name={isAuthenticated ? isRecipient ? 'dashboard' : 'donor-hub' : 'login'}  
                                 onClick={this.onTabClick.bind(this)}
                                 >
                                     {isAuthenticated 
                                     ? 
-                                    EN
-                                        ? 
-                                        'DASHBOARD'
+                                        isRecipient
+                                        ?
+                                            EN
+                                            ? 
+                                            'DASHBOARD'
+                                            :
+                                            <div 
+                                                name='dashboard'
+                                                className = "nav-spanish-text"
+                                            >
+                                                MI CUENTA
+                                            </div>
                                         :
-                                        <div 
-                                            name={isAuthenticated ? 'dashboard' : 'login'} 
-                                            className = "nav-spanish-text"
-                                        >
-                                            MI CUENTA
-                                        </div>
+                                            EN
+                                            ? 
+                                            'DONOR HUB'
+                                            :
+                                            <div 
+                                                name='donor-hub'
+                                                className = "nav-spanish-text"
+                                            >
+                                                DONOR HUB
+                                            </div>
                                     :
-                                    EN 
+                                        EN 
                                         ?
                                         'LOG IN'
                                         :
                                         <div 
-                                            name={isAuthenticated ? 'dashboard' : 'login'} 
+                                            name='login'
                                             className = "nav-spanish-text"
                                         >
                                             INICIAR SESIÓN
                                         </div>
                                     }
                             </Nav.Link>
-                            
+
                             { isAuthenticated
                             ?
                                 <Nav.Link >

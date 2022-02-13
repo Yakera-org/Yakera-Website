@@ -24,7 +24,7 @@ function DonorHub() {
               setEN(false)
           }
           if (TokenService.getLocalAccessToken()) {
-              if(TokenService.getUserType() === "donor"){
+              if(TokenService.isDonor()){
                   // only allow donors to this page
                   getInfo();
               }else{
