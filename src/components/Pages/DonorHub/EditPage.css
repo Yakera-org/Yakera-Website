@@ -1,0 +1,61 @@
+.edit{
+    margin-top: 150px;
+}
+.edit .card-area{
+    padding: 60px;
+}
+.edit .banner{
+    text-align: left;
+    padding: 20px;
+    padding-top: 100px;
+    color: #353535;
+    text-decoration: underline;
+}
+.edit .actions{
+    width: 200px;
+    background-color: #e7e7e7;
+    color: rgb(83, 83, 83);
+    font-size: 17px;
+    border-radius: 10px;
+    outline: none;
+    border: none;
+    padding: 15px;
+    margin: 2px;
+}
+.edit input, .edit textarea{
+    width: 70%;
+    margin-left: 15%;
+}
+.profile img{
+    max-width: 300px;
+    min-width: 300px;
+    max-height: 300px;
+    min-height: 300px;
+    border-radius: 50%;
+    margin: 10px 0;
+    object-fit:cover;
+}
+.profile img:hover{
+    cursor: pointer;
+    opacity: 0.8;
+}
+.profile button{
+    border-radius: 10px;
+}
+#photo-upload{
+    display: none;
+}
+.profile label button:hover{
+    background-color: #052b5c21;
+}
+.profile label button:active{
+    pointer-events: none;
+    background-color: #052b5c48;
+}
+.profile label:hover{
+    cursor: pointer;
+}
+.profile #random{
+    background-color: #006eff;
+    display: inline-block;
+}

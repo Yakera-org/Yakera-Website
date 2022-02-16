@@ -179,8 +179,14 @@ hr{
   margin: 0 auto;
   margin-top: -50px;
 }
-.donations-info h2{
-  margin: 0;
+.donations-info h2 {
+  margin-top: 50px;
+  margin-bottom: -100px;
+}
+.donations-info #sub{
+  margin-top: 100px;
+  margin-bottom: -100px;
+  font-size: 20px;
 }
 .donation-circles, .donation-circle {
  padding: 10%;
@@ -193,7 +199,7 @@ hr{
   border-radius: 100%;
   margin-left: 55%;
   margin-top: 20%;
-  padding-top: 50%;
+  padding-top: 45%;
   color: white;
   font-weight: bolder;
   font-size: 30px;

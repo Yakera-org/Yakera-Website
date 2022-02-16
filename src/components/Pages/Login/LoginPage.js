@@ -88,7 +88,6 @@ const LoginPage = () => {
         ...data,
         loading: false,
       }));
-
       if (response.status === 200) {
         var type = response.data.user.role
         var redirect = ""

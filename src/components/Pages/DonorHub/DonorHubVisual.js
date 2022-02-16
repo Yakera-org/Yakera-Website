@@ -1,24 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Grid } from '@material-ui/core';
-import LanguageService from '../../../services/language';
 
 import DonorHubBars from './DonorHubBars';
 
 function DonorHubVisual(props) {
   const user = props.data.user
+  const EN = props.EN
 
-  const [language, setLanguage] = useState('');
-
-  useEffect(() => {
-    setLanguage(LanguageService.getLanguage());
-  }, [])
-
-  var EN;
-
-  if (language === "en") {
-    EN = true
-  } else {
-    EN = false
+  function OnEdit(){
+    window.location.href = "/donor-hub/edit";
   }
 
   return (
@@ -46,7 +36,7 @@ function DonorHubVisual(props) {
               <p id='user-desc'>20, Me dedico al diseño gráfico y me encanta leer. ¡Espero poder ayudar a muchos por aqui!. Saludos a todos.</p>
             </Grid>
             <Grid item xs={12} sm={12}>
-              <button className='edit-btn'>Edit profile</button>
+              <button onClick={OnEdit} className='edit-btn'>Edit profile</button>
             </Grid>
           </Grid>
         </Grid>
@@ -59,6 +49,7 @@ function DonorHubVisual(props) {
               <h2>
                 Statistics
               </h2>
+              <p id="sub">Analyze your impact</p>
             </Grid>
             <Grid item xs={12} sm={6}>
               <Grid container spacing={0} >
