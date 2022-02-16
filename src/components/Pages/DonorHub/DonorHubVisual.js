@@ -26,14 +26,13 @@ function DonorHubVisual(props) {
       <Grid container spacing={1} style={{ textAlign: 'center' }}>
         <Grid item xs={12} sm={12}>
           <div className='banner'>
-            Banner Zone
           </div>
         </Grid>
         <Grid item xs={12} sm={12} >
           <Grid container spacing={0} className='user-info'>
             <Grid item xs={12} sm={12}>
               <div className='user-img'>
-                User Img
+                <img src = {user.profilePicture} alt="profile-pic" className = "profile-pic"/>
               </div>
             </Grid>
             <Grid item xs={12} sm={12}>
@@ -47,25 +46,20 @@ function DonorHubVisual(props) {
               <p id='user-desc'>20, Me dedico al diseño gráfico y me encanta leer. ¡Espero poder ayudar a muchos por aqui!. Saludos a todos.</p>
             </Grid>
             <Grid item xs={12} sm={12}>
-              <p id='user-friends'><span>16 </span>{EN ? 'friends' : 'amigos'}</p>
+              <button className='edit-btn'>Edit profile</button>
             </Grid>
           </Grid>
         </Grid>
-        <Grid item xs={12} sm={12}>
-          <Grid container spacing={0} className='buttons-container'>
-            {/* <Grid item xs={6} sm={6} className='button-1'>
-          <button>About</button>
-        </Grid>
-        <Grid item xs={6} sm={6} className='button-2'>
-          <button>Teams</button>
-        </Grid> */}
-            <Grid item xs={12} sm={12}>
-              <hr />
-            </Grid>
-          </Grid>
-        </Grid>
+
+        <hr />
+
         <Grid item xs={12} sm={12}>
           <Grid container spacing={0} className='donations-info'>
+            <Grid item xs={12} sm={12}>
+              <h2>
+                Statistics
+              </h2>
+            </Grid>
             <Grid item xs={12} sm={6}>
               <Grid container spacing={0} >
                 <Grid item xs={6} sm={6} className='donation-circle'>
@@ -129,18 +123,21 @@ function DonorHubVisual(props) {
                     <div className='campaign-circle'>
                       img
                     </div>
-                    <button>+</button>
+                    <button><i className="fas fa-2x fa-plus"></i></button>
                   </div>
                 </Grid>
                 <Grid item xs={12} sm={12} className='recent-act'>
                   <h3>{EN ? 'Recent Activity' : 'Actividad reciente'}</h3>
-                  <p>{EN ? 'of the campaigns to which you have donated' : 'de las campañas a las que has donado'}</p>
+                  <p>{EN ? 'Your recent donations' : 'de las campañas a las que has donado'}</p>
                   <hr />
                   <div className='recent-box'>
-                    box
+                    
                   </div>
                   <div className='recent-box'>
-                    box
+                    
+                  </div>
+                  <div className='recent-box'>
+                    
                   </div>
                 </Grid>
               </Grid>
