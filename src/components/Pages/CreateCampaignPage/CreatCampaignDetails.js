@@ -66,9 +66,9 @@ function CreateCampaignDetails(props) {
         )
     });
 
-    const campaignThumbs = campaignFiles.map(file => {
+    const campaignThumbs = campaignFiles.map((file, i) => {
         return(
-            <FilePreview key={file.name} file={file} onRemove={onRemove} id="campaign"/>
+            <FilePreview key={file.name + i} file={file} onRemove={onRemove} id="campaign"/>
         )
     });
 
@@ -397,41 +397,53 @@ function CreateCampaignDetails(props) {
                         }                    
                     </div>
                     <Dropzone accept='image/*' onDrop={(acceptedFiles) => {
-                        if (acceptedFiles.concat(campaignFiles).length <= 4){
-                            var totalSize = 0
-                            acceptedFiles.concat(campaignFiles).forEach(file => {
-                                totalSize += file.size
-                                
-                            });
-                            if(totalSize < 2000000){
-                                setCampaignFiles(acceptedFiles.concat(campaignFiles).map(file => Object.assign(file, {
-                                    preview: URL.createObjectURL(file)
-                                })));
-                                setcampaignPicturesError("")
-                                props.setCampaignPics(acceptedFiles.concat(campaignFiles))
+                        var isDuplicate = false
+                        acceptedFiles.forEach(file => {
+                            campaignFiles.forEach(camFile => {
+                                if (file.path === camFile.path){
+                                    isDuplicate = true
+                                }
+                            })
+                        })
+                        if(!isDuplicate){
+                            if (acceptedFiles.length + campaignFiles.length <= 4){
+                                var totalSize = 0
+                                acceptedFiles.concat(campaignFiles).forEach(file => {
+                                    totalSize += file.size                                
+                                });
+                                if(totalSize < 2000000){
+                                    setCampaignFiles(acceptedFiles.concat(campaignFiles).map(file => Object.assign(file, {
+                                        preview: URL.createObjectURL(file)
+                                    })));
+                                    setcampaignPicturesError("")
+                                    props.setCampaignPics(acceptedFiles.concat(campaignFiles))
+                                }else{
+                                    setcampaignPicturesError(EN ? 'Files too big' : 'Las imágenes son demasiado grandes')
+                                }
                             }else{
-                                setcampaignPicturesError(EN ? 'Files too big' : 'Las imágenes son demasiado grandes')
+                                console.log(campaignFiles)
+                                setcampaignPicturesError(EN ? 'Only 4 pictures allowed.' : 'Solo se permiten 4 imágenes. ')
                             }
                         }else{
-                            setcampaignPicturesError(EN ? 'Only 4 pictures allowed.' : 'Solo se permiten 4 imágenes. ')
-                        }
-                        }} name="campaignImages" multiple={true}>
-                        {({getRootProps, getInputProps}) => (
-                             <section className="container" id="upload-zone">
-                                <div {...getRootProps({className: 'dropzone'})}>
-                                    <input {...getInputProps()} />
+                            setcampaignPicturesError(EN ? 'Duplicated picture' : 'Solo se permiten 4 imágenes. ')
+        
+                    }}} name="campaignImages" multiple={true}>
+                            {({getRootProps, getInputProps}) => (
+                                <section className="container" id="upload-zone">
+                                    <div {...getRootProps({className: 'dropzone'})}>
+                                        <input {...getInputProps()} />
+                                        
+                                        {EN
+                                        ?
+                                            <p id="info-text" >Drag 'n' drop files here, or click <b>here</b> to select files. </p>
+                                        :
+                                            <p id="info-text" >Arrastra y suelta archivos aquí, o haz clic <b>aquí</b> para seleccionar archivos</p>
+                                        }
                                     
-                                    {EN
-                                    ?
-                                        <p id="info-text" >Drag 'n' drop files here, or click <b>here</b> to select files. </p>
-                                    :
-                                        <p id="info-text" >Arrastra y suelta archivos aquí, o haz clic <b>aquí</b> para seleccionar archivos</p>
-                                    }
-                                   
-                                    <i className="fas fa-4x fa-file-upload"></i>
-                                </div>
-                            </section>
-                        )}
+                                        <i className="fas fa-4x fa-file-upload"></i>
+                                    </div>
+                                </section>
+                            )}
                     </Dropzone>
 
                     { campaignPicturesError
