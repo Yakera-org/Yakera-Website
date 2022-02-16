@@ -75,8 +75,8 @@ function EditPageVisual(props) {
             </Grid>
             </div>
             <hr />
-            <button className="actions" >Save</button>  
-            <button className="actions">Delete Account</button>       
+            <button className="actions" id="save">Save <i className="fas fa-check" ></i> </button>  
+            <button className="actions" id="delete">Delete Account <i className="fas fa-trash-alt"></i></button>       
         </Grid>   
         </Grid>
       </div >

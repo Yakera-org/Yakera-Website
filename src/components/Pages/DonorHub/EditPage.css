@@ -11,17 +11,7 @@
     color: #353535;
     text-decoration: underline;
 }
-.edit .actions{
-    width: 200px;
-    background-color: #e7e7e7;
-    color: rgb(83, 83, 83);
-    font-size: 17px;
-    border-radius: 10px;
-    outline: none;
-    border: none;
-    padding: 15px;
-    margin: 2px;
-}
+
 .edit input, .edit textarea{
     width: 70%;
     margin-left: 15%;
@@ -46,16 +36,83 @@
     display: none;
 }
 .profile label button:hover{
-    background-color: #052b5c21;
+    background-color: #ffe7c375;
 }
 .profile label button:active{
     pointer-events: none;
-    background-color: #052b5c48;
+    background-color: #ffe7c375;
+    outline: none;
 }
 .profile label:hover{
     cursor: pointer;
 }
+.profile label button{
+    background-color: transparent;
+    border-radius: 15px;
+    padding: 10px;
+    border: 1px #c5c5c5 solid;
+    outline: none;
+}
+.profile label button:hover{
+    background-color: #ffe7c375;
+    border: #ffe7c3 1px solid;
+}
+.profile label button:active{
+    pointer-events: none;
+    background-color: #ffe7c3;
+}
 .profile #random{
-    background-color: #006eff;
-    display: inline-block;
+    background-color: transparent;
+    width: 100%;
+    border-radius: 15px;
+    padding: 5px;
+    border: 1px #c5c5c5 solid;
+    outline: none;
+    margin-bottom: 5px;
+}
+.profile #random:hover{
+    background-color: #ffe7c375;
+    border: #ffe7c3 1px solid;
+}
+.profile #random:active{
+    background-color: #ffe7c3;
+}
+
+.profile #reset{
+    background-color: transparent;
+    width: 100%;
+    border-radius: 15px;
+    padding: 5px;
+    border: 1px #ca7a7a solid;
+    outline: none;
+    margin-bottom: 0px;
+    margin-top: -20px;
+}
+.profile #reset:hover{
+    background-color: #ffe2e2;
+}
+.profile #reset:active{
+    background-color: rgb(212, 150, 150);
+}
+.edit .actions{
+    width: 200px;
+    background-color: #e7e7e7;
+    color: white;
+    font-size: 20px;
+    border-radius: 10px;
+    outline: none;
+    border: none;
+    padding: 15px;
+    margin: 10px;
+}
+.edit .actions:hover{
+    opacity: 0.8;
+}
+.edit #save{
+    background-color: #7aca85;
+    color: #004b1d;
+}
+.edit #delete{
+    background-color: #ca7a7a;
+    color: #380000;
 }
