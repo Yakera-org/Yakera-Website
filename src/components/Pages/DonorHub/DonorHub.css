@@ -13,8 +13,8 @@
   margin: 0 auto;
   margin-top: 7.8%;
   width: 70%;
-  height: 100%;
   background-color: white;
+  padding-bottom: 150px;
 }
 
 .banner{
@@ -186,7 +186,7 @@ hr{
 }
 .donations-info #sub{
   margin-top: 100px;
-  margin-bottom: -100px;
+  margin-bottom: -30px;
   font-size: 20px;
 }
 .donation-circles, .donation-circle {
@@ -198,8 +198,8 @@ hr{
   height: 200px;
   background-color: #ea8737;
   border-radius: 100%;
-  margin-left: 55%;
-  margin-top: 20%;
+  margin-left: 60%;
+  margin-top: 30%;
   padding-top: 45%;
   color: white;
   font-weight: bolder;
@@ -213,7 +213,7 @@ hr{
   margin-top: -10px;
 }
 
-.circle-2, .circle-3, .circle-4 {
+.circle-2, .circle-3, .circle-4, .circle-5 {
   width: 70px;
   height: 70px;
   border-radius: 100%;
@@ -238,6 +238,13 @@ hr{
 .circle-4{
   background-color: rgb(117, 212, 117);
   border: 5px solid rgb(202, 241, 202);
+  margin-left: 20%;
+}
+.circle-5{
+  background-color: #f7bc55;
+  border: 5px solid #ffe4b7;
+  margin-left: 0%;
+  margin-top: 0%;
 }
 
 .progress-txt {
@@ -267,7 +274,7 @@ hr{
 }
 
 .donation-progress, .progress-bar{
-  background-color: rgb(201, 200, 200);
+  background-color: rgb(223, 223, 223);
   position: absolute;
   height: 8px;
   width: 100%;
@@ -308,11 +315,22 @@ hr{
 }
 
 .recent-box{
-  background-color: rgb(184, 184, 184);
-  margin-top: 10px;
+  background-color: rgba(228, 228, 228, 0.336);
+  border-radius: 15px;
   width: 75%;
-  height: 50%;
-  border-radius: 16px;
+  padding: 20px;
+  border: white 7px solid
+}
+.recent-box p{
+  text-align: center;
+  font-size: 20px;
+}
+.recent-box b{
+  text-align: center;
+  font-size: 25px;
+}
+.recent-box a{
+  text-decoration: underline;
 }
 
 @media only screen and (max-width: 1600px) {
@@ -444,7 +462,7 @@ hr{
   border-radius: 100%;
   margin-left: 10%;
   margin-top: 25%;
-  padding-top: 45%;
+  padding-top: 50%;
   color: white;
   font-weight: bolder;
   font-size: 30px;
@@ -457,7 +475,7 @@ hr{
   margin-top: 15px;
 }
 
-.circle-2, .circle-3, .circle-4 {
+.circle-2, .circle-3, .circle-4, .circle-5 {
   width: 70px;
   height: 70px;
   border-radius: 100%;
