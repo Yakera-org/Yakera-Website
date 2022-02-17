@@ -1,14 +1,96 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import { Grid } from '@material-ui/core';
 
 import DonorHubBars from './DonorHubBars';
 
+const colorDic = {
+  "education": 'rgb(117, 212, 117)',
+  "healthcare": 'rgb(245, 151, 167)',
+  "small_business":'#01224d',
+  "nutrition": '#f7bc55',
+};
+
+
+const nameDictEN = {
+  "education": "Education",
+  "healthcare": "Healthcare",
+  "small_business":"Small Business",
+  "nutrition": "Nutrition"
+};
+const nameDictSP = {
+  "education":"Educación",
+  "healthcare":"Atención Médica",
+  "nutrition":"Nutrición",
+  "small_business":"Pequeños Negocios"
+};
+
+
 function DonorHubVisual(props) {
   const user = props.data.user
+  const donations = props.data.donations
   const EN = props.EN
+
+  const [total, setTotal] = useState(0);
+  const [totalHealth, setHealth] = useState(0);
+  const [totalBusiness, setBusiness] = useState(0);
+  const [totalFood, setFood] = useState(0);
+  const [totalEducation, setEducation] = useState(0);
+
+  useEffect(() => {
+    const startup = () => {
+      donations.forEach(d => {
+        setTotal(total + d.amount)
+        switch(d.category){
+          case "healthcare":
+            setHealth(totalHealth + d.amount)
+          break
+          case "small_business":
+            setBusiness(totalBusiness + d.amount)
+          break
+          case "nutrition":
+            setFood(totalFood + d.amount)
+          break
+          case "education":
+            setEducation(totalEducation + d.amount)
+          break
+
+          default:
+            break
+        }
+      });
+    }  
+    startup();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   function OnEdit(){
     window.location.href = "/donor-hub/edit";
+  }
+
+  function getCatAmount(cat){
+    switch(cat){
+      case "healthcare":
+        return totalHealth
+      case "small_business":
+        return totalBusiness
+      case "nutrition":
+        return totalFood
+      case "education":
+        return totalEducation
+
+      default:
+        break
+    }
+  }
+
+  function getRelativeAmount(cat){
+    if(getCatAmount(cat) === 0)return 1
+
+    var max = Math.max(totalBusiness, totalHealth, totalEducation, totalFood);
+
+    return(
+      50 * getCatAmount(cat) / max 
+    )
   }
 
   return (
@@ -71,38 +153,42 @@ function DonorHubVisual(props) {
                   <div>
                     <div className='circle-1'>
                       <p>{EN ? "You've donated" : 'Has donado'}</p>
-                      $60
+                      ${total}
                     </div>
                   </div>
                 </Grid>
                 <Grid item xs={6} sm={6} className='donation-circles'>
                   <div className='circle-2'>
-                    $10
+                    ${totalBusiness}
                   </div>
                   <div className='circle-3'>
-                    $20
+                    ${totalHealth}
                   </div>
                   <div className='circle-4'>
-                    $30
+                    ${totalEducation}
+                  </div>
+                  <div className='circle-5'>
+                    ${totalFood}
                   </div>
                 </Grid>
                 <Grid item xs={12} sm={12}>
                   <Grid container spacing={0} className='progress-bars'>
-                    <Grid item xs={12} sm={12}>
-                      <DonorHubBars type='#01224d' size='10%' />
-                      <p className='progress-text'><span style={{ color: '#01224d' }}>$10</span> {EN ? 'have been intended to' : 'han sido destinados a'} </p>
-                      <p className='progress-txt' style={{ color: '#01224d' }}>{EN ? 'Small Business' : 'Pequeños Negocios'}</p>
-                    </Grid>
-                    <Grid item xs={12} sm={12}>
-                      <DonorHubBars type='rgb(245, 151, 167)' size='20%' />
-                      <p className='progress-text'><span style={{ color: 'rgb(245, 151, 167)' }}>$20</span> {EN ? 'have been intended to' : 'han sido destinados a'} </p>
-                      <p className='progress-txt' style={{ color: 'rgb(245, 151, 167)' }}>{EN ? 'Medical Atention' : 'Atención Medica'}</p>
-                    </Grid>
-                    <Grid item xs={12} sm={12}>
-                      <DonorHubBars type='rgb(117, 212, 117)' size='30%' />
-                      <p className='progress-text'><span style={{ color: 'rgb(117, 212, 117)' }}>$30</span> {EN ? 'have been intended to' : 'han sido destinados a'} </p>
-                      <p className='progress-txt' style={{ color: 'rgb(117, 212, 117)' }}>{EN ? 'Education' : 'Educación'}</p>
-                    </Grid>
+                    {
+                    ["small_business", "education", "healthcare", "nutrition"].map((cat, i) => {
+                      return(
+                        <Grid item xs={12} sm={12} key={i}>
+                          <DonorHubBars type={colorDic[cat]} size={getRelativeAmount(cat) + '%'} />
+                          <p className='progress-text'><span style={{ color: colorDic[cat] }}>${getCatAmount(cat)} </span>
+                            {EN ? 'have been intended to' : 'han sido destinados a'} 
+                          </p>
+                          <p className='progress-txt' style={{ color: colorDic[cat] }}>
+                            {EN ? nameDictEN[cat] : nameDictSP[cat]}
+                          </p>
+                        </Grid>
+                      )
+                    })
+                    }                   
+                    
                   </Grid>
                 </Grid>
               </Grid>
@@ -111,23 +197,29 @@ function DonorHubVisual(props) {
               <Grid container spacing={0} >
                 <Grid item xs={12} sm={12} className='total-donations'>
                   <hr />
-                  <h5 style = {{padding: '3px 0px 0px 10px'}}>{EN ? 'You have donated to a total of ' : 'Has donado a un total de '}
-                  <b style = {{color: "#eb913b"}}>{EN ? '7 campaigns' : '7 campañas'}</b></h5>
+                  <h5 style = {{padding: '3px 0px 0px 10px'}}>
+                    {EN ? 
+                    'You have donated to a total of ' : 'Has donado a un total de '}
+                      <b style = {{color: "#eb913b"}}>
+                        {EN ? 
+                        donations.length > 1 ? donations.length + ' campaigns' : donations.length + ' campaign'
+                        :
+                        donations.length > 1 ? donations.length + ' campañas' : donations.length + ' campaña'}
+                      </b>
+                  </h5>
                 </Grid>
                 <Grid item xs={12} sm={12} >
                   <div className='campaigns-preview'>
-                    <div className='campaign-circle'>
-                      img
-                    </div>
-                    <div className='campaign-circle'>
-                      img
-                    </div>
-                    <div className='campaign-circle'>
-                      img
-                    </div>
-                    <div className='campaign-circle'>
-                      img
-                    </div>
+                    {
+                      donations.map((donation, i) => {
+                        return(
+                          <div style={{backgroundColor:colorDic[donation.category]}} key={i} className='campaign-circle'>
+                          
+                          </div>
+                        )
+                      })
+                    }
+                   
                     <button><i className="fas fa-2x fa-plus"></i></button>
                   </div>
                 </Grid>
@@ -135,15 +227,29 @@ function DonorHubVisual(props) {
                   <h3>{EN ? 'Recent Activity' : 'Actividad reciente'}</h3>
                   <p>{EN ? 'Your recent donations' : 'de las campañas a las que has donado'}</p>
                   <hr />
-                  <div className='recent-box'>
-                    
-                  </div>
-                  <div className='recent-box'>
-                    
-                  </div>
-                  <div className='recent-box'>
-                    
-                  </div>
+                  {
+                      donations.reverse().map((donation, i) => {
+                        if(i<3){
+                          return(
+                            <div key={i} className='recent-box' style={{borderColor:colorDic[donation.category]}}>
+                              <p>
+                                Donation of {donation.amount}$
+                              </p>
+                              {donation.comment
+                              ? <b>"{donation.comment}"</b>
+                              :
+                              ""}
+                             
+                              <br />
+                              <a href='/campaigns/'>Go to campaign</a>
+                            </div>
+                          )
+                        }else{
+                          return ""
+                        }
+                      })
+                    }                 
+                  
                 </Grid>
               </Grid>
             </Grid>
