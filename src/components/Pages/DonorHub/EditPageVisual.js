@@ -1,13 +1,12 @@
 import React from 'react';
 import { Grid } from '@material-ui/core';
+import { Alert } from 'reactstrap';
 
 
 function EditPageVisual(props) {
 
-    const user = props.data.user
+    var user = props.data.user
     const EN = props.EN
-
-    console.log(user)
     
     return (
         <div className='donorhub-container'>
@@ -30,7 +29,7 @@ function EditPageVisual(props) {
                         name="location"
                         maxLength="50"
                         placeholder={EN ? "Enter your location" : "Dirección" }
-                        value={props.data.location}
+                        value={user.donorInfo.location}
                         onChange={props.handleChange}
                         className='form-control'
                         
@@ -39,10 +38,10 @@ function EditPageVisual(props) {
                     <label>Phone (optional):</label>
                     <input
                         type="text"
-                        name="donor_phone"
+                        name="phone"
                         maxLength="20"
                         placeholder={EN ? "Enter your number" : "Número telefónico" }
-                        value={props.data.donor_phone}
+                        value={user.phone}
                         onChange={props.handleChange}
                         className='form-control'
                     />
@@ -52,8 +51,9 @@ function EditPageVisual(props) {
                         type="number"
                         name="age"
                         min="1" max="5"
+                        maxLength="2"
                         placeholder={EN ? "Enter your age" : "Número telefónico" }
-                        value={props.data.age}
+                        value={user.donorInfo.age}
                         onChange={props.handleChange}
                         className='form-control'
                     />
@@ -64,7 +64,7 @@ function EditPageVisual(props) {
                         name="bio"
                         maxLength="500"
                         placeholder={EN ? "Enter a short description about yourself" : "Número telefónico" }
-                        value={props.data.bio}
+                        value={user.donorInfo.bio}
                         onChange={props.handleChange}
                         className='form-control'
                     />
@@ -74,8 +74,16 @@ function EditPageVisual(props) {
                 </Grid>
             </Grid>
             </div>
+            { props.error
+            ?
+                <Alert color="danger" style={{width:"50%", marginLeft:"25%"}}>
+                    { props.error }
+                </Alert>
+            :
+            ''
+            }
             <hr />
-            <button className="actions" id="save">Save <i className="fas fa-check" ></i> </button>  
+            <button onClick={props.OnSave} className="actions" id="save">Save <i className="fas fa-check" ></i> </button>  
             <button className="actions" id="delete">Delete Account <i className="fas fa-trash-alt"></i></button>       
         </Grid>   
         </Grid>
@@ -117,22 +125,33 @@ class CardProfile extends React.Component {
       reader: new FileReader()
     }
     componentDidMount(){        
-      this.props.data.profile_pic = random_profiles[this.props.seed]
+      this.props.data.user.profilePicture = random_profiles[this.props.seed]
     }
     photoUpload = e =>{
         e.preventDefault();
         var reader = this.state.reader
 
         if(e.target.files.length > 0){
-        const file = e.target.files[0];
-        reader.onloadend = () => {
-            this.setState({
-            file: file,
-            imagePreviewUrl: reader.result
-            });
-        }
-        reader.readAsDataURL(file);
-        this.props.data.profile_pic = file
+            const file = e.target.files[0];
+            if(file.size > 1000000){
+                alert("File too large. (>1MB)");
+            }else{
+                var fileName = file.name;
+                var idxDot = fileName.lastIndexOf(".") + 1;
+                var extFile = fileName.substr(idxDot, fileName.length).toLowerCase();
+                if (extFile==="jpg" || extFile==="jpeg" || extFile==="png"){
+                    reader.onloadend = () => {
+                        this.setState({
+                        file: file,
+                        imagePreviewUrl: reader.result
+                        });
+                    }
+                    reader.readAsDataURL(file);
+                    this.props.data.user.profilePicture = file
+                }else{
+                    alert("Only png/jpg/jpeg and png files are allowed!");
+                }              
+            }
         }
     }
 
@@ -144,7 +163,7 @@ class CardProfile extends React.Component {
                 imagePreviewUrl: random_pic,
                 reader: new FileReader()
             })
-        this.props.data.profile_pic = random_pic
+        this.props.data.user.profilePicture = random_pic
     }
     randomPhoto = e =>{
         e.preventDefault();
@@ -156,7 +175,7 @@ class CardProfile extends React.Component {
                 file: '',
                 imagePreviewUrl: random_profiles[index]
             })
-        this.props.data.profile_pic = random_profiles[index]
+        this.props.data.user.profilePicture = random_profiles[index]
     }
     
     render() {

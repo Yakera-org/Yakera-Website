@@ -20,6 +20,7 @@ function Register_auth_donor(props) {
             <Grid container spacing={0}>
                 <Grid item xs={12} sm={6} >
                     <CardProfile data={props.data} seed={Math.floor(Math.random()*random_profiles.length)}/>
+                    <br />
                     <hr />
                     <label>How would you like to hear about Yakera?:</label>
                     <select
@@ -154,15 +155,26 @@ class CardProfile extends React.Component {
         var reader = this.state.reader
 
         if(e.target.files.length > 0){
-        const file = e.target.files[0];
-        reader.onloadend = () => {
-            this.setState({
-            file: file,
-            imagePreviewUrl: reader.result
-            });
-        }
-        reader.readAsDataURL(file);
-        this.props.data.profile_pic = file
+            const file = e.target.files[0];
+            if(file.size > 1000000){
+                alert("File too large. (>1MB)");
+            }else{
+                var fileName = file.name;
+                var idxDot = fileName.lastIndexOf(".") + 1;
+                var extFile = fileName.substr(idxDot, fileName.length).toLowerCase();
+                if (extFile==="jpg" || extFile==="jpeg" || extFile==="png"){
+                    reader.onloadend = () => {
+                        this.setState({
+                        file: file,
+                        imagePreviewUrl: reader.result
+                        });
+                    }
+                    reader.readAsDataURL(file);
+                    this.props.data.profile_pic = file
+                }else{
+                    alert("Only png/jpg/jpeg and png files are allowed!");
+                }              
+            }
         }
     }
 

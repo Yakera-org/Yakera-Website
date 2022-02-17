@@ -26,14 +26,28 @@ function DonorHubVisual(props) {
               </div>
             </Grid>
             <Grid item xs={12} sm={12}>
-              <h2>{user.firstName} {user.lastName}</h2>
+              <h2>{user.firstName} {user.lastName}
+              {user.donorInfo.age
+              ?
+              <>, < label style={{color:"grey"}}>{user.donorInfo.age}</label></>
+              :
+              ""
+              }
+              </h2>
             </Grid>
             <Grid item xs={12} sm={12}>
-              <h6>Caracas, Venezuela</h6>
+              <h6>{user.donorInfo.location}</h6>
               <hr />
             </Grid>
             <Grid item xs={12} sm={12}>
-              <p id='user-desc'>20, Me dedico al diseño gráfico y me encanta leer. ¡Espero poder ayudar a muchos por aqui!. Saludos a todos.</p>
+              <p id='user-desc'>
+                {user.donorInfo.bio
+                ?
+                user.donorInfo.bio
+                :
+                <>No Biography, add on <a style={{textDecoration:"underline"}} href="/donor-hub/edit">here</a></>
+                }
+              </p>
             </Grid>
             <Grid item xs={12} sm={12}>
               <button onClick={OnEdit} className='edit-btn'>Edit profile</button>

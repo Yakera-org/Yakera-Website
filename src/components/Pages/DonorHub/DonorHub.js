@@ -41,6 +41,7 @@ function DonorHub() {
   async function getInfo() {
       try {
           const res = await api.get('/profile');
+          console.log(res)
           setProfileData(res.data.data);
           setLoaded(true);
       } catch (err) {
