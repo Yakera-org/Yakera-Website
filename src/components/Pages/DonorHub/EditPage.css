@@ -1,29 +1,49 @@
 .edit{
     margin-top: 150px;
+    font-family: Intro-Light;
 }
 .edit .card-area{
-    padding: 60px;
+    padding: 50px;
 }
 .edit .banner{
-    text-align: left;
     padding: 20px;
-    padding-top: 100px;
+    padding-top: 50px;
     color: #353535;
+    text-align: left;
+}
+.edit .banner a{
     text-decoration: underline;
 }
-
+.edit .banner h2{
+    text-align: center;
+    font-size: 35px;
+    font-family: Intro-Regular-Alt;
+    color: #4e4e4e;
+}
+.edit label{
+    font-size: 18px;
+}
 .edit input, .edit textarea{
-    width: 70%;
-    margin-left: 15%;
+    width: 90%;
+    margin-left: 5%;
+    margin-bottom: 25px;
+}
+.edit textarea{
+    height: 130px;
+    max-height: 200px;
+    min-height: 130px;
+    margin-bottom: -10%;
 }
 .profile img{
     max-width: 300px;
     min-width: 300px;
     max-height: 300px;
     min-height: 300px;
+    border: solid #ea8837be 12px;
     border-radius: 50%;
-    margin: 10px 0;
-    object-fit:cover;
+    margin: 10px 0 20px 0;
+    padding: 10px;
+    object-fit: cover;
 }
 .profile img:hover{
     cursor: pointer;
@@ -52,6 +72,7 @@
     padding: 10px;
     border: 1px #c5c5c5 solid;
     outline: none;
+    font-size: 18px;
 }
 .profile label button:hover{
     background-color: #ffe7c375;
@@ -63,12 +84,12 @@
 }
 .profile #random{
     background-color: transparent;
-    width: 100%;
+    width: 51%;
     border-radius: 15px;
     padding: 5px;
     border: 1px #c5c5c5 solid;
     outline: none;
-    margin-bottom: 5px;
+    font-size: 18px;
 }
 .profile #random:hover{
     background-color: #ffe7c375;
@@ -80,19 +101,28 @@
 
 .profile #reset{
     background-color: transparent;
-    width: 100%;
+    width: 51%;
     border-radius: 15px;
     padding: 5px;
     border: 1px #ca7a7a solid;
     outline: none;
     margin-bottom: 0px;
     margin-top: -20px;
+    font-size: 18px;
 }
 .profile #reset:hover{
     background-color: #ffe2e2;
 }
 .profile #reset:active{
     background-color: rgb(212, 150, 150);
+}
+.profile #pic-name{
+    margin: 5px 0 15px 0;
+    font-size: 16px;
+    font-weight: bold;
+    color: #353535;
+    max-width: 500px;
+    overflow: hidden;
 }
 .edit .actions{
     width: 200px;
@@ -104,15 +134,16 @@
     border: none;
     padding: 15px;
     margin: 10px;
+    margin-bottom: 30px;
 }
 .edit .actions:hover{
     opacity: 0.8;
 }
 .edit #save{
-    background-color: #7aca85;
-    color: #004b1d;
+    background-color: rgb(117, 212, 117);
+    color: #00360c;
 }
 .edit #delete{
-    background-color: #ca7a7a;
-    color: #380000;
+    background-color: rgb(245, 151, 167);
+    color: #660000;
 }

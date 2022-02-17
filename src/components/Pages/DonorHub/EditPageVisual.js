@@ -13,16 +13,19 @@ function EditPageVisual(props) {
         <Grid container spacing={1} style={{ textAlign: 'center' }}>
           <Grid item xs={12} sm={12}>
             <div className='banner'>
+                <h2>
+                    Edit Profile Details
+                </h2>
                 <a href="/donor-hub">Return to Donor Hub</a>
             </div>
           </Grid>    
         <Grid item xs={12} sm={12}>
             <div className='card-area'>
             <Grid container spacing={1} style={{ textAlign: 'center' }}>
-                <Grid item xs={12} sm={3} id="details" >
+                <Grid item xs={12} sm={6} id="details" >
                     <CardProfile data={props.data} seed={Math.floor(Math.random()*random_profiles.length)}/>
                 </Grid>
-                <Grid item xs={12} sm={9} id="details" >
+                <Grid item xs={12} sm={6} id="details" >
                     <label>Location (optional):</label>
                     <input
                         type="text"
@@ -121,7 +124,7 @@ const ImgUpload =({
 class CardProfile extends React.Component {
     state = {
       file: '',
-      imagePreviewUrl: random_profiles[this.props.seed],
+      imagePreviewUrl: this.props.data.user.profilePicture,
       reader: new FileReader()
     }
     componentDidMount(){        
