@@ -147,3 +147,50 @@
     background-color: rgb(245, 151, 167);
     color: #660000;
 }
+
+@media only screen and (max-width: 600px) {
+    .profile img{
+        max-width: 200px;
+        min-width: 200px;
+        max-height: 200px;
+        min-height: 200px;
+        border: solid #ea8837be 8px;
+        border-radius: 50%;
+        margin: -20px 0 20px 0;
+        padding: 10px;
+        object-fit: cover;
+    }
+    .profile label button{
+        font-size: 16px;
+    }
+    .profile #pic-name{
+        max-width: 250px;
+    }
+    .profile #reset, .profile #random{
+        width: 90%;
+        margin-bottom: 20px;
+        margin-top: -20px;
+        font-size: 16px;
+    }
+    .edit .actions{
+        width: 200px;
+        background-color: #e7e7e7;
+        color: white;
+        font-size: 20px;
+        border-radius: 10px;
+        outline: none;
+        border: none;
+        padding: 15px;
+        margin: 10px;
+        margin-bottom: 20px;
+    }
+    .donorhub-container{
+        margin: 0 auto;
+        margin-top: 7.8%;
+        width: 100%;
+        height: auto;
+        background-color: white;
+      }
+      
+    
+}
