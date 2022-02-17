@@ -156,6 +156,9 @@
 .register-authentication label:hover{
     cursor: pointer;
 }
+.register-authentication .profile label button{
+    font-size: 15px;
+}
 .register-authentication #pic-name{
     max-width: 200px;
     overflow: hidden;
@@ -164,12 +167,13 @@
 }
 .register-authentication .profile #random{
     background-color: transparent;
-    width: 100%;
+    width: auto;
     border-radius: 15px;
-    padding: 5px;
+    padding: 10px;
     border: 1px #c5c5c5 solid;
     outline: none;
     margin-bottom: 5px;
+    font-size: 15px;
 }
 .register-authentication .profile #random:hover{
     background-color: #052b5c21;

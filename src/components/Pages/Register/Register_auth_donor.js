@@ -85,7 +85,7 @@ function Register_auth_donor(props) {
                         type="number"
                         name="age"
                         min="1" max="5"
-                        placeholder={EN ? "Enter your age" : "Número telefónico" }
+                        placeholder={EN ? "Enter your age" : "Edad" }
                         value={props.data.age}
                         onChange={props.handleChange}
                         className={classnames(
@@ -101,7 +101,7 @@ function Register_auth_donor(props) {
                         type="textarea"
                         name="bio"
                         maxLength="500"
-                        placeholder={EN ? "Enter a short description about yourself" : "Número telefónico" }
+                        placeholder={EN ? "Enter a short description about yourself" : "Biografía" }
                         value={props.data.bio}
                         onChange={props.handleChange}
                         className={classnames(
@@ -152,7 +152,6 @@ class CardProfile extends React.Component {
       file: '',
       imagePreviewUrl: random_profiles[this.props.seed],
       reader: new FileReader(),
-      EN: this.props.EN,
     }
     componentDidMount(){        
       this.props.data.profile_pic = random_profiles[this.props.seed]
@@ -209,17 +208,17 @@ class CardProfile extends React.Component {
     }
     
     render() {
-      const {imagePreviewUrl, file, EN} = this.state;
+      const {imagePreviewUrl, file} = this.state;
       return (
         <div className='profile'>           
-            <ImgUpload EN={EN} onChange={this.photoUpload} src={imagePreviewUrl} file={file} />      
+            <ImgUpload EN={this.props.EN} onChange={this.photoUpload} src={imagePreviewUrl} file={file} />      
             {
                 file
                 ?
                 <button id="reset" onClick={this.resetPhoto}>Reset Picture</button>
                 :
                 <button id="random" onClick={this.randomPhoto}>
-                    {EN 
+                    {this.props.EN 
                         ? 'Select Yakera Avatar'
                         : 'Seleccionar Avatar de Yakera'
                     }
