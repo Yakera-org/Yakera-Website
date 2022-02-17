@@ -154,8 +154,8 @@ export function DetailsSwitch(props) {
         }
 
         <div className="switch">            
-            <button id="left" className={isRecipient ? "on" : "off"} onClick={actions.on}>Recipient</button>
-            <button id="right" className={isRecipient ? "off" : "on"} onClick={actions.off}>Donor</button>
+            <button id="left" className={isRecipient ? "on" : "off"} onClick={actions.on}>{EN ? 'Recipient' : 'Beneficiaro'}</button>
+            <button id="right" className={isRecipient ? "off" : "on"} onClick={actions.off}>{EN ? 'Donor' : 'Donante'}</button>
         </div>
     </div>
     );
