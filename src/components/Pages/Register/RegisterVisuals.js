@@ -60,7 +60,7 @@ function RegisterVisuals(props) {
                             <MultiStepForm activeStep={step} accentColor='#003049'>
                                 <Step label={EN ? "Details" : 'Detalles'}>
                                     <RegisterDetails EN={EN} data={props.data} handleChange={props.handleChange}/>
-                                    <DetailsSwitch isRecipient={isRecipient} actions={actions}/>
+                                    <DetailsSwitch EN={EN} isRecipient={isRecipient} actions={actions}/>
                                 </Step>
 
                                 <Step label={EN ? "Authentication" : 'Autenticación'} >
@@ -145,9 +145,13 @@ export default RegisterVisuals
 export function DetailsSwitch(props) {
     var isRecipient = props.isRecipient
     var actions = props.actions
+    const EN = props.EN
     return (
     <div className="switch-area">
-        <p>I am a {isRecipient ? <b>Recipient</b> : <b>Donor</b>} </p>
+        {EN 
+            ? <p>I am a {isRecipient ? <b>Recipient</b> : <b>Donor</b>} </p>
+            : <p>Soy un {isRecipient ? <b>Beneficiaro</b> : <b>Donante</b>} </p>
+        }
 
         <div className="switch">            
             <button id="left" className={isRecipient ? "on" : "off"} onClick={actions.on}>Recipient</button>

@@ -19,10 +19,15 @@ function Register_auth_donor(props) {
             <hr />
             <Grid container spacing={0}>
                 <Grid item xs={12} sm={6} >
-                    <CardProfile data={props.data} seed={Math.floor(Math.random()*random_profiles.length)}/>
+                    <CardProfile EN={EN} data={props.data} seed={Math.floor(Math.random()*random_profiles.length)}/>
                     <br />
                     <hr />
-                    <label>How would you like to hear about Yakera?:</label>
+                    <label>
+                        {EN 
+                            ? 'How would you like to hear about Yakera?:'
+                            : '¿Cómo quieres recibir noticias de Yakera?:'
+                        }
+                    </label>
                     <select
                         name="preference"
                         placeholder={EN ? "Choose preference" : "Número telefónico" }
@@ -33,7 +38,7 @@ function Register_auth_donor(props) {
                             { 'is-valid': props.data.errors.preference === false }
                         )}
                     >
-                        <option value="email">E-mail</option>
+                        <option value="email">{EN ? 'E-mail' : 'Correo Electrónico'}</option>
                         <option value="instagram">Instagram</option>
                         <option value="linkedin">LinkedIn</option>
                         <option value="twitter">Twitter</option>
@@ -44,7 +49,7 @@ function Register_auth_donor(props) {
 
                 </Grid>
                 <Grid item xs={12} sm={6} id="details" >
-                    <label>Location (optional):</label>
+                    <label>{EN ? 'Location (optional):' : 'Dirección (opcional)'}</label>
                     <input
                         type="text"
                         name="location"
@@ -59,7 +64,7 @@ function Register_auth_donor(props) {
                     />
                     <div className="invalid-feedback">{props.data.errors.location}</div>
 
-                    <label>Phone (optional):</label>
+                    <label>{EN ? 'Phone (optional):' : 'Número telefónico (opcional):'}</label>
                     <input
                         type="text"
                         name="donor_phone"
@@ -75,7 +80,7 @@ function Register_auth_donor(props) {
                     <div className="invalid-feedback">{props.data.errors.donor_phone}</div>
 
 
-                    <label>Age (optional):</label>
+                    <label>{EN ? 'Age (optional):' : 'Edad (opcional):'}</label>
                     <input
                         type="number"
                         name="age"
@@ -91,7 +96,7 @@ function Register_auth_donor(props) {
                     <div className="invalid-feedback">{props.data.errors.age}</div>
 
                     
-                    <label>Bio (optional):</label>
+                    <label>{EN ? 'Bio (optional):' : 'Biografía (opcional):'}</label>
                     <textarea
                         type="textarea"
                         name="bio"
@@ -127,6 +132,7 @@ export default Register_auth_donor
 // phone
 
 const ImgUpload =({
+    EN,
     onChange,
     src,
     file
@@ -135,7 +141,7 @@ const ImgUpload =({
       <div>
         <img htmlFor="photo-upload" alt="profile-upload" src={src}/>
       </div>
-      <button>Upload File</button>
+      <button>{EN ? 'Upload File' : 'Subir archivo'}</button>
       <p id="pic-name">{file.name}</p>
       <input id="photo-upload" type="file" accept="image/*" onChange={onChange}/> 
     </label>
@@ -145,7 +151,8 @@ class CardProfile extends React.Component {
     state = {
       file: '',
       imagePreviewUrl: random_profiles[this.props.seed],
-      reader: new FileReader()
+      reader: new FileReader(),
+      EN: this.props.EN,
     }
     componentDidMount(){        
       this.props.data.profile_pic = random_profiles[this.props.seed]
@@ -202,16 +209,21 @@ class CardProfile extends React.Component {
     }
     
     render() {
-      const {imagePreviewUrl, file} = this.state;
+      const {imagePreviewUrl, file, EN} = this.state;
       return (
         <div className='profile'>           
-            <ImgUpload onChange={this.photoUpload} src={imagePreviewUrl} file={file} />      
+            <ImgUpload EN={EN} onChange={this.photoUpload} src={imagePreviewUrl} file={file} />      
             {
                 file
                 ?
                 <button id="reset" onClick={this.resetPhoto}>Reset Picture</button>
                 :
-                <button id="random" onClick={this.randomPhoto}>Select Yakera Avatar</button>
+                <button id="random" onClick={this.randomPhoto}>
+                    {EN 
+                        ? 'Select Yakera Avatar'
+                        : 'Seleccionar Avatar de Yakera'
+                    }
+                </button>
                 
             }
 
