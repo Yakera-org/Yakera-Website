@@ -6,6 +6,9 @@ import 'react-multi-carousel/lib/styles.css';
 import Author from '../../author';
 import CampaignCarousel from './CampaignCarousel';
 import LanguageService from '../../../services/language';
+import Button from '@material-ui/core/Button';
+import {CardMedia} from "@material-ui/core";
+import { Link } from 'react-router-dom';
 import './home.scss';
 
 function Home() {
@@ -39,12 +42,12 @@ function Home() {
       }
     }, [targetRef, options])
 
-    
+
 
     const contactUs = () => {
         window.location.href = 'https://chat.whatsapp.com/LcSFQzsohaC1hmlgdbij3D';
     }
-    
+
     React.useEffect(() => {
         if(LanguageService.getLanguage()==='en'){
             setEN(true)
@@ -53,8 +56,15 @@ function Home() {
         else{
             setEN(false)
             setLanguage('es')
-        } 
+        }
     }, []);
+
+    var token = localStorage.getItem('accessToken');
+    var loggedIn = false;
+
+    if(token === null){
+      loggedIn = true;
+    }
 
     return (
         <div>
@@ -80,12 +90,12 @@ function Home() {
                                 }
                             </button>
                         </section>
-                    </Grid> 
+                    </Grid>
                     <Grid item xs={12} sm={6} >
                         <section className='top-right'>
                             <img src={pics.phones} alt='phones'/>
                         </section>
-                    </Grid> 
+                    </Grid>
                     <Grid container spacing={0} className='illustrations-mobile'>
                         <Grid item xs={12} sm={12} >
                             <section>
@@ -95,9 +105,9 @@ function Home() {
                                 :
                                     <img src={pics["mobile-illustration"]} alt='phones'/>
                                 }
-                                
+
                             </section>
-                        </Grid> 
+                        </Grid>
                     </Grid>
                     <Grid container spacing={0} className='illustrations'>
                         {
@@ -105,25 +115,25 @@ function Home() {
                                 return(
                                     <Grid item xs={12} sm={3} key={i}>
                                         <img id='illustration' src={pic} alt='illustration' />
-                                    </Grid> 
-                                )                            
+                                    </Grid>
+                                )
                             })
                         }
                         <Grid item xs={12} sm={12} >
                             <img id='dotted-line' src={pics['dotted-line']} alt='illustration'/>
-                        </Grid> 
+                        </Grid>
                         {
                             pics['illustration-texts'][language].map((text, i) => {
                                 return(
                                     <Grid item xs={12} sm={3} key={i}>
                                        <div id='text' dangerouslySetInnerHTML={{__html:text }}></div>
-                                    </Grid> 
-                                )                            
+                                    </Grid>
+                                )
                             })
                         }
 
-                    </Grid> 
-                    <Grid container spacing={0} className='video-section'> 
+                    </Grid>
+                    <Grid container spacing={0} className='video-section'>
                         <Grid item xs={12} sm={7} >
                             <section>
                                 <ReactPlayer
@@ -139,7 +149,7 @@ function Home() {
                                     light={pics['video-img']}
                                 />
                             </section>
-                        </Grid>  
+                        </Grid>
                         <Grid item xs={12} sm={5} className='right-section' >
                             <section>
                                 <h3>
@@ -149,18 +159,73 @@ function Home() {
                                     {EN ? 'Through a virtual reality experience, you will meet Alexandra from El Calvario, Venezuela. In 360 degrees, find out how Alexandra used Yakera to raise the money necessary to fulfill her dream: to access a quality education.' :'A través de una experiencia en realidad virtual, conocerás a Alexandra de El Calvario, Venezuela. En 360 grados, entérate de como Alexandra utilizó Yakera para recaudar el dinero necesario para cumplir su sueño: acceder a una educación de calidad.'}
                                 </p>
                             </section>
-                        </Grid>   
-                        </Grid> 
-                    <Grid container spacing={0} className='carousel-section'>       
+                        </Grid>
+                        </Grid>
+
+
+                        <Grid container className = "cta-grid" spacing={0} style = {{backgroundColor: "#ffffff", padding: "80px 0px 80px 0px" }}>
+                            <Grid container className = "cta-img-grid" item = {true} xs={12} sm={6} alignItems="center" justifyContent="center">
+                                <section>
+                                  <div className = "cta-img" style={{ position: "relative" }}>
+                                  <CardMedia className = "cta-img-card" component="img" image={"https://yakera-files.s3.us-east-2.amazonaws.com/pictures/cta-image.jpeg"} alt='cta-image' style = {{maxWidth: "60%", float:"right"}}/>
+
+                                      <div className = "cta-bubble">
+                                        <a className = "cta-quote" >
+                                          <b> {EN ? "New Notification!" : "¡Nueva notificaión!"} </b> <br/>
+                                          {EN ? "Now you can review your contributions in Yakera!" : "¡Ahora puedes revisar tus aportes en Yakera!"}
+                                        </a>
+                                      </div>
+                                  </div>
+                                </section>
+                            </Grid>
+
+                            <Grid container xs={12} sm={6} className='cta-text-grid' alignItems="center" justifyContent="center" item = {true}>
+                                <section>
+                                <div className = "cta-text-div" style ={{width: '70%' }}>
+                                {EN ? 'Join the donor hub. Track your impact in a personalized dashboard!' :' Entérate de la importancia que tienen tus contribuciones'}
+                                <br/>
+
+                                <Button className = "cta-text-button"
+                                    component={Link}
+                                    container = {true}
+                                    to = {loggedIn ? "/register" : "/donor-hub"}
+                                    className = "cta-text-button"
+                                    style={{
+                                      padding: '10px',
+                                      margin: '10px',
+                                      border:'none',
+                                      backgroundColor:'#ea8737',
+                                      borderRadius:'30px',
+                                      color:'white',
+                                    
+                                    }}
+                                  >
+
+                                   {loggedIn ? <div>{EN ? 'Create your profile' :'¡Ve a tu perfil!'}</div> : <div>{EN ? 'Go to your profile' :'¡Ve a tu perfil!'}</div>}
+
+
+                                  </Button>
+                                </div>
+
+                                </section>
+                            </Grid>
+                            </Grid>
+
+
+
+
+
+
+                    <Grid container spacing={0} className='carousel-section'>
                         <CampaignCarousel EN={EN}/>
-                    </Grid> 
-                </Grid> 
+                    </Grid>
+                </Grid>
                 <div ref={targetRef}>
-                    <Author />           
+                    <Author />
                 </div>
             </div>
-            
-        
+
+
         </div>
     )
 }
