@@ -14,7 +14,7 @@
   margin-top: 7.8%;
   width: 70%;
   background-color: white;
-  padding-bottom: 50px;
+  padding-bottom: 150px;
 }
 
 .banner{
@@ -197,10 +197,10 @@ hr{
   width: 200px;
   height: 200px;
   background-color: #ea8737;
-  border-radius: 100%;
-  margin-left: 60%;
-  margin-top: 30%;
-  padding-top: 45%;
+  border-radius: 50%;
+  margin-left: 50%;
+  margin-top: 40%;
+  padding-top: 35%;
   color: white;
   font-weight: bolder;
   font-size: 30px;
@@ -210,7 +210,6 @@ hr{
   font-size: 13px;
   font-weight: normal;
   margin-bottom: -5px;
-  margin-top: -10px;
 }
 
 .circle-2, .circle-3, .circle-4, .circle-5 {
@@ -227,6 +226,7 @@ hr{
 .circle-2 {
   background-color: #01224d;
   border: 5px solid #b6d0f3d2;
+  margin-left: 0%;
 }
 
 .circle-3 {
@@ -379,11 +379,10 @@ hr{
 
 @media only screen and (max-width: 600px) {
 
-  .donorhub-container{
+.donorhub-container{
   margin: 0 auto;
   margin-top: 37%;
   width: 100%;
-  height: 1800px;
   background-color: white;
 }
 
@@ -393,7 +392,7 @@ hr{
 
 .user-info{
   background-color: white;
-  height: 500px;
+  padding: 10px;
   margin: 0 auto;
 }
 
@@ -461,13 +460,13 @@ hr{
 }
 
 .circle-1{
-  width: 200px;
-  height: 200px;
+  width: 180px;
+  height: 180px;
   background-color: #ea8737;
   border-radius: 100%;
-  margin-left: 10%;
-  margin-top: 25%;
-  padding-top: 50%;
+  margin-left: 0%;
+  margin-top: 50%;
+  padding-top: 40%;
   color: white;
   font-weight: bolder;
   font-size: 30px;
@@ -563,11 +562,24 @@ hr{
 }
 
 .recent-box{
-  background-color: rgb(184, 184, 184);
+  background-color: rgb(255, 255, 255);
   margin-top: 10px;
-  width: 90%;
-  height: 50%;
+  width: 100%;
   border-radius: 16px;
-  margin-left: 5%;
+  margin: 0;
+  padding: 10px;
+  text-align: center;
+}
+.recent-box #amount{
+  font-size: 20px;
+  padding: 3px;
+  margin-left: 0%
+}
+.recent-box b{
+  margin-left: 20%;
+}
+.circle-5{
+  margin-left: -30%;
+  margin-top: 0%;
 }
 }
