@@ -170,10 +170,10 @@ function Home() {
                                   <CardMedia className = "cta-img-card" component="img" image={"https://yakera-files.s3.us-east-2.amazonaws.com/pictures/cta-image.jpeg"} alt='cta-image' style = {{maxWidth: "60%", float:"right"}}/>
 
                                       <div className = "cta-bubble">
-                                        <a className = "cta-quote" >
+                                        <div className = "cta-quote" >
                                           <b> {EN ? "New Notification!" : "¡Nueva notificaión!"} </b> <br/>
                                           {EN ? "Now you can review your contributions in Yakera!" : "¡Ahora puedes revisar tus aportes en Yakera!"}
-                                        </a>
+                                        </div>
                                       </div>
                                   </div>
                                 </section>
@@ -189,7 +189,6 @@ function Home() {
                                     component={Link}
                                     container = {true}
                                     to = {loggedIn ? "/register" : "/donor-hub"}
-                                    className = "cta-text-button"
                                     style={{
                                       padding: '10px',
                                       margin: '10px',
@@ -197,7 +196,7 @@ function Home() {
                                       backgroundColor:'#ea8737',
                                       borderRadius:'30px',
                                       color:'white',
-                                    
+
                                     }}
                                   >
 
