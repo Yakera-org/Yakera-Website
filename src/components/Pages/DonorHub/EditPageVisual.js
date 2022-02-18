@@ -1,6 +1,7 @@
 import React from 'react';
 import { Grid } from '@material-ui/core';
 import { Alert } from 'reactstrap';
+import HashLoader from "react-spinners/HashLoader";
 
 
 function EditPageVisual(props) {
@@ -77,6 +78,15 @@ function EditPageVisual(props) {
                 </Grid>
             </Grid>
             </div>
+            <div className="sweet-loading">
+                <div className='loader-wrapper'>
+                    <HashLoader
+                        size={50}
+                        color={"#ea8737"}
+                        loading={props.loading}
+                    />
+                </div>
+            </div> 
             { props.error
             ?
                 <Alert color="danger" style={{width:"50%", marginLeft:"25%"}}>
@@ -85,6 +95,19 @@ function EditPageVisual(props) {
             :
             ''
             }
+            { props.success
+                    ?
+                    <Alert color="success" id='alert' style={{width:"50%", marginLeft:"25%"}}>
+                        {props.success}
+                        <br />
+                        {EN ? 
+                        <>Head to your <a href="/donor-hub" style={{color:'darkgreen', textDecoration:'underline'}}> Donor Hub</a>.</> 
+                        :
+                         <>Dirígete a tu <a href="/donor-hub" style={{color:'darkgreen', textDecoration:'underline'}}> Donor Hub</a>.</>}                                            
+                    </Alert>
+                    :
+                    ''
+                }
             <hr />
             <button onClick={props.OnSave} className="actions" id="save">Save <i className="fas fa-check" ></i> </button>  
             <button className="actions" id="delete">Delete Account <i className="fas fa-trash-alt"></i></button>       
@@ -127,9 +150,7 @@ class CardProfile extends React.Component {
       imagePreviewUrl: this.props.data.user.profilePicture,
       reader: new FileReader()
     }
-    componentDidMount(){        
-      this.props.data.user.profilePicture = random_profiles[this.props.seed]
-    }
+
     photoUpload = e =>{
         e.preventDefault();
         var reader = this.state.reader

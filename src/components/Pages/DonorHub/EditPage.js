@@ -8,10 +8,6 @@ import api from "../../../services/api";
 
 import { uploadFile } from 'react-s3';
 
-const _axios = require('axios');
-const axios = _axios.create();
-const yakeraBackUrl = 'https://api.yakera.org';
-
 const S3_BUCKET = process.env.REACT_APP_S3_BUCKET
 const REGION = process.env.REACT_APP_REGION
 const ACCESS_KEY = process.env.REACT_APP_ACCESS_KEY
@@ -28,9 +24,12 @@ const config_aws = {
 function EditPage(props) {
 
     const [loaded, setLoaded] = useState(false);
+    const [loading, setLoading] = useState(false);
     const [EN, setEN] = useState(false);
     const [error, setError] = useState("");
+    const [success, setSuccess] = useState("");
     const [profileData, setProfileData] = useState({});
+    const [profileImage, setProfileImage] = useState("");
   
     React.useEffect(() => {
         function startup(){
@@ -59,9 +58,8 @@ function EditPage(props) {
         try {
             const res = await api.get('/profile');
             setProfileData(res.data.data);
-            setLoaded(true);
+            setProfileImage(res.data.data.user.profilePicture)
         } catch (err) {
-            setLoaded(true);
             TokenService.removeAccessToken()
             TokenService.removeRefreshToken()
             window.location.replace('/login')
@@ -95,21 +93,46 @@ function EditPage(props) {
 
 
     async function OnSave(){
-        console.log(config_aws)
+        setLoading(true)
         var profile =  profileData.user.profilePicture;
-        if(typeof profileData.user.profilePicture !== 'string'){
+        if("https://yakera-files.s3.us-east-2.amazonaws.com/profile-pictures/" + profileData.user.profilePicture.name !== profileImage){
+            if(typeof profileData.user.profilePicture !== 'string' ){
+                profile = "https://yakera-files.s3.us-east-2.amazonaws.com/profile-pictures/" + profileData.user.profilePicture.name
+                await handleUpload(profileData.user.profilePicture)
+            }
+        }else{
             profile = "https://yakera-files.s3.us-east-2.amazonaws.com/profile-pictures/" + profileData.user.profilePicture.name
-            //await handleUpload(profileData.user.profilePicture)
         }
         
-        console.log(profileData)
+        const payload = {
+                profilePicture: profile,
+                phone: profileData.user.phone,
+                donorInfo:{
+                    location: profileData.user.donorInfo.location,
+                    age: profileData.user.donorInfo.age,
+                    bio: profileData.user.donorInfo.bio
+                }
+        }   
+        updateProfile(payload)
+        
     }
 
     async function handleUpload (file){
-        uploadFile(file, config_aws)
+        await uploadFile(file, config_aws)
             .then(data => console.log(data))
             .catch(err => console.error(err))
       }
+
+    async function updateProfile(data){        
+        try {
+            await api.patch('/profile/update', data);   
+            setSuccess("Profile updated")         
+        } catch (err) {
+            console.log(err)
+            setError("Something went wrong, please try again.")
+        }
+        setLoading(false)
+    }
 
     if(!loaded){
         return(
@@ -120,7 +143,7 @@ function EditPage(props) {
     }else{
         return (
             <div className='edit'>
-                <EditPageVisual EN = {EN} data={profileData} handleChange={handleChange} OnSave={OnSave} error={error}/>
+                <EditPageVisual EN = {EN} data={profileData} handleChange={handleChange} OnSave={OnSave} error={error} success={success} loading={loading}/>
                 <br />
                 <br />
                 <br />
