@@ -39,19 +39,19 @@ function DonorHubVisual(props) {
   useEffect(() => {
     const startup = () => {
       donations.forEach(d => {
-        setTotal(total + d.amount)
+        setTotal(total => total + d.amount)
         switch(d.category){
           case "healthcare":
-            setHealth(totalHealth + d.amount)
+            setHealth(totalHealth => totalHealth + d.amount)
           break
           case "small_business":
-            setBusiness(totalBusiness + d.amount)
+            setBusiness(totalBusiness => totalBusiness + d.amount)
           break
           case "nutrition":
-            setFood(totalFood + d.amount)
+            setFood( totalFood => totalFood + d.amount)
           break
           case "education":
-            setEducation(totalEducation + d.amount)
+            setEducation(totalEducation => totalEducation + d.amount)
           break
 
           default:
@@ -208,20 +208,23 @@ function DonorHubVisual(props) {
                       </b>
                   </h5>
                 </Grid>
-                <Grid item xs={12} sm={12} >
-                  <div className='campaigns-preview'>
+                <Grid item xs={12} sm={12} className='campaigns-preview' >
+                  <Grid container spacing={0} style={{ textAlign: 'center' }} >
                     {
                       donations.map((donation, i) => {
                         return(
-                          <div style={{backgroundColor:colorDic[donation.category]}} key={i} className='campaign-circle'>
-                          
-                          </div>
+                            <Grid item xs={2} sm={1}>
+                              <div style={{backgroundColor:colorDic[donation.category]}} key={i} className='campaign-circle'>
+                              
+                              </div>
+                            </Grid>
                         )
                       })
                     }
+                  <button onClick={() => window.location = '/campaigns'}><i className="fas fa-2x fa-plus"></i></button>
+                  </Grid> 
                    
-                    <button onClick={() => window.location = '/campaigns'}><i className="fas fa-2x fa-plus"></i></button>
-                  </div>
+                  
                 </Grid>
                 <Grid item xs={12} sm={12} className='recent-act'>
                   <h3>{EN ? 'Recent Activity' : 'Actividad reciente'}</h3>

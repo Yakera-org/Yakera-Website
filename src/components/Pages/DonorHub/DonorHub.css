@@ -139,20 +139,17 @@ hr{
 }
 
 .campaigns-preview{
-  display: flex;
-  height:80px;
-  margin-left: 12.2%;
-  margin-top: 1%;
-  margin-bottom: -5%;
+  padding: 10px 60px;
 }
 
 .campaigns-preview .campaign-circle {
   color:#ea8737;
   background-color: #ea8737;
   border-radius: 100%;
-  width: 50px;
-  height: 50px;
+  width: 45px;
+  height: 45px;
   margin-right: 1%;
+  margin-bottom: 5px;
 }
 
 .campaigns-preview button {
@@ -161,8 +158,8 @@ hr{
   border-radius: 50%;
   background-color: #c4c4c4;
   color: #575757;
-  width: 50px;
-  height: 50px;
+  width: 45px;
+  height: 45px;
 }
 .campaigns-preview i:hover {
   cursor: pointer;
@@ -244,7 +241,7 @@ hr{
   background-color: #f7bc55;
   border: 5px solid #ffe4b7;
   margin-left: 0%;
-  margin-top: 0%;
+  margin-top: 5%;
 }
 
 .progress-txt {
@@ -315,24 +312,25 @@ hr{
 }
 
 .recent-box{
-  background-color: rgba(228, 228, 228, 0);
-  border-radius: 15px;
-  width: 75%;
-  padding: 20px;
-  border: white 7px solid
+  background-color: transparent;
+  border-radius: 10px;
+  width: 95%;
+  padding: 10px;
+  border: white 5px solid;
+  margin: 5px;
 }
 .recent-box p{
   text-align: center;
-  font-size: 20px;
+  font-size: 18px;
 }
 .recent-box #amount{
   text-align: center;
-  font-size: 25px;
+  font-size: 20px;
   color: #ea8737;
 }
 .recent-box b{
   text-align: center;
-  font-size: 20px;
+  font-size: 18px;
 }
 .recent-box a{
   text-decoration: underline;
