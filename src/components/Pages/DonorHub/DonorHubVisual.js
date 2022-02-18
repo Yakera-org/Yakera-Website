@@ -220,7 +220,7 @@ function DonorHubVisual(props) {
                       })
                     }
                    
-                    <button><i className="fas fa-2x fa-plus"></i></button>
+                    <button onClick={() => window.location = '/campaigns'}><i className="fas fa-2x fa-plus"></i></button>
                   </div>
                 </Grid>
                 <Grid item xs={12} sm={12} className='recent-act'>
@@ -233,15 +233,18 @@ function DonorHubVisual(props) {
                           return(
                             <div key={i} className='recent-box' style={{borderColor:colorDic[donation.category]}}>
                               <p>
-                                Donation of {donation.amount}$
+                                Donation of <b id="amount">{donation.amount}$</b>
                               </p>
+                              <p>
+                                To the campaign: <i>{donation.title}</i>
+                                <br />  
+
                               {donation.comment
                               ? <b>"{donation.comment}"</b>
                               :
                               ""}
-                             
-                              <br />
-                              <a href='/campaigns/'>Go to campaign</a>
+                              </p>                              
+                              <a href={`/campaign/${donation.slug}`}>Go to campaign</a>
                             </div>
                           )
                         }else{
