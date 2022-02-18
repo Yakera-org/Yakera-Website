@@ -2,7 +2,7 @@
     margin-top: 150px;
     font-family: Intro-Light;
 }
-.donorhub-container{
+.donorhub-container-edit{
     margin: 0 auto;
     margin-top: 7.8%;
     width: 70%;
@@ -42,6 +42,11 @@
     min-height: 130px;
     margin-bottom: -10%;
 }
+.profile{
+    text-align: center;
+    width: 100%;
+}
+
 .profile img{
     max-width: 300px;
     min-width: 300px;
@@ -92,7 +97,7 @@
 }
 .profile #random{
     background-color: transparent;
-    width: 51%;
+    width: 60%;
     border-radius: 15px;
     padding: 5px;
     border: 1px #c5c5c5 solid;
@@ -166,6 +171,17 @@
 }
 
 @media only screen and (max-width: 600px) {
+    .donorhub-container-edit{
+        margin: 0 auto;
+        margin-top: 7.8%;
+        width: 100%;
+        background-color: white;
+        padding-bottom: 50px;
+    }
+    .edit input, .edit textarea{
+        width: 100%;
+        margin-left: 0;
+    }
     .profile img{
         max-width: 200px;
         min-width: 200px;

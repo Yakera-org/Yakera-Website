@@ -10,7 +10,7 @@ function EditPageVisual(props) {
     const EN = props.EN
     
     return (
-        <div className='donorhub-container'>
+        <div className='donorhub-container-edit'>
         <Grid container spacing={1} style={{ textAlign: 'center' }}>
           <Grid item xs={12} sm={12}>
             <div className='banner'>
@@ -23,7 +23,7 @@ function EditPageVisual(props) {
         <Grid item xs={12} sm={12}>
             <div className='card-area'>
             <Grid container spacing={1} style={{ textAlign: 'center' }}>
-                <Grid item xs={12} sm={6} id="details" >
+                <Grid item xs={12} sm={6} >
                     <CardProfile data={props.data} seed={Math.floor(Math.random()*random_profiles.length)}/>
                 </Grid>
                 <Grid item xs={12} sm={6} id="details" >
