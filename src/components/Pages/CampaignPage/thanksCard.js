@@ -122,9 +122,9 @@ class ThanksCard extends Component{
                                 fontSize: '13px',
                               }}
                             >
-                              <a style = {{fontFamily: 'Intro-Regular-Alt', fontSize: "13px"}}>
+                              <div style = {{fontFamily: 'Intro-Regular-Alt', fontSize: "13px"}}>
                                 {this.props.EN ? 'Create a donor account' : 'Crea tu cuenta de donante'}
-                              </a>
+                              </div>
                           </Button>
                           }
                           </div>
