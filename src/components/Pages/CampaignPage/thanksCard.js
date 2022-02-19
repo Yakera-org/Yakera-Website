@@ -24,6 +24,12 @@ class ThanksCard extends Component{
     render(){
         //var token = localStorage.getItem('accessToken');
         var loggedIn = false;
+        var token = localStorage.getItem('accessToken');
+
+        if(token === null){
+          loggedIn = true;
+        }
+
         if (!this.state.loaded) {
             return (
                 <div>
@@ -68,7 +74,7 @@ class ThanksCard extends Component{
                           <h1 style={{marginTop:'10px', color:'#ea8737'}}> {this.props.EN ? <b>Thank you!</b> : <b>Gracias!</b>}</h1>
                           <br/>
                           <p style = {{color : "#ea8737"}}>
-                              {this.props.EN ? 
+                              {this.props.EN ?
                                 <div>Yakera means gratitude in Warao,<br/> and we send you gratitude!</div>
                                     :
                                 <div>Yakera significa gratitud en warao,<br/> y te mandamos nuestra Yakera</div>
@@ -107,7 +113,7 @@ class ThanksCard extends Component{
                               to="/register"
                               style={{
                                 margin:'10px',
-                                width:'60%',
+                                width:'70%',
                                 border:'none',
                                 backgroundColor:'#ea8737',
                                 borderRadius:'30px',
@@ -116,8 +122,9 @@ class ThanksCard extends Component{
                                 fontSize: '13px',
                               }}
                             >
+                              <a style = {{fontFamily: 'Intro-Regular-Alt', fontSize: "13px"}}>
                                 {this.props.EN ? 'Create a donor account' : 'Crea tu cuenta de donante'}
-                              
+                              </a>
                           </Button>
                           }
                           </div>
