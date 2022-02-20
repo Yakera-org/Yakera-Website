@@ -142,10 +142,10 @@ function DonorHubVisual(props) {
         <Grid item xs={12} sm={12}>
           <Grid container spacing={0} className='donations-info'>
             <Grid item xs={12} sm={12}>
-              <h2>
-                Statistics
+              <h2 id='sub'>
+                {EN ? 'Track your impact' : 'Tu impacto'}
               </h2>
-              <p id="sub">Analyze your impact</p>
+              {/* <p id="sub">Analyze your impact</p> */}
             </Grid>
             <Grid item xs={12} sm={6}>
               <Grid container spacing={0} >
@@ -179,7 +179,7 @@ function DonorHubVisual(props) {
                         <Grid item xs={12} sm={12} key={i}>
                           <DonorHubBars type={colorDic[cat]} size={getRelativeAmount(cat) + '%'} />
                           <p className='progress-text'><span style={{ color: colorDic[cat] }}>${getCatAmount(cat)} </span>
-                            {EN ? 'have been intended to' : 'han sido destinados a'} 
+                            {EN ? 'for' : 'por'} 
                           </p>
                           <p className='progress-txt' style={{ color: colorDic[cat] }}>
                             {EN ? nameDictEN[cat] : nameDictSP[cat]}
@@ -199,7 +199,7 @@ function DonorHubVisual(props) {
                   <hr />
                   <h5 style = {{padding: '3px 0px 0px 10px'}}>
                     {EN ? 
-                    'You have donated to a total of ' : 'Has donado a un total de '}
+                    'You have helped fund a total of ' : 'Has donado a un total de '}
                       <b style = {{color: "#eb913b"}}>
                         {EN ? 
                         donations.length > 1 ? donations.length + ' campaigns' : donations.length + ' campaign'
@@ -227,8 +227,8 @@ function DonorHubVisual(props) {
                   
                 </Grid>
                 <Grid item xs={12} sm={12} className='recent-act'>
-                  <h3>{EN ? 'Recent Activity' : 'Actividad reciente'}</h3>
-                  <p>{EN ? 'Your recent donations' : 'de las campañas a las que has donado'}</p>
+                  <h3>{EN ? 'Your recent contributions' : 'Contribuciones recientes'}</h3>
+                  {/* <p>{EN ? 'Your recent donations' : 'de las campañas a las que has donado'}</p> */}
                   <hr />
                   {
                       donations.reverse().map((donation, i) => {
@@ -258,6 +258,20 @@ function DonorHubVisual(props) {
                   
                 </Grid>
               </Grid>
+            </Grid>
+          </Grid>
+          
+
+          <Grid container spacing={0} className='increase-impact'>
+            <Grid item xs={12} sm={12}>
+              <h3>
+                {EN ? 'Increase your impact' : 'Continúa tu impacto'}
+              </h3>
+            </Grid>
+            <Grid item xs={12} sm={12}>
+              <a href='/campaigns'>
+                {EN ? 'Fund more dreams' : 'Ayuda a más personas'}
+              </a>
             </Grid>
           </Grid>
         </Grid>
