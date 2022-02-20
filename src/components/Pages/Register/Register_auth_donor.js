@@ -163,7 +163,10 @@ class CardProfile extends React.Component {
         if(e.target.files.length > 0){
             const file = e.target.files[0];
             if(file.size > 1000000){
-                alert("File too large. (>1MB)");
+                {this.props.EN 
+                    ? alert("File too large. (>1MB)")
+                    : alert("Archivo es demasiado grande (>1mb)")
+                }
             }else{
                 var fileName = file.name;
                 var idxDot = fileName.lastIndexOf(".") + 1;
@@ -178,7 +181,10 @@ class CardProfile extends React.Component {
                     reader.readAsDataURL(file);
                     this.props.data.profile_pic = file
                 }else{
-                    alert("Only png/jpg/jpeg and png files are allowed!");
+                    {this.props.EN
+                        ? alert("Only png/jpg/jpeg and png files are allowed!")
+                        : alert("Solamente se acepta archivos png./jpg/jpeg!");
+                    }
                 }              
             }
         }
@@ -215,7 +221,7 @@ class CardProfile extends React.Component {
             {
                 file
                 ?
-                <button id="reset" onClick={this.resetPhoto}>Reset Picture</button>
+                <button id="reset" onClick={this.resetPhoto}>{this.props.EN ? 'Reset Picture' : 'Reajustar foto'}</button>
                 :
                 <button id="random" onClick={this.randomPhoto}>
                     {this.props.EN 
