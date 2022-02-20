@@ -133,6 +133,56 @@ function Home() {
                         }
 
                     </Grid>
+
+                <Grid container className = "cta-grid" spacing={0} style = {{backgroundColor: "#ffffff", padding: "80px 0px 80px 0px" }}>
+                    <Grid container className = "cta-img-grid" item = {true} xs={12} sm={6} alignItems="center">
+                        <section>
+                          <div className = "cta-img" style={{ position: "relative" }}>
+                          <CardMedia className = "cta-img-card" component="img" image={"https://yakera-files.s3.us-east-2.amazonaws.com/pictures/cta-image.jpeg"} alt='cta-image' style = {{maxWidth: "60%", float:"right"}}/>
+
+                              <div className = "cta-bubble">
+                                <div className = "cta-quote" >
+                                  <b> {EN ? "New Notification!" : "¡Nueva notificaión!"} </b> <br/>
+                                  {EN ? "Now you can review your contributions in Yakera!" : "¡Ahora puedes revisar tus aportes en Yakera!"}
+                                </div>
+                              </div>
+                          </div>
+                        </section>
+                    </Grid>
+
+                    <Grid container xs={12} sm={6} className='cta-text-grid' alignItems="center"  item = {true}>
+                        <section>
+                        <div className = "cta-text-div" style ={{width: '70%' }}>
+                        {EN ? 'Join the donor hub. Track your impact in a personalized dashboard!' :' Entérate de la importancia que tienen tus contribuciones'}
+                        <br/>
+
+                        <Button className = "cta-text-button"
+                            component={Link}
+                            to = {loggedIn ? "/donor-hub" : "/register"}
+                            style={{
+                              padding: '10px',
+                              margin: '10px',
+                              border:'none',
+                              backgroundColor:'#ea8737',
+                              borderRadius:'30px',
+                              color:'white',
+
+                            }}
+                          >
+
+                           {loggedIn ? <div>{EN ? 'Create your profile' :'¡Ve a tu perfil!'}</div> : <div>{EN ? 'Go to your profile' :'¡Ve a tu perfil!'}</div>}
+
+
+                          </Button>
+                        </div>
+
+                        </section>
+                    </Grid>
+                    </Grid>
+
+
+
+
                     <Grid container spacing={0} className='video-section'>
                         <Grid item xs={12} sm={7} >
                             <section>
@@ -161,55 +211,6 @@ function Home() {
                             </section>
                         </Grid>
                         </Grid>
-
-
-                        <Grid container className = "cta-grid" spacing={0} style = {{backgroundColor: "#ffffff", padding: "80px 0px 80px 0px" }}>
-                            <Grid container className = "cta-img-grid" item = {true} xs={12} sm={6} alignItems="center">
-                                <section>
-                                  <div className = "cta-img" style={{ position: "relative" }}>
-                                  <CardMedia className = "cta-img-card" component="img" image={"https://yakera-files.s3.us-east-2.amazonaws.com/pictures/cta-image.jpeg"} alt='cta-image' style = {{maxWidth: "60%", float:"right"}}/>
-
-                                      <div className = "cta-bubble">
-                                        <div className = "cta-quote" >
-                                          <b> {EN ? "New Notification!" : "¡Nueva notificaión!"} </b> <br/>
-                                          {EN ? "Now you can review your contributions in Yakera!" : "¡Ahora puedes revisar tus aportes en Yakera!"}
-                                        </div>
-                                      </div>
-                                  </div>
-                                </section>
-                            </Grid>
-
-                            <Grid container xs={12} sm={6} className='cta-text-grid' alignItems="center"  item = {true}>
-                                <section>
-                                <div className = "cta-text-div" style ={{width: '70%' }}>
-                                {EN ? 'Join the donor hub. Track your impact in a personalized dashboard!' :' Entérate de la importancia que tienen tus contribuciones'}
-                                <br/>
-
-                                <Button className = "cta-text-button"
-                                    component={Link}
-                                    to = {loggedIn ? "/donor-hub" : "/register"}
-                                    style={{
-                                      padding: '10px',
-                                      margin: '10px',
-                                      border:'none',
-                                      backgroundColor:'#ea8737',
-                                      borderRadius:'30px',
-                                      color:'white',
-
-                                    }}
-                                  >
-
-                                   {loggedIn ? <div>{EN ? 'Create your profile' :'¡Ve a tu perfil!'}</div> : <div>{EN ? 'Go to your profile' :'¡Ve a tu perfil!'}</div>}
-
-
-                                  </Button>
-                                </div>
-
-                                </section>
-                            </Grid>
-                            </Grid>
-
-
 
 
 
