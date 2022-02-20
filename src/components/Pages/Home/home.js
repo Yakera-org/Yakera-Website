@@ -10,6 +10,7 @@ import Button from '@material-ui/core/Button';
 import {CardMedia} from "@material-ui/core";
 import { Link } from 'react-router-dom';
 import './home.scss';
+import TokenService from '../../../services/token';
 
 function Home() {
     const [EN, setEN] = React.useState(false);
@@ -59,10 +60,9 @@ function Home() {
         }
     }, []);
 
-    var token = localStorage.getItem('accessToken');
     var loggedIn = false;
 
-    if(token === null){
+    if(TokenService.getLocalAccessToken()){
       loggedIn = true;
     }
 
@@ -96,45 +96,7 @@ function Home() {
                             <img src={pics.phones} alt='phones'/>
                         </section>
                     </Grid>
-                    <Grid container spacing={0} className='illustrations-mobile'>
-                        <Grid item xs={12} sm={12} >
-                            <section>
-                                {EN
-                                ?
-                                    <img src={pics["mobile-illustration_alt"]} alt='phones'/>
-                                :
-                                    <img src={pics["mobile-illustration"]} alt='phones'/>
-                                }
-
-                            </section>
-                        </Grid>
-                    </Grid>
-                    <Grid container spacing={0} className='illustrations'>
-                        {
-                            pics.illustrations[language].map((pic, i) => {
-                                return(
-                                    <Grid item xs={12} sm={3} key={i}>
-                                        <img id='illustration' src={pic} alt='illustration' />
-                                    </Grid>
-                                )
-                            })
-                        }
-                        <Grid item xs={12} sm={12} >
-                            <img id='dotted-line' src={pics['dotted-line']} alt='illustration'/>
-                        </Grid>
-                        {
-                            pics['illustration-texts'][language].map((text, i) => {
-                                return(
-                                    <Grid item xs={12} sm={3} key={i}>
-                                       <div id='text' dangerouslySetInnerHTML={{__html:text }}></div>
-                                    </Grid>
-                                )
-                            })
-                        }
-
-                    </Grid>
-
-                <Grid container className = "cta-grid" spacing={0} style = {{backgroundColor: "#ffffff", marginTop: "30px", padding: "30px 0px 30px 0px" }}>
+                    <Grid container className = "cta-grid" spacing={0} style = {{backgroundColor: "#ffffff", marginTop: "30px", padding: "30px 0px 30px 0px" }}>
                     <Grid container className = "cta-img-grid" item = {true} xs={12} sm={6} alignItems="center">
                         <section>
                           <div className = "cta-img" style={{ position: "relative" }}>
@@ -170,7 +132,11 @@ function Home() {
                             }}
                           >
 
-                           {loggedIn ? <div>{EN ? 'Create your profile' :'¡Ve a tu perfil!'}</div> : <div>{EN ? 'Go to your profile' :'¡Ve a tu perfil!'}</div>}
+                           {loggedIn ?
+                                <div>{EN ? 'Go to your profile' :'¡Ve a tu perfil!'}</div>
+                                :
+                                <div>{EN ? 'Create your profile' :'¡Ve a tu perfil!'}</div> 
+                            }
 
 
                           </Button>
@@ -178,10 +144,45 @@ function Home() {
 
                         </section>
                     </Grid>
+                </Grid>
+                <Grid container spacing={0} className='illustrations-mobile'>
+                        <Grid item xs={12} sm={12} >
+                            <section>
+                                {EN
+                
+                                ?
+                                    <img src={pics["mobile-illustration_alt"]} alt='phones'/>
+                                :
+                                    <img src={pics["mobile-illustration"]} alt='phones'/>
+                                }
+
+                            </section>
+                        </Grid>
                     </Grid>
+                    <Grid container spacing={0} className='illustrations'>
+                        {
+                            pics.illustrations[language].map((pic, i) => {
+                                return(
+                                    <Grid item xs={12} sm={3} key={i}>
+                                        <img id='illustration' src={pic} alt='illustration' />
+                                    </Grid>
+                                )
+                            })
+                        }
+                        <Grid item xs={12} sm={12} >
+                            <img id='dotted-line' src={pics['dotted-line']} alt='illustration'/>
+                        </Grid>
+                        {
+                            pics['illustration-texts'][language].map((text, i) => {
+                                return(
+                                    <Grid item xs={12} sm={3} key={i}>
+                                       <div id='text' dangerouslySetInnerHTML={{__html:text }}></div>
+                                    </Grid>
+                                )
+                            })
+                        }
 
-
-
+                    </Grid>
 
                     <Grid container spacing={0} className='video-section'>
                         <Grid item xs={12} sm={7} >
@@ -210,11 +211,7 @@ function Home() {
                                 </p>
                             </section>
                         </Grid>
-                        </Grid>
-
-
-
-
+                    </Grid>
                     <Grid container spacing={0} className='carousel-section'>
                         <CampaignCarousel EN={EN}/>
                     </Grid>
