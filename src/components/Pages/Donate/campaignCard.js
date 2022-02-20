@@ -104,7 +104,6 @@ class CampaignCard extends Component {
               color: category === 'nutrition' ? 'black' : 'white',
               fontFamily: 'Intro-Regular-Alt',
               fontSize: '20px',
-              padding: '12px',
             }}
             title={
               <div style={{
@@ -142,10 +141,10 @@ class CampaignCard extends Component {
               </p>
             </div>
             <div className='progress-text'>
-              <p>
+              <div id='raised'>
                 <b>${this.props.amount}</b>
                 {this.props.language==="en" ? ` raised of $${target}` : ` recaudado de $${target}`}
-              </p>
+              </div>
             </div>
             <Progress theme={{
                 default: {
