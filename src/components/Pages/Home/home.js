@@ -134,7 +134,7 @@ function Home() {
 
                     </Grid>
 
-                <Grid container className = "cta-grid" spacing={0} style = {{backgroundColor: "#ffffff", padding: "80px 0px 80px 0px" }}>
+                <Grid container className = "cta-grid" spacing={0} style = {{backgroundColor: "#ffffff", marginTop: "30px", padding: "30px 0px 30px 0px" }}>
                     <Grid container className = "cta-img-grid" item = {true} xs={12} sm={6} alignItems="center">
                         <section>
                           <div className = "cta-img" style={{ position: "relative" }}>
