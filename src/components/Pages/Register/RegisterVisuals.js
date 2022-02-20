@@ -24,7 +24,7 @@ function RegisterVisuals(props) {
         if(step === 1){
             if(await props.validate(step)){
                 nextStep(step + 1)
-            } 
+            }
         }
         if(step === 2){
             if(isRecipient){
@@ -32,7 +32,7 @@ function RegisterVisuals(props) {
                     nextStep(step + 1)
                 }
             }else{
-                nextStep(step + 1)                
+                nextStep(step + 1)
             }
             window.scrollTo({ behavior: 'smooth', top: step3ref})
         }
@@ -55,7 +55,7 @@ function RegisterVisuals(props) {
                     <Card className='login-card'>
                         <CardContent>
 
-                            <h1>{EN ? 'Sign up with Yakera in 3 easy steps' : 'Regístrese a Yakera con tres pasos fáciles'}</h1>
+                            <h1 style = {{fontSize : "30px"}}>{EN ? 'Join the Yakera community in 3 easy steps' : 'Únete a la comunidad de Yakera en 3 simples pasos'}</h1>
 
                             <MultiStepForm activeStep={step} accentColor='#003049'>
                                 <Step label={EN ? "Details" : 'Detalles'}>
@@ -77,7 +77,7 @@ function RegisterVisuals(props) {
                                 </Step>
 
                             </MultiStepForm>
-                            <br /> 
+                            <br />
                             { props.error
                             ?
                                 <Alert color="danger">
@@ -86,7 +86,7 @@ function RegisterVisuals(props) {
                             :
                             ''
                             }
-                            { props.success 
+                            { props.success
                             ?
                                 <Alert color="success">
                                     { props.success }
@@ -98,16 +98,16 @@ function RegisterVisuals(props) {
                             ''
                             }
 
-                           { 
+                           {
                             !props.success
                             ?
                             <Grid container spacing={1} style={{ alignItems:'flex-start'}}>
                                 <Grid item xs={12} sm={6} >
-                                { step > 1 
+                                { step > 1
                                 ?
                                     <div id='step-btn'>
                                         <button  onClick={onBack}>
-                                            {EN ? 'Back' : 'Regresa'}
+                                            {EN ? 'Back' : 'Regresar'}
                                         </button>
                                     </div>
                                 :
@@ -117,20 +117,20 @@ function RegisterVisuals(props) {
                                 <Grid item xs={12} sm={step === 1 ? 12 : 6} >
                                     <div id='step-btn'>
                                         <button  onClick={onContinue}>
-                                            {step < 3 ? EN ? 'Continue' : 'Continuar' : EN ? 'Register' : 'Registrarse'} 
+                                            {step < 3 ? EN ? 'Continue' : 'Continuar' : EN ? 'Register' : 'Registrarse'}
                                         </button>
                                     </div>
                                 </Grid>
-                            </Grid> 
+                            </Grid>
                             :
                             ''
                             }
 
                             <br />
                             {EN ? <p>Already have an account? Log in <a href='/login'>here</a></p>
-                             : 
+                             :
                              <p>¿Ya tiene una cuenta? Iniciar sesión <a href='/login'>aqui</a></p>}
-                            
+
                         </CardContent>
                     </Card>
                 </div>
@@ -148,12 +148,12 @@ export function DetailsSwitch(props) {
     const EN = props.EN
     return (
     <div className="switch-area">
-        {EN 
+        {EN
             ? <p>I am a {isRecipient ? <b>Recipient</b> : <b>Donor</b>} </p>
             : <p>Soy un {isRecipient ? <b>Beneficiaro</b> : <b>Donante</b>} </p>
         }
 
-        <div className="switch">            
+        <div className="switch">
             <button id="left" className={isRecipient ? "on" : "off"} onClick={actions.on}>{EN ? 'Recipient' : 'Beneficiaro'}</button>
             <button id="right" className={isRecipient ? "off" : "on"} onClick={actions.off}>{EN ? 'Donor' : 'Donante'}</button>
         </div>

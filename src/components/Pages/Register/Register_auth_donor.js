@@ -15,7 +15,7 @@ function Register_auth_donor(props) {
     return (
         <div className='register-authentication'>
 
-            <h2>{EN ? 'Tell us a bit about you' : 'Autenticación' }</h2>
+            <h2 style = {{fontSize: "30px"}}>{EN ? 'Tell us a bit about you' : 'Cuéntanos un poco sobre ti' }</h2>
             <hr />
             <Grid container spacing={0}>
                 <Grid item xs={12} sm={6} >
@@ -23,7 +23,7 @@ function Register_auth_donor(props) {
                     <br />
                     <hr />
                     <label>
-                        {EN 
+                        {EN
                             ? 'How would you like to hear about Yakera?:'
                             : '¿Cómo quieres recibir noticias de Yakera?:'
                         }
@@ -95,7 +95,7 @@ function Register_auth_donor(props) {
                     />
                     <div className="invalid-feedback">{props.data.errors.age}</div>
 
-                    
+
                     <label>{EN ? 'Bio (optional):' : 'Biografía (opcional):'}</label>
                     <textarea
                         type="textarea"
@@ -111,14 +111,14 @@ function Register_auth_donor(props) {
                     />
                     <div className="invalid-feedback">{props.data.errors.bio}</div>
 
-                    <br /> 
+                    <br />
 
                 </Grid>
             </Grid>
 
-            
 
-            
+
+
         </div>
     )
 }
@@ -143,9 +143,9 @@ const ImgUpload =({
       </div>
       <button>{EN ? 'Upload File' : 'Subir archivo'}</button>
       <p id="pic-name">{file.name}</p>
-      <input id="photo-upload" type="file" accept="image/*" onChange={onChange}/> 
+      <input id="photo-upload" type="file" accept="image/*" onChange={onChange}/>
     </label>
-  
+
 
 class CardProfile extends React.Component {
     state = {
@@ -153,7 +153,7 @@ class CardProfile extends React.Component {
       imagePreviewUrl: random_profiles[this.props.seed],
       reader: new FileReader(),
     }
-    componentDidMount(){        
+    componentDidMount(){
       this.props.data.profile_pic = random_profiles[this.props.seed]
     }
     photoUpload = e =>{
@@ -179,7 +179,7 @@ class CardProfile extends React.Component {
                     this.props.data.profile_pic = file
                 }else{
                     alert("Only png/jpg/jpeg and png files are allowed!");
-                }              
+                }
             }
         }
     }
@@ -206,24 +206,24 @@ class CardProfile extends React.Component {
             })
         this.props.data.profile_pic = random_profiles[index]
     }
-    
+
     render() {
       const {imagePreviewUrl, file} = this.state;
       return (
-        <div className='profile'>           
-            <ImgUpload EN={this.props.EN} onChange={this.photoUpload} src={imagePreviewUrl} file={file} />      
+        <div className='profile'>
+            <ImgUpload EN={this.props.EN} onChange={this.photoUpload} src={imagePreviewUrl} file={file} />
             {
                 file
                 ?
                 <button id="reset" onClick={this.resetPhoto}>Reset Picture</button>
                 :
                 <button id="random" onClick={this.randomPhoto}>
-                    {this.props.EN 
+                    {this.props.EN
                         ? 'Select Yakera Avatar'
                         : 'Seleccionar Avatar de Yakera'
                     }
                 </button>
-                
+
             }
 
         </div>
