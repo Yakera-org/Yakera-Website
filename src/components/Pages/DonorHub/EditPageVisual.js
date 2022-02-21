@@ -15,7 +15,7 @@ function EditPageVisual(props) {
           <Grid item xs={12} sm={12}>
             <div className='banner'>
                 <h2>
-                    Edit Profile Details
+                    {EN ? ' Edit Profile Details' : ' Editar detalles del perfil'} 
                 </h2>
                 <a href="/donor-hub">
                     {/* <i className=''></i> */}
@@ -121,10 +121,14 @@ function EditPageVisual(props) {
                     ''
                 }
             <hr />
-            <button onClick={props.OnSave} className="actions" id="save">
+            <button onClick={props.OnSave} className="actions" id={props.isSame ? "disabled" : "save"} disabled={props.isSame}>
                 {EN ? 'Save changes' : 'Guardar cambios'}
-            </button>  
-            <button className="actions" id="delete">Delete Account <i className="fas fa-trash-alt"></i></button>       
+            </button>    
+            <section>
+                <p>
+                    Want to delete your account? Click <a href = {`mailto:info@yakera.org?subject=Delete Yakera Donor Account&body=Hello Yakera, I would like to delete my Donor Account with email: ${user.email}`}>here</a> to get in touch with one of the members of the team.
+                </p>
+            </section>  
         </Grid>   
         </Grid>
       </div >
@@ -172,10 +176,10 @@ class CardProfile extends React.Component {
 
         if(e.target.files.length > 0){
             const file = e.target.files[0];
-            if(file.size > 1000000){
+            if(file.size > 5000000){
                 this.props.EN 
-                    ? alert("File too large. (>1MB)")
-                    : alert("Archivo es demasiado grande (>1mb)")
+                    ? alert("File too large. (>5MB)")
+                    : alert("Archivo es demasiado grande (>5mb)")
             }else{
                 var fileName = file.name;
                 var idxDot = fileName.lastIndexOf(".") + 1;

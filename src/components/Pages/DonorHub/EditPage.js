@@ -29,6 +29,7 @@ function EditPage(props) {
     const [error, setError] = useState("");
     const [success, setSuccess] = useState("");
     const [profileData, setProfileData] = useState({});
+    const [isSame, setIsSame] = useState(true);
     const [profileImage, setProfileImage] = useState("");
   
     React.useEffect(() => {
@@ -69,6 +70,7 @@ function EditPage(props) {
     }
 
     function handleChange(e){
+        setIsSame(false)
         if(e.target.name === "location" || e.target.name === "age" || e.target.name === "bio"){
             setProfileData({
                 ...profileData,
@@ -143,7 +145,7 @@ function EditPage(props) {
     }else{
         return (
             <div className='edit'>
-                <EditPageVisual EN = {EN} data={profileData} handleChange={handleChange} OnSave={OnSave} error={error} success={success} loading={loading}/>
+                <EditPageVisual EN = {EN} data={profileData} handleChange={handleChange} OnSave={OnSave} error={error} success={success} loading={loading} isSame={isSame}/>
                 <br />
                 <br />
                 <br />

@@ -162,10 +162,10 @@ class CardProfile extends React.Component {
 
         if(e.target.files.length > 0){
             const file = e.target.files[0];
-            if(file.size > 1000000){
+            if(file.size > 5000000){
                 this.props.EN 
-                    ? alert("File too large. (>1MB)")
-                    : alert("Archivo es demasiado grande (>1mb)")
+                    ? alert("File too large. (>5MB)")
+                    : alert("Archivo es demasiado grande (>5mb)")
             }else{
                 var fileName = file.name;
                 var idxDot = fileName.lastIndexOf(".") + 1;

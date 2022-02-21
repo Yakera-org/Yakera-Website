@@ -43,6 +43,85 @@ function DonorHub() {
           const res = await api.get('/profile');
           console.log(res)
           setProfileData(res.data.data);
+          const lol = {
+            "user": {
+                "donorInfo": {
+                    "location": "London",
+                    "age": "22",
+                    "bio": "Hi, I am Jango. CS student, yaya"
+                },
+                "role": "donor",
+                "firstName": "Jango Donor",
+                "lastName": "dooonor",
+                "email": "jang.belche@student.manchester.ac.uk",
+                "phone": "123",
+                "profilePicture": "https://yakera-files.s3.us-east-2.amazonaws.com/profile-pictures/comet-min.png"
+            },
+            "donations": [
+                {
+                    "_id": "618da2d92f3ad1cd5750a5d2",
+                    "donationId": "620e4355f6afc8d78e491e49",
+                    "email": "jang.belche@student.manchester.ac.uk",
+                    "amount": 5,
+                    "tip": 0,
+                    "paymentMethod": "paypal",
+                    "comment": "Vamos José",
+                    "title": "Alimentación",
+                    "slug": "alimentacion",
+                    "category": "education",
+                    "createdAt": "2022-02-17T12:45:09.495Z"
+                }, {
+                    "_id": "618da2d92f3ad1cd5750a5d2",
+                    "donationId": "620e4355f6afc8d78e491e49",
+                    "email": "jang.belche@student.manchester.ac.uk",
+                    "amount": 5,
+                    "tip": 0,
+                    "paymentMethod": "paypal",
+                    "comment": "Vamos José",
+                    "title": "Alimentación",
+                    "slug": "alimentacion",
+                    "category": "nutrition",
+                    "createdAt": "2022-02-17T12:45:09.495Z"
+                }, {
+                    "_id": "618da2d92f3ad1cd5750a5d2",
+                    "donationId": "620e4355f6afc8d78e491e49",
+                    "email": "jang.belche@student.manchester.ac.uk",
+                    "amount": 5,
+                    "tip": 0,
+                    "paymentMethod": "paypal",
+                    "comment": "Vamos José",
+                    "title": "Alimentación",
+                    "slug": "alimentacion",
+                    "category": "nutrition",
+                    "createdAt": "2022-02-17T12:45:09.495Z"
+                }, {
+                    "_id": "618da2d92f3ad1cd5750a5d2",
+                    "donationId": "620e4355f6afc8d78e491e49",
+                    "email": "jang.belche@student.manchester.ac.uk",
+                    "amount": 5,
+                    "tip": 0,
+                    "paymentMethod": "paypal",
+                    "comment": "Vamos José",
+                    "title": "Alimentación",
+                    "slug": "alimentacion",
+                    "category": "nutrition",
+                    "createdAt": "2022-02-17T12:45:09.495Z"
+                }, {
+                    "_id": "618da2d92f3ad1cd5750a5d2",
+                    "donationId": "620e4355f6afc8d78e491e49",
+                    "email": "jang.belche@student.manchester.ac.uk",
+                    "amount": 5,
+                    "tip": 0,
+                    "paymentMethod": "paypal",
+                    "comment": "Vamos José",
+                    "title": "Alimentación",
+                    "slug": "alimentacion",
+                    "category": "education",
+                    "createdAt": "2022-02-17T12:45:09.495Z"
+                }
+            ]
+        }
+        setProfileData(lol);
           setLoaded(true);
       } catch (err) {
           setError('Profile not found');

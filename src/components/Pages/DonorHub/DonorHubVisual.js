@@ -1,7 +1,9 @@
 import React, {useState, useEffect} from 'react';
 import { Grid } from '@material-ui/core';
-
 import DonorHubBars from './DonorHubBars';
+
+const bannerBig = 'https://assets.yakera.org/yakera/banner-donorhub-large.svg';
+const banner = 'https://assets.yakera.org/yakera/banner-donorhub-big.svg';
 
 const colorDic = {
   "education": 'rgb(117, 212, 117)',
@@ -98,6 +100,7 @@ function DonorHubVisual(props) {
       <Grid container spacing={1} style={{ textAlign: 'center' }}>
         <Grid item xs={12} sm={12}>
           <div className='banner'>
+            <img src={window.innerWidth < 600 ? bannerBig : banner} alt="banner-im" />
           </div>
         </Grid>
         <Grid item xs={12} sm={12} >
@@ -234,20 +237,32 @@ function DonorHubVisual(props) {
                       donations.reverse().map((donation, i) => {
                         if(i<3){
                           return(
-                            <div key={i} className='recent-box' style={{borderColor:colorDic[donation.category]}}>
-                              <p>
-                                Donation of <b id="amount">{donation.amount}$</b>
-                              </p>
-                              <p>
-                                To the campaign: <i>{donation.title}</i>
-                                <br />  
+                            <div key={i} className='recent-box'>
+                              <Grid container spacing={0} style={{ textAlign: 'center' }} >
+                                <Grid item xs={2} sm={2} >
+                                  <div className='image-circle' style={{backgroundColor:colorDic[donation.category], opacity:"0.5"}}>
+                                      
+                                  </div>
 
-                              {donation.comment
-                              ? <b>"{donation.comment}"</b>
-                              :
-                              ""}
-                              </p>                              
-                              <a href={`/campaign/${donation.slug}`}>Go to campaign</a>
+                                </Grid>
+                                <Grid item xs={10} sm={10} >
+                                  <div className='update'>
+                                    <div id="title">
+                                      Donation of <b id="amount">{donation.amount}$</b>
+                                    </div>
+                                    <p>
+                                      To the campaign: <i>{donation.title}</i>
+                                      <br />  
+
+                                      </p>                              
+                                    {donation.comment
+                                    ? <div id="comment">"{donation.comment}"</div>
+                                    :
+                                    ""}
+                                    <a href={`/campaign/${donation.slug}`}>Go to campaign →</a>
+                                  </div>
+                                </Grid>
+                              </Grid>
                             </div>
                           )
                         }else{
