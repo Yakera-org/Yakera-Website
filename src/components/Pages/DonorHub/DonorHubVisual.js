@@ -89,7 +89,7 @@ function DonorHubVisual(props) {
     var max = Math.max(totalBusiness, totalHealth, totalEducation, totalFood);
 
     return(
-      50 * getCatAmount(cat) / max 
+      75 * getCatAmount(cat) / max 
     )
   }
 
@@ -213,8 +213,8 @@ function DonorHubVisual(props) {
                     {
                       donations.map((donation, i) => {
                         return(
-                            <Grid item xs={2} sm={1}>
-                              <div style={{backgroundColor:colorDic[donation.category]}} key={i} className='campaign-circle'>
+                            <Grid key={i} item xs={2} sm={1}>
+                              <div style={{backgroundColor:colorDic[donation.category]}}  className='campaign-circle'>
                               
                               </div>
                             </Grid>

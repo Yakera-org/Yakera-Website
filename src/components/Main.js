@@ -46,7 +46,7 @@ function Main() {
             }
         } catch (e) {
             console.log(e)
-            LanguageService.setLanguage()
+            LanguageService.setLanguage('en')
         }
         setLoaded(true)
     }
