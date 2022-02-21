@@ -42,13 +42,17 @@ function DonorHub() {
       try {
           const res = await api.get('/profile');
           console.log(res)
-          setProfileData(res.data.data);
+          setProfileData(res.data.data);          
+          localStorage.setItem('email', res.data.data.user.email);
+          localStorage.setItem('name', res.data.data.user.firstName + " " + res.data.data.user.lastName );
           setLoaded(true);
       } catch (err) {
           setError('Profile not found');
           setLoaded(true);
           TokenService.removeAccessToken()
           TokenService.removeRefreshToken()
+          localStorage.removeItem("email")
+          localStorage.removeItem("name")
           window.location.replace('/login')
       }
   }

@@ -222,25 +222,25 @@ hr{
 }
 
 .circle-2 {
-  background-color: #01224d;
+  background-color: #7099d0;
   border: 5px solid #b6d0f3d2;
   margin-left: 0%;
 }
 
 .circle-3 {
-  background-color: rgb(245, 151, 167);
+  background-color: #ff7d7d;
   border: 5px solid rgb(250, 200, 200);
   margin-left: 20%;
 }
 
 .circle-4{
-  background-color: rgb(117, 212, 117);
-  border: 5px solid rgb(202, 241, 202);
+  background-color: #71b98f;
+  border: 5px solid #b5e4c8;
   margin-left: 20%;
 }
 .circle-5{
-  background-color: #f7bc55;
-  border: 5px solid #ffe4b7;
+  background-color: #edc343;
+  border: 5px solid #ffe596;
   margin-left: 0%;
   margin-top: 5%;
 }
