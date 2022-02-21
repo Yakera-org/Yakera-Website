@@ -248,10 +248,11 @@ function DonorHubVisual(props) {
                                 <Grid item xs={10} sm={10} >
                                   <div className='update'>
                                     <div id="title">
-                                      Donation of <b id="amount">{donation.amount}$</b>
+                                     <b id="amount">${donation.amount}</b> {EN ? " Donation" : " Donación"}
                                     </div>
                                     <p>
-                                      To the campaign: <i>{donation.title}</i>
+                                      {EN ? "To the campaign: " : "A la campaña: "}
+                                       <i>{donation.title}</i>
                                       <br />  
 
                                       </p>                              
@@ -259,7 +260,7 @@ function DonorHubVisual(props) {
                                     ? <div id="comment">"{donation.comment}"</div>
                                     :
                                     ""}
-                                    <a href={`/campaign/${donation.slug}`}>Go to campaign →</a>
+                                    <a href={`/campaign/${donation.slug}`}>{EN ? "Go to campaign →" : "Ir a la campaña →"}</a>
                                   </div>
                                 </Grid>
                               </Grid>

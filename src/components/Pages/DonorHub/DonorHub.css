@@ -298,6 +298,7 @@ hr{
 
 .recent-act h3{
   color: #ea8737;
+  margin-bottom: 15px;
 }
 
 .recent-act hr{
@@ -334,7 +335,6 @@ hr{
   font-weight: bold;
   font-size: 18px;
   margin-top: -22px;
-  padding: 0 10px;
   font-family: Intro-Light;
 }
 .recent-box p{
