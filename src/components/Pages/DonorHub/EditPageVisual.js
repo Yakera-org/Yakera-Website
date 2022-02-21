@@ -28,7 +28,7 @@ function EditPageVisual(props) {
             <div className='card-area'>
             <Grid container spacing={1} style={{ textAlign: 'center' }}>
                 <Grid item xs={12} sm={6} >
-                    <CardProfile EN={EN} data={props.data} seed={Math.floor(Math.random()*random_profiles.length)}/>
+                    <CardProfile EN={EN} data={props.data} seed={Math.floor(Math.random()*random_profiles.length)} setIsSame={props.setIsSame}/>
                 </Grid>
                 <Grid item xs={12} sm={6} id="details" >
                     <label>
@@ -186,6 +186,7 @@ class CardProfile extends React.Component {
                 var extFile = fileName.substr(idxDot, fileName.length).toLowerCase();
                 if (extFile==="jpg" || extFile==="jpeg" || extFile==="png"){
                     reader.onloadend = () => {
+                        this.props.setIsSame(false)
                         this.setState({
                         file: file,
                         imagePreviewUrl: reader.result
@@ -222,6 +223,7 @@ class CardProfile extends React.Component {
                 file: '',
                 imagePreviewUrl: random_profiles[index]
             })
+        this.props.setIsSame(false)
         this.props.data.user.profilePicture = random_profiles[index]
     }
     

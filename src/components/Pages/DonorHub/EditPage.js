@@ -134,6 +134,7 @@ function EditPage(props) {
             setError("Something went wrong, please try again.")
         }
         setLoading(false)
+        setIsSame(true)
     }
 
     if(!loaded){
@@ -145,7 +146,7 @@ function EditPage(props) {
     }else{
         return (
             <div className='edit'>
-                <EditPageVisual EN = {EN} data={profileData} handleChange={handleChange} OnSave={OnSave} error={error} success={success} loading={loading} isSame={isSame}/>
+                <EditPageVisual EN = {EN} data={profileData} handleChange={handleChange} OnSave={OnSave} error={error} success={success} loading={loading} isSame={isSame} setIsSame={setIsSame}/>
                 <br />
                 <br />
                 <br />
