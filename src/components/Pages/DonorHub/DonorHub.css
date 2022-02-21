@@ -358,9 +358,13 @@ hr{
 
 .recent-box .image-circle{
   border-radius: 50%;
-  width: 75px;
-  height: 75px;
   margin-top: 5px;
+}
+.recent-box .image-circle img{
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
 }
 
 .increase-impact{

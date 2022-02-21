@@ -239,13 +239,13 @@ function DonorHubVisual(props) {
                           return(
                             <div key={i} className='recent-box'>
                               <Grid container spacing={0} style={{ textAlign: 'center' }} >
-                                <Grid item xs={2} sm={2} >
-                                  <div className='image-circle' style={{backgroundColor:colorDic[donation.category], opacity:"0.5"}}>
-                                      
+                                <Grid item xs={3} sm={3} >
+                                  <div className='image-circle' >
+                                      <img src={donation.mainPicture.url} alt="recent-cam-pic" style={{border:"7px " + colorDic[donation.category] + " solid"}}/>
                                   </div>
 
                                 </Grid>
-                                <Grid item xs={10} sm={10} >
+                                <Grid item xs={9} sm={9} >
                                   <div className='update'>
                                     <div id="title">
                                      <b id="amount">${donation.amount}</b> {EN ? " Donation" : " Donación"}
