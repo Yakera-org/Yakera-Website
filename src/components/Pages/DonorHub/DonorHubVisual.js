@@ -274,22 +274,27 @@ function DonorHubVisual(props) {
                   
                 </Grid>
               </Grid>
+              <Grid 
+                container
+                spacing={0} 
+                className='increase-impact'
+              >
+                <Grid item xs={3} sm={3}  >
+                  <img src={user.profilePicture} alt="increase-impact" />
+                </Grid>
+                <Grid item xs={9} sm={9}>
+                  <h4>
+                    {EN ? 'Increase your impact' : '¡Sigue cambiando la vida de más personas!'}
+                  </h4>
+                  <a href='/campaigns'>
+                    {EN ? 'Fund more dreams' : 'Apoya más campañas acá'}
+                  </a>
+                </Grid>
+              </Grid>
             </Grid>
           </Grid>
           
 
-          <Grid container spacing={0} className='increase-impact'>
-            <Grid item xs={12} sm={12}>
-              <h3>
-                {EN ? 'Increase your impact' : 'Continúa tu impacto'}
-              </h3>
-            </Grid>
-            <Grid item xs={12} sm={12}>
-              <a href='/campaigns'>
-                {EN ? 'Fund more dreams' : 'Ayuda a más personas'}
-              </a>
-            </Grid>
-          </Grid>
         </Grid>
       </Grid>
     </div >

@@ -364,19 +364,27 @@ hr{
 }
 
 .increase-impact{
-  margin-top: 25px;
+  text-align: left;
+  padding: 10%;
 }
-.increase-impact h3{
-  margin: 20px;
+.increase-impact img{
+  width: 100px;
+  height: 100px;
+}
+.increase-impact h4{
+  margin: 5px 20px;
 }
 .increase-impact a {
+  text-align: center;
+  appearance: button;
   border-radius: 20px;
   border: none;
   color: white;
-  background-color: #01224d;
-  font-size: 20px;
+  background-color: #ea8737;
+  font-size: 15px;
   padding: 10px 15px;
   text-decoration: none;
+  margin: 5px 20px;
 }
 .increase-impact a:hover {
   opacity: 0.8;
