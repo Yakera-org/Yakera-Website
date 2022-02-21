@@ -98,12 +98,18 @@ class NavBar extends Component {
             window.alert('User logged out successfully!')
             TokenService.removeAccessToken();
             TokenService.removeRefreshToken();
+            localStorage.removeItem("userType");
+            localStorage.removeItem("email")
+            localStorage.removeItem("name")
             localStorage.setItem('currentTab', 'home')
             window.location.href = "/";
         }catch(err){
             console.log('error: ' + err);
             TokenService.removeAccessToken();
             TokenService.removeRefreshToken();
+            localStorage.removeItem("userType");
+            localStorage.removeItem("name")
+            localStorage.removeItem("email")
             localStorage.setItem('currentTab', 'home')
             window.location.href = "/";
         }
