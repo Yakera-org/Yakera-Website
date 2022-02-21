@@ -6,10 +6,10 @@ const bannerBig = 'https://assets.yakera.org/yakera/banner-donorhub-large.svg';
 const banner = 'https://assets.yakera.org/yakera/banner-donorhub-big.svg';
 
 const colorDic = {
-  "education": 'rgb(117, 212, 117)',
-  "healthcare": 'rgb(245, 151, 167)',
-  "small_business":'#01224d',
-  "nutrition": '#f7bc55',
+  "education": '#71b98f',
+  "healthcare": '#ff7d7d',
+  "small_business":'#7099d0',
+  "nutrition": '#edc343',
 };
 
 
