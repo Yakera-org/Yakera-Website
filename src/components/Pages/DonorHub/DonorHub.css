@@ -111,7 +111,7 @@ hr{
 
 .total-donations hr {
   background-color: #ea8737;
-  height: 10px;
+  height: 6px;
   width: 8%;
   border-radius: 16px;
   transform: rotate(90deg);
@@ -123,7 +123,8 @@ hr{
   margin-top: -46px;
   margin-left: 12%;
   width: 50%;
-  text-align: justify;
+  text-align: left;
+  font-size: 20px;
 }
 
 .esp-txt{
@@ -418,16 +419,6 @@ hr{
   margin-top: -32px;
   margin-left: -80px;
 }
-
-.total-donations hr {
-  background-color: #ea8737;
-  height: 10px;
-  width: 8%;
-  border-radius: 16px;
-  transform: rotate(90deg);
-  margin-right: 85.5%;
-  margin-top: 100px;
-}
 }
 
 @media only screen and (max-width: 600px) {
@@ -504,11 +495,7 @@ hr{
 }
 
 .total-donations hr {
-  background-color: #ea8737;
-  height: 10px;
   width: 11%;
-  border-radius: 16px;
-  transform: rotate(90deg);
   margin-right: 80%;
   margin-top: 100px;
 }
@@ -593,7 +580,7 @@ hr{
 
 .total-donations h5{
   margin-left: 18%;
-  width: 60%;
+  width: 70%;
 }
 
 .recent-act h3 , .recent-act p{
@@ -625,7 +612,7 @@ hr{
 }
 .recent-box .update{
   padding: 0%;
-  padding-left: 30px;
+  padding-left: 50px;
   padding-top: 5px;
 }
 .recent-box #title{

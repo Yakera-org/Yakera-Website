@@ -209,16 +209,16 @@ function DonorHubVisual(props) {
                   <h5 style = {{padding: '3px 0px 0px 10px'}}>
                     {EN ? 
                     'You have helped fund a total of ' : 'Has donado a un total de '}
-                      <b style = {{color: "#eb913b"}}>
+                      <span style = {{color: "#eb913b"}}>
                         {EN ? 
                         donations.length > 1 ? donations.length + ' campaigns' : donations.length + ' campaign'
                         :
                         donations.length > 1 ? donations.length + ' campañas' : donations.length + ' campaña'}
-                      </b>
+                      </span>
                   </h5>
                 </Grid>
                 <Grid item xs={12} sm={12} className='campaigns-preview' >
-                  <Grid container spacing={0} style={{ textAlign: 'center' }} >
+                  <Grid container spacing={6} style={{ textAlign: 'center' }} >
                     {
                       donations.map((donation, i) => {
                         return(
@@ -230,7 +230,10 @@ function DonorHubVisual(props) {
                         )
                       })
                     }
-                  <button onClick={() => window.location = '/campaigns'}><i className="fas fa-2x fa-plus"></i></button>
+                  <Grid item xs={2} sm={1}>
+                    <button onClick={() => window.location = '/campaigns'}><i className="fas fa-2x fa-plus"></i></button>
+                  </Grid>
+                  
                   </Grid> 
                    
                   
@@ -240,7 +243,7 @@ function DonorHubVisual(props) {
                   {/* <p>{EN ? 'Your recent donations' : 'de las campañas a las que has donado'}</p> */}
                   <hr />
                   {
-                      donations.reverse().map((donation, i) => {
+                      donations.map((donation, i) => {
                         if(i<3){
                           return(
                             <div key={i} className='recent-box'>
