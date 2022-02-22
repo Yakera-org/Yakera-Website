@@ -4,6 +4,7 @@ import DonorHubBars from './DonorHubBars';
 
 const bannerBig = 'https://assets.yakera.org/yakera/banner-donorhub-large.svg';
 const banner = 'https://assets.yakera.org/yakera/banner-donorhub-big.svg';
+const donorCTA = 'https://assets.yakera.org/yakera/donor-cta.svg';
 
 const colorDic = {
   "education": '#71b98f',
@@ -130,12 +131,17 @@ function DonorHubVisual(props) {
                 ?
                 user.donorInfo.bio
                 :
-                <>No Biography, add on <a style={{textDecoration:"underline"}} href="/donor-hub/edit">here</a></>
+                <>
+                  {EN ? 'No Biography, add on ' : 'No hay una biografía, '}
+                  <a style={{textDecoration:"underline"}} href="/donor-hub/edit">
+                    {EN ? 'here' : 'agregar una'}
+                  </a>
+                </>
                 }
               </p>
             </Grid>
             <Grid item xs={12} sm={12}>
-              <button onClick={OnEdit} className='edit-btn'>Edit profile</button>
+              <button onClick={OnEdit} className='edit-btn'>{EN ? 'Edit profile' : 'Editar perfil'}</button>
             </Grid>
           </Grid>
         </Grid>
@@ -280,14 +286,14 @@ function DonorHubVisual(props) {
                 className='increase-impact'
               >
                 <Grid item xs={3} sm={3}  >
-                  <img src={user.profilePicture} alt="increase-impact" />
+                  <img src={donorCTA} alt="increase-impact" style={{height: window.innerWidth < 1000 ? '100px' : '100%',}}/>
                 </Grid>
                 <Grid item xs={9} sm={9}>
                   <h4>
-                    {EN ? 'Increase your impact' : '¡Sigue cambiando la vida de más personas!'}
+                    {EN ? "Keep changing people's lives!" : '¡Sigue cambiando la vida de más personas!'}
                   </h4>
                   <a href='/campaigns'>
-                    {EN ? 'Fund more dreams' : 'Apoya más campañas acá'}
+                    {EN ? 'Fund more dreams' : 'Apoya más campañas aquí'}
                   </a>
                 </Grid>
               </Grid>

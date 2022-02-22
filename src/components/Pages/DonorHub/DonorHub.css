@@ -371,10 +371,11 @@ hr{
   text-align: left;
   padding: 10%;
 }
-.increase-impact img{
+/* .increase-impact img{
+  object-fit: contain;
   width: 100px;
-  height: 100px;
-}
+  height: 90%;
+} */
 .increase-impact h4{
   margin: 5px 20px;
 }
