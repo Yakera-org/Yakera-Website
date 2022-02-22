@@ -12,8 +12,8 @@
 .donorhub-container{
   margin: 0 auto;
   width: 70%;
+  height: 1900px;
   background-color: white;
-  padding-bottom: 150px;
 }
 
 .banner{
@@ -402,7 +402,6 @@ hr{
   margin: 0 auto;
   margin-top: 10%;
   width: 70%;
-  height: 100%;
   background-color: white;
 }
 
