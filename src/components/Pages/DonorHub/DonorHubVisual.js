@@ -98,7 +98,7 @@ function DonorHubVisual(props) {
 
   return (
     <div className='donorhub-container' style={{ paddingBottom:"400px" }}>
-      <Grid container spacing={1} style={{ textAlign: 'center', paddingBottom: donations.length * 3 }}>
+      <Grid container spacing={1} style={{ textAlign: 'center', paddingBottom: Math.min(donations.length * 3, 300)}}>
         <Grid item xs={12} sm={12}>
           <div className='banner'>
             <img src={window.innerWidth < 600 ? bannerBig : banner} alt="banner-im" />
@@ -221,13 +221,18 @@ function DonorHubVisual(props) {
                   <Grid container spacing={6} style={{ textAlign: 'center' }} >
                     {
                       donations.map((donation, i) => {
-                        return(
-                            <Grid key={i} item xs={2} sm={1}>
-                              <div style={{backgroundColor:colorDic[donation.category]}}  className='campaign-circle'>
-                              
-                              </div>
-                            </Grid>
-                        )
+                        if(i<100){
+                          return(
+                              <Grid key={i} item xs={2} sm={1}>
+                                <div style={{backgroundColor:colorDic[donation.category]}}  className='campaign-circle'>
+                                
+                                </div>
+                              </Grid>
+                          )
+                        }else{
+                          return ""
+                        }
+
                       })
                     }
                   <Grid item xs={2} sm={1}>
