@@ -12,7 +12,6 @@
 .donorhub-container{
   margin: 0 auto;
   width: 70%;
-  height: 1900px;
   background-color: white;
 }
 
@@ -371,6 +370,7 @@ hr{
 .increase-impact{
   text-align: left;
   padding: 10%;
+  margin-top: -80px;
 }
 /* .increase-impact img{
   object-fit: contain;
@@ -656,6 +656,8 @@ hr{
 .increase-impact{
   text-align: left;
   padding: 10%;
+  margin-top: -20px;
+  margin-bottom: -150px;
 }
 .increase-impact h4, .increase-impact a{
   margin-left: 30px;
