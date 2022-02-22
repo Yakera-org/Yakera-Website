@@ -15,6 +15,7 @@ class CampaignPage extends Component{
     }
 
     async componentDidMount(){
+        localStorage.setItem('currentTab', "campaigns");
         var language = LanguageService.getLanguage()
         let found = false;
         try {

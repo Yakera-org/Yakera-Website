@@ -15,59 +15,71 @@ function EditPageVisual(props) {
           <Grid item xs={12} sm={12}>
             <div className='banner'>
                 <h2>
-                    Edit Profile Details
+                    {EN ? ' Edit Profile Details' : ' Editar detalles del perfil'} 
                 </h2>
-                <a href="/donor-hub">Return to Donor Hub</a>
+                <a href="/donor-hub">
+                    {/* <i className=''></i> */}
+                    <i class="fas fa-arrow-left"></i>
+                    {EN ? ' Return' : ' Volver'}
+                </a>
             </div>
           </Grid>    
         <Grid item xs={12} sm={12}>
             <div className='card-area'>
             <Grid container spacing={1} style={{ textAlign: 'center' }}>
                 <Grid item xs={12} sm={6} >
-                    <CardProfile data={props.data} seed={Math.floor(Math.random()*random_profiles.length)}/>
+                    <CardProfile EN={EN} data={props.data} seed={Math.floor(Math.random()*random_profiles.length)} setIsSame={props.setIsSame}/>
                 </Grid>
                 <Grid item xs={12} sm={6} id="details" >
-                    <label>Location (optional):</label>
+                    <label>
+                        {EN ? 'Location (optional):' : 'Dirección (opcional):'}
+                    </label>
                     <input
                         type="text"
                         name="location"
                         maxLength="50"
-                        placeholder={EN ? "Enter your location" : "Dirección" }
+                        placeholder={EN ? "Enter your location" : "Tu dirección" }
                         value={user.donorInfo.location}
                         onChange={props.handleChange}
                         className='form-control'
                         
                     />
 
-                    <label>Phone (optional):</label>
+                    <label>
+                        {EN ? 'Phone (optional):' : 'Número telefónico (opcional):'}
+                    </label>
                     <input
                         type="text"
                         name="phone"
                         maxLength="20"
-                        placeholder={EN ? "Enter your number" : "Número telefónico" }
+                        placeholder={EN ? "Enter your number" : "Tu número telefónico" }
                         value={user.phone}
                         onChange={props.handleChange}
                         className='form-control'
                     />
 
-                    <label>Age (optional):</label>
+                    <label>
+                        {EN ? 'Age (optional):' : 'Edad (opcional):'}
+                    </label>
                     <input
                         type="number"
                         name="age"
                         min="1" max="5"
                         maxLength="2"
-                        placeholder={EN ? "Enter your age" : "Número telefónico" }
+                        placeholder={EN ? "Enter your age" : "Tu edad" }
                         value={user.donorInfo.age}
                         onChange={props.handleChange}
                         className='form-control'
                     />
                     
-                    <label>Bio (optional):</label>
+                    <label>
+                        {EN ? 'Bio (optional):' : 'Biografía (opcional):'}
+                    </label>
                     <textarea
                         type="textarea"
                         name="bio"
                         maxLength="500"
-                        placeholder={EN ? "Enter a short description about yourself" : "Número telefónico" }
+                        placeholder={EN ? "Enter a short description about yourself" : "Una descripción personal breve" }
                         value={user.donorInfo.bio}
                         onChange={props.handleChange}
                         className='form-control'
@@ -109,8 +121,14 @@ function EditPageVisual(props) {
                     ''
                 }
             <hr />
-            <button onClick={props.OnSave} className="actions" id="save">Save <i className="fas fa-check" ></i> </button>  
-            <button className="actions" id="delete">Delete Account <i className="fas fa-trash-alt"></i></button>       
+            <button onClick={props.OnSave} className="actions" id={props.isSame ? "disabled" : "save"} disabled={props.isSame}>
+                {EN ? 'Save changes' : 'Guardar cambios'}
+            </button>    
+            <section>
+                <p>
+                    Want to delete your account? Click <a href = {`mailto:info@yakera.org?subject=Delete Yakera Donor Account&body=Hello Yakera, I would like to delete my Donor Account with email: ${user.email}`}>here</a> to get in touch with one of the members of the team.
+                </p>
+            </section>  
         </Grid>   
         </Grid>
       </div >
@@ -129,6 +147,7 @@ const random_profiles = [
 
 
 const ImgUpload =({
+    EN,
     onChange,
     src,
     file
@@ -137,7 +156,7 @@ const ImgUpload =({
       <div>
         <img htmlFor="photo-upload" alt="profile-upload" src={src}/>
       </div>
-      <button>Upload File</button>
+      <button>{EN ? 'Upload File' : 'Subir archivo'}</button>
       <p id="pic-name">{file.name}</p>
       <input id="photo-upload" type="file" accept="image/*" onChange={onChange}/> 
     </label>
@@ -157,14 +176,17 @@ class CardProfile extends React.Component {
 
         if(e.target.files.length > 0){
             const file = e.target.files[0];
-            if(file.size > 1000000){
-                alert("File too large. (>1MB)");
+            if(file.size > 5000000){
+                this.props.EN 
+                    ? alert("File too large. (>5MB)")
+                    : alert("Archivo es demasiado grande (>5mb)")
             }else{
                 var fileName = file.name;
                 var idxDot = fileName.lastIndexOf(".") + 1;
                 var extFile = fileName.substr(idxDot, fileName.length).toLowerCase();
                 if (extFile==="jpg" || extFile==="jpeg" || extFile==="png"){
                     reader.onloadend = () => {
+                        this.props.setIsSame(false)
                         this.setState({
                         file: file,
                         imagePreviewUrl: reader.result
@@ -173,7 +195,9 @@ class CardProfile extends React.Component {
                     reader.readAsDataURL(file);
                     this.props.data.user.profilePicture = file
                 }else{
-                    alert("Only png/jpg/jpeg and png files are allowed!");
+                    this.props.EN
+                        ? alert("Only png/jpg/jpeg and png files are allowed!")
+                        : alert("Solamente se acepta archivos png./jpg/jpeg!");
                 }              
             }
         }
@@ -199,6 +223,7 @@ class CardProfile extends React.Component {
                 file: '',
                 imagePreviewUrl: random_profiles[index]
             })
+        this.props.setIsSame(false)
         this.props.data.user.profilePicture = random_profiles[index]
     }
     
@@ -206,13 +231,18 @@ class CardProfile extends React.Component {
       const {imagePreviewUrl, file} = this.state;
       return (
         <div className='profile'>           
-            <ImgUpload onChange={this.photoUpload} src={imagePreviewUrl} file={file} />      
+            <ImgUpload EN={this.props.EN} onChange={this.photoUpload} src={imagePreviewUrl} file={file} />      
             {
                 file
                 ?
-                <button id="reset" onClick={this.resetPhoto}>Reset Picture</button>
+                <button id="reset" onClick={this.resetPhoto}>{this.props.EN ? 'Reset Picture' : 'Reajustar foto'}</button>
                 :
-                <button id="random" onClick={this.randomPhoto}>Select Yakera Avatar</button>
+                <button id="random" onClick={this.randomPhoto}>
+                    {this.props.EN 
+                        ? 'Select Yakera Avatar'
+                        : 'Seleccionar Avatar de Yakera'
+                    }
+                </button>
                 
             }
 

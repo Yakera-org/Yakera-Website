@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import { Dialog } from '@material-ui/core';
+import LanguageService from '../../../services/language';
 
 var consent = "consent.html";
 
@@ -12,9 +13,9 @@ class Thankscard extends Component{
     }
 
     componentDidMount(){
-        var lang = localStorage.getItem("lang");
+        var lang = LanguageService.getLanguage()
         if(!lang){
-            localStorage.setItem("lang", "en");
+            LanguageService.setLanguage()
         }
         if(lang === "en"){
             consent= "consent.html"

@@ -14,13 +14,12 @@
     padding: 50px;
 }
 .edit .banner{
-    padding: 20px;
-    padding-top: 50px;
+    padding: 100px 20px ;
     color: #353535;
     text-align: left;
 }
 .edit .banner a{
-    text-decoration: underline;
+    text-decoration: none;
 }
 .edit .banner h2{
     text-align: center;
@@ -155,19 +154,28 @@
     outline: none;
     border: none;
     padding: 20px;
-    margin: 10px;
     margin-bottom: 0px;
-}
-.edit .actions:hover{
-    opacity: 0.8;
 }
 .edit #save{
     background-color: #d4edda;
     color: #00360c;
 }
-.edit #delete{
-    background-color: #f8d7da;
-    color: #660000;
+.edit #save:hover{
+    background-color: #aadab5;
+    color: #00360c;
+}
+.edit #disabled{
+    background-color: #b3b3b3;
+    color: #252525;
+}
+.edit #disabled:hover{
+    cursor: not-allowed;
+}
+.edit section{
+    margin: 10px;
+}
+.edit section a{
+    font-weight: bold;
 }
 
 @media only screen and (max-width: 600px) {

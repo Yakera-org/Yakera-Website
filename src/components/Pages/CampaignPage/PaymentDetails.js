@@ -22,12 +22,12 @@ class PaymentDetails extends PureComponent {
                 error: '',
               },
             name: {
-                value: '',
+                value: localStorage.getItem("name") ? localStorage.getItem("name") : '',
                 validateOnChange: false,
                 error: '',
             },
             email: {
-                value: '',
+                value: localStorage.getItem("email") ? localStorage.getItem("email") : '',
                 validateOnChange: false,
                 error: '',
             },

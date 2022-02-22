@@ -11,7 +11,6 @@
 
 .donorhub-container{
   margin: 0 auto;
-  margin-top: 7.8%;
   width: 70%;
   background-color: white;
   padding-bottom: 150px;
@@ -19,8 +18,9 @@
 
 .banner{
   background-color: #ffe7c3;
-  height: 150px;
+  height: auto;
   border-radius: 0 0 10px 10px;
+  margin-top: -20px;
 }
 
 .user-info{
@@ -34,14 +34,16 @@
 }
 
 .user-info .user-img{
-  border: solid #ea8737 10px;
-  border-radius: 100%;
-  width: 150px;
-  height: 150px;
-  margin-top: -8.7%;
-  margin-left: 44.4%;
+  margin-top: -9.7%;
   margin-bottom: 0px;
   object-fit: cover;
+}
+.user-info .user-img img{
+  border-radius: 50%;  
+  border: solid #ea8737 10px;
+  text-align: center;
+  width: 210px;
+  height: 210px;
 }
 .user-info hr{
   width: 15%;
@@ -143,12 +145,10 @@ hr{
 }
 
 .campaigns-preview .campaign-circle {
-  color:#ea8737;
   background-color: #ea8737;
-  border-radius: 100%;
-  width: 45px;
-  height: 45px;
-  margin-right: 1%;
+  border-radius: 50%;
+  width: 43px;
+  height: 43px;
   margin-bottom: 5px;
 }
 
@@ -158,8 +158,9 @@ hr{
   border-radius: 50%;
   background-color: #c4c4c4;
   color: #575757;
-  width: 45px;
-  height: 45px;
+  width: 43px;
+  height: 43px;
+  margin: 0 2px;
 }
 .campaigns-preview i:hover {
   cursor: pointer;
@@ -182,9 +183,9 @@ hr{
   margin-bottom: -100px;
 }
 .donations-info #sub{
-  margin-top: 100px;
+  /* margin-top: 100px; */
   margin-bottom: -30px;
-  font-size: 20px;
+  /* font-size: 20px; */
 }
 .donation-circles, .donation-circle {
  padding: 10%;
@@ -221,25 +222,25 @@ hr{
 }
 
 .circle-2 {
-  background-color: #01224d;
+  background-color: #7099d0;
   border: 5px solid #b6d0f3d2;
   margin-left: 0%;
 }
 
 .circle-3 {
-  background-color: rgb(245, 151, 167);
+  background-color: #ff7d7d;
   border: 5px solid rgb(250, 200, 200);
   margin-left: 20%;
 }
 
 .circle-4{
-  background-color: rgb(117, 212, 117);
-  border: 5px solid rgb(202, 241, 202);
+  background-color: #71b98f;
+  border: 5px solid #b5e4c8;
   margin-left: 20%;
 }
 .circle-5{
-  background-color: #f7bc55;
-  border: 5px solid #ffe4b7;
+  background-color: #edc343;
+  border: 5px solid #ffe596;
   margin-left: 0%;
   margin-top: 5%;
 }
@@ -297,6 +298,7 @@ hr{
 
 .recent-act h3{
   color: #ea8737;
+  margin-bottom: 15px;
 }
 
 .recent-act hr{
@@ -312,28 +314,85 @@ hr{
 }
 
 .recent-box{
-  background-color: transparent;
-  border-radius: 10px;
   width: 95%;
-  padding: 10px;
-  border: white 5px solid;
-  margin: 5px;
+  margin-top: 25px;
 }
-.recent-box p{
-  text-align: center;
+.recent-box .update{
+  padding: 0 10px;
+}
+.recent-box #title{
+  text-align: left;
   font-size: 18px;
+  font-weight: bold;
 }
 .recent-box #amount{
-  text-align: center;
   font-size: 20px;
   color: #ea8737;
+}
+.recent-box #comment{
+  font-size: 20px;
+  text-align: left;
+  font-weight: bold;
+  font-size: 18px;
+  margin-top: -22px;
+  font-family: Intro-Light;
+}
+.recent-box p{
+  padding: 10px 0;
+  font-size: 18px;
+  font-family: Intro-Light;
 }
 .recent-box b{
   text-align: center;
   font-size: 18px;
 }
 .recent-box a{
+  color: #333333;
+  margin-top: -20px;
+  text-align: right;
   text-decoration: underline;
+}
+.recent-box a:hover{
+  color: #ea8737;
+}
+
+.recent-box .image-circle{
+  border-radius: 50%;
+  margin-top: 5px;
+}
+.recent-box .image-circle img{
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.increase-impact{
+  text-align: left;
+  padding: 10%;
+}
+/* .increase-impact img{
+  object-fit: contain;
+  width: 100px;
+  height: 90%;
+} */
+.increase-impact h4{
+  margin: 5px 20px;
+}
+.increase-impact a {
+  text-align: center;
+  appearance: button;
+  border-radius: 20px;
+  border: none;
+  color: white;
+  background-color: #ea8737;
+  font-size: 15px;
+  padding: 10px 15px;
+  text-decoration: none;
+  margin: 5px 20px;
+}
+.increase-impact a:hover {
+  opacity: 0.8;
 }
 
 @media only screen and (max-width: 1600px) {
@@ -346,10 +405,6 @@ hr{
   background-color: white;
 }
 
-  .user-info .user-img{
-  margin-top: -10%;
-  margin-left: 43%;
-}
   .esp-txt{
   font-size: 20px;
   color: #ea8737;
@@ -385,7 +440,10 @@ hr{
 }
 
 .banner{
-  height: 200px;
+  background-color: #fbefe2;
+  height: auto;
+  border-radius: 0 0 10px 10px;
+  padding-top: 100px;
 }
 
 .user-info{
@@ -395,14 +453,16 @@ hr{
 }
 
 .user-info .user-img{
-  border: solid #ea8737 10px;
-  border-radius: 100%;
-  width: 150px;
-  height: 150px;
-  margin-top: -23%;
-  margin-left: 32%;
-  margin-bottom: 1%;
+  margin-bottom: 0px;
+  object-fit: cover;
 }
+.user-info .user-img img{
+  text-align: center;
+  border-width: 7px;
+  width: 120px;
+  height: 120px;
+}
+
 .user-info hr{
   width: 50%;
   height: 1.5px;
@@ -560,24 +620,58 @@ hr{
 }
 
 .recent-box{
-  background-color: rgb(255, 255, 255);
-  margin-top: 10px;
   width: 100%;
-  border-radius: 16px;
-  margin: 0;
-  padding: 10px;
-  text-align: center;
+  margin-top: 10px;
+}
+.recent-box .update{
+  padding: 0%;
+  padding-left: 30px;
+  padding-top: 5px;
+}
+.recent-box #title{
+  text-align: left;
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: -10px;
+  overflow: visible;
 }
 .recent-box #amount{
-  font-size: 20px;
-  padding: 3px;
-  margin-left: 0%
+  font-size: 18px;
+  color: #ea8737;
+}
+.recent-box #comment{
+  font-size: 18px;
+  text-align: center;
+  font-weight: bold;
+  padding: 0;
+  margin: 0;
+  margin-top: -5px;
+  margin-left: -50px;
+}
+.recent-box p{
+  font-size: 16px;
+  margin: 0;
+  width: 110%;
 }
 .recent-box b{
-  margin-left: 20%;
+  text-align: center;
+  font-size: 18px;
+}
+.recent-box a{
+  display: none;
+}
+.recent-box a:hover{
+  color: #ea8737;
 }
 .circle-5{
   margin-left: -30%;
   margin-top: 0%;
+}
+.increase-impact{
+  text-align: left;
+  padding: 10%;
+}
+.increase-impact h4, .increase-impact a{
+  margin-left: 30px;
 }
 }

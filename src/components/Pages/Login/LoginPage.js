@@ -105,6 +105,7 @@ const LoginPage = () => {
           redirect = ""
         }
 
+        localStorage.setItem('currentTab', redirect);
         window.location.href = redirect
 
       }
