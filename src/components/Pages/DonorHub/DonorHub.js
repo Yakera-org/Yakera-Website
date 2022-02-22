@@ -41,7 +41,6 @@ function DonorHub() {
   async function getInfo() {
       try {
           const res = await api.get('/profile');
-          console.log(res)
           setProfileData(res.data.data);          
           localStorage.setItem('email', res.data.data.user.email);
           localStorage.setItem('name', res.data.data.user.firstName + " " + res.data.data.user.lastName );
