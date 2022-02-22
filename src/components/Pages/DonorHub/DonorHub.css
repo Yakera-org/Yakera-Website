@@ -667,4 +667,11 @@ hr{
   margin-left: -30%;
   margin-top: 0%;
 }
+.increase-impact{
+  text-align: left;
+  padding: 10%;
+}
+.increase-impact h4, .increase-impact a{
+  margin-left: 30px;
+}
 }
