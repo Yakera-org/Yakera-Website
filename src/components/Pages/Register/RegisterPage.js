@@ -67,6 +67,7 @@ function Register() {
   const [EN, setEN] = React.useState(false);
 
   React.useEffect(() => {
+      document.getElementById('card').scrollIntoView(false);
       if(LanguageService.getLanguage()==='en')setEN(true)
       else setEN(false)
   }, []);
