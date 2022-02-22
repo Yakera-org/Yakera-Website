@@ -243,41 +243,37 @@ function DonorHubVisual(props) {
                   {/* <p>{EN ? 'Your recent donations' : 'de las campañas a las que has donado'}</p> */}
                   <hr />
                   {
-                      donations.map((donation, i) => {
-                        if(i<3){
-                          return(
-                            <div key={i} className='recent-box'>
-                              <Grid container spacing={0} style={{ textAlign: 'center' }} >
-                                <Grid item xs={3} sm={3} >
-                                  <div className='image-circle' >
-                                      <img src={donation.mainPicture.url} alt="recent-cam-pic" style={{border:"7px " + colorDic[donation.category] + " solid"}}/>
-                                  </div>
+                      donations.slice(-3).map((donation, i) => {
+                        return(
+                          <div key={i} className='recent-box'>
+                            <Grid container spacing={0} style={{ textAlign: 'center' }} >
+                              <Grid item xs={3} sm={3} >
+                                <div className='image-circle' >
+                                    <img src={donation.mainPicture.url} alt="recent-cam-pic" style={{border:"7px " + colorDic[donation.category] + " solid"}}/>
+                                </div>
 
-                                </Grid>
-                                <Grid item xs={9} sm={9} >
-                                  <div className='update'>
-                                    <div id="title">
-                                     <b id="amount">${donation.amount}</b> {EN ? " Donation" : " Donación"}
-                                    </div>
-                                    <p>
-                                      {EN ? "To the campaign: " : "A la campaña: "}
-                                       <i>{donation.title}</i>
-                                      <br />  
-
-                                      </p>                              
-                                    {donation.comment
-                                    ? <div id="comment">"{donation.comment}"</div>
-                                    :
-                                    ""}
-                                    <a href={`/campaign/${donation.slug}`}>{EN ? "Go to campaign →" : "Ir a la campaña →"}</a>
-                                  </div>
-                                </Grid>
                               </Grid>
-                            </div>
-                          )
-                        }else{
-                          return ""
-                        }
+                              <Grid item xs={9} sm={9} >
+                                <div className='update'>
+                                  <div id="title">
+                                    <b id="amount">${donation.amount}</b> {EN ? " Donation" : " Donación"}
+                                  </div>
+                                  <p>
+                                    {EN ? "To the campaign: " : "A la campaña: "}
+                                      <i>{donation.title}</i>
+                                    <br />  
+
+                                    </p>                              
+                                  {donation.comment
+                                  ? <div id="comment">"{donation.comment}"</div>
+                                  :
+                                  ""}
+                                  <a href={`/campaign/${donation.slug}`}>{EN ? "Go to campaign →" : "Ir a la campaña →"}</a>
+                                </div>
+                              </Grid>
+                            </Grid>
+                          </div>
+                        )
                       })
                     }                 
                   
