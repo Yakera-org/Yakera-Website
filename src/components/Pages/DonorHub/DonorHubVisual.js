@@ -97,8 +97,8 @@ function DonorHubVisual(props) {
   }
 
   return (
-    <div className='donorhub-container' style={{paddingBottom: "250px"}}>
-      <Grid container spacing={1} style={{ textAlign: 'center' }}>
+    <div className='donorhub-container' style={{ paddingBottom:"400px" }}>
+      <Grid container spacing={1} style={{ textAlign: 'center', paddingBottom: donations.length * 3 }}>
         <Grid item xs={12} sm={12}>
           <div className='banner'>
             <img src={window.innerWidth < 600 ? bannerBig : banner} alt="banner-im" />
