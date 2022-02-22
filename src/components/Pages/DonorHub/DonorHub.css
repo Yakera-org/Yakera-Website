@@ -434,7 +434,7 @@ hr{
   background-color: #fbefe2;
   height: auto;
   border-radius: 0 0 10px 10px;
-  padding-top: 100px;
+  padding-top: 60px;
 }
 
 .user-info{
@@ -633,7 +633,6 @@ hr{
   padding: 0;
   margin: 0;
   margin-top: -5px;
-  margin-left: -50px;
 }
 .recent-box p{
   font-size: 16px;
