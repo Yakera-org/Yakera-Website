@@ -141,7 +141,8 @@ hr{
 }
 
 .campaigns-preview{
-  padding: 10px 60px;
+  padding: 10px 100px ;
+  padding-left: 60px;
 }
 
 .campaigns-preview .campaign-circle {
@@ -149,7 +150,7 @@ hr{
   border-radius: 50%;
   width: 43px;
   height: 43px;
-  margin-bottom: 5px;
+  margin-bottom: -35px;
 }
 
 .campaigns-preview button {
