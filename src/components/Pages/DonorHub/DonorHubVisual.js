@@ -113,9 +113,9 @@ function DonorHubVisual(props) {
             </Grid>
             <Grid item xs={12} sm={12}>
               <h2>{user.firstName} {user.lastName}
-              {user.donorInfo.age
+              {user.donorInfo?.age
               ?
-              <>, < label style={{color:"grey"}}>{user.donorInfo.age}</label></>
+              <>, < label style={{color:"grey"}}>{user.donorInfo?.age}</label></>
               :
               ""
               }
