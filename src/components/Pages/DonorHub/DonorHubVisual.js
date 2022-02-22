@@ -97,7 +97,7 @@ function DonorHubVisual(props) {
   }
 
   return (
-    <div className='donorhub-container' style={{paddingBottom: "180px"}}>
+    <div className='donorhub-container' style={{paddingBottom: "250px"}}>
       <Grid container spacing={1} style={{ textAlign: 'center' }}>
         <Grid item xs={12} sm={12}>
           <div className='banner'>
