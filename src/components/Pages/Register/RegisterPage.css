@@ -15,15 +15,13 @@
 }
 
 #step-btn button {
-    font-family: Intro-Light;
     font-size: 20px;
     width: 80%;
     text-align: center;
-    border-radius: 10px;
+    border-radius: 5px;
     border:none;
-    background-color: #01224d;
+    background-color: #052a5c;
     color: white;
-    font-weight: bold;
     padding: 10px 5px;
     outline: none;
 }
@@ -37,7 +35,7 @@
 }
 .login-card{
     text-align: center;
-    padding: 20px 50px;
+    padding: 10px 50px;
 }
 .login-card h1{
     color: #052a5c;
@@ -51,6 +49,11 @@
 .register-confirmation .checks{
     text-align: left;
 }
+.register-confirmation .checks a{
+    color: #052a5c;
+    text-decoration: underline;
+}
+
 
 .register-confirmation{
     font-family: Intro-Light;
@@ -63,6 +66,157 @@
 }
 .loader {
     text-align: center;
+}
+
+.switch button{
+    background-color: transparent;
+    width: 30%;
+    padding: 10px;
+    border-color: #c9c9c9;
+    box-shadow: transparent;
+    outline: none;
+    font-family: Intro-Light;
+    border-style: solid;
+    border-width: 1px;
+    color: #494949;
+}
+.switch #left{
+    border-radius: 5px 0 0 5px;
+    border-right: 1px solid #c9c9c9;
+}
+.switch #right{
+    border-radius: 0 5px 5px 0;
+    border-left: 1px solid #c9c9c9;
+}
+.switch button:hover{
+    background-color: #e3e3e3;
+}
+.switch .on, .switch .on:hover{
+    background-color: #052b5cec;
+    color: white;
+    border: none;
+}
+.switch .off{
+    background-color: transparent;
+    border-color: #c9c9c9;
+    color: #494949;
+}
+.switch-area{
+    text-align: left;
+    padding: 20px 0;
+    font-family: Intro-Light;
+    font-size: 18px;
+    margin-bottom: -20px;
+}
+.switch-area b{
+    font-weight: 900;
+    font-family: Intro-Light;
+    color: #052a5c;
+}
+.switch{
+    text-align: center;
+}
+
+.register-authentication .profile {
+    width: 100%;
+}
+
+.register-authentication .profile img{
+    max-width: 200px;
+    min-width: 200px;
+    max-height: 200px;
+    min-height: 200px;
+    border-radius: 50%;
+    border: #052a5c 10px solid;
+    margin: 10px 0;
+    object-fit:cover;
+}
+.register-authentication .profile img:hover{
+    cursor: pointer;
+    opacity: 0.8;
+}
+.register-authentication #photo-upload{
+    display: none;
+}
+.register-authentication label button{
+    background-color: transparent;
+    border-radius: 15px;
+    padding: 10px;
+    border: 1px #c5c5c5 solid;
+    margin-bottom: -10px;
+    outline: none;
+}
+.register-authentication label button:hover{
+    background-color: #052b5c21;
+}
+.register-authentication label button:active{
+    pointer-events: none;
+    background-color: #052b5c48;
+}
+.register-authentication label:hover{
+    cursor: pointer;
+}
+.register-authentication .profile label button{
+    font-size: 15px;
+}
+.register-authentication #pic-name{
+    max-width: 200px;
+    overflow: hidden;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.register-authentication .profile #random{
+    background-color: transparent;
+    width: auto;
+    border-radius: 15px;
+    padding: 10px;
+    border: 1px #c5c5c5 solid;
+    outline: none;
+    margin-bottom: 5px;
+    font-size: 15px;
+}
+.register-authentication .profile #random:hover{
+    background-color: #052b5c21;
+}
+.register-authentication .profile #random:active{
+    background-color: #052b5c48;
+}
+
+.register-authentication .profile #reset{
+    background-color: transparent;
+    width: 100%;
+    border-radius: 15px;
+    padding: 5px;
+    border: 1px #ca7a7a solid;
+    outline: none;
+    margin-bottom: 0px;
+    margin-top: -20px;
+}
+.register-authentication .profile #reset:hover{
+    background-color: #ffe2e2;
+}
+.register-authentication .profile #reset:active{
+    background-color: rgb(212, 150, 150);
+}
+.register-authentication #details{
+    margin-top: -15px;
+    padding: 10px 0 0 20px;
+    text-align: left;
+}
+.register-authentication input{
+    width: 100%;
+    margin: 5px 0;
+    font-size: 15px;
+}
+.register-authentication textarea{
+    font-family: Intro-Light;
+    min-height: 150px;
+}
+.register-authentication #details label{
+    padding-top: 10px;
+}
+.register-authentication option, .register-authentication select{
+    font-family: Intro-Light;
 }
 
 @media only screen and (max-width: 600px) {
@@ -79,4 +233,30 @@
     .login-card input{
         width: 100%;
     }
+    .switch button{
+        background-color: transparent;
+        width: 50%;
+        padding: 10px;
+        border-color: #c9c9c9;
+        box-shadow: transparent;
+        outline: none;
+        font-family: Intro-Light;
+        border-style: solid;
+        border-width: 1px;
+        color: #494949;
+    }
+    .register-authentication #details{
+        margin-top: -15px;
+        padding: 5px;
+        text-align: left;
+    }
+    .register-authentication .profile #random{
+        width: 50%;
+        margin-bottom: 15px;
+    }
+    .register-authentication .profile #reset{
+        width: 50%;
+        margin-bottom: 15px;
+    }
+    
 }

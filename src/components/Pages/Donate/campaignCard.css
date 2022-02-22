@@ -51,12 +51,16 @@
 }
 .progress-text {
     text-align: center;
+    width: 100%;    
 }
 .progress-text b {
     font-size: 18px;
 }
-.progress-text p {
+.progress-text #raised {
+    text-align: center;
     font-size: 16px;
+    min-width: 200%;
+    margin-left: -50%;
 }
 
 #read-more {
@@ -104,5 +108,8 @@
     }
     .logo-sec b{
         font-size: 20px;
+    }
+    .progress-text p{
+        text-align: center;
     }
 }
