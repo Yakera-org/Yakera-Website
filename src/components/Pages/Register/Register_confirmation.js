@@ -6,8 +6,8 @@ function Register_conf(props) {
 
     return (
         <div className='register-confirmation'>
-            <h2>{EN ? 'Confirmation' : 'Confirmación'}</h2>
-            <hr /> 
+            <h2>{EN ? 'Almost Ready!' : '¡Casi Listos!'}</h2>
+            <hr />
 
             <div className='checks'>
                 <input
@@ -18,7 +18,7 @@ function Register_conf(props) {
                     onChange={props.handleChange}
                 />
                 <label htmlFor='terms'>
-                    {EN ? 'I agree to the terms and conditions *' : 'Estoy de acuerdo con los términos y condiciones *'}
+                    {EN ? <>I agree to the <a href="terms" target="_blank" rel="noopener">terms and conditions</a> *</> : <>Estoy de acuerdo con los <a href="terms" target="_blank" rel="noopener">términos y condiciones</a> *</>}
                 </label>
 
                 <br />
@@ -33,9 +33,9 @@ function Register_conf(props) {
                 <label htmlFor='newsletter'>
                     {EN ? 'I want to be added to the Yakera Newsletter' : 'Quiero ser agregado a la Newsletter de Yakera'}
                 </label>
-            </div>   
+            </div>
 
-            <div style={{fontSize:'15px'}}>{EN ? '* required' : '* requerido'} </div>         
+            <div style={{fontSize:'15px'}}>{EN ? '* required' : '* requerido'} </div>
         </div>
     )
 }

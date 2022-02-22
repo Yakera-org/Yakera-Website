@@ -5,12 +5,26 @@ import Author from "../../author";
 import Loader from "react-loader-spinner";
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 import LanguageService from "../../../services/language";
+import { uploadFile } from 'react-s3';
 
 const _axios = require('axios');
 const axios = _axios.create();
 const yakeraBackUrl = 'https://api.yakera.org';
 
-function Register(props) {
+const S3_BUCKET = process.env.REACT_APP_S3_BUCKET
+const REGION = process.env.REACT_APP_REGION
+const ACCESS_KEY = process.env.REACT_APP_ACCESS_KEY
+const SECRET_ACCESS_KEY = process.env.REACT_APP_SECRET_ACCESS_KEY
+
+const config_aws = {
+    bucketName: S3_BUCKET,
+    region: REGION,
+    dirName: 'profile-pictures',
+    accessKeyId: ACCESS_KEY,
+    secretAccessKey: SECRET_ACCESS_KEY
+}
+
+function Register() {
 
   const initialState = {
     firstName: "",
@@ -18,6 +32,12 @@ function Register(props) {
     email: "",
     password: "",
     password2: "",
+    location: "",
+    age: "",
+    donor_phone: "",
+    profile_pic: "",
+    preference:"email",
+    bio: "",
     address: "",
     phone: "",
     socialNum: "",
@@ -47,6 +67,7 @@ function Register(props) {
   const [EN, setEN] = React.useState(false);
 
   React.useEffect(() => {
+      document.getElementById('card').scrollIntoView(false);
       if(LanguageService.getLanguage()==='en')setEN(true)
       else setEN(false)
   }, []);
@@ -104,7 +125,7 @@ function Register(props) {
     }
     // line below could be used later when airTM account number is required
     // else if(name === 'firstName' || name === 'lastName' || name === 'address' || name === 'phone' || name === 'airTMNum' || name === 'socialNum'){
-    else if(name === 'firstName' || name === 'lastName' || name === 'address' || name === 'phone' || name === 'socialNum'){
+    else if(name === 'firstName' || name === 'lastName' || name === 'address' || name === 'phone' || name === 'socialNum' || name === 'location' || name === 'donor_phone' || name === 'age' || name === 'bio' || name === 'preference'){
       error = validateFields.validateName(value);
     }
 
@@ -259,7 +280,7 @@ function Register(props) {
     }
   }
 
-  function register(){
+  function register(isRecipient){
     if(!data.check.terms){
       setData({
         ...data,
@@ -268,7 +289,11 @@ function Register(props) {
     }else{
       //loading
       setLoading(true)
-      callRegisterBackend()
+      if(isRecipient){
+        callRegisterBackend()
+      }else{
+        callDonorRegister()
+      }
     }
   }
 
@@ -316,6 +341,64 @@ function Register(props) {
     });
 }
 
+async function callDonorRegister(){
+  const url = yakeraBackUrl + '/api/auth/register';
+  var profile = data.profile_pic
+  if(typeof data.profile_pic !== 'string'){
+    profile = "https://yakera-files.s3.us-east-2.amazonaws.com/profile-pictures/" + data.profile_pic.name
+    handleUpload(data.profile_pic)
+  }
+  // register credentials
+  const requestBody = {      
+      firstName: data.firstName,
+      lastName: data.lastName,
+      email: data.email,
+      password: data.password,
+      phone: data.donor_phone,
+      profilePicture: profile,
+      donorInfo:{
+        location: data.location,
+        age: data.age,
+        bio: data.bio
+      },
+      userType: "donor",
+      language: LanguageService.getLanguage(),
+      preference: data.preference
+  }
+  
+  let payload = JSON.stringify(requestBody)
+  axios.post(url, payload, {
+    headers: {
+      // Overwrite Axios's automatically set Content-Type
+      'Content-Type': 'application/json'
+    }
+  }).then(response => {
+    setLoading(true)
+
+    if (response.status === 201) {
+      setSuccess(EN ? 'Signed up successfully. Email verification was sent.' : 'Se registró correctamente. Se envió la verificación por correo electrónico.')
+      setLoading(false)
+    }
+
+  }).catch(error => {
+    var errorMessage;
+    console.log(error);
+    if(error.response){  
+      errorMessage = EN ? "Something went wrong. Please try again later." : "Se produjo un error. Vuelva a intentarlo más tarde.";
+    }
+    setLoading(false)
+    setData({
+      ...data,
+      error: errorMessage
+    })
+  });
+}
+
+async function handleUpload (file){
+  uploadFile(file, config_aws)
+      .then(data => console.log(data))
+      .catch(err => console.error(err))
+}
   return (
       <div>
         <div className='loader'>
