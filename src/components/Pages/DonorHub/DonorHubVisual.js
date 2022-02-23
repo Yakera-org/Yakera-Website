@@ -30,7 +30,7 @@ const nameDictSP = {
 
 function DonorHubVisual(props) {
   const user = props.data.user
-  const donations = props.data.donations
+  const donations = props.data.donations?props.data.donations: []
   const EN = props.EN
 
   const [total, setTotal] = useState(0);
@@ -247,6 +247,13 @@ function DonorHubVisual(props) {
                   <h3>{EN ? 'Your recent contributions' : 'Contribuciones recientes'}</h3>
                   {/* <p>{EN ? 'Your recent donations' : 'de las campañas a las que has donado'}</p> */}
                   <hr />
+                  {
+                    donations.length === 0 
+                    ?
+                      <p style={{padding:"10px"}}>{EN ? "Make your first donation!" : '¡Haz tu primera donación!'}</p>
+                    :
+                    ""
+                  }
                   {
                       donations.slice(-3).map((donation, i) => {
                         return(
