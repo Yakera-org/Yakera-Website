@@ -111,7 +111,7 @@ function DonorHubVisual(props) {
           </div>
         </Grid>
         <Grid item xs={12} sm={12} >
-          <Grid container spacing={0} className='user-info'>
+          <Grid container spacing={0} className='user-info' style={{height: 'auto'}}>
             <Grid item xs={12} sm={12}>
               <div className='user-img'>
                 <img src = {user.profilePicture} alt="profile-pic" className = "profile-pic"/>
@@ -129,8 +129,8 @@ function DonorHubVisual(props) {
             </Grid>
             <Grid item xs={12} sm={12}>
               <h6>{user.donorInfo.location}</h6>
-              <hr />
             </Grid>
+            <hr />
             <Grid item xs={12} sm={12}>
               <p id='user-desc'>
                 {user.donorInfo.bio
@@ -151,7 +151,6 @@ function DonorHubVisual(props) {
             </Grid>
           </Grid>
         </Grid>
-
         <hr />
 
         <Grid item xs={12} sm={12}>

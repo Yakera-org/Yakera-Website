@@ -71,7 +71,7 @@
 
 .user-info #user-desc{
   width: 35%;
-  margin: 0 auto;
+  margin: 10px auto;
 }
 
 .user-info #user-friends {
@@ -472,7 +472,7 @@ hr{
 
 .user-info #user-desc{
   width: 70%;
-  margin: 0 auto;
+  margin: 10px auto;
 }
 
 .user-info #user-friends {
