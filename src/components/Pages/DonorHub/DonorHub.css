@@ -321,6 +321,12 @@ hr{
 .recent-box .update{
   padding: 0 10px;
 }
+.recent-box .update p{
+  font-size: 15px;
+}
+.recent-box .update #comment{
+  font-size: 15px;
+}
 .recent-box #title{
   text-align: left;
   font-size: 18px;

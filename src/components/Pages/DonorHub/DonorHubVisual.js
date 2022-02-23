@@ -13,6 +13,12 @@ const colorDic = {
   "nutrition": '#edc343',
 };
 
+const colorDicImageCircle = {
+  "education": 'rgba(113, 185, 143, 0.4)',
+  "healthcare": 'rgba(255, 125, 125, 0.4)',
+  "small_business": 'rgba(112, 153, 208, 0.4)',
+  "nutrition": 'rgba(237, 195, 67, 0.4)',
+};
 
 const nameDictEN = {
   "education": "Education",
@@ -253,7 +259,7 @@ function DonorHubVisual(props) {
                             <Grid container spacing={0} style={{ textAlign: 'center' }} >
                               <Grid item xs={3} sm={3} >
                                 <div className='image-circle' >
-                                    <img src={donation.mainPicture.url} alt="recent-cam-pic" style={{border:"7px " + colorDic[donation.category] + " solid"}}/>
+                                    <img src={donation.mainPicture.url} alt="recent-cam-pic" style={{border:"7px " + colorDicImageCircle[donation.category] + " solid"}}/>
                                 </div>
 
                               </Grid>
