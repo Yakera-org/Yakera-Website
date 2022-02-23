@@ -260,7 +260,14 @@ function DonorHubVisual(props) {
                               <Grid item xs={9} sm={9} >
                                 <div className='update'>
                                   <div id="title">
-                                    <b id="amount">${donation.amount}</b> {EN ? " Donation" : " Donación"}
+                                    {EN
+                                      ? <>
+                                        <b id="amount">${donation.amount}</b> Donation
+                                      </>
+                                      : <>
+                                        Donación de <b id='amount'>${donation.amount}</b>
+                                      </>
+                                    }
                                   </div>
                                   <p>
                                     {EN ? "To the campaign: " : "A la campaña: "}
