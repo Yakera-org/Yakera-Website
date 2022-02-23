@@ -122,12 +122,12 @@ function DonorHubVisual(props) {
               </h2>
             </Grid>
             <Grid item xs={12} sm={12}>
-              <h6>{user.donorInfo.location}</h6>
+              <h6>{user.donorInfo?.location}</h6>
               <hr />
             </Grid>
             <Grid item xs={12} sm={12}>
               <p id='user-desc'>
-                {user.donorInfo.bio
+                {user.donorInfo?.bio
                 ?
                 user.donorInfo.bio
                 :

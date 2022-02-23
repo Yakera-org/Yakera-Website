@@ -359,11 +359,11 @@ async function callDonorRegister(){
       donorInfo:{
         location: data.location,
         age: data.age,
-        bio: data.bio
+        bio: data.bio,
+        preference: data.preference
       },
       userType: "donor",
       language: LanguageService.getLanguage(),
-      preference: data.preference
   }
   
   let payload = JSON.stringify(requestBody)
