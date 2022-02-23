@@ -26,7 +26,7 @@ function EditPageVisual(props) {
         <Grid item xs={12} sm={12}>
             <div className='return-button'>
                 <a href="/donor-hub">
-                    <i class="fas fa-arrow-left"></i>
+                    <i className="fas fa-arrow-left"></i>
                     {EN ? ' Return' : ' Volver'}
                 </a>
             </div>
