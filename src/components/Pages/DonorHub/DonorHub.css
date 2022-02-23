@@ -120,8 +120,9 @@ hr{
 
 .total-donations h5{
   margin-top: -46px;
+  margin-bottom: 30px;
   margin-left: 12%;
-  width: 50%;
+  width: 80%;
   text-align: left;
   font-size: 20px;
 }

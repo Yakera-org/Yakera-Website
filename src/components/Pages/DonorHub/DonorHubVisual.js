@@ -29,7 +29,7 @@ const nameDictSP = {
 
 
 function DonorHubVisual(props) {
-  const user = props.data.user
+  const user = props.data?.user
   const donations = props.data.donations?props.data.donations: []
   const EN = props.EN
 
@@ -108,28 +108,28 @@ function DonorHubVisual(props) {
           <Grid container spacing={0} className='user-info'>
             <Grid item xs={12} sm={12}>
               <div className='user-img'>
-                <img src = {user.profilePicture} alt="profile-pic" className = "profile-pic"/>
+                <img src = {user?.profilePicture} alt="profile-pic" className = "profile-pic"/>
               </div>
             </Grid>
             <Grid item xs={12} sm={12}>
-              <h2>{user.firstName} {user.lastName}
-              {user.donorInfo?.age
+              <h2>{user?.firstName} {user?.lastName}
+              {user?.donorInfo?.age
               ?
-              <>, < label style={{color:"grey"}}>{user.donorInfo?.age}</label></>
+              <>, < label style={{color:"grey"}}>{user?.donorInfo?.age}</label></>
               :
               ""
               }
               </h2>
             </Grid>
             <Grid item xs={12} sm={12}>
-              <h6>{user.donorInfo?.location}</h6>
+              <h6>{user?.donorInfo?.location}</h6>
               <hr />
             </Grid>
             <Grid item xs={12} sm={12}>
               <p id='user-desc'>
-                {user.donorInfo?.bio
+                {user?.donorInfo?.bio
                 ?
-                user.donorInfo.bio
+                user?.donorInfo.bio
                 :
                 <>
                   {EN ? 'No Biography, add on ' : 'No hay una biografía, '}
@@ -211,9 +211,9 @@ function DonorHubVisual(props) {
                     'You have helped fund a total of ' : 'Has donado a un total de '}
                       <span style = {{color: "#eb913b"}}>
                         {EN ? 
-                        donations.length > 1 ? donations.length + ' campaigns' : donations.length + ' campaign'
+                        donations.length > 1 ||  donations.length === 0 ? donations.length + ' campaigns' : donations.length + ' campaign'
                         :
-                        donations.length > 1 ? donations.length + ' campañas' : donations.length + ' campaña'}
+                        donations.length > 1 ||  donations.length === 0 ? donations.length + ' campañas' : donations.length + ' campaña'}
                       </span>
                   </h5>
                 </Grid>
