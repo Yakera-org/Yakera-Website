@@ -381,9 +381,8 @@ hr{
 .increase-impact h4{
   margin: 5px 20px;
 }
-.increase-impact a {
+.increase-impact button {
   text-align: center;
-  appearance: button;
   border-radius: 20px;
   border: none;
   color: white;
@@ -393,7 +392,7 @@ hr{
   text-decoration: none;
   margin: 5px 20px;
 }
-.increase-impact a:hover {
+.increase-impact button:hover {
   opacity: 0.8;
 }
 

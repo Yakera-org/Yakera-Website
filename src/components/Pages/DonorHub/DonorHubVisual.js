@@ -245,7 +245,6 @@ function DonorHubVisual(props) {
                 </Grid>
                 <Grid item xs={12} sm={12} className='recent-act'>
                   <h3>{EN ? 'Your recent contributions' : 'Contribuciones recientes'}</h3>
-                  {/* <p>{EN ? 'Your recent donations' : 'de las campañas a las que has donado'}</p> */}
                   <hr />
                   {
                       donations.slice(-3).map((donation, i) => {
@@ -296,9 +295,9 @@ function DonorHubVisual(props) {
                   <h4>
                     {EN ? "Keep changing people's lives!" : '¡Sigue cambiando la vida de más personas!'}
                   </h4>
-                  <a href='/campaigns'>
+                  <button onClick={() => window.location = '/campaigns'}>
                     {EN ? 'Fund more dreams' : 'Apoya más campañas aquí'}
-                  </a>
+                  </button>
                 </Grid>
               </Grid>
             </Grid>
