@@ -103,8 +103,8 @@ function DonorHubVisual(props) {
   }
 
   return (
-    <div className='donorhub-container' style={{ paddingBottom:"400px" }}>
-      <Grid container spacing={1} style={{ textAlign: 'center', paddingBottom: Math.min(donations.length * 3, 300)}}>
+    <div className='donorhub-container' >
+      <Grid container spacing={1} style={{ textAlign: 'center'}}>
         <Grid item xs={12} sm={12}>
           <div className='banner'>
             <img src={window.innerWidth < 600 ? bannerBig : banner} alt="banner-im" />
@@ -164,8 +164,8 @@ function DonorHubVisual(props) {
             <Grid item xs={12} sm={6}>
               <Grid container spacing={0} >
                 <Grid item xs={6} sm={6} className='donation-circle'>
-                  <div>
-                    <div className='circle-1'>
+                  <div className='circle-1'>
+                    <div className='circle-1-inside' >
                       <p>{EN ? "You've donated" : 'Has donado'}</p>
                       ${total}
                     </div>
@@ -192,7 +192,8 @@ function DonorHubVisual(props) {
                       return(
                         <Grid item xs={12} sm={12} key={i}>
                           <DonorHubBars type={colorDic[cat]} size={getRelativeAmount(cat) + '%'} />
-                          <p className='progress-text'><span style={{ color: colorDic[cat] }}>${getCatAmount(cat)} </span>
+                          <p className='progress-text'>
+                            <span style={{ color: colorDic[cat] }}>${getCatAmount(cat)} </span>
                             {EN ? 'for' : 'por'} 
                           </p>
                           <p className='progress-txt' style={{ color: colorDic[cat] }}>
@@ -226,7 +227,8 @@ function DonorHubVisual(props) {
                   <Grid container spacing={6} style={{ textAlign: 'center' }} >
                     {
                       donations.map((donation, i) => {
-                        if(i<100){
+                        let mobileCondition = window.innerWidth < 1000 ? 20 : 100
+                        if(i< mobileCondition){
                           return(
                               <Grid key={i} item xs={2} sm={1}>
                                 <div style={{backgroundColor:colorDic[donation.category]}}  className='campaign-circle'>
@@ -308,7 +310,7 @@ function DonorHubVisual(props) {
                 className='increase-impact'
               >
                 <Grid item xs={3} sm={3}  >
-                  <img src={donorCTA} alt="increase-impact" style={{height: window.innerWidth < 1000 ? '100px' : '100%',}}/>
+                  <img src={donorCTA} alt="increase-impact" style={{height: window.innerWidth < 1000 ? '100px' : '100%'}}/>
                 </Grid>
                 <Grid item xs={9} sm={9}>
                   <h4>

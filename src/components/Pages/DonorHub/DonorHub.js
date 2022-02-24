@@ -12,7 +12,6 @@ function DonorHub() {
 
   const [loaded, setLoaded] = useState(false);
   const [EN, setEN] = useState(false);
-  const [error, setError] = useState('');
   const [profileData, setProfileData] = useState({});
 
   React.useEffect(() => {
@@ -41,12 +40,11 @@ function DonorHub() {
   async function getInfo() {
       try {
           const res = await api.get('/profile');
-          setProfileData(res.data.data);          
+          setProfileData(res.data.data);   
           localStorage.setItem('email', res.data.data.user.email);
           localStorage.setItem('name', res.data.data.user.firstName + " " + res.data.data.user.lastName );
           setLoaded(true);
       } catch (err) {
-          setError('Profile not found');
           setLoaded(true);
           TokenService.removeAccessToken()
           TokenService.removeRefreshToken()
@@ -56,24 +54,16 @@ function DonorHub() {
       }
   }
 
-
-
     if (!loaded){
         return(
             <p style={{marginTop:'150px'}}>
                 Loading ...
             </p>
         )
-    }else if (error){
-        return(
-            <p style={{marginTop:'150px'}}>
-                {error}
-            </p>
-        )
     }else{
         return (
           <div className='donorhub-page'>
-            <DonorHubVisual EN = {EN} data={profileData}/>
+            <DonorHubVisual EN={EN} data={profileData}/>
             <Author />
           </div>
         )
