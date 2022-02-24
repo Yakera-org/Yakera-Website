@@ -265,7 +265,7 @@ function DonorHubVisual(props) {
                             <Grid container spacing={0} style={{ textAlign: 'center' }} >
                               <Grid item xs={3} sm={3} >
                                 <div className='image-circle' >
-                                    <img src={donation.mainPicture ? donation.mainPicture.url : "https://assets.yakera.org/yakera/y.png"} alt="recent-cam-pic" style={{border:"7px " + colorDic[donation.category] + " solid"}}/>
+                                    <img src={donation.mainPicture ? donation.mainPicture.url : "https://assets.yakera.org/yakera/y.png"} alt="recent-cam-pic" style={{border:"7px " + colorDicImageCircle[donation.category] + " solid"}}/>
                                 </div>
 
                               </Grid>
