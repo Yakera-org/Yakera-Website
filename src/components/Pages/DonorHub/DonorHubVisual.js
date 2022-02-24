@@ -13,6 +13,12 @@ const colorDic = {
   "nutrition": '#edc343',
 };
 
+const colorDicImageCircle = {
+  "education": 'rgba(113, 185, 143, 0.4)',
+  "healthcare": 'rgba(255, 125, 125, 0.4)',
+  "small_business": 'rgba(112, 153, 208, 0.4)',
+  "nutrition": 'rgba(237, 195, 67, 0.4)',
+};
 
 const nameDictEN = {
   "education": "Education",
@@ -105,7 +111,7 @@ function DonorHubVisual(props) {
           </div>
         </Grid>
         <Grid item xs={12} sm={12} >
-          <Grid container spacing={0} className='user-info'>
+          <Grid container spacing={0} className='user-info' style={{height: 'auto'}}>
             <Grid item xs={12} sm={12}>
               <div className='user-img'>
                 <img src = {user?.profilePicture} alt="profile-pic" className = "profile-pic"/>
@@ -123,8 +129,8 @@ function DonorHubVisual(props) {
             </Grid>
             <Grid item xs={12} sm={12}>
               <h6>{user?.donorInfo?.location}</h6>
-              <hr />
             </Grid>
+            <hr />
             <Grid item xs={12} sm={12}>
               <p id='user-desc'>
                 {user?.donorInfo?.bio
@@ -145,7 +151,6 @@ function DonorHubVisual(props) {
             </Grid>
           </Grid>
         </Grid>
-
         <hr />
 
         <Grid item xs={12} sm={12}>
@@ -245,7 +250,6 @@ function DonorHubVisual(props) {
                 </Grid>
                 <Grid item xs={12} sm={12} className='recent-act'>
                   <h3>{EN ? 'Your recent contributions' : 'Contribuciones recientes'}</h3>
-                  {/* <p>{EN ? 'Your recent donations' : 'de las campañas a las que has donado'}</p> */}
                   <hr />
                   {
                     donations.length === 0 
@@ -261,14 +265,21 @@ function DonorHubVisual(props) {
                             <Grid container spacing={0} style={{ textAlign: 'center' }} >
                               <Grid item xs={3} sm={3} >
                                 <div className='image-circle' >
-                                    <img src={donation.mainPicture ? donation.mainPicture.url : "https://assets.yakera.org/yakera/y.png"} alt="recent-cam-pic" style={{border:"7px " + colorDic[donation.category] + " solid"}}/>
+                                    <img src={donation.mainPicture ? donation.mainPicture.url : "https://assets.yakera.org/yakera/y.png"} alt="recent-cam-pic" style={{border:"7px " + colorDicImageCircle[donation.category] + " solid"}}/>
                                 </div>
 
                               </Grid>
                               <Grid item xs={9} sm={9} >
                                 <div className='update'>
                                   <div id="title">
-                                    <b id="amount">${donation.amount}</b> {EN ? " Donation" : " Donación"}
+                                    {EN
+                                      ? <>
+                                        <b id="amount">${donation.amount}</b> Donation
+                                      </>
+                                      : <>
+                                        Donación de <b id='amount'>${donation.amount}</b>
+                                      </>
+                                    }
                                   </div>
                                   <p>
                                     {EN ? "To the campaign: " : "A la campaña: "}
@@ -303,9 +314,9 @@ function DonorHubVisual(props) {
                   <h4>
                     {EN ? "Keep changing people's lives!" : '¡Sigue cambiando la vida de más personas!'}
                   </h4>
-                  <a href='/campaigns'>
+                  <button onClick={() => window.location = '/campaigns'}>
                     {EN ? 'Fund more dreams' : 'Apoya más campañas aquí'}
-                  </a>
+                  </button>
                 </Grid>
               </Grid>
             </Grid>

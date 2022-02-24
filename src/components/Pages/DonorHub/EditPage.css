@@ -11,14 +11,22 @@
 }
   
 .edit .card-area{
-    padding: 50px;
+    padding: 30px 50px 50px 50px;
 }
 .edit .banner{
     padding: 100px 20px ;
     color: #353535;
     text-align: left;
 }
-.edit .banner a{
+/* .edit .banner a{
+    text-decoration: none;
+} */
+.edit .return-button{
+    text-align: left;
+    margin: 20px 0px;
+    padding-left: 50px;
+}
+.edit .return-button a{
     text-decoration: none;
 }
 .edit .banner h2{

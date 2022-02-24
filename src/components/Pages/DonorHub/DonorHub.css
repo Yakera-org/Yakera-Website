@@ -71,7 +71,7 @@
 
 .user-info #user-desc{
   width: 35%;
-  margin: 0 auto;
+  margin: 10px auto;
 }
 
 .user-info #user-friends {
@@ -322,6 +322,12 @@ hr{
 .recent-box .update{
   padding: 0 10px;
 }
+.recent-box .update p{
+  font-size: 15px;
+}
+.recent-box .update #comment{
+  font-size: 15px;
+}
 .recent-box #title{
   text-align: left;
   font-size: 18px;
@@ -382,9 +388,8 @@ hr{
 .increase-impact h4{
   margin: 5px 20px;
 }
-.increase-impact a {
+.increase-impact button {
   text-align: center;
-  appearance: button;
   border-radius: 20px;
   border: none;
   color: white;
@@ -394,7 +399,7 @@ hr{
   text-decoration: none;
   margin: 5px 20px;
 }
-.increase-impact a:hover {
+.increase-impact button:hover {
   opacity: 0.8;
 }
 
@@ -468,7 +473,7 @@ hr{
 
 .user-info #user-desc{
   width: 70%;
-  margin: 0 auto;
+  margin: 10px auto;
 }
 
 .user-info #user-friends {

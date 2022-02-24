@@ -17,14 +17,19 @@ function EditPageVisual(props) {
                 <h2>
                     {EN ? ' Edit Profile Details' : ' Editar detalles del perfil'} 
                 </h2>
-                <a href="/donor-hub">
-                    {/* <i className=''></i> */}
+                {/* <a href="/donor-hub">
                     <i class="fas fa-arrow-left"></i>
                     {EN ? ' Return' : ' Volver'}
-                </a>
+                </a> */}
             </div>
           </Grid>    
         <Grid item xs={12} sm={12}>
+            <div className='return-button'>
+                <a href="/donor-hub">
+                    <i className="fas fa-arrow-left"></i>
+                    {EN ? ' Return' : ' Volver'}
+                </a>
+            </div>
             <div className='card-area'>
             <Grid container spacing={1} style={{ textAlign: 'center' }}>
                 <Grid item xs={12} sm={6} >
