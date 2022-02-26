@@ -61,7 +61,7 @@ function DonorHubVisual(props) {
             break
         }
       });
-    }  
+    }
     startup();
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -92,7 +92,7 @@ function DonorHubVisual(props) {
     var max = Math.max(totalBusiness, totalHealth, totalEducation, totalFood);
 
     return(
-      75 * getCatAmount(cat) / max 
+      75 * getCatAmount(cat) / max
     )
   }
 
@@ -187,17 +187,17 @@ function DonorHubVisual(props) {
                       return(
                         <Grid item xs={12} sm={12} key={i}>
                           <DonorHubBars type={colorDic[cat]} size={getRelativeAmount(cat) + '%'} />
-                          <p className='progress-text'><span style={{ color: colorDic[cat] }}>${getCatAmount(cat)} </span>
-                            {EN ? 'for' : 'por'} 
+                          <p className='progress-text'><span style={{ color: colorDic[cat], fontWeight: '900'}}>${getCatAmount(cat)}</span>
+                            <span >{EN ? ' for' : ' por'}</span>
                           </p>
-                          <p className='progress-txt' style={{ color: colorDic[cat] }}>
+                          <p className='progress-txt' style={{ color: colorDic[cat], fontWeight: '900'}}>
                             {EN ? nameDictEN[cat] : nameDictSP[cat]}
                           </p>
                         </Grid>
                       )
                     })
-                    }                   
-                    
+                    }
+
                   </Grid>
                 </Grid>
               </Grid>
@@ -207,10 +207,10 @@ function DonorHubVisual(props) {
                 <Grid item xs={12} sm={12} className='total-donations'>
                   <hr />
                   <h5 style = {{padding: '3px 0px 0px 10px'}}>
-                    {EN ? 
+                    {EN ?
                     'You have helped fund a total of ' : 'Has donado a un total de '}
                       <b style = {{color: "#eb913b"}}>
-                        {EN ? 
+                        {EN ?
                         donations.length > 1 ? donations.length + ' campaigns' : donations.length + ' campaign'
                         :
                         donations.length > 1 ? donations.length + ' campañas' : donations.length + ' campaña'}
@@ -224,16 +224,16 @@ function DonorHubVisual(props) {
                         return(
                             <Grid key={i} item xs={2} sm={1}>
                               <div style={{backgroundColor:colorDic[donation.category]}}  className='campaign-circle'>
-                              
+
                               </div>
                             </Grid>
                         )
                       })
                     }
                   <button onClick={() => window.location = '/campaigns'}><i className="fas fa-2x fa-plus"></i></button>
-                  </Grid> 
-                   
-                  
+                  </Grid>
+
+
                 </Grid>
                 <Grid item xs={12} sm={12} className='recent-act'>
                   <h3>{EN ? 'Your recent contributions' : 'Contribuciones recientes'}</h3>
@@ -259,9 +259,9 @@ function DonorHubVisual(props) {
                                     <p>
                                       {EN ? "To the campaign: " : "A la campaña: "}
                                        <i>{donation.title}</i>
-                                      <br />  
+                                      <br />
 
-                                      </p>                              
+                                      </p>
                                     {donation.comment
                                     ? <div id="comment">"{donation.comment}"</div>
                                     :
@@ -276,13 +276,13 @@ function DonorHubVisual(props) {
                           return ""
                         }
                       })
-                    }                 
-                  
+                    }
+
                 </Grid>
               </Grid>
-              <Grid 
+              <Grid
                 container
-                spacing={0} 
+                spacing={0}
                 className='increase-impact'
               >
                 <Grid item xs={3} sm={3}  >
@@ -299,7 +299,7 @@ function DonorHubVisual(props) {
               </Grid>
             </Grid>
           </Grid>
-          
+
 
         </Grid>
       </Grid>
