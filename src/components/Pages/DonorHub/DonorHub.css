@@ -64,9 +64,10 @@
   padding: 5px 10px;
   color: #6e6e6e;
   font-size: 12px;
+  width: 20%;
 }
 .user-info button:hover{
-  background-color: rgba(223, 223, 223, 0.404);
+  background-color: rgba(214, 214, 214, 0.466);
   color: #4d4d4d;
 }
 
@@ -90,7 +91,22 @@ hr{
   margin-top: -2px;
   width: 80%;
 }
-
+.donorhub-container .join-comm{
+  background-color: #ea8737;
+  margin-top: 10px;
+  padding: 10px;
+  color: white;
+  z-index: 1;
+  margin-bottom: 5px;
+}
+.donorhub-container .join-comm:hover{
+  background-color: #ea8737;
+  opacity: 0.8;
+  color: white;
+}
+.donorhub-container .join-text{
+  color: #5a5a5a;
+}
 .button-1 button, .button-2 button{
   border: none;
   background-color: white;
@@ -896,5 +912,8 @@ hr{
   margin-left: 50px;
   padding: 5px;
   font-size: 15px ;
+}
+.user-info button{
+  width: 60%;
 }
 }

@@ -54,6 +54,18 @@ function DonorHub() {
       }
   }
 
+  async function onCommunityWOZ(){
+    const requestBody = {
+        path: "/donor-hub/join-community"
+    }
+    try {
+        await api.post(`/track`, requestBody);
+    } catch (err) {
+        console.log('Error. ' + err)
+    }
+  }
+
+
     if (!loaded){
         return(
             <p style={{marginTop:'150px'}}>
@@ -63,7 +75,7 @@ function DonorHub() {
     }else{
         return (
           <div className='donorhub-page'>
-            <DonorHubVisual EN={EN} data={profileData}/>
+            <DonorHubVisual EN={EN} data={profileData} onCommunityWOZ={onCommunityWOZ}/>
             <Author />
           </div>
         )

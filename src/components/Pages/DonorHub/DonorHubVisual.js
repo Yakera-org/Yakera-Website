@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import { Grid } from '@material-ui/core';
 import DonorHubBars from './DonorHubBars';
+import useCollapse from 'react-collapsed';
 
 const bannerBig = 'https://assets.yakera.org/yakera/banner-donorhub-large.svg';
 const banner = 'https://assets.yakera.org/yakera/banner-donorhub-big.svg';
@@ -38,6 +39,10 @@ function DonorHubVisual(props) {
   const user = props.data?.user
   const donations = props.data.donations?props.data.donations: []
   const EN = props.EN
+
+  const { getCollapseProps, getToggleProps } = useCollapse({
+    defaultExpanded: false,
+  });
 
   const [total, setTotal] = useState(0);
   const [totalHealth, setHealth] = useState(0);
@@ -149,8 +154,20 @@ function DonorHubVisual(props) {
             <Grid item xs={12} sm={12}>
               <button onClick={OnEdit} className='edit-btn'>{EN ? 'Edit profile' : 'Editar perfil'}</button>
             </Grid>
+            <Grid item xs={12} sm={12}>
+              <div {...getToggleProps()}>
+                <button className="join-comm" onClick={props.onCommunityWOZ}>
+                  {EN ? 'Join a Community!' : 'Join a Community'}
+                </button>
+              </div>
+              <div className='join-text'{...getCollapseProps()}>
+                {EN ? 'Coming soon...' : 'Coming soon...'} 
+              </div>
+            </Grid>
           </Grid>
         </Grid>
+
+        
         <hr />
 
         <Grid item xs={12} sm={12}>
