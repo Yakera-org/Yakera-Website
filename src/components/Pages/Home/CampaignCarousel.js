@@ -39,8 +39,8 @@ function CampaignCarousel(props) {
 
     async function getCampaigns() {
         try {
-            const res = await api.get('/campaigns');
-            setCampaigns(res.data.data.campaigns)
+            const res = await api.get('/campaigns/top/campaigns/');
+            setCampaigns(res.data.campaigns)
             setLoaded(true);
         } catch (err) {
             setLoaded(true);
