@@ -13,6 +13,12 @@ const colorDic = {
   "nutrition": '#edc343',
 };
 
+const colorDicImageCircle = {
+  "education": 'rgba(113, 185, 143, 0.4)',
+  "healthcare": 'rgba(255, 125, 125, 0.4)',
+  "small_business": 'rgba(112, 153, 208, 0.4)',
+  "nutrition": 'rgba(237, 195, 67, 0.4)',
+};
 
 const nameDictEN = {
   "education": "Education",
@@ -29,8 +35,8 @@ const nameDictSP = {
 
 
 function DonorHubVisual(props) {
-  const user = props.data.user
-  const donations = props.data.donations
+  const user = props.data?.user
+  const donations = props.data.donations?props.data.donations: []
   const EN = props.EN
 
   const [total, setTotal] = useState(0);
@@ -61,7 +67,7 @@ function DonorHubVisual(props) {
             break
         }
       });
-    }  
+    }
     startup();
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -92,44 +98,44 @@ function DonorHubVisual(props) {
     var max = Math.max(totalBusiness, totalHealth, totalEducation, totalFood);
 
     return(
-      75 * getCatAmount(cat) / max 
+      75 * getCatAmount(cat) / max
     )
   }
 
   return (
-    <div className='donorhub-container' style={{paddingBottom: "150px"}}>
-      <Grid container spacing={1} style={{ textAlign: 'center' }}>
+    <div className='donorhub-container' >
+      <Grid container spacing={1} style={{ textAlign: 'center'}}>
         <Grid item xs={12} sm={12}>
           <div className='banner'>
             <img src={window.innerWidth < 600 ? bannerBig : banner} alt="banner-im" />
           </div>
         </Grid>
         <Grid item xs={12} sm={12} >
-          <Grid container spacing={0} className='user-info'>
+          <Grid container spacing={0} className='user-info' style={{height: 'auto'}}>
             <Grid item xs={12} sm={12}>
               <div className='user-img'>
-                <img src = {user.profilePicture} alt="profile-pic" className = "profile-pic"/>
+                <img src = {user?.profilePicture} alt="profile-pic" className = "profile-pic"/>
               </div>
             </Grid>
             <Grid item xs={12} sm={12}>
-              <h2>{user.firstName} {user.lastName}
-              {user.donorInfo.age
+              <h2>{user?.firstName} {user?.lastName}
+              {user?.donorInfo?.age
               ?
-              <>, < label style={{color:"grey"}}>{user.donorInfo.age}</label></>
+              <>, < label style={{color:"grey"}}>{user?.donorInfo?.age}</label></>
               :
               ""
               }
               </h2>
             </Grid>
             <Grid item xs={12} sm={12}>
-              <h6>{user.donorInfo.location}</h6>
-              <hr />
+              <h6>{user?.donorInfo?.location}</h6>
             </Grid>
+            <hr />
             <Grid item xs={12} sm={12}>
               <p id='user-desc'>
-                {user.donorInfo.bio
+                {user?.donorInfo?.bio
                 ?
-                user.donorInfo.bio
+                user?.donorInfo.bio
                 :
                 <>
                   {EN ? 'No Biography, add on ' : 'No hay una biografía, '}
@@ -145,7 +151,6 @@ function DonorHubVisual(props) {
             </Grid>
           </Grid>
         </Grid>
-
         <hr />
 
         <Grid item xs={12} sm={12}>
@@ -159,8 +164,8 @@ function DonorHubVisual(props) {
             <Grid item xs={12} sm={6}>
               <Grid container spacing={0} >
                 <Grid item xs={6} sm={6} className='donation-circle'>
-                  <div>
-                    <div className='circle-1'>
+                  <div className='circle-1'>
+                    <div className='circle-1-inside' >
                       <p>{EN ? "You've donated" : 'Has donado'}</p>
                       ${total}
                     </div>
@@ -187,17 +192,18 @@ function DonorHubVisual(props) {
                       return(
                         <Grid item xs={12} sm={12} key={i}>
                           <DonorHubBars type={colorDic[cat]} size={getRelativeAmount(cat) + '%'} />
-                          <p className='progress-text'><span style={{ color: colorDic[cat] }}>${getCatAmount(cat)} </span>
+                          <p className='progress-text'>
+                            <span style={{ color: colorDic[cat], fontWeight: '900' }}>${getCatAmount(cat)} </span>
                             {EN ? 'for' : 'por'} 
                           </p>
-                          <p className='progress-txt' style={{ color: colorDic[cat] }}>
+                          <p className='progress-txt' style={{ color: colorDic[cat], fontWeight: '900'}}>
                             {EN ? nameDictEN[cat] : nameDictSP[cat]}
                           </p>
                         </Grid>
                       )
                     })
-                    }                   
-                    
+                    }
+
                   </Grid>
                 </Grid>
               </Grid>
@@ -207,99 +213,117 @@ function DonorHubVisual(props) {
                 <Grid item xs={12} sm={12} className='total-donations'>
                   <hr />
                   <h5 style = {{padding: '3px 0px 0px 10px'}}>
-                    {EN ? 
+                    {EN ?
                     'You have helped fund a total of ' : 'Has donado a un total de '}
-                      <b style = {{color: "#eb913b"}}>
+                      <span style = {{color: "#eb913b"}}>
                         {EN ? 
-                        donations.length > 1 ? donations.length + ' campaigns' : donations.length + ' campaign'
+                        donations.length > 1 ||  donations.length === 0 ? donations.length + ' campaigns' : donations.length + ' campaign'
                         :
-                        donations.length > 1 ? donations.length + ' campañas' : donations.length + ' campaña'}
-                      </b>
+                        donations.length > 1 ||  donations.length === 0 ? donations.length + ' campañas' : donations.length + ' campaña'}
+                      </span>
                   </h5>
                 </Grid>
                 <Grid item xs={12} sm={12} className='campaigns-preview' >
-                  <Grid container spacing={0} style={{ textAlign: 'center' }} >
+                  <Grid container spacing={6} style={{ textAlign: 'center' }} >
                     {
                       donations.map((donation, i) => {
-                        return(
-                            <Grid key={i} item xs={2} sm={1}>
-                              <div style={{backgroundColor:colorDic[donation.category]}}  className='campaign-circle'>
-                              
-                              </div>
-                            </Grid>
-                        )
+                        let mobileCondition = window.innerWidth < 1000 ? 20 : 100
+                        if(i< mobileCondition){
+                          return(
+                              <Grid key={i} item xs={2} sm={1}>
+                                <div style={{backgroundColor:colorDic[donation.category]}}  className='campaign-circle'>
+                                
+                                </div>
+                              </Grid>
+                          )
+                        }else{
+                          return ""
+                        }
+
                       })
                     }
-                  <button onClick={() => window.location = '/campaigns'}><i className="fas fa-2x fa-plus"></i></button>
+                  <Grid item xs={2} sm={1}>
+                    <button onClick={() => window.location = '/campaigns'}><i className="fas fa-2x fa-plus"></i></button>
+                  </Grid>
+                  
                   </Grid> 
                    
                   
                 </Grid>
                 <Grid item xs={12} sm={12} className='recent-act'>
                   <h3>{EN ? 'Your recent contributions' : 'Contribuciones recientes'}</h3>
-                  {/* <p>{EN ? 'Your recent donations' : 'de las campañas a las que has donado'}</p> */}
                   <hr />
                   {
-                      donations.reverse().map((donation, i) => {
-                        if(i<3){
-                          return(
-                            <div key={i} className='recent-box'>
-                              <Grid container spacing={0} style={{ textAlign: 'center' }} >
-                                <Grid item xs={3} sm={3} >
-                                  <div className='image-circle' >
-                                      <img src={donation.mainPicture.url} alt="recent-cam-pic" style={{border:"7px " + colorDic[donation.category] + " solid"}}/>
-                                  </div>
+                    donations.length === 0 
+                    ?
+                      <p style={{padding:"10px"}}>{EN ? "Make your first donation!" : '¡Haz tu primera donación!'}</p>
+                    :
+                    ""
+                  }
+                  {
+                      donations.slice(-3).map((donation, i) => {
+                        return(
+                          <div key={i} className='recent-box'>
+                            <Grid container spacing={0} style={{ textAlign: 'center' }} >
+                              <Grid item xs={3} sm={3} >
+                                <div className='image-circle' >
+                                    <img src={donation.mainPicture ? donation.mainPicture.url : "https://assets.yakera.org/yakera/y.png"} alt="recent-cam-pic" style={{border:"7px " + colorDicImageCircle[donation.category] + " solid"}}/>
+                                </div>
 
-                                </Grid>
-                                <Grid item xs={9} sm={9} >
-                                  <div className='update'>
-                                    <div id="title">
-                                     <b id="amount">${donation.amount}</b> {EN ? " Donation" : " Donación"}
-                                    </div>
-                                    <p>
-                                      {EN ? "To the campaign: " : "A la campaña: "}
-                                       <i>{donation.title}</i>
-                                      <br />  
-
-                                      </p>                              
-                                    {donation.comment
-                                    ? <div id="comment">"{donation.comment}"</div>
-                                    :
-                                    ""}
-                                    <a href={`/campaign/${donation.slug}`}>{EN ? "Go to campaign →" : "Ir a la campaña →"}</a>
-                                  </div>
-                                </Grid>
                               </Grid>
-                            </div>
-                          )
-                        }else{
-                          return ""
-                        }
+                              <Grid item xs={9} sm={9} >
+                                <div className='update'>
+                                  <div id="title">
+                                    {EN
+                                      ? <>
+                                        <b id="amount">${donation.amount}</b> Donation
+                                      </>
+                                      : <>
+                                        Donación de <b id='amount'>${donation.amount}</b>
+                                      </>
+                                    }
+                                  </div>
+                                  <p>
+                                    {EN ? "To the campaign: " : "A la campaña: "}
+                                      <i>{donation.title}</i>
+                                    <br />  
+
+                                    </p>                              
+                                  {donation.comment
+                                  ? <div id="comment">"{donation.comment}"</div>
+                                  :
+                                  ""}
+                                  <a href={`/campaign/${donation.slug}`}>{EN ? "Go to campaign →" : "Ir a la campaña →"}</a>
+                                </div>
+                              </Grid>
+                            </Grid>
+                          </div>
+                        )
                       })
-                    }                 
-                  
+                    }
+
                 </Grid>
               </Grid>
-              <Grid 
+              <Grid
                 container
-                spacing={0} 
+                spacing={0}
                 className='increase-impact'
               >
                 <Grid item xs={3} sm={3}  >
-                  <img src={donorCTA} alt="increase-impact" style={{height: window.innerWidth < 1000 ? '100px' : '100%',}}/>
+                  <img src={donorCTA} alt="increase-impact" style={{height: window.innerWidth < 1000 ? '100px' : '100%'}}/>
                 </Grid>
                 <Grid item xs={9} sm={9}>
                   <h4>
                     {EN ? "Keep changing people's lives!" : '¡Sigue cambiando la vida de más personas!'}
                   </h4>
-                  <a href='/campaigns'>
+                  <button onClick={() => window.location = '/campaigns'}>
                     {EN ? 'Fund more dreams' : 'Apoya más campañas aquí'}
-                  </a>
+                  </button>
                 </Grid>
               </Grid>
             </Grid>
           </Grid>
-          
+
 
         </Grid>
       </Grid>
