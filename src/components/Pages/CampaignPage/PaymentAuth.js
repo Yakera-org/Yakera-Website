@@ -12,11 +12,7 @@ function PaymentAuth(props) {
     const [openZelle, setOpenZelle] = React.useState(false);
 
     React.useEffect(()=> {
-        setsouldShowZelle(false);
-        // let ranNum = Math.floor(Math.random() * 100);
-        // if(ranNum < 20){
-        //     setsouldShowZelle(false)
-        // }
+        setsouldShowZelle(true);
     }, [])
 
     function onAirTM(){
@@ -24,23 +20,23 @@ function PaymentAuth(props) {
     }
     async function onZelle(){
         setOpenZelle(!openZelle)
-        try {
-            const payload = {
-                'slug': props.slug,
-                'status': 'error', // status is a field to know if the transaction was successful. Valid values are 'success', 'cancel' & 'error' 
-                'email': props.email,
-                'name': props.name,
-                'amount': parseInt(props.amount),
-                'tip': parseInt(props.tip),
-                'paymentID': Math.random().toString(36).slice(2),
-                'paymentMethod': 'zelle',
-                'comment': props.comment
-            }
-            console.log(payload)
-            await api.post('/campaigns/donate', payload);
-        } catch (err) {
-            console.log(err);
-        }
+        // try {
+        //     const payload = {
+        //         'slug': props.slug,
+        //         'status': 'error', // status is a field to know if the transaction was successful. Valid values are 'success', 'cancel' & 'error' 
+        //         'email': props.email,
+        //         'name': props.name,
+        //         'amount': parseInt(props.amount),
+        //         'tip': parseInt(props.tip),
+        //         'paymentID': Math.random().toString(36).slice(2),
+        //         'paymentMethod': 'zelle',
+        //         'comment': props.comment
+        //     }
+        //     console.log(payload)
+        //     await api.post('/campaigns/donate', payload);
+        // } catch (err) {
+        //     console.log(err);
+        // }
     }
 
     const total_amount = parseInt(props.amount) + parseInt(props.tip)
@@ -95,10 +91,10 @@ function PaymentAuth(props) {
                 }
 
 
-            </Card>
             <button className='payment-back-btn' onClick={props.onBack}>
                 {EN ? 'Return' : 'Regreso'}
             </button>
+            </Card>
         </div>
     )
 }

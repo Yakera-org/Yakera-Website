@@ -44,7 +44,6 @@ class PaymentVisual extends Component {
     }
 
     onContinue(amount, email, name, tip, comment, anon){
-        console.log(anon)
         var element = document.getElementById("donateRef");
         element.scrollIntoView({behavior: "smooth", block: "end", inline: "nearest"});
 
