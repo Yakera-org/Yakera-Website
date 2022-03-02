@@ -12,9 +12,15 @@ function Dashboard() {
     const [loaded, setLoaded] = useState(false);
     const [EN, setEN] = useState(false);
     const [airTMemail, setAirTMEmail] = useState('');
-    const [emailError, setEmailError] = useState('');
+    const [airTMEmailError, setAirTMEmailError] = useState('');
     const [error, setError] = useState('');
     const [profileData, setProfileData] = useState({});
+
+    const [zelleEmail, setZelleEmail] = useState('');
+    const [zelleEmailError, setZelleEmailError] = useState('');
+    const [zelleName, setZelleName] = useState('');
+    const [zelleNameError, setZelleNameError] = useState('');
+    const [zelleCheckbox, setZelleCheckbox] = useState(false);
 
     React.useEffect(() => {
         function startup(){
@@ -78,7 +84,7 @@ function Dashboard() {
     function validate(email){
         var tempError;
         tempError = validateFields.validateEmail(email);
-        setEmailError(tempError)
+        setAirTMEmailError(tempError)
         if(!tempError){
             return true
         }
@@ -88,6 +94,36 @@ function Dashboard() {
             backendPatch()
         }
     }
+
+    const handleChangeZelleEmail = (e) => {
+        validateZelleEmail(e.target.value);
+        setZelleEmail(e.target.value);
+    };
+    const handleChangeZelleName = (e) => {
+        validateZelleName(e.target.value);
+        setZelleName(e.target.value);
+    };
+    const validateZelleEmail = (email) => {
+        var tempEmailError;
+        tempEmailError = validateFields.validateEmail(email);
+        setZelleEmailError(tempEmailError);
+        if(!tempEmailError){
+            return true;
+        }
+    };
+    const validateZelleName = (name) => {
+        var tempNameError;
+        tempNameError = validateFields.validateName(name);
+        setZelleNameError(tempNameError);
+        if(!tempNameError){
+            return true;
+        }
+    }
+    const onSubmitZelle = () => {
+        if(validateZelleEmail(zelleEmail) && validateZelleName(zelleName)){
+            console.log('Submit Zelle Email and Name');
+        }
+    };
 
     async function backendPatch(){
         try {
@@ -117,7 +153,19 @@ function Dashboard() {
     }else{        
         return (
             <div className='dashboard-page'>
-                <DashboardVisuals EN={EN} data={profileData} onWithdraw={onWithdraw} handleChange={handleChange} emailError={emailError} onSubmitEmail={onSubmitEmail}/>
+                <DashboardVisuals
+                    EN={EN}
+                    data={profileData}
+                    onWithdraw={onWithdraw}
+                    handleChange={handleChange}
+                    airTMEmailError={airTMEmailError}
+                    onSubmitEmail={onSubmitEmail}
+                    handleChangeZelleEmail={handleChangeZelleEmail}
+                    handleChangeZelleName={handleChangeZelleName}
+                    zelleEmailError={zelleEmailError}
+                    zelleNameError={zelleNameError}
+                    onSubmitZelle={onSubmitZelle}
+                />
             </div>
         )
     }

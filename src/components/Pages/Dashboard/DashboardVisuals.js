@@ -45,46 +45,123 @@ function onWithdraw(event){
                                 <p><span id='dash-stats'>ID Number:</span> {user.socialNum}</p>
                             </div>
                         </Grid> */}
-                        <Grid item xs={12} sm={3} >
+                        <Grid item xs={12} sm={4} >
                             <div className='dash-left'>
                                 <p><span id='dash-stats'>{EN ?'Address: ' : 'Dirección: ' }</span> {user.address}</p>
                             </div>
                         </Grid>   
-                            <Grid item xs={12} sm={3} id='airTM'>
-                                <div className='dash-left'>
-                                    <p id='dash-stats'>AirTM email:</p>
-                                </div>
-                                {
-                                    !user.airTMNum
-                                    ?
-                                    <Grid container spacing={0}>
-                                        <Grid item xs={12} sm={10} >
-                                                <input
-                                                    type="email"
-                                                    name="airTMemail"
-                                                    placeholder={EN ? "Enter your AirTM email" : "Ingrese su correo electrónico AirTM"}
-                                                    onChange={props.handleChange}
-                                                    className={classnames(
-                                                        'form-control',
-                                                        { 'is-valid': props.emailError === false },
-                                                        { 'is-invalid': props.emailError }
-                                                    )}
-                                                />
-                                                <p className="invalid-feedback">{props.emailError}</p>
-                                        </Grid> 
-                                        <Grid item xs={12} sm={2} >
-                                            <button  onClick={props.onSubmitEmail}>
-                                                {EN ? "Submit" : "Enviar"}
-                                            </button> 
-                                        </Grid> 
+                        <Grid item xs={12} sm={4} id='airTM'>
+                            <div className='dash-left'>
+                                <p id='dash-stats'>AirTM email:</p>
+                            </div>
+                            {
+                                !user.airTMNum
+                                ?
+                                <Grid container spacing={0}>
+                                    <Grid item xs={12} sm={8} >
+                                            <input
+                                                type="email"
+                                                name="airTMemail"
+                                                placeholder={EN ? "Enter your AirTM email" : "Ingrese su correo electrónico AirTM"}
+                                                onChange={props.handleChange}
+                                                className={classnames(
+                                                    'form-control',
+                                                    { 'is-valid': props.airTMEmailError === false },
+                                                    { 'is-invalid': props.airTMEmailError }
+                                                )}
+                                            />
+                                            <p className="invalid-feedback">{props.airTMEmailError}</p>
                                     </Grid> 
-                                    :
-                                    <div className='dash-left'>
-                                        <p>{user.airTMNum}</p>
+                                    <Grid item xs={12} sm={2} >
+                                        <button  onClick={props.onSubmitEmail}>
+                                            {EN ? "Submit" : "Enviar"}
+                                        </button> 
+                                    </Grid> 
+                                </Grid> 
+                                :
+                                <div className='dash-left'>
+                                    <p>{user.airTMNum}</p>
+                                </div>
+                            }
+                        </Grid>
+                        <Grid item xs={0} sm={8}>
+                            {/* intentionally left blank */}
+                        </Grid>
+                        <Grid item xs={12} sm={4}>
+                            {
+                                !user.zelle
+                                ? <>
+                                    <div>
+                                        <p>Zelle email:</p>
                                     </div>
-                                }
-                               
-                            </Grid> 
+                                    <Grid container spacing={0}>
+                                        <Grid item xs={12} sm={12}>
+                                            <input
+                                                type='email'
+                                                name='zelleEmail'
+                                                placeholder={EN ? 'Enter your Zelle email' : 'Ingrese su correo electrónico Zelle'}
+                                                onChange={props.handleChangeZelleEmail}
+                                                className={classnames(
+                                                    'form-control',
+                                                    { 'is-valid': props.zelleEmailError === false },
+                                                    { 'is-invalid': props.zelleEmailError }
+                                                )}
+                                            />
+                                            <p className='invalid-feedback'>{props.zelleEmailError}</p>
+                                        </Grid>
+                                    </Grid>
+                                    
+                                </>
+                                : <div>
+                                    Something for now
+                                </div>
+                            }
+                        </Grid>
+                        <Grid item xs={12} sm={4}>
+                            {
+                                !user.zelle
+                                ? <>
+                                    <div>
+                                        <p>Zelle name:</p>
+                                    </div>
+                                    <Grid container spacing={0}>
+                                        <Grid item xs={12} sm={12}>
+                                            <input
+                                                type='name'
+                                                name='zelleName'
+                                                placeholder={EN ? 'Enter your Zelle name' : 'Ingrese su correo name Zelle'}
+                                                onChange={props.handleChangeZelleName}
+                                                className={classnames(
+                                                    'form-control',
+                                                    { 'is-valid': props.zelleNameError === false },
+                                                    { 'is-invalid': props.zelleNameError }
+                                                )}
+                                            />
+                                            <p className='invalid-feedback'>{props.zelleNameError}</p>
+                                        </Grid>
+                                    </Grid>
+                                </>
+                                : 'something'
+                            }
+                        </Grid>
+                        <Grid item xs={12} sm={4}>
+                            {
+                                !user.zelle
+                                ? <>
+                                    <div>
+                                        {/* intentionally left blank */}
+                                    </div>
+                                    <Grid container spacing={0}>
+                                        <Grid item xs={12} sm={12}>
+                                            <button onClick={props.onSubmitZelle}>
+                                                {EN ? "Submit" : "Enviar"}
+                                            </button>
+                                        </Grid>
+                                    </Grid>
+                                </>
+                                : 'something'
+                            }
+                        </Grid>
                     </Grid> 
 
                     <hr style={{marginTop:'30px'}}/>  
