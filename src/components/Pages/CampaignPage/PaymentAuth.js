@@ -4,6 +4,7 @@ import PayPal from './Paypal';
 import airtmLogo from '../../../pics/airtmbutton.png';
 import zelleLogo from '../../../pics/zelle.png';
 import api from "../../../services/api";
+import ZelleLogic from './ZelleLogic';
 
 
 function PaymentAuth(props) {
@@ -79,9 +80,7 @@ function PaymentAuth(props) {
                     {
                         openZelle
                         ?
-                        <p>
-                            {EN ? 'This service is coming soon. Please try using your credit or debit card, Paypal or Airtm.' : 'Este servicio llegará pronto. Por favor efectua tu pago usando tu tarjeta de debito o credito, Paypal o Airtm.'}                            
-                        </p>
+                        <ZelleLogic />
                         :
                         ''
                     }
