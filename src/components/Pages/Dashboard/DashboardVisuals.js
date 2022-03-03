@@ -1,9 +1,9 @@
 import React from 'react'
 import { Grid } from '@material-ui/core';
 import {Card, CardContent} from '@material-ui/core';
-import { Progress } from 'react-sweet-progress';
 import Author from '../../author';
 import classnames from 'classnames'
+import DashboardCard from './DashboardCard';
 
 
 function DashboardVisuals(props) {
@@ -178,89 +178,9 @@ function onWithdraw(event){
                             <div className='active-campaigns'>
                                 <Grid container spacing={4} style={{ alignItems:'flex-start', textAlign:'center'}}>
                                     {
-                                        campaigns.map((campaign,i) => {
-                                            var hrefLink = '/campaign/' + campaign.slug;
-                                            const language = EN ? 'en':'es'
-                                            let title, mainPicture;
-                                            try{
-                                                mainPicture = campaign.mainPicture.url;
-                                            }
-                                            catch{
-                                                mainPicture = ''
-                                            }
-
-                                            try {
-                                                title = campaign.translations[language].title;
-                                            } catch (err) {
-                                                title = campaign.title;
-                                            }
-                                            return (
-                                                <Grid item xs={12} sm={6} key={i} >
-                                                    <Card className='active-cam-card'>
-                                                        <CardContent>
-                                                            <div className='dash-active-cam'>
-                                                                {title}
-
-                                                                <hr />
-
-                                                                <Grid container spacing={5} style={{ alignItems:'flex-start'}}>
-                                                                    <Grid item xs={12} sm={12} style={{textAlign:'left'}} >
-                                                                        <p><span id='dash-stats'>{EN ? "Created: " : "Creada: "}</span> {campaign.created}</p>
-                                                                        <p><span id='dash-stats'>{EN ? "Category: " : "Categoría: "}</span> {campaign.category}</p>
-                                                                        <p><span id='dash-stats'>{EN ? "Description: " : "Descripción: "}</span> {campaign.description}</p>
-                                                                        <p><span id='dash-status'>{EN ? "Status: " : "Estado: "}</span> {campaign.approved ? 
-                                                                                <span style={{color:'#71B98F'}}>{EN ? "Approved" : "Aprobada"} </span> 
-                                                                                :    
-                                                                                <span style={{color:'orange'}}>{EN ? "Pending approval" : "Aprobación pendiente"}  </span>
-                                                                            }</p>
-
-                                                                        <Grid item xs={12} sm={12} style={{textAlign:'center'}} >
-                                                                            <img src={mainPicture} alt='cam-title-img' />
-                                                                        </Grid>
-                                                                        <br />
-                                                                        {campaign.approved
-                                                                            ?
-                                                                            <>
-                                                                            <div id='dash-progress-bar'>
-                                                                                <Progress theme={{
-                                                                                    default: {
-                                                                                        trailColor: 'lightrey',
-                                                                                        symbol: '',
-                                                                                        color: '#ea8737'
-                                                                                    }
-                                                                                }}
-                                                                                status="default"
-                                                                                percent={ Math.min((100* (campaign.raised/campaign.targetAmount)).toFixed(0), 100) }/>
-                                                                            </div>
-                                                                            <br />
-                                                                            <p id='dash-raised'>{EN ? "Raised: " : "Elevado: "} <span id='dash-stats'>{campaign.raised}$</span></p>
-                                                                            <br />
-                                                                            <div className='action-btn'>
-                                                                                <Grid container spacing={2} style={{ alignItems:'flex-start'}}>
-                                                                                    <Grid item xs={12} sm={6} style={{textAlign:'center'}} >  
-                                                                                        <button id='go'>
-                                                                                            <a href={hrefLink}>{EN ? "Go to campaign" : "Ir a campaña"}</a>
-                                                                                        </button>
-                                                                                    </Grid>
-                                                                                    <Grid item xs={12} sm={6} style={{textAlign:'center'}} >  
-                                                                                        <button name={campaign.slug} onClick={onWithdraw} id='withdraw'>
-                                                                                            {EN ? "Withdraw campaign" : "Retirar campaña"}
-                                                                                        </button>
-                                                                                    </Grid>
-                                                                                </Grid>                                                                              
-                                                                            </div>  
-                                                                        </>
-                                                                        :
-                                                                        ''
-                                                                        }
-                                                                    </Grid>
-                                                                    
-                                                                </Grid>                                                                    
-
-                                                            </div>
-                                                        </CardContent>
-                                                    </Card>
-                                                </Grid>
+                                        campaigns.map((campaign,i) => {                                           
+                                            return(
+                                                <DashboardCard key={i} campaign={campaign} EN={EN} onWithdraw={onWithdraw}/>
                                             )
                                         })
                                     }
