@@ -3,6 +3,19 @@ import { Progress } from 'react-sweet-progress';
 import { Grid } from '@material-ui/core';
 import {Card, CardContent} from '@material-ui/core';
 
+const nameDictEN = {
+    "education": "Education",
+    "healthcare": "Healthcare",
+    "small_business":"Small Business",
+    "nutrition": "Nutrition"
+  };
+  const nameDictSP = {
+    "education":"Educación",
+    "healthcare":"Atención Médica",
+    "nutrition":"Nutrición",
+    "small_business":"Pequeños Negocios"
+  };
+  
 
 function DashboardCard(props) {
     const EN = props.EN
@@ -24,14 +37,21 @@ function DashboardCard(props) {
             <Card className='active-cam-card'>
                 <CardContent>
                     <div className='dash-active-cam'>
-                        {title}
+                        <h3>{title}</h3>
 
                         <hr />
 
                         <Grid container spacing={5} style={{ alignItems:'flex-start'}}>
                             <Grid item xs={12} sm={12} style={{textAlign:'left'}} >
                                 <p><span id='dash-stats'>{EN ? "Created: " : "Creada: "}</span> {campaign.createdAt}</p>
-                                <p><span id='dash-stats'>{EN ? "Category: " : "Categoría: "}</span> {campaign.category}</p>
+                                <p><span id='dash-stats'>{EN ? "Category: " : "Categoría: "}</span>
+                                {EN
+                                    ?
+                                    nameDictEN[campaign.category]
+                                    :
+                                    nameDictSP[campaign.category]
+                                }   
+                                </p>
                                 <p><span id='dash-stats'>{EN ? "Description: " : "Descripción: "}</span> {campaign.description}</p>
                                 <p><span id='dash-status'>{EN ? "Status: " : "Estado: "}</span> {campaign.approved ? 
                                         <span style={{color:'#71B98F'}}>{EN ? "Approved" : "Aprobada"} </span> 

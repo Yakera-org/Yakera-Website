@@ -84,7 +84,7 @@ function onWithdraw(event){
                                 </div>
                             }
                         </Grid>
-                        <Grid item xs={0} sm={8}>
+                        <Grid item xs={1} sm={8}>
                             {/* intentionally left blank */}
                         </Grid>
                         <Grid item xs={12} sm={4}>
@@ -169,7 +169,7 @@ function onWithdraw(event){
                     <br />
 
                     <div className='dash-btn'>
-                       <button><a href='create-campaign' >{EN ? "Create new campaign" : "Crear nueva campaña"}</a></button>
+                       <button onClick={() => window.location = '/create-campaign'}>{EN ? "Create new campaign" : "Crear nueva campaña"}</button>
                     </div>
 
                     <div className='dash-campaigns'>
