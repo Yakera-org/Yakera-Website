@@ -2,6 +2,7 @@ import React from 'react';
 import { Progress } from 'react-sweet-progress';
 import { Grid } from '@material-ui/core';
 import {Card, CardContent} from '@material-ui/core';
+import CardRaised from './CardRaised';
 
 const nameDictEN = {
     "education": "Education",
@@ -78,7 +79,9 @@ function DashboardCard(props) {
                                         percent={ Math.min((100* (campaign.raised/campaign.targetAmount)).toFixed(0), 100) }/>
                                     </div>
                                     <br />
-                                    <p id='dash-raised'>{EN ? "Raised: " : "Elevado: "} <span id='dash-stats'>{campaign.raised}$</span></p>
+
+                                    <CardRaised campaign={campaign} EN={EN}/>
+                                    
                                     <br />
                                     <div className='action-btn'>
                                         <Grid container spacing={2} style={{ alignItems:'flex-start'}}>

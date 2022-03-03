@@ -78,7 +78,6 @@
     padding: 2% 5%;
     text-align: center;
     min-height: 700px;
-    height: 700px;
 }
 
 .dash-active-cam img{
@@ -92,9 +91,30 @@
 .dash-active-cam p{
     font-size: 18px;
 }
+.active-cam-card .raised{
+    width: 30%;
+    margin-left: 35%;
+    text-align: center;
+}
+.active-cam-card .raised #zelle span{
+    color: #6d1ed4;
+}
+.active-cam-card .raised #total{
+    font-size: 22px;
+}
+.active-cam-card .raised hr{
+    border: 1px solid rgb(212, 212, 212);
+    width: 100%;
+}
+.active-cam-card .raised p{
+    width: 80%;
+    text-align: right;
+    vertical-align: middle;
+}
 .active-cam-card #dash-raised {
     text-align: center;
     font-size: 20px;
+    width: 100%;
 }
 .action-btn {
     text-align: center;
