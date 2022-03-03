@@ -69,7 +69,7 @@ function Dashboard() {
                   "story": "Nutriendo El Futuro is an organization that generates positive changes and sustainable impact in El Calvario",
                   "description": "Nutriendo El Futuro is an organization",
                   "mainPicture": {
-                    "url": "https://yakera-files.s3.us-east-2.amazonaws.com/pictures/cta-image.jpeg"
+                    "url": "https://assets.yakera.org/pictures/1635201650644-30sxdy.jpg"
                   },
                   "pictures": [],
                   "supportDocs": [],
@@ -117,7 +117,7 @@ function Dashboard() {
                     "story": "Nutriendo El Futuro is an organization that generates positive changes and sustainable impact in El Calvario",
                     "description": "Nutriendo El Futuro is an organization",
                     "mainPicture": {
-                      "url": "https://yakera-files.s3.us-east-2.amazonaws.com/pictures/cta-image.jpeg"
+                      "url": "https://assets.yakera.org/pictures/1635201650644-30sxdy.jpg"
                     },
                     "pictures": [],
                     "supportDocs": [],
