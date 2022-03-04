@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import { Grid } from '@material-ui/core';
 import DonorHubBars from './DonorHubBars';
+import useCollapse from 'react-collapsed';
 
 const bannerBig = 'https://assets.yakera.org/yakera/banner-donorhub-large.svg';
 const banner = 'https://assets.yakera.org/yakera/banner-donorhub-big.svg';
@@ -39,6 +40,10 @@ function DonorHubVisual(props) {
   const donations = props.data.donations?props.data.donations: []
   const EN = props.EN
 
+  const { getCollapseProps, getToggleProps } = useCollapse({
+    defaultExpanded: false,
+  });
+
   const [total, setTotal] = useState(0);
   const [totalHealth, setHealth] = useState(0);
   const [totalBusiness, setBusiness] = useState(0);
@@ -67,7 +72,7 @@ function DonorHubVisual(props) {
             break
         }
       });
-    }  
+    }
     startup();
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -98,7 +103,7 @@ function DonorHubVisual(props) {
     var max = Math.max(totalBusiness, totalHealth, totalEducation, totalFood);
 
     return(
-      75 * getCatAmount(cat) / max 
+      75 * getCatAmount(cat) / max
     )
   }
 
@@ -149,8 +154,20 @@ function DonorHubVisual(props) {
             <Grid item xs={12} sm={12}>
               <button onClick={OnEdit} className='edit-btn'>{EN ? 'Edit profile' : 'Editar perfil'}</button>
             </Grid>
+            <Grid item xs={12} sm={12}>
+              <div {...getToggleProps()}>
+                <button className="join-comm" onClick={props.onCommunityWOZ}>
+                  {EN ? 'Join a Team!' : 'Únete a un equipo!'}
+                </button>
+              </div>
+              <div className='join-text'{...getCollapseProps()}>
+                {EN ? 'Coming soon...' : 'Coming soon...'} 
+              </div>
+            </Grid>
           </Grid>
         </Grid>
+
+        
         <hr />
 
         <Grid item xs={12} sm={12}>
@@ -193,17 +210,17 @@ function DonorHubVisual(props) {
                         <Grid item xs={12} sm={12} key={i}>
                           <DonorHubBars type={colorDic[cat]} size={getRelativeAmount(cat) + '%'} />
                           <p className='progress-text'>
-                            <span style={{ color: colorDic[cat] }}>${getCatAmount(cat)} </span>
+                            <span style={{ color: colorDic[cat], fontWeight: '900' }}>${getCatAmount(cat)} </span>
                             {EN ? 'for' : 'por'} 
                           </p>
-                          <p className='progress-txt' style={{ color: colorDic[cat] }}>
+                          <p className='progress-txt' style={{ color: colorDic[cat], fontWeight: '900'}}>
                             {EN ? nameDictEN[cat] : nameDictSP[cat]}
                           </p>
                         </Grid>
                       )
                     })
-                    }                   
-                    
+                    }
+
                   </Grid>
                 </Grid>
               </Grid>
@@ -213,7 +230,7 @@ function DonorHubVisual(props) {
                 <Grid item xs={12} sm={12} className='total-donations'>
                   <hr />
                   <h5 style = {{padding: '3px 0px 0px 10px'}}>
-                    {EN ? 
+                    {EN ?
                     'You have helped fund a total of ' : 'Has donado a un total de '}
                       <span style = {{color: "#eb913b"}}>
                         {EN ? 
@@ -300,13 +317,13 @@ function DonorHubVisual(props) {
                           </div>
                         )
                       })
-                    }                 
-                  
+                    }
+
                 </Grid>
               </Grid>
-              <Grid 
+              <Grid
                 container
-                spacing={0} 
+                spacing={0}
                 className='increase-impact'
               >
                 <Grid item xs={3} sm={3}  >
@@ -323,7 +340,7 @@ function DonorHubVisual(props) {
               </Grid>
             </Grid>
           </Grid>
-          
+
 
         </Grid>
       </Grid>

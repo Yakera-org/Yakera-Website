@@ -128,6 +128,7 @@ function Home() {
                               backgroundColor:'#ea8737',
                               borderRadius:'30px',
                               color:'white',
+                              fontSize: "12px"
 
                             }}
                           >
@@ -135,7 +136,7 @@ function Home() {
                            {loggedIn ?
                                 <div>{EN ? 'Go to your profile' :'¡Ve a tu perfil!'}</div>
                                 :
-                                <div>{EN ? 'Create your profile' :'¡Ve a tu perfil!'}</div> 
+                                <div>{EN ? 'Create your profile' :'¡Ve a tu perfil!'}</div>
                             }
 
 
@@ -149,7 +150,7 @@ function Home() {
                         <Grid item xs={12} sm={12} >
                             <section>
                                 {EN
-                
+
                                 ?
                                     <img src={pics["mobile-illustration_alt"]} alt='phones'/>
                                 :

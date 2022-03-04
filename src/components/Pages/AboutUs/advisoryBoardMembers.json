@@ -5,19 +5,31 @@
             "titles": [
                 "Board Member, Smithsonian"
             ],
+            "titles_SP": [
+                "Miembro de la Junta Directiva, Smithsonian"
+            ],
             "descriptions": [
                 "Jill Vukelja de Patricio was born in Panama City, Panama and received a BS in Business Administration from Creighton University and an MBA from Thunderbird School of Global Management.   She worked as a marketing executive for Johnson & Johnson Central America and served as a marketing executive for Chase Manhattan Bank in Panama. Ms. Patricio continued her career as a marketing executive with Unilever Ice Cream in São Paulo, Brazil.",
                 "She and her family have resided in São Paulo, Toronto and Shanghai, and now in Greenwich, Connecticut. Ms. Patricio is devoted to many local and international organizations that strive to improve health, education and social justice, as well as organizations that promote the arts."
+            ],
+            "descriptions_SP": [
+                "Jill Vukelja de Patricio nació en Panamá y recibió una licenciatura en administración de empresas de la Universidad de Creighton y una maestría en administración de empresas de Thunderbird School of Global Management. Jill Vukelja de Patricio trabajó como ejecutiva de marketing para Johnson & Johnson Centroamérica y se desempeñó como ejecutiva de marketing para Chase Manhattan Bank en Panamá. Patricio continuó su carrera como ejecutiva de marketing en Unilever Ice Cream en São Paulo, Brasil. Ella y su familia han residido en São Paulo, Toronto, Shanghai, y ahora en Greenwich, Connecticut. Patricio se dedica a muchas organizaciones locales e internacionales que se esfuerzan por mejorar la salud, la educación y la justicia social, así como a organizaciones que promueven las artes."
             ],
             "picture": "https://assets.yakera.org/yakera/jill-patricio.webp"
         },
         {
             "name": "Matt Winkler",
             "titles": [
-                "Co-Founder and Editor Emeritus, Bloomberg News"
+                "Co-Founder & Editor Emeritus, Bloomberg News"
+            ],
+            "titles_SP": [
+                "Cofundador y editor emérito, Bloomberg News"
             ],
             "descriptions": [
                 "Matthew A. Winkler is co-founder of Bloomberg News (1990) and editor-in-chief emeritus; Bloomberg Opinion columnist since 2015; Co-founder of Bloomberg Business Journalism Diversity program in 2017. During his 25 years as editor-in-chief, Bloomberg News was a three-time finalist and winner of the Pulitzer Prize for Explanatory Reporting and received numerous George Polk, Gerald Loeb, Overseas Press Club and Society of Professional Journalists and Editors (Sabew) awards. His career in journalism began as editor in chief of the Kenyon Collegian followed by reporting for the Mount Vernon News, Bond Buyer, Wall Street Journal, Dow Jones Capital Markets Report and Forbes Magazine as a columnist. He received lifetime achievement awards from the National Academy of Arts and Sciences (Emmy), Loeb Foundation, City University of New York, New York Financial Writers Association and is a director of the Committee to Protect Journalists, International Center for Journalists, International Women's Media Foundation and member of the board of Bloomberg LP. He is trustee of Kenyon College and the Kenyon Review."
+            ],
+            "descriptions_SP": [
+                "Matthew A. Winkler es el co-fundador de Bloomberg News (1990), editor en jefe emérito y columnista de opinión de Bloomberg desde 2015; Co-fundador del programa Bloomberg Business Journalism Diversity en 2017. Durante sus 25 años como editor en jefe, Bloomberg News fue tres veces finalista y ganador del Premio Pulitzer de Reportajes Explicativos y recibió numerosos informes de George Polk, Gerald Loeb, Overseas Premios Club de Prensa y Sociedad de Periodistas y Editores Profesionales (Sabew). Su carrera en el periodismo comenzó como editor en jefe de Kenyon Collegian, y luego se desempeñó como columnista para Mount Vernon News, Bond Buyer, Wall Street Journal, Dow Jones Capital Markets Report y Forbes Magazine. Winkler recibió premios a la trayectoria de la Academia Nacional de las Artes y las Ciencias (Emmy), la Fundación Loeb, la Universidad de la Ciudad de Nueva York, la Asociación de Escritores Financieros de Nueva York y es director del Comité para la Protección de Periodistas, Centro Internacional para Periodistas y la Fundación de Medios Internacionales de Mujeres y miembro del directorio de Bloomberg LP. Winkler es miembro de la junta directiva de Kenyon College y Kenyon Review."
             ],
             "picture": "https://assets.yakera.org/yakera/matt-winkler.webp"
         },
@@ -27,9 +39,16 @@
                 "Former CEO of Safeweb, ",
                 "Professor of Digital Humanities, Kenyon College"
             ],
+            "titles_SP": [
+                "CEO of Safeweb, ",
+                "Profesor de Humanidades Digitales, Kenyon College"
+            ],
             "descriptions": [
                 "Jon Chun has degrees in electrical engineering, computer science and biomedical engineering with a focus on cognitive science. Chun has published research in gene therapy and medical informatics and worked in physics and semiconductor research at Lawrence Berkeley Labs and SEMATECH. He co-founded several international startups and was CEO and COO of the world’s largest anonymity service. He also served as director of development for the world’s largest computer security corporation and as entrepreneur in residence at UC Berkeley. His most recent scholarship appears in the Journal of Cultural Analytics, and his current work leverages AI natural language processing for the humanities.",
                 "Chun believes in the importance of bringing diverse voices to debates surrounding technology’s growing impact on society. His courses \"Programming Humanity\" and \"AI for the Humanities\" are the first to bridge the gap between technology and the humanities by providing an integrated intellectual framework grounded in the liberal arts."
+            ],
+            "descriptions_SP": [
+                "Jon Chun tiene títulos en ingeniería eléctrica, informática e ingeniería biomédica y una especialización en ciencias cognitivas. Chun ha publicado investigaciones sobre terapia genéica e informática en medicina y ha trabajado en investigación de física y semiconductores en Lawrence Berkeley Labs y SEMATECH. Fue cofundador de varias empresas emergentes internacionales y fue CEO y director de operaciones del servicio de VPN más grande del mundo. También se desempeñó como director de desarrollo de la corporación de seguridad informática más grande del mundo y como empresandedor en residencia en UC Berkeley. Chun cree en la importancia de traer diversas voces a los debates sobre el creciente impacto de la tecnología en la sociedad. Sus cursos \"Programación de la humanidad\" e \"Inteligencia Artificial para las humanidades\" son los primeros en cerrar la brecha entre la tecnología y las humanidades."
             ],
             "picture": "https://assets.yakera.org/yakera/profile-icon-2.webp"
         },
@@ -38,11 +57,17 @@
             "titles": [
                 "Senior Director of Product Management, eBay"
             ],
+            "titles_SP": [
+                "Director Senior de Gestión de Producto, eBay"
+            ],
             "descriptions": [
                 "Nicole is a hands-on Product, Design and Engineering leader. She currently leads a team of product managers in the creation of buyer engagement experiences.",
                 "She leads Global Buyer Engagement & Personalization Product Management teams and Local Curated Shopping Experiences Team in delivering personalized buying experiences.",
                 "Before joining eBay, she led teams in the development of mobile apps and mobile security solutions, was a product manager of a cloud based site development platform for media and entertainment companies, and legal technology solutions. She started her career as a Consultant at Accenture helping AT&T with their IPTV initiative, U-verse. She received her BS in Economics and MBA from the University of the Pacific.",
                 "Her specialties include: Product Management, Design Thinking, Lean Start-up, Google Design Sprint, Thought and Change Leadership, Product Strategy, Teaching and Mentoring, New Product Development, Charismatic Leadership, and Mobile."
+            ],
+            "descriptions_SP": [
+                "Nicole lidera un equipo de Product Managers en eBay, dirigiendo los equipos de gestión de productos de personalización y un equipo de experiencias del comprador. Antes de unirse a eBay, lideró equipos en el desarrollo de aplicaciones móviles y soluciones de seguridad móvil, fue gerente de producto de una plataforma de desarrollo de sitios basada en la nube para empresas de medios y entretenimiento, y soluciones tecnológicas legales. Comenzó su carrera como consultora en Accenture ayudando a AT&T con su iniciativa de IPTV, U-verse. Recibió su BS en Economía y MBA de University of the Pacific. Sus especialidades incluyen: Gestión de productos, Design Thinking, Lean Start-up, Google Design Sprint, Liderazgo de pensamiento y cambio, Estrategia de productos, Enseñanza y tutoría y Desarrollo de nuevos productos."
             ],
             "picture": "https://assets.yakera.org/yakera/nicole-inouye.webp"
         },
@@ -51,11 +76,17 @@
             "titles": [
                 "Global Business Lead, Waze"
             ],
+            "titles_SP": [
+                "Líder de Negocios Globales, Waze"
+            ],
             "descriptions": [
                 "Suzie grew up in Cambridge, Massachusetts and graduated from Middlebury College in Vermont. In 1990 she moved to San Francisco while working for  Ziff-Davis Publishing. After working at Ziff she moved on to CNET (now CBS Interactive) where she worked as a General Manager of the Entertainment division.",
                 "In 2006 after four years at CNET, Suzie joined YouTube as CMO. Along with colleagues from Hulu, AOL, Microsoft and Yahoo! Suzie launched the Digital Video NewFronts now in its 10th year.",
                 "In 2017 Suzie transitioned to Waze and today holds P&L responsibility for the Global Business Organization.",
                 "Suzie has been one of MediaWeek's “People to Watch”,  a \"Working Mother of the year\", board member of the San Francisco Film Society and is currently a Trustee of Middlebury College. She  serves on the board of Goldiblocks, a content company focused on STEM for girls and is an advisor for Reddit.  In 2019 she earned her executive leadership coaching certification through the Hudson Institute."
+            ],
+            "descriptions_SP": [
+                "Suzie creció en Cambridge, Massachusetts y se graduó de Middlebury College en Vermont. En 1990 se mudó a San Francisco mientras trabajaba para Ziff-Davis Publishing. Después de trabajar en Ziff, Suzie pasó a CNET (ahora CBS Interactive) donde trabajó como Gerente General de la división de Entretenimiento. En 2006, después de cuatro años en CNET, Suzie se unió a YouTube como CMO. Junto con colegas de Hulu, AOL, Microsoft y Yahoo! Suzie lanzó Digital Video NewFronts, que ahora está en su décimo año. En 2017, Suzie pasó a Waze y hoy es responsable de las pérdidas y ganancias de la organización comercial global. Suzie ha sido una de las \"Personas a seguir\" de MediaWeek, una \"Madre trabajadora del año\", miembro de la junta de la Sociedad de Cine de San Francisco y actualmente es miembro de la junta directiva de Middlebury College. Suzie es miembro de la junta directiva de Goldiblocks, una empresa de contenido centrada en STEM para niñas y es asesora de Reddit."
             ],
             "picture": "https://assets.yakera.org/yakera/suzie-reider.webp"
         },
@@ -64,19 +95,31 @@
             "titles": [
                 "Lead Infrastructure Engineer, Clear Street"
             ],
+            "titles_SP": [
+                "Líder de Infrastructura e Ingienería en Clear Street"
+            ],
             "descriptions": [
                 "Lead of Infrastructure Engineering at Clear Street, building infrastructure that will power global trading in 2030 and beyond. Ex-Googler. Emilio is the founder of two Google Cloud Platform services, Pub/Sub and IoT Core. Previously engineering lead for Waze Ads & Monetization. Has led teams of 60+ engineers working on Cloud Infrastructure. Founding member of VideoMining Inc., using ML and Computer Vision for passive customer behavior research. Has a Master in Computer Science and Engineering from Penn State University and a Bachelor in Computer Science from Universidad Simon Bolivar in Venezuela."
+            ],
+            "descriptions_SP": [
+                "Líder de Ingeniería de Infraestructura en Clear Street, construyendo infraestructura que impulsará el comercio global en 2030 y más allá. Ex Googler, Emilio es el fundador de dos servicios de Google Cloud Platform, Pub/Sub e IoT Core. Anteriormente, Emilio fue el líder de ingeniería para Waze Ads & Monetization. Schapira ha dirigido equipos de más de 60 ingenieros que trabajan en infraestructura en la nube. El ingeniero venezolano es miembro fundador de VideoMining Inc., que utiliza ML y Computer Vision para la investigación del comportamiento pasivo del cliente. Emilio tiene una Maestría en Ciencias de la Computación e Ingeniería de la Universidad de Penn State y una Licenciatura en Ciencias de la Computación de la Universidad Simón Bolívar de Venezuela."
             ],
             "picture": "https://assets.yakera.org/yakera/emilio-schapira2.webp"
         },
         {
             "name": "Rupert Millington",
             "titles": [
-                "Director and Co-Founder, Curious Industry"
+                "Director & Co-Founder, Curious Industry"
+            ],
+            "titles_SP": [
+                "Director y Co-fundador, Curious Industry"
             ],
             "descriptions": [
                 "Rupert received his degree from King’s College in London before moving on to work as a Joint Head of Learning for ?What If!, a corporate education company. From 2003 to 2004 he worked as the Head of Innovation for MPG, a marketing and advertising company in New York. He spent six years as the Global Head of Innovation at Aegis Group, a marketing and media company which provides innovative solutions in advertising and multimedia.",
                 "From 2010 to 2013 he was the Director of Babytiger, specializing in branding and strategic innovation consultation. In 2013 he co-founded Curious Industry, a global strategy and innovation consultancy, where he works as Director."
+            ],
+            "descriptions_SP": [
+                "Rupert Millington recibió su título de King's College en Londres antes de empezar a trabajar como Director de Aprendizaje para ?What If!, una empresa de educación corporativa. De 2003 a 2004 trabajó como Director de Innovación de MPG, una empresa de marketing y publicidad en Nueva York. Rupert pasó seis años como director global de innovación en Aegis Group, una empresa de marketing y medios que ofrece soluciones innovadoras en publicidad y multimedia. De 2010 a 2013 Rupert fue Director de Babytiger, especializándose en consultoría de branding e innovación estratégica. En 2013 cofundó Curious Industry, una consultora global de estrategia e innovación, donde trabaja como Director."
             ],
             "picture": "https://assets.yakera.org/yakera/rupert-millington.webp"
         }
