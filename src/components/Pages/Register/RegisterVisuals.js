@@ -63,7 +63,12 @@ function RegisterVisuals(props) {
                                     <DetailsSwitch EN={EN} isRecipient={isRecipient} actions={actions}/>
                                 </Step>
 
-                                <Step label={EN ? "Authentication" : 'Autenticación'} >
+                                <Step label={EN 
+                                            ? 
+                                            isRecipient ? "Authentication" : 'Profile'
+                                            : 
+                                            !isRecipient ? "Perfil" : "Autenticación"
+                                            } >
                                     {isRecipient
                                         ?
                                         <RegisterAuth EN={EN} data={props.data} handleChange={props.handleChange}/>

@@ -30,7 +30,6 @@ function Register_auth_donor(props) {
                     </label>
                     <select
                         name="preference"
-                        placeholder={EN ? "Choose preference" : "Número telefónico" }
                         value={props.data.preference}
                         onChange={props.handleChange}
                         className={classnames(
@@ -64,12 +63,12 @@ function Register_auth_donor(props) {
                     />
                     <div className="invalid-feedback">{props.data.errors.location}</div>
 
-                    <label>{EN ? 'Phone (optional):' : 'Número telefónico (opcional):'}</label>
+                    <label>{EN ? 'Phone (optional):' : 'Número Telefónico (opcional):'}</label>
                     <input
                         type="text"
                         name="donor_phone"
                         maxLength="20"
-                        placeholder={EN ? "Enter your number" : "Número telefónico" }
+                        placeholder={EN ? "Enter your number" : "Número Telefónico" }
                         value={props.data.donor_phone}
                         onChange={props.handleChange}
                         className={classnames(
@@ -141,7 +140,7 @@ const ImgUpload =({
       <div>
         <img htmlFor="photo-upload" alt="profile-upload" src={src}/>
       </div>
-      <button>{EN ? 'Upload File' : 'Subir archivo'}</button>
+      <button>{EN ? 'Upload File' : 'Subir Archivo'}</button>
       <p id="pic-name">{file.name}</p>
       <input id="photo-upload" type="file" accept="image/*" onChange={onChange}/>
     </label>
