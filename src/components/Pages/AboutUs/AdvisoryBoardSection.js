@@ -20,11 +20,11 @@ function AdvisoryBoardSection(props) {
                                 </Grid>  
                                 <Grid item xs={12} sm={9} spacing={0} className='member-text' key={i}>
                                     <p id="name">{member.name}</p>
-                                    <label id='position'>{member.titles}</label>
+                                    <label id='position'>{EN ? member.titles : member.titles_SP}</label>
 
                                     <br />
 
-                                    <p>{member.descriptions}</p>
+                                    <p>{EN ? member.descriptions : member.descriptions_SP}</p>
 
                                 </Grid>                     
                             </Grid> 
