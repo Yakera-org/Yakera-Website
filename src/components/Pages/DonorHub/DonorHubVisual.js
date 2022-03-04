@@ -157,7 +157,7 @@ function DonorHubVisual(props) {
             <Grid item xs={12} sm={12}>
               <div {...getToggleProps()}>
                 <button className="join-comm" onClick={props.onCommunityWOZ}>
-                  {EN ? 'Join a Community!' : 'Join a Community'}
+                  {EN ? 'Join a Team!' : 'Únete a un equipo!'}
                 </button>
               </div>
               <div className='join-text'{...getCollapseProps()}>
