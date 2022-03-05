@@ -112,6 +112,32 @@
 .donate-page-card button:focus{
     background-color: #805e3b;
 }
+.donate-page-card .zelle-donate{
+    text-align: center;
+    padding: 10px;
+    color: #464646;
+}
+.donate-page-card .zelle-donate img{
+    width: 20%;
+    min-width: 50px;
+    max-width: 200px;
+    margin-top: -5px;
+}
+.donate-page-card .zelle-donate #zelle{
+    color: #6d1ed4;
+    text-shadow: 1px 1px #6d1ed436;
+}
+.donate-page-card .zelle-donate .zelle-button{
+    background-color: transparent;
+    border: 2px #6d1ed4 solid;
+    color: #6d1ed4;
+    width: 80%;
+    padding: 5px;
+}
+.donate-page-card .zelle-donate .zelle-button:hover{
+    background-color: #6d1ed4;
+    color: white;
+}
 
 .payment-visual {
     margin:  0 10% 0 10%;
