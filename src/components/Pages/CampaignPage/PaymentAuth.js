@@ -24,7 +24,7 @@ function PaymentAuth(props) {
         // try {
         //     const payload = {
         //         'slug': props.slug,
-        //         'status': 'error', // status is a field to know if the transaction was successful. Valid values are 'success', 'cancel' & 'error' 
+        //         'status': 'error', // status is a field to know if the transaction was successful. Valid values are 'success', 'cancel' & 'error'
         //         'email': props.email,
         //         'name': props.name,
         //         'amount': parseInt(props.amount),
@@ -42,7 +42,7 @@ function PaymentAuth(props) {
 
     const total_amount = parseInt(props.amount) + parseInt(props.tip)
     return (
-        <div>    
+        <div>
              <p>{EN ? 'Payment Authentication' : 'Autenticación de pago'}</p>
             <Card className='payment-auth-card'>
 
@@ -52,18 +52,18 @@ function PaymentAuth(props) {
                     </h4>
                     <p>{EN ? 'Please select a payment method' : 'Por favor seleccione un método de pago.'}</p>
                 </div>
-                <PayPal 
-                    amount={total_amount} 
+                <PayPal
+                    amount={total_amount}
                     onSuccess={props.OnSuccessPayment}
-                    onClick={props.OnPaymentClick} 
-                    onError={props.OnPaymentError} 
+                    onClick={props.OnPaymentClick}
+                    onError={props.OnPaymentError}
                     onCancel={props.OnPaymentCancel}
                 />
                 <button
                     type="submit"
                     onClick={onAirTM}
-                    className=" airtm-but"    
-                                 
+                    className=" airtm-but"
+
                 >
                     <img src={airtmLogo} alt="airtm-logo-button" />
                 </button>
@@ -72,7 +72,7 @@ function PaymentAuth(props) {
                 <div >
                     <button
                         type="submit"
-                        className=" airtm-but" 
+                        className=" airtm-but"
                         onClick={onZelle}
                     >
                         <img src={zelleLogo} alt="zelle-logo-button" />
