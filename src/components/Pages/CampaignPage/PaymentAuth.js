@@ -3,7 +3,7 @@ import {Card} from '@material-ui/core';
 import PayPal from './Paypal';
 import airtmLogo from '../../../pics/airtmbutton.png';
 import zelleLogo from '../../../pics/zelle.png';
-import api from "../../../services/api";
+// import api from "../../../services/api";
 import ZelleLogic from './ZelleLogic';
 
 

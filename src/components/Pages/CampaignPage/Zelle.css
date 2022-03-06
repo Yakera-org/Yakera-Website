@@ -5,5 +5,10 @@
 
 .zelle-form{
   float: center;
-  max-width: 60%;
+  max-width: 100%;
+  min-width: 100%;
+}
+
+.input-container{
+  margin: 0vw 6vw 0vw 6vw;
 }
