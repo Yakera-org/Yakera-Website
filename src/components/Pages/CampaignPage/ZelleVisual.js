@@ -2,35 +2,48 @@ import React from 'react';
 import "./Zelle.css"
 // import { uploadFile } from 'react-s3';
 import Button from '@material-ui/core/Button';
+import classnames from 'classnames';
 
 function ZelleVisual(props) {
 
     const EN = props.EN;
+    const data = props.data;
 
     return (
         <div>
             <p>
-            {EN ? "Provide us with your Zelle account information!" :
-              "Inserte los siguientes detallas asociados a la cuenta de Zelle"}
+              {EN ? "Provide us with your Zelle account information!" :
+                "Inserte los siguientes detallas asociados a la cuenta de Zelle"}
             </p>
             <div className = "input-container">
-            <input
-                type="text"
-                name="zelle-email"
-                placeholder={EN ? "Email*" : "Correo electrónico*" }
-                className='zelle-form'
+              <input
+                  type="text"
+                  name="email"
+                  placeholder={EN ? "Email*" : "Correo electrónico*" }
+                  className={classnames(
+                    'form-control zelle-form',
+                    { 'is-valid': data.errors.email === false},
+                    { 'is-invalid': data.errors.email }
+                  )}
+                  onChange={props.handleChange}
 
-            />
+              />
+              <div className="invalid-feedback">{data.errors.email}</div>
 
-            <input
-                type="text"
-                name="zelle-name"
-                placeholder={EN ? "Name*" : "Tu dirección" }
-                className='zelle-form'
+              <input
+                  type="text"
+                  name="name"
+                  placeholder={EN ? "Name*" : "Tu dirección" }
+                  className={classnames(
+                    'form-control zelle-form',
+                    { 'is-valid': data.errors.name === false},
+                    { 'is-invalid': data.errors.name }
+                  )}
+                  onChange={props.handleChange}
 
-            />
-            <br/>
-            <div style = {{marginTop: "7px", float: "left"}}>{EN ? "*required" : "*requerido"}</div>
+              />
+              <div className="invalid-feedback">{data.errors.name}</div>
+              <div style = {{marginTop: "7px", float: "left"}}>{EN ? "*required" : "*requerido"}</div>
             </div>
             <br/>
             <div style = {{marginTop: "30px", float: "left"}}> {EN ?
@@ -52,15 +65,23 @@ function ZelleVisual(props) {
                  }}
                >{EN ? "Upload Screenshot" : "Subir captura de pantalla"}</Button>
                <div className = "input-container">
-               <input
-                   type="text"
-                   name="zelle-name"
-                   placeholder={EN ? "Reference*" : "Referencia" }
+                <input
+                    type="text"
+                    name="reference"
+                    placeholder={EN ? "Reference*" : "Referencia" }
+                    onChange={props.handleChange}
+                    className={classnames(
+                    'form-control',
+                    { 'is-valid': data.errors.reference === false},
+                    { 'is-invalid': data.errors.reference }
+                  )}
 
-               />
+                />
+                <div className="invalid-feedback">{data.errors.reference}</div>
                </div>
                <Button className = "zelle-button"
                    to="/register"
+                   onClick={props.OnConfirm}
                    style={{
                      width:'70%',
                      border:'none',

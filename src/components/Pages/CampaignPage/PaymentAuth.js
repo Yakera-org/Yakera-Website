@@ -80,7 +80,7 @@ function PaymentAuth(props) {
                     {
                         openZelle
                         ?
-                        <ZelleLogic />
+                        <ZelleLogic EN={EN}/>
                         :
                         ''
                     }
