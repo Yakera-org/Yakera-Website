@@ -166,7 +166,8 @@ function onWithdraw(event){
                                             <input 
                                                 type='checkbox'
                                                 name='acceptingPayment'
-                                                onChange={() => {}}
+                                                onChange={props.handleChangeZelleCheckbox}
+                                                checked={props.zelleCheckbox}
                                             />
                                         </Grid>
                                         <Grid item xs={12} sm={4}>
