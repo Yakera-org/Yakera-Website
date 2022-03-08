@@ -1,8 +1,9 @@
 import React from 'react';
 import "./Zelle.css"
-// import { uploadFile } from 'react-s3';
 import Button from '@material-ui/core/Button';
 import classnames from 'classnames';
+import { Alert } from 'reactstrap';
+import HashLoader from "react-spinners/HashLoader";
 
 function ZelleVisual(props) {
 
@@ -51,7 +52,7 @@ function ZelleVisual(props) {
             :
              <div className = "zelle-screenshot-text">Tranfiere el monto a jane.doe@gmail.com en Zelle a nombre de John Doe. <b>Desde la aplicación de tu banco y toma una captura de pantalla!</b></div> } </div>
 
-              <ImgUpload EN={EN} OnScreenshot={props.OnScreenshot} photoUpload={props.photoUpload} name={props.ssName} removeScreenShot={props.removeScreenShot}/>  
+              <ImgUpload EN={EN} photoUpload={props.photoUpload} name={props.ssName} removeScreenShot={props.removeScreenShot}/>  
 
                <div className = "input-container">
                 <input
@@ -68,7 +69,7 @@ function ZelleVisual(props) {
                 />
                 <div className="invalid-feedback">{data.errors.reference}</div>
                </div>
-               <Button className = "zelle-button"
+               <Button className = "confirm-button"
                    onClick={props.OnConfirm}
                    style={{
                      width:'70%',
@@ -81,6 +82,24 @@ function ZelleVisual(props) {
                      margin: "30px 0px 20px 0px"
                    }}
                  >{EN ? "Confirm Payment" : "Confirmar Pago"}</Button>
+
+            <div className="sweet-loading">
+                <div className='loader-wrapper'>
+                    <HashLoader
+                        size={50}
+                        color={"#ea8737"}
+                        loading={props.loading}
+                    />
+                </div>
+            </div> 
+            { props.error
+            ?
+                <Alert color="danger" style={{width:"70%", marginLeft:"15%"}}>
+                    { props.error }
+                </Alert>
+            :
+            ''
+            }
         </div>
     );
 }
@@ -90,19 +109,16 @@ export default ZelleVisual;
 
 const ImgUpload =({
   EN,
-  OnScreenshot,
   photoUpload,
   name,
   removeScreenShot
 })=>
   <>
     <label id="upload-area" htmlFor="screenshot-upload">
-      <button className = "zelle-button"
-                        onClick={OnScreenshot}
-                        >
+      <button className = "zelle-button">
                           {EN ? "Upload Screenshot" : "Subir captura de pantalla"}
         </button>
-      <p id="ss-name">{EN ? "File uploaded: " : "Archivo subido: "}{name}</p>
+      <p id="ss-name">{name!== "" ? EN ? "File uploaded: " + name : "Archivo subido: " + name : ""}</p>
       <input id="screenshot-upload" type="file" accept="image/*" onChange={photoUpload}/> 
     </label>
 

@@ -48,8 +48,18 @@
   color: #2c1c1c;
   text-align: center;
   width: 40%;
-  min-width: 300px;
 }
  #remove:hover{
   opacity: 0.8;
+}
+
+.sweet-loading{
+  width: 100%;
+  text-align: center;
+  padding-bottom: 50px
+}
+.sweet-loading .loader-wrapper{
+  position: absolute;
+  text-align: center;
+  left: 49%;
 }
