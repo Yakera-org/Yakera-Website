@@ -9,6 +9,7 @@ function ZelleLogic(props) {
         name: "",
         reference: "",
         loading: false,
+        ss_url: "",
         errors: {
           email: null,
           name: null,
@@ -18,6 +19,7 @@ function ZelleLogic(props) {
     
       const [data, setData] = useState(initialState);
       const [loading, setLoading] = useState(false);
+      const [ssName, setSSName] = useState("");
     
       const handleChange = event => {
         event.persist();
@@ -88,9 +90,39 @@ function ZelleLogic(props) {
         }
         return hasPassed // all is good, you can proceed
       }
+      function photoUpload(e){
+        e.preventDefault();
+
+        if(e.target.files.length > 0){
+            const file = e.target.files[0];
+            if(file.size > 5000000){
+                props.EN 
+                    ? alert("File too large. (>5MB)")
+                    : alert("Archivo es demasiado grande (>5mb)")
+            }else{
+                var fileName = file.name;
+                var idxDot = fileName.lastIndexOf(".") + 1;
+                var extFile = fileName.substr(idxDot, fileName.length).toLowerCase();
+                if (extFile==="jpg" || extFile==="jpeg" || extFile==="png"){
+                  setSSName(fileName)
+                }else{
+                    props.EN
+                        ? alert("Only png/jpg/jpeg and png files are allowed!")
+                        : alert("Solamente se acepta archivos png./jpg/jpeg!");
+                }              
+            }
+        }
+      }
+      function removeScreenShot(){
+        setSSName("")
+      }
+      function OnScreenshot(){
+        console.log("hi")
+      }
+
     return (
         <div>
-            <ZelleVisual EN = {props.EN} data = {data} handleChange={handleChange} OnConfirm={OnConfirm} loading={loading}/>
+            <ZelleVisual EN = {props.EN} data = {data} handleChange={handleChange} OnScreenshot={OnScreenshot} OnConfirm={OnConfirm} loading={loading} photoUpload={photoUpload} ssName={ssName} removeScreenShot={removeScreenShot}/>
         </div>
     );
 }

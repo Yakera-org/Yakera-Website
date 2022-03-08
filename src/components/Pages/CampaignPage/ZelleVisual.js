@@ -51,19 +51,8 @@ function ZelleVisual(props) {
             :
              <div className = "zelle-screenshot-text">Tranfiere el monto a jane.doe@gmail.com en Zelle a nombre de John Doe. <b>Desde la aplicación de tu banco y toma una captura de pantalla!</b></div> } </div>
 
-             <Button className = "zelle-button"
-                 to="/register"
-                 style={{
-                   width:'70%',
-                   border:'none',
-                   backgroundColor:'#ea8737',
-                   borderRadius:'10px',
-                   color:'white',
-                   padding:'5px',
-                   fontSize: '13px',
-                   margin: "20px 0px 20px 0px"
-                 }}
-               >{EN ? "Upload Screenshot" : "Subir captura de pantalla"}</Button>
+              <ImgUpload EN={EN} OnScreenshot={props.OnScreenshot} photoUpload={props.photoUpload} name={props.ssName} removeScreenShot={props.removeScreenShot}/>  
+
                <div className = "input-container">
                 <input
                     type="text"
@@ -80,7 +69,6 @@ function ZelleVisual(props) {
                 <div className="invalid-feedback">{data.errors.reference}</div>
                </div>
                <Button className = "zelle-button"
-                   to="/register"
                    onClick={props.OnConfirm}
                    style={{
                      width:'70%',
@@ -98,3 +86,30 @@ function ZelleVisual(props) {
 }
 
 export default ZelleVisual;
+
+
+const ImgUpload =({
+  EN,
+  OnScreenshot,
+  photoUpload,
+  name,
+  removeScreenShot
+})=>
+  <>
+    <label id="upload-area" htmlFor="screenshot-upload">
+      <button className = "zelle-button"
+                        onClick={OnScreenshot}
+                        >
+                          {EN ? "Upload Screenshot" : "Subir captura de pantalla"}
+        </button>
+      <p id="ss-name">{EN ? "File uploaded: " : "Archivo subido: "}{name}</p>
+      <input id="screenshot-upload" type="file" accept="image/*" onChange={photoUpload}/> 
+    </label>
+
+      {name
+      ?
+      <button onClick={removeScreenShot} id="remove">{EN?"Remove Screenshot" : "Eliminar captura"}</button>
+      :
+      ""
+      }
+  </>

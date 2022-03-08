@@ -12,7 +12,7 @@ class PaymentVisual extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            hasDetails: false,
+            hasDetails: true,
             amount: '',
             name: '',
             email: '',
