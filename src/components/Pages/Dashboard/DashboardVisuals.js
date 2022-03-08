@@ -88,60 +88,86 @@ function onWithdraw(event){
                             {/* intentionally left blank */}
                         </Grid>
                         <Grid item xs={12} sm={4} id='zelle'>
+                            <Grid container spacing={0} className='dash-left'>
+                                <Grid item xs={12} sm={12}>
+                                    <p id='dash-stats'>Zelle email:</p>
+                                </Grid>
+                            </Grid>
                             {
-                                !user.zelle
-                                ? <>
-                                    <Grid container spacing={0} className='dash-left'>
-                                        <Grid item xs={12} sm={12}>
-                                            <p id='dash-stats'>Zelle email:</p>
-                                        </Grid>
+                                !user.zelleInfo
+                                ?
+                                <Grid container spacing={0}>
+                                    <Grid item xs={12} sm={12} id='zelle-email'>
+                                        <input
+                                            type='email'
+                                            name='zelleEmail'
+                                            placeholder={EN ? 'Enter your Zelle email' : 'Ingrese su correo electrónico Zelle'}
+                                            onChange={props.handleChangeZelleEmail}
+                                            className={classnames(
+                                                'form-control',
+                                                { 'is-valid': props.zelleEmailError === false },
+                                                { 'is-invalid': props.zelleEmailError }
+                                            )}
+                                        />
+                                        <p className='invalid-feedback'>{props.zelleEmailError}</p>
                                     </Grid>
-                                    <Grid container spacing={0}>
-                                        <Grid item xs={12} sm={12} id='zelle-email'>
-                                            <input
-                                                type='email'
-                                                name='zelleEmail'
-                                                placeholder={EN ? 'Enter your Zelle email' : 'Ingrese su correo electrónico Zelle'}
-                                                onChange={props.handleChangeZelleEmail}
-                                                className={classnames(
-                                                    'form-control',
-                                                    { 'is-valid': props.zelleEmailError === false },
-                                                    { 'is-invalid': props.zelleEmailError }
-                                                )}
-                                            />
-                                            <p className='invalid-feedback'>{props.zelleEmailError}</p>
-                                        </Grid>
-                                    </Grid>
-                                    
-                                </>
-                                : <div>
-                                    Something for now
+                                </Grid>
+                                : <div className='dash-left'>
+                                    <p>{user.zelleInfo.email}</p>
                                 </div>
                             }
                         </Grid>
-                        <Grid item xs={12} sm={6} id='zelle'>
+                        <Grid item xs={12} sm={!user.zelleInfo ? 6 : 4} id='zelle'>
+                            <Grid container spacing={0} className='dash-left'>
+                                <Grid item>
+                                    <p id='dash-stats'>Zelle name:</p>
+                                </Grid>
+                            </Grid>
                             {
-                                !user.zelle
-                                ? <>
+                                !user.zelleInfo
+                                ?
+                                <Grid container spacing={0}>
+                                    <Grid item xs={12} sm={8}>
+                                        <input
+                                            type='name'
+                                            name='zelleName'
+                                            placeholder={EN ? 'Enter your Zelle name' : 'Ingrese su correo name Zelle'}
+                                            onChange={props.handleChangeZelleName}
+                                            className={classnames(
+                                                'form-control',
+                                                { 'is-valid': props.zelleNameError === false },
+                                                { 'is-invalid': props.zelleNameError }
+                                            )}
+                                        />
+                                        <p className='invalid-feedback'>{props.zelleNameError}</p>
+                                    </Grid>
+                                    <Grid item xs={12} sm={4}>
+                                        <button onClick={props.onSubmitZelle}>
+                                            {EN ? "Submit" : "Enviar"}
+                                        </button>
+                                    </Grid>
+                                </Grid>
+                                : <div className='dash-left'>
+                                    <p>{user.zelleInfo.name}</p>
+                                </div>
+                            }
+                        </Grid>
+                        {!user.zelleInfo
+                            ? <></>
+                            :
+                                <Grid item xs={12} sm={4} id='zelle'>
                                     <Grid container spacing={0} className='dash-left'>
                                         <Grid item>
-                                            <p id='dash-stats'>Zelle name:</p>
+                                            <p id='dash-stats'>Accepting payment?:</p>
                                         </Grid>
                                     </Grid>
                                     <Grid container spacing={0}>
                                         <Grid item xs={12} sm={8}>
-                                            <input
-                                                type='name'
-                                                name='zelleName'
-                                                placeholder={EN ? 'Enter your Zelle name' : 'Ingrese su correo name Zelle'}
-                                                onChange={props.handleChangeZelleName}
-                                                className={classnames(
-                                                    'form-control',
-                                                    { 'is-valid': props.zelleNameError === false },
-                                                    { 'is-invalid': props.zelleNameError }
-                                                )}
+                                            <input 
+                                                type='checkbox'
+                                                name='acceptingPayment'
+                                                onChange={() => {}}
                                             />
-                                            <p className='invalid-feedback'>{props.zelleNameError}</p>
                                         </Grid>
                                         <Grid item xs={12} sm={4}>
                                             <button onClick={props.onSubmitZelle}>
@@ -149,10 +175,9 @@ function onWithdraw(event){
                                             </button>
                                         </Grid>
                                     </Grid>
-                                </>
-                                : 'something'
-                            }
-                        </Grid>
+                                </Grid>
+                            
+                        }
                     </Grid> 
 
                     <hr style={{marginTop:'30px'}}/>  

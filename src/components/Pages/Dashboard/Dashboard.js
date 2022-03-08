@@ -57,7 +57,14 @@ function Dashboard() {
                   "firstName": "John",
                   "lastName": "Doe",
                   "phone": "+584121234567",
-                  "address": "Caracas, Venezuela"
+                  "address": "Caracas, Venezuela",
+                  "airTMNum": "123456789",
+                  'zelleInfo': {
+                        email: "test@test.com",
+                        name: "Test Name",
+                        bank: "Whatever bank",
+                        isAccepting: true
+                    },
                 },
                 "campaigns": [{
                   "slug": "stengthening-education-in-el-calvario-venezuela",
