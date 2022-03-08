@@ -12,7 +12,7 @@ class PaymentVisual extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            hasDetails: true,
+            hasDetails: false,
             amount: '',
             name: '',
             email: '',
@@ -179,6 +179,7 @@ class PaymentVisual extends Component {
                             amount={this.state.amount}
                             name={this.state.name}
                             email={this.state.email}
+                            isAnon={this.state.isAnon}
                             slug={this.props.slug}
                             onAirTM={this.onAirTM.bind(this)}
                             tip={this.state.tip}

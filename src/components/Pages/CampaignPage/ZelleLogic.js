@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { validateFields } from '../Register/Validation';
 import ZelleVisual from './ZelleVisual';
-
+import api from "../../../services/api";
 import { uploadFile } from 'react-s3';
+import LanguageService from '../../../services/language';
 
 const S3_BUCKET = process.env.REACT_APP_S3_BUCKET
 const REGION = process.env.REACT_APP_REGION
@@ -54,7 +55,7 @@ function ZelleLogic(props) {
       };
     
       function OnConfirm(){
-       
+        setError("")
         let canContinue = validateData() 
         if (canContinue){
           setData(data => ({
@@ -67,9 +68,8 @@ function ZelleLogic(props) {
             })); 
           if(SSfile !== ""){     
             setLoading(true)
-            uploadAWS()
-            console.log(data)
-            setLoading(false)
+            upload()
+            
             }else{
               setError(props.EN ? "Please upload a screenshot of the transaction." : "Por favor, cargue una captura de pantalla de la transacción.")
             }
@@ -78,10 +78,42 @@ function ZelleLogic(props) {
           }
         }
 
-      async function uploadAWS (){
+      async function upload (){
         await uploadFile(SSfile, config_aws)
-            .then(data => console.log(data))
+            .then(
+              sendToBackend
+              )
             .catch(err => console.error(err))
+      }
+
+      async function sendToBackend(){
+          try {
+            const fileAWSLocation = "https://yakera-files.s3.us-east-2.amazonaws.com/profile-pictures/" + SSfile.name
+              const payload = {
+                  "slug": "sdfds",
+                  "email": props.email,
+                  "name": props.name,
+                  "amount": props.amount,
+                  "status": "success",
+                  "tip": props.tip,
+                  "paymentID": data.reference,
+                  "comment": props.comment,
+                  "language": LanguageService.getLanguage(),
+                  "isAnonymous": props.isAnon,
+                  "isP2P": true,
+                  "paymentReceipt": fileAWSLocation,
+                  "paymentMethod": "zelle",
+                  "zelleName": data.name,
+                  "zelleEmail": data.email
+              }
+              console.log(payload)
+              console.log(await api.post(`/campaigns/donate`, payload))
+          } catch (err) {
+              console.log(err);
+              setError(props.EN ? "Something went wrong, please tyr again." : "Algo salió mal, por favor, tira de nuevo.")
+          }
+
+          setLoading(false)
       }
 
       function validateData(){
