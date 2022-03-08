@@ -60,6 +60,22 @@
     opacity: 0.8;
     color: white;
 }
+#zelle .dash-left{
+    margin-bottom: -20px;
+}
+#zelle button{
+    background-color: #ea8737;
+    border: none;
+    outline: none;
+    border-radius: 10px;
+    color: white;
+    padding: 10px 15px ;
+    margin-left: 5px;
+    font-family: Intro-Regular-Alt;
+}
+#zelle-email {
+    margin-right: 5px;
+}
 
 .dash-campaigns h2{
     font-family: Intro-Regular-Alt;
@@ -194,6 +210,18 @@
         color: white;
         margin-left: 0px;
         margin-top: 5px;
+        margin-bottom: 1rem;
+    }
+    #zelle button{
+        color: white;
+        margin-left: 0px;
+        margin-top: 5px;
+    }
+    #zelle-email {
+        margin-right: 0px;
+    }
+    #zelle-email input{
+        margin-bottom: 1rem;
     }
     .active-campaigns {
         padding: 10px;

@@ -87,15 +87,17 @@ function onWithdraw(event){
                         <Grid item xs={1} sm={8}>
                             {/* intentionally left blank */}
                         </Grid>
-                        <Grid item xs={12} sm={4}>
+                        <Grid item xs={12} sm={4} id='zelle'>
                             {
                                 !user.zelle
                                 ? <>
-                                    <div>
-                                        <p>Zelle email:</p>
-                                    </div>
-                                    <Grid container spacing={0}>
+                                    <Grid container spacing={0} className='dash-left'>
                                         <Grid item xs={12} sm={12}>
+                                            <p id='dash-stats'>Zelle email:</p>
+                                        </Grid>
+                                    </Grid>
+                                    <Grid container spacing={0}>
+                                        <Grid item xs={12} sm={12} id='zelle-email'>
                                             <input
                                                 type='email'
                                                 name='zelleEmail'
@@ -117,15 +119,17 @@ function onWithdraw(event){
                                 </div>
                             }
                         </Grid>
-                        <Grid item xs={12} sm={4}>
+                        <Grid item xs={12} sm={6} id='zelle'>
                             {
                                 !user.zelle
                                 ? <>
-                                    <div>
-                                        <p>Zelle name:</p>
-                                    </div>
+                                    <Grid container spacing={0} className='dash-left'>
+                                        <Grid item>
+                                            <p id='dash-stats'>Zelle name:</p>
+                                        </Grid>
+                                    </Grid>
                                     <Grid container spacing={0}>
-                                        <Grid item xs={12} sm={12}>
+                                        <Grid item xs={12} sm={8}>
                                             <input
                                                 type='name'
                                                 name='zelleName'
@@ -139,20 +143,7 @@ function onWithdraw(event){
                                             />
                                             <p className='invalid-feedback'>{props.zelleNameError}</p>
                                         </Grid>
-                                    </Grid>
-                                </>
-                                : 'something'
-                            }
-                        </Grid>
-                        <Grid item xs={12} sm={4}>
-                            {
-                                !user.zelle
-                                ? <>
-                                    <div>
-                                        {/* intentionally left blank */}
-                                    </div>
-                                    <Grid container spacing={0}>
-                                        <Grid item xs={12} sm={12}>
+                                        <Grid item xs={12} sm={4}>
                                             <button onClick={props.onSubmitZelle}>
                                                 {EN ? "Submit" : "Enviar"}
                                             </button>
