@@ -8,6 +8,7 @@ class DonateCard extends Component {
         const amount = this.props.amount;
         const target = this.props.target;
         const language = this.props.language;
+        const isAcceptingZelle = this.props.isAcceptingZelle;
         var EN = true;
         
         if(language ==="en"){
@@ -60,15 +61,21 @@ class DonateCard extends Component {
                         >
                             {EN ? 'Donate now' : 'Done ahora'}
                         </button>
-                        <button
-                            type="submit"
-                            className="zelle-button"
-                            onClick={() => {
-                                this.props.onDonate('donateRef')
-                            }} 
-                        >
-                            {EN ? <>Zelle <span>NEW!</span></> : <>Zelle <span>¡Nuevo!</span></>}
-                        </button>
+                        {
+                            isAcceptingZelle
+                            ?
+                            <button
+                                type="submit"
+                                className="zelle-button"
+                                onClick={() => {
+                                    this.props.onDonate('donateRef')
+                                }} 
+                            >
+                                {EN ? <>Zelle <span>NEW!</span></> : <>Zelle <span>¡Nuevo!</span></>}
+                            </button>
+                            :
+                            ""
+                        }
                         
                         <button
                             type="submit"

@@ -19,12 +19,17 @@ class CampaignPage extends Component{
         var language = LanguageService.getLanguage()
         let found = false;
         try {
-            const res = await api.get(`/campaigns/${this.props.match.params.title}`);
+            const res = await api.get(`/campaigns/sdfds/`);
             if (res.data.data) {
                 found = true;
+                var isAcceptingZelle = false
+                if(res.data.data._user?.zelleInfo?.isAccepting){
+                    isAcceptingZelle = true
+                }
                 console.log(res.data.data)
                 this.setState({
                     campaign: res.data.data,
+                    isAcceptingZelle: isAcceptingZelle
                 });
             } 
         } catch (err) {
@@ -55,6 +60,7 @@ class CampaignPage extends Component{
                         campaign={campaign} 
                         amount={campaign.raised} 
                         language={this.state.language}
+                        isAcceptingZelle={this.state.isAcceptingZelle}
                      />
 
                      <hr style={{width:'90%', marginLeft:'6%'}}/>
@@ -72,6 +78,7 @@ class CampaignPage extends Component{
                         language={'en'}
                         title={campaign.title}
                         slug={campaign.slug}
+                        isAcceptingZelle={this.state.isAcceptingZelle}
                      />
                     
                     <Author />

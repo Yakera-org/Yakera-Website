@@ -235,6 +235,7 @@ class CampaignPageVisual extends Component {
                             onClose={this.onShare}
                             onDonate={this.onClickScroll}
                             language={language}
+                            isAcceptingZelle={this.props.isAcceptingZelle}
                             />
                          </div>
                          <div className='comment-section'>

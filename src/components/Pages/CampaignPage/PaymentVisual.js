@@ -189,6 +189,7 @@ class PaymentVisual extends Component {
                             OnPaymentClick={this.OnPaymentClick.bind(this)}
                             OnPaymentError={this.OnPaymentError.bind(this)}
                             OnPaymentCancel={this.OnPaymentCancel.bind(this)}
+                            isAcceptingZelle={this.state.isAcceptingZelle}
                         />
                     }
                 </div>

@@ -51,6 +51,7 @@ function Dashboard() {
             const res = await api.get('/profile');
             console.log(res.data.data)
             setProfileData(res.data.data);
+            setZelleCheckbox(res.data.data?.user?.zelleInfo?.isAccepting)
             // setProfileData({
             //     "user": {
             //       "email": "test@test.com",
@@ -216,9 +217,8 @@ function Dashboard() {
         if(validateZelleEmail(zelleEmail) && validateZelleName(zelleName)){
             console.log('Submit Zelle Email and Name');
             backendPatch();
-        } else if(zelleCheckbox !== profileData.user.zelleInfo.isAccepting) {
-            backendPatch();
         }
+        backendPatch();
     };
 
     async function backendPatch(){
@@ -231,9 +231,9 @@ function Dashboard() {
                     isAccepting: zelleCheckbox,
                 },
             };
-          
+            console.log(requestBody)
             await api.patch('/profile/update', requestBody);
-            window.location.reload();   
+            //window.location.reload();   
         } catch (err) {
             console.log('Error. ' + err)
         }
