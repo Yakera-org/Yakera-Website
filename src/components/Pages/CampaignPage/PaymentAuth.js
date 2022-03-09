@@ -7,9 +7,9 @@ import zelleLogo from '../../../pics/zelle.png';
 
 function PaymentAuth(props) {
     const EN = props.EN
-    const shouldShowZelle = props?.isAcceptingZelle;
     const [openZelle, setOpenZelle] = React.useState(false);
-
+    
+    const shouldShowZelle = props?.isAcceptingZelle;
 
 
     function onAirTM(){
