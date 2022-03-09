@@ -73,6 +73,9 @@
     margin-left: 5px;
     font-family: Intro-Regular-Alt;
 }
+#zelle button:hover{
+    opacity: 0.8;
+}
 #zelle-email {
     margin-right: 5px;
 }

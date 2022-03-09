@@ -94,7 +94,7 @@ function onWithdraw(event){
                                 </Grid>
                             </Grid>
                             {
-                                !user.zelleInfo
+                                !user?.zelleInfo?.email
                                 ?
                                 <Grid container spacing={0}>
                                     <Grid item xs={12} sm={12} id='zelle-email'>
@@ -124,7 +124,7 @@ function onWithdraw(event){
                                 </Grid>
                             </Grid>
                             {
-                                !user.zelleInfo
+                                !user?.zelleInfo?.name
                                 ?
                                 <Grid container spacing={0}>
                                     <Grid item xs={12} sm={8}>

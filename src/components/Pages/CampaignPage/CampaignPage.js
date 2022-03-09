@@ -19,7 +19,7 @@ class CampaignPage extends Component{
         var language = LanguageService.getLanguage()
         let found = false;
         try {
-            const res = await api.get(`/campaigns/sdfds/`);
+            const res = await api.get(`/campaigns/${this.props.match.params.title}`);
             if (res.data.data) {
                 found = true;
                 var isAcceptingZelle = false

@@ -49,98 +49,11 @@ function Dashboard() {
     async function getCampaign() {
         try {
             const res = await api.get('/profile');
-            console.log(res.data.data)
-            setProfileData(res.data.data);
-            setZelleCheckbox(res.data.data?.user?.zelleInfo?.isAccepting)
-            // setProfileData({
-            //     "user": {
-            //       "email": "test@test.com",
-            //       "firstName": "John",
-            //       "lastName": "Doe",
-            //       "phone": "+584121234567",
-            //       "address": "Caracas, Venezuela",
-            //       "airTMNum": "123456789",
-            //     //   'zelleInfo': {
-            //     //         email: "test@test.com",
-            //     //         name: "Test Name",
-            //     //         bank: "Whatever bank",
-            //     //         isAccepting: true
-            //     //     },
-            //     },
-            //     "campaigns": [{
-            //       "slug": "stengthening-education-in-el-calvario-venezuela",
-            //       "targetAmount": 600,
-            //       "country": "Venezuela",
-            //       "_user": "610f0bc1a072af0598a3def2",
-            //       "title": "Stengthening Education in El Calvario",
-            //       "category": "small_business",
-            //       "story": "Nutriendo El Futuro is an organization that generates positive changes and sustainable impact in El Calvario",
-            //       "description": "Nutriendo El Futuro is an organization",
-            //       "mainPicture": {
-            //         "url": "https://assets.yakera.org/pictures/1635201650644-30sxdy.jpg"
-            //       },
-            //       "pictures": [],
-            //       "supportDocs": [],
-            //       "updates": [],
-            //       "donations": [],
-            //       "raised": 150,
-            //       "percentage": 29.89546,
-            //       "withdrawn": 150,
-            //       "completed": false,
-            //       "disabled": false,
-            //       "approved": true,
-            //       "createdAt": "2022-03-02",
-            //       "updatedAt": "2022-03-02"
-            //     },
-            //     {
-            //         "slug": "stengthening-education-in-el-calvario-venezuela",
-            //         "targetAmount": 600,
-            //         "country": "Venezuela",
-            //         "_user": "610f0bc1a072af0598a3def2",
-            //         "title": "Stengthening Education in El Calvario",
-            //         "category": "small_business",
-            //         "story": "Nutriendo El Futuro is an organization that generates positive changes and sustainable impact in El Calvario",
-            //         "description": "Nutriendo El Futuro is an organization",
-                    
-            //         "pictures": [],
-            //         "supportDocs": [],
-            //         "updates": [],
-            //         "donations": [],
-            //         "raised": 150,
-            //         "percentage": 29.89546,
-            //         "withdrawn": 150,
-            //         "completed": false,
-            //         "disabled": false,
-            //         "approved": false,
-            //         "createdAt": "2022-03-02",
-            //         "updatedAt": "2022-03-02"
-            //       },
-            //       {
-            //         "slug": "stengthening-education-in-el-calvario-venezuela",
-            //         "targetAmount": 600,
-            //         "country": "Venezuela",
-            //         "_user": "610f0bc1a072af0598a3def2",
-            //         "title": "Stengthening Education in El Calvario",
-            //         "category": "small_business",
-            //         "story": "Nutriendo El Futuro is an organization that generates positive changes and sustainable impact in El Calvario",
-            //         "description": "Nutriendo El Futuro is an organization",
-            //         "mainPicture": {
-            //           "url": "https://assets.yakera.org/pictures/1635201650644-30sxdy.jpg"
-            //         },
-            //         "pictures": [],
-            //         "supportDocs": [],
-            //         "updates": [],
-            //         "donations": [],
-            //         "raised": 150,
-            //         "percentage": 29.89546,
-            //         "withdrawn": 150,
-            //         "completed": false,
-            //         "disabled": false,
-            //         "approved": false,
-            //         "createdAt": "2022-03-02",
-            //         "updatedAt": "2022-03-02"
-            //       }]
-            // })
+            let data = res.data.data
+            setProfileData(data);
+            setZelleCheckbox(data?.user?.zelleInfo?.isAccepting)
+            setZelleEmail(data?.user?.zelleInfo?.email)
+            setZelleName(data?.user?.zelleInfo?.name)
             setLoaded(true);
         } catch (err) {
             setError('Profile not found');
@@ -214,11 +127,14 @@ function Dashboard() {
         }
     }
     const onSubmitZelle = () => {
-        if(validateZelleEmail(zelleEmail) && validateZelleName(zelleName)){
-            console.log('Submit Zelle Email and Name');
+        let checkEmail = validateZelleEmail(zelleEmail);
+        let checkName = validateZelleName(zelleName);
+        if( checkEmail && checkName){
             backendPatch();
+        }else{
+            console.log("Error")
         }
-        backendPatch();
+
     };
 
     async function backendPatch(){
@@ -233,7 +149,7 @@ function Dashboard() {
             };
             console.log(requestBody)
             await api.patch('/profile/update', requestBody);
-            //window.location.reload();   
+            window.location.reload();   
         } catch (err) {
             console.log('Error. ' + err)
         }
