@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import  { Card } from '@material-ui/core';
 import { Progress } from 'react-sweet-progress';
 import ShareCard from './ShareCard';
-import zelleLogo from '../../../pics/zelle.png';
 
 class DonateCard extends Component {
     render() {
@@ -56,12 +55,21 @@ class DonateCard extends Component {
                                 this.props.onDonate('donateRef')
                             }}
                             style={{
-                                borderRadius: '20px',
-                                backgroundColor: '#2f476c'
+                                backgroundColor: '#002463'
                             }}                       
                         >
                             {EN ? 'Donate now' : 'Done ahora'}
                         </button>
+                        <button
+                            type="submit"
+                            className="zelle-button"
+                            onClick={() => {
+                                this.props.onDonate('donateRef')
+                            }} 
+                        >
+                            {EN ? <>Zelle <span>NEW!</span></> : <>Zelle <span>¡Nuevo!</span></>}
+                        </button>
+                        
                         <button
                             type="submit"
                             className="btn btn-secondary btn-block"
@@ -73,24 +81,6 @@ class DonateCard extends Component {
                             {EN ? 'Share' : 'Compartir'}
                         </button>
                     </div> 
-
-                    <div className='zelle-donate'>
-                        <h4>
-                            NEW: Donate with <span id="zelle"><img src={zelleLogo} alt="zelle-logo" /></span>
-                        </h4> 
-                        <button
-                            type="submit"
-                            className="zelle-button"
-                            onClick={() => {
-                                this.props.onDonate('donateRef')
-                            }}
-                            style={{
-                                borderRadius: '20px',
-                            }}  
-                        >
-                            {EN ? 'Zelle' : 'Zelle'}
-                        </button>
-                    </div>
                 </Card>
 
                 <ShareCard open={this.props.showShare} onClose={this.props.onClose} EN={EN}/>

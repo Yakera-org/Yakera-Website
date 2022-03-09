@@ -99,46 +99,42 @@
 .donate-page-card-buttons {
     padding: 0% 10%;
 }
+.donate-page-card-buttons button{
+   border-radius: 20px; 
+}
+.donate-page-card-buttons button:hover{
+    opacity: 0.8;
+ }
 .donate-page-card button{
     background-color: #f77f00;
     border: none;
+    outline: none;
     font-size: 20px;
     color: white;
-    margin: 10px 0;
+    margin: 5px 0;
 }
 .donate-page-card button:hover{
-    background-color: #a56b2d;
+    background-color: #f77f00;
 }
-.donate-page-card button:focus{
-    background-color: #805e3b;
-}
-.donate-page-card .zelle-donate{
-    text-align: center;
-    padding: 10px;
-    color: #464646;
-}
-.donate-page-card .zelle-donate img{
-    width: 20%;
-    min-width: 50px;
-    max-width: 200px;
-    margin-top: -5px;
-}
-.donate-page-card .zelle-donate #zelle{
+.donate-page-card  #zelle{
     color: #6d1ed4;
     text-shadow: 1px 1px #6d1ed436;
 }
-.donate-page-card .zelle-donate .zelle-button{
-    background-color: transparent;
-    border: 2px #6d1ed4 solid;
-    color: #6d1ed4;
-    width: 80%;
+.donate-page-card  .zelle-button{
+    background-color: #6d1ed4;
+    color: white;
+    width: 100%;
     padding: 5px;
 }
-.donate-page-card .zelle-donate .zelle-button:hover{
+.donate-page-card  .zelle-button:hover{
     background-color: #6d1ed4;
     color: white;
 }
-
+.donate-page-card  .zelle-button span{
+    font-family: Intro-Light;
+    font-size: 15px;
+    vertical-align: middle;
+}
 .payment-visual {
     margin:  0 10% 0 10%;
 }

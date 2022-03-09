@@ -22,6 +22,7 @@ class CampaignPage extends Component{
             const res = await api.get(`/campaigns/${this.props.match.params.title}`);
             if (res.data.data) {
                 found = true;
+                console.log(res.data.data)
                 this.setState({
                     campaign: res.data.data,
                 });
