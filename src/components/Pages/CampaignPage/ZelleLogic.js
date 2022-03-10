@@ -33,13 +33,13 @@ function ZelleLogic(props) {
           reference: null,
         },
       };
-    
+
       const [data, setData] = useState(initialState);
       const [loading, setLoading] = useState(false);
       const [ssName, setSSName] = useState("");
       const [SSfile, setFile] = useState("");
       const [error, setError] = useState("");
-    
+
       const handleChange = event => {
         event.persist();
         setError("")
@@ -51,12 +51,12 @@ function ZelleLogic(props) {
             [event.target.name]: null
           },
         }));
-        
+
       };
-    
+
       function OnConfirm(){
         setError("")
-        let canContinue = validateData() 
+        let canContinue = validateData()
         if (canContinue){
           setData(data => ({
               ...data,
@@ -65,17 +65,21 @@ function ZelleLogic(props) {
                   name: false,
                   reference: false,
                 },
-            })); 
-          if(SSfile !== ""){     
+            }));
+          if(SSfile !== ""){
             setLoading(true)
             upload()
-            
+            props.OnZelleSuccessPayment(data)
+
             }else{
               setError(props.EN ? "Please upload a screenshot of the transaction." : "Por favor, cargue una captura de pantalla de la transacción.")
             }
-          }else{
+
+          }
+          else{
               setError(props.EN ? "Please check all fields are filled." : "Por favor, compruebe que todos los campos están llenos.")
           }
+
         }
 
       async function upload (){
@@ -126,7 +130,7 @@ function ZelleLogic(props) {
                   ...data.errors,
                   email: validateFields.validateEmail(data.email)
                 }
-              })); 
+              }));
             hasPassed = false
         }
 
@@ -137,7 +141,7 @@ function ZelleLogic(props) {
                   ...data.errors,
                   name: validateFields.validateName(data.name)
                 }
-              })); 
+              }));
             hasPassed = false
         }
 
@@ -148,7 +152,7 @@ function ZelleLogic(props) {
                   ...data.errors,
                   reference: validateFields.validateName(data.reference)
                 }
-              })); 
+              }));
             hasPassed = false
         }
         return hasPassed // all is good, you can proceed
@@ -160,7 +164,7 @@ function ZelleLogic(props) {
         if(e.target.files.length > 0){
             const file = e.target.files[0];
             if(file.size > 5000000){
-                props.EN 
+                props.EN
                     ? alert("File too large. (>5MB)")
                     : alert("Archivo es demasiado grande (>5mb)")
             }else{
@@ -174,7 +178,7 @@ function ZelleLogic(props) {
                     props.EN
                         ? alert("Only png/jpg/jpeg and png files are allowed!")
                         : alert("Solamente se acepta archivos png./jpg/jpeg!");
-                }              
+                }
             }
         }
       }
@@ -185,7 +189,17 @@ function ZelleLogic(props) {
 
     return (
         <div>
-            <ZelleVisual EN = {props.EN} data = {data} handleChange={handleChange} OnConfirm={OnConfirm} loading={loading} photoUpload={photoUpload} ssName={ssName} removeScreenShot={removeScreenShot} error={error}/>
+            <ZelleVisual
+              EN = {props.EN}
+              data = {data}
+              handleChange={handleChange}
+              OnConfirm={OnConfirm}
+              loading={loading}
+              photoUpload={photoUpload}
+              ssName={ssName}
+              removeScreenShot={removeScreenShot}
+              error={error}
+            />
         </div>
     );
 }

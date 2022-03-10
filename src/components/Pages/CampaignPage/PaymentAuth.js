@@ -80,7 +80,17 @@ function PaymentAuth(props) {
                     {
                         openZelle
                         ?
-                        <ZelleLogic EN={EN} slug={props.slug} email={props.email} name={props.name} amount={props.amount} tip={props.tip} comment={props.comment} isAnon={props.isAnon}/>
+                        <ZelleLogic
+                            EN={EN}
+                            slug={props.slug}
+                            email={props.email}
+                            name={props.name}
+                            amount={props.amount}
+                            tip={props.tip}
+                            comment={props.comment}
+                            isAnon={props.isAnon}
+                            OnZelleSuccessPayment={props.OnZelleSuccessPayment}
+                        />
                         :
                         ''
                     }
