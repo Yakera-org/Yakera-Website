@@ -120,7 +120,7 @@ function onWithdraw(event){
                         <Grid item xs={12} sm={!user.zelleInfo ? 6 : 4} id='zelle'>
                             <Grid container spacing={0} className='dash-left'>
                                 <Grid item>
-                                    <p id='dash-stats'>Zelle name:</p>
+                                    <p id='dash-stats'>{EN ? 'Zelle name:' : 'Zelle nombre:'}</p>
                                 </Grid>
                             </Grid>
                             {
@@ -169,7 +169,7 @@ function onWithdraw(event){
                                                 checked={props.zelleCheckbox}
                                                 style={{
                                                     color: '#ea8737',
-                                                    '&.Mui-checked': {
+                                                    '&.MuiChecked': {
                                                         color: 'rgba(234, 135, 55, .5)'
                                                     },
                                                 }}

@@ -2,8 +2,7 @@ import React from 'react';
 
 function CardRaised(props) {
     const EN = props.EN;
-    //const campaign = props.campaign;
-
+    const campaign = props.campaign;
     return (
         <div className='raised'>
             <p id='dash-raised'>
@@ -15,12 +14,12 @@ function CardRaised(props) {
             <p>
                 {EN ? "Yakera: " : "Yakera: "} 
                 
-                <span id='dash-stats'>100$</span> 
+                <span id='dash-stats'>{campaign?.raised}$</span> 
             </p>
             <p id='zelle'>
                 {EN ? "Zelle: " : "Zelle: "} 
                 
-                <span id='dash-stats'>50$</span> 
+                <span id='dash-stats'>{campaign?.zelleRaised}$</span> 
             </p>
 
             <hr />
@@ -28,7 +27,7 @@ function CardRaised(props) {
             <p id='total'>
                 {EN ? "Total: " : "Total: "} 
                 
-                <span id='dash-stats'>150$</span> 
+                <span id='dash-stats'>{campaign?.raised + campaign?.zelleRaised}$</span> 
             </p>
 
         </div>
