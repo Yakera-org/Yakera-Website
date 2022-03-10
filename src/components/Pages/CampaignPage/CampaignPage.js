@@ -21,6 +21,7 @@ class CampaignPage extends Component{
         try {
             const res = await api.get(`/campaigns/${this.props.match.params.title}`);
             if (res.data.data) {
+                console.log(res.data.data)
                 found = true;
                 var isAcceptingZelle = false
                 if(res.data.data._user?.zelleInfo?.isAccepting){
@@ -57,7 +58,7 @@ class CampaignPage extends Component{
                 <div className="campaignPage">
                     <Visual
                         campaign={campaign} 
-                        amount={campaign.raised} 
+                        amount={campaign.raised + campaign?.zelleRaised} 
                         language={this.state.language}
                         isAcceptingZelle={this.state.isAcceptingZelle}
                      />

@@ -76,7 +76,7 @@ function DashboardCard(props) {
                                             }
                                         }}
                                         status="default"
-                                        percent={ Math.min((100* (campaign.raised/campaign.targetAmount)).toFixed(0), 100) }/>
+                                        percent={ Math.min((100* ((campaign.raised + campaign?.zelleRaised)/campaign.targetAmount)).toFixed(0), 100) }/>
                                     </div>
                                     <br />
 
