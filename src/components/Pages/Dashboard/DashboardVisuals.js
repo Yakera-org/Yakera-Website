@@ -1,6 +1,6 @@
 import React from 'react'
 import { Grid } from '@material-ui/core';
-import {Card, CardContent} from '@material-ui/core';
+import {Card, CardContent, Checkbox} from '@material-ui/core';
 import Author from '../../author';
 import classnames from 'classnames'
 import DashboardCard from './DashboardCard';
@@ -158,16 +158,21 @@ function onWithdraw(event){
                                 <Grid item xs={12} sm={4} id='zelle'>
                                     <Grid container spacing={0} className='dash-left'>
                                         <Grid item>
-                                            <p id='dash-stats'>Accepting payment?:</p>
+                                            <p id='dash-stats'>{EN ? 'Accepting payment?:' : '¿Aceptando pago?:'}</p>
                                         </Grid>
                                     </Grid>
                                     <Grid container spacing={0}>
                                         <Grid item xs={12} sm={8}>
-                                            <input 
-                                                type='checkbox'
+                                            <Checkbox
                                                 name='acceptingPayment'
                                                 onChange={props.handleChangeZelleCheckbox}
                                                 checked={props.zelleCheckbox}
+                                                style={{
+                                                    color: '#ea8737',
+                                                    '&.Mui-checked': {
+                                                        color: 'rgba(234, 135, 55, .5)'
+                                                    },
+                                                }}
                                             />
                                         </Grid>
                                         <Grid item xs={12} sm={4}>
