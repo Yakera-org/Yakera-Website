@@ -3,6 +3,7 @@ import {Card} from '@material-ui/core';
 import PayPal from './Paypal';
 import airtmLogo from '../../../pics/airtmbutton.png';
 import zelleLogo from '../../../pics/zelle.png';
+import ZelleLogic from './ZelleLogic';
 
 
 function PaymentAuth(props) {
@@ -21,7 +22,7 @@ function PaymentAuth(props) {
 
     const total_amount = parseInt(props.amount) + parseInt(props.tip)
     return (
-        <div>    
+        <div>
              <p>{EN ? 'Payment Authentication' : 'Autenticación de pago'}</p>
             <Card className='payment-auth-card'>
 
@@ -31,18 +32,18 @@ function PaymentAuth(props) {
                     </h4>
                     <p>{EN ? 'Please select a payment method' : 'Por favor seleccione un método de pago.'}</p>
                 </div>
-                <PayPal 
-                    amount={total_amount} 
+                <PayPal
+                    amount={total_amount}
                     onSuccess={props.OnSuccessPayment}
-                    onClick={props.OnPaymentClick} 
-                    onError={props.OnPaymentError} 
+                    onClick={props.OnPaymentClick}
+                    onError={props.OnPaymentError}
                     onCancel={props.OnPaymentCancel}
                 />
                 <button
                     type="submit"
                     onClick={onAirTM}
-                    className=" airtm-but"    
-                                 
+                    className=" airtm-but"
+
                 >
                     <img src={airtmLogo} alt="airtm-logo-button" />
                 </button>
@@ -51,7 +52,7 @@ function PaymentAuth(props) {
                 <div >
                     <button
                         type="submit"
-                        className=" airtm-but" 
+                        className=" airtm-but"
                         onClick={onZelle}
                     >
                         <img src={zelleLogo} alt="zelle-logo-button" />
@@ -59,9 +60,17 @@ function PaymentAuth(props) {
                     {
                         openZelle
                         ?
-                        <p>
-                            {EN ? 'This service is coming soon. Please try using your credit or debit card, Paypal or Airtm.' : 'Este servicio llegará pronto. Por favor efectua tu pago usando tu tarjeta de debito o credito, Paypal o Airtm.'}                            
-                        </p>
+                        <ZelleLogic
+                            EN={EN}
+                            slug={props.slug}
+                            email={props.email}
+                            name={props.name}
+                            amount={props.amount}
+                            tip={props.tip}
+                            comment={props.comment}
+                            isAnon={props.isAnon}
+                            openThanks={props.openThanks}
+                        />
                         :
                         ''
                     }

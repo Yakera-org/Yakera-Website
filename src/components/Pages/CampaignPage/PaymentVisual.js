@@ -94,10 +94,11 @@ class PaymentVisual extends Component {
         // Pass data instead of details to get orderID as described here: https://luehangs.site/lue_hang/projects/react-paypal-button-v2
         await this.addAmount(data, 'success');
         this.openThanks()
-        console.log(details)
+        // console.log(details)
         console.log(data)
         this.switchLoader(false);
     }
+
     async addAmount(data, status){
         try {
             const payload = {
@@ -179,6 +180,7 @@ class PaymentVisual extends Component {
                             amount={this.state.amount}
                             name={this.state.name}
                             email={this.state.email}
+                            isAnon={this.state.isAnon}
                             slug={this.props.slug}
                             onAirTM={this.onAirTM.bind(this)}
                             tip={this.state.tip}
@@ -190,6 +192,7 @@ class PaymentVisual extends Component {
                             OnPaymentError={this.OnPaymentError.bind(this)}
                             OnPaymentCancel={this.OnPaymentCancel.bind(this)}
                             isAcceptingZelle={this.state.isAcceptingZelle}
+                            openThanks = {this.openThanks.bind(this)}
                         />
                     }
                 </div>
