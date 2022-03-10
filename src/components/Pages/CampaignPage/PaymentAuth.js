@@ -89,7 +89,7 @@ function PaymentAuth(props) {
                             tip={props.tip}
                             comment={props.comment}
                             isAnon={props.isAnon}
-                            OnZelleSuccessPayment={props.OnZelleSuccessPayment}
+                            openThanks={props.openThanks}
                         />
                         :
                         ''

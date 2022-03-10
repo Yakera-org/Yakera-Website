@@ -69,7 +69,7 @@ function ZelleLogic(props) {
           if(SSfile !== ""){
             setLoading(true)
             upload()
-            props.OnZelleSuccessPayment(data)
+            props.openThanks()
 
             }else{
               setError(props.EN ? "Please upload a screenshot of the transaction." : "Por favor, cargue una captura de pantalla de la transacción.")

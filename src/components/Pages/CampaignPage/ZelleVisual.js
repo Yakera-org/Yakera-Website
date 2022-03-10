@@ -48,11 +48,11 @@ function ZelleVisual(props) {
             </div>
             <br/>
             <div style = {{marginTop: "30px", float: "left"}}> {EN ?
-              <div className = "zelle-screenshot-text">Tranfer the above amount to jane.doe@gmail.com with the name John Doe on Zelle. <b>Provide us with a screenshot here!</b></div>
+              <div className = "zelle-screenshot-text">Tranfer the above amount to jane.doe@gmail.com with your name above on Zelle. <b>Provide us with a screenshot here!</b></div>
             :
              <div className = "zelle-screenshot-text">Tranfiere el monto a jane.doe@gmail.com en Zelle a nombre de John Doe. <b>Desde la aplicación de tu banco y toma una captura de pantalla!</b></div> } </div>
 
-              <ImgUpload EN={EN} photoUpload={props.photoUpload} name={props.ssName} removeScreenShot={props.removeScreenShot}/>  
+              <ImgUpload EN={EN} photoUpload={props.photoUpload} name={props.ssName} removeScreenShot={props.removeScreenShot}/>
 
                <div className = "input-container">
                 <input
@@ -91,7 +91,7 @@ function ZelleVisual(props) {
                         loading={props.loading}
                     />
                 </div>
-            </div> 
+            </div>
             { props.error
             ?
                 <Alert color="danger" style={{width:"70%", marginLeft:"15%"}}>
@@ -119,7 +119,7 @@ const ImgUpload =({
                           {EN ? "Upload Screenshot" : "Subir captura de pantalla"}
         </button>
       <p id="ss-name">{name!== "" ? EN ? "File uploaded: " + name : "Archivo subido: " + name : ""}</p>
-      <input id="screenshot-upload" type="file" accept="image/*" onChange={photoUpload}/> 
+      <input id="screenshot-upload" type="file" accept="image/*" onChange={photoUpload}/>
     </label>
 
       {name
