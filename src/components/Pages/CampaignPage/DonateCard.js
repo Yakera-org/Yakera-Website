@@ -66,10 +66,10 @@ class DonateCard extends Component {
                             ?
                             <button
                                 type="submit"
-                                className="zelle-button"
+                                className="zelle-button-card"
                                 onClick={() => {
                                     this.props.onDonate('donateRef')
-                                }} 
+                                }}
                             >
                                 {EN ? <>Zelle <span>NEW!</span></> : <>Zelle <span>¡Nuevo!</span></>}
                             </button>

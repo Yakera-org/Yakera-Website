@@ -186,12 +186,14 @@ class PaymentVisual extends Component {
                             tip={this.state.tip}
                             onBack={this.onBack}
                             title={this.props.title}
+                            recipientEmail={this.props.recipientEmail}
+                            recipientName={this.props.recipientName}
                             comment={this.state.comment}
                             OnSuccessPayment={this.OnSuccessPayment.bind(this)}
                             OnPaymentClick={this.OnPaymentClick.bind(this)}
                             OnPaymentError={this.OnPaymentError.bind(this)}
                             OnPaymentCancel={this.OnPaymentCancel.bind(this)}
-                            isAcceptingZelle={this.state.isAcceptingZelle}
+                            isAcceptingZelle={this.props.isAcceptingZelle}
                             openThanks = {this.openThanks.bind(this)}
                         />
                     }

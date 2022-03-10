@@ -120,17 +120,17 @@
     color: #6d1ed4;
     text-shadow: 1px 1px #6d1ed436;
 }
-.donate-page-card  .zelle-button{
+.donate-page-card  .zelle-button-card{
     background-color: #6d1ed4;
     color: white;
     width: 100%;
     padding: 5px;
 }
-.donate-page-card  .zelle-button:hover{
+.donate-page-card  .zelle-button-card:hover{
     background-color: #6d1ed4;
     color: white;
 }
-.donate-page-card  .zelle-button span{
+.donate-page-card  .zelle-button-card span{
     font-family: Intro-Light;
     font-size: 15px;
     vertical-align: middle;

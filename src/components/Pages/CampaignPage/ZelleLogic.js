@@ -69,7 +69,7 @@ function ZelleLogic(props) {
           if(SSfile !== ""){
             setLoading(true)
             upload()
-            props.openThanks()
+           
 
             }else{
               setError(props.EN ? "Please upload a screenshot of the transaction." : "Por favor, cargue una captura de pantalla de la transacción.")
@@ -110,14 +110,14 @@ function ZelleLogic(props) {
                   "zelleName": data.name,
                   "zelleEmail": data.email
               }
-              console.log(payload)
               console.log(await api.post(`/campaigns/donate`, payload))
           } catch (err) {
               console.log(err);
-              setError(props.EN ? "Something went wrong, please tyr again." : "Algo salió mal, por favor, tira de nuevo.")
+              setError(props.EN ? "Something went wrong, please try again." : "Algo salió mal, por favor, tira de nuevo.")
           }
 
           setLoading(false)
+          props.openThanks()
       }
 
       function validateData(){
@@ -192,6 +192,8 @@ function ZelleLogic(props) {
             <ZelleVisual
               EN = {props.EN}
               data = {data}
+              recipientName={props.recipientName}
+              recipientEmail={props.recipientEmail}
               handleChange={handleChange}
               OnConfirm={OnConfirm}
               loading={loading}

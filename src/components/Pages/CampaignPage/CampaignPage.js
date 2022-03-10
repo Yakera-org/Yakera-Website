@@ -26,7 +26,6 @@ class CampaignPage extends Component{
                 if(res.data.data._user?.zelleInfo?.isAccepting){
                     isAcceptingZelle = true
                 }
-                console.log(res.data.data)
                 this.setState({
                     campaign: res.data.data,
                     isAcceptingZelle: isAcceptingZelle
@@ -78,6 +77,8 @@ class CampaignPage extends Component{
                         language={'en'}
                         title={campaign.title}
                         slug={campaign.slug}
+                        recipientName={campaign?._user?.zelleInfo?.name}
+                        recipientEmail={campaign?._user?.zelleInfo?.email}
                         isAcceptingZelle={this.state.isAcceptingZelle}
                      />
                     

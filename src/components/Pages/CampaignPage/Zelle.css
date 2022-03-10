@@ -1,6 +1,8 @@
 .zelle-screenshot-text{
   text-align: left;
   font-size: 17px;
+  width: 80%;
+  margin-left: 10%;
 }
 
 .zelle-form{
@@ -12,6 +14,7 @@
 .input-container{
   margin: 0vw 6vw 0vw 6vw;
 }
+
 #upload-area{
   width: 70%;
 }
@@ -62,4 +65,23 @@
   position: absolute;
   text-align: center;
   left: 49%;
+}
+.confirm-button {
+  width:70%;
+}
+.confirm-button:hover {
+  opacity: 0.8;
+}
+
+
+@media screen and (max-width: 900px) {
+  .zelle-screenshot-text{
+    text-align: justify;
+    font-size: 17px;
+    width: 100%;
+    margin-left: 0%;
+  }
+  #upload-area, .confirm-button {
+    width: 100%;
+  }
 }

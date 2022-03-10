@@ -20,7 +20,7 @@ function ZelleVisual(props) {
               <input
                   type="text"
                   name="email"
-                  placeholder={EN ? "Email*" : "Correo electrónico*" }
+                  placeholder={EN ? "Zelle Email*" : "Correo electrónico Zelle*" }
                   className={classnames(
                     'form-control zelle-form',
                     { 'is-valid': data.errors.email === false},
@@ -34,7 +34,7 @@ function ZelleVisual(props) {
               <input
                   type="text"
                   name="name"
-                  placeholder={EN ? "Name*" : "Tu dirección" }
+                  placeholder={EN ? "Zelle Name*" : "Nombre Zelle*" }
                   className={classnames(
                     'form-control zelle-form',
                     { 'is-valid': data.errors.name === false},
@@ -48,9 +48,9 @@ function ZelleVisual(props) {
             </div>
             <br/>
             <div style = {{marginTop: "30px", float: "left"}}> {EN ?
-              <div className = "zelle-screenshot-text">Tranfer the above amount to jane.doe@gmail.com with your name above on Zelle. <b>Provide us with a screenshot here!</b></div>
+              <div className = "zelle-screenshot-text">Tranfer the above amount to <i>{props.recipientEmail}</i> with the name  <i>{props.recipientName}</i> on Zelle. <b>Provide us with a screenshot here!</b></div>
             :
-             <div className = "zelle-screenshot-text">Tranfiere el monto a jane.doe@gmail.com en Zelle a nombre de John Doe. <b>Desde la aplicación de tu banco y toma una captura de pantalla!</b></div> } </div>
+             <div className = "zelle-screenshot-text">Tranfiere el monto a <i>{props.recipientEmail} </i>en Zelle a nombre de <i>{props.recipientName}</i>. <b>Desde la aplicación de tu banco y toma una captura de pantalla!</b></div> } </div>
 
               <ImgUpload EN={EN} photoUpload={props.photoUpload} name={props.ssName} removeScreenShot={props.removeScreenShot}/>
 
@@ -69,18 +69,16 @@ function ZelleVisual(props) {
                 />
                 <div className="invalid-feedback">{data.errors.reference}</div>
                </div>
+               <br />
                <Button className = "confirm-button"
                    onClick={props.OnConfirm}
                    style={{
-                     width:'70%',
                      border:'none',
                      backgroundColor:'#0046A8',
                      borderRadius:'10px',
                      color:'white',
-                     padding:'5px',
-                     fontSize: '13px',
-                     margin: "30px 0px 20px 0px"
-                   }}
+                     padding:'10px',
+                     fontSize: '13px',                 }}
                  >{EN ? "Confirm Payment" : "Confirmar Pago"}</Button>
 
             <div className="sweet-loading">
