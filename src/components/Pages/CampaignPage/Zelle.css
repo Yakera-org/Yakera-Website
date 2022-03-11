@@ -1,0 +1,87 @@
+.zelle-screenshot-text{
+  text-align: left;
+  font-size: 17px;
+  width: 80%;
+  margin-left: 10%;
+}
+
+.zelle-form{
+  float: center;
+  max-width: 100%;
+  min-width: 100%;
+}
+
+.input-container{
+  margin: 0vw 6vw 0vw 6vw;
+}
+
+#upload-area{
+  width: 70%;
+}
+.zelle-button{
+  width: 100%;
+  border: none;
+  background-color:#ea8737;
+  border-radius:10px;
+  color:white;
+  padding:10px;
+  font-size: 13px;
+  margin: 20px 0px 20px 0px;
+}
+.zelle-button:active{
+  pointer-events: none;
+}
+.zelle-button:hover{
+  opacity: 0.8;
+}
+#screenshot-upload{
+  display: none;
+}
+#ss-name{
+  max-width: 100%;
+  overflow: hidden;
+}
+ #remove{
+  border: none;
+  outline: none;
+  background-color: rgb(231, 231, 231);
+  border-radius: 5px;
+  padding: 5px;
+  font-size: 12px;
+  color: #2c1c1c;
+  text-align: center;
+  width: 40%;
+}
+ #remove:hover{
+  opacity: 0.8;
+}
+
+.sweet-loading{
+  width: 100%;
+  text-align: center;
+  padding-bottom: 50px
+}
+.sweet-loading .loader-wrapper{
+  position: absolute;
+  text-align: center;
+  left: 49%;
+}
+.confirm-button {
+  width:70%;
+}
+.confirm-button:hover {
+  opacity: 0.8;
+}
+
+
+@media screen and (max-width: 900px) {
+  .zelle-screenshot-text{
+    text-align: justify;
+    font-size: 17px;
+    width: 100%;
+    margin-left: 0%;
+  }
+  #upload-area, .confirm-button {
+    width: 100%;
+  }
+}
