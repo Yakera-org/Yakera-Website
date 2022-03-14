@@ -194,6 +194,7 @@ function ZelleLogic(props) {
               data = {data}
               recipientName={props.recipientName}
               recipientEmail={props.recipientEmail}
+              amount={props.amount}
               handleChange={handleChange}
               OnConfirm={OnConfirm}
               loading={loading}

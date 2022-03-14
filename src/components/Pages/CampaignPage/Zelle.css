@@ -5,6 +5,20 @@
   margin-left: 10%;
 }
 
+#zelle-top{
+  padding-top: 10px;
+  color: #2c1c1c;
+}
+#zelle-top span{
+  color: #6d1ed4;
+}
+#zelle-des{
+  color: #858585;
+  padding: 0 30px;
+  margin-top: -10px;
+  font-size: 13px;
+}
+
 .zelle-form{
   float: center;
   max-width: 100%;
