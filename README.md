@@ -32,10 +32,3 @@ when logged in, you can create a new campaign here
 
 ### login/register
 
-## Contributors
-- [@jango707](https://github.com/jango707)
-- [@zeyneptezduyar](https://github.com/zeyneptezduyar)
-- [@haikalkhairul](https://github.com/haikalkhairul)
-- [@LoulouLePou](https://github.com/LoulouLePou)
-- [@BravoAndres](https://github.com/BravoAndres)
-

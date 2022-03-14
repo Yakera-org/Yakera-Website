@@ -7,7 +7,7 @@ function AdvisoryBoardSection(props) {
     const EN = props.EN
     return (
         <div className='about-us-team'>
-            <h1>{EN ? 'Our Advisory Board' : 'Nostros Junta Consultiva'}</h1>
+            <h1>{EN ? 'Our Advisory Board' : 'Nuestra Junta Consultiva'}</h1>
             <div className='about-us-team-pics'>
                 { members.members.map((member, i) => {
                     return(

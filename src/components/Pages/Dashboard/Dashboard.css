@@ -34,19 +34,21 @@
     background-color: #ea8737;
     border: none;
     outline: none;
-    border-radius: 15px;
+    border-radius: 10px;
     color: white;
     padding: 10px 15px ;
     margin-left: 5px;
+    font-family: Intro-Regular-Alt;
 }
 #airTM button:hover{
-   background-color: #c5793a;
+   opacity: 0.8;
 }
 .dash-btn{
     text-align: center;
 }
 .dash-btn button {
     border: none;
+    outline: none;
     padding: 15px;
     border-radius: 10px;
     background-color: #ea8737;
@@ -55,8 +57,27 @@
     font-size: 25px;
 }
 .dash-btn button:hover{
-    background-color: #f5b784;
-    color: rgb(255, 248, 236);
+    opacity: 0.8;
+    color: white;
+}
+#zelle .dash-left{
+    margin-bottom: -20px;
+}
+#zelle button{
+    background-color: #ea8737;
+    border: none;
+    outline: none;
+    border-radius: 10px;
+    color: white;
+    padding: 10px 15px ;
+    margin-left: 5px;
+    font-family: Intro-Regular-Alt;
+}
+#zelle button:hover{
+    opacity: 0.8;
+}
+#zelle-email {
+    margin-right: 5px;
 }
 
 .dash-campaigns h2{
@@ -73,8 +94,9 @@
 }
 
 .active-cam-card {
-    padding: 10px;
+    padding: 2% 5%;
     text-align: center;
+    min-height: 700px;
 }
 
 .dash-active-cam img{
@@ -82,23 +104,47 @@
     max-width: 300px;
     min-width: 100px;
     max-height: 300px;
-    border-radius: 10px;
+    border-radius: 5px;
+    object-fit: cover;
 }
 .dash-active-cam p{
     font-size: 18px;
 }
+.active-cam-card .raised{
+    width: 30%;
+    margin-left: 35%;
+    text-align: center;
+}
+.active-cam-card .raised #zelle span{
+    color: #6d1ed4;
+}
+.active-cam-card .raised #total{
+    font-size: 22px;
+}
+.active-cam-card .raised hr{
+    border: 1px solid rgb(212, 212, 212);
+    width: 100%;
+}
+.active-cam-card .raised p{
+    width: 80%;
+    text-align: right;
+    vertical-align: middle;
+}
 .active-cam-card #dash-raised {
     text-align: center;
     font-size: 20px;
+    width: 100%;
 }
 .action-btn {
     text-align: center;
 }
 .action-btn button{
     border: none;
-    border-radius: 10px;
-    font-size: 20px;
+    outline: none;
+    border-radius: 5px;
+    font-size: 18px;
     padding: 10px;
+    width: 90%;
 }
 
 .action-btn #go{
@@ -106,16 +152,14 @@
     color: white;
 }
 .action-btn #go:hover{
-    background-color: #f5b784;
-    color: rgb(255, 248, 236);
+    opacity: 0.8;
 }
 .action-btn #withdraw{
     background-color: #ec563b;
     color: white;
 }
 .action-btn #withdraw:hover{
-    background-color: #f58b78;
-    color: white;
+    opacity: 0.8;
 }
 .dash-plus-sign {
     text-align: center;
@@ -130,7 +174,13 @@
     color: rgb(75, 75, 75);
     cursor: pointer;
 }
-
+@media only screen and (max-width: 1200px) {
+    .active-cam-card .raised{
+        width: 90%;
+        margin-left: 5%;
+        text-align: center;
+    }
+}
 
 @media only screen and (max-width: 600px) {
     .dashboard-page {
@@ -159,6 +209,23 @@
         font-size: 20px;
         margin-bottom: 10px;
     }
+    #airTM button{
+        color: white;
+        margin-left: 0px;
+        margin-top: 5px;
+        margin-bottom: 1rem;
+    }
+    #zelle button{
+        color: white;
+        margin-left: 0px;
+        margin-top: 5px;
+    }
+    #zelle-email {
+        margin-right: 0px;
+    }
+    #zelle-email input{
+        margin-bottom: 1rem;
+    }
     .active-campaigns {
         padding: 10px;
     }
@@ -168,6 +235,14 @@
     .react-sweet-progress {
         width: 80%;
         margin-left: 10%;
+    }
+    .dash-active-cam p{
+        font-size: 18px;
+    }
+    .active-cam-card .raised{
+        width: 90%;
+        margin-left: 5%;
+        text-align: center;
     }
     .action-btn {
         margin-top: -20px;

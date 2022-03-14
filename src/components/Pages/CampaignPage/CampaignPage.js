@@ -22,8 +22,13 @@ class CampaignPage extends Component{
             const res = await api.get(`/campaigns/${this.props.match.params.title}`);
             if (res.data.data) {
                 found = true;
+                var isAcceptingZelle = false
+                if(res.data.data._user?.zelleInfo?.isAccepting){
+                    isAcceptingZelle = true
+                }
                 this.setState({
                     campaign: res.data.data,
+                    isAcceptingZelle: isAcceptingZelle
                 });
             } 
         } catch (err) {
@@ -52,8 +57,9 @@ class CampaignPage extends Component{
                 <div className="campaignPage">
                     <Visual
                         campaign={campaign} 
-                        amount={campaign.raised} 
+                        amount={campaign.raised + campaign?.zelleRaised} 
                         language={this.state.language}
+                        isAcceptingZelle={this.state.isAcceptingZelle}
                      />
 
                      <hr style={{width:'90%', marginLeft:'6%'}}/>
@@ -71,6 +77,9 @@ class CampaignPage extends Component{
                         language={'en'}
                         title={campaign.title}
                         slug={campaign.slug}
+                        recipientName={campaign?._user?.zelleInfo?.name}
+                        recipientEmail={campaign?._user?.zelleInfo?.email}
+                        isAcceptingZelle={this.state.isAcceptingZelle}
                      />
                     
                     <Author />

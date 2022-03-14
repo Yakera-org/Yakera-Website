@@ -1,9 +1,9 @@
 import React from 'react'
 import { Grid } from '@material-ui/core';
-import {Card, CardContent} from '@material-ui/core';
-import { Progress } from 'react-sweet-progress';
+import {Card, CardContent, Checkbox} from '@material-ui/core';
 import Author from '../../author';
 import classnames from 'classnames'
+import DashboardCard from './DashboardCard';
 
 
 function DashboardVisuals(props) {
@@ -45,46 +45,145 @@ function onWithdraw(event){
                                 <p><span id='dash-stats'>ID Number:</span> {user.socialNum}</p>
                             </div>
                         </Grid> */}
-                        <Grid item xs={12} sm={3} >
+                        <Grid item xs={12} sm={4} >
                             <div className='dash-left'>
                                 <p><span id='dash-stats'>{EN ?'Address: ' : 'Dirección: ' }</span> {user.address}</p>
                             </div>
                         </Grid>   
-                            <Grid item xs={12} sm={3} id='airTM'>
-                                <div className='dash-left'>
-                                    <p id='dash-stats'>AirTM email:</p>
-                                </div>
-                                {
-                                    !user.airTMNum
-                                    ?
-                                    <Grid container spacing={0}>
-                                        <Grid item xs={12} sm={10} >
-                                                <input
-                                                    type="email"
-                                                    name="airTMemail"
-                                                    placeholder={EN ? "Enter your AirTM email" : "Ingrese su correo electrónico AirTM"}
-                                                    onChange={props.handleChange}
-                                                    className={classnames(
-                                                        'form-control',
-                                                        { 'is-valid': props.emailError === false },
-                                                        { 'is-invalid': props.emailError }
-                                                    )}
-                                                />
-                                                <p className="invalid-feedback">{props.emailError}</p>
-                                        </Grid> 
-                                        <Grid item xs={12} sm={2} >
-                                            <button  onClick={props.onSubmitEmail}>
-                                                {EN ? "Submit" : "Enviar"}
-                                            </button> 
-                                        </Grid> 
+                        <Grid item xs={12} sm={4} id='airTM'>
+                            <div className='dash-left'>
+                                <p id='dash-stats'>AirTM email:</p>
+                            </div>
+                            {
+                                !user.airTMNum
+                                ?
+                                <Grid container spacing={0}>
+                                    <Grid item xs={12} sm={8} >
+                                            <input
+                                                type="email"
+                                                name="airTMemail"
+                                                placeholder={EN ? "Enter your AirTM email" : "Ingrese su correo electrónico AirTM"}
+                                                onChange={props.handleChange}
+                                                className={classnames(
+                                                    'form-control',
+                                                    { 'is-valid': props.airTMEmailError === false },
+                                                    { 'is-invalid': props.airTMEmailError }
+                                                )}
+                                            />
+                                            <p className="invalid-feedback">{props.airTMEmailError}</p>
                                     </Grid> 
-                                    :
-                                    <div className='dash-left'>
-                                        <p>{user.airTMNum}</p>
-                                    </div>
-                                }
-                               
-                            </Grid> 
+                                    <Grid item xs={12} sm={2} >
+                                        <button  onClick={props.onSubmitEmail}>
+                                            {EN ? "Submit" : "Enviar"}
+                                        </button> 
+                                    </Grid> 
+                                </Grid> 
+                                :
+                                <div className='dash-left'>
+                                    <p>{user.airTMNum}</p>
+                                </div>
+                            }
+                        </Grid>
+                        <Grid item xs={1} sm={8}>
+                            {/* intentionally left blank */}
+                        </Grid>
+                        <Grid item xs={12} sm={4} id='zelle'>
+                            <Grid container spacing={0} className='dash-left'>
+                                <Grid item xs={12} sm={12}>
+                                    <p id='dash-stats'>Zelle email:</p>
+                                </Grid>
+                            </Grid>
+                            {
+                                !user?.zelleInfo?.email
+                                ?
+                                <Grid container spacing={0}>
+                                    <Grid item xs={12} sm={12} id='zelle-email'>
+                                        <input
+                                            type='email'
+                                            name='zelleEmail'
+                                            placeholder={EN ? 'Enter your Zelle email' : 'Ingrese su correo electrónico Zelle'}
+                                            onChange={props.handleChangeZelleEmail}
+                                            className={classnames(
+                                                'form-control',
+                                                { 'is-valid': props.zelleEmailError === false },
+                                                { 'is-invalid': props.zelleEmailError }
+                                            )}
+                                        />
+                                        <p className='invalid-feedback'>{props.zelleEmailError}</p>
+                                    </Grid>
+                                </Grid>
+                                : <div className='dash-left'>
+                                    <p>{user.zelleInfo.email}</p>
+                                </div>
+                            }
+                        </Grid>
+                        <Grid item xs={12} sm={!user.zelleInfo ? 6 : 4} id='zelle'>
+                            <Grid container spacing={0} className='dash-left'>
+                                <Grid item>
+                                    <p id='dash-stats'>{EN ? 'Zelle name:' : 'Zelle nombre:'}</p>
+                                </Grid>
+                            </Grid>
+                            {
+                                !user?.zelleInfo?.name
+                                ?
+                                <Grid container spacing={0}>
+                                    <Grid item xs={12} sm={8}>
+                                        <input
+                                            type='name'
+                                            name='zelleName'
+                                            placeholder={EN ? 'Enter your Zelle name' : 'Ingrese su correo name Zelle'}
+                                            onChange={props.handleChangeZelleName}
+                                            className={classnames(
+                                                'form-control',
+                                                { 'is-valid': props.zelleNameError === false },
+                                                { 'is-invalid': props.zelleNameError }
+                                            )}
+                                        />
+                                        <p className='invalid-feedback'>{props.zelleNameError}</p>
+                                    </Grid>
+                                    <Grid item xs={12} sm={4}>
+                                        <button onClick={props.onSubmitZelle}>
+                                            {EN ? "Submit" : "Enviar"}
+                                        </button>
+                                    </Grid>
+                                </Grid>
+                                : <div className='dash-left'>
+                                    <p>{user.zelleInfo.name}</p>
+                                </div>
+                            }
+                        </Grid>
+                        {!user.zelleInfo
+                            ? <></>
+                            :
+                                <Grid item xs={12} sm={4} id='zelle'>
+                                    <Grid container spacing={0} className='dash-left'>
+                                        <Grid item>
+                                            <p id='dash-stats'>{EN ? 'Accepting payment?:' : '¿Aceptando pago?:'}</p>
+                                        </Grid>
+                                    </Grid>
+                                    <Grid container spacing={0}>
+                                        <Grid item xs={12} sm={8}>
+                                            <Checkbox
+                                                name='acceptingPayment'
+                                                onChange={props.handleChangeZelleCheckbox}
+                                                checked={props.zelleCheckbox}
+                                                style={{
+                                                    color: '#ea8737',
+                                                    '&.MuiChecked': {
+                                                        color: 'rgba(234, 135, 55, .5)'
+                                                    },
+                                                }}
+                                            />
+                                        </Grid>
+                                        <Grid item xs={12} sm={4}>
+                                            <button onClick={props.onSubmitZelle}>
+                                                {EN ? "Submit" : "Enviar"}
+                                            </button>
+                                        </Grid>
+                                    </Grid>
+                                </Grid>
+                            
+                        }
                     </Grid> 
 
                     <hr style={{marginTop:'30px'}}/>  
@@ -92,7 +191,7 @@ function onWithdraw(event){
                     <br />
 
                     <div className='dash-btn'>
-                       <button><a href='create-campaign' >{EN ? "Create new campaign" : "Crear nueva campaña"}</a></button>
+                       <button onClick={() => window.location = '/create-campaign'}>{EN ? "Create new campaign" : "Crear nueva campaña"}</button>
                     </div>
 
                     <div className='dash-campaigns'>
@@ -101,89 +200,9 @@ function onWithdraw(event){
                             <div className='active-campaigns'>
                                 <Grid container spacing={4} style={{ alignItems:'flex-start', textAlign:'center'}}>
                                     {
-                                        campaigns.map((campaign,i) => {
-                                            var hrefLink = '/campaign/' + campaign.slug;
-                                            const language = EN ? 'en':'es'
-                                            let title, mainPicture;
-                                            try{
-                                                mainPicture = campaign.mainPicture.url;
-                                            }
-                                            catch{
-                                                mainPicture = ''
-                                            }
-
-                                            try {
-                                                title = campaign.translations[language].title;
-                                            } catch (err) {
-                                                title = campaign.title;
-                                            }
-                                            return (
-                                                <Grid item xs={12} sm={6} key={i} >
-                                                    <Card className='active-cam-card'>
-                                                        <CardContent>
-                                                            <div className='dash-active-cam'>
-                                                                {title}
-
-                                                                <hr />
-
-                                                                <Grid container spacing={5} style={{ alignItems:'flex-start'}}>
-                                                                    <Grid item xs={12} sm={12} style={{textAlign:'left'}} >
-                                                                        <p><span id='dash-stats'>{EN ? "Created: " : "Creada: "}</span> {campaign.created}</p>
-                                                                        <p><span id='dash-stats'>{EN ? "Category: " : "Categoría: "}</span> {campaign.category}</p>
-                                                                        <p><span id='dash-stats'>{EN ? "Description: " : "Descripción: "}</span> {campaign.description}</p>
-                                                                        <p><span id='dash-status'>{EN ? "Status: " : "Estado: "}</span> {campaign.approved ? 
-                                                                                <span style={{color:'#71B98F'}}>{EN ? "Approved" : "Aprobada"} </span> 
-                                                                                :    
-                                                                                <span style={{color:'orange'}}>{EN ? "Pending approval" : "Aprobación pendiente"}  </span>
-                                                                            }</p>
-
-                                                                        <Grid item xs={12} sm={12} style={{textAlign:'center'}} >
-                                                                            <img src={mainPicture} alt='cam-title-img' />
-                                                                        </Grid>
-                                                                        <br />
-                                                                        {campaign.approved
-                                                                            ?
-                                                                            <>
-                                                                            <div id='dash-progress-bar'>
-                                                                                <Progress theme={{
-                                                                                    default: {
-                                                                                        trailColor: 'lightrey',
-                                                                                        symbol: '',
-                                                                                        color: '#ea8737'
-                                                                                    }
-                                                                                }}
-                                                                                status="default"
-                                                                                percent={ Math.min((100* (campaign.raised/campaign.targetAmount)).toFixed(0), 100) }/>
-                                                                            </div>
-                                                                            <br />
-                                                                            <p id='dash-raised'>{EN ? "Raised: " : "Elevado: "} <span id='dash-stats'>{campaign.raised}$</span></p>
-                                                                            <br />
-                                                                            <div className='action-btn'>
-                                                                                <Grid container spacing={2} style={{ alignItems:'flex-start'}}>
-                                                                                    <Grid item xs={12} sm={6} style={{textAlign:'center'}} >  
-                                                                                        <button id='go'>
-                                                                                            <a href={hrefLink}>{EN ? "Go to campaign" : "Ir a campaña"}</a>
-                                                                                        </button>
-                                                                                    </Grid>
-                                                                                    <Grid item xs={12} sm={6} style={{textAlign:'center'}} >  
-                                                                                        <button name={campaign.slug} onClick={onWithdraw} id='withdraw'>
-                                                                                            {EN ? "Withdraw campaign" : "Retirar campaña"}
-                                                                                        </button>
-                                                                                    </Grid>
-                                                                                </Grid>                                                                              
-                                                                            </div>  
-                                                                        </>
-                                                                        :
-                                                                        ''
-                                                                        }
-                                                                    </Grid>
-                                                                    
-                                                                </Grid>                                                                    
-
-                                                            </div>
-                                                        </CardContent>
-                                                    </Card>
-                                                </Grid>
+                                        campaigns.map((campaign,i) => {                                           
+                                            return(
+                                                <DashboardCard key={i} campaign={campaign} EN={EN} onWithdraw={onWithdraw}/>
                                             )
                                         })
                                     }

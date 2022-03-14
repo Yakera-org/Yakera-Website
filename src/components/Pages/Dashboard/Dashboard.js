@@ -12,9 +12,15 @@ function Dashboard() {
     const [loaded, setLoaded] = useState(false);
     const [EN, setEN] = useState(false);
     const [airTMemail, setAirTMEmail] = useState('');
-    const [emailError, setEmailError] = useState('');
+    const [airTMEmailError, setAirTMEmailError] = useState('');
     const [error, setError] = useState('');
     const [profileData, setProfileData] = useState({});
+
+    const [zelleEmail, setZelleEmail] = useState('');
+    const [zelleEmailError, setZelleEmailError] = useState('');
+    const [zelleName, setZelleName] = useState('');
+    const [zelleNameError, setZelleNameError] = useState('');
+    const [zelleCheckbox, setZelleCheckbox] = useState(false);
 
     React.useEffect(() => {
         function startup(){
@@ -43,7 +49,11 @@ function Dashboard() {
     async function getCampaign() {
         try {
             const res = await api.get('/profile');
-            setProfileData(res.data.data);
+            let data = res.data.data
+            setProfileData(data);
+            setZelleCheckbox(data?.user?.zelleInfo?.isAccepting)
+            setZelleEmail(data?.user?.zelleInfo?.email)
+            setZelleName(data?.user?.zelleInfo?.name)
             setLoaded(true);
         } catch (err) {
             setError('Profile not found');
@@ -78,7 +88,7 @@ function Dashboard() {
     function validate(email){
         var tempError;
         tempError = validateFields.validateEmail(email);
-        setEmailError(tempError)
+        setAirTMEmailError(tempError)
         if(!tempError){
             return true
         }
@@ -89,12 +99,55 @@ function Dashboard() {
         }
     }
 
+    const handleChangeZelleCheckbox = (e) => {
+        setZelleCheckbox(e.target.checked);
+    };
+    const handleChangeZelleEmail = (e) => {
+        validateZelleEmail(e.target.value);
+        setZelleEmail(e.target.value);
+    };
+    const handleChangeZelleName = (e) => {
+        validateZelleName(e.target.value);
+        setZelleName(e.target.value);
+    };
+    const validateZelleEmail = (email) => {
+        var tempEmailError;
+        tempEmailError = validateFields.validateEmail(email);
+        setZelleEmailError(tempEmailError);
+        if(!tempEmailError){
+            return true;
+        }
+    };
+    const validateZelleName = (name) => {
+        var tempNameError;
+        tempNameError = validateFields.validateName(name);
+        setZelleNameError(tempNameError);
+        if(!tempNameError){
+            return true;
+        }
+    }
+    const onSubmitZelle = () => {
+        let checkEmail = validateZelleEmail(zelleEmail);
+        let checkName = validateZelleName(zelleName);
+        if( checkEmail && checkName){
+            backendPatch();
+        }else{
+            console.log("Error")
+        }
+
+    };
+
     async function backendPatch(){
         try {
             const requestBody = {      
-                airTMNum: airTMemail
-              }
-          
+                airTMNum: airTMemail,
+                zelleInfo: {
+                    email: zelleEmail,
+                    name: zelleName,
+                    isAccepting: zelleCheckbox,
+                },
+            };
+            console.log(requestBody)
             await api.patch('/profile/update', requestBody);
             window.location.reload();   
         } catch (err) {
@@ -117,7 +170,21 @@ function Dashboard() {
     }else{        
         return (
             <div className='dashboard-page'>
-                <DashboardVisuals EN={EN} data={profileData} onWithdraw={onWithdraw} handleChange={handleChange} emailError={emailError} onSubmitEmail={onSubmitEmail}/>
+                <DashboardVisuals
+                    EN={EN}
+                    data={profileData}
+                    onWithdraw={onWithdraw}
+                    handleChange={handleChange}
+                    airTMEmailError={airTMEmailError}
+                    onSubmitEmail={onSubmitEmail}
+                    handleChangeZelleCheckbox={handleChangeZelleCheckbox}
+                    handleChangeZelleEmail={handleChangeZelleEmail}
+                    handleChangeZelleName={handleChangeZelleName}
+                    zelleEmailError={zelleEmailError}
+                    zelleNameError={zelleNameError}
+                    zelleCheckbox={zelleCheckbox}
+                    onSubmitZelle={onSubmitZelle}
+                />
             </div>
         )
     }

@@ -261,7 +261,7 @@ class donate extends Component{
                                     <CampaignCard
                                         campaign={cam}
                                         language={this.state.language}
-                                        amount={cam.raised}
+                                        amount={cam.raised + cam?.zelleRaised}
                                     />
                                 </Grid>
                             )                       
