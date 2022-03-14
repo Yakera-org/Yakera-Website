@@ -4,6 +4,9 @@
   width: 80%;
   margin-left: 10%;
 }
+.zelle-screenshot-text i{
+  color: #6d1ed4;
+}
 
 #zelle-top{
   padding-top: 10px;

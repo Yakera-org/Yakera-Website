@@ -21,11 +21,11 @@ function ZelleVisual(props) {
               {EN ? 
                 <p id="zelle-des">(Amount does not include the tip, as it goes straight to the recipient)</p> 
               :
-                <p id="zelle-des">(El importe no incluye la propina, ya que va directamente al destinatario)</p> 
+                <p id="zelle-des">(La donación no incluye la propina, ya que va directamente a la persona beneficiaria)</p> 
               }
             <p>
               {EN ? "Provide us with your Zelle account information!" :
-                "Inserte los siguientes detallas asociados a la cuenta de Zelle"}
+                "Inserte los siguientes detalles asociados a la cuenta de Zelle"}
             </p>
             <div className = "input-container">
               <input
@@ -45,7 +45,7 @@ function ZelleVisual(props) {
               <input
                   type="text"
                   name="name"
-                  placeholder={EN ? "Zelle Name*" : "Nombre Zelle*" }
+                  placeholder={EN ? "Zelle Name*" : "Nombre en Zelle*" }
                   className={classnames(
                     'form-control zelle-form',
                     { 'is-valid': data.errors.name === false},
@@ -61,7 +61,7 @@ function ZelleVisual(props) {
             <div style = {{marginTop: "30px", float: "left"}}> {EN ?
               <div className = "zelle-screenshot-text">Tranfer the above amount to <i>{props.recipientEmail}</i> with the name  <i>{props.recipientName}</i> on Zelle. <b>Provide us with a screenshot here!</b></div>
             :
-             <div className = "zelle-screenshot-text">Tranfiere el monto a <i>{props.recipientEmail} </i>en Zelle a nombre de <i>{props.recipientName}</i>. <b>Desde la aplicación de tu banco y toma una captura de pantalla!</b></div> } </div>
+             <div className = "zelle-screenshot-text">¡Desde la aplicación de tu banco, selecciona Zelle y transfiere la suma deseada a <i>{props.recipientEmail} </i>a nombre de<i> {props.recipientName}</i> <b> y al final toma una captura de pantalla!</b></div> } </div>
 
               <ImgUpload EN={EN} photoUpload={props.photoUpload} name={props.ssName} removeScreenShot={props.removeScreenShot}/>
 
