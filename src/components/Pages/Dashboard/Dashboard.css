@@ -43,6 +43,23 @@
 #airTM button:hover{
    opacity: 0.8;
 }
+#airTM .help-contact{
+    padding: 30px 0;
+    text-align: center;
+}
+#airTM .help-contact p{
+    font-family: Intro-Regular-Alt;
+    font-size: 22px;
+    width: 100%;
+    text-align: center;
+}
+#airTM .help-contact button{
+    background-color: #ea8737;
+    text-align: center;
+    margin: 0;
+    padding: 10px 20px;
+
+}
 .dash-btn{
     text-align: center;
 }
@@ -62,6 +79,44 @@
 }
 #zelle .dash-left{
     margin-bottom: -20px;
+}
+#zelle #prompt{
+    color: #000000;
+    font-size: 22px;
+    width: 100%;
+}
+#zelle #description{
+    color: #7a7a7a;
+    font-family: Intro-Light;
+    font-size: 15px;
+    width: 100%;
+}
+#zelle #star{
+    color: #ea8737;
+    font-family: Intro-Light;
+}
+#zelle .star-des{
+    color: #e76800ea;
+    font-family: Intro-Light;
+    font-size: 15px;
+    width: 80%;
+    padding: 10px;
+    margin-top: 20px;
+    text-align: justify;
+}
+#zelle .new-circle{
+    text-align: left;
+}
+#airTM #prompt{
+    color: #000000;
+    font-size: 22px;
+    width: 80%;
+}
+#airTM #description{
+    color: #7a7a7a;
+    font-family: Intro-Light;
+    font-size: 15px;
+    width: 80%;
 }
 #zelle button{
     background-color: #ea8737;
@@ -225,6 +280,15 @@
     }
     #zelle-email input{
         margin-bottom: 1rem;
+    }
+    #zelle #description{
+        width: 100%;
+    }
+    #zelle #star{
+        color: #ea8737;
+    }
+    #zelle .star-des{
+        width: 100%;
     }
     .active-campaigns {
         padding: 10px;

@@ -25,6 +25,7 @@ function onWithdraw(event){
                 <CardContent>
                     <div className='dash-card-top'>
                         <h1> {EN ?'Welcome ' : 'Bienvenido ' }  <span id='dash-name'>{user.firstName}</span> </h1>
+                        <br />
                     </div>
 
                     <hr />
@@ -40,55 +41,22 @@ function onWithdraw(event){
                                 <p><span id='dash-stats'>{EN ?'Phone: ' : 'Teléfono: ' }</span> {user.phone}</p>
                             </div>
                         </Grid>
-                        {/*<Grid item xs={12} sm={3} >
-                            <div className='dash-left'>
-                                <p><span id='dash-stats'>ID Number:</span> {user.socialNum}</p>
-                            </div>
-                        </Grid> */}
                         <Grid item xs={12} sm={4} >
                             <div className='dash-left'>
                                 <p><span id='dash-stats'>{EN ?'Address: ' : 'Dirección: ' }</span> {user.address}</p>
                             </div>
-                        </Grid>   
-                        <Grid item xs={12} sm={4} id='airTM'>
-                            <div className='dash-left'>
-                                <p id='dash-stats'>AirTM email:</p>
-                            </div>
-                            {
-                                !user.airTMNum
-                                ?
-                                <Grid container spacing={0}>
-                                    <Grid item xs={12} sm={8} >
-                                            <input
-                                                type="email"
-                                                name="airTMemail"
-                                                placeholder={EN ? "Enter your AirTM email" : "Ingrese su correo electrónico AirTM"}
-                                                onChange={props.handleChange}
-                                                className={classnames(
-                                                    'form-control',
-                                                    { 'is-valid': props.airTMEmailError === false },
-                                                    { 'is-invalid': props.airTMEmailError }
-                                                )}
-                                            />
-                                            <p className="invalid-feedback">{props.airTMEmailError}</p>
-                                    </Grid> 
-                                    <Grid item xs={12} sm={2} >
-                                        <button  onClick={props.onSubmitEmail}>
-                                            {EN ? "Submit" : "Enviar"}
-                                        </button> 
-                                    </Grid> 
-                                </Grid> 
-                                :
-                                <div className='dash-left'>
-                                    <p>{user.airTMNum}</p>
-                                </div>
-                            }
-                        </Grid>
-                        <Grid item xs={1} sm={8}>
-                            {/* intentionally left blank */}
-                        </Grid>
-                        <Grid item xs={12} sm={4} id='zelle'>
+                        </Grid> 
+                    </Grid> 
+
+                    <hr />
+
+                    <Grid container spacing={0} style={{marginTop: "30px"}}>
+                        <Grid item xs={12} sm={6} id='zelle'>
                             <Grid container spacing={0} className='dash-left'>
+                                <Grid item xs={12} sm={12}>
+                                    <p id="prompt"><span id="star">{EN ? "NEW!" : "¡Nuevo!"} </span>{EN ? "Now you can also receive donations through Zelle!" : "¡Ahora también puedes recibir donaciones por Zelle!"}<span id="star">*</span> </p>
+                                    <p id="description">{EN ? "To activate this payment method, you must provide the following information:" : "Para activar este método de pago es necesario que nos suministres la siguiente información:"} </p>
+                                </Grid>
                                 <Grid item xs={12} sm={12}>
                                     <p id='dash-stats'>Zelle email:</p>
                                 </Grid>
@@ -97,7 +65,7 @@ function onWithdraw(event){
                                 !user?.zelleInfo?.email
                                 ?
                                 <Grid container spacing={0}>
-                                    <Grid item xs={12} sm={12} id='zelle-email'>
+                                    <Grid item xs={12} sm={8} id='zelle-email'>
                                         <input
                                             type='email'
                                             name='zelleEmail'
@@ -116,8 +84,6 @@ function onWithdraw(event){
                                     <p>{user.zelleInfo.email}</p>
                                 </div>
                             }
-                        </Grid>
-                        <Grid item xs={12} sm={!user.zelleInfo ? 6 : 4} id='zelle'>
                             <Grid container spacing={0} className='dash-left'>
                                 <Grid item>
                                     <p id='dash-stats'>{EN ? 'Zelle name:' : 'Zelle nombre:'}</p>
@@ -151,18 +117,17 @@ function onWithdraw(event){
                                     <p>{user.zelleInfo.name}</p>
                                 </div>
                             }
-                        </Grid>
                         {!user.zelleInfo
                             ? <></>
                             :
-                                <Grid item xs={12} sm={4} id='zelle'>
+                                <>
                                     <Grid container spacing={0} className='dash-left'>
                                         <Grid item>
                                             <p id='dash-stats'>{EN ? 'Accepting payment?:' : '¿Aceptando pago?:'}</p>
                                         </Grid>
                                     </Grid>
                                     <Grid container spacing={0}>
-                                        <Grid item xs={12} sm={8}>
+                                        <Grid item xs={12} sm={6}>
                                             <Checkbox
                                                 name='acceptingPayment'
                                                 onChange={props.handleChangeZelleCheckbox}
@@ -173,17 +138,64 @@ function onWithdraw(event){
                                                         color: 'rgba(234, 135, 55, .5)'
                                                     },
                                                 }}
-                                            />
+                                                />
                                         </Grid>
-                                        <Grid item xs={12} sm={4}>
+                                        <Grid item xs={12} sm={6}>
                                             <button onClick={props.onSubmitZelle}>
                                                 {EN ? "Submit" : "Enviar"}
                                             </button>
                                         </Grid>
                                     </Grid>
-                                </Grid>
+                                </>
                             
                         }
+                            <Grid item xs={12} sm={12}>
+                                <p className="star-des">{EN ? "*Donations made through Zelle are disintermediated by Yakera. Donations will be sent directly to your Zelle account immediately and reflected in the total balance of the campaign’s funds." : "*¡Ojo! Las donaciones realizadas a través de Zelle no son monitoreadas por Yakera. Las contribuciones llegarán directo a tu cuenta de Zelle inmediatamente y serán reflejadas en el monto de la campaña."} </p>
+                            </Grid>                                        
+                        </Grid>
+
+                        <Grid item xs={12} sm={6} id='airTM'>
+                            <div className='dash-left'>
+                            <p id="prompt">{EN ? "Add your AirTM account to withdraw collected funds!" : "¡Añade los detalles de tu cuenta de Airtm para retirar los fondos recaudados!"}</p>
+                            <p id="description">{EN ? "To transfer the funds you collect through Yakera, you must create an Airtm account and provide the email address here:" : "Para transferir tus fondos recaudados en Yakera es necesario que nos suministres tu correo de AirTM"}</p>
+                                <p id='dash-stats'>AirTM email:</p>
+                            </div>
+                            {
+                                !user.airTMNum
+                                ?
+                                <Grid container spacing={0}>
+                                    <Grid item xs={12} sm={8} >
+                                            <input
+                                                type="email"
+                                                name="airTMemail"
+                                                placeholder={EN ? "Enter your AirTM email" : "Ingrese su correo electrónico AirTM"}
+                                                onChange={props.handleChange}
+                                                className={classnames(
+                                                    'form-control',
+                                                    { 'is-valid': props.airTMEmailError === false },
+                                                    { 'is-invalid': props.airTMEmailError }
+                                                )}
+                                            />
+                                            <p className="invalid-feedback">{props.airTMEmailError}</p>
+                                    </Grid> 
+                                    <Grid item xs={12} sm={2} >
+                                        <button  onClick={props.onSubmitEmail}>
+                                            {EN ? "Submit" : "Enviar"}
+                                        </button> 
+                                    </Grid> 
+                                    <Grid className="help-contact" item xs={12} sm={10}>
+                                        <p >{EN ? "Do you have any questions or need assistance?" : "¿Tienes alguna pregunta o necesitas apoyo?"} </p>
+                                        <button onClick={() => window.location = "https://chat.whatsapp.com/LcSFQzsohaC1hmlgdbij3D"}>
+                                            {EN ? "Contact us!" : "¡Contáctanos!"}
+                                        </button>
+                                    </Grid>  
+                                </Grid> 
+                                :
+                                <div className='dash-left'>
+                                    <p>{user.airTMNum}</p>
+                                </div>
+                            }
+                        </Grid>
                     </Grid> 
 
                     <hr style={{marginTop:'30px'}}/>  
