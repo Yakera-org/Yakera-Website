@@ -11,6 +11,7 @@ import {CardMedia} from "@material-ui/core";
 import { Link } from 'react-router-dom';
 import './home.scss';
 import TokenService from '../../../services/token';
+import WhatsAppButton from './WhatsAppButton';
 
 function Home() {
     const [EN, setEN] = React.useState(false);
@@ -43,12 +44,6 @@ function Home() {
       }
     }, [targetRef, options])
 
-
-
-    const contactUs = () => {
-        window.location.href = 'https://chat.whatsapp.com/LcSFQzsohaC1hmlgdbij3D';
-    }
-
     React.useEffect(() => {
         if(LanguageService.getLanguage()==='en'){
             setEN(true)
@@ -70,10 +65,7 @@ function Home() {
         <div>
             <div className='home-page'>
                 <div className= {EN ? 'not-visible' : 'button'}>
-                    <button onClick={contactUs} className={!isVisible ? 'contact-us-button' : 'not-visible-button'} >
-                    {EN ? 'Contact Us' : 'Contáctanos'}
-                    <i id='icon' className='fab fa-whatsapp'></i>
-                    </button>
+                    <WhatsAppButton EN={EN} isVisible = {isVisible}/>
                 </div>
                 <Grid container spacing={0} style={{ alignItems:'flex-start'}}>
                     <Grid item xs={12} sm={6} >
