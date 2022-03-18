@@ -113,7 +113,7 @@ class donate extends Component{
             const res = await api.get('/campaigns/');
             if (res.data.data.campaigns) {
                 this.setState({
-                    campaigns: res.data.data.campaigns,
+                    campaigns: res.data.data.campaigns.sort(() => 0.5 - Math.random()),
                 });
             }    
         } catch (err) {
@@ -128,7 +128,57 @@ class donate extends Component{
     
     handle_change = (value) => {
         this.setState({ value })
-    }    
+    }  
+
+    filterCampaignsByDate = () => {
+
+        var filteredCams = this.state.campaigns.sort((a, b) => new Date(a.updatedAt) - new Date(b.updatedAt));
+
+        this.setState({
+            campaigns: filteredCams
+        })
+        console.log(filteredCams)
+    } 
+    filterCampaignsByRevDate = () => {
+
+        var filteredCams = this.state.campaigns.sort((a, b) => new Date(a.updatedAt) - new Date(b.updatedAt)).reverse();
+
+        this.setState({
+            campaigns: filteredCams
+        })
+    }  
+    filterCampaignsByMoney = () => {
+
+        var filteredCams = this.state.campaigns.sort((a, b) => (a.raised + a.zelleRaised) - (b.raised + b.zelleRaised));
+
+        this.setState({
+            campaigns: filteredCams
+        })
+    } 
+    filterCampaignsByRevMoney = () => {
+
+        var filteredCams = this.state.campaigns.sort((a, b) => (a.raised + a.zelleRaised) - (b.raised + b.zelleRaised)).reverse();
+
+        this.setState({
+            campaigns: filteredCams
+        })
+    } 
+    filterCampaignsByPer = () => {
+
+        var filteredCams = this.state.campaigns.sort((a, b) => a.percentage - b.percentage);
+
+        this.setState({
+            campaigns: filteredCams
+        })
+    } 
+    filterCampaignsByRevPer = () => {
+
+        var filteredCams = this.state.campaigns.sort((a, b) => a.percentage - b.percentage).reverse();
+
+        this.setState({
+            campaigns: filteredCams
+        })
+    } 
 
     setSearchQuery = (e) => {
         this.setState({
@@ -243,6 +293,17 @@ class donate extends Component{
                             }} 
                         />
                     </div>
+                    <button onClick={this.filterCampaignsByDate}>Filter by date</button>
+                    <button onClick={this.filterCampaignsByRevDate}>Filter by reverse date</button>
+                    <br />
+                    <button onClick={this.filterCampaignsByMoney}>Filter by Money raised</button>
+                    <button onClick={this.filterCampaignsByRevMoney}>Filter by reverse Money raised</button>
+                    <br />
+                    <button onClick={this.filterCampaignsByPer}>Filter by Percentage</button>
+                    <button onClick={this.filterCampaignsByRevPer}>Filter by reverse Percentage</button>
+                    <br />
+
+                    
                     <SearchBar 
                         searchQuery={this.state.searchQuery}
                         setSearchQuery={this.setSearchQuery}
@@ -254,7 +315,7 @@ class donate extends Component{
                 <hr id="hr-top"/>
 
                  <Grid container spacing={5} style={{alignContent:'center', alignItems:'flex-start'}}>
-                    {filteredCampaigns.sort(() => 0.5 - Math.random()).map((cam, i) => {
+                    {filteredCampaigns.map((cam, i) => {
                             count++;
                             return(
                                 <Grid item xs={12} sm={3} key={i}>
