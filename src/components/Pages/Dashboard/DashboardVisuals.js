@@ -7,17 +7,21 @@ import DashboardCard from './DashboardCard';
 
 
 function DashboardVisuals(props) {
-    const user = props.data.user
-    const campaigns = props.data.campaigns ? props.data.campaigns : []
-    const EN = props.EN
+    const user = props.data.user;
+    const campaigns = props.data.campaigns ? props.data.campaigns : [];
+    const EN = props.EN;
     
-function onWithdraw(event){
-    if(!user.airTMNum){
-        window.alert(EN ? "Please update yur AirTM email address. Without this email, we don't know where you want the money to be transferred to. Thanks" : "Actualice su dirección de correo electrónico de AirTM. Sin este correo electrónico, no sabemos a dónde desea que se transfiera el dinero. Gracias" )
-    }else{
-        props.onWithdraw(event)
-    }
-}
+    function onWithdraw(event){
+        if(!user.airTMNum){
+            window.alert(EN ? "Please update yur AirTM email address. Without this email, we don't know where you want the money to be transferred to. Thanks" : "Actualice su dirección de correo electrónico de AirTM. Sin este correo electrónico, no sabemos a dónde desea que se transfiera el dinero. Gracias" )
+        }else{
+            props.onWithdraw(event)
+        }
+    };
+
+    const onEdit = () => {
+        window.location.href = "/dashboard/edit";
+    };
 
     return (
         <div>
@@ -195,6 +199,11 @@ function onWithdraw(event){
                                     <p>{user.airTMNum}</p>
                                 </div>
                             }
+                        </Grid>
+                        <Grid item xs={12} sm={12} >
+                            <button onClick={onEdit}>
+                                {EN ? 'Edit profile' : 'Editar perfil'}
+                            </button>
                         </Grid>
                     </Grid> 
 
