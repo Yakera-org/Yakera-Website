@@ -92,7 +92,7 @@ function ZelleLogic(props) {
 
       async function sendToBackend(){
           try {
-            const fileAWSLocation = "https://yakera-files.s3.us-east-2.amazonaws.com/profile-pictures/" + SSfile.name
+            const fileAWSLocation = "https://yakera-files.s3.us-east-2.amazonaws.com/zelle-screenshots/" + SSfile.name
               const payload = {
                   "slug": props.slug,
                   "email": props.email,
@@ -110,10 +110,10 @@ function ZelleLogic(props) {
                   "zelleName": data.name,
                   "zelleEmail": data.email
               }
-              console.log(await api.post(`/campaigns/donate`, payload))
+              await api.post(`/campaigns/donate`, payload)
           } catch (err) {
               console.log(err);
-              setError(props.EN ? "Something went wrong, please try again." : "Algo salió mal, por favor, tira de nuevo.")
+              setError(props.EN ? "Something went wrong, please try again." : "Algo salió mal. Por favor, intenta de nuevo.")
           }
 
           setLoading(false)
