@@ -80,21 +80,18 @@ function CreateCampaignDetails(props) {
                 return item.path !==  e.target.getAttribute('name')
             })
             setMainFile(newFiles)
-            props.setMainPicture(newFiles)
         }
         else if (e.target.getAttribute('id') === "document"){
              newFiles = documentFiles.filter(function(item) {
                 return item.path !==  e.target.getAttribute('name')
             })
             setDocumentFiles(newFiles)
-            props.setDocuments(newFiles)
         }
         else if (e.target.getAttribute('id') === "campaign"){
             newFiles = campaignFiles.filter(function(item) {
                return item.path !==  e.target.getAttribute('name')
            })
            setCampaignFiles(newFiles)
-           props.setCampaignPics(newFiles)
        }
     }
 
@@ -250,11 +247,10 @@ function CreateCampaignDetails(props) {
                                 totalSize += file.size
                             });
                             if(totalSize < 1000000){
-                                setMainFile(acceptedFiles.concat(mainFile).map(file => Object.assign(file, {
+                                setMainFile(acceptedFiles.concat(mainFile).map(file => Object.assigsn(file, {
                                     preview: URL.createObjectURL(file)
                                 })));
                                 setMainError('')
-                                props.setMainPicture(acceptedFiles.concat(mainFile))
                             }else{
                                 setMainError(EN ? 'File too big.' : 'La imágen son demasiado grandes.')
                             }
@@ -332,7 +328,6 @@ function CreateCampaignDetails(props) {
                                     preview: URL.createObjectURL(file)
                                 })));
                                 setDocumentError('')
-                                props.setDocuments(acceptedFiles.concat(documentFiles))
                             }else{
                                 setDocumentError(EN ? 'Files too big' : 'Las imágenes son demasiado grandes')
                             }
@@ -416,7 +411,6 @@ function CreateCampaignDetails(props) {
                                         preview: URL.createObjectURL(file)
                                     })));
                                     setcampaignPicturesError("")
-                                    props.setCampaignPics(acceptedFiles.concat(campaignFiles))
                                 }else{
                                     setcampaignPicturesError(EN ? 'Files too big' : 'Las imágenes son demasiado grandes')
                                 }
