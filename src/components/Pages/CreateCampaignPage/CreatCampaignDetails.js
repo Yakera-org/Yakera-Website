@@ -67,9 +67,9 @@ function FilePreview(props){
             { props.mainFileUploadStatus.includes(file.name)
                 ?
                 <div className="aws-upload">
-                    <button className="aws-button-success" onClick={() => console.log("cick")}>
+                    <div className="aws-button-success">
                         Success
-                    </button>
+                    </div>
                 </div>
                 :
                     props.mainFileUploadFails.includes(file.name)
@@ -128,13 +128,13 @@ function CreateCampaignDetails(props) {
 
     const documentThumbs = documentFiles.map(file => {
         return(
-            <FilePreview key={file.name} file={file} onRemove={onRemove} onUpload={onUpload} id="document"/>
+            <FilePreview key={file.name} file={file} onRemove={onRemove} onUpload={onUpload} id="document" mainFileUploadStatus={mainFileUploadStatus} mainFileUploadFails={mainFileUploadFails}/>
         )
     });
 
     const campaignThumbs = campaignFiles.map((file, i) => {
         return(
-            <FilePreview key={file.name + i} file={file} onRemove={onRemove}  onUpload={onUpload} id="campaign"/>
+            <FilePreview key={file.name + i} file={file} onRemove={onRemove}  onUpload={onUpload} id="campaign" mainFileUploadStatus={mainFileUploadStatus} mainFileUploadFails={mainFileUploadFails}/>
         )
     });
 
@@ -183,11 +183,10 @@ function CreateCampaignDetails(props) {
         e.preventDefault()
         var fileToUpload;
         var filename = e.target.getAttribute('name')
+        var theFile;
 
         if (e.target.getAttribute('id') === "main"){
-
             //set loader
-            var theFile;
             mainFile.forEach(file => {
                 if(file.name === filename){
                     theFile = file
@@ -211,17 +210,51 @@ function CreateCampaignDetails(props) {
             })           
         }
         else if (e.target.getAttribute('id') === "document"){
-            fileToUpload = documentFiles.filter(function(item) {
-                return item.path ===  filename
+            documentFiles.forEach(file => {
+                if(file.name === filename){
+                    theFile = file
+                }
+            });
+            await uploadFile(theFile, config_aws)
+            .then(() => {
+                var status = mainFileUploadStatus.concat(filename)
+                setmainFileUploadStatus(status)
+
+                fileToUpload = documentFiles.filter(function(item) {
+                    return item.path ===  filename
+                })
+                setDocumentFilesUploaded(documentFilesUploaded.concat(fileToUpload))  
+           
             })
-            setDocumentFilesUploaded(documentFilesUploaded.concat(fileToUpload))
+            .catch(err => {
+                console.log(err)
+                var failStatus = mainFileUploadFails.concat(filename)
+                setmainFileUploadFails(failStatus)
+            })           
         }
         else if (e.target.getAttribute('id') === "campaign"){
-            fileToUpload = campaignFiles.filter(function(item) {
-               return item.path ===  filename
-           })
-           setCampaignFilesUploaded(campaignFilesUploaded.concat(fileToUpload))
-       }
+            campaignFiles.forEach(file => {
+                if(file.name === filename){
+                    theFile = file
+                }
+            });
+            await uploadFile(theFile, config_aws)
+            .then(() => {
+                var status = mainFileUploadStatus.concat(filename)
+                setmainFileUploadStatus(status)
+
+                fileToUpload = campaignFiles.filter(function(item) {
+                    return item.path ===  filename
+                })
+                setCampaignFilesUploaded(campaignFilesUploaded.concat(fileToUpload))  
+           
+            })
+            .catch(err => {
+                console.log(err)
+                var failStatus = mainFileUploadFails.concat(filename)
+                setmainFileUploadFails(failStatus)
+            })           
+        }
     }
 
     const EN = props.EN
@@ -371,6 +404,25 @@ function CreateCampaignDetails(props) {
                     </div>
 
                     <Dropzone accept='image/*' onDrop={(acceptedFiles) => {
+                        var isDuplicate = false
+                        acceptedFiles.forEach(file => {
+                            campaignFiles.forEach(camFile => {
+                                if (file.path === camFile.path){
+                                    isDuplicate = true
+                                }
+                            })
+                            mainFile.forEach(camFile => {
+                                if (file.path === camFile.path){
+                                    isDuplicate = true
+                                }
+                            })
+                            documentFiles.forEach(camFile => {
+                                if (file.path === camFile.path){
+                                    isDuplicate = true
+                                }
+                            })
+                        })
+                        if(!isDuplicate){
                          if (acceptedFiles.concat(mainFile).length <= 1){
                             var totalSize = 0
                             acceptedFiles.concat(mainFile).forEach(file => {
@@ -386,6 +438,9 @@ function CreateCampaignDetails(props) {
                         }else{
                             alert(EN ? 'Only 1 picture allowed.' : 'Solo se permite 1 imágen.')
                         }
+                    }else{
+                        alert(EN ? 'Picture already used' : 'Imagen ya utilizada')
+                    }
                         
                             
                         }} name="mainImage" multiple={true}>
@@ -455,21 +510,43 @@ function CreateCampaignDetails(props) {
                         }                              
                     </div>
                     <Dropzone accept='image/*' onDrop={(acceptedFiles) => {
-                        if (acceptedFiles.concat(documentFiles).length <= 2){
-                            var totalSize = 0
-                            acceptedFiles.concat(documentFiles).forEach(file => {
-                                totalSize += file.size
-                                
-                            });
-                            if(totalSize < 1000000){
-                                setDocumentFiles(acceptedFiles.concat(documentFiles).map(file => Object.assign(file, {
-                                    preview: URL.createObjectURL(file)
-                                })));
+                        var isDuplicate = false
+                        acceptedFiles.forEach(file => {
+                            campaignFiles.forEach(camFile => {
+                                if (file.path === camFile.path){
+                                    isDuplicate = true
+                                }
+                            })
+                            mainFile.forEach(camFile => {
+                                if (file.path === camFile.path){
+                                    isDuplicate = true
+                                }
+                            })
+                            documentFiles.forEach(camFile => {
+                                if (file.path === camFile.path){
+                                    isDuplicate = true
+                                }
+                            })
+                        })
+                        if(!isDuplicate){
+                            if (acceptedFiles.concat(documentFiles).length <= 2){
+                                var totalSize = 0
+                                acceptedFiles.concat(documentFiles).forEach(file => {
+                                    totalSize += file.size
+                                    
+                                });
+                                if(totalSize < 1000000){
+                                    setDocumentFiles(acceptedFiles.concat(documentFiles).map(file => Object.assign(file, {
+                                        preview: URL.createObjectURL(file)
+                                    })));
+                                }else{
+                                    alert(EN ? 'Files too big' : 'Las imágenes son demasiado grandes')
+                                }
                             }else{
-                                alert(EN ? 'Files too big' : 'Las imágenes son demasiado grandes')
+                                alert(EN ? 'Only 2 pictures allowed.' : 'Solo se permiten 2 imágenes. ')
                             }
                         }else{
-                            alert(EN ? 'Only 2 pictures allowed.' : 'Solo se permiten 2 imágenes. ')
+                            alert(EN ? 'Picture already used' : 'Imagen ya utilizada')
                         }
                         }} name="documents" multiple={true}>
                         {({getRootProps, getInputProps}) => (
@@ -538,6 +615,16 @@ function CreateCampaignDetails(props) {
                                     isDuplicate = true
                                 }
                             })
+                            mainFile.forEach(camFile => {
+                                if (file.path === camFile.path){
+                                    isDuplicate = true
+                                }
+                            })
+                            documentFiles.forEach(camFile => {
+                                if (file.path === camFile.path){
+                                    isDuplicate = true
+                                }
+                            })
                         })
                         if(!isDuplicate){
                             if (acceptedFiles.length + campaignFiles.length <= 4){
@@ -553,10 +640,10 @@ function CreateCampaignDetails(props) {
                                     alert(EN ? 'Files too big' : 'Las imágenes son demasiado grandes')
                                 }
                             }else{
-                                alert(EN ? 'Only 4 pictures allowed.' : 'Solo se permiten 4 imágenes. ')
+                                alert(EN ? 'Only 4 pictures allowed.' : 'Solo se permiten 4 imágenes.')
                             }
                         }else{
-                            alert(EN ? 'Duplicated picture' : 'Solo se permiten 4 imágenes. ')
+                            alert(EN ? 'Picture already used' : 'Imagen ya utilizada')
         
                     }}} name="campaignImages" multiple={true}>
                             {({getRootProps, getInputProps}) => (

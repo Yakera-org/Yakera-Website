@@ -144,6 +144,7 @@
 }
 .aws-upload .aws-button-success{
     background-color: #2dc935;
+    text-align: center;
     border: none;
     outline: none;
     color: white;
