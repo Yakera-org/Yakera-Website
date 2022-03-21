@@ -122,6 +122,26 @@
     color: rgb(204, 82, 82);
     cursor: pointer;
 }
+.aws-upload{
+    display: inline-block;
+    position: relative;
+}
+.aws-upload .aws-button{
+    background-color: #71b98f;
+    border: none;
+    outline: none;
+    color: white;
+    font-family: Intro-Regular-Alt;
+    border-radius: 5px;
+    padding: 5px;
+    position:absolute;
+    left: -110px;
+    top: 20px;
+    width: 100px;
+}
+.aws-upload .aws-button:hover{
+    background-color: #289455;
+}
 #upload-zone {
     background-color: #f3f3f3;
     border-radius: 10px;

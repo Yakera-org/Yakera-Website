@@ -65,15 +65,20 @@ function CreateCampaignVisuals(props) {
                     :
                     ''
                 }
-
-                <div className="sweet-loading">
-                    <div className='loader-wrapper' style={{marginLeft:'-10px', marginBottom:'10px'}}>
-                        <HashLoader
-                            color={"#ea8737"}
-                            loading={props.loader}
-                        />
-                    </div>
-                </div> 
+                {
+                    props.loader
+                    ?
+                    <div className="sweet-loading">
+                        <div className='loader-wrapper' style={{marginLeft:'-10px', marginBottom:'10px'}}>
+                            <HashLoader
+                                color={"#ea8737"}
+                                loading={props.loader}
+                            />
+                        </div>
+                    </div> 
+                    :
+                    ""
+                }
                
                 { !props.success
                 ?

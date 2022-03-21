@@ -8,12 +8,12 @@ const thumb = {
     display: 'inline-flex',
     borderRadius: 2,
     border: '1px solid #eaeaea',
-    marginBottom: 8,
+    marginBottom: 50,
     marginRight: 8,
     width: 100,
     height: 100,
     padding: 4,
-    boxSizing: 'border-box'
+    boxSizing: 'border-box',
 };
 
 const thumbInner = {
@@ -30,6 +30,32 @@ const img = {
 function FilePreview(props){
     const file = props.file
     return(
+        <>
+            <div style={thumb} key={file.name} id="files">
+                <div style={thumbInner}>
+                    <img
+                        alt="dropzone-img"
+                        src={file.preview}
+                        style={img}
+                    />
+                </div>
+                <div id="remove-btn">
+                    <i name={file.name} id={props.id} onClick={props.onRemove} className="far fa-2x fa-times-circle"></i>
+                </div>
+            </div>
+
+            <div className="aws-upload">
+                <button className="aws-button" id={props.id} name={file.name} onClick={props.onUpload}>
+                    Upload
+                </button>
+            </div>
+        </>
+    )
+}
+
+function FilePreviewUploaded(props){
+    const file = props.file
+    return(
         <div style={thumb} key={file.name} id="files">
             <div style={thumbInner}>
                 <img
@@ -38,33 +64,53 @@ function FilePreview(props){
                     style={img}
                 />
             </div>
-            <div id="remove-btn">
-                <i name={file.name} id={props.id} onClick={props.onRemove} className="far fa-2x fa-times-circle"></i>
-            </div>
         </div>
     )
 }
+
 function CreateCampaignDetails(props) {
     const [mainFile, setMainFile] = useState([]);
     const [documentFiles, setDocumentFiles] = useState([]);
     const [campaignFiles, setCampaignFiles] = useState([]);
 
+    const [mainFileUploaded, setMainFileUploaded] = useState([]);
+    const [documentFilesUploaded, setDocumentFilesUploaded] = useState([]);
+    const [campaignFilesUploaded, setCampaignFilesUploaded] = useState([]);
+
     // https://github.com/react-dropzone/react-dropzone/tree/master/examples/previews
     const mainThumbs = mainFile.map(file => {
         return(
-            <FilePreview key={file.name} file={file} onRemove={onRemove} id="main"/>
+            <FilePreview key={file.name} file={file} onRemove={onRemove} onUpload={onUpload} id="main"/>
         )
     });
 
     const documentThumbs = documentFiles.map(file => {
         return(
-            <FilePreview key={file.name} file={file} onRemove={onRemove} id="document"/>
+            <FilePreview key={file.name} file={file} onRemove={onRemove} onUpload={onUpload} id="document"/>
         )
     });
 
     const campaignThumbs = campaignFiles.map((file, i) => {
         return(
-            <FilePreview key={file.name + i} file={file} onRemove={onRemove} id="campaign"/>
+            <FilePreview key={file.name + i} file={file} onRemove={onRemove}  onUpload={onUpload} id="campaign"/>
+        )
+    });
+
+    const mainThumbsUploaded = mainFileUploaded.map(file => {
+        return(
+            <FilePreviewUploaded key={file.name} file={file} id="main"/>
+        )
+    });
+
+    const documentThumbsUploaded = documentFilesUploaded.map(file => {
+        return(
+            <FilePreviewUploaded key={file.name} file={file} id="document"/>
+        )
+    });
+
+    const campaignThumbsUploaded = campaignFilesUploaded.map((file, i) => {
+        return(
+            <FilePreviewUploaded key={file.name + i} file={file}id="campaign"/>
         )
     });
 
@@ -78,7 +124,7 @@ function CreateCampaignDetails(props) {
             setMainFile(newFiles)
         }
         else if (e.target.getAttribute('id') === "document"){
-             newFiles = documentFiles.filter(function(item) {
+            newFiles = documentFiles.filter(function(item) {
                 return item.path !==  e.target.getAttribute('name')
             })
             setDocumentFiles(newFiles)
@@ -89,6 +135,31 @@ function CreateCampaignDetails(props) {
            })
            setCampaignFiles(newFiles)
        }
+    }
+
+    function onUpload(e){
+        e.preventDefault()
+        var uploadFile;
+
+        if (e.target.getAttribute('id') === "main"){
+            uploadFile = mainFile.filter(function(item) {
+                return item.path ===  e.target.getAttribute('name')
+            })
+            setMainFileUploaded(uploadFile)
+        }
+        else if (e.target.getAttribute('id') === "document"){
+            uploadFile = documentFiles.filter(function(item) {
+                return item.path ===  e.target.getAttribute('name')
+            })
+            setDocumentFilesUploaded(documentFilesUploaded.concat(uploadFile))
+        }
+        else if (e.target.getAttribute('id') === "campaign"){
+            uploadFile = campaignFiles.filter(function(item) {
+               return item.path ===  e.target.getAttribute('name')
+           })
+           setCampaignFilesUploaded(campaignFilesUploaded.concat(uploadFile))
+       }
+
     }
 
     const EN = props.EN
@@ -247,12 +318,11 @@ function CreateCampaignDetails(props) {
                                 setMainFile(acceptedFiles.concat(mainFile).map(file => Object.assign(file, {
                                     preview: URL.createObjectURL(file)
                                 })));
-                                //setMainError('')
                             }else{
-                                //setMainError(EN ? 'File too big.' : 'La imágen son demasiado grandes.')
+                                alert(EN ? 'File too big.' : 'La imágen son demasiado grandes.')
                             }
                         }else{
-                            //setMainError(EN ? 'Only 1 picture allowed.' : 'Solo se permite 1 imágen.')
+                            alert(EN ? 'Only 1 picture allowed.' : 'Solo se permite 1 imágen.')
                         }
                         
                             
@@ -283,8 +353,17 @@ function CreateCampaignDetails(props) {
                     }
                    
                     <aside>
-                        <h6>{EN ? "File:" : "Archivo:" }</h6>
+                        <h6>{EN ? "File ready for Upload:" : "Archivo:" }</h6>
                         <ul>{mainThumbs}</ul>
+                        <h6>{EN ? "Uploaded to Yakera:" : "Archivo:" }</h6>
+                        <ul>{mainThumbsUploaded}</ul>
+                        {
+                            mainFileUploaded.length === 0
+                            ?
+                            <h6 style={{fontSize: "15px", color: "grey"}}>{EN ? "No files uploaded" : "Archivo:" }</h6>
+                            :
+                            ""
+                        }
                     </aside>                   
                 </FormGroup>
 
@@ -324,12 +403,11 @@ function CreateCampaignDetails(props) {
                                 setDocumentFiles(acceptedFiles.concat(documentFiles).map(file => Object.assign(file, {
                                     preview: URL.createObjectURL(file)
                                 })));
-                                //setDocumentError('')
                             }else{
-                                //setDocumentError(EN ? 'Files too big' : 'Las imágenes son demasiado grandes')
+                                alert(EN ? 'Files too big' : 'Las imágenes son demasiado grandes')
                             }
                         }else{
-                            //setDocumentError(EN ? 'Only 2 pictures allowed.' : 'Solo se permiten 2 imágenes. ')
+                            alert(EN ? 'Only 2 pictures allowed.' : 'Solo se permiten 2 imágenes. ')
                         }
                         }} name="documents" multiple={true}>
                         {({getRootProps, getInputProps}) => (
@@ -358,8 +436,10 @@ function CreateCampaignDetails(props) {
                     }
                     
                     <aside>
-                        <h6>{EN ? "Files:" : "Archivos:" }</h6>
+                        <h6>{EN ? "Files ready for Upload:" : "Archivos:" }</h6>
                         <ul>{documentThumbs}</ul>
+                        <h6>{EN ? "Uploaded to Yakera:" : "Archivo:" }</h6>
+                        <ul>{documentThumbsUploaded}</ul>
                     </aside>
                 </FormGroup>
 
@@ -407,15 +487,14 @@ function CreateCampaignDetails(props) {
                                     setCampaignFiles(acceptedFiles.concat(campaignFiles).map(file => Object.assign(file, {
                                         preview: URL.createObjectURL(file)
                                     })));
-                                    //setcampaignPicturesError("")
                                 }else{
-                                    //setcampaignPicturesError(EN ? 'Files too big' : 'Las imágenes son demasiado grandes')
+                                    alert(EN ? 'Files too big' : 'Las imágenes son demasiado grandes')
                                 }
                             }else{
-                                //setcampaignPicturesError(EN ? 'Only 4 pictures allowed.' : 'Solo se permiten 4 imágenes. ')
+                                alert(EN ? 'Only 4 pictures allowed.' : 'Solo se permiten 4 imágenes. ')
                             }
                         }else{
-                            //setcampaignPicturesError(EN ? 'Duplicated picture' : 'Solo se permiten 4 imágenes. ')
+                            alert(EN ? 'Duplicated picture' : 'Solo se permiten 4 imágenes. ')
         
                     }}} name="campaignImages" multiple={true}>
                             {({getRootProps, getInputProps}) => (
@@ -446,8 +525,10 @@ function CreateCampaignDetails(props) {
                     }
                    
                     <aside>
-                        <h6>{EN ? "Files:" : "Archivos:" }</h6>
+                        <h6>{EN ? "Files ready for Upload:" : "Archivos:" }</h6>
                         <ul>{campaignThumbs}</ul>
+                        <h6>{EN ? "Uploaded to Yakera:" : "Archivo:" }</h6>
+                        <ul>{campaignThumbsUploaded}</ul>
                     </aside> 
                 </FormGroup>
             </Form>
