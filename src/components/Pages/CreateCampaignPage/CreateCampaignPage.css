@@ -139,6 +139,9 @@
     top: 20px;
     width: 100px;
 }
+.aws-upload .retry{
+    top: 60px;
+}
 .aws-upload .aws-button:hover{
     background-color: #289455;
 }
@@ -158,6 +161,7 @@
 }
 .aws-upload .aws-button-fail{
     background-color: #9b1818;
+    text-align: center;
     border: none;
     outline: none;
     color: white;

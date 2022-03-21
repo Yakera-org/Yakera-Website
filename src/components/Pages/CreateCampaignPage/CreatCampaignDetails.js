@@ -4,6 +4,7 @@ import {Form, FormCheck, FormControl, FormGroup, FormLabel} from "react-bootstra
 import {Alert} from 'reactstrap'
 import Dropzone from "react-dropzone";
 import { uploadFile } from "react-s3";
+import HashLoader from "react-spinners/HashLoader";
 
 const S3_BUCKET = process.env.REACT_APP_S3_BUCKET
 const REGION = process.env.REACT_APP_REGION
@@ -23,7 +24,7 @@ const thumb = {
     display: 'inline-flex',
     borderRadius: 2,
     border: '1px solid #eaeaea',
-    marginBottom: 50,
+    marginBottom: 80,
     marginRight: 8,
     width: 100,
     height: 100,
@@ -75,8 +76,11 @@ function FilePreview(props){
                     props.mainFileUploadFails.includes(file.name)
                     ?
                     <div className="aws-upload">
-                        <button className="aws-button-fail">
+                        <div className="aws-button-fail">
                             Fail
+                        </div>
+                        <button className="aws-button retry" id={props.id} file={file} name={file.name} onClick={props.onUpload}>
+                            Retry
                         </button>
                     </div>
 
@@ -116,25 +120,58 @@ function CreateCampaignDetails(props) {
     const [campaignFilesUploaded, setCampaignFilesUploaded] = useState([]);
 
     const [mainFileUploadStatus, setmainFileUploadStatus] = useState([]);
-    const [mainFileUploadFails, setmainFileUploadFails] = useState([]);
+    const [mainFileUploadFails, setmainFileUploadFails] = useState([]);   
 
+    const [mainLoading, setMainLoading] = useState(false);
+    const [docLoading, setDocLoading] = useState(false);
+    const [camLoading, setCamLoading] = useState(false);
 
     // https://github.com/react-dropzone/react-dropzone/tree/master/examples/previews
     const mainThumbs = mainFile.map(file => {
         return(
+            <>
             <FilePreview key={file.name} file={file} onRemove={onRemove} onUpload={onUpload} id="main" mainFileUploadStatus={mainFileUploadStatus}mainFileUploadFails={mainFileUploadFails}/>
+            <div className="sweet-loading">
+                <div className='loader-wrapper'>
+                    <HashLoader
+                        color={"#ea8737"}
+                        loading={mainLoading}
+                    />
+                </div>
+            </div> 
+            </>
         )
     });
 
     const documentThumbs = documentFiles.map(file => {
         return(
+            <>
             <FilePreview key={file.name} file={file} onRemove={onRemove} onUpload={onUpload} id="document" mainFileUploadStatus={mainFileUploadStatus} mainFileUploadFails={mainFileUploadFails}/>
+             <div className="sweet-loading">
+                <div className='loader-wrapper'>
+                    <HashLoader
+                        color={"#ea8737"}
+                        loading={docLoading}
+                    />
+                </div>
+            </div> 
+            </>
         )
     });
 
     const campaignThumbs = campaignFiles.map((file, i) => {
         return(
+            <>
             <FilePreview key={file.name + i} file={file} onRemove={onRemove}  onUpload={onUpload} id="campaign" mainFileUploadStatus={mainFileUploadStatus} mainFileUploadFails={mainFileUploadFails}/>
+             <div className="sweet-loading">
+                <div className='loader-wrapper'>
+                    <HashLoader
+                        color={"#ea8737"}
+                        loading={camLoading}
+                    />
+                </div>
+            </div> 
+            </>
         )
     });
 
@@ -158,22 +195,28 @@ function CreateCampaignDetails(props) {
 
     function onRemove(e){
         e.preventDefault()
+        var filename = e.target.getAttribute('name')
+
+        var filteredArray = mainFileUploadStatus.filter(e => e !== filename)
+        setmainFileUploadStatus(filteredArray)
+        filteredArray = mainFileUploadFails.filter(e => e !== filename)
+        setmainFileUploadFails(filteredArray)
         var newFiles;
         if (e.target.getAttribute('id') === "main"){
             newFiles = mainFile.filter(function(item) {
-                return item.path !==  e.target.getAttribute('name')
+                return item.path !==  filename
             })
             setMainFile(newFiles)
         }
         else if (e.target.getAttribute('id') === "document"){
             newFiles = documentFiles.filter(function(item) {
-                return item.path !==  e.target.getAttribute('name')
+                return item.path !==  filename
             })
             setDocumentFiles(newFiles)
         }
         else if (e.target.getAttribute('id') === "campaign"){
             newFiles = campaignFiles.filter(function(item) {
-               return item.path !==  e.target.getAttribute('name')
+               return item.path !==  filename
            })
            setCampaignFiles(newFiles)
        }
@@ -186,7 +229,7 @@ function CreateCampaignDetails(props) {
         var theFile;
 
         if (e.target.getAttribute('id') === "main"){
-            //set loader
+            setMainLoading(true)
             mainFile.forEach(file => {
                 if(file.name === filename){
                     theFile = file
@@ -207,9 +250,11 @@ function CreateCampaignDetails(props) {
                 console.log(err)
                 var failStatus = mainFileUploadFails.concat(filename)
                 setmainFileUploadFails(failStatus)
-            })           
+            }) 
+            setMainLoading(false)
         }
         else if (e.target.getAttribute('id') === "document"){
+            setDocLoading(true)
             documentFiles.forEach(file => {
                 if(file.name === filename){
                     theFile = file
@@ -230,9 +275,11 @@ function CreateCampaignDetails(props) {
                 console.log(err)
                 var failStatus = mainFileUploadFails.concat(filename)
                 setmainFileUploadFails(failStatus)
-            })           
+            })         
+            setDocLoading(false)  
         }
         else if (e.target.getAttribute('id') === "campaign"){
+            setCamLoading(true)
             campaignFiles.forEach(file => {
                 if(file.name === filename){
                     theFile = file
@@ -253,7 +300,8 @@ function CreateCampaignDetails(props) {
                 console.log(err)
                 var failStatus = mainFileUploadFails.concat(filename)
                 setmainFileUploadFails(failStatus)
-            })           
+            })   
+            setCamLoading(false)        
         }
     }
 
