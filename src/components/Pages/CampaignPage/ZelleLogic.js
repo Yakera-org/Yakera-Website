@@ -94,7 +94,7 @@ function ZelleLogic(props) {
           try {
             const fileAWSLocation = "https://yakera-files.s3.us-east-2.amazonaws.com/profile-pictures/" + SSfile.name
               const payload = {
-                  "slug": "sdfds",
+                  "slug": props.slug,
                   "email": props.email,
                   "name": props.name,
                   "amount": props.amount,
