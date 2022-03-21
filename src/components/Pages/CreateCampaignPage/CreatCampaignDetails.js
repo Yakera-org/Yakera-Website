@@ -49,10 +49,6 @@ function CreateCampaignDetails(props) {
     const [documentFiles, setDocumentFiles] = useState([]);
     const [campaignFiles, setCampaignFiles] = useState([]);
 
-    const [mainError, setMainError] = useState("");
-    const [documentError, setDocumentError] = useState("");
-    const [campaignPicturesError, setcampaignPicturesError] = useState("");
-
     // https://github.com/react-dropzone/react-dropzone/tree/master/examples/previews
     const mainThumbs = mainFile.map(file => {
         return(
@@ -240,6 +236,7 @@ function CreateCampaignDetails(props) {
                             </div>
                         }     
                     </div>
+
                     <Dropzone accept='image/*' onDrop={(acceptedFiles) => {
                          if (acceptedFiles.concat(mainFile).length <= 1){
                             var totalSize = 0
@@ -247,15 +244,15 @@ function CreateCampaignDetails(props) {
                                 totalSize += file.size
                             });
                             if(totalSize < 1000000){
-                                setMainFile(acceptedFiles.concat(mainFile).map(file => Object.assigsn(file, {
+                                setMainFile(acceptedFiles.concat(mainFile).map(file => Object.assign(file, {
                                     preview: URL.createObjectURL(file)
                                 })));
-                                setMainError('')
+                                //setMainError('')
                             }else{
-                                setMainError(EN ? 'File too big.' : 'La imágen son demasiado grandes.')
+                                //setMainError(EN ? 'File too big.' : 'La imágen son demasiado grandes.')
                             }
                         }else{
-                            setMainError(EN ? 'Only 1 picture allowed.' : 'Solo se permite 1 imágen.')
+                            //setMainError(EN ? 'Only 1 picture allowed.' : 'Solo se permite 1 imágen.')
                         }
                         
                             
@@ -276,10 +273,10 @@ function CreateCampaignDetails(props) {
                         )}
                     </Dropzone>
 
-                    { mainError
+                    { props.data.errors.mainPic
                     ?
                         <Alert color="danger" id='alert'>
-                            {mainError}
+                            {props.data.errors.mainPic}
                         </Alert>
                     :
                         ''
@@ -327,12 +324,12 @@ function CreateCampaignDetails(props) {
                                 setDocumentFiles(acceptedFiles.concat(documentFiles).map(file => Object.assign(file, {
                                     preview: URL.createObjectURL(file)
                                 })));
-                                setDocumentError('')
+                                //setDocumentError('')
                             }else{
-                                setDocumentError(EN ? 'Files too big' : 'Las imágenes son demasiado grandes')
+                                //setDocumentError(EN ? 'Files too big' : 'Las imágenes son demasiado grandes')
                             }
                         }else{
-                            setDocumentError(EN ? 'Only 2 pictures allowed.' : 'Solo se permiten 2 imágenes. ')
+                            //setDocumentError(EN ? 'Only 2 pictures allowed.' : 'Solo se permiten 2 imágenes. ')
                         }
                         }} name="documents" multiple={true}>
                         {({getRootProps, getInputProps}) => (
@@ -351,10 +348,10 @@ function CreateCampaignDetails(props) {
                         )}
                     </Dropzone>
 
-                    { documentError
+                    { props.data.errors.camPics
                     ?
                         <Alert color="danger" id='alert'>
-                            {documentError}
+                            {props.data.errors.camPics}
                         </Alert>
                     :
                         ''
@@ -410,16 +407,15 @@ function CreateCampaignDetails(props) {
                                     setCampaignFiles(acceptedFiles.concat(campaignFiles).map(file => Object.assign(file, {
                                         preview: URL.createObjectURL(file)
                                     })));
-                                    setcampaignPicturesError("")
+                                    //setcampaignPicturesError("")
                                 }else{
-                                    setcampaignPicturesError(EN ? 'Files too big' : 'Las imágenes son demasiado grandes')
+                                    //setcampaignPicturesError(EN ? 'Files too big' : 'Las imágenes son demasiado grandes')
                                 }
                             }else{
-                                console.log(campaignFiles)
-                                setcampaignPicturesError(EN ? 'Only 4 pictures allowed.' : 'Solo se permiten 4 imágenes. ')
+                                //setcampaignPicturesError(EN ? 'Only 4 pictures allowed.' : 'Solo se permiten 4 imágenes. ')
                             }
                         }else{
-                            setcampaignPicturesError(EN ? 'Duplicated picture' : 'Solo se permiten 4 imágenes. ')
+                            //setcampaignPicturesError(EN ? 'Duplicated picture' : 'Solo se permiten 4 imágenes. ')
         
                     }}} name="campaignImages" multiple={true}>
                             {({getRootProps, getInputProps}) => (
@@ -440,10 +436,10 @@ function CreateCampaignDetails(props) {
                             )}
                     </Dropzone>
 
-                    { campaignPicturesError
+                    { props.data.errors.supportPics
                     ?
                         <Alert color="danger" id='alert'>
-                            {campaignPicturesError}
+                            {props.data.errors.supportPics}
                         </Alert>
                     :
                         ''

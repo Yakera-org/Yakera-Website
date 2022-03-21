@@ -47,20 +47,20 @@ function CreateCampaignVisuals(props) {
                 <CreatCampaignDetails EN={EN} data={props.data} handleChange={props.handleChange} />
 
                
-                { props.error
-                    ?
-                    <Alert color="danger" id='alert'>
-                        {props.error}
-                    </Alert>
-                    :
-                    ''
-                }
                 { props.success
                     ?
                     <Alert color="success" id='alert'>
                         {props.success}
                         <br />
                         {EN ? <>Head to your <a href="/dashboard" style={{color:'darkgreen', textDecoration:'underline'}}> Dashboard</a>.</> : <>Dirígete a tu <a href="/dashboard" style={{color:'darkgreen', textDecoration:'underline'}}> Mi Cuenta</a>.</>}                                            
+                    </Alert>
+                    :
+                    ''
+                }
+                { props.error
+                    ?
+                    <Alert color="danger" id='alert'>
+                        {props.error}
                     </Alert>
                     :
                     ''

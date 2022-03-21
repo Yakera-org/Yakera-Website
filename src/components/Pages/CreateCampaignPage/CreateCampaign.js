@@ -15,12 +15,18 @@ function CreateCampaign() {
         story: "",
         description: "",
         itemizedbudget: "",
+        mainPic: "",
+        camPics: [],
+        supportPics: [],
         errors: {
             campaignname: null,
             amount: null,
             story: null,
             description: null,
-            itemizedbudget: null
+            itemizedbudget: null,
+            mainPic: null,
+            camPics: null,
+            supportPics: null
         },
     };
     const [data, setData] = useState(initialState);
@@ -83,7 +89,8 @@ function CreateCampaign() {
 
     function validateData(){
         let emptyWarning = EN ? 'This field cannot be empty' : 'Este campo no puede estar vacío' ;
-        let nameError, amountError, storyError, descriptionError, budgetError;
+        let emptyPicWarning = EN ? 'No files uploaded' : 'No hay archivos subidos' ;
+        let nameError, amountError, storyError, descriptionError, budgetError, mainPicError, camPicsError, supportPicsError;
 
         if(!data.amount){
             amountError = emptyWarning;
@@ -110,6 +117,16 @@ function CreateCampaign() {
         }else{
         budgetError = validateFields.validateName(data.itemizedbudget)
         }
+
+        if(!data.mainPic){
+            mainPicError = emptyPicWarning
+        }
+        if(data.supportPics.length === 0){
+            supportPicsError = emptyPicWarning
+        }
+        if(data.camPics.length === 0){
+            camPicsError = emptyPicWarning
+        }
         setData({
             ...data,
             errors: {
@@ -117,11 +134,14 @@ function CreateCampaign() {
                 amount: amountError,
                 story: storyError,
                 itemizedbudget: budgetError,
-                description: descriptionError
+                description: descriptionError,
+                mainPic: mainPicError,
+                camPics: camPicsError,
+                supportPics: supportPicsError
             },
         })
-
-        if(!amountError && !storyError && !descriptionError && !nameError && !budgetError){
+        
+        if(!amountError && !storyError && !descriptionError && !nameError && !budgetError && !mainPicError && !camPicsError && !supportPicsError){
             return true
         }
         
