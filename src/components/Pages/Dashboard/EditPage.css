@@ -1,0 +1,11 @@
+.dashboard-container-edit{
+    margin: 0 auto;
+    margin-top: 7.8%;
+    width: 70%;
+    background-color: white;
+    padding-bottom: 50px;
+}
+.edit-area{
+    padding-left: 2rem;
+    padding-right: 2rem;
+}
