@@ -3,6 +3,21 @@ import classnames from 'classnames'
 import {Form, FormCheck, FormControl, FormGroup, FormLabel} from "react-bootstrap";
 import {Alert} from 'reactstrap'
 import Dropzone from "react-dropzone";
+import { uploadFile } from "react-s3";
+
+const S3_BUCKET = process.env.REACT_APP_S3_BUCKET
+const REGION = process.env.REACT_APP_REGION
+const ACCESS_KEY = process.env.REACT_APP_ACCESS_KEY
+const SECRET_ACCESS_KEY = process.env.REACT_APP_SECRET_ACCESS_KEY
+
+const config_aws = {
+    bucketName: S3_BUCKET,
+    region: REGION,
+    dirName: 'testing',
+    accessKeyId: ACCESS_KEY,
+    secretAccessKey: SECRET_ACCESS_KEY
+}
+
 
 const thumb = {
     display: 'inline-flex',
@@ -39,15 +54,20 @@ function FilePreview(props){
                         style={img}
                     />
                 </div>
-                <div id="remove-btn">
-                    <i name={file.name} id={props.id} onClick={props.onRemove} className="far fa-2x fa-times-circle"></i>
-                </div>
+                {props.mainFileUploadStatus.includes(file.name)
+                    ?
+                    ""
+                    :
+                    <div id="remove-btn">
+                        <i name={file.name} id={props.id} onClick={props.onRemove} className="far fa-2x fa-times-circle"></i>
+                    </div>
+                }
             </div>
 
             { props.mainFileUploadStatus.includes(file.name)
                 ?
                 <div className="aws-upload">
-                    <button className="aws-button-success">
+                    <button className="aws-button-success" onClick={() => console.log("cick")}>
                         Success
                     </button>
                 </div>
@@ -62,7 +82,7 @@ function FilePreview(props){
 
                     :
                     <div className="aws-upload">
-                        <button className="aws-button" id={props.id} name={file.name} onClick={props.onUpload}>
+                        <button className="aws-button" id={props.id} file={file} name={file.name} onClick={props.onUpload}>
                             Upload
                         </button>
                     </div>
@@ -159,42 +179,49 @@ function CreateCampaignDetails(props) {
        }
     }
 
-    function onUpload(e){
+    async function onUpload(e){
         e.preventDefault()
-        var uploadFile;
+        var fileToUpload;
+        var filename = e.target.getAttribute('name')
 
         if (e.target.getAttribute('id') === "main"){
 
             //set loader
-            // uplaod to aws
-            // if success then ...
-            // change upload button
+            var theFile;
+            mainFile.forEach(file => {
+                if(file.name === filename){
+                    theFile = file
+                }
+            });
+            await uploadFile(theFile, config_aws)
+            .then(() => {
+                var status = mainFileUploadStatus.concat(filename)
+                setmainFileUploadStatus(status)
 
-            var status = mainFileUploadStatus.concat(e.target.getAttribute('name'))
-            setmainFileUploadStatus(status)
-
-            //else show fail button
-            var failStatus = mainFileUploadFails.concat(e.target.getAttribute('name'))
-            setmainFileUploadFails(failStatus)
-
-            uploadFile = mainFile.filter(function(item) {
-                return item.path ===  e.target.getAttribute('name')
+                fileToUpload = mainFile.filter(function(item) {
+                    return item.path ===  filename
+                })
+                setMainFileUploaded(fileToUpload)  
+           
             })
-            setMainFileUploaded(uploadFile)
+            .catch(err => {
+                console.log(err)
+                var failStatus = mainFileUploadFails.concat(filename)
+                setmainFileUploadFails(failStatus)
+            })           
         }
         else if (e.target.getAttribute('id') === "document"){
-            uploadFile = documentFiles.filter(function(item) {
-                return item.path ===  e.target.getAttribute('name')
+            fileToUpload = documentFiles.filter(function(item) {
+                return item.path ===  filename
             })
-            setDocumentFilesUploaded(documentFilesUploaded.concat(uploadFile))
+            setDocumentFilesUploaded(documentFilesUploaded.concat(fileToUpload))
         }
         else if (e.target.getAttribute('id') === "campaign"){
-            uploadFile = campaignFiles.filter(function(item) {
-               return item.path ===  e.target.getAttribute('name')
+            fileToUpload = campaignFiles.filter(function(item) {
+               return item.path ===  filename
            })
-           setCampaignFilesUploaded(campaignFilesUploaded.concat(uploadFile))
+           setCampaignFilesUploaded(campaignFilesUploaded.concat(fileToUpload))
        }
-
     }
 
     const EN = props.EN
