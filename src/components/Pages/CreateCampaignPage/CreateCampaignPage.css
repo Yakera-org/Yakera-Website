@@ -142,6 +142,32 @@
 .aws-upload .aws-button:hover{
     background-color: #289455;
 }
+.aws-upload .aws-button-success{
+    background-color: #2dc935;
+    border: none;
+    outline: none;
+    color: white;
+    font-family: Intro-Regular-Alt;
+    border-radius: 5px;
+    padding: 5px;
+    position:absolute;
+    left: -110px;
+    top: 20px;
+    width: 100px; 
+}
+.aws-upload .aws-button-fail{
+    background-color: #9b1818;
+    border: none;
+    outline: none;
+    color: white;
+    font-family: Intro-Regular-Alt;
+    border-radius: 5px;
+    padding: 5px;
+    position:absolute;
+    left: -110px;
+    top: 20px;
+    width: 100px; 
+}
 #upload-zone {
     background-color: #f3f3f3;
     border-radius: 10px;

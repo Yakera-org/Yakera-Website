@@ -44,11 +44,29 @@ function FilePreview(props){
                 </div>
             </div>
 
-            <div className="aws-upload">
-                <button className="aws-button" id={props.id} name={file.name} onClick={props.onUpload}>
-                    Upload
-                </button>
-            </div>
+            { props.mainFileUploadStatus.includes(file.name)
+                ?
+                <div className="aws-upload">
+                    <button className="aws-button-success">
+                        Success
+                    </button>
+                </div>
+                :
+                    props.mainFileUploadFails.includes(file.name)
+                    ?
+                    <div className="aws-upload">
+                        <button className="aws-button-fail">
+                            Fail
+                        </button>
+                    </div>
+
+                    :
+                    <div className="aws-upload">
+                        <button className="aws-button" id={props.id} name={file.name} onClick={props.onUpload}>
+                            Upload
+                        </button>
+                    </div>
+            }   
         </>
     )
 }
@@ -77,10 +95,14 @@ function CreateCampaignDetails(props) {
     const [documentFilesUploaded, setDocumentFilesUploaded] = useState([]);
     const [campaignFilesUploaded, setCampaignFilesUploaded] = useState([]);
 
+    const [mainFileUploadStatus, setmainFileUploadStatus] = useState([]);
+    const [mainFileUploadFails, setmainFileUploadFails] = useState([]);
+
+
     // https://github.com/react-dropzone/react-dropzone/tree/master/examples/previews
     const mainThumbs = mainFile.map(file => {
         return(
-            <FilePreview key={file.name} file={file} onRemove={onRemove} onUpload={onUpload} id="main"/>
+            <FilePreview key={file.name} file={file} onRemove={onRemove} onUpload={onUpload} id="main" mainFileUploadStatus={mainFileUploadStatus}mainFileUploadFails={mainFileUploadFails}/>
         )
     });
 
@@ -142,6 +164,19 @@ function CreateCampaignDetails(props) {
         var uploadFile;
 
         if (e.target.getAttribute('id') === "main"){
+
+            //set loader
+            // uplaod to aws
+            // if success then ...
+            // change upload button
+
+            var status = mainFileUploadStatus.concat(e.target.getAttribute('name'))
+            setmainFileUploadStatus(status)
+
+            //else show fail button
+            var failStatus = mainFileUploadFails.concat(e.target.getAttribute('name'))
+            setmainFileUploadFails(failStatus)
+
             uploadFile = mainFile.filter(function(item) {
                 return item.path ===  e.target.getAttribute('name')
             })
