@@ -51,8 +51,7 @@ function CreateCampaign() {
                 //all good, nothin gneeds to be done
                 setHasLoaded(true)
             } else {
-                setHasLoaded(true)
-                //window.location = '/login';
+                window.location = '/login';
             }
 
         }
@@ -164,7 +163,7 @@ function CreateCampaign() {
         formattedStory = formattedStory.replace(/\n/g, " <br />");
 
         let isValidated = validateData();
-        if(true){
+        if(isValidated){
             setLoader(true);
             submitToBackend(formattedStory);
         }else{
