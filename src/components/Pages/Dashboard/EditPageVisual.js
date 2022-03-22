@@ -7,16 +7,15 @@ import classnames from 'classnames';
 const EditPageVisual = ({
     profileData,
     EN,
-    handleChangeAirTMEmail,
+    handleChange,
+    onSubmit,
     airTMEmailError,
-    onSubmitAirTM,
-    handleChangeZelleCheckbox,
-    handleChangeZelleEmail,
-    handleChangeZelleName,
     zelleEmailError,
     zelleNameError,
-    zelleCheckbox,
-    onSubmitZelle,
+    isSame,
+    error,
+    success,
+    loading,
 }) => {
     var user = profileData.user;
 
@@ -53,7 +52,7 @@ const EditPageVisual = ({
                                     maxLength="20"
                                     placeholder={EN ? "Enter your number" : "Tu número telefónico" }
                                     value={user.phone}
-                                    // onChange={props.handleChange}
+                                    onChange={handleChange}
                                     className='form-control'
                                 />
                             </p>
@@ -65,11 +64,11 @@ const EditPageVisual = ({
                                 <span id='dash-stats'>{EN ?'Address: ' : 'Dirección: ' }</span>
                                 <input
                                     type="text"
-                                    name="location"
+                                    name="address"
                                     maxLength="50"
                                     placeholder={EN ? "Enter your address" : "Tu dirección" }
                                     value={user.address}
-                                    // onChange={props.handleChange}
+                                    onChange={handleChange}
                                     className='form-control'
                                 />
                             </p>
@@ -90,37 +89,14 @@ const EditPageVisual = ({
                                 <p id='dash-stats'>Zelle email:</p>
                             </Grid>
                         </Grid>
-                        {/* {
-                            !profileData?.user?.zelleInfo?.email
-                            ?
-                            <Grid container spacing={0}>
-                                <Grid item xs={12} sm={8} id='zelle-email'>
-                                    <input
-                                        type='email'
-                                        name='zelleEmail'
-                                        placeholder={EN ? 'Enter your Zelle email' : 'Ingrese su correo electrónico Zelle'}
-                                        onChange={handleChangeZelleEmail}
-                                        className={classnames(
-                                            'form-control',
-                                            { 'is-valid': zelleEmailError === false },
-                                            { 'is-invalid': zelleEmailError }
-                                        )}
-                                    />
-                                    <p className='invalid-feedback'>{zelleEmailError}</p>
-                                </Grid>
-                            </Grid>
-                            : <div className='dash-left'>
-                                <p>{profileData.user.zelleInfo.email}</p>
-                            </div>
-                        } */}
                         <Grid container spacing={0}>
-                                <Grid item xs={12} sm={8} id='zelle-email'>
+                                <Grid item xs={12} sm={12} id='zelle-email'>
                                     <input
                                         type='email'
-                                        name='zelleEmail'
+                                        name='email'
                                         placeholder={EN ? 'Enter your Zelle email' : 'Ingrese su correo electrónico Zelle'}
                                         value={user.zelleInfo.email}
-                                        onChange={handleChangeZelleEmail}
+                                        onChange={handleChange}
                                         className={classnames(
                                             'form-control',
                                             { 'is-valid': zelleEmailError === false },
@@ -135,42 +111,14 @@ const EditPageVisual = ({
                                 <p id='dash-stats'>{EN ? 'Zelle name:' : 'Zelle nombre:'}</p>
                             </Grid>
                         </Grid>
-                        {/* {
-                            !profileData?.user?.zelleInfo?.name
-                            ?
-                            <Grid container spacing={0}>
-                                <Grid item xs={12} sm={8}>
-                                    <input
-                                        type='name'
-                                        name='zelleName'
-                                        placeholder={EN ? 'Enter your Zelle name' : 'Ingrese su correo name Zelle'}
-                                        onChange={handleChangeZelleName}
-                                        className={classnames(
-                                            'form-control',
-                                            { 'is-valid': zelleNameError === false },
-                                            { 'is-invalid': zelleNameError }
-                                        )}
-                                    />
-                                    <p className='invalid-feedback'>{zelleNameError}</p>
-                                </Grid>
-                                <Grid item xs={12} sm={4}>
-                                    <button onClick={onSubmitZelle}>
-                                        {EN ? "Submit" : "Enviar"}
-                                    </button>
-                                </Grid>
-                            </Grid>
-                            : <div className='dash-left'>
-                                <p>{profileData.user.zelleInfo.name}</p>
-                            </div>
-                        } */}
                         <Grid container spacing={0}>
-                            <Grid item xs={12} sm={8}>
+                            <Grid item xs={12} sm={12}>
                                 <input
                                     type='name'
-                                    name='zelleName'
+                                    name='name'
                                     placeholder={EN ? 'Enter your Zelle name' : 'Ingrese su correo name Zelle'}
                                     value={user.zelleInfo.name}
-                                    onChange={handleChangeZelleName}
+                                    onChange={handleChange}
                                     className={classnames(
                                         'form-control',
                                         { 'is-valid': zelleNameError === false },
@@ -178,11 +126,6 @@ const EditPageVisual = ({
                                     )}
                                 />
                                 <p className='invalid-feedback'>{zelleNameError}</p>
-                            </Grid>
-                            <Grid item xs={12} sm={4}>
-                                <button onClick={onSubmitZelle}>
-                                    {EN ? "Submit" : "Enviar"}
-                                </button>
                             </Grid>
                         </Grid>
                     {!user.zelleInfo
@@ -195,11 +138,11 @@ const EditPageVisual = ({
                                     </Grid>
                                 </Grid>
                                 <Grid container spacing={0}>
-                                    <Grid item xs={12} sm={6}>
+                                    <Grid item xs={12} sm={12}>
                                         <Checkbox
-                                            name='acceptingPayment'
-                                            onChange={handleChangeZelleCheckbox}
-                                            checked={zelleCheckbox}
+                                            name='isAccepting'
+                                            onChange={handleChange}
+                                            checked={user.zelleInfo.isAccepting}
                                             style={{
                                                 color: '#ea8737',
                                                 '&.MuiChecked': {
@@ -207,11 +150,6 @@ const EditPageVisual = ({
                                                 },
                                             }}
                                             />
-                                    </Grid>
-                                    <Grid item xs={12} sm={6}>
-                                        <button onClick={onSubmitZelle}>
-                                            {EN ? "Submit" : "Enviar"}
-                                        </button>
                                     </Grid>
                                 </Grid>
                             </>
@@ -228,49 +166,14 @@ const EditPageVisual = ({
                         <p id="description">{EN ? "To transfer the funds you collect through Yakera, you must create an Airtm account and provide the email address here:" : "Para transferir tus fondos recaudados en Yakera es necesario que nos suministres tu correo de AirTM"}</p>
                             <p id='dash-stats'>AirTM email:</p>
                         </div>
-                        {/* {
-                            !profileData.user.airTMNum
-                            ?
-                            <Grid container spacing={0}>
-                                <Grid item xs={12} sm={8} >
-                                        <input
-                                            type="email"
-                                            name="airTMemail"
-                                            placeholder={EN ? "Enter your AirTM email" : "Ingrese su correo electrónico AirTM"}
-                                            onChange={handleChangeAirTMEmail}
-                                            className={classnames(
-                                                'form-control',
-                                                { 'is-valid': airTMEmailError === false },
-                                                { 'is-invalid': airTMEmailError }
-                                            )}
-                                        />
-                                        <p className="invalid-feedback">{airTMEmailError}</p>
-                                </Grid> 
-                                <Grid item xs={12} sm={2} >
-                                    <button  onClick={onSubmitAirTM}>
-                                        {EN ? "Submit" : "Enviar"}
-                                    </button> 
-                                </Grid> 
-                                <Grid className="help-contact" item xs={12} sm={10}>
-                                    <p >{EN ? "Do you have any questions or need assistance?" : "¿Tienes alguna pregunta o necesitas apoyo?"} </p>
-                                    <button onClick={() => window.location = "https://chat.whatsapp.com/LcSFQzsohaC1hmlgdbij3D"}>
-                                        {EN ? "Contact us!" : "¡Contáctanos!"}
-                                    </button>
-                                </Grid>  
-                            </Grid> 
-                            :
-                            <div className='dash-left'>
-                                <p>{profileData.user.airTMNum}</p>
-                            </div>
-                        } */}
                         <Grid container spacing={0}>
-                            <Grid item xs={12} sm={8} >
+                            <Grid item xs={12} sm={12} >
                                     <input
                                         type="email"
-                                        name="airTMemail"
+                                        name="airTMNum"
                                         placeholder={EN ? "Enter your AirTM email" : "Ingrese su correo electrónico AirTM"}
                                         value={user.airTMNum}
-                                        onChange={handleChangeAirTMEmail}
+                                        onChange={handleChange}
                                         className={classnames(
                                             'form-control',
                                             { 'is-valid': airTMEmailError === false },
@@ -278,12 +181,7 @@ const EditPageVisual = ({
                                         )}
                                     />
                                     <p className="invalid-feedback">{airTMEmailError}</p>
-                            </Grid> 
-                            <Grid item xs={12} sm={2} >
-                                <button  onClick={onSubmitAirTM}>
-                                    {EN ? "Submit" : "Enviar"}
-                                </button> 
-                            </Grid> 
+                            </Grid>
                             <Grid className="help-contact" item xs={12} sm={10}>
                                 <p >{EN ? "Do you have any questions or need assistance?" : "¿Tienes alguna pregunta o necesitas apoyo?"} </p>
                                 <button onClick={() => window.location = "https://chat.whatsapp.com/LcSFQzsohaC1hmlgdbij3D"}>
@@ -291,6 +189,39 @@ const EditPageVisual = ({
                                 </button>
                             </Grid>  
                         </Grid> 
+                    </Grid>
+                </Grid>
+                
+                <div className="sweet-loading">
+                    <div className='loader-wrapper'>
+                        <HashLoader
+                            size={50}
+                            color={"#ea8737"}
+                            loading={loading}
+                        />
+                    </div>
+                </div>
+                {success
+                    ?
+                    <Alert color="success" id='alert' style={{width:"50%", marginLeft:"25%"}}>
+                        {success}
+                        <br />
+                        {EN ? 
+                        <>Head to your <a href="/dashboard" style={{color:'darkgreen', textDecoration:'underline'}}> Dashboard</a>.</> 
+                        :
+                         <>Dirígete a tu <a href="/dashboard" style={{color:'darkgreen', textDecoration:'underline'}}> Dashboard</a>.</>}                                            
+                    </Alert>
+                    :
+                    ''
+                }
+
+                <hr />
+                
+                <Grid container spacing={0} className='submit-container' style={{ textAlign: 'center' }}>
+                    <Grid item xs={12} sm={12}>
+                        <button onClick={onSubmit} disabled={isSame}>
+                            {EN ? 'Save changes' : 'Guardar cambios'}
+                        </button>
                     </Grid>
                 </Grid>
             </div>

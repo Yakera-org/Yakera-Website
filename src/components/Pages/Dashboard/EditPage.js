@@ -64,7 +64,9 @@ const EditPage = ({
         try {
             const res = await api.get('/profile');
             let data = res.data.data
+            console.log(data)
             setProfileData(data);
+            setAirTMEmail(data?.user?.airTMNum);
             setZelleCheckbox(data?.user?.zelleInfo?.isAccepting);
             setZelleEmail(data?.user?.zelleInfo?.email);
             setZelleName(data?.user?.zelleInfo?.name);
@@ -77,10 +79,6 @@ const EditPage = ({
         setLoaded(true);
     };
 
-    const handleChangeAirTMEmail = (event) => {
-        validateAirTMEmail(event.target.value)
-        setAirTMEmail(event.target.value)
-    };
     const validateAirTMEmail = (email) => {
         var tempError;
         tempError = validateFields.validateEmail(email);
@@ -88,24 +86,6 @@ const EditPage = ({
         if(!tempError){
             return true
         }
-    };
-    const onSubmitAirTM = () => {
-        if(validateAirTMEmail(airTMemail)){
-            backendPatch()
-        }
-    };
-
-    const handleChangeZelleCheckbox = (e) => {
-        setZelleCheckbox(e.target.checked);
-    };
-    const handleChangeZelleEmail = (e) => {
-        console.log(e.target.value)
-        validateZelleEmail(e.target.value);
-        setZelleEmail(e.target.value);
-    };
-    const handleChangeZelleName = (e) => {
-        validateZelleName(e.target.value);
-        setZelleName(e.target.value);
     };
     const validateZelleEmail = (email) => {
         var tempEmailError;
@@ -123,32 +103,87 @@ const EditPage = ({
             return true;
         }
     }
-    const onSubmitZelle = () => {
-        let checkEmail = validateZelleEmail(zelleEmail);
-        let checkName = validateZelleName(zelleName);
-        if( checkEmail && checkName){
+
+    const handleChange = (e) => {
+        setIsSame(false);
+        const eventTargetName = e.target.name;
+        const eventTargetVal = e.target.value;
+        if(eventTargetName === 'phone' || eventTargetName === 'address') {
+            setProfileData({
+                ...profileData,
+                user: {
+                    ...profileData.user,
+                    [eventTargetName]: eventTargetVal,
+                }
+            });
+        } else if(eventTargetName === 'airTMNum') {
+            validateAirTMEmail(eventTargetVal);
+            setProfileData({
+                ...profileData,
+                user: {
+                    ...profileData.user,
+                    [eventTargetName]: eventTargetVal,
+                }
+            });
+        } else {
+            if(eventTargetName === 'email') {
+                validateZelleEmail(eventTargetVal);
+            } else if(eventTargetName === 'name') {
+                validateZelleName(eventTargetVal);
+            }
+            setProfileData({
+                ...profileData,
+                user: {
+                    ...profileData.user,
+                    zelleInfo: {
+                        ...profileData.user.zelleInfo,
+                        [eventTargetName]: (eventTargetName === 'isAccepting' ? e.target.checked : eventTargetVal),
+                    }
+                }
+            });
+        }
+    };
+
+    const onSubmit = () => {
+        setLoading(true);
+        const checkZelleEmail = validateZelleEmail(profileData.user.zelleInfo.email);
+        const checkZelleName = validateZelleName(profileData.user.zelleInfo.name);
+        const checkAirTMEmail = validateAirTMEmail(profileData.user.airTMNum);
+
+        if(zelleEmail !== profileData.user.zelleInfo.email || zelleName !== profileData.user.zelleInfo.name) {
+            if(checkZelleEmail && checkZelleName) {
+                backendPatch();
+            }
+        } else if(airTMemail !== profileData.user.airTMNum) {
+            if(checkAirTMEmail) {
+                backendPatch();
+            }
+        } else {
             backendPatch();
-        }else{
-            console.log("Error")
         }
     };
 
     const backendPatch = async () => {
         try {
-            const requestBody = {      
-                airTMNum: airTMemail,
+            const requestBody = {
+                address: profileData.user.address,
+                phone: profileData.user.phone,
+                airTMNum: profileData.user.airTMNum,
                 zelleInfo: {
-                    email: zelleEmail,
-                    name: zelleName,
-                    isAccepting: zelleCheckbox,
+                    email: profileData.user.zelleInfo.email,
+                    name: profileData.user.zelleInfo.name,
+                    isAccepting: profileData.user.zelleInfo.isAccepting,
                 },
             };
             console.log(requestBody)
             await api.patch('/profile/update', requestBody);
-            window.location.reload();   
+            setSuccess('Profile updated');
         } catch (err) {
             console.log('Error. ' + err)
+            setError("Something went wrong, please try again.");
         }
+        setLoading(false);
+        setIsSame(true);
     };
 
     useEffect(() => {
@@ -168,16 +203,15 @@ const EditPage = ({
             <EditPageVisual 
                 profileData={profileData}
                 EN={EN}
-                handleChangeAirTMEmail={handleChangeAirTMEmail}
+                handleChange={handleChange}
+                onSubmit={onSubmit}
                 airTMEmailError={airTMEmailError}
-                onSubmitAirTM={onSubmitAirTM}
-                handleChangeZelleCheckbox={handleChangeZelleCheckbox}
-                handleChangeZelleEmail={handleChangeZelleEmail}
-                handleChangeZelleName={handleChangeZelleName}
                 zelleEmailError={zelleEmailError}
                 zelleNameError={zelleNameError}
-                zelleCheckbox={zelleCheckbox}
-                onSubmitZelle={onSubmitZelle}
+                isSame={isSame}
+                error={error}
+                success={success}
+                loading={loading}
             />
             <br />
             <br />

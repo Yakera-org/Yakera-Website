@@ -9,3 +9,36 @@
     padding-left: 2rem;
     padding-right: 2rem;
 }
+.submit-container button{
+    background-color: #d4edda;
+    color: #00360c;
+    border: none;
+    outline: none;
+    border-radius: 10px;
+    padding: 20px;
+    margin-left: 5px;
+    font-size: 18px;
+    width: 200px;
+    font-family: Intro-Light;
+}
+.submit-container button:hover{
+    background-color: #aadab5;
+    color: #00360c;
+}
+.submit-container button:disabled{
+    cursor: not-allowed;
+    background-color: #b3b3b3;
+    color: #252525;
+}
+.edit-area .loader-wrapper{
+    position: absolute;
+    text-align: center;
+    left: 49%;
+    margin-top: -60px;
+}
+.edit-area .sweet-loading{
+    margin: 20px;
+}
+.edit-area #alert{
+    text-align: center;
+}
