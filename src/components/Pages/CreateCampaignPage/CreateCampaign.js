@@ -15,7 +15,7 @@ function CreateCampaign() {
         story: "",
         description: "",
         itemizedbudget: "",
-        mainPic: "",
+        mainPicture: "",
         camPics: [],
         supportPics: [],
         errors: {
@@ -119,7 +119,7 @@ function CreateCampaign() {
         budgetError = validateFields.validateName(data.itemizedbudget)
         }
 
-        if(!data.mainPic){
+        if(!data.mainPicture){
             mainPicError = emptyPicWarning
         }
         if(data.supportPics.length === 0){
@@ -164,7 +164,7 @@ function CreateCampaign() {
         formattedStory = formattedStory.replace(/\n/g, " <br />");
 
         let isValidated = validateData();
-        if(isValidated){
+        if(true){
             setLoader(true);
             submitToBackend(formattedStory);
         }else{
@@ -186,6 +186,15 @@ function CreateCampaign() {
             'alimentación': 'nutrition'
         }
 
+        var pics = []
+        data.camPics.forEach(picName => {
+            pics.push({"url": picName})
+        });
+        var support = []
+        data.supportPics.forEach(picName => {
+            support.push({"url": picName})
+        });
+
         const payload = {
             title: data.campaignname,
             targetAmount: data.amount,
@@ -193,8 +202,15 @@ function CreateCampaign() {
             category: categories[ data.campaigncategory ],
             description: data.description,
             itemizedBudget: data.itemizedbudget,
-            language: language
+            language: language,
+            mainPicture: {
+                "url": data.mainPicture
+            },
+            pictures: pics,
+            supportDocs: support
         }   
+
+        console.log(payload)
         try {
             await api.post('/campaigns', payload);
             setSuccess(EN ? 'Your campaign has been created successfully!' : '¡Tu campaña se ha creado con éxito!')
@@ -215,6 +231,7 @@ function CreateCampaign() {
                     success={successMessage}
                     error={errorMessage}
                     data={data}
+                    setData={setData}
                     handleChange={handleChange}
                     validate={validateData}
                     submit={submit}

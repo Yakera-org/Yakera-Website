@@ -44,7 +44,7 @@ function CreateCampaignVisuals(props) {
                 }
                 
                 
-                <CreatCampaignDetails EN={EN} data={props.data} handleChange={props.handleChange} />
+                <CreatCampaignDetails EN={EN} data={props.data} handleChange={props.handleChange} setData={props.setData}/>
 
                
                 { props.success

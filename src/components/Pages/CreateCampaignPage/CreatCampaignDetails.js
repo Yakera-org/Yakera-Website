@@ -212,13 +212,21 @@ function CreateCampaignDetails(props) {
                 fileToUpload = mainFile.filter(function(item) {
                     return item.path ===  filename
                 })
-                setMainFileUploaded(fileToUpload)  
+                setMainFileUploaded(fileToUpload)
            
             })
             .catch(err => {
                 console.log(err)
                 var failStatus = mainFileUploadFails.concat(filename)
                 setmainFileUploadFails(failStatus)
+            }) 
+            props.setData({
+                ...props.data,
+                mainPicture: theFile.name,
+                errors:{
+                    ...props.data.errors,
+                    mainPic: ""
+                }
             }) 
             setMainLoading(false)
         }
@@ -244,7 +252,19 @@ function CreateCampaignDetails(props) {
                 console.log(err)
                 var failStatus = mainFileUploadFails.concat(filename)
                 setmainFileUploadFails(failStatus)
-            })         
+            })       
+            var _pics = []
+            documentFilesUploaded.concat(theFile).forEach(pic => {
+                _pics.push(pic.name)
+            });
+            props.setData({
+                ...props.data,
+                camPics: _pics,
+                errors:{
+                    ...props.data.errors,
+                    camPics: ""
+                }
+            })   
             setDocLoading(false)  
         }
         else if (e.target.getAttribute('id') === "campaign"){
@@ -269,7 +289,19 @@ function CreateCampaignDetails(props) {
                 console.log(err)
                 var failStatus = mainFileUploadFails.concat(filename)
                 setmainFileUploadFails(failStatus)
-            })   
+            })  
+            var _supppics = []
+            campaignFilesUploaded.concat(theFile).forEach(pic => {
+                _supppics.push(pic.name)
+            });
+            props.setData({
+                ...props.data,
+                supportPics: _supppics,
+                errors:{
+                    ...props.data.errors,
+                    supportPics: ""
+                }
+            })    
             setCamLoading(false)        
         }
     }
