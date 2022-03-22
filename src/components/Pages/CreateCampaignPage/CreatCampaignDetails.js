@@ -129,49 +129,18 @@ function CreateCampaignDetails(props) {
     // https://github.com/react-dropzone/react-dropzone/tree/master/examples/previews
     const mainThumbs = mainFile.map(file => {
         return(
-            <>
-            <FilePreview key={file.name} file={file} onRemove={onRemove} onUpload={onUpload} id="main" mainFileUploadStatus={mainFileUploadStatus}mainFileUploadFails={mainFileUploadFails}/>
-            <div className="sweet-loading">
-                <div className='loader-wrapper'>
-                    <HashLoader
-                        color={"#ea8737"}
-                        loading={mainLoading}
-                    />
-                </div>
-            </div> 
-            </>
-        )
+            <FilePreview key={file.name} file={file} onRemove={onRemove} onUpload={onUpload} id="main" mainFileUploadStatus={mainFileUploadStatus}mainFileUploadFails={mainFileUploadFails}/>        )
     });
 
     const documentThumbs = documentFiles.map(file => {
         return(
-            <>
             <FilePreview key={file.name} file={file} onRemove={onRemove} onUpload={onUpload} id="document" mainFileUploadStatus={mainFileUploadStatus} mainFileUploadFails={mainFileUploadFails}/>
-             <div className="sweet-loading">
-                <div className='loader-wrapper'>
-                    <HashLoader
-                        color={"#ea8737"}
-                        loading={docLoading}
-                    />
-                </div>
-            </div> 
-            </>
         )
     });
 
     const campaignThumbs = campaignFiles.map((file, i) => {
         return(
-            <>
             <FilePreview key={file.name + i} file={file} onRemove={onRemove}  onUpload={onUpload} id="campaign" mainFileUploadStatus={mainFileUploadStatus} mainFileUploadFails={mainFileUploadFails}/>
-             <div className="sweet-loading">
-                <div className='loader-wrapper'>
-                    <HashLoader
-                        color={"#ea8737"}
-                        loading={camLoading}
-                    />
-                </div>
-            </div> 
-            </>
         )
     });
 
@@ -520,6 +489,14 @@ function CreateCampaignDetails(props) {
                     <aside>
                         <h6>{EN ? "File ready for Upload:" : "Archivo:" }</h6>
                         <ul>{mainThumbs}</ul>
+                        <div className="sweet-loading">
+                            <div className='loader-wrapper'>
+                                <HashLoader
+                                    color={"#ea8737"}
+                                    loading={mainLoading}
+                                />
+                            </div>
+                        </div> 
                         <h6>{EN ? "Uploaded to Yakera:" : "Archivo:" }</h6>
                         <ul>{mainThumbsUploaded}</ul>
                         {
@@ -625,6 +602,14 @@ function CreateCampaignDetails(props) {
                     <aside>
                         <h6>{EN ? "Files ready for Upload:" : "Archivos:" }</h6>
                         <ul>{documentThumbs}</ul>
+                        <div className="sweet-loading">
+                            <div className='loader-wrapper'>
+                                <HashLoader
+                                    color={"#ea8737"}
+                                    loading={docLoading}
+                                />
+                            </div>
+                        </div> 
                         <h6>{EN ? "Uploaded to Yakera:" : "Archivo:" }</h6>
                         <ul>{documentThumbsUploaded}</ul>
                     </aside>
@@ -724,6 +709,14 @@ function CreateCampaignDetails(props) {
                     <aside>
                         <h6>{EN ? "Files ready for Upload:" : "Archivos:" }</h6>
                         <ul>{campaignThumbs}</ul>
+                        <div className="sweet-loading">
+                            <div className='loader-wrapper'>
+                                <HashLoader
+                                    color={"#ea8737"}
+                                    loading={camLoading}
+                                />
+                            </div>
+                        </div> 
                         <h6>{EN ? "Uploaded to Yakera:" : "Archivo:" }</h6>
                         <ul>{campaignThumbsUploaded}</ul>
                     </aside> 

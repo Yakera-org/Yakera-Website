@@ -51,7 +51,8 @@ function CreateCampaign() {
                 //all good, nothin gneeds to be done
                 setHasLoaded(true)
             } else {
-                window.location = '/login';
+                setHasLoaded(true)
+                //window.location = '/login';
             }
 
         }
