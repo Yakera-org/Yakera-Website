@@ -253,7 +253,7 @@ function CreateCampaignDetails(props) {
                 var failStatus = mainFileUploadFails.concat(filename)
                 setmainFileUploadFails(failStatus)
             })       
-            var _pics = []
+            var _pics = props.data.camPics
             documentFilesUploaded.concat(theFile).forEach(pic => {
                 _pics.push(pic.name)
             });
@@ -290,7 +290,7 @@ function CreateCampaignDetails(props) {
                 var failStatus = mainFileUploadFails.concat(filename)
                 setmainFileUploadFails(failStatus)
             })  
-            var _supppics = []
+            var _supppics = props.data.supportPics
             campaignFilesUploaded.concat(theFile).forEach(pic => {
                 _supppics.push(pic.name)
             });
