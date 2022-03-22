@@ -521,6 +521,13 @@ function CreateCampaignDetails(props) {
                     <aside>
                         <h6>{EN ? "File ready for Upload:" : "Archivo:" }</h6>
                         <ul>{mainThumbs}</ul>
+                        {
+                            mainFile.length === 0
+                            ?
+                            <h6 style={{fontSize: "15px", color: "grey", fontFamily:'Intro-Light'}}>{EN ? "Please select your files" : "same but spanish" }</h6>
+                            :
+                            ""
+                        }
                         <div className="sweet-loading">
                             <div className='loader-wrapper'>
                                 <HashLoader
@@ -534,7 +541,7 @@ function CreateCampaignDetails(props) {
                         {
                             mainFileUploaded.length === 0
                             ?
-                            <h6 style={{fontSize: "15px", color: "grey"}}>{EN ? "No files uploaded" : "Archivo:" }</h6>
+                            <h6 style={{fontSize: "15px", color: "grey", fontFamily:'Intro-Light'}}>{EN ? "No files uploaded" : "Archivo:" }</h6>
                             :
                             ""
                         }
@@ -634,6 +641,13 @@ function CreateCampaignDetails(props) {
                     <aside>
                         <h6>{EN ? "Files ready for Upload:" : "Archivos:" }</h6>
                         <ul>{documentThumbs}</ul>
+                        {
+                            documentFiles.length === 0
+                            ?
+                            <h6 style={{fontSize: "15px", color: "grey", fontFamily:'Intro-Light'}}>{EN ? "Please select your files" : "same but spanish" }</h6>
+                            :
+                            ""
+                        }
                         <div className="sweet-loading">
                             <div className='loader-wrapper'>
                                 <HashLoader
@@ -644,6 +658,13 @@ function CreateCampaignDetails(props) {
                         </div> 
                         <h6>{EN ? "Uploaded to Yakera:" : "Archivo:" }</h6>
                         <ul>{documentThumbsUploaded}</ul>
+                        {
+                            documentFilesUploaded.length === 0
+                            ?
+                            <h6 style={{fontSize: "15px", color: "grey", fontFamily:'Intro-Light'}}>{EN ? "No files uploaded" : "Archivo:" }</h6>
+                            :
+                            ""
+                        }
                     </aside>
                 </FormGroup>
 
@@ -741,6 +762,13 @@ function CreateCampaignDetails(props) {
                     <aside>
                         <h6>{EN ? "Files ready for Upload:" : "Archivos:" }</h6>
                         <ul>{campaignThumbs}</ul>
+                        {
+                            campaignFiles.length === 0
+                            ?
+                            <h6 style={{fontSize: "15px", color: "grey", fontFamily:'Intro-Light'}}>{EN ? "Please select your files" : "same but spanish" }</h6>
+                            :
+                            ""
+                        }
                         <div className="sweet-loading">
                             <div className='loader-wrapper'>
                                 <HashLoader
@@ -751,6 +779,13 @@ function CreateCampaignDetails(props) {
                         </div> 
                         <h6>{EN ? "Uploaded to Yakera:" : "Archivo:" }</h6>
                         <ul>{campaignThumbsUploaded}</ul>
+                        {
+                            campaignFilesUploaded.length === 0
+                            ?
+                            <h6 style={{fontSize: "15px", color: "grey", fontFamily:'Intro-Light'}}>{EN ? "No files uploaded" : "Archivo:" }</h6>
+                            :
+                            ""
+                        }
                     </aside> 
                 </FormGroup>
             </Form>
