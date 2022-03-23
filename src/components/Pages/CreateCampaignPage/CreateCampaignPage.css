@@ -127,7 +127,7 @@
     position: relative;
 }
 .aws-upload .aws-button{
-    background-color: #71b98f;
+    background-color: #289455;
     border: none;
     outline: none;
     color: white;
@@ -143,10 +143,10 @@
     top: 60px;
 }
 .aws-upload .aws-button:hover{
-    background-color: #289455;
+    background-color: #71b98f;
 }
 .aws-upload .aws-button-success{
-    background-color: #2dc935;
+    background-color: #155831;
     text-align: center;
     border: none;
     outline: none;
@@ -160,7 +160,7 @@
     width: 100px; 
 }
 .aws-upload .aws-button-fail{
-    background-color: #9b1818;
+    background-color: #ff5c46;
     text-align: center;
     border: none;
     outline: none;

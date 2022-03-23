@@ -213,20 +213,21 @@ function CreateCampaignDetails(props) {
                     return item.path ===  filename
                 })
                 setMainFileUploaded(fileToUpload)
+
+                props.setData({
+                    ...props.data,
+                    mainPicture: theFile.name,
+                    errors:{
+                        ...props.data.errors,
+                        mainPic: ""
+                    }
+                }) 
            
             })
             .catch(err => {
                 console.log(err)
                 var failStatus = mainFileUploadFails.concat(filename)
                 setmainFileUploadFails(failStatus)
-            }) 
-            props.setData({
-                ...props.data,
-                mainPicture: theFile.name,
-                errors:{
-                    ...props.data.errors,
-                    mainPic: ""
-                }
             }) 
             setMainLoading(false)
         }
@@ -246,25 +247,25 @@ function CreateCampaignDetails(props) {
                     return item.path ===  filename
                 })
                 setDocumentFilesUploaded(documentFilesUploaded.concat(fileToUpload))  
-           
+                
+                var _pics = props.data.camPics
+                documentFilesUploaded.concat(theFile).forEach(pic => {
+                    _pics.push(pic.name)
+                });
+                props.setData({
+                    ...props.data,
+                    camPics: _pics,
+                    errors:{
+                        ...props.data.errors,
+                        camPics: ""
+                    }
+                })   
             })
             .catch(err => {
                 console.log(err)
                 var failStatus = mainFileUploadFails.concat(filename)
                 setmainFileUploadFails(failStatus)
             })       
-            var _pics = props.data.camPics
-            documentFilesUploaded.concat(theFile).forEach(pic => {
-                _pics.push(pic.name)
-            });
-            props.setData({
-                ...props.data,
-                camPics: _pics,
-                errors:{
-                    ...props.data.errors,
-                    camPics: ""
-                }
-            })   
             setDocLoading(false)  
         }
         else if (e.target.getAttribute('id') === "campaign"){
@@ -283,25 +284,25 @@ function CreateCampaignDetails(props) {
                     return item.path ===  filename
                 })
                 setCampaignFilesUploaded(campaignFilesUploaded.concat(fileToUpload))  
-           
+                
+                var _supppics = props.data.supportPics
+                campaignFilesUploaded.concat(theFile).forEach(pic => {
+                    _supppics.push(pic.name)
+                });
+                props.setData({
+                    ...props.data,
+                    supportPics: _supppics,
+                    errors:{
+                        ...props.data.errors,
+                        supportPics: ""
+                    }
+                })    
             })
             .catch(err => {
                 console.log(err)
                 var failStatus = mainFileUploadFails.concat(filename)
                 setmainFileUploadFails(failStatus)
             })  
-            var _supppics = props.data.supportPics
-            campaignFilesUploaded.concat(theFile).forEach(pic => {
-                _supppics.push(pic.name)
-            });
-            props.setData({
-                ...props.data,
-                supportPics: _supppics,
-                errors:{
-                    ...props.data.errors,
-                    supportPics: ""
-                }
-            })    
             setCamLoading(false)        
         }
     }
@@ -536,7 +537,7 @@ function CreateCampaignDetails(props) {
                                 />
                             </div>
                         </div> 
-                        <h6>{EN ? "Uploaded to Yakera:" : "Archivo:" }</h6>
+                        <h6>{EN ? "Successfully uploaded to Yakera:" : "Archivo:" }</h6>
                         <ul>{mainThumbsUploaded}</ul>
                         {
                             mainFileUploaded.length === 0
@@ -656,7 +657,7 @@ function CreateCampaignDetails(props) {
                                 />
                             </div>
                         </div> 
-                        <h6>{EN ? "Uploaded to Yakera:" : "Archivo:" }</h6>
+                        <h6>{EN ? "Successfully uploaded to Yakera:" : "Archivo:" }</h6>
                         <ul>{documentThumbsUploaded}</ul>
                         {
                             documentFilesUploaded.length === 0
@@ -777,7 +778,7 @@ function CreateCampaignDetails(props) {
                                 />
                             </div>
                         </div> 
-                        <h6>{EN ? "Uploaded to Yakera:" : "Archivo:" }</h6>
+                        <h6>{EN ? "Successfully uploaded to Yakera:" : "Archivo:" }</h6>
                         <ul>{campaignThumbsUploaded}</ul>
                         {
                             campaignFilesUploaded.length === 0
