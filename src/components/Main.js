@@ -46,7 +46,7 @@ function Main() {
             }
         } catch (e) {
             console.log(e)
-            LanguageService.setLanguage('en')
+            LanguageService.setLanguageFromIP('en')
         }
         setLoaded(true)
     }

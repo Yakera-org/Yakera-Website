@@ -3,17 +3,33 @@ import classnames from 'classnames'
 import {Form, FormCheck, FormControl, FormGroup, FormLabel} from "react-bootstrap";
 import {Alert} from 'reactstrap'
 import Dropzone from "react-dropzone";
+import { uploadFile } from "react-s3";
+import HashLoader from "react-spinners/HashLoader";
+
+const S3_BUCKET = process.env.REACT_APP_S3_BUCKET
+const REGION = process.env.REACT_APP_REGION
+const ACCESS_KEY = process.env.REACT_APP_ACCESS_KEY
+const SECRET_ACCESS_KEY = process.env.REACT_APP_SECRET_ACCESS_KEY
+
+const config_aws = {
+    bucketName: S3_BUCKET,
+    region: REGION,
+    dirName: 'testing',
+    accessKeyId: ACCESS_KEY,
+    secretAccessKey: SECRET_ACCESS_KEY
+}
+
 
 const thumb = {
     display: 'inline-flex',
     borderRadius: 2,
     border: '1px solid #eaeaea',
-    marginBottom: 8,
+    marginBottom: 80,
     marginRight: 8,
     width: 100,
     height: 100,
     padding: 4,
-    boxSizing: 'border-box'
+    boxSizing: 'border-box',
 };
 
 const thumbInner = {
@@ -30,6 +46,58 @@ const img = {
 function FilePreview(props){
     const file = props.file
     return(
+        <>
+            <div style={thumb} key={file.name} id="files">
+                <div style={thumbInner}>
+                    <img
+                        alt="dropzone-img"
+                        src={file.preview}
+                        style={img}
+                    />
+                </div>
+                {props.mainFileUploadStatus.includes(file.name)
+                    ?
+                    ""
+                    :
+                    <div id="remove-btn">
+                        <i name={file.name} id={props.id} onClick={props.onRemove} className="far fa-2x fa-times-circle"></i>
+                    </div>
+                }
+            </div>
+
+            { props.mainFileUploadStatus.includes(file.name)
+                ?
+                <div className="aws-upload">
+                    <div className="aws-button-success">
+                        Success
+                    </div>
+                </div>
+                :
+                    props.mainFileUploadFails.includes(file.name)
+                    ?
+                    <div className="aws-upload">
+                        <div className="aws-button-fail">
+                            Fail
+                        </div>
+                        <button className="aws-button retry" id={props.id} file={file} name={file.name} onClick={props.onUpload}>
+                            Retry
+                        </button>
+                    </div>
+
+                    :
+                    <div className="aws-upload">
+                        <button className="aws-button" id={props.id} file={file} name={file.name} onClick={props.onUpload}>
+                            Upload
+                        </button>
+                    </div>
+            }   
+        </>
+    )
+}
+
+function FilePreviewUploaded(props){
+    const file = props.file
+    return(
         <div style={thumb} key={file.name} id="files">
             <div style={thumbInner}>
                 <img
@@ -38,64 +106,205 @@ function FilePreview(props){
                     style={img}
                 />
             </div>
-            <div id="remove-btn">
-                <i name={file.name} id={props.id} onClick={props.onRemove} className="far fa-2x fa-times-circle"></i>
-            </div>
         </div>
     )
 }
+
 function CreateCampaignDetails(props) {
     const [mainFile, setMainFile] = useState([]);
     const [documentFiles, setDocumentFiles] = useState([]);
     const [campaignFiles, setCampaignFiles] = useState([]);
 
-    const [mainError, setMainError] = useState("");
-    const [documentError, setDocumentError] = useState("");
-    const [campaignPicturesError, setcampaignPicturesError] = useState("");
+    const [mainFileUploaded, setMainFileUploaded] = useState([]);
+    const [documentFilesUploaded, setDocumentFilesUploaded] = useState([]);
+    const [campaignFilesUploaded, setCampaignFilesUploaded] = useState([]);
+
+    const [mainFileUploadStatus, setmainFileUploadStatus] = useState([]);
+    const [mainFileUploadFails, setmainFileUploadFails] = useState([]);   
+
+    const [mainLoading, setMainLoading] = useState(false);
+    const [docLoading, setDocLoading] = useState(false);
+    const [camLoading, setCamLoading] = useState(false);
 
     // https://github.com/react-dropzone/react-dropzone/tree/master/examples/previews
     const mainThumbs = mainFile.map(file => {
         return(
-            <FilePreview key={file.name} file={file} onRemove={onRemove} id="main"/>
-        )
+            <FilePreview key={file.name} file={file} onRemove={onRemove} onUpload={onUpload} id="main" mainFileUploadStatus={mainFileUploadStatus}mainFileUploadFails={mainFileUploadFails}/>        )
     });
 
     const documentThumbs = documentFiles.map(file => {
         return(
-            <FilePreview key={file.name} file={file} onRemove={onRemove} id="document"/>
+            <FilePreview key={file.name} file={file} onRemove={onRemove} onUpload={onUpload} id="document" mainFileUploadStatus={mainFileUploadStatus} mainFileUploadFails={mainFileUploadFails}/>
         )
     });
 
     const campaignThumbs = campaignFiles.map((file, i) => {
         return(
-            <FilePreview key={file.name + i} file={file} onRemove={onRemove} id="campaign"/>
+            <FilePreview key={file.name + i} file={file} onRemove={onRemove}  onUpload={onUpload} id="campaign" mainFileUploadStatus={mainFileUploadStatus} mainFileUploadFails={mainFileUploadFails}/>
+        )
+    });
+
+    const mainThumbsUploaded = mainFileUploaded.map(file => {
+        return(
+            <FilePreviewUploaded key={file.name} file={file} id="main"/>
+        )
+    });
+
+    const documentThumbsUploaded = documentFilesUploaded.map(file => {
+        return(
+            <FilePreviewUploaded key={file.name} file={file} id="document"/>
+        )
+    });
+
+    const campaignThumbsUploaded = campaignFilesUploaded.map((file, i) => {
+        return(
+            <FilePreviewUploaded key={file.name + i} file={file}id="campaign"/>
         )
     });
 
     function onRemove(e){
         e.preventDefault()
+        var filename = e.target.getAttribute('name')
+
+        var filteredArray = mainFileUploadStatus.filter(e => e !== filename)
+        setmainFileUploadStatus(filteredArray)
+        filteredArray = mainFileUploadFails.filter(e => e !== filename)
+        setmainFileUploadFails(filteredArray)
         var newFiles;
         if (e.target.getAttribute('id') === "main"){
             newFiles = mainFile.filter(function(item) {
-                return item.path !==  e.target.getAttribute('name')
+                return item.path !==  filename
             })
             setMainFile(newFiles)
-            props.setMainPicture(newFiles)
         }
         else if (e.target.getAttribute('id') === "document"){
-             newFiles = documentFiles.filter(function(item) {
-                return item.path !==  e.target.getAttribute('name')
+            newFiles = documentFiles.filter(function(item) {
+                return item.path !==  filename
             })
             setDocumentFiles(newFiles)
-            props.setDocuments(newFiles)
         }
         else if (e.target.getAttribute('id') === "campaign"){
             newFiles = campaignFiles.filter(function(item) {
-               return item.path !==  e.target.getAttribute('name')
+               return item.path !==  filename
            })
            setCampaignFiles(newFiles)
-           props.setCampaignPics(newFiles)
        }
+    }
+
+    async function onUpload(e){
+        e.preventDefault()
+        var fileToUpload;
+        var filename = e.target.getAttribute('name')
+        var theFile;
+
+        if (e.target.getAttribute('id') === "main"){
+            setMainLoading(true)
+            mainFile.forEach(file => {
+                if(file.name === filename){
+                    theFile = file
+                }
+            });
+            await uploadFile(theFile, config_aws)
+            .then(() => {
+                var status = mainFileUploadStatus.concat(filename)
+                setmainFileUploadStatus(status)
+
+                fileToUpload = mainFile.filter(function(item) {
+                    return item.path ===  filename
+                })
+                setMainFileUploaded(fileToUpload)
+
+                props.setData({
+                    ...props.data,
+                    mainPicture: theFile.name,
+                    errors:{
+                        ...props.data.errors,
+                        mainPic: ""
+                    }
+                }) 
+           
+            })
+            .catch(err => {
+                console.log(err)
+                var failStatus = mainFileUploadFails.concat(filename)
+                setmainFileUploadFails(failStatus)
+            }) 
+            setMainLoading(false)
+        }
+        else if (e.target.getAttribute('id') === "document"){
+            setDocLoading(true)
+            documentFiles.forEach(file => {
+                if(file.name === filename){
+                    theFile = file
+                }
+            });
+            await uploadFile(theFile, config_aws)
+            .then(() => {
+                var status = mainFileUploadStatus.concat(filename)
+                setmainFileUploadStatus(status)
+
+                fileToUpload = documentFiles.filter(function(item) {
+                    return item.path ===  filename
+                })
+                setDocumentFilesUploaded(documentFilesUploaded.concat(fileToUpload))  
+                
+                var _pics = props.data.camPics
+                documentFilesUploaded.concat(theFile).forEach(pic => {
+                    _pics.push(pic.name)
+                });
+                props.setData({
+                    ...props.data,
+                    camPics: _pics,
+                    errors:{
+                        ...props.data.errors,
+                        camPics: ""
+                    }
+                })   
+            })
+            .catch(err => {
+                console.log(err)
+                var failStatus = mainFileUploadFails.concat(filename)
+                setmainFileUploadFails(failStatus)
+            })       
+            setDocLoading(false)  
+        }
+        else if (e.target.getAttribute('id') === "campaign"){
+            setCamLoading(true)
+            campaignFiles.forEach(file => {
+                if(file.name === filename){
+                    theFile = file
+                }
+            });
+            await uploadFile(theFile, config_aws)
+            .then(() => {
+                var status = mainFileUploadStatus.concat(filename)
+                setmainFileUploadStatus(status)
+
+                fileToUpload = campaignFiles.filter(function(item) {
+                    return item.path ===  filename
+                })
+                setCampaignFilesUploaded(campaignFilesUploaded.concat(fileToUpload))  
+                
+                var _supppics = props.data.supportPics
+                campaignFilesUploaded.concat(theFile).forEach(pic => {
+                    _supppics.push(pic.name)
+                });
+                props.setData({
+                    ...props.data,
+                    supportPics: _supppics,
+                    errors:{
+                        ...props.data.errors,
+                        supportPics: ""
+                    }
+                })    
+            })
+            .catch(err => {
+                console.log(err)
+                var failStatus = mainFileUploadFails.concat(filename)
+                setmainFileUploadFails(failStatus)
+            })  
+            setCamLoading(false)        
+        }
     }
 
     const EN = props.EN
@@ -243,7 +452,27 @@ function CreateCampaignDetails(props) {
                             </div>
                         }     
                     </div>
+
                     <Dropzone accept='image/*' onDrop={(acceptedFiles) => {
+                        var isDuplicate = false
+                        acceptedFiles.forEach(file => {
+                            campaignFiles.forEach(camFile => {
+                                if (file.path === camFile.path){
+                                    isDuplicate = true
+                                }
+                            })
+                            mainFile.forEach(camFile => {
+                                if (file.path === camFile.path){
+                                    isDuplicate = true
+                                }
+                            })
+                            documentFiles.forEach(camFile => {
+                                if (file.path === camFile.path){
+                                    isDuplicate = true
+                                }
+                            })
+                        })
+                        if(!isDuplicate){
                          if (acceptedFiles.concat(mainFile).length <= 1){
                             var totalSize = 0
                             acceptedFiles.concat(mainFile).forEach(file => {
@@ -253,14 +482,15 @@ function CreateCampaignDetails(props) {
                                 setMainFile(acceptedFiles.concat(mainFile).map(file => Object.assign(file, {
                                     preview: URL.createObjectURL(file)
                                 })));
-                                setMainError('')
-                                props.setMainPicture(acceptedFiles.concat(mainFile))
                             }else{
-                                setMainError(EN ? 'File too big.' : 'La imágen son demasiado grandes.')
+                                alert(EN ? 'File too big.' : 'La imágen son demasiado grandes.')
                             }
                         }else{
-                            setMainError(EN ? 'Only 1 picture allowed.' : 'Solo se permite 1 imágen.')
+                            alert(EN ? 'Only 1 picture allowed.' : 'Solo se permite 1 imágen.')
                         }
+                    }else{
+                        alert(EN ? 'Picture already used' : 'Imagen ya utilizada')
+                    }
                         
                             
                         }} name="mainImage" multiple={true}>
@@ -280,18 +510,42 @@ function CreateCampaignDetails(props) {
                         )}
                     </Dropzone>
 
-                    { mainError
+                    { props.data.errors.mainPic
                     ?
                         <Alert color="danger" id='alert'>
-                            {mainError}
+                            {props.data.errors.mainPic}
                         </Alert>
                     :
                         ''
                     }
                    
                     <aside>
-                        <h6>{EN ? "File:" : "Archivo:" }</h6>
+                        <h6>{EN ? "File ready for Upload:" : "Archivo:" }</h6>
                         <ul>{mainThumbs}</ul>
+                        {
+                            mainFile.length === 0
+                            ?
+                            <h6 style={{fontSize: "15px", color: "grey", fontFamily:'Intro-Light'}}>{EN ? "Please select your files" : "same but spanish" }</h6>
+                            :
+                            ""
+                        }
+                        <div className="sweet-loading">
+                            <div className='loader-wrapper'>
+                                <HashLoader
+                                    color={"#ea8737"}
+                                    loading={mainLoading}
+                                />
+                            </div>
+                        </div> 
+                        <h6>{EN ? "Successfully uploaded to Yakera:" : "Archivo:" }</h6>
+                        <ul>{mainThumbsUploaded}</ul>
+                        {
+                            mainFileUploaded.length === 0
+                            ?
+                            <h6 style={{fontSize: "15px", color: "grey", fontFamily:'Intro-Light'}}>{EN ? "No files uploaded" : "Archivo:" }</h6>
+                            :
+                            ""
+                        }
                     </aside>                   
                 </FormGroup>
 
@@ -321,23 +575,43 @@ function CreateCampaignDetails(props) {
                         }                              
                     </div>
                     <Dropzone accept='image/*' onDrop={(acceptedFiles) => {
-                        if (acceptedFiles.concat(documentFiles).length <= 2){
-                            var totalSize = 0
-                            acceptedFiles.concat(documentFiles).forEach(file => {
-                                totalSize += file.size
-                                
-                            });
-                            if(totalSize < 1000000){
-                                setDocumentFiles(acceptedFiles.concat(documentFiles).map(file => Object.assign(file, {
-                                    preview: URL.createObjectURL(file)
-                                })));
-                                setDocumentError('')
-                                props.setDocuments(acceptedFiles.concat(documentFiles))
+                        var isDuplicate = false
+                        acceptedFiles.forEach(file => {
+                            campaignFiles.forEach(camFile => {
+                                if (file.path === camFile.path){
+                                    isDuplicate = true
+                                }
+                            })
+                            mainFile.forEach(camFile => {
+                                if (file.path === camFile.path){
+                                    isDuplicate = true
+                                }
+                            })
+                            documentFiles.forEach(camFile => {
+                                if (file.path === camFile.path){
+                                    isDuplicate = true
+                                }
+                            })
+                        })
+                        if(!isDuplicate){
+                            if (acceptedFiles.concat(documentFiles).length <= 2){
+                                var totalSize = 0
+                                acceptedFiles.concat(documentFiles).forEach(file => {
+                                    totalSize += file.size
+                                    
+                                });
+                                if(totalSize < 1000000){
+                                    setDocumentFiles(acceptedFiles.concat(documentFiles).map(file => Object.assign(file, {
+                                        preview: URL.createObjectURL(file)
+                                    })));
+                                }else{
+                                    alert(EN ? 'Files too big' : 'Las imágenes son demasiado grandes')
+                                }
                             }else{
-                                setDocumentError(EN ? 'Files too big' : 'Las imágenes son demasiado grandes')
+                                alert(EN ? 'Only 2 pictures allowed.' : 'Solo se permiten 2 imágenes. ')
                             }
                         }else{
-                            setDocumentError(EN ? 'Only 2 pictures allowed.' : 'Solo se permiten 2 imágenes. ')
+                            alert(EN ? 'Picture already used' : 'Imagen ya utilizada')
                         }
                         }} name="documents" multiple={true}>
                         {({getRootProps, getInputProps}) => (
@@ -356,18 +630,42 @@ function CreateCampaignDetails(props) {
                         )}
                     </Dropzone>
 
-                    { documentError
+                    { props.data.errors.camPics
                     ?
                         <Alert color="danger" id='alert'>
-                            {documentError}
+                            {props.data.errors.camPics}
                         </Alert>
                     :
                         ''
                     }
                     
                     <aside>
-                        <h6>{EN ? "Files:" : "Archivos:" }</h6>
+                        <h6>{EN ? "Files ready for Upload:" : "Archivos:" }</h6>
                         <ul>{documentThumbs}</ul>
+                        {
+                            documentFiles.length === 0
+                            ?
+                            <h6 style={{fontSize: "15px", color: "grey", fontFamily:'Intro-Light'}}>{EN ? "Please select your files" : "same but spanish" }</h6>
+                            :
+                            ""
+                        }
+                        <div className="sweet-loading">
+                            <div className='loader-wrapper'>
+                                <HashLoader
+                                    color={"#ea8737"}
+                                    loading={docLoading}
+                                />
+                            </div>
+                        </div> 
+                        <h6>{EN ? "Successfully uploaded to Yakera:" : "Archivo:" }</h6>
+                        <ul>{documentThumbsUploaded}</ul>
+                        {
+                            documentFilesUploaded.length === 0
+                            ?
+                            <h6 style={{fontSize: "15px", color: "grey", fontFamily:'Intro-Light'}}>{EN ? "No files uploaded" : "Archivo:" }</h6>
+                            :
+                            ""
+                        }
                     </aside>
                 </FormGroup>
 
@@ -404,6 +702,16 @@ function CreateCampaignDetails(props) {
                                     isDuplicate = true
                                 }
                             })
+                            mainFile.forEach(camFile => {
+                                if (file.path === camFile.path){
+                                    isDuplicate = true
+                                }
+                            })
+                            documentFiles.forEach(camFile => {
+                                if (file.path === camFile.path){
+                                    isDuplicate = true
+                                }
+                            })
                         })
                         if(!isDuplicate){
                             if (acceptedFiles.length + campaignFiles.length <= 4){
@@ -415,17 +723,14 @@ function CreateCampaignDetails(props) {
                                     setCampaignFiles(acceptedFiles.concat(campaignFiles).map(file => Object.assign(file, {
                                         preview: URL.createObjectURL(file)
                                     })));
-                                    setcampaignPicturesError("")
-                                    props.setCampaignPics(acceptedFiles.concat(campaignFiles))
                                 }else{
-                                    setcampaignPicturesError(EN ? 'Files too big' : 'Las imágenes son demasiado grandes')
+                                    alert(EN ? 'Files too big' : 'Las imágenes son demasiado grandes')
                                 }
                             }else{
-                                console.log(campaignFiles)
-                                setcampaignPicturesError(EN ? 'Only 4 pictures allowed.' : 'Solo se permiten 4 imágenes. ')
+                                alert(EN ? 'Only 4 pictures allowed.' : 'Solo se permiten 4 imágenes.')
                             }
                         }else{
-                            setcampaignPicturesError(EN ? 'Duplicated picture' : 'Solo se permiten 4 imágenes. ')
+                            alert(EN ? 'Picture already used' : 'Imagen ya utilizada')
         
                     }}} name="campaignImages" multiple={true}>
                             {({getRootProps, getInputProps}) => (
@@ -446,18 +751,42 @@ function CreateCampaignDetails(props) {
                             )}
                     </Dropzone>
 
-                    { campaignPicturesError
+                    { props.data.errors.supportPics
                     ?
                         <Alert color="danger" id='alert'>
-                            {campaignPicturesError}
+                            {props.data.errors.supportPics}
                         </Alert>
                     :
                         ''
                     }
                    
                     <aside>
-                        <h6>{EN ? "Files:" : "Archivos:" }</h6>
+                        <h6>{EN ? "Files ready for Upload:" : "Archivos:" }</h6>
                         <ul>{campaignThumbs}</ul>
+                        {
+                            campaignFiles.length === 0
+                            ?
+                            <h6 style={{fontSize: "15px", color: "grey", fontFamily:'Intro-Light'}}>{EN ? "Please select your files" : "same but spanish" }</h6>
+                            :
+                            ""
+                        }
+                        <div className="sweet-loading">
+                            <div className='loader-wrapper'>
+                                <HashLoader
+                                    color={"#ea8737"}
+                                    loading={camLoading}
+                                />
+                            </div>
+                        </div> 
+                        <h6>{EN ? "Successfully uploaded to Yakera:" : "Archivo:" }</h6>
+                        <ul>{campaignThumbsUploaded}</ul>
+                        {
+                            campaignFilesUploaded.length === 0
+                            ?
+                            <h6 style={{fontSize: "15px", color: "grey", fontFamily:'Intro-Light'}}>{EN ? "No files uploaded" : "Archivo:" }</h6>
+                            :
+                            ""
+                        }
                     </aside> 
                 </FormGroup>
             </Form>

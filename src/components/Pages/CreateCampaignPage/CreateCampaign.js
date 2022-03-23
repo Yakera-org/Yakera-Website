@@ -1,7 +1,6 @@
 import React, {useState, useEffect} from "react";
 import {validateFields} from "../Register/Validation";
 import CreateCampaignVisuals from "./CreateCampaignVisuals";
-import Loader from "react-loader-spinner";
 import Author from '../../author';
 import api from "../../../services/api";
 import LanguageService from "../../../services/language";
@@ -16,12 +15,18 @@ function CreateCampaign() {
         story: "",
         description: "",
         itemizedbudget: "",
+        mainPicture: "",
+        camPics: [],
+        supportPics: [],
         errors: {
             campaignname: null,
             amount: null,
             story: null,
             description: null,
-            itemizedbudget: null
+            itemizedbudget: null,
+            mainPic: null,
+            camPics: null,
+            supportPics: null
         },
     };
     const [data, setData] = useState(initialState);
@@ -30,6 +35,7 @@ function CreateCampaign() {
     const [EN, setEN] = React.useState(false);
     const [language, setLanguage] = React.useState('en');
     const [loader, setLoader] = React.useState(false);
+    const [hasLoaded, setHasLoaded] = React.useState(false);
 
     useEffect(() => {
         function startup(){
@@ -43,9 +49,11 @@ function CreateCampaign() {
             } 
             if (localStorage.getItem('accessToken')) {
                 //all good, nothin gneeds to be done
+                setHasLoaded(true)
             } else {
                 window.location = '/login';
             }
+
         }
         startup(); 
     }, []);
@@ -81,7 +89,8 @@ function CreateCampaign() {
 
     function validateData(){
         let emptyWarning = EN ? 'This field cannot be empty' : 'Este campo no puede estar vacío' ;
-        let nameError, amountError, storyError, descriptionError, budgetError;
+        let emptyPicWarning = EN ? 'No files uploaded' : 'No hay archivos subidos' ;
+        let nameError, amountError, storyError, descriptionError, budgetError, mainPicError, camPicsError, supportPicsError;
 
         if(!data.amount){
             amountError = emptyWarning;
@@ -108,6 +117,16 @@ function CreateCampaign() {
         }else{
         budgetError = validateFields.validateName(data.itemizedbudget)
         }
+
+        if(!data.mainPicture){
+            mainPicError = emptyPicWarning
+        }
+        if(data.supportPics.length === 0){
+            supportPicsError = emptyPicWarning
+        }
+        if(data.camPics.length === 0){
+            camPicsError = emptyPicWarning
+        }
         setData({
             ...data,
             errors: {
@@ -115,11 +134,14 @@ function CreateCampaign() {
                 amount: amountError,
                 story: storyError,
                 itemizedbudget: budgetError,
-                description: descriptionError
+                description: descriptionError,
+                mainPic: mainPicError,
+                camPics: camPicsError,
+                supportPics: supportPicsError
             },
         })
-
-        if(!amountError && !storyError && !descriptionError && !nameError && !budgetError){
+        
+        if(!amountError && !storyError && !descriptionError && !nameError && !budgetError && !mainPicError && !camPicsError && !supportPicsError){
             return true
         }
         
@@ -134,46 +156,23 @@ function CreateCampaign() {
         }); 
     }
 
-    async function submit(event, mainPicture, documents, campaignPics){
+    async function submit(event){
         event.preventDefault();
         setError("")
         let formattedStory = linkify(data.story)
         formattedStory = formattedStory.replace(/\n/g, " <br />");
 
         let isValidated = validateData();
-        if(mainPicture.length === 0 || !mainPicture){
-            setError(EN ? 'Please upload a main picture.' : 'Por favor, sube la imágen principal.')
-            isValidated = false
-        }
-        if(documents.length === 0 || !documents){
-            setError(EN ? 'Please upload a document.' : 'Por favor, sube un documento.')
-            isValidated = false
-        }
-        if(campaignPics.length === 0 || !campaignPics){
-            setError(EN ? 'Please upload a campaign picture.' : 'Por favor, sube una imágen de tu campaña.')
-            isValidated = false
-        }
         if(isValidated){
             setLoader(true);
-            submitToBackend(formattedStory, mainPicture, documents, campaignPics);
+            submitToBackend(formattedStory);
         }else{
             setError(EN ? 'Some fields are not valid.' : 'Algunos campos no son válidos.')
         }
         
     }
 
-    async function submitToBackend(story, mainPicture, documents, campaignPics){
-        //https://dev.to/fadiamg/multiple-file-inputs-with-one-submit-button-with-react-hooks-kle
-        const formdata = new FormData();
-        formdata.append('mainPicture', mainPicture[0]);
-        for (const file of documents) {
-            formdata.append('supportDocs', file);
-        }
-        for (const file of campaignPics) {
-            formdata.append('pictures', file);
-        }
-
-        // TODO: Remove this. Temp solution for getting campaign categories 
+    async function submitToBackend(story){
         const categories = {
             'small business': 'small_business',
             'healthcare': 'healthcare',
@@ -186,6 +185,15 @@ function CreateCampaign() {
             'alimentación': 'nutrition'
         }
 
+        var pics = []
+        data.camPics.forEach(picName => {
+            pics.push({"url": picName})
+        });
+        var support = []
+        data.supportPics.forEach(picName => {
+            support.push({"url": picName})
+        });
+
         const payload = {
             title: data.campaignname,
             targetAmount: data.amount,
@@ -193,13 +201,17 @@ function CreateCampaign() {
             category: categories[ data.campaigncategory ],
             description: data.description,
             itemizedBudget: data.itemizedbudget,
-            language: language
+            language: language,
+            mainPicture: {
+                "url": data.mainPicture
+            },
+            pictures: pics,
+            supportDocs: support
         }   
-        for ( var key in payload ) {
-            formdata.append(key, payload[key]);
-        }
+
+        console.log(payload)
         try {
-            await api.post('/campaigns', formdata);
+            await api.post('/campaigns', payload);
             setSuccess(EN ? 'Your campaign has been created successfully!' : '¡Tu campaña se ha creado con éxito!')
             setLoader(false)
         } catch (error) {
@@ -208,30 +220,26 @@ function CreateCampaign() {
             setLoader(false)
         }      
     }            
-       
-    return (
-        <div>
-            <div className='loader'>
-                <Loader
-                    type="Bars"
-                    color="#ea8737"
-                    height={100}
-                    width={100}
-                    visible={loader}
+    if(!hasLoaded){
+        return(<div>Loading ...</div>)
+    }else{
+        return (
+            <div>
+                <CreateCampaignVisuals
+                    EN={EN}
+                    success={successMessage}
+                    error={errorMessage}
+                    data={data}
+                    setData={setData}
+                    handleChange={handleChange}
+                    validate={validateData}
+                    submit={submit}
+                    loader={loader}
                 />
+                <Author />
             </div>
-            <CreateCampaignVisuals
-                EN={EN}
-                success={successMessage}
-                error={errorMessage}
-                data={data}
-                handleChange={handleChange}
-                validate={validateData}
-                submit={submit}
-            />
-            <Author />
-        </div>
     )
+    }
 }
 
 export default CreateCampaign;

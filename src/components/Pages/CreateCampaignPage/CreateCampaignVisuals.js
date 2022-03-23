@@ -2,6 +2,7 @@ import React from "react";
 import CreatCampaignDetails from "./CreatCampaignDetails";
 import {Alert} from 'reactstrap'
 import LanguageService from "../../../services/language";
+import HashLoader from "react-spinners/HashLoader";
 import './CreateCampaignPage.css'
 
 function CreateCampaignVisuals(props) {
@@ -11,9 +12,6 @@ function CreateCampaignVisuals(props) {
     }, [])
 
     const [language, setLanguage] = React.useState('');
-    const [mainPicture, setMainPicture] = React.useState('');
-    const [documents, setDocuments] = React.useState('');
-    const [campaignPics, setCampaignPics] = React.useState('');
 
     var EN;
     if(language === "en"){
@@ -21,11 +19,6 @@ function CreateCampaignVisuals(props) {
     }else{
         EN = false
     }
-
-    function onSubmit(e){
-        props.submit(e, mainPicture, documents, campaignPics)
-    }
-
     return(
         <div className='create-page'>
             <div id='background' >
@@ -51,20 +44,9 @@ function CreateCampaignVisuals(props) {
                 }
                 
                 
-                <CreatCampaignDetails EN={EN} data={props.data} handleChange={props.handleChange}
-                 setMainPicture={setMainPicture}
-                 setDocuments={setDocuments}
-                 setCampaignPics={setCampaignPics}
-                 />
+                <CreatCampaignDetails EN={EN} data={props.data} handleChange={props.handleChange} setData={props.setData}/>
+
                
-                { props.error
-                    ?
-                    <Alert color="danger" id='alert'>
-                        {props.error}
-                    </Alert>
-                    :
-                    ''
-                }
                 { props.success
                     ?
                     <Alert color="success" id='alert'>
@@ -75,12 +57,38 @@ function CreateCampaignVisuals(props) {
                     :
                     ''
                 }
+                { props.error
+                    ?
+                    <Alert color="danger" id='alert'>
+                        {props.error}
+                    </Alert>
+                    :
+                    ''
+                }
+                {
+                    props.loader
+                    ?
+                    <div className="sweet-loading">
+                        <div className='loader-wrapper' style={{marginLeft:'-10px', marginBottom:'10px'}}>
+                            <HashLoader
+                                color={"#ea8737"}
+                                loading={props.loader}
+                            />
+                        </div>
+                    </div> 
+                    :
+                    ""
+                }
                
+                { !props.success
+                ?
                 <div id='create-campaign'>
-                    <button  onClick={onSubmit}>
+                    <button  onClick={props.submit}>
                     {EN ? 'Create Campaign' : 'Crear Campaña'}
                     </button>
                 </div>
+                :
+                ""}
             </div>
         </div>
     )
