@@ -3,6 +3,7 @@ import { Grid, Checkbox } from '@material-ui/core';
 import { Alert } from 'reactstrap';
 import HashLoader from "react-spinners/HashLoader";
 import classnames from 'classnames';
+import quetsionmark from "../../../svg/icon-questionmark.svg";
 
 const EditPageVisual = ({
     profileData,
@@ -184,6 +185,7 @@ const EditPageVisual = ({
                             </Grid>
                             <Grid className="help-contact" item xs={12} sm={10}>
                                 <p >{EN ? "Do you have any questions or need assistance?" : "¿Tienes alguna pregunta o necesitas apoyo?"} </p>
+                                <img width="150" src={quetsionmark} alt="questionmark-help" />
                                 <button onClick={() => window.location = "https://chat.whatsapp.com/LcSFQzsohaC1hmlgdbij3D"}>
                                     {EN ? "Contact us!" : "¡Contáctanos!"}
                                 </button>
@@ -216,6 +218,16 @@ const EditPageVisual = ({
                 }
 
                 <hr />
+
+                { error
+                ?
+                    <Alert color="danger" style={{width:"50%", marginLeft:"25%", textAlign:'center'}}>
+                        { error }
+                    </Alert>
+                :
+                ''
+                }
+
                 
                 <Grid container spacing={0} className='submit-container' style={{ textAlign: 'center' }}>
                     <Grid item xs={12} sm={12}>
@@ -224,6 +236,14 @@ const EditPageVisual = ({
                         </button>
                     </Grid>
                 </Grid>
+
+                <br />
+
+                <section>
+                    <p style={{textAlign:"center"}}>
+                        Want to delete your account? Click <a href = {`mailto:info@yakera.org?subject=Delete Yakera Donor Account&body=Hello Yakera, I would like to delete my Donor Account with email: ${user.email}`}>here</a> to get in touch with one of the members of the team.
+                    </p>
+                </section>  
             </div>
         </div>
   )

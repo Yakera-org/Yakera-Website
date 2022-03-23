@@ -58,6 +58,7 @@
     text-align: center;
     margin: 0;
     padding: 10px 20px;
+    border-radius: 20px;
 
 }
 .dash-btn{
@@ -146,7 +147,12 @@
     width: 10%;
     font-family: Intro-Regular-Alt;
 }
-
+.edit-btn button:hover{
+    background-color: rgba(146, 146, 146, 0.281);
+}
+.edit-btn button:active{
+    background-color: rgba(75, 75, 75, 0.281);
+}
 .details-missing{
     text-align: center;
     font-family: Intro-Regular-Alt;

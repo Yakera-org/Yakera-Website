@@ -42,3 +42,14 @@
 .edit-area #alert{
     text-align: center;
 }
+.invalid-feedback{
+    padding: 0 30px;
+}
+
+@media only screen and (max-width: 600px) {
+    .dashboard-container-edit{
+        width: 90%;
+        background-color: white;
+        padding-bottom: 30px;
+    }
+}

@@ -7,22 +7,7 @@ import EditPageVisual from './EditPageVisual';
 import api from "../../../services/api";
 import { validateFields } from '../Register/Validation';
 
-const S3_BUCKET = process.env.REACT_APP_S3_BUCKET
-const REGION = process.env.REACT_APP_REGION
-const ACCESS_KEY = process.env.REACT_APP_ACCESS_KEY
-const SECRET_ACCESS_KEY = process.env.REACT_APP_SECRET_ACCESS_KEY
-
-const config_aws = {
-    bucketName: S3_BUCKET,
-    region: REGION,
-    dirName: 'profile-pictures',
-    accessKeyId: ACCESS_KEY,
-    secretAccessKey: SECRET_ACCESS_KEY
-}
-
-const EditPage = ({
-
-}) => {
+const EditPage = () => {
     const [loaded, setLoaded] = useState(false);
     const [loading, setLoading] = useState(false);
     const [EN, setEN] = useState(false);
@@ -38,7 +23,6 @@ const EditPage = ({
     const [zelleEmailError, setZelleEmailError] = useState('');
     const [zelleName, setZelleName] = useState('');
     const [zelleNameError, setZelleNameError] = useState('');
-    const [zelleCheckbox, setZelleCheckbox] = useState(false);
     
     const startup = () => {
         if(LanguageService.getLanguage()==='en'){
@@ -67,7 +51,6 @@ const EditPage = ({
             console.log(data)
             setProfileData(data);
             setAirTMEmail(data?.user?.airTMNum);
-            setZelleCheckbox(data?.user?.zelleInfo?.isAccepting);
             setZelleEmail(data?.user?.zelleInfo?.email);
             setZelleName(data?.user?.zelleInfo?.name);
         } catch (err) {
@@ -85,6 +68,8 @@ const EditPage = ({
         setAirTMEmailError(tempError)
         if(!tempError){
             return true
+        }else{
+            return false
         }
     };
     const validateZelleEmail = (email) => {
@@ -93,6 +78,8 @@ const EditPage = ({
         setZelleEmailError(tempEmailError);
         if(!tempEmailError){
             return true;
+        }else{
+            return false
         }
     };
     const validateZelleName = (name) => {
@@ -101,10 +88,13 @@ const EditPage = ({
         setZelleNameError(tempNameError);
         if(!tempNameError){
             return true;
+        }else{
+            return false
         }
     }
 
     const handleChange = (e) => {
+        setError("")
         setIsSame(false);
         const eventTargetName = e.target.name;
         const eventTargetVal = e.target.value;
@@ -153,10 +143,16 @@ const EditPage = ({
         if(zelleEmail !== profileData.user.zelleInfo.email || zelleName !== profileData.user.zelleInfo.name) {
             if(checkZelleEmail && checkZelleName) {
                 backendPatch();
+            }else{
+                setError(EN ? "Please check the fields are filled correctly" : "Por favor, compruebe que los campos están rellenados correctamente")
+                setLoading(false)
             }
         } else if(airTMemail !== profileData.user.airTMNum) {
             if(checkAirTMEmail) {
                 backendPatch();
+            }else{
+                setError(EN ? "Please check the fields are filled correctly" : "Por favor, compruebe que los campos están rellenados correctamente")
+                setLoading(false)
             }
         } else {
             backendPatch();
@@ -188,6 +184,7 @@ const EditPage = ({
 
     useEffect(() => {
       startup();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
     
     if(!loaded) {

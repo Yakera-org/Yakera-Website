@@ -2,7 +2,6 @@ import React from 'react'
 import { Grid } from '@material-ui/core';
 import {Card, CardContent, Checkbox} from '@material-ui/core';
 import Author from '../../author';
-import classnames from 'classnames'
 import DashboardCard from './DashboardCard';
 
 
