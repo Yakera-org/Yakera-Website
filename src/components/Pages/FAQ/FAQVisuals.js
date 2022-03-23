@@ -63,10 +63,15 @@ function FAQVisuals(props) {
                         }
                     </div>
                 </Grid>
-                <Grid container spacing={1} item = {true} style={{  alignItems:'center', marginLeft: "15%", width: "70%"}} >
+                <Grid container spacing={1} item = {true} style={{  alignItems:'center', marginLeft: "10%", width: "80%"}} >
                 <Grid item xs={4} sm={5}>  <img alt='banner-pic' className = "bottom-pic" src={bottom_pic} style={{width: "100%",marginLeft: "0%"}}/> </Grid>
                 <Grid item xs={4} sm={7}> <div style = {{padding: "10px 0px 10px 0px"}}> <b className = "bottom-text">How do I contact Yakera if I have a question or need support?</b></div>
-                    <div style = {{padding: "10px 0px 50px 0px"}}>You can contact us on Yakera Community Group with this link, via an email to info@yakera.org, or through our social media @yakeraorg</div>
+                    <div style = {{padding: "10px 0px 50px 0px"}}>
+                        You can contact us on <a href = "https://chat.whatsapp.com/LcSFQzsohaC1hmlgdbij3D"><u>Yakera Community Group with this link</u></a>, 
+                        via an email to <a href = "mailto: abc@example.com"><u>info@yakera.org</u></a>, or through our social media
+                        <a href = "https://twitter.com/yakeraorg"> <u>@yakeraorg</u></a> 
+                        
+                    </div>
                 
                 </Grid>
                 
