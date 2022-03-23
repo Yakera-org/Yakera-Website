@@ -250,7 +250,7 @@ function CreateCampaignDetails(props) {
                 
                 var _pics = props.data.camPics
                 documentFilesUploaded.concat(theFile).forEach(pic => {
-                    _pics.push(pic.name)
+                    if(!_pics.includes(pic.name))_pics.push(pic.name)
                 });
                 props.setData({
                     ...props.data,
@@ -287,7 +287,7 @@ function CreateCampaignDetails(props) {
                 
                 var _supppics = props.data.supportPics
                 campaignFilesUploaded.concat(theFile).forEach(pic => {
-                    _supppics.push(pic.name)
+                    if(!_supppics.includes(pic.name))_supppics.push(pic.name)
                 });
                 props.setData({
                     ...props.data,
