@@ -55,7 +55,7 @@ function DashboardVisuals(props) {
                     <hr />
 
                     <Grid container spacing={0} style={{marginTop: "30px"}}>
-                        <Grid item xs={12} sm={6} id='zelle'>
+                        {/* <Grid item xs={12} sm={6} id='zelle'>
                             <Grid container spacing={0} className='dash-left'>
                                 <Grid item xs={12} sm={12}>
                                     <p id="prompt"><span id="star">{EN ? "NEW!" : "¡Nuevo!"} </span>{EN ? "Now you can also receive donations through Zelle!" : "¡Ahora también puedes recibir donaciones por Zelle!"}<span id="star">*</span> </p>
@@ -83,6 +83,7 @@ function DashboardVisuals(props) {
                                         />
                                         <p className='invalid-feedback'>{props.zelleEmailError}</p>
                                     </Grid>
+                                    Looks like you're missing out on our new feature! Edit your profile
                                 </Grid>
                                 : <div className='dash-left'>
                                     <p>{user.zelleInfo.email}</p>
@@ -156,9 +157,9 @@ function DashboardVisuals(props) {
                             <Grid item xs={12} sm={12}>
                                 <p className="star-des">{EN ? "*Donations made through Zelle are disintermediated by Yakera. Donations will be sent directly to your Zelle account immediately and reflected in the total balance of the campaign’s funds." : "*¡Ojo! Las donaciones realizadas a través de Zelle no son monitoreadas por Yakera. Las contribuciones llegarán directo a tu cuenta de Zelle inmediatamente y serán reflejadas en el monto de la campaña."} </p>
                             </Grid>                                        
-                        </Grid>
+                        </Grid> */}
 
-                        <Grid item xs={12} sm={6} id='airTM'>
+                        {/* <Grid item xs={12} sm={6} id='airTM'>
                             <div className='dash-left'>
                             <p id="prompt">{EN ? "Add your AirTM account to withdraw collected funds!" : "¡Añade los detalles de tu cuenta de Airtm para retirar los fondos recaudados!"}</p>
                             <p id="description">{EN ? "To transfer the funds you collect through Yakera, you must create an Airtm account and provide the email address here:" : "Para transferir tus fondos recaudados en Yakera es necesario que nos suministres tu correo de AirTM"}</p>
@@ -199,8 +200,131 @@ function DashboardVisuals(props) {
                                     <p>{user.airTMNum}</p>
                                 </div>
                             }
-                        </Grid>
-                        <Grid item xs={12} sm={12} >
+                        </Grid> */}
+
+                        {(!user?.zelleInfo?.email && !user.airTMNum)
+                            ?
+                            <Grid item xs={12} sm={12} className='details-missing'>
+                                Looks like we're missing details from you. Click the button below to edit your profile details.
+                            </Grid>
+                            : (user?.zelleInfo?.email && !user.airTMNum)
+                                ?
+                                <>
+                                    <Grid item xs={12} sm={6} id='zelle'>
+                                        <Grid container spacing={0} className='dash-left'>
+                                            <Grid item xs={12} sm={12}>
+                                                <p id='dash-stats'>Zelle email:</p>
+                                            </Grid>
+                                        </Grid>
+                                        <div className='dash-left'>
+                                            <p>{user.zelleInfo.email}</p>
+                                        </div>
+                                        <Grid container spacing={0} className='dash-left'>
+                                            <Grid item>
+                                                <p id='dash-stats'>{EN ? 'Zelle name:' : 'Zelle nombre:'}</p>
+                                            </Grid>
+                                        </Grid>
+                                        <div className='dash-left'>
+                                            <p>{user.zelleInfo.name}</p>
+                                        </div>
+                                        <Grid container spacing={0} className='dash-left'>
+                                            <Grid item>
+                                                <p id='dash-stats'>{EN ? 'Accepting payment?:' : '¿Aceptando pago?:'}</p>
+                                            </Grid>
+                                        </Grid>
+                                        <Grid container spacing={0}>
+                                            <Grid item xs={12} sm={6}>
+                                                <Checkbox
+                                                    disabled
+                                                    name='acceptingPayment'
+                                                    onChange={props.handleChangeZelleCheckbox}
+                                                    checked={props.zelleCheckbox}
+                                                    style={{
+                                                        color: '#ea8737',
+                                                        '&.MuiChecked': {
+                                                            color: 'rgba(234, 135, 55, .5)'
+                                                        },
+                                                    }}
+                                                    />
+                                            </Grid>
+                                        </Grid>
+                                    </Grid>
+
+                                    <Grid item xs={12} sm={6} id='airTM' className='details-missing'>
+                                        Looks like we're missing details from you. Click the button below to edit your profile details.
+                                    </Grid>
+                                </>
+                                : (!user?.zelleInfo?.email && user.airTMNum)
+                                    ?
+                                    <>
+                                        <Grid item xs={12} sm={6} id='zelle' className='details-missing'>
+                                            Looks like we're missing details from you. Click the button below to edit your profile details.
+                                        </Grid>
+
+                                        <Grid item xs={12} sm={6} id='airTM'>
+                                            <div className='dash-left'>
+                                                <p id='dash-stats'>AirTM email:</p>
+                                            </div>
+                                            <div className='dash-left'>
+                                                <p>{user.airTMNum}</p>
+                                            </div>
+                                        </Grid>
+                                    </>
+                                    :
+                                    <>
+                                        <Grid item xs={12} sm={6} id='zelle'>
+                                            <Grid container spacing={0} className='dash-left'>
+                                                <Grid item xs={12} sm={12}>
+                                                    <p id='dash-stats'>Zelle email:</p>
+                                                </Grid>
+                                            </Grid>
+                                            <div className='dash-left'>
+                                                <p>{user.zelleInfo.email}</p>
+                                            </div>
+                                            <Grid container spacing={0} className='dash-left'>
+                                                <Grid item>
+                                                    <p id='dash-stats'>{EN ? 'Zelle name:' : 'Zelle nombre:'}</p>
+                                                </Grid>
+                                            </Grid>
+                                            <div className='dash-left'>
+                                                <p>{user.zelleInfo.name}</p>
+                                            </div>
+                                            <Grid container spacing={0} className='dash-left'>
+                                                <Grid item>
+                                                    <p id='dash-stats'>{EN ? 'Accepting payment?:' : '¿Aceptando pago?:'}</p>
+                                                </Grid>
+                                            </Grid>
+                                            <Grid container spacing={0}>
+                                                <Grid item xs={12} sm={6}>
+                                                    <Checkbox
+                                                        disabled
+                                                        name='acceptingPayment'
+                                                        onChange={props.handleChangeZelleCheckbox}
+                                                        checked={props.zelleCheckbox}
+                                                        style={{
+                                                            color: '#ea8737',
+                                                            '&.MuiChecked': {
+                                                                color: 'rgba(234, 135, 55, .5)'
+                                                            },
+                                                        }}
+                                                        />
+                                                </Grid>
+                                            </Grid>
+                                        </Grid>
+
+                                        <Grid item xs={12} sm={6} id='airTM'>
+                                            <div className='dash-left'>
+                                                <p id='dash-stats'>AirTM email:</p>
+                                            </div>
+                                            <div className='dash-left'>
+                                                <p>{user.airTMNum}</p>
+                                            </div>
+                                        </Grid>
+                                    </>
+                        }
+
+
+                        <Grid item xs={12} sm={12} className='edit-btn' style={{ textAlign: 'center' }}>
                             <button onClick={onEdit}>
                                 {EN ? 'Edit profile' : 'Editar perfil'}
                             </button>
