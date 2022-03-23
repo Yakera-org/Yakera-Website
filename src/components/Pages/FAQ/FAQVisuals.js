@@ -4,7 +4,9 @@ import Drawer from './FAQDrawer'
 import Author from '../../author';
 import content from './FAQ.json'
 
-const banner_pic = 'https://assets.yakera.org/yakera/faq-title.webp';
+const banner_left = "https://yakera-files.s3.us-east-2.amazonaws.com/yakera/FAQ-Banner-Left.png";
+const banner_right = "https://yakera-files.s3.us-east-2.amazonaws.com/yakera/FAQ-Banner-Right.png";
+const bottom_pic = 'https://yakera-files.s3.us-east-2.amazonaws.com/yakera/FAQ-Bottom.png';
 
 function FAQVisuals(props) {
 
@@ -26,28 +28,23 @@ function FAQVisuals(props) {
     return (
         <div className='faq-visuals'>
             
-            <Grid container spacing={1} style={{ alignItems:'flex-start'}}>
-                <Grid item xs={12} sm={12} >
-                    <div className='faq-banner'>
-                        <Grid container spacing={0} style={{ alignItems:'flex-start'}}>
-                            <Grid item xs={12} sm={4} >    
-                                    {EN ? 'Frequently Asked Questions' : 'Preguntas frecuentes'}
-                            </Grid>
-                            <Grid item xs={12} sm={8} >   
-                                <div className='img-wrapper'>
-                                    <img alt='banner-pic' src={banner_pic} />
+            <Grid container spacing={1} >
+                <Grid container item = {true} xs={12} sm={12} spacing={0} style={{  alignItems:'center', marginLeft: "3%", width: "94%"}}>
+                            <Grid item xs={4} sm={4}>   
 
-                                </div>
+                                    <img alt='banner-pic' className = "banner-img" src={banner_left} />
                             </Grid>
-                        </Grid>
-                    </div>
+                            <Grid item xs={4} sm={4} >   
+                                    <h1 className = "banner-text"><b>Frequently Asked <span style = {{color: "#e98737"}}>Questions</span></b></h1>
+                            </Grid>
+
+                            <Grid item xs={4} sm={4}>   
+                                    <img alt='banner-pic' className = "banner-img" src={banner_right} />
+                            </Grid>
                 </Grid>
                 
                 <Grid item xs={12} sm={12} >
                     <div className='faq-drawer-area'>
-                        <h1>
-                            {EN ? 'What can we help you with?' : '¿Cómo le podemos ayudar?'}
-                        </h1>
                         {/* <SearchBar 
                             searchQuery={searchQuery}
                             setSearchQuery={setSearchQuery}
@@ -66,7 +63,16 @@ function FAQVisuals(props) {
                         }
                     </div>
                 </Grid>
+                <Grid container spacing={1} item = {true} style={{  alignItems:'center', marginLeft: "15%", width: "70%"}} >
+                <Grid item xs={4} sm={5}>  <img alt='banner-pic' className = "bottom-pic" src={bottom_pic} style={{width: "100%",marginLeft: "0%"}}/> </Grid>
+                <Grid item xs={4} sm={7}> <div style = {{padding: "10px 0px 10px 0px"}}> <b className = "bottom-text">How do I contact Yakera if I have a question or need support?</b></div>
+                    <div style = {{padding: "10px 0px 50px 0px"}}>You can contact us on Yakera Community Group with this link, via an email to info@yakera.org, or through our social media @yakeraorg</div>
+                
+                </Grid>
+                
+                </Grid>
             </Grid>
+            
 
             <Author />
 

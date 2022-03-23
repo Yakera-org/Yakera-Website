@@ -3,59 +3,76 @@
     font-family: Intro-Regular-Alt;
 }
 .faq-visuals{
-    padding: 1%;
+    padding:5% 10% 5% 10%;
 }
-.faq-banner {
-    background-color: #01224d;
-    color: white;
-    border-radius: 15px;
-    padding: 60px 80px 0px 80px;
-    font-size: 40px;
-    margin: 0 100px;
-    max-height: 300px;
+
+.banner-title{
+    color:black;
+
 }
-.faq-banner img{
-    width: 100%;
-    border-radius: 15px;
-    max-height: 300px;
-    margin: -80px 00px 0px 100px;
-    object-fit: cover; 
+
+.bottom-text{
+    padding: 30px 0px 30px 0px;
+    color:#ea8737;
+    font-size: 30px;
 }
 
 .faq-drawer-area {
     margin: 20px 40px;
     padding: 20px;
+    width: 80%;
+    margin-left: 10%;
+
+}
+.banner-img{
+    width: 80%;
+    margin-left: 10%;
 }
 
 .drawer-title{
-    background-color: #01224d;
-    color: white;
+    color: #163762;
     font-size: 22px;
     padding: 15px;
-    border-radius: 10px;
+    border-radius: 0px;
     margin: 20px 0 -10px 0;
+    text-align: center;
+    width: 100%;
 }
 .drawer-question{
-    color: rgb(133, 133, 133);
+    padding: 20px;
+    border-radius: 20px;
+    background-color: #E5E5E5;
+    color: #2B292D;
     font-size: 22px;
+    width: 100%;
 }
 .drawer-question a, .drawer-answer a{
     color: #ea8737;
-    text-decoration: underline;
 }
 .drawer-question a:hover, .drawer-answer a:hover{
     color: #ffa65e;
-    text-decoration: underline;
 }
 .drawer-answer{
     color: rgb(51, 51, 51);
     padding: 5px 25px;
     font-size: 18px;
+    width: 100%;
 }
 .faq-question-area{
-    margin: 30px;
+    margin: 10px 5px 10px 5px;
+    width: 100%;
 }
-
+.banner-img{
+   width: 70%;
+   float: center;
+}
+.banner-text{
+    font-size: 30px;
+    text-align: center;
+    align-items: center;
+    margin-right: 10%;
+    width: 80%;
+}
 @media only screen and (max-width: 600px) {
     .faq-banner {
         border-radius: 15px;
