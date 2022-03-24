@@ -11,10 +11,12 @@ function WhatsAppButton(props) {
   }
 
   return (
+    <div className = {EN ? "not-visible" : "button" }>
     <button onClick={contactUs} className={!isVisible ? 'contact-us-button' : 'not-visible-button'} >
     {EN ? 'Contact Us' : 'Contáctanos'}
     <i id='icon' className='fab fa-whatsapp'></i>
     </button>
+    </div>
 
 
   )

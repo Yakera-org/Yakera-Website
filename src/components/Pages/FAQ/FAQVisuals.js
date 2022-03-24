@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Grid } from '@material-ui/core';
+import { Grid, Hidden } from '@material-ui/core';
 import Drawer from './FAQDrawer'
 import Author from '../../author';
 import content from './FAQ.json'
@@ -30,15 +30,15 @@ function FAQVisuals(props) {
             
             <Grid container spacing={1} >
                 <Grid container item = {true} xs={12} sm={12} spacing={0} style={{  alignItems:'center', marginLeft: "3%", width: "94%"}}>
-                            <Grid item xs={4} sm={4}>   
+                            <Grid item xs={0} sm={4}   sx={{display: { xs: "none", lg: "block" }}}>   
 
                                     <img alt='banner-pic' className = "banner-img" src={banner_left} />
                             </Grid>
-                            <Grid item xs={4} sm={4} >   
+                            <Grid item xs={12} sm={4} >   
                                     <h1 className = "banner-text"><b>Frequently Asked <span style = {{color: "#e98737"}}>Questions</span></b></h1>
                             </Grid>
 
-                            <Grid item xs={4} sm={4}>   
+                            <Grid item xs={0} sm={4}>   
                                     <img alt='banner-pic' className = "banner-img" src={banner_right} />
                             </Grid>
                 </Grid>

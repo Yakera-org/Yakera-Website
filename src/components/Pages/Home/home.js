@@ -11,7 +11,7 @@ import {CardMedia} from "@material-ui/core";
 import { Link } from 'react-router-dom';
 import './home.scss';
 import TokenService from '../../../services/token';
-import WhatsAppButton from './WhatsAppButton';
+import WhatsAppButton from '../WhatsAppButton/WhatsAppButton.js';
 
 function Home() {
     const [EN, setEN] = React.useState(false);
@@ -64,9 +64,7 @@ function Home() {
     return (
         <div>
             <div className='home-page'>
-                <div className= {EN ? 'not-visible' : 'button'}>
-                    <WhatsAppButton EN={EN} isVisible = {isVisible}/>
-                </div>
+                <WhatsAppButton EN={EN} isVisible = {isVisible}/>
                 <Grid container spacing={0} style={{ alignItems:'flex-start'}}>
                     <Grid item xs={12} sm={6} >
                         <section className='top-left'>

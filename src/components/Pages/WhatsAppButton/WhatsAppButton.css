@@ -13,4 +13,17 @@
   padding: 5%;
   z-index: 1;
   transition: 0.3s;
+  font-family: intro-light;
+}
+
+.button {
+  position: fixed;
+  right: 0;
+  top: 150px;
+  transform: rotate(90deg);
+  z-index: 1;
+}
+
+.not-visible {
+  opacity: 0;
 }

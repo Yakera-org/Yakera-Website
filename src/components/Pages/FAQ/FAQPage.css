@@ -10,7 +10,17 @@
     color:black;
 
 }
-
+.button {
+    position: fixed;
+    right: 0;
+    top: 150px;
+    transform: rotate(90deg);
+    z-index: 1;
+  }
+  
+  .not-visible {
+    opacity: 0;
+  }
 .bottom-text{
     color:#ea8737;
     font-size: 30px;
