@@ -58,6 +58,7 @@
     text-align: center;
     margin: 0;
     padding: 10px 20px;
+    border-radius: 20px;
 
 }
 .dash-btn{
@@ -133,6 +134,30 @@
 }
 #zelle-email {
     margin-right: 5px;
+}
+
+.edit-btn button{
+    border: none;
+    outline: none;
+    background-color: rgba(223, 223, 223, 0.281);
+    border-radius: 10px;
+    padding: 14px;
+    color: #6e6e6e;
+    font-size: 16px;
+    width: 10%;
+    font-family: Intro-Regular-Alt;
+}
+.edit-btn button:hover{
+    background-color: rgba(146, 146, 146, 0.281);
+}
+.edit-btn button:active{
+    background-color: rgba(75, 75, 75, 0.281);
+}
+.details-missing{
+    text-align: center;
+    font-family: Intro-Regular-Alt;
+    font-size: 20px;
+    padding: 2rem 1rem;
 }
 
 .dash-campaigns h2{

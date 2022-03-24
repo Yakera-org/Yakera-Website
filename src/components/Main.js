@@ -19,7 +19,8 @@ import Dashboard from './Pages/Dashboard/Dashboard';
 import EmailVerification from './Pages/EmailVerification/EmailVerificationPage';
 import DonorHub from './Pages/DonorHub/DonorHub';
 import LanguageService from '../services/language';
-import EditPage from './Pages/DonorHub/EditPage';
+import DonorHubEditPage from './Pages/DonorHub/EditPage';
+import DashboardEditPage from './Pages/Dashboard/EditPage';
 
 
 function Main() {
@@ -70,10 +71,11 @@ function Main() {
                         <Route exact path="/consent" component={Consent} />
                         <Route exact path="/frequently-asked-questions" component={FAQ} />
                         <Route exact path="/dashboard" component={isAuthenticated ? Dashboard : login} />
+                        <Route exact path="/dashboard/edit" component={DashboardEditPage} />
                         <Route exact path="/verify-email" component={EmailVerification} />
                         <Route exact path="/" component={home} />
                         <Route exact path='/donor-hub' component={DonorHub} />
-                        <Route exact path='/donor-hub/edit' component={EditPage} />
+                        <Route exact path='/donor-hub/edit' component={DonorHubEditPage} />
                         <Route path="/404" component={NotFoundPage} />
                         <Redirect to="/404" />
 
