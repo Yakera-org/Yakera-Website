@@ -36,7 +36,12 @@ function FAQVisuals(props) {
                                     <img alt='banner-pic' className = "banner-img" src={banner_left} />
                             </Grid></Hidden>
                             <Grid item xs={12} sm={4} className = "banner-text-wrapper">   
+                                    { EN ? 
                                     <h1 className = "banner-text"><b>Frequently Asked <span style = {{color: "#e98737"}}>Questions</span></b></h1>
+                                    : 
+                                    <h1 className = "banner-text"><b>Preguntas <span style = {{color: "#e98737"}}>frecuentas</span></b></h1>
+                                    
+                                    }
                             </Grid>
                             <Hidden xsDown>
                             <Grid item xs={0} sm={4} className = "banner-text-wrapper">   
@@ -69,12 +74,30 @@ function FAQVisuals(props) {
                 <Hidden xsDown>
                 <Grid item xs={12} sm={5}>  <img alt='banner-pic' className = "bottom-pic" src={bottom_pic} style={{width: "100%",marginLeft: "0%"}}/> </Grid>
                 </Hidden>
-                <Grid item xs={12} sm={7}> <div style = {{padding: "10px 0px 10px 0px"}}> <b className = "bottom-text">How do I contact Yakera if I have a question or need support?</b></div>
+                <Grid item xs={12} sm={7}> <div style = {{padding: "10px 0px 10px 0px"}}> 
+                    { EN ? 
+                    <b className = "bottom-text">How do I contact Yakera if I have a question or need support?</b>
+                    : 
+                    <b className = "bottom-text">¿Cómo contacto a Yakera si tengo alguna pregunta o necesito apoyo?</b>
+                    }
+                    
+                    </div>
                     <div style = {{padding: "10px 0px 50px 0px"}}>
+                        { EN ? 
+                        <div>
                         You can contact us on <a href = "https://chat.whatsapp.com/LcSFQzsohaC1hmlgdbij3D"><u>Yakera Community Group with this link</u></a>, 
-                        via an email to <a href = "mailto: abc@example.com"><u>info@yakera.org</u></a>, or through our social media
-                        <a href = "https://twitter.com/yakeraorg"> <u>@yakeraorg</u></a> 
+                        via an email to <a href = "mailto: abc@example.com"><u>info@yakera.org</u></a>{", or through our social media "}
+                        <u><a href = "https://twitter.com/yakeraorg">@yakeraorg</a></u>.
+                        </div>
+                        :
+                        <div>
+                        Puedes contactarnos en nuestro grupo de la Comunidad Yakera en <a href = "https://chat.whatsapp.com/LcSFQzsohaC1hmlgdbij3D"><u>este link</u></a>
+                        , vía mail a <a href = "mailto: abc@example.com"><u>info@yakera.org</u></a> 
+                        {" o por nuestras redes sociales encontrándonos como "}<u><a href = "https://twitter.com/yakeraorg">@yakeraorg</a></u>.
+                       
+                        </div>
                         
+                        }
                     </div>
                 
                 </Grid>
