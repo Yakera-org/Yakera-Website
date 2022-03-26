@@ -3,6 +3,7 @@ import { Grid } from '@material-ui/core';
 import {Card, CardContent, Checkbox} from '@material-ui/core';
 import Author from '../../author';
 import DashboardCard from './DashboardCard';
+import WhatsAppButton from '../WhatsAppButton/WhatsAppButton';
 
 
 function DashboardVisuals(props) {
@@ -24,6 +25,7 @@ function DashboardVisuals(props) {
 
     return (
         <div>
+            <WhatsAppButton EN = {EN}></WhatsAppButton>
             <Card className='dash-card'>
                 <CardContent>
                     <div className='dash-card-top'>

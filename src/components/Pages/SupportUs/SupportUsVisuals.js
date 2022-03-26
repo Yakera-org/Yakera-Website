@@ -1,5 +1,6 @@
 import React from 'react'
 import { Grid } from '@material-ui/core';
+import WhatsAppButton from '../WhatsAppButton/WhatsAppButton';
 
 const titleImg =  'https://assets.yakera.org/yakera/nuevopost-12.webp';
 const banner1 = 'https://assets.yakera.org/yakera/Ivana+Duran.webp'
@@ -17,6 +18,7 @@ function SupportUsVisuals(props) {
     }
     return (
         <div>
+            <WhatsAppButton EN = {EN}></WhatsAppButton>
             <Grid container spacing={0} alignItems="center">
                 <Grid item xs={12} sm={6} >
                     <div className='support-us-top-left'>

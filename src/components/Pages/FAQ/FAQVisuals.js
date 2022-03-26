@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import { Grid, Hidden } from '@material-ui/core';
 import Drawer from './FAQDrawer'
 import Author from '../../author';
-import content from './FAQ.json'
+import content from './FAQ.json';
+import WhatsAppButton from '../WhatsAppButton/WhatsAppButton.js';
 
 const banner_left = "https://yakera-files.s3.us-east-2.amazonaws.com/yakera/FAQ-Banner-Left.png";
 const banner_right = "https://yakera-files.s3.us-east-2.amazonaws.com/yakera/FAQ-Banner-Right.png";
@@ -27,7 +28,7 @@ function FAQVisuals(props) {
 
     return (
         <div className='faq-visuals'>
-            
+            <WhatsAppButton EN = {EN} ></WhatsAppButton>
             <Grid container spacing={1} >
                 <Grid container item = {true} xs={12} sm={12} spacing={0}>
                             <Hidden xsDown>
