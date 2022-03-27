@@ -37,6 +37,32 @@ function EditPageVisual(props) {
                 </Grid>
                 <Grid item xs={12} sm={6} id="details" >
                     <label>
+                        {EN ? 'First name:' : 'Nombre:'}
+                    </label>
+                    <input
+                        type="text"
+                        name="firstName"
+                        maxLength="50"
+                        placeholder={EN ? "Enter your first name" : "Nombre" }
+                        value={user.firstName}
+                        onChange={props.handleChange}
+                        className='form-control'
+                    />
+
+                    <label>
+                        {EN ? 'Last name:' : 'Nombre:'}
+                    </label>
+                    <input
+                        type="text"
+                        name="lastName"
+                        maxLength="50"
+                        placeholder={EN ? "Enter your last name" : "Apellido" }
+                        value={user.lastName}
+                        onChange={props.handleChange}
+                        className='form-control'
+                    />
+
+                    <label>
                         {EN ? 'Location (optional):' : 'Dirección (opcional):'}
                     </label>
                     <input
@@ -47,7 +73,6 @@ function EditPageVisual(props) {
                         value={user.donorInfo.location}
                         onChange={props.handleChange}
                         className='form-control'
-                        
                     />
 
                     <label>
