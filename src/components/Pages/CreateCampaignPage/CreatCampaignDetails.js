@@ -43,6 +43,7 @@ const img = {
     width: 'auto',
     height: '100%'
 };
+
 function FilePreview(props){
     const file = props.file
     return(
@@ -86,27 +87,12 @@ function FilePreview(props){
 
                     :
                     <div className="aws-upload">
-                        <button className="aws-button" id={props.id} file={file} name={file.name} onClick={props.onUpload}>
-                            Upload
-                        </button>
+                        <div className="aws-button">
+                            Uploading...
+                        </div>
                     </div>
             }   
         </>
-    )
-}
-
-function FilePreviewUploaded(props){
-    const file = props.file
-    return(
-        <div style={thumb} key={file.name} id="files">
-            <div style={thumbInner}>
-                <img
-                    alt="dropzone-img"
-                    src={file.preview}
-                    style={img}
-                />
-            </div>
-        </div>
     )
 }
 
@@ -115,7 +101,6 @@ function CreateCampaignDetails(props) {
     const [documentFiles, setDocumentFiles] = useState([]);
     const [campaignFiles, setCampaignFiles] = useState([]);
 
-    const [mainFileUploaded, setMainFileUploaded] = useState([]);
     const [documentFilesUploaded, setDocumentFilesUploaded] = useState([]);
     const [campaignFilesUploaded, setCampaignFilesUploaded] = useState([]);
 
@@ -141,24 +126,6 @@ function CreateCampaignDetails(props) {
     const campaignThumbs = campaignFiles.map((file, i) => {
         return(
             <FilePreview key={file.name + i} file={file} onRemove={onRemove}  onUpload={onUpload} id="campaign" mainFileUploadStatus={mainFileUploadStatus} mainFileUploadFails={mainFileUploadFails}/>
-        )
-    });
-
-    const mainThumbsUploaded = mainFileUploaded.map(file => {
-        return(
-            <FilePreviewUploaded key={file.name} file={file} id="main"/>
-        )
-    });
-
-    const documentThumbsUploaded = documentFilesUploaded.map(file => {
-        return(
-            <FilePreviewUploaded key={file.name} file={file} id="document"/>
-        )
-    });
-
-    const campaignThumbsUploaded = campaignFilesUploaded.map((file, i) => {
-        return(
-            <FilePreviewUploaded key={file.name + i} file={file}id="campaign"/>
         )
     });
 
@@ -191,28 +158,15 @@ function CreateCampaignDetails(props) {
        }
     }
 
-    async function onUpload(e){
-        e.preventDefault()
-        var fileToUpload;
-        var filename = e.target.getAttribute('name')
-        var theFile;
+    async function onUpload(theFile, id){
+        var filename = theFile.name
 
-        if (e.target.getAttribute('id') === "main"){
-            setMainLoading(true)
-            mainFile.forEach(file => {
-                if(file.name === filename){
-                    theFile = file
-                }
-            });
+        if (id === "main"){
             await uploadFile(theFile, config_aws)
             .then(() => {
-                var status = mainFileUploadStatus.concat(filename)
-                setmainFileUploadStatus(status)
-
-                fileToUpload = mainFile.filter(function(item) {
-                    return item.path ===  filename
-                })
-                setMainFileUploaded(fileToUpload)
+                let statusArray = mainFileUploadStatus
+                statusArray.push(theFile.name)
+                setmainFileUploadStatus(statusArray)
 
                 props.setData({
                     ...props.data,
@@ -229,24 +183,15 @@ function CreateCampaignDetails(props) {
                 var failStatus = mainFileUploadFails.concat(filename)
                 setmainFileUploadFails(failStatus)
             }) 
-            setMainLoading(false)
         }
-        else if (e.target.getAttribute('id') === "document"){
-            setDocLoading(true)
-            documentFiles.forEach(file => {
-                if(file.name === filename){
-                    theFile = file
-                }
-            });
+        else if (id === "document"){
             await uploadFile(theFile, config_aws)
             .then(() => {
-                var status = mainFileUploadStatus.concat(filename)
-                setmainFileUploadStatus(status)
+                let statusArray = mainFileUploadStatus
+                statusArray.push(theFile.name)
+                setmainFileUploadStatus(statusArray)
 
-                fileToUpload = documentFiles.filter(function(item) {
-                    return item.path ===  filename
-                })
-                setDocumentFilesUploaded(documentFilesUploaded.concat(fileToUpload))  
+                setDocumentFilesUploaded(documentFilesUploaded.concat(theFile))  
                 
                 var _pics = props.data.camPics
                 documentFilesUploaded.concat(theFile).forEach(pic => {
@@ -265,25 +210,16 @@ function CreateCampaignDetails(props) {
                 console.log(err)
                 var failStatus = mainFileUploadFails.concat(filename)
                 setmainFileUploadFails(failStatus)
-            })       
-            setDocLoading(false)  
+            })         
         }
-        else if (e.target.getAttribute('id') === "campaign"){
-            setCamLoading(true)
-            campaignFiles.forEach(file => {
-                if(file.name === filename){
-                    theFile = file
-                }
-            });
+        else if (id === "campaign"){
             await uploadFile(theFile, config_aws)
             .then(() => {
-                var status = mainFileUploadStatus.concat(filename)
-                setmainFileUploadStatus(status)
+                setCampaignFilesUploaded(campaignFilesUploaded.concat(theFile))  
 
-                fileToUpload = campaignFiles.filter(function(item) {
-                    return item.path ===  filename
-                })
-                setCampaignFilesUploaded(campaignFilesUploaded.concat(fileToUpload))  
+                let statusArray = mainFileUploadStatus
+                statusArray.push(theFile.name)
+                setmainFileUploadStatus(statusArray)
                 
                 var _supppics = props.data.supportPics
                 campaignFilesUploaded.concat(theFile).forEach(pic => {
@@ -300,10 +236,10 @@ function CreateCampaignDetails(props) {
             })
             .catch(err => {
                 console.log(err)
-                var failStatus = mainFileUploadFails.concat(filename)
+                let failStatus = mainFileUploadFails
+                failStatus.push(theFile.name)
                 setmainFileUploadFails(failStatus)
-            })  
-            setCamLoading(false)        
+            })       
         }
     }
 
@@ -482,6 +418,14 @@ function CreateCampaignDetails(props) {
                                 setMainFile(acceptedFiles.concat(mainFile).map(file => Object.assign(file, {
                                     preview: URL.createObjectURL(file)
                                 })));
+                                setMainLoading(true)
+                                acceptedFiles.forEach(async (file, i) => {
+                                    await onUpload(file, "main").then(()=>{
+                                        if (i === acceptedFiles.length -1) {
+                                            setMainLoading(false) 
+                                        } 
+                                    })
+                                }); 
                             }else{
                                 alert(EN ? 'File too big.' : 'La imágen son demasiado grandes.')
                             }
@@ -536,16 +480,7 @@ function CreateCampaignDetails(props) {
                                     loading={mainLoading}
                                 />
                             </div>
-                        </div> 
-                        <h6>{EN ? "Successfully uploaded to Yakera:" : "Archivo:" }</h6>
-                        <ul>{mainThumbsUploaded}</ul>
-                        {
-                            mainFileUploaded.length === 0
-                            ?
-                            <h6 style={{fontSize: "15px", color: "grey", fontFamily:'Intro-Light'}}>{EN ? "No files uploaded" : "Archivo:" }</h6>
-                            :
-                            ""
-                        }
+                        </div>
                     </aside>                   
                 </FormGroup>
 
@@ -604,6 +539,14 @@ function CreateCampaignDetails(props) {
                                     setDocumentFiles(acceptedFiles.concat(documentFiles).map(file => Object.assign(file, {
                                         preview: URL.createObjectURL(file)
                                     })));
+                                    setDocLoading(true)
+                                    acceptedFiles.forEach(async (file, i) => {
+                                        await onUpload(file, "document").then(()=>{
+                                            if (i === acceptedFiles.length -1) {
+                                                setDocLoading(false) 
+                                            } 
+                                        })
+                                    }); 
                                 }else{
                                     alert(EN ? 'Files too big' : 'Las imágenes son demasiado grandes')
                                 }
@@ -657,15 +600,6 @@ function CreateCampaignDetails(props) {
                                 />
                             </div>
                         </div> 
-                        <h6>{EN ? "Successfully uploaded to Yakera:" : "Archivo:" }</h6>
-                        <ul>{documentThumbsUploaded}</ul>
-                        {
-                            documentFilesUploaded.length === 0
-                            ?
-                            <h6 style={{fontSize: "15px", color: "grey", fontFamily:'Intro-Light'}}>{EN ? "No files uploaded" : "Archivo:" }</h6>
-                            :
-                            ""
-                        }
                     </aside>
                 </FormGroup>
 
@@ -681,7 +615,7 @@ function CreateCampaignDetails(props) {
                                 <ul>
                                     <li>Maximum of 4 pictures</li>
                                     <li>Minimum of 1 picture</li>
-                                    <li>Maximum size: 2 MB</li>
+                                    <li>Maximum size: 20 MB</li>
                                 </ul>
                             </div>
                         :
@@ -689,7 +623,7 @@ function CreateCampaignDetails(props) {
                                 <ul>
                                     <li>Máximo de 4 imágenes</li>
                                     <li>Mínimo de 1 imagen</li>
-                                    <li>Tamaño máximo: 2 MB</li>
+                                    <li>Tamaño máximo: 20 MB</li>
                                 </ul>
                             </div>
                         }                    
@@ -719,10 +653,18 @@ function CreateCampaignDetails(props) {
                                 acceptedFiles.concat(campaignFiles).forEach(file => {
                                     totalSize += file.size                                
                                 });
-                                if(totalSize < 2000000){
+                                if(totalSize < 20000000){
                                     setCampaignFiles(acceptedFiles.concat(campaignFiles).map(file => Object.assign(file, {
                                         preview: URL.createObjectURL(file)
                                     })));
+                                    acceptedFiles.forEach(async (file, i)  =>   {
+                                        setCamLoading(true)
+                                        await onUpload(file, "campaign").then(()=>{
+                                            if (i === acceptedFiles.length -1) {
+                                                setCamLoading(false) 
+                                            } 
+                                        })
+                                    });
                                 }else{
                                     alert(EN ? 'Files too big' : 'Las imágenes son demasiado grandes')
                                 }
@@ -778,15 +720,6 @@ function CreateCampaignDetails(props) {
                                 />
                             </div>
                         </div> 
-                        <h6>{EN ? "Successfully uploaded to Yakera:" : "Archivo:" }</h6>
-                        <ul>{campaignThumbsUploaded}</ul>
-                        {
-                            campaignFilesUploaded.length === 0
-                            ?
-                            <h6 style={{fontSize: "15px", color: "grey", fontFamily:'Intro-Light'}}>{EN ? "No files uploaded" : "Archivo:" }</h6>
-                            :
-                            ""
-                        }
                     </aside> 
                 </FormGroup>
             </Form>

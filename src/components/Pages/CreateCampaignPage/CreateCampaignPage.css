@@ -142,9 +142,6 @@
 .aws-upload .retry{
     top: 60px;
 }
-.aws-upload .aws-button:hover{
-    background-color: #71b98f;
-}
 .aws-upload .aws-button-success{
     background-color: #155831;
     text-align: center;
