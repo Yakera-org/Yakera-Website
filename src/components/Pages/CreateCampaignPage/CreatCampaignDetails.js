@@ -110,9 +110,6 @@ function CreateCampaignDetails(props) {
     const [documentFiles, setDocumentFiles] = useState([]);
     const [campaignFiles, setCampaignFiles] = useState([]);
 
-    const [documentFilesUploaded, setDocumentFilesUploaded] = useState([]);
-    const [campaignFilesUploaded, setCampaignFilesUploaded] = useState([]);
-
     const [uploadSuccess, setUploadSuccess] = useState([]);
     const [uploadFailures, setUploadFailures] = useState([]);   
 
@@ -153,18 +150,55 @@ function CreateCampaignDetails(props) {
                 return item.path !==  filename
             })
             setMainFile(newFiles)
+
+            props.setData({
+                ...props.data,
+                mainPicture: "",
+                errors:{
+                    ...props.data.errors,
+                    mainPic: ""
+                }
+            }) 
         }
         else if (e.target.getAttribute('id') === "document"){
             newFiles = documentFiles.filter(function(item) {
                 return item.path !==  filename
             })
             setDocumentFiles(newFiles)
+
+            let _pics = []
+            newFiles.forEach(pic => {
+                _pics.push(pic.name)
+            });
+            
+            props.setData({
+                ...props.data,
+                camPics: _pics,
+                errors:{
+                    ...props.data.errors,
+                    camPics: ""
+                }
+            })
         }
         else if (e.target.getAttribute('id') === "campaign"){
             newFiles = campaignFiles.filter(function(item) {
                return item.path !==  filename
            })
            setCampaignFiles(newFiles)
+
+           let _supppics = []
+            newFiles.forEach(pic => {
+                _supppics.push(pic.name)
+            });
+
+            props.setData({
+                ...props.data,
+                supportPics: _supppics,
+                errors:{
+                    ...props.data.errors,
+                    supportPics: ""
+                }
+            }) 
        }
     }
 
@@ -205,13 +239,10 @@ function CreateCampaignDetails(props) {
                 let statusArray = uploadSuccess
                 statusArray.push(filename)
                 setUploadSuccess(statusArray)
-
-                setDocumentFilesUploaded(documentFilesUploaded.concat(theFile))  
                 
                 var _pics = props.data.camPics
-                documentFilesUploaded.concat(theFile).forEach(pic => {
-                    _pics.push(pic.name)
-                });
+                _pics.push(filename)
+
                 props.setData({
                     ...props.data,
                     camPics: _pics,
@@ -233,16 +264,13 @@ function CreateCampaignDetails(props) {
         else if (id === "campaign"){
             await uploadFile(theFile, config_aws)
             .then(() => {
-                setCampaignFilesUploaded(campaignFilesUploaded.concat(theFile))  
-
                 let statusArray = uploadSuccess
                 statusArray.push(filename)
                 setUploadSuccess(statusArray)
                 
                 var _supppics = props.data.supportPics
-                campaignFilesUploaded.concat(theFile).forEach(pic => {
-                    _supppics.push(pic.name)
-                });
+                _supppics.push(filename)
+
                 props.setData({
                     ...props.data,
                     supportPics: _supppics,
@@ -265,7 +293,6 @@ function CreateCampaignDetails(props) {
 
     async function onRetry(e){
         e.preventDefault()
-        var fileToUpload;
         var filename = e.target.getAttribute('name')
         var id = e.target.getAttribute('id')
         var theFile;
@@ -316,16 +343,8 @@ function CreateCampaignDetails(props) {
                 let statusArray = uploadSuccess
                 statusArray.push(filename)
                 setUploadSuccess(statusArray)
-
-                fileToUpload = documentFiles.filter(function(item) {
-                    return item.path ===  filename
-                })
-                setDocumentFilesUploaded(documentFilesUploaded.concat(fileToUpload))  
                 
-                var _pics = props.data.camPics
-                documentFilesUploaded.concat(theFile).forEach(pic => {
-                    _pics.push(pic.name)
-                });
+                var _pics = props.data.camPics.push(filename)
                 props.setData({
                     ...props.data,
                     camPics: _pics,
@@ -356,16 +375,8 @@ function CreateCampaignDetails(props) {
                 let statusArray = uploadSuccess
                 statusArray.push(filename)
                 setUploadSuccess(statusArray)
-
-                fileToUpload = campaignFiles.filter(function(item) {
-                    return item.path ===  filename
-                })
-                setCampaignFilesUploaded(campaignFilesUploaded.concat(fileToUpload))  
                 
-                var _supppics = props.data.supportPics
-                campaignFilesUploaded.concat(theFile).forEach(pic => {
-                    _supppics.push(pic.name)
-                });
+                var _supppics = props.data.supportPics.push(filename)
                 props.setData({
                     ...props.data,
                     supportPics: _supppics,
