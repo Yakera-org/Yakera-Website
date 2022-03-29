@@ -3,7 +3,6 @@ import CreatCampaignDetails from "./CreatCampaignDetails";
 import {Alert} from 'reactstrap'
 import LanguageService from "../../../services/language";
 import HashLoader from "react-spinners/HashLoader";
-import './CreateCampaignPage.css'
 import './CreateCampaignPage.css';
 import WhatsAppButton from "../WhatsAppButton/WhatsAppButton";
 
