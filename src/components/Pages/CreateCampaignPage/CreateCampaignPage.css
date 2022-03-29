@@ -142,9 +142,6 @@
 .aws-upload .retry{
     top: 60px;
 }
-.aws-upload .aws-button:hover{
-    background-color: #71b98f;
-}
 .aws-upload .aws-button-success{
     background-color: #155831;
     text-align: center;
@@ -201,6 +198,9 @@ aside h6{
     margin-left: 20px;
     font-family: Intro-Light ;
     font-size: 18px;
+}
+#disabled-create:hover{
+    cursor:not-allowed;
 }
 @media only screen and (max-width: 600px) {
     .create-page {

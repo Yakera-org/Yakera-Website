@@ -15,6 +15,7 @@
     "@testing-library/user-event": "^7.1.2",
     "axios": "^0.21.4",
     "bootstrap": "^4.5.2",
+    "browser-image-compression": "^1.0.17",
     "draft-js": "^0.11.7",
     "easy-peasy": "^4.0.1",
     "react": "^16.13.1",
