@@ -5,6 +5,7 @@ import {Alert} from 'reactstrap'
 import Dropzone from "react-dropzone";
 import { uploadFile } from "react-s3";
 import HashLoader from "react-spinners/HashLoader";
+import imageCompression from 'browser-image-compression';
 
 const S3_BUCKET = process.env.REACT_APP_S3_BUCKET
 const REGION = process.env.REACT_APP_REGION
@@ -170,6 +171,7 @@ function CreateCampaignDetails(props) {
     // automatic uploads
     async function onUpload(theFile, id){
         var filename = theFile.name
+        theFile = await compressFile(theFile)
 
         if (id === "main"){
             await uploadFile(theFile, config_aws)
@@ -275,6 +277,8 @@ function CreateCampaignDetails(props) {
                     theFile = file
                 }
             });
+
+            theFile = await compressFile(theFile)
             await uploadFile(theFile, config_aws)
             .then(() => {
                 let statusArray = uploadSuccess
@@ -306,6 +310,7 @@ function CreateCampaignDetails(props) {
                     theFile = file
                 }
             });
+            theFile = await compressFile(theFile)
             await uploadFile(theFile, config_aws)
             .then(() => {
                 let statusArray = uploadSuccess
@@ -345,6 +350,7 @@ function CreateCampaignDetails(props) {
                     theFile = file
                 }
             });
+            theFile = await compressFile(theFile)
             await uploadFile(theFile, config_aws)
             .then(() => {
                 let statusArray = uploadSuccess
@@ -378,6 +384,24 @@ function CreateCampaignDetails(props) {
         }
         setCamLoading(false)
     }
+
+    async function compressFile(img) {
+
+        const options = {
+          maxSizeMB: 1,
+          maxWidthOrHeight: 1920,
+          useWebWorker: true
+        }
+        try {
+          const compressedFile = await imageCompression(img, options);
+
+          return compressedFile
+        } catch (error) {
+          console.log(error);
+          return img
+        }
+
+      }
 
     const EN = props.EN
     return(
@@ -512,14 +536,14 @@ function CreateCampaignDetails(props) {
                             <div><br />Requirements:
                                 <ul>
                                     <li>Maximum of 1 picture</li>
-                                    <li>Maximum size: 1 MB</li>
+                                    <li>Maximum size: 6 MB</li>
                                 </ul>
                             </div>
                         :
                             <div><br />Requisitos:
                                 <ul>
                                     <li>Máximo de 1 imágen</li>
-                                    <li>Tamaño máximo: 1 MB</li>
+                                    <li>Tamaño máximo: 6 MB</li>
                                 </ul>
                             </div>
                         }     
@@ -558,7 +582,7 @@ function CreateCampaignDetails(props) {
                                     acceptedFiles.concat(mainFile).forEach(file => {
                                         totalSize += file.size
                                     });
-                                    if(totalSize < 1000000){
+                                    if(totalSize < 6000000){
                                         setMainFile(acceptedFiles.concat(mainFile).map(file => Object.assign(file, {
                                             preview: URL.createObjectURL(file)
                                         })));
@@ -642,7 +666,7 @@ function CreateCampaignDetails(props) {
                                 <ul>
                                     <li>Maximum of 2 pictures</li>
                                     <li>Minimum of 1 picture</li>
-                                    <li>Maximum size: 1 MB</li>
+                                    <li>Maximum size: 10 MB</li>
                                 </ul>
                             </div>
                         :
@@ -650,7 +674,7 @@ function CreateCampaignDetails(props) {
                                 <ul>
                                     <li>Máximo de 2 imágenes</li>
                                     <li>Mínimo de 1 imagen</li>
-                                    <li>Tamaño máximo: 1 MB</li>
+                                    <li>Tamaño máximo: 10 MB</li>
                                 </ul>
                             </div>
                         }                              
@@ -689,7 +713,7 @@ function CreateCampaignDetails(props) {
                                         totalSize += file.size
                                         
                                     });
-                                    if(totalSize < 1000000){
+                                    if(totalSize < 10000000){
                                         setDocumentFiles(acceptedFiles.concat(documentFiles).map(file => Object.assign(file, {
                                             preview: URL.createObjectURL(file)
                                         })));
