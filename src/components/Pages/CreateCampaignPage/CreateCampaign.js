@@ -187,11 +187,11 @@ function CreateCampaign() {
 
         var pics = []
         data.camPics.forEach(picName => {
-            pics.push({"url": "https://assets.yakera.org/yakera/" + picName})
+            pics.push({"url": "https://assets.yakera.org/testing/" + picName})
         });
         var support = []
         data.supportPics.forEach(picName => {
-            support.push({"url": "https://assets.yakera.org/yakera/" + picName})
+            support.push({"url": "https://assets.yakera.org/testing/" + picName})
         });
 
         const payload = {
@@ -203,7 +203,7 @@ function CreateCampaign() {
             itemizedBudget: data.itemizedbudget,
             language: language,
             mainPicture: {
-                "url": "https://assets.yakera.org/yakera/" + data.mainPicture
+                "url": "https://assets.yakera.org/testing/" + data.mainPicture
             },
             pictures: pics,
             supportDocs: support
