@@ -12,6 +12,7 @@ function CreateCampaignVisuals(props) {
     }, [])
 
     const [language, setLanguage] = React.useState('');
+    const [isUploading, setIsUploading] = React.useState('');
 
     var EN;
     if(language === "en"){
@@ -44,7 +45,7 @@ function CreateCampaignVisuals(props) {
                 }
                 
                 
-                <CreatCampaignDetails EN={EN} data={props.data} handleChange={props.handleChange} setData={props.setData}/>
+                <CreatCampaignDetails EN={EN} data={props.data} handleChange={props.handleChange} setData={props.setData} setIsUploading={setIsUploading}/>
 
                
                 { props.success
@@ -83,9 +84,17 @@ function CreateCampaignVisuals(props) {
                 { !props.success
                 ?
                 <div id='create-campaign'>
-                    <button  onClick={props.submit}>
-                    {EN ? 'Create Campaign' : 'Crear Campaña'}
-                    </button>
+                    {
+                        isUploading
+                        ?
+                            <button  onClick={props.submit} id="disabled-create" disabled={true} style={{backgroundColor:'grey'}}>
+                                {EN ? 'Create Campaign' : 'Crear Campaña'}
+                            </button>
+                        :
+                            <button  onClick={props.submit}>
+                                {EN ? 'Create Campaign' : 'Crear Campaña'}
+                            </button>
+                    }
                 </div>
                 :
                 ""}

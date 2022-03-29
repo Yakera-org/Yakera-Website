@@ -199,6 +199,9 @@ aside h6{
     font-family: Intro-Light ;
     font-size: 18px;
 }
+#disabled-create:hover{
+    cursor:not-allowed;
+}
 @media only screen and (max-width: 600px) {
     .create-page {
         margin-top: 140px;

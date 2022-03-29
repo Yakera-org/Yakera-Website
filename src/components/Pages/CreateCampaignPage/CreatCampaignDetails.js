@@ -139,6 +139,8 @@ function CreateCampaignDetails(props) {
         e.preventDefault()
         var filename = e.target.getAttribute('name')
 
+        props.setIsUploading(true)
+
         var filteredArray = uploadSuccess.filter(e => e !== filename)
         setUploadSuccess(filteredArray)
         filteredArray = uploadFailures.filter(e => e !== filename)
@@ -200,11 +202,14 @@ function CreateCampaignDetails(props) {
                 }
             }) 
        }
+       props.setIsUploading(false)
     }
 
     // automatic uploads
     async function onUpload(theFile, id){
         var filename = theFile.name
+        props.setIsUploading(true)
+
         theFile = await compressFile(theFile)
 
         if (id === "main"){
@@ -289,6 +294,7 @@ function CreateCampaignDetails(props) {
                 setUploadSuccess(filteredArray)
             })       
         }
+        props.setIsUploading(false)
     }
 
     async function onRetry(e){
@@ -296,6 +302,8 @@ function CreateCampaignDetails(props) {
         var filename = e.target.getAttribute('name')
         var id = e.target.getAttribute('id')
         var theFile;
+
+        props.setIsUploading(true)
 
         if (id === "main"){
             setMainLoading(true)
@@ -394,6 +402,8 @@ function CreateCampaignDetails(props) {
             })          
         }
         setCamLoading(false)
+
+        props.setIsUploading(false)
     }
 
     async function compressFile(img) {
