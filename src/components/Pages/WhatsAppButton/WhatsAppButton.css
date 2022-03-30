@@ -24,6 +24,11 @@
   z-index: 1;
 }
 
+#icon{
+  margin-left: 10px;
+  color: rgb(8, 204, 8);
+}
+
 .not-visible {
   opacity: 0;
 }
