@@ -11,7 +11,6 @@ import './donate.css';
 import api from '../../../services/api';
 import LanguageService from '../../../services/language';
 
-
 // no way did i write this, so here is an explanation
 // https://stackoverflow.com/questions/1584370/how-to-merge-two-arrays-in-javascript-and-de-duplicate-items
 const arrayUnique = (array) => {
@@ -202,6 +201,13 @@ class donate extends Component{
             return(
                 <div className="donate-page">
                 <div className="header-top">
+                    <div className='static-header'>
+                    <img 
+                            alt='static-header-pic'
+                            src={this.state.language === 'en' ? pics['header-en'] : pics['header-sp']}
+                            width='1500px' // need to find the right image width, is there an option for setting to page width?
+                        />
+                    </div>
                     <h1>
                         {this.state.language === 'en' ? 'CAMPAIGNS' : 'CAMPAÑAS'}
                     </h1>
