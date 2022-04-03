@@ -202,17 +202,29 @@ class donate extends Component{
                 <div className="donate-page">
                 <div className="header-top">
                     <div className='static-header'>
-                    <img 
-                            alt='static-header-pic'
-                            src={this.state.language === 'en' ? pics['header-en'] : pics['header-sp']}
-                            width='1500px' // need to find the right image width, is there an option for setting to page width?
+                        <img 
+                            alt='line-left'
+                            src={pics['line-left']}
+                            width='375px' height='375px'
+                        />
+                        <img 
+                            alt='photo'
+                            src={pics['header-photo']}
+                            width='375px' height='375px'
+                        />
+                        <img 
+                            alt='textbar'
+                            src={pics['header-bar']}
+                            width='375px' height='375px'
+                        />
+                        <img 
+                            alt='line-right'
+                            src={pics['line-right']}
+                            width='375px' height='375px'
                         />
                     </div>
-                    <h1>
-                        {this.state.language === 'en' ? 'CAMPAIGNS' : 'CAMPAÑAS'}
-                    </h1>
-                    <div className='campaign-filter'>
-                        <img 
+
+                        {/* <img 
                             alt='healthcare-pic'
                             src={pics.healthcare}
                             width='75px' height='75px'
@@ -220,35 +232,7 @@ class donate extends Component{
                             onClick={() => {
                                 this.handleFilter('healthcareFilter');
                             }} 
-                        />
-                        <img
-                            alt='education-pic'
-                            src={pics.education}
-                            width='75px' height='75px'
-                            className={this.state.educationFilter}
-                            onClick={() => {
-                                this.handleFilter('educationFilter');
-                            }} 
-                        />
-                        <img 
-                        alt='business-pic'
-                            src={pics.business}
-                            width='75px' height='75px'
-                            className={this.state.businessFilter}
-                            onClick={() => {
-                                this.handleFilter('businessFilter');
-                            }} 
-                        />
-                        <img
-                            alt='nutrition-pic'
-                            src={pics.nutrition}
-                            width='75px' height='75px'
-                            className={this.state.nutritionFilter}
-                            onClick={() => {
-                                this.handleFilter('nutritionFilter');
-                            }} 
-                        />
-                    </div>
+                        /> */}
                     <SearchBar 
                         searchQuery={this.state.searchQuery}
                         setSearchQuery={this.setSearchQuery}
