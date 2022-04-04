@@ -202,43 +202,51 @@ class donate extends Component{
                 <div className="donate-page">
                 <div className="header-top">
                     <div className='static-header'>
-                    <Grid container spacing={2} direction="row" justifyContent="center" alignItems="center">
-                        <Grid item xs={3}>
-                            <h1>line-left</h1>
+                        <Grid container spacing={0} style={{ alignItems:'flex-start', justifyContent:"flex-end"}}>
+                            <Grid container item={true} xs={3}>
+                                <img 
+                                    alt='line-left'
+                                    src={pics['line-left']}
+                                    width='400px'
+                                />
+                            </Grid>
+                            <Grid container item={true} xs={3} className='donate-img-grid'>
+                                <img
+                                    alt='boy'
+                                    src={pics['header-photo']}
+                                    width='375px'
+                                />
+                            </Grid>
+                            <Grid container item = {true} xs={3} className="donate-text-grid" alignItems="center">
+                                <section>
+                                    <div className = "header-text-div" style ={{width: '70%' }}>
+                                        {this.state.language === 'en' ? 'Support a story, change a life' : 'Apoya una historia, cambia una vida'}
+                                        <br/>
+                                        <div className='donate-text'>
+                                            <div className='donate-img'>
+                                                <img 
+                                                    alt='chat-bar'
+                                                    src={pics['header-bar']}
+                                                    width='450px'
+                                                />
+                                            </div>
+                                            <div className='text-on-bar'>
+                                                {this.state.language === 'en' ? 'For a world full of Yakera!' : '¡Por un mundo lleno de Yakera!'}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </section>
+                            </Grid>
+                            <Grid container item={true} xs={3}>
+                                <img 
+                                    alt='line-right'
+                                    src={pics['line-right']}
+                                    width='375px'
+                                />
+                            </Grid>
                         </Grid>
-                        <Grid item xs={3}>
-                            <h1>header-photo</h1>
-                        </Grid>
-                        <Grid item xs = {3}>
-                            <h1>Text + chatbar</h1>
-                        </Grid>
-                        <Grid item xs={3}>
-                            <h1>line-right</h1>
-                        </Grid>
-                        <Grid item xs={12}>
-                            <h1>spacing</h1>
-                        </Grid>
-                    </Grid>
-                        {/* <img 
-                                alt='line-left'
-                                src={pics['line-left']}
-                                width='375px' height='375px'
-                            />
-                        <img 
-                            alt='photo'
-                            src={pics['header-photo']}
-                            width='375px' height='375px'
-                        />
-                        <img 
-                            alt='textbar'
-                            src={pics['header-bar']}
-                            width='375px' height='375px'
-                        />
-                        <img 
-                            alt='line-right'
-                            src={pics['line-right']}
-                            width='375px' height='375px'
-                        /> */}
+
+                        <br/>
                     </div>
                     <SearchBar 
                         searchQuery={this.state.searchQuery}
@@ -246,11 +254,10 @@ class donate extends Component{
                         language={this.state.language}
                     />
                 </div>
-
     
                 <hr id="hr-top"/>
 
-                 <Grid container spacing={5} style={{alignContent:'center', alignItems:'flex-start'}}>
+                <Grid container spacing={5} style={{alignContent:'center', alignItems:'flex-start'}}>
                     {filteredCampaigns.sort(() => 0.5 - Math.random()).map((cam, i) => {
                             count++;
                             return(
@@ -263,7 +270,6 @@ class donate extends Component{
                                 </Grid>
                             )                       
                     })}    
-
                 </Grid>
     
                 <div style={{textAlign:'center'}}>

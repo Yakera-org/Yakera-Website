@@ -54,6 +54,28 @@
 #no-cam{
     font-size: 20px;
 }
+.donate-text-grid{
+    font-size: 25px;
+    font-weight: bold;
+    /*min-height: 50vh*/
+}
+.header-text-div{
+    width: 70%;
+    margin-left: -20%;
+    margin-bottom: -10%;
+}
+.donate-img{
+    width: 60%;
+}
+.donate-text{
+    position: relative;
+}
+.text-on-bar{
+    position: absolute;
+    right: 50%;
+    left: 50%;
+    bottom: 15%;
+}
 .campaign-filter img{
     /* padding: 2px; */
     margin: 20px;
