@@ -202,11 +202,28 @@ class donate extends Component{
                 <div className="donate-page">
                 <div className="header-top">
                     <div className='static-header'>
-                        <img 
-                            alt='line-left'
-                            src={pics['line-left']}
-                            width='375px' height='375px'
-                        />
+                    <Grid container spacing={2} direction="row" justifyContent="center" alignItems="center">
+                        <Grid item xs={3}>
+                            <h1>line-left</h1>
+                        </Grid>
+                        <Grid item xs={3}>
+                            <h1>header-photo</h1>
+                        </Grid>
+                        <Grid item xs = {3}>
+                            <h1>Text + chatbar</h1>
+                        </Grid>
+                        <Grid item xs={3}>
+                            <h1>line-right</h1>
+                        </Grid>
+                        <Grid item xs={12}>
+                            <h1>spacing</h1>
+                        </Grid>
+                    </Grid>
+                        {/* <img 
+                                alt='line-left'
+                                src={pics['line-left']}
+                                width='375px' height='375px'
+                            />
                         <img 
                             alt='photo'
                             src={pics['header-photo']}
@@ -221,18 +238,8 @@ class donate extends Component{
                             alt='line-right'
                             src={pics['line-right']}
                             width='375px' height='375px'
-                        />
-                    </div>
-
-                        {/* <img 
-                            alt='healthcare-pic'
-                            src={pics.healthcare}
-                            width='75px' height='75px'
-                            className={this.state.healthcareFilter}
-                            onClick={() => {
-                                this.handleFilter('healthcareFilter');
-                            }} 
                         /> */}
+                    </div>
                     <SearchBar 
                         searchQuery={this.state.searchQuery}
                         setSearchQuery={this.setSearchQuery}
