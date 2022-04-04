@@ -34,7 +34,7 @@ function FAQVisuals(props) {
             <Grid container spacing={1} >
                 <Grid container item={true} xs={12} sm={12} spacing={0}>
                     <Hidden xsDown>
-                        <Grid item xs={0} sm={4} sx={{ display: { xs: "none", lg: "block" } }}>
+                        <Grid item sm={4} sx={{ display: { xs: "none", lg: "block" } }}>
 
                             <img alt='banner-pic' className="banner-img" src={banner_left} />
                         </Grid></Hidden>
@@ -47,7 +47,7 @@ function FAQVisuals(props) {
                         }
                     </Grid>
                     <Hidden xsDown>
-                        <Grid item xs={0} sm={4} className="banner-text-wrapper">
+                        <Grid item sm={4} className="banner-text-wrapper">
                             <img alt='banner-pic' className="banner-img" src={banner_right} />
                         </Grid></Hidden>
                 </Grid>
