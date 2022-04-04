@@ -3,7 +3,8 @@ import CreatCampaignDetails from "./CreatCampaignDetails";
 import {Alert} from 'reactstrap'
 import LanguageService from "../../../services/language";
 import HashLoader from "react-spinners/HashLoader";
-import './CreateCampaignPage.css'
+import './CreateCampaignPage.css';
+import WhatsAppButton from "../WhatsAppButton/WhatsAppButton";
 
 function CreateCampaignVisuals(props) {
 
@@ -22,6 +23,7 @@ function CreateCampaignVisuals(props) {
     }
     return(
         <div className='create-page'>
+            <WhatsAppButton EN = {EN}></WhatsAppButton>
             <div id='background' >
                 <h1>
                     {EN ? 'Create your campaign' : 'Crea tu campaña'}

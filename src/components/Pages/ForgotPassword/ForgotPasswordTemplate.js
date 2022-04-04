@@ -3,6 +3,7 @@ import { Button, Form, FormGroup, Input, Alert} from 'reactstrap'
 import { Grid, Link, Card, CardContent} from '@material-ui/core';
 import './ForgotPasswordPage.css';
 import classnames from 'classnames';
+import WhatsAppButton from '../WhatsAppButton/WhatsAppButton';
 
 const ForgotPasswordTemplate = ({
   handleChange,
@@ -15,6 +16,7 @@ const ForgotPasswordTemplate = ({
 
   return (
     <div style={{ backgroundImage: `url(https://yakera-files.s3.us-east-2.amazonaws.com/yakera/pattern-yakera-blue.webp)`}}>
+      <WhatsAppButton EN ={EN}></WhatsAppButton>
       <Card className='forgot-password-card'>
         <CardContent>
 

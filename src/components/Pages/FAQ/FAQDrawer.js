@@ -9,7 +9,7 @@ function FAQDrawer(props) {
       const answers = props.answers
     return (
         <div>
-            <Grid container spacing={1} style={{ alignItems:'flex-start'}}>
+            <Grid container spacing={1} style={{ alignItems:'center'}}>
                 <Grid item xs={12} sm={12} >
                     <div className='drawer-title'>{title}</div>
                 </Grid>
@@ -23,9 +23,6 @@ function FAQDrawer(props) {
                                         answer={answers[i]}
                                         
                                     />
-                                    {
-                                        i === questions.length-1 ? '' : <hr style={{width:'90%', marginLeft:'5%'}}/>
-                                    }
                                    
                                 </div>
                                 )
