@@ -4,7 +4,7 @@ import './WhatsAppButton.css';
 
 function WhatsAppButton(props) {
   const EN = props.EN
-  const targetRef = props.targetRef
+  const targetRef = props?.targetRef
 
   const [isVisible, setIsVisible] = React.useState(false)
 
@@ -23,7 +23,7 @@ function WhatsAppButton(props) {
 
   React.useEffect(() => {
     const observer = new IntersectionObserver(cbFunction, options);
-    const currentTarget = targetRef.current;
+    const currentTarget = targetRef?.current;
     if (currentTarget) observer.observe(currentTarget);
 
     return () => {
