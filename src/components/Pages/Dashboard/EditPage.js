@@ -136,11 +136,11 @@ const EditPage = () => {
 
     const onSubmit = () => {
         setLoading(true);
-        const checkZelleEmail = validateZelleEmail(profileData.user.zelleInfo.email);
-        const checkZelleName = validateZelleName(profileData.user.zelleInfo.name);
-        const checkAirTMEmail = validateAirTMEmail(profileData.user.airTMNum);
+        const checkZelleEmail = validateZelleEmail(profileData.user.zelleInfo ? profileData.user.zelleInfo.email : "");
+        const checkZelleName = validateZelleName(profileData.user.zelleInfo ? profileData.user.zelleInfo.name : "");
+        const checkAirTMEmail = validateAirTMEmail(profileData.user.airTMNum ? profileData.user.airTMNum : "");
 
-        if(zelleEmail !== profileData.user.zelleInfo.email || zelleName !== profileData.user.zelleInfo.name) {
+        if(zelleEmail !== profileData.user?.zelleInfo?.email || zelleName !== profileData.user?.zelleInfo?.name) {
             if(checkZelleEmail && checkZelleName) {
                 backendPatch();
             }else{

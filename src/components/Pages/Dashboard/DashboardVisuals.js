@@ -204,7 +204,12 @@ function DashboardVisuals(props) {
                         {(!user?.zelleInfo?.email && !user.airTMNum)
                             ?
                             <Grid item xs={12} sm={12} className='details-missing'>
-                                Looks like we're missing details from you. Click the button below to edit your profile details.
+                                {EN
+                                ?
+                                "Looks like we're missing details from you. Click the button below to edit your profile details."
+                                :
+                                "Parece que nos faltan detalles. Haga clic en el botón de abajo para editar los detalles de su perfil."}
+
                             </Grid>
                             : (user?.zelleInfo?.email && !user.airTMNum)
                                 ?
@@ -250,14 +255,22 @@ function DashboardVisuals(props) {
                                     </Grid>
 
                                     <Grid item xs={12} sm={6} id='airTM' className='details-missing'>
-                                        Looks like we're missing details from you. Click the button below to edit your profile details.
+                                    {EN
+                                    ?
+                                    "Looks like we're missing details from you. Click the button below to edit your profile details."
+                                    :
+                                    "Parece que nos faltan detalles. Haga clic en el botón de abajo para editar los detalles de su perfil."}
                                     </Grid>
                                 </>
                                 : (!user?.zelleInfo?.email && user.airTMNum)
                                     ?
                                     <>
                                         <Grid item xs={12} sm={6} id='zelle' className='details-missing'>
-                                            Looks like we're missing details from you. Click the button below to edit your profile details.
+                                        {EN
+                                            ?
+                                            "Looks like we're missing details from you. Click the button below to edit your profile details."
+                                            :
+                                            "Parece que nos faltan detalles. Haga clic en el botón de abajo para editar los detalles de su perfil."}
                                         </Grid>
 
                                         <Grid item xs={12} sm={6} id='airTM'>
