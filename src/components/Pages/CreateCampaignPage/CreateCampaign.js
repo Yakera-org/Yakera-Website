@@ -4,6 +4,7 @@ import CreateCampaignVisuals from "./CreateCampaignVisuals";
 import Author from '../../author';
 import LanguageService from "../../../services/language";
 import api from "../../../services/api";
+import TokenService from "../../../services/token";
 
 function CreateCampaign() {
 
@@ -32,7 +33,6 @@ function CreateCampaign() {
     const [errorMessage, setError] = useState('');
     const [successMessage, setSuccess] = useState('');    
     const [EN, setEN] = React.useState(false);
-    const [language, setLanguage] = React.useState('en');
     const [loader, setLoader] = React.useState(false);
     const [hasLoaded, setHasLoaded] = React.useState(false);
 
@@ -40,15 +40,20 @@ function CreateCampaign() {
         function startup(){
             if(LanguageService.getLanguage()==='en'){
                 setEN(true)
-                setLanguage('en')
             }
             else{
                 setEN(false)
-                setLanguage('es')
             } 
-            if (localStorage.getItem('accessToken')) {
-                //all good, nothin gneeds to be done
-                setHasLoaded(true)
+
+            if (TokenService.getLocalAccessToken()) {
+                if(TokenService.isRecipient()){
+                    // only allow recipients to this page
+                    getProfile();                   
+                }else{
+                    // redirect donors to their page
+                    window.location = '/donor-hub';
+                }
+                
             } else {
                 window.location = '/login';
             }
@@ -56,6 +61,19 @@ function CreateCampaign() {
         }
         startup(); 
     }, []);
+
+    async function getProfile(){
+        try {
+            await api.get('/profile');
+            setHasLoaded(true);
+        } catch (err) {
+            setError('Profile not found');
+            setHasLoaded(true);
+            TokenService.removeAccessToken()
+            TokenService.removeRefreshToken()
+            window.location.replace('/login')
+        }
+    }
 
     const handleChange = event => {
 
@@ -200,7 +218,7 @@ function CreateCampaign() {
             category: categories[ data.campaigncategory ],
             description: data.description,
             itemizedBudget: data.itemizedbudget,
-            language: language,
+            language: EN ? "en" : "es",
             mainPicture: {
                 "url": "https://assets.yakera.org/pictures/" + data.mainPicture
             },

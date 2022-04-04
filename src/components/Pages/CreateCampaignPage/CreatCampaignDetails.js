@@ -133,7 +133,7 @@ function CreateCampaignDetails(props) {
     async function onUpload(theFile, id){
         var filename = theFile.name
         props.setIsUploading(true)
-
+        
         theFile = await compressFile(theFile)
 
         if (id === "main"){
