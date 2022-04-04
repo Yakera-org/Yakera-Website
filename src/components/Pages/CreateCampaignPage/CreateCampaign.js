@@ -3,7 +3,7 @@ import {validateFields} from "../Register/Validation";
 import CreateCampaignVisuals from "./CreateCampaignVisuals";
 import Author from '../../author';
 import LanguageService from "../../../services/language";
-
+import api from "../../../services/api";
 
 function CreateCampaign() {
 
@@ -210,7 +210,7 @@ function CreateCampaign() {
 
         console.log(payload)
         try {
-            //await api.post('/campaigns', payload);
+            await api.post('/campaigns', payload);
             setSuccess(EN ? 'Your campaign has been created successfully!' : '¡Tu campaña se ha creado con éxito!')
             setLoader(false)
         } catch (error) {

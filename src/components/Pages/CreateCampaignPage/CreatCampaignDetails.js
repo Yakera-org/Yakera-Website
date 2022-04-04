@@ -13,10 +13,17 @@ const REGION = process.env.REACT_APP_REGION
 const ACCESS_KEY = process.env.REACT_APP_ACCESS_KEY
 const SECRET_ACCESS_KEY = process.env.REACT_APP_SECRET_ACCESS_KEY
 
-const config_aws = {
+const config_aws_pic = {
     bucketName: S3_BUCKET,
     region: REGION,
-    dirName: 'testing',
+    dirName: 'pictures',
+    accessKeyId: ACCESS_KEY,
+    secretAccessKey: SECRET_ACCESS_KEY
+}
+const config_aws_file = {
+    bucketName: S3_BUCKET,
+    region: REGION,
+    dirName: 'files',
     accessKeyId: ACCESS_KEY,
     secretAccessKey: SECRET_ACCESS_KEY
 }
@@ -130,7 +137,7 @@ function CreateCampaignDetails(props) {
         theFile = await compressFile(theFile)
 
         if (id === "main"){
-            await uploadFile(theFile, config_aws)
+            await uploadFile(theFile, config_aws_pic)
             .then(() => {
                 let statusArray = uploadSuccess
                 statusArray.push(filename)
@@ -156,7 +163,7 @@ function CreateCampaignDetails(props) {
             }) 
         }
         else if (id === "document"){
-            await uploadFile(theFile, config_aws)
+            await uploadFile(theFile, config_aws_file)
             .then(() => {
                 let statusArray = uploadSuccess
                 statusArray.push(filename)
@@ -184,7 +191,7 @@ function CreateCampaignDetails(props) {
             })         
         }
         else if (id === "campaign"){
-            await uploadFile(theFile, config_aws)
+            await uploadFile(theFile, config_aws_pic)
             .then(() => {
                 let statusArray = uploadSuccess
                 statusArray.push(filename)
@@ -231,7 +238,7 @@ function CreateCampaignDetails(props) {
             });
 
             theFile = await compressFile(theFile)
-            await uploadFile(theFile, config_aws)
+            await uploadFile(theFile, config_aws_pic)
             .then(() => {
                 let statusArray = uploadSuccess
                 statusArray.push(filename)
@@ -263,7 +270,7 @@ function CreateCampaignDetails(props) {
                 }
             });
             theFile = await compressFile(theFile)
-            await uploadFile(theFile, config_aws)
+            await uploadFile(theFile, config_aws_file)
             .then(() => {
                 let statusArray = uploadSuccess
                 statusArray.push(filename)
@@ -295,7 +302,7 @@ function CreateCampaignDetails(props) {
                 }
             });
             theFile = await compressFile(theFile)
-            await uploadFile(theFile, config_aws)
+            await uploadFile(theFile, config_aws_pic)
             .then(() => {
                 let statusArray = uploadSuccess
                 statusArray.push(filename)
