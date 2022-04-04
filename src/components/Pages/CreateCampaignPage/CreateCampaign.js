@@ -2,7 +2,6 @@ import React, {useState, useEffect} from "react";
 import {validateFields} from "../Register/Validation";
 import CreateCampaignVisuals from "./CreateCampaignVisuals";
 import Author from '../../author';
-import api from "../../../services/api";
 import LanguageService from "../../../services/language";
 
 
@@ -203,7 +202,7 @@ function CreateCampaign() {
             itemizedBudget: data.itemizedbudget,
             language: language,
             mainPicture: {
-                "url": "https://assets.yakera.org/testing/" + data.mainPicture
+                "url": "https://assets.yakera.org/pictures/" + data.mainPicture
             },
             pictures: pics,
             supportDocs: support
@@ -211,7 +210,7 @@ function CreateCampaign() {
 
         console.log(payload)
         try {
-            await api.post('/campaigns', payload);
+            //await api.post('/campaigns', payload);
             setSuccess(EN ? 'Your campaign has been created successfully!' : '¡Tu campaña se ha creado con éxito!')
             setLoader(false)
         } catch (error) {

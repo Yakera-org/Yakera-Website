@@ -21,7 +21,7 @@
 }
 .dash-left {
     font-family: Intro-Regular-Alt;
-    font-size: 20px;
+    font-size: 16px;
     padding: 10px;
 }
 .dash-left input{
@@ -267,7 +267,7 @@
         margin-top: 160px;
     }
     .dash-campaigns h2{
-        font-size: 23px;
+        font-size: 20px;
     }
     .dash-card {
         margin: 10px;
@@ -277,6 +277,12 @@
     .dash-left {
         width: 100%;
         padding: 0%;
+    }
+    .edit-btn button{
+        padding: 10px;
+        font-size: 13px;
+        width: 60%;
+        margin: 10px;
     }
     
     .dash-btn button {
@@ -349,6 +355,12 @@
         max-width: 200px;
         min-width: 100px;
         max-height: 300px;
+    }
+    #dash-name, #dash-stats, #dash-status{
+        padding: 10px;
+    }
+    .dash-left p{
+        padding: 0 10px;
     }
     .dash-plus-sign{
         margin-bottom: 5%;

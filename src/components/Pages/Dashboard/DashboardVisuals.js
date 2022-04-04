@@ -368,7 +368,7 @@ function DashboardVisuals(props) {
 
                                     <Grid item xs={12} sm={6} style={{textAlign:'center'}}>
                                         <div className='dash-plus-sign'>
-                                            <a href='create-campaign'><i className="fas fa-7x fa-plus-circle"></i></a>
+                                            <a href='../create-campaign'><i className="fas fa-7x fa-plus-circle"></i></a>
                                         </div>
                                     </Grid>
 
