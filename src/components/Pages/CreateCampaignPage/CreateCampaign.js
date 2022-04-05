@@ -204,11 +204,11 @@ function CreateCampaign() {
 
         var pics = []
         data.camPics.forEach(picName => {
-            pics.push({"url": "https://assets.yakera.org/pictures/" + picName})
+            pics.push({"url": "https://assets.yakera.org/" + picName})
         });
         var support = []
         data.supportPics.forEach(picName => {
-            support.push({"url": "https://assets.yakera.org/files/" + picName})
+            support.push({"url": "https://assets.yakera.org/" + picName})
         });
 
         const payload = {
@@ -220,13 +220,13 @@ function CreateCampaign() {
             itemizedBudget: data.itemizedbudget,
             language: EN ? "en" : "es",
             mainPicture: {
-                "url": "https://assets.yakera.org/pictures/" + data.mainPicture
+                "url": "https://assets.yakera.org/" + data.mainPicture
             },
             pictures: pics,
             supportDocs: support
         }   
 
-        console.log(payload)
+        //console.log(payload)
         try {
             await api.post('/campaigns', payload);
             setSuccess(EN ? 'Your campaign has been created successfully!' : '¡Tu campaña se ha creado con éxito!')

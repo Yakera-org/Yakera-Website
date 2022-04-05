@@ -140,14 +140,14 @@ function CreateCampaignDetails(props) {
 
         if (id === "main"){
             await S3Client_picture.uploadFile(theFile)
-            .then(() => {
+            .then((data) => {
                 let statusArray = uploadSuccess
                 statusArray.push(filename)
                 setUploadSuccess(statusArray)
 
                 props.setData({
                     ...props.data,
-                    mainPicture: filename,
+                    mainPicture: data.key,
                     errors:{
                         ...props.data.errors,
                         mainPic: ""
@@ -166,13 +166,13 @@ function CreateCampaignDetails(props) {
         }
         else if (id === "document"){
             await S3Client_file.uploadFile(theFile)
-            .then(() => {
+            .then((data) => {
                 let statusArray = uploadSuccess
                 statusArray.push(filename)
                 setUploadSuccess(statusArray)
                 
                 var _pics = props.data.camPics
-                _pics.push(filename)
+                _pics.push(data.key)
 
                 props.setData({
                     ...props.data,
@@ -194,13 +194,13 @@ function CreateCampaignDetails(props) {
         }
         else if (id === "campaign"){
             await S3Client_picture.uploadFile(theFile)
-            .then(() => {
+            .then((data) => {
                 let statusArray = uploadSuccess
                 statusArray.push(filename)
                 setUploadSuccess(statusArray)
                 
                 var _supppics = props.data.supportPics
-                _supppics.push(filename)
+                _supppics.push(data.key)
 
                 props.setData({
                     ...props.data,
@@ -241,14 +241,14 @@ function CreateCampaignDetails(props) {
 
             theFile = await compressFile(theFile)
             await S3Client_picture.uploadFile(theFile)
-            .then(() => {
+            .then((data) => {
                 let statusArray = uploadSuccess
                 statusArray.push(filename)
                 setUploadSuccess(statusArray)
 
                 props.setData({
                     ...props.data,
-                    mainPicture: filename,
+                    mainPicture: data.key,
                     errors:{
                         ...props.data.errors,
                         mainPic: ""
@@ -273,12 +273,12 @@ function CreateCampaignDetails(props) {
             });
             theFile = await compressFile(theFile)
             await S3Client_picture.uploadFile(theFile)
-            .then(() => {
+            .then((data) => {
                 let statusArray = uploadSuccess
                 statusArray.push(filename)
                 setUploadSuccess(statusArray)
                 
-                var _pics = props.data.camPics.push(filename)
+                var _pics = props.data.camPics.push(data.key)
                 props.setData({
                     ...props.data,
                     camPics: _pics,
@@ -305,12 +305,12 @@ function CreateCampaignDetails(props) {
             });
             theFile = await compressFile(theFile)
             await S3Client_picture.uploadFile(theFile)
-            .then(() => {
+            .then((data) => {
                 let statusArray = uploadSuccess
                 statusArray.push(filename)
                 setUploadSuccess(statusArray)
                 
-                var _supppics = props.data.supportPics.push(filename)
+                var _supppics = props.data.supportPics.push(data.key)
                 props.setData({
                     ...props.data,
                     supportPics: _supppics,

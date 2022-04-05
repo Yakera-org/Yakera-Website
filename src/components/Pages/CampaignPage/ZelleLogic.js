@@ -85,15 +85,16 @@ function ZelleLogic(props) {
 
       async function upload (){
         S3Client.uploadFile(SSfile)
-            .then(
-              sendToBackend
+            .then(data =>{
+                sendToBackend(data.key)
+                }
               )
             .catch(err => console.error(err))
       }
 
-      async function sendToBackend(){
+      async function sendToBackend(key){
           try {
-            const fileAWSLocation = "https://yakera-files.s3.us-east-2.amazonaws.com/zelle-screenshots/" + SSfile.name
+            const fileAWSLocation = "https://yakera-files.s3.us-east-2.amazonaws.com/" + key
               const payload = {
                   "slug": props.slug,
                   "email": props.email,

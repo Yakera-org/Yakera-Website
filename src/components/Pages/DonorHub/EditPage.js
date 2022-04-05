@@ -99,9 +99,12 @@ function EditPage(props) {
         var profile =  profileData.user.profilePicture;
         if("https://yakera-files.s3.us-east-2.amazonaws.com/profile-pictures/" + profileData.user.profilePicture.name !== profileImage){
             if(typeof profileData.user.profilePicture !== 'string' ){
-                profile = "https://yakera-files.s3.us-east-2.amazonaws.com/profile-pictures/" + profileData.user.profilePicture.name
-                await handleUpload(profileData.user.profilePicture)
-            }
+                await S3Client.uploadFile(profileData.user.profilePicture)
+                .then(data =>{
+                    profile = "https://yakera-files.s3.us-east-2.amazonaws.com/" + data.key
+                    })
+                    .catch(err => console.error(err))
+                    }
         }else{
             profile = "https://yakera-files.s3.us-east-2.amazonaws.com/profile-pictures/" + profileData.user.profilePicture.name
         }
@@ -118,12 +121,6 @@ function EditPage(props) {
         updateProfile(payload)
         
     }
-
-    async function handleUpload (file){
-        S3Client.uploadFile(file)
-            .then(data => console.log(data))
-            .catch(err => console.error(err))
-      }
 
     async function updateProfile(data){        
         try {
