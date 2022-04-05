@@ -71,7 +71,7 @@ function EditPage(props) {
     }
 
     function handleChange(e){
-        setIsSame(false)
+        setIsSame(false);
         if(e.target.name === "location" || e.target.name === "age" || e.target.name === "bio"){
             setProfileData({
                 ...profileData,
@@ -108,8 +108,8 @@ function EditPage(props) {
         }
         
         const payload = {
-            firstName: profileData.firstName,
-            lastName: profileData.lastName,
+            firstName: profileData.user.firstName,
+            lastName: profileData.user.lastName,
             profilePicture: profile,
             phone: profileData.user.phone,
             donorInfo:{
