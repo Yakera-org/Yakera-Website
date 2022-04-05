@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { validateFields } from '../Register/Validation';
 import ZelleVisual from './ZelleVisual';
 import api from "../../../services/api";
-import { uploadFile } from 'react-s3';
+import S3 from "aws-s3";
 import LanguageService from '../../../services/language';
 
 const S3_BUCKET = process.env.REACT_APP_S3_BUCKET
@@ -18,6 +18,7 @@ const config_aws = {
     secretAccessKey: SECRET_ACCESS_KEY
 }
 
+const S3Client = new S3(config_aws)
 
 function ZelleLogic(props) {
 
@@ -83,7 +84,7 @@ function ZelleLogic(props) {
         }
 
       async function upload (){
-        await uploadFile(SSfile, config_aws)
+        S3Client.uploadFile(SSfile)
             .then(
               sendToBackend
               )

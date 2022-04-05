@@ -96,7 +96,7 @@ const EditPageVisual = ({
                                         type='email'
                                         name='email'
                                         placeholder={EN ? 'Enter your Zelle email' : 'Ingrese su correo electrónico Zelle'}
-                                        value={user.zelleInfo.email}
+                                        value={user?.zelleInfo?.email}
                                         onChange={handleChange}
                                         className={classnames(
                                             'form-control',
@@ -118,7 +118,7 @@ const EditPageVisual = ({
                                     type='name'
                                     name='name'
                                     placeholder={EN ? 'Enter your Zelle name' : 'Ingrese su correo name Zelle'}
-                                    value={user.zelleInfo.name}
+                                    value={user.zelleInfo?.name}
                                     onChange={handleChange}
                                     className={classnames(
                                         'form-control',
@@ -143,7 +143,7 @@ const EditPageVisual = ({
                                         <Checkbox
                                             name='isAccepting'
                                             onChange={handleChange}
-                                            checked={user.zelleInfo.isAccepting}
+                                            checked={user.zelleInfo?.isAccepting}
                                             style={{
                                                 color: '#ea8737',
                                                 '&.MuiChecked': {

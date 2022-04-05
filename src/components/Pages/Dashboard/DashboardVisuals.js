@@ -3,6 +3,7 @@ import { Grid } from '@material-ui/core';
 import {Card, CardContent, Checkbox} from '@material-ui/core';
 import Author from '../../author';
 import DashboardCard from './DashboardCard';
+import WhatsAppButton from '../WhatsAppButton/WhatsAppButton';
 
 
 function DashboardVisuals(props) {
@@ -24,6 +25,7 @@ function DashboardVisuals(props) {
 
     return (
         <div>
+            <WhatsAppButton EN = {EN}></WhatsAppButton>
             <Card className='dash-card'>
                 <CardContent>
                     <div className='dash-card-top'>
@@ -204,7 +206,12 @@ function DashboardVisuals(props) {
                         {(!user?.zelleInfo?.email && !user.airTMNum)
                             ?
                             <Grid item xs={12} sm={12} className='details-missing'>
-                                Looks like we're missing details from you. Click the button below to edit your profile details.
+                                {EN
+                                ?
+                                "Looks like we're missing details from you. Click the button below to edit your profile details."
+                                :
+                                "Parece que nos faltan detalles. Haga clic en el botón de abajo para editar los detalles de su perfil."}
+
                             </Grid>
                             : (user?.zelleInfo?.email && !user.airTMNum)
                                 ?
@@ -250,14 +257,22 @@ function DashboardVisuals(props) {
                                     </Grid>
 
                                     <Grid item xs={12} sm={6} id='airTM' className='details-missing'>
-                                        Looks like we're missing details from you. Click the button below to edit your profile details.
+                                    {EN
+                                    ?
+                                    "Looks like we're missing details from you. Click the button below to edit your profile details."
+                                    :
+                                    "Parece que nos faltan detalles. Haga clic en el botón de abajo para editar los detalles de su perfil."}
                                     </Grid>
                                 </>
                                 : (!user?.zelleInfo?.email && user.airTMNum)
                                     ?
                                     <>
                                         <Grid item xs={12} sm={6} id='zelle' className='details-missing'>
-                                            Looks like we're missing details from you. Click the button below to edit your profile details.
+                                        {EN
+                                            ?
+                                            "Looks like we're missing details from you. Click the button below to edit your profile details."
+                                            :
+                                            "Parece que nos faltan detalles. Haga clic en el botón de abajo para editar los detalles de su perfil."}
                                         </Grid>
 
                                         <Grid item xs={12} sm={6} id='airTM'>
@@ -353,7 +368,7 @@ function DashboardVisuals(props) {
 
                                     <Grid item xs={12} sm={6} style={{textAlign:'center'}}>
                                         <div className='dash-plus-sign'>
-                                            <a href='create-campaign'><i className="fas fa-7x fa-plus-circle"></i></a>
+                                            <a href='../create-campaign'><i className="fas fa-7x fa-plus-circle"></i></a>
                                         </div>
                                     </Grid>
 

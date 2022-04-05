@@ -3,7 +3,8 @@ import CreatCampaignDetails from "./CreatCampaignDetails";
 import {Alert} from 'reactstrap'
 import LanguageService from "../../../services/language";
 import HashLoader from "react-spinners/HashLoader";
-import './CreateCampaignPage.css'
+import './CreateCampaignPage.css';
+import WhatsAppButton from "../WhatsAppButton/WhatsAppButton";
 
 function CreateCampaignVisuals(props) {
 
@@ -12,6 +13,7 @@ function CreateCampaignVisuals(props) {
     }, [])
 
     const [language, setLanguage] = React.useState('');
+    const [isUploading, setIsUploading] = React.useState('');
 
     var EN;
     if(language === "en"){
@@ -21,6 +23,7 @@ function CreateCampaignVisuals(props) {
     }
     return(
         <div className='create-page'>
+            <WhatsAppButton EN = {EN}></WhatsAppButton>
             <div id='background' >
                 <h1>
                     {EN ? 'Create your campaign' : 'Crea tu campaña'}
@@ -44,7 +47,7 @@ function CreateCampaignVisuals(props) {
                 }
                 
                 
-                <CreatCampaignDetails EN={EN} data={props.data} handleChange={props.handleChange} setData={props.setData}/>
+                <CreatCampaignDetails EN={EN} data={props.data} handleChange={props.handleChange} setData={props.setData} setIsUploading={setIsUploading}/>
 
                
                 { props.success
@@ -83,9 +86,17 @@ function CreateCampaignVisuals(props) {
                 { !props.success
                 ?
                 <div id='create-campaign'>
-                    <button  onClick={props.submit}>
-                    {EN ? 'Create Campaign' : 'Crear Campaña'}
-                    </button>
+                    {
+                        isUploading
+                        ?
+                            <button  onClick={props.submit} id="disabled-create" disabled={true} style={{backgroundColor:'grey'}}>
+                                {EN ? 'Create Campaign' : 'Crear Campaña'}
+                            </button>
+                        :
+                            <button  onClick={props.submit}>
+                                {EN ? 'Create Campaign' : 'Crear Campaña'}
+                            </button>
+                    }
                 </div>
                 :
                 ""}
