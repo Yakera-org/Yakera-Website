@@ -6,7 +6,7 @@ import "./EditPage.css"
 import EditPageVisual from './EditPageVisual';
 import api from "../../../services/api";
 
-import { uploadFile } from 'react-s3';
+import S3 from "aws-s3";
 
 const S3_BUCKET = process.env.REACT_APP_S3_BUCKET
 const REGION = process.env.REACT_APP_REGION
@@ -20,7 +20,7 @@ const config_aws = {
     accessKeyId: ACCESS_KEY,
     secretAccessKey: SECRET_ACCESS_KEY
 }
-
+const S3Client = new S3(config_aws);
 function EditPage(props) {
 
     const [loaded, setLoaded] = useState(false);
@@ -120,7 +120,7 @@ function EditPage(props) {
     }
 
     async function handleUpload (file){
-        await uploadFile(file, config_aws)
+        S3Client.uploadFile(file)
             .then(data => console.log(data))
             .catch(err => console.error(err))
       }
