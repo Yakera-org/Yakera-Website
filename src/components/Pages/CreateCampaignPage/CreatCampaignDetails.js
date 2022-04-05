@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import classnames from 'classnames'
 import {Form, FormCheck, FormControl, FormGroup, FormLabel} from "react-bootstrap";
 import {Alert} from 'reactstrap'
-import S3 from "aws-s3"
+import { uploadFile } from "react-s3";
 import HashLoader from "react-spinners/HashLoader";
 import imageCompression from 'browser-image-compression';
 import FilePreview from "./FilePreview";
@@ -28,8 +28,6 @@ const config_aws_file = {
     secretAccessKey: SECRET_ACCESS_KEY
 }
 
-const S3Client_picture = new S3(config_aws_pic)
-const S3Client_file = new S3(config_aws_file)
 
 function CreateCampaignDetails(props) {
     const [mainFile, setMainFile] = useState([]);
@@ -139,7 +137,7 @@ function CreateCampaignDetails(props) {
         theFile = await compressFile(theFile)
 
         if (id === "main"){
-            await S3Client_picture.uploadFile(theFile)
+            await uploadFile(theFile, config_aws_pic)
             .then(() => {
                 let statusArray = uploadSuccess
                 statusArray.push(filename)
@@ -165,7 +163,7 @@ function CreateCampaignDetails(props) {
             }) 
         }
         else if (id === "document"){
-            await S3Client_file.uploadFile(theFile)
+            await uploadFile(theFile, config_aws_file)
             .then(() => {
                 let statusArray = uploadSuccess
                 statusArray.push(filename)
@@ -193,7 +191,7 @@ function CreateCampaignDetails(props) {
             })         
         }
         else if (id === "campaign"){
-            await S3Client_picture.uploadFile(theFile)
+            await uploadFile(theFile, config_aws_pic)
             .then(() => {
                 let statusArray = uploadSuccess
                 statusArray.push(filename)
@@ -240,7 +238,7 @@ function CreateCampaignDetails(props) {
             });
 
             theFile = await compressFile(theFile)
-            await S3Client_picture.uploadFile(theFile)
+            await uploadFile(theFile, config_aws_pic)
             .then(() => {
                 let statusArray = uploadSuccess
                 statusArray.push(filename)
@@ -272,7 +270,7 @@ function CreateCampaignDetails(props) {
                 }
             });
             theFile = await compressFile(theFile)
-            await S3Client_picture.uploadFile(theFile)
+            await uploadFile(theFile, config_aws_file)
             .then(() => {
                 let statusArray = uploadSuccess
                 statusArray.push(filename)
@@ -304,7 +302,7 @@ function CreateCampaignDetails(props) {
                 }
             });
             theFile = await compressFile(theFile)
-            await S3Client_picture.uploadFile(theFile)
+            await uploadFile(theFile, config_aws_pic)
             .then(() => {
                 let statusArray = uploadSuccess
                 statusArray.push(filename)
