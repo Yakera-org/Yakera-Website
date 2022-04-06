@@ -5,12 +5,14 @@ const getLanguage = () => {
 };
 const setLanguage = () => {
     let currentLanguage = getLanguage();
-    let newLanguage = defaultLanguage;
+    let newLanguage;
 
     if(currentLanguage === 'en'){
         newLanguage = 'es'
     }else if(currentLanguage === 'es'){
         newLanguage = 'en'
+    }else{
+        newLanguage = defaultLanguage
     }
 
     localStorage.setItem('language', newLanguage)
