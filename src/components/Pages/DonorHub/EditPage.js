@@ -58,6 +58,7 @@ function EditPage(props) {
     async function getInfo() {
         try {
             const res = await api.get('/profile');
+            console.log(res)
             setProfileData(res.data.data);
             setProfileImage(res.data.data.user.profilePicture)
         } catch (err) {
@@ -70,7 +71,7 @@ function EditPage(props) {
     }
 
     function handleChange(e){
-        setIsSame(false)
+        setIsSame(false);
         if(e.target.name === "location" || e.target.name === "age" || e.target.name === "bio"){
             setProfileData({
                 ...profileData,
@@ -110,13 +111,15 @@ function EditPage(props) {
         }
         
         const payload = {
-                profilePicture: profile,
-                phone: profileData.user.phone,
-                donorInfo:{
-                    location: profileData.user.donorInfo.location,
-                    age: profileData.user.donorInfo.age,
-                    bio: profileData.user.donorInfo.bio
-                }
+            firstName: profileData.user.firstName ? profileData.user.firstName : "",
+            lastName: profileData.user.lastName ? profileData.user.lastName : "",
+            profilePicture: profile,
+            phone: profileData.user.phone,
+            donorInfo:{
+                location: profileData.user.donorInfo.location,
+                age: profileData.user.donorInfo.age,
+                bio: profileData.user.donorInfo.bio
+            }
         }   
         updateProfile(payload)
         
@@ -143,7 +146,17 @@ function EditPage(props) {
     }else{
         return (
             <div className='edit'>
-                <EditPageVisual EN = {EN} data={profileData} handleChange={handleChange} OnSave={OnSave} error={error} success={success} loading={loading} isSame={isSame} setIsSame={setIsSame}/>
+                <EditPageVisual
+                    EN = {EN}
+                    data={profileData}
+                    handleChange={handleChange}
+                    OnSave={OnSave}
+                    error={error}
+                    success={success}
+                    loading={loading}
+                    isSame={isSame}
+                    setIsSame={setIsSame}
+                />
                 <br />
                 <br />
                 <br />

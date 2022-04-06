@@ -59,6 +59,14 @@ class ValidateFields {
     }
     return false;
   }
+  validateEmailAllowingEmptyEmail(email) {
+    if (validator.isEmpty(email)) {
+      return false;
+    } else if (!validator.isEmail(email)) {
+      return EN ? 'Invalid Email': 'Email inválido';
+    }
+    return false;
+  }
 }
 
 const validateFields = new ValidateFields();
