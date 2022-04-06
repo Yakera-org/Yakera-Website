@@ -88,7 +88,6 @@ const LoginPage = () => {
         ...data,
         loading: false,
       }));
-      if (response.status === 200) {
         var type = response.data.user.role
         var redirect = ""
         setLoader(false)
@@ -106,9 +105,7 @@ const LoginPage = () => {
         }
 
         localStorage.setItem('currentTab', redirect);
-        window.location.href = redirect
-
-      }
+        window.location.href = redirect ? redirect : "/"
     }).catch(error => {
       var errorMessage = null;
       if(error.response){          
@@ -120,7 +117,7 @@ const LoginPage = () => {
       }
       setLoader(false)
       setError({errorMessage: errorMessage});
-      setData(data => ({
+      setData({
         email: "",
         password: "",
         loading: false,
@@ -128,7 +125,7 @@ const LoginPage = () => {
           email: null,
           password: null
         }
-      }));
+      });
 
     });
     
