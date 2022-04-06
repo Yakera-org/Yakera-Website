@@ -108,8 +108,8 @@ function EditPage(props) {
         }
         
         const payload = {
-            firstName: profileData.user.firstName,
-            lastName: profileData.user.lastName,
+            firstName: profileData.user.firstName ? profileData.user.firstName : "",
+            lastName: profileData.user.lastName ? profileData.user.lastName : "",
             profilePicture: profile,
             phone: profileData.user.phone,
             donorInfo:{

@@ -37,33 +37,33 @@ function EditPageVisual(props) {
                 </Grid>
                 <Grid item xs={12} sm={6} id="details" >
                     <label>
-                        {EN ? 'First name:' : 'Nombre:'}
+                        {EN ? 'First name :' : 'Nombre :'}
                     </label>
                     <input
                         type="text"
                         name="firstName"
                         maxLength="50"
-                        placeholder={EN ? "Enter your first name" : "Nombre" }
+                        placeholder={EN ? "Enter your first name : " : "Nombre :" }
                         value={user.firstName}
                         onChange={props.handleChange}
                         className='form-control'
                     />
 
                     <label>
-                        {EN ? 'Last name:' : 'Nombre:'}
+                        {EN ? 'Last name :' : 'Nombre :'}
                     </label>
                     <input
                         type="text"
                         name="lastName"
                         maxLength="50"
-                        placeholder={EN ? "Enter your last name" : "Apellido" }
+                        placeholder={EN ? "Enter your last name : " : "Apellido : " }
                         value={user.lastName}
                         onChange={props.handleChange}
                         className='form-control'
                     />
 
                     <label>
-                        {EN ? 'Location (optional):' : 'Dirección (opcional):'}
+                        {EN ? 'Location :' : 'Dirección :'}
                     </label>
                     <input
                         type="text"
@@ -76,7 +76,7 @@ function EditPageVisual(props) {
                     />
 
                     <label>
-                        {EN ? 'Phone (optional):' : 'Número telefónico (opcional):'}
+                        {EN ? 'Phone :' : 'Número telefónico :'}
                     </label>
                     <input
                         type="text"
@@ -89,7 +89,7 @@ function EditPageVisual(props) {
                     />
 
                     <label>
-                        {EN ? 'Age (optional):' : 'Edad (opcional):'}
+                        {EN ? 'Age :' : 'Edad  :'}
                     </label>
                     <input
                         type="number"
@@ -103,7 +103,7 @@ function EditPageVisual(props) {
                     />
                     
                     <label>
-                        {EN ? 'Bio (optional):' : 'Biografía (opcional):'}
+                        {EN ? 'Bio :' : 'Biografía :'}
                     </label>
                     <textarea
                         type="textarea"
