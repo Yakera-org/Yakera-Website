@@ -5,7 +5,7 @@ import Author from "../../author";
 import Loader from "react-loader-spinner";
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 import LanguageService from "../../../services/language";
-import { uploadFile } from 'react-s3';
+import S3 from "aws-s3";
 
 const _axios = require('axios');
 const axios = _axios.create();
@@ -23,6 +23,8 @@ const config_aws = {
     accessKeyId: ACCESS_KEY,
     secretAccessKey: SECRET_ACCESS_KEY
 }
+
+const S3Client = new S3(config_aws);
 
 function Register() {
 
@@ -395,7 +397,7 @@ async function callDonorRegister(){
 }
 
 async function handleUpload (file){
-  uploadFile(file, config_aws)
+  S3Client.uploadFile(file)
       .then(data => console.log(data))
       .catch(err => console.error(err))
 }

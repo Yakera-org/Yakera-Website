@@ -6,7 +6,7 @@ import "./EditPage.css"
 import EditPageVisual from './EditPageVisual';
 import api from "../../../services/api";
 
-import { uploadFile } from 'react-s3';
+import S3 from "aws-s3";
 
 const S3_BUCKET = process.env.REACT_APP_S3_BUCKET
 const REGION = process.env.REACT_APP_REGION
@@ -20,7 +20,7 @@ const config_aws = {
     accessKeyId: ACCESS_KEY,
     secretAccessKey: SECRET_ACCESS_KEY
 }
-
+const S3Client = new S3(config_aws);
 function EditPage(props) {
 
     const [loaded, setLoaded] = useState(false);
@@ -70,7 +70,7 @@ function EditPage(props) {
     }
 
     function handleChange(e){
-        setIsSame(false)
+        setIsSame(false);
         if(e.target.name === "location" || e.target.name === "age" || e.target.name === "bio"){
             setProfileData({
                 ...profileData,
@@ -99,34 +99,34 @@ function EditPage(props) {
         var profile =  profileData.user.profilePicture;
         if("https://yakera-files.s3.us-east-2.amazonaws.com/profile-pictures/" + profileData.user.profilePicture.name !== profileImage){
             if(typeof profileData.user.profilePicture !== 'string' ){
-                profile = "https://yakera-files.s3.us-east-2.amazonaws.com/profile-pictures/" + profileData.user.profilePicture.name
-                await handleUpload(profileData.user.profilePicture)
-            }
+                await S3Client.uploadFile(profile)
+                .then(data =>{
+                    profile = "https://yakera-files.s3.us-east-2.amazonaws.com/" + data.key
+                    })
+                    .catch(err => console.error(err))
+                    }
         }else{
             profile = "https://yakera-files.s3.us-east-2.amazonaws.com/profile-pictures/" + profileData.user.profilePicture.name
         }
         
         const payload = {
-                profilePicture: profile,
-                phone: profileData.user.phone,
-                donorInfo:{
-                    location: profileData.user.donorInfo.location,
-                    age: profileData.user.donorInfo.age,
-                    bio: profileData.user.donorInfo.bio
-                }
+            firstName: profileData.user.firstName ? profileData.user.firstName : "null",
+            lastName: profileData.user.lastName ? profileData.user.lastName : "null",
+            profilePicture: profile,
+            phone: profileData.user.phone,
+            donorInfo:{
+                location: profileData.user.donorInfo.location,
+                age: profileData.user.donorInfo.age,
+                bio: profileData.user.donorInfo.bio
+            }
         }   
         updateProfile(payload)
         
     }
 
-    async function handleUpload (file){
-        await uploadFile(file, config_aws)
-            .then(data => console.log(data))
-            .catch(err => console.error(err))
-      }
-
     async function updateProfile(data){        
         try {
+            console.log(data)
             await api.patch('/profile/update', data);   
             setSuccess("Profile updated")         
         } catch (err) {
@@ -146,7 +146,17 @@ function EditPage(props) {
     }else{
         return (
             <div className='edit'>
-                <EditPageVisual EN = {EN} data={profileData} handleChange={handleChange} OnSave={OnSave} error={error} success={success} loading={loading} isSame={isSame} setIsSame={setIsSame}/>
+                <EditPageVisual
+                    EN = {EN}
+                    data={profileData}
+                    handleChange={handleChange}
+                    OnSave={OnSave}
+                    error={error}
+                    success={success}
+                    loading={loading}
+                    isSame={isSame}
+                    setIsSame={setIsSame}
+                />
                 <br />
                 <br />
                 <br />

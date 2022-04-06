@@ -90,14 +90,6 @@ function Author() {
                     </Grid>
                 </Grid>
             </div>
-            <hr />
-            <div className='section'>
-                <p>
-                    {EN ? 'Yakera Inc. is registered as a tax-exempt 501(c)(4) organization.' : 'Yakera Inc. está registrada como una organización 501 (c) (4) exenta de impuestos.'}
-                    {EN ? 'Please note that under our status as 501(c)(4) we are a non for profit organization devoted to social welfare, but donations made to us are not tax deductible.' : 'Tenga en cuenta que, en virtud de nuestra condición de 501 (c) (4), somos una organización sin fines de lucro dedicada al bienestar social, pero las donaciones que se nos hagan no son deducibles de impuestos.'}
-                    
-                </p>
-            </div>
 
             <hr />
             <div className='section'>

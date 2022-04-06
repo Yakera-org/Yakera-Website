@@ -158,7 +158,7 @@ class NavBar extends Component {
                                     }
                             </Nav.Link>
 
-                            <Nav.Link 
+                            {/* <Nav.Link 
                                 id={this.state.currentTab === 'support' ? 'nav-tab-selected': 'nav-tab'} 
                                 name='support'  
                                 onClick={this.onTabClick.bind(this)}
@@ -169,7 +169,7 @@ class NavBar extends Component {
                                     :
                                     <div name='support' className = "nav-spanish-text">APÓYANOS </div>
                                     }
-                            </Nav.Link>
+                            </Nav.Link> */}
 
                             <Nav.Link 
                                 id={this.state.currentTab === 'campaigns' ? 'nav-tab-selected': 'nav-tab'} 

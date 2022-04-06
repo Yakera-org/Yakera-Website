@@ -1,15 +1,14 @@
 {
     "en":[
             {
-                "title": "About Yakera, our story, and our mission",
+                "title": "About Yakera",
                 "questions":[
                     "What do we do?",
                     "What’s Yakera’s story?",
                     "How does Yakera work?",
                     "How much of my donation goes directly to the recipients?",
                     "What makes Yakera different from other existing crowdfunding platforms?",
-                    "Why cash transfers?",
-                    "Are you a business or a nonprofit?"
+                    "Why cash transfers?"
                 ],
                 "answers":[
                     "Yakera is an innovative platform that leverages the power of individual stories and human connection to unlock global solidarity. In Yakera, people can open crowdfunding campaigns and receive support directly in their bank accounts through the use of innovative technologies that allow easy international transfers.",
@@ -17,8 +16,7 @@
                     "Yakera channels donations to an e-wallet account of the recipient, powered by <a href='https://www.airtm.com/es/'>Airtm</a>. Recipients can withdraw funds in their bank account in local currency or spend it directly via Airtm’s <a href='https://directory.airtm.com/'>network of local partners<a/>.",
                     "We are committed to ensuring that 100% of donations goes directly to the recipient. Our operational and transaction costs are covered by our advisory board, your tips to Yakera, and your <a href='http://www.yakera.org/supportus'>direct donations<a/>.",
                     "Yakera is committed to empowering individuals across the world and unlocking global solidarity. Our features and increased accessibility gives people in Venezuela and Latin American countries the opportunity to create crowdfunding campaigns, but what defines us goes beyond our features. We are building a future where individual agency, empathy, and solidarity are what sustains global humanitarian aid.",
-                    "People know how to solve their own problems better than we do. Individual empowerment is at the forefront of Yakera’s mission. Cash transfers expand agency and make humanitarian aid more accessible and efficient.",
-                    "We are a startup-minded team building an innovative nonprofit like no other."
+                    "People know how to solve their own problems better than we do. Individual empowerment is at the forefront of Yakera’s mission. Cash transfers expand agency and make humanitarian aid more accessible and efficient."
                 ]
             },
             {
@@ -59,7 +57,7 @@
         ],
     "es":[
             {
-                "title": "Sobre Yakera, nosotros, y nuestra misión",
+                "title": "Sobre Yakera",
                 "questions":[
                     "¿Qué hacemos?",
                     "¿Qué es la historia de Yakera?",
