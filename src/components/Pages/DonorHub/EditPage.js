@@ -58,7 +58,6 @@ function EditPage(props) {
     async function getInfo() {
         try {
             const res = await api.get('/profile');
-            console.log(res)
             setProfileData(res.data.data);
             setProfileImage(res.data.data.user.profilePicture)
         } catch (err) {
@@ -100,7 +99,7 @@ function EditPage(props) {
         var profile =  profileData.user.profilePicture;
         if("https://yakera-files.s3.us-east-2.amazonaws.com/profile-pictures/" + profileData.user.profilePicture.name !== profileImage){
             if(typeof profileData.user.profilePicture !== 'string' ){
-                await S3Client.uploadFile(profileData.user.profilePicture)
+                await S3Client.uploadFile(profile)
                 .then(data =>{
                     profile = "https://yakera-files.s3.us-east-2.amazonaws.com/" + data.key
                     })
@@ -111,8 +110,8 @@ function EditPage(props) {
         }
         
         const payload = {
-            firstName: profileData.user.firstName ? profileData.user.firstName : "",
-            lastName: profileData.user.lastName ? profileData.user.lastName : "",
+            firstName: profileData.user.firstName ? profileData.user.firstName : "null",
+            lastName: profileData.user.lastName ? profileData.user.lastName : "null",
             profilePicture: profile,
             phone: profileData.user.phone,
             donorInfo:{
@@ -127,6 +126,7 @@ function EditPage(props) {
 
     async function updateProfile(data){        
         try {
+            console.log(data)
             await api.patch('/profile/update', data);   
             setSuccess("Profile updated")         
         } catch (err) {

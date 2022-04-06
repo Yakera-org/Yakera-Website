@@ -43,20 +43,20 @@ function EditPageVisual(props) {
                         type="text"
                         name="firstName"
                         maxLength="50"
-                        placeholder={EN ? "Enter your first name : " : "Nombre :" }
+                        placeholder={EN ? "Enter your first name " : "Nombre" }
                         value={user.firstName}
                         onChange={props.handleChange}
                         className='form-control'
                     />
 
                     <label>
-                        {EN ? 'Last name :' : 'Nombre :'}
+                        {EN ? 'Last name :' : 'Apellido :'}
                     </label>
                     <input
                         type="text"
                         name="lastName"
                         maxLength="50"
-                        placeholder={EN ? "Enter your last name : " : "Apellido : " }
+                        placeholder={EN ? "Enter your last name " : "Apellido " }
                         value={user.lastName}
                         onChange={props.handleChange}
                         className='form-control'
