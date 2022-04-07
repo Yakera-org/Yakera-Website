@@ -6,6 +6,7 @@ import HashLoader from "react-spinners/HashLoader";
 import pics from './pics';
 import SearchIcon from '@material-ui/icons/Search';
 import { Form, InputGroup } from 'react-bootstrap';
+import { Tune, ArrowUpward, ArrowDownward, CameraRollSharp } from '@material-ui/icons';
 
 import './donate.css';
 import api from '../../../services/api';
@@ -104,6 +105,10 @@ class donate extends Component{
                 businessFilter: '',
                 nutritionFilter: '',
                 activeCategory: '',
+                dateFilter: '',
+                percentageFilter: '',
+                moneyRaisedFilter: '',
+                activeGeneralFilter: '',
             }
     }
 
@@ -130,55 +135,81 @@ class donate extends Component{
         this.setState({ value })
     }  
 
-    filterCampaignsByDate = () => {
-
-        var filteredCams = this.state.campaigns.sort((a, b) => new Date(a.updatedAt) - new Date(b.updatedAt));
-
-        this.setState({
-            campaigns: filteredCams
-        })
-        console.log(filteredCams)
+    filterCampaignsByDate = (cams) => {
+        var filteredCams = cams.sort((a, b) => new Date(a.updatedAt) - new Date(b.updatedAt));
+        return filteredCams;
     } 
-    filterCampaignsByRevDate = () => {
-
-        var filteredCams = this.state.campaigns.sort((a, b) => new Date(a.updatedAt) - new Date(b.updatedAt)).reverse();
-
-        this.setState({
-            campaigns: filteredCams
-        })
+    filterCampaignsByRevDate = (cams) => {
+        var filteredCams = cams.sort((a, b) => new Date(a.updatedAt) - new Date(b.updatedAt)).reverse();
+        return filteredCams;
     }  
-    filterCampaignsByMoney = () => {
-
-        var filteredCams = this.state.campaigns.sort((a, b) => (a.raised + a.zelleRaised) - (b.raised + b.zelleRaised));
-
-        this.setState({
-            campaigns: filteredCams
-        })
+    filterCampaignsByMoney = (cams) => {
+        var filteredCams = cams.sort((a, b) => (a.raised + a.zelleRaised) - (b.raised + b.zelleRaised));
+        return filteredCams;
     } 
-    filterCampaignsByRevMoney = () => {
-
-        var filteredCams = this.state.campaigns.sort((a, b) => (a.raised + a.zelleRaised) - (b.raised + b.zelleRaised)).reverse();
-
-        this.setState({
-            campaigns: filteredCams
-        })
+    filterCampaignsByRevMoney = (cams) => {
+        var filteredCams = cams.sort((a, b) => (a.raised + a.zelleRaised) - (b.raised + b.zelleRaised)).reverse();
+        return filteredCams;
     } 
-    filterCampaignsByPer = () => {
-
-        var filteredCams = this.state.campaigns.sort((a, b) => a.percentage - b.percentage);
-
-        this.setState({
-            campaigns: filteredCams
-        })
+    filterCampaignsByPer = (cams) => {
+        var filteredCams = cams.sort((a, b) => a.percentage - b.percentage);
+        return filteredCams;
     } 
-    filterCampaignsByRevPer = () => {
-
-        var filteredCams = this.state.campaigns.sort((a, b) => a.percentage - b.percentage).reverse();
-
-        this.setState({
-            campaigns: filteredCams
-        })
+    filterCampaignsByRevPer = (cams) => {
+        var filteredCams = cams.sort((a, b) => a.percentage - b.percentage).reverse();
+        return filteredCams;
     } 
+
+    handleChangeSortByDate = (cams) => {
+        if(this.state.dateFilter === 'increase') {
+            return this.filterCampaignsByRevDate(cams);
+        } else if(this.state.dateFilter === 'decrease') {
+            return this.filterCampaignsByDate(cams);
+        }
+    };
+    handleChangeSortByPercentage = (cams) => {
+        if(this.state.percentageFilter === 'increase') {
+            return this.filterCampaignsByPer(cams);
+        } else if(this.state.percentageFilter === 'decrease') {
+            return this.filterCampaignsByRevPer(cams);
+        }
+    };
+    handleChangeSortByMoneyRaised = (cams) => {
+        if(this.state.moneyRaisedFilter === 'increase') {
+            return this.filterCampaignsByMoney(cams);
+        } else if(this.state.moneyRaisedFilter === 'decrease') {
+            return this.filterCampaignsByRevMoney(cams);
+        } 
+    };
+    
+    handleGeneralFilter = (filter) => {
+        if(this.state.activeGeneralFilter !== filter) {
+            this.setState({[filter]: ''});
+        }
+
+        if(this.state[filter] === '') {
+            this.setState({[filter]: 'increase'});
+            this.setState({activeGeneralFilter: filter});
+        } else if(this.state[filter] === 'increase') {
+            this.setState({[filter]: 'decrease'});
+            this.setState({activeGeneralFilter: filter});
+        } else {
+            this.setState({[filter]: ''});
+            this.setState({activeGeneralFilter: ''});
+        }
+    };
+
+    handleGeneralFilteredCampaigns = (cams) => {
+        if(this.state.activeGeneralFilter === 'dateFilter') {
+            return this.handleChangeSortByDate(cams);
+        } else if(this.state.activeGeneralFilter === 'percentageFilter') {
+            return this.handleChangeSortByPercentage(cams);
+        } else if(this.state.activeGeneralFilter === 'moneyRaisedFilter') {
+            return this.handleChangeSortByMoneyRaised(cams);
+        } else {
+            return cams;
+        }
+    };
 
     setSearchQuery = (e) => {
         this.setState({
@@ -225,7 +256,10 @@ class donate extends Component{
    
     render(){
         var count = 0;
-        var filteredCampaigns = this.handleFilteredCampaigns();
+        var filteredCampaigns = (() => {
+            let filtCams = this.handleFilteredCampaigns();
+            return this.handleGeneralFilteredCampaigns(filtCams);
+        })();
         if(!this.state.loaded){
             return(
                 <div className="donate-page-loading">
@@ -255,7 +289,7 @@ class donate extends Component{
                     <h1>
                         {this.state.language === 'en' ? 'CAMPAIGNS' : 'CAMPAÑAS'}
                     </h1>
-                    <div className='campaign-filter'>
+                    <div className='category-filter'>
                         <img 
                             alt='healthcare-pic'
                             src={pics.healthcare}
@@ -293,15 +327,67 @@ class donate extends Component{
                             }} 
                         />
                     </div>
-                    <button onClick={this.filterCampaignsByDate}>Filter by date</button>
-                    <button onClick={this.filterCampaignsByRevDate}>Filter by reverse date</button>
-                    <br />
-                    <button onClick={this.filterCampaignsByMoney}>Filter by Money raised</button>
-                    <button onClick={this.filterCampaignsByRevMoney}>Filter by reverse Money raised</button>
-                    <br />
-                    <button onClick={this.filterCampaignsByPer}>Filter by Percentage</button>
-                    <button onClick={this.filterCampaignsByRevPer}>Filter by reverse Percentage</button>
-                    <br />
+
+                    <Grid
+                        container
+                        spacing={0}
+                        className='general-filter'
+                        alignItems='center'
+                        justifyContent='center'
+                    >
+                        {/* <Tune /> */}
+                        <Grid item xs={12} sm={4}>
+                            <button
+                                name='date'
+                                className={this.state.activeGeneralFilter === 'dateFilter' ? 'active-general-filter' : ''}
+                                onClick={() => {
+                                    this.handleGeneralFilter('dateFilter');
+                                }}
+                            >
+                                Sort by Date 
+                                {this.state.dateFilter === 'increase' 
+                                    ? <ArrowUpward fontSize='small' />
+                                    : this.state.dateFilter === 'decrease'
+                                    ? <ArrowDownward fontSize='small' />
+                                    : ''
+                                }
+                            </button>
+                        </Grid>
+                        <Grid item xs={12} sm={4}>
+                            <button
+                                name='percentage'
+                                className={this.state.activeGeneralFilter === 'percentageFilter' ? 'active-general-filter' : ''}
+                                onClick={() => {
+                                    this.handleGeneralFilter('percentageFilter');
+                                }}
+                            >
+                                Sort by Percentage 
+                                {this.state.percentageFilter === 'increase' 
+                                    ? <ArrowUpward fontSize='small' />
+                                    : this.state.percentageFilter === 'decrease'
+                                    ? <ArrowDownward fontSize='small' />
+                                    : ''
+                                }
+                            </button>
+                        </Grid>
+                        <Grid item xs={12} sm={4}>
+                            <button
+                                name='moneyRaised'
+                                className={this.state.activeGeneralFilter === 'moneyRaisedFilter' ? 'active-general-filter' : ''}
+                                onClick={() => {
+                                    this.handleGeneralFilter('moneyRaisedFilter');
+                                }}
+                            >
+                                Sort by Money Raised 
+                                {this.state.moneyRaisedFilter === 'increase' 
+                                    ? <ArrowUpward fontSize='small' />
+                                    : this.state.moneyRaisedFilter === 'decrease'
+                                    ? <ArrowDownward fontSize='small' />
+                                    : ''
+                                }
+                            </button>
+                        </Grid>
+                    </Grid>
 
                     
                     <SearchBar 
