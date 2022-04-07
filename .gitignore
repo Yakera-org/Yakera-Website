@@ -27,3 +27,8 @@ yarn-error.log*
 .env
 yarn.lock
 yarn.lock
+
+# stripe demo
+StripeDemo/*/node_modules/
+StripeDemo/*/package-lock.json
+StripeDemo/*/.env
