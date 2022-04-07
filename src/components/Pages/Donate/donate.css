@@ -54,6 +54,10 @@
 #no-cam{
     font-size: 20px;
 }
+.donate-img-grid{
+    position: relative;
+    left: -3%;
+}
 .donate-text-grid{
     font-size: 25px;
     font-weight: bold;
@@ -61,15 +65,14 @@
 }
 .header-text-div{
     width: 70%;
-    margin-left: -20%;
-    margin-top: 15%;
-    margin-bottom: -30%;
-}
-.donate-img{
-    width: 60%;
+    margin-left: -10%;
+    margin-top: 18%;
 }
 .donate-text{
     position: relative;
+}
+.chatbar-img{
+    margin-top: 34%;
 }
 .text-on-bar{
     position: absolute;

@@ -207,23 +207,23 @@ class donate extends Component{
                                 <img 
                                     alt='line-left'
                                     src={pics['line-left']}
-                                    width='400px'
+                                    width='375px'
                                 />
                             </Grid>
                             <Grid container item={true} xs={3} className='donate-img-grid'>
                                 <img
                                     alt='boy'
                                     src={pics['header-photo']}
-                                    width='375px'
+                                    width='425px'
                                 />
                             </Grid>
                             <Grid container item = {true} xs={3} className="donate-text-grid" alignItems="center">
                                 <section>
-                                    <div className = "header-text-div" style ={{width: '70%' }}>
+                                    <div className = "header-text-div">
                                         {this.state.language === 'en' ? 'Support a story, change a life' : 'Apoya una historia, cambia una vida'}
                                         <br/>
                                         <div className='donate-text'>
-                                            <div className='donate-img'>
+                                            <div className='chatbar-img'>
                                                 <img 
                                                     alt='chat-bar'
                                                     src={pics['header-bar']}
