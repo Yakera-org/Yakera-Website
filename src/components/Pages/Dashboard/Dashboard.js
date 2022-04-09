@@ -64,14 +64,17 @@ function Dashboard() {
         }
     }
 
-    async function onWithdraw(event){
+    async function onWithdraw(event, type){
         let slug = event.target.name;
+        console.log(slug, type);
         const res = await api.get(`/campaigns/${slug}`);
         const requestBody = {
             slug: slug,
             amount: res.data.data.raised,
             campaignAmountAtMoment: res.data.data.raised, // For future iterations
+            type: type,
         }
+        console.log(requestBody);
         try {
             await api.post(`/campaigns/withdrawn`, requestBody);
             window.alert(EN ? 'Campaign successfully withdrawn!' : '¡Campaña retirada con éxito!')

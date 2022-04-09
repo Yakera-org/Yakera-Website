@@ -84,19 +84,28 @@ function DashboardCard(props) {
                                     
                                     <br />
                                     <div className='action-btn'>
-                                        <Grid container spacing={2} style={{ alignItems:'flex-start'}}>
-                                            <Grid item xs={12} sm={6} style={{textAlign:'center'}} >  
-                                                <button id='go'>
+                                        <Grid container spacing={0}>
+
+                                            <Grid item xs={6} sm={6} direction="column" alignItems="center" justify="center" style={{textAlign:'center'}} >  
+                                                <button name={campaign.slug} onClick={e => props.onWithdraw(e,"partial")} id='withdraw'>
+                                                    {EN ? "Withdraw funds" : "Retirar mis fondos"}
+                                                </button>
+                                            </Grid>
+                                            <Grid item xs={6} sm={6} direction="column" alignItems="center" justify="center" style={{textAlign:'center'}} >  
+                                                <button name={campaign.slug} onClick={e => props.onWithdraw(e,"complete")} id='withdraw'>
+                                                    {EN ? "End campaign" : "Cerrar campaña"}
+                                                </button>
+                                            </Grid>
+                                        </Grid>  
+                                                                          
+                                    </div>
+                                    <div className = "action-btn" style = {{marginTop: "15px"}}>                                   
+                                        <Grid item xs={12} sm={12} style={{textAlign:'center'}} >  
+                                                <button id='go' style={{width: "95%",height: "40px", padding: "0px", textAlign:'center'}} >
                                                     <a href={hrefLink}>{EN ? "Go to campaign" : "Ir a campaña"}</a>
                                                 </button>
-                                            </Grid>
-                                            <Grid item xs={12} sm={6} style={{textAlign:'center'}} >  
-                                                <button name={campaign.slug} onClick={props.onWithdraw} id='withdraw'>
-                                                    {EN ? "Withdraw campaign" : "Retirar campaña"}
-                                                </button>
-                                            </Grid>
-                                        </Grid>                                                                              
-                                    </div>  
+                                        </Grid> 
+                                    </div>
                                 </>
                                 :
                                 ''

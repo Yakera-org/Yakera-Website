@@ -221,21 +221,23 @@
 .action-btn button{
     border: none;
     outline: none;
-    border-radius: 5px;
+    border-radius: 15px;
     font-size: 18px;
-    padding: 10px;
     width: 90%;
+    min-height: 40px;
 }
 
 .action-btn #go{
-    background-color: #ec913b;
+    background-color: #0d325e;
     color: white;
 }
 .action-btn #go:hover{
     opacity: 0.8;
 }
 .action-btn #withdraw{
-    background-color: #ec563b;
+    height: 90%;
+    margin-top: 5%;
+    background-color: #ea8737;
     color: white;
 }
 .action-btn #withdraw:hover{
@@ -263,6 +265,7 @@
 }
 
 @media only screen and (max-width: 600px) {
+
     .dashboard-page {
         margin-top: 160px;
     }
@@ -346,9 +349,9 @@
     .action-btn button{
         border: none;
         border-radius: 10px;
-        font-size: 16px;
-        padding: 12px;
-        width: 80%;
+        font-size: 13px;
+        padding: 4px;
+        width: 90%;
     }
     .dash-active-cam img{
         width: auto;
