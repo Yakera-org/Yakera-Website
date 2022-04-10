@@ -54,19 +54,36 @@
 #no-cam{
     font-size: 20px;
 }
-.donate-img-grid{
-    position: relative;
-    left: -3%;
+.header-left img{
+    width: 100%;
+    object-fit: contain;
 }
-.donate-text-grid{
-    font-size: 25px;
-    font-weight: bold;
-    /*min-height: 50vh*/
+.header-mid-img img{
+    width: 80%;
+    padding: 15% 10%;
+    object-fit: contain;
 }
-.header-text-div{
-    width: 70%;
+.header-mid-text{
+    min-height: 50vh;
+}
+.header-mid-text section{
+    text-align: start;
+    font-weight: 600;
     margin-left: -10%;
-    margin-top: 18%;
+    margin-top: -35%;
+}
+.header-mid-text p{
+    font-size: 35px;
+    text-align: left;
+    margin-left: 0%;
+    width: 80%;
+}
+.header-text{
+    font-size: 35px;
+    font-weight: bold;
+    text-align: left;
+    overflow: hidden;
+    padding-top: 25%;
 }
 .donate-text{
     position: relative;
@@ -75,12 +92,12 @@
     margin-top: 34%;
 }
 .text-on-bar{
-    position: absolute;
-    font-size: 10px;
-    right: 10%;
-    left: 40%;
-    bottom: 46%;
+    padding: 0px 30px 100px 10px;    
     color: white;
+}
+.header-right img{
+    width: 100%;
+    object-fit: contain;
 }
 .campaign-filter img{
     /* padding: 2px; */
@@ -95,6 +112,11 @@
     opacity: 0.3;
 }
 @media only screen and (max-width: 600px) {
+    .donate-text-grid{
+        margin-left: 10%;
+        width: 80%;
+    }
+
     .loader {
         display: block;
         margin: 0 auto;

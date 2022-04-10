@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import CampaignCard from './campaignCard';
 import Author from '../../author';
-import  { Grid } from '@material-ui/core';
+import  { Grid, Hidden } from '@material-ui/core';
 import HashLoader from "react-spinners/HashLoader";
 import pics from './pics';
 import SearchIcon from '@material-ui/icons/Search';
@@ -201,53 +201,45 @@ class donate extends Component{
             return(
                 <div className="donate-page">
                 <div className="header-top">
-                    <div className='static-header'>
-                        <Grid container spacing={0} style={{ alignItems:'flex-start', justifyContent:"flex-end"}}>
-                            <Grid container item={true} xs={3}>
-                                <img 
-                                    alt='line-left'
-                                    src={pics['line-left']}
-                                    width='375px'
-                                />
-                            </Grid>
-                            <Grid container item={true} xs={3} className='donate-img-grid'>
-                                <img
-                                    alt='boy'
-                                    src={pics['header-photo']}
-                                    width='425px'
-                                />
-                            </Grid>
-                            <Grid container item = {true} xs={3} className="donate-text-grid" alignItems="center">
-                                <section>
-                                    <div className = "header-text-div">
-                                        {this.state.language === 'en' ? 'Support a story, change a life' : 'Apoya una historia, cambia una vida'}
-                                        <br/>
-                                        <div className='donate-text'>
-                                            <div className='chatbar-img'>
-                                                <img 
-                                                    alt='chat-bar'
-                                                    src={pics['header-bar']}
-                                                    width='450px'
-                                                />
-                                            </div>
-                                            <div className='text-on-bar'>
-                                                {this.state.language === 'en' ? 'For a world full of Yakera!' : '¡Por un mundo lleno de Yakera!'}
-                                            </div>
-                                        </div>
-                                    </div>
-                                </section>
-                            </Grid>
-                            <Grid container item={true} xs={3}>
-                                <img 
-                                    alt='line-right'
-                                    src={pics['line-right']}
-                                    width='375px'
-                                />
-                            </Grid>
+                    <Grid container spacing={0} style={{ alignItems:'flex-start'}}>
+                        <Hidden xsDown>
+                        <Grid container item={true} sm={3} className='header-left'>
+                            <img alt='line-left' src={pics['line-left']} />
                         </Grid>
-
+                        </Hidden>
+                        <Hidden xsDown>
+                        <Grid container item={true} xs={3} className='header-mid-img'>
+                            <img alt='donate-figure' src={pics['header-photo']} />
+                        </Grid></Hidden>
+                        <Grid container item = {true} xs={3} className="header-mid-text" alignItems='center'>
+                            <section>
+                                <p>
+                                    {this.state.language === 'en' ? 'Support a story, ' : 'Apoya una historia, '} 
+                                    <span style={{color: '#ea8737'}}>{this.state.language === 'en' ? 'change a life' : 'cambia una vida'}</span>
+                                </p>
+                            </section>
+                            {/* <div className='donate-text'>
+                                <div className='chatbar-img'>
+                                    <img 
+                                        alt='chat-bar'
+                                        src={pics['header-bar']}
+                                        width='450px'
+                                    />
+                                    <span className= "text-on-bar">{this.state.language === 'en' ? 'For a world full of Yakera!' : '¡Por un mundo lleno de Yakera!'}</span>
+                                </div>
+                            </div> */}
+                        </Grid>
+                        <Hidden xsDown>
+                        <Grid container item={true} sm={3} className='header-right'>
+                            <img 
+                                alt='line-right'
+                                src={pics['line-right']}
+                                width='375px'
+                            />
+                        </Grid>
+                        </Hidden>
                         <br/>
-                    </div>
+                    </Grid>
                     <SearchBar 
                         searchQuery={this.state.searchQuery}
                         setSearchQuery={this.setSearchQuery}
