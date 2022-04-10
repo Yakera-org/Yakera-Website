@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import CampaignCard from './campaignCard';
 import Author from '../../author';
-import  { Grid, Hidden } from '@material-ui/core';
+import  { Grid, Hidden,CardMedia} from '@material-ui/core';
 import HashLoader from "react-spinners/HashLoader";
 import pics from './pics';
 import SearchIcon from '@material-ui/icons/Search';
@@ -207,27 +207,36 @@ class donate extends Component{
                             <img alt='line-left' src={pics['line-left']} />
                         </Grid>
                         </Hidden>
-                        <Hidden xsDown>
-                        <Grid container item={true} xs={3} className='header-mid-img'>
+                        <Grid container item={true} xs={6} sm={3} className='header-mid-img'>
                             <img alt='donate-figure' src={pics['header-photo']} />
-                        </Grid></Hidden>
-                        <Grid container item = {true} xs={3} className="header-mid-text" alignItems='center'>
+                        </Grid>
+
+                        <Grid container item = {true} xs={6} sm={3}>
                             <section>
-                                <p>
-                                    {this.state.language === 'en' ? 'Support a story, ' : 'Apoya una historia, '} 
-                                    <span style={{color: '#ea8737'}}>{this.state.language === 'en' ? 'change a life' : 'cambia una vida'}</span>
-                                </p>
-                            </section>
-                            {/* <div className='donate-text'>
-                                <div className='chatbar-img'>
-                                    <img 
-                                        alt='chat-bar'
-                                        src={pics['header-bar']}
-                                        width='450px'
-                                    />
-                                    <span className= "text-on-bar">{this.state.language === 'en' ? 'For a world full of Yakera!' : '¡Por un mundo lleno de Yakera!'}</span>
+                            <div className='mid-text-div' style ={{width: '100%' }}>
+                                {this.state.language === 'en' ? 'Support a story, ' : 'Apoya una historia, '} 
+                                <span style={{color: '#ea8737'}}>{this.state.language === 'en' ? 'change a life' : 'cambia una vida'}</span>
+                                <br/>
+                                <CardMedia className = "mid-bubble-div" 
+                                    component="img" 
+                                    alt='header-bubble' 
+                                    image={pics['header-bar']} 
+                                    style = {{
+                                        maxWidth: "120%", 
+                                        float:"light",
+                                    }}
+                                />
+                                <div className='bubble-text'>
+                                    <div className='bubble-quote'>
+                                        <b> {"Sara López"} </b> <br/>
+                                        {this.state.language === 'en' ? 'For a world full of Yakera!' : '¡Por un mundo lleno de Yakera!'}
+                                    </div>
+                                    <div className='bubble-digit'>
+                                        {'$20'}
+                                    </div>
                                 </div>
-                            </div> */}
+                            </div>
+                            </section>
                         </Grid>
                         <Hidden xsDown>
                         <Grid container item={true} sm={3} className='header-right'>

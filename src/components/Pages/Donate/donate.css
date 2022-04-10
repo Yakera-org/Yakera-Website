@@ -63,20 +63,27 @@
     padding: 15% 10%;
     object-fit: contain;
 }
-.header-mid-text{
-    min-height: 50vh;
-}
-.header-mid-text section{
-    text-align: start;
-    font-weight: 600;
-    margin-left: -10%;
-    margin-top: -35%;
-}
-.header-mid-text p{
-    font-size: 35px;
+.mid-text-div{
     text-align: left;
-    margin-left: 0%;
-    width: 80%;
+    font-size: 2.7vw;
+    margin-top: 16%;
+}
+.mid-bubble-div{
+    margin-left: -10%;
+}
+.bubble-quote{
+    font-size: 0.7vw;
+    position: absolute;
+    color: white;
+    margin: -4% 0% 0% 0.5%;
+    transform: translateX(25%);
+}
+.bubble-digit{
+    font-size: 0.7vw;
+    position: absolute;
+    color: black;
+    margin: -3.4% 0% 0% 2.5%;
+    transform: translateX(1100%);
 }
 .header-text{
     font-size: 35px;
@@ -141,6 +148,28 @@
         width: 100%;
         margin-left: 0%;
         margin-bottom: 0px;
+    }
+    .header-mid-text{
+        font-size: 20px;
+    }
+    .mid-text-div{
+        text-align: left;
+        font-size: 5.8vw;
+        margin-top: 15%;
+    }
+    .bubble-quote{
+        font-size: 1.2vw;
+        position: absolute;
+        color: white;
+        margin: -7% 0% 0% 1.5%;
+        transform: translateX(25%);
+    }
+    .bubble-digit{
+        font-size: 1.2vw;
+        position: absolute;
+        color: black;
+        margin: -6% 0% 0% 2.4%;
+        transform: translateX(1250%);
     }
     #hr-top {
         margin: 25px 0;
