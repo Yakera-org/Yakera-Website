@@ -4,19 +4,22 @@ import {Card, CardContent, Checkbox} from '@material-ui/core';
 import Author from '../../author';
 import DashboardCard from './DashboardCard';
 import WhatsAppButton from '../WhatsAppButton/WhatsAppButton';
+import Thankscard from '../CampaignPage/consentCard';
+import NoticeCard from './NoticeCard';
 
 
 function DashboardVisuals(props) {
     const user = props.data.user;
     const campaigns = props.data.campaigns ? props.data.campaigns : [];
     const EN = props.EN;
+    const noticeCardOpen = props.noticeCardOpen;
     
     function onWithdraw(event, type){
-        if(!user.airTMNum){
-            window.alert(EN ? "Please update yur AirTM email address. Without this email, we don't know where you want the money to be transferred to. Thanks" : "Actualice su dirección de correo electrónico de AirTM. Sin este correo electrónico, no sabemos a dónde desea que se transfiera el dinero. Gracias" )
-        }else{
+        // if(!user.airTMNum){
+        //     window.alert(EN ? "Please update yur AirTM email address. Without this email, we don't know where you want the money to be transferred to. Thanks" : "Actualice su dirección de correo electrónico de AirTM. Sin este correo electrónico, no sabemos a dónde desea que se transfiera el dinero. Gracias" )
+        // }else{
             props.onWithdraw(event, type);
-        }
+        // }
     };
 
     const onEdit = () => {
@@ -25,6 +28,7 @@ function DashboardVisuals(props) {
 
     return (
         <div>
+            <NoticeCard EN={EN} open = {noticeCardOpen}></NoticeCard>
             <WhatsAppButton EN = {EN}></WhatsAppButton>
             <Card className='dash-card'>
                 <CardContent>

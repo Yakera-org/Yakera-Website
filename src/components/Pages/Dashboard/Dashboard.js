@@ -21,6 +21,9 @@ function Dashboard() {
     const [zelleName, setZelleName] = useState('');
     const [zelleNameError, setZelleNameError] = useState('');
     const [zelleCheckbox, setZelleCheckbox] = useState(false);
+    const [noticeCardOpen, setNoticeCard] = useState(false);
+
+    
 
     React.useEffect(() => {
         function startup(){
@@ -45,7 +48,14 @@ function Dashboard() {
         }
         startup(); 
     }, []);
-    
+
+    function openThanks(){
+        setNoticeCard(true)
+    }
+    function closeThanks(){
+        window.location.reload(false);
+    }
+
     async function getCampaign() {
         try {
             const res = await api.get('/profile');
@@ -66,19 +76,18 @@ function Dashboard() {
 
     async function onWithdraw(event, type){
         let slug = event.target.name;
-        console.log(slug, type);
-        const res = await api.get(`/campaigns/${slug}`);
-        const requestBody = {
-            slug: slug,
-            amount: res.data.data.raised,
-            campaignAmountAtMoment: res.data.data.raised, // For future iterations
-            type: type,
-        }
-        console.log(requestBody);
+        // const res = await api.get(`/campaigns/${slug}`);
+        // const requestBody = {
+        //     slug: slug,
+        //     amount: res.data.data.raised,
+        //     campaignAmountAtMoment: res.data.data.raised, // For future iterations
+        //     type: type,
+        // }
         try {
-            await api.post(`/campaigns/withdrawn`, requestBody);
-            window.alert(EN ? 'Campaign successfully withdrawn!' : '¡Campaña retirada con éxito!')
+            // await api.post(`/campaigns/withdrawn`, requestBody);
+            // window.alert(EN ? 'Campaign successfully withdrawn!' : '¡Campaña retirada con éxito!')
             window.location.reload();
+            openThanks();
         } catch (err) {
             console.log('Error. ' + err)
         }
@@ -158,6 +167,7 @@ function Dashboard() {
         }
     }
 
+
     if (!loaded){
         return(
             <p style={{marginTop:'150px'}}>
@@ -187,6 +197,7 @@ function Dashboard() {
                     zelleNameError={zelleNameError}
                     zelleCheckbox={zelleCheckbox}
                     onSubmitZelle={onSubmitZelle}
+                    noticeCardOpen = {noticeCardOpen}
                 />
             </div>
         )
