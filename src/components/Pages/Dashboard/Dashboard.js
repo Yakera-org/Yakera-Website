@@ -197,6 +197,7 @@ function Dashboard() {
                     zelleCheckbox={zelleCheckbox}
                     onSubmitZelle={onSubmitZelle}
                     noticeCardOpen = {noticeCardOpen}
+                    //noticeCardOpen = {true}
                     openNotice = {openNotice.bind(this)}
                     closeNotice = {closeNotice.bind(this)} 
                 />

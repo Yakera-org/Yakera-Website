@@ -4,7 +4,8 @@ import {Card, CardContent, Checkbox} from '@material-ui/core';
 import Author from '../../author';
 import DashboardCard from './DashboardCard';
 import WhatsAppButton from '../WhatsAppButton/WhatsAppButton';
-import NoticeCard from './NoticeCard';
+import NoticeCard from './withdrawalCampaignNotice';
+import NoticeCard0 from './endCampaignNotice';
 
 
 function DashboardVisuals(props) {
@@ -12,6 +13,7 @@ function DashboardVisuals(props) {
     const campaigns = props.data.campaigns ? props.data.campaigns : [];
     const EN = props.EN;
     const noticeCardOpen = props.noticeCardOpen;
+    const noticeCard0Open = props.noticeCard0Open;
     
     
     function onWithdraw(event, type){
@@ -29,6 +31,7 @@ function DashboardVisuals(props) {
     return (
         <div>
             <NoticeCard EN={EN} open = {noticeCardOpen} onClose = {props.closeNotice.bind(this)}></NoticeCard>
+            <NoticeCard0 EN={EN} open = {noticeCardOpen} onClose = {props.closeNotice.bind(this)}></NoticeCard0>
             <WhatsAppButton EN = {EN}></WhatsAppButton>
             <Card className='dash-card'>
                 <CardContent>
