@@ -49,10 +49,10 @@ function Dashboard() {
         startup(); 
     }, []);
 
-    function openThanks(){
+    function openNotice(){
         setNoticeCard(true)
     }
-    function closeThanks(){
+    function closeNotice(){
         window.location.reload(false);
     }
 
@@ -76,18 +76,17 @@ function Dashboard() {
 
     async function onWithdraw(event, type){
         let slug = event.target.name;
-        // const res = await api.get(`/campaigns/${slug}`);
-        // const requestBody = {
-        //     slug: slug,
-        //     amount: res.data.data.raised,
-        //     campaignAmountAtMoment: res.data.data.raised, // For future iterations
-        //     type: type,
-        // }
+        const res = await api.get(`/campaigns/${slug}`);
+        const requestBody = {
+            slug: slug,
+            amount: res.data.data.raised,
+            campaignAmountAtMoment: res.data.data.raised, // For future iterations
+            type: type,
+        }
         try {
-            // await api.post(`/campaigns/withdrawn`, requestBody);
-            // window.alert(EN ? 'Campaign successfully withdrawn!' : '¡Campaña retirada con éxito!')
+            await api.post(`/campaigns/withdrawn`, requestBody);
+            window.alert(EN ? 'Campaign successfully withdrawn!' : '¡Campaña retirada con éxito!')
             window.location.reload();
-            openThanks();
         } catch (err) {
             console.log('Error. ' + err)
         }
@@ -198,6 +197,8 @@ function Dashboard() {
                     zelleCheckbox={zelleCheckbox}
                     onSubmitZelle={onSubmitZelle}
                     noticeCardOpen = {noticeCardOpen}
+                    openNotice = {openNotice.bind(this)}
+                    closeNotice = {closeNotice.bind(this)} 
                 />
             </div>
         )

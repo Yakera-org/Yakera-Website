@@ -4,7 +4,6 @@ import {Card, CardContent, Checkbox} from '@material-ui/core';
 import Author from '../../author';
 import DashboardCard from './DashboardCard';
 import WhatsAppButton from '../WhatsAppButton/WhatsAppButton';
-import Thankscard from '../CampaignPage/consentCard';
 import NoticeCard from './NoticeCard';
 
 
@@ -13,6 +12,7 @@ function DashboardVisuals(props) {
     const campaigns = props.data.campaigns ? props.data.campaigns : [];
     const EN = props.EN;
     const noticeCardOpen = props.noticeCardOpen;
+    
     
     function onWithdraw(event, type){
         // if(!user.airTMNum){
@@ -28,7 +28,7 @@ function DashboardVisuals(props) {
 
     return (
         <div>
-            <NoticeCard EN={EN} open = {noticeCardOpen}></NoticeCard>
+            <NoticeCard EN={EN} open = {noticeCardOpen} onClose = {props.closeNotice.bind(this)}></NoticeCard>
             <WhatsAppButton EN = {EN}></WhatsAppButton>
             <Card className='dash-card'>
                 <CardContent>
@@ -364,7 +364,12 @@ function DashboardVisuals(props) {
                                     {
                                         campaigns.map((campaign,i) => {                                           
                                             return(
-                                                <DashboardCard key={i} campaign={campaign} EN={EN} onWithdraw={onWithdraw}/>
+                                                <DashboardCard
+                                                key={i} 
+                                                campaign={campaign} 
+                                                EN={EN} 
+                                                openNotice = {props.openNotice} 
+                                                onWithdraw={onWithdraw}/>
                                             )
                                         })
                                     }

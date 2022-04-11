@@ -87,9 +87,12 @@ function DashboardCard(props) {
                                         <Grid container spacing={0}>
 
                                             <Grid item xs={6} sm={6}  style={{textAlign:'center'}} >  
-                                                <div style ={{display: "grid", placeItems: "center"}}><button name={campaign.slug} onClick={e => props.onWithdraw(e,"partial")} id='withdraw'>
+                                                <div style ={{display: "grid", placeItems: "center"}}><button name={campaign.slug} onClick={() => props.openNotice()} id='withdraw'>
                                                     {EN ? "Withdraw funds" : "Retirar mis fondos"}
                                                 </button></div>
+                                                {/* <div style ={{display: "grid", placeItems: "center"}}><button name={campaign.slug} onClick={e => props.onWithdraw(e,"partial")} id='withdraw'>
+                                                    {EN ? "Withdraw funds" : "Retirar mis fondos"}
+                                                </button></div> */}
                                                 
                                             </Grid>
                                             <Grid item xs={6} sm={6} style={{textAlign:'center'}} >  
