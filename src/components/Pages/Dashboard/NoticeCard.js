@@ -4,13 +4,17 @@ import {Dialog, Grid, Hidden} from '@material-ui/core';
 import { Link } from 'react-router-dom';
 import './NoticeCard.css'
 
+const endImg = "https://yakera-files.s3.us-east-2.amazonaws.com/pictures/end-campaign-notification.png";
+const partialImg = "https://yakera-files.s3.us-east-2.amazonaws.com/pictures/partial-withdrawal-notification.png";
+
 class NoticeCard extends Component{
+
     constructor(props) {
         super(props);
         this.state = {
             loaded: false,
         }
-        // console.log(this.state.EN);
+        const type = this.props.type;
     }
     componentDidMount() {
 
@@ -53,6 +57,8 @@ class NoticeCard extends Component{
                     <i className="fas fa-2x fa-times"></i>
                 </div>
                 </div>
+
+                <img src = {endImg} alt='gratitudImage' width = "90%"/>
 
                 <Grid container
                  spacing={0}

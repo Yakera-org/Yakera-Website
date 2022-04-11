@@ -369,7 +369,8 @@ function DashboardVisuals(props) {
                                                 campaign={campaign} 
                                                 EN={EN} 
                                                 openNotice = {props.openNotice} 
-                                                onWithdraw={onWithdraw}/>
+                                                onWithdraw={onWithdraw}
+                                                />
                                             )
                                         })
                                     }
