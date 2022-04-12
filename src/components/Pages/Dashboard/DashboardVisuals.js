@@ -16,12 +16,12 @@ function DashboardVisuals(props) {
     const endCardOpen = props.endCardOpen;
     
     
-    function onWithdraw(event, type){
-        if(!user.airTMNum){
-            window.alert(EN ? "Please update yur AirTM email address. Without this email, we don't know where you want the money to be transferred to. Thanks" : "Actualice su dirección de correo electrónico de AirTM. Sin este correo electrónico, no sabemos a dónde desea que se transfiera el dinero. Gracias" )
-        }else{
-            props.onWithdraw(event, type);
-        }
+    function onWithdraw(type){
+        // if(!user.airTMNum){
+        //     window.alert(EN ? "Please update yur AirTM email address. Without this email, we don't know where you want the money to be transferred to. Thanks" : "Actualice su dirección de correo electrónico de AirTM. Sin este correo electrónico, no sabemos a dónde desea que se transfiera el dinero. Gracias" )
+        // }else{
+            props.onWithdraw(type);
+        //}
     };
 
     const onEdit = () => {

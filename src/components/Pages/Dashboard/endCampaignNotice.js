@@ -67,7 +67,7 @@ class NoticeCard extends Component{
                     </Grid>
                     <Grid item xs={12} sm={12}>
                     <Button className = "thanks-button"
-                              onClick={() => this.props.onWithdraw(this.props.name,"complete")}
+                              onClick={() => this.props.onWithdraw("complete")}
                               style={{
                                 margin:'10px',
                                 width:'60%',

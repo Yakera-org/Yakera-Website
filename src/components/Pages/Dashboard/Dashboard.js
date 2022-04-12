@@ -87,8 +87,8 @@ function Dashboard() {
         }
     }
 
-    async function onWithdraw(name, type){
-        let slug = name;
+    async function onWithdraw(type){
+        let slug = selectedCampaign;
         const res = await api.get(`/campaigns/${slug}`);
         const requestBody = {
             slug: slug,
