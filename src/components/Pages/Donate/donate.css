@@ -85,23 +85,6 @@
     margin: -3.4% 0% 0% 2.5%;
     transform: translateX(1100%);
 }
-.header-text{
-    font-size: 35px;
-    font-weight: bold;
-    text-align: left;
-    overflow: hidden;
-    padding-top: 25%;
-}
-.donate-text{
-    position: relative;
-}
-.chatbar-img{
-    margin-top: 34%;
-}
-.text-on-bar{
-    padding: 0px 30px 100px 10px;    
-    color: white;
-}
 .header-right img{
     width: 100%;
     object-fit: contain;
