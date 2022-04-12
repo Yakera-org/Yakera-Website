@@ -22,6 +22,8 @@ function Dashboard() {
     const [zelleNameError, setZelleNameError] = useState('');
     const [zelleCheckbox, setZelleCheckbox] = useState(false);
     const [noticeCardOpen, setNoticeCard] = useState(false);
+    const [endCardOpen, setEndCard] = useState(false);
+    const [selectedCampaign, setSelectedCampaign] = useState('');
 
     
 
@@ -49,10 +51,21 @@ function Dashboard() {
         startup(); 
     }, []);
 
-    function openNotice(){
+    function openNotice(event){
+        let slug = event.target.name;
+        setSelectedCampaign(slug);
         setNoticeCard(true)
     }
     function closeNotice(){
+        window.location.reload(false);
+    }
+
+    function openEnd(event){
+        let slug = event.target.name;
+        setSelectedCampaign(slug);
+        setEndCard(true)
+    }
+    function closeEnd(){
         window.location.reload(false);
     }
 
@@ -74,8 +87,8 @@ function Dashboard() {
         }
     }
 
-    async function onWithdraw(event, type){
-        let slug = event.target.name;
+    async function onWithdraw(name, type){
+        let slug = name;
         const res = await api.get(`/campaigns/${slug}`);
         const requestBody = {
             slug: slug,
@@ -200,6 +213,10 @@ function Dashboard() {
                     //noticeCardOpen = {true}
                     openNotice = {openNotice.bind(this)}
                     closeNotice = {closeNotice.bind(this)} 
+                    endCardOpen = {endCardOpen}
+                    openEnd = {openEnd.bind(this)}
+                    closeEnd = {closeEnd.bind(this)}
+                    selectedCampaign = {selectedCampaign}
                 />
             </div>
         )

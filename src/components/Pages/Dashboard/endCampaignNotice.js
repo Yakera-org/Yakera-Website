@@ -1,11 +1,8 @@
 import React, { Component, Fragment } from 'react';
 import Button from '@material-ui/core/Button';
-import {Dialog, Grid, Hidden} from '@material-ui/core';
-import { Link } from 'react-router-dom';
+import {Dialog, Grid} from '@material-ui/core';
 
 const endImg = "https://yakera-files.s3.us-east-2.amazonaws.com/pictures/end-campaign-notification.png";
-const partialImg = "https://yakera-files.s3.us-east-2.amazonaws.com/pictures/partial-withdrawal-notification.png";
-
 class NoticeCard extends Component{
 
     constructor(props) {
@@ -13,7 +10,6 @@ class NoticeCard extends Component{
         this.state = {
             loaded: false,
         }
-        const type = this.props.type;
     }
     componentDidMount() {
 
@@ -26,13 +22,6 @@ class NoticeCard extends Component{
 
 
     render(){
-        //var token = localStorage.getItem('accessToken');
-        var loggedIn = false;
-        var token = localStorage.getItem('accessToken');
-
-        if(token === null){
-          loggedIn = true;
-        }
 
         if (!this.state.loaded) {
             return (
@@ -63,7 +52,7 @@ class NoticeCard extends Component{
                  spacing={0}
                  bgcolor= "#ffffff"
                  className = "notice-grid"
-                 xs={12} sm={12}
+                 
                 >
                     <Grid item xs={12} sm={12}>
                         <img src = {endImg} alt='gratitudImage' width = "50%"/>
@@ -78,11 +67,10 @@ class NoticeCard extends Component{
                     </Grid>
                     <Grid item xs={12} sm={12}>
                     <Button className = "thanks-button"
-                              component={Link}
-                              to="/register"
+                              onClick={() => this.props.onWithdraw(this.props.name,"complete")}
                               style={{
                                 margin:'10px',
-                                width:'40%',
+                                width:'60%',
                                 border:'none',
                                 backgroundColor:'#ea8737',
                                 borderRadius:'30px',

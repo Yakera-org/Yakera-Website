@@ -5,7 +5,7 @@ import Author from '../../author';
 import DashboardCard from './DashboardCard';
 import WhatsAppButton from '../WhatsAppButton/WhatsAppButton';
 import NoticeCard from './withdrawalCampaignNotice';
-import NoticeCard0 from './endCampaignNotice';
+import EndCard from './endCampaignNotice';
 
 
 function DashboardVisuals(props) {
@@ -13,15 +13,15 @@ function DashboardVisuals(props) {
     const campaigns = props.data.campaigns ? props.data.campaigns : [];
     const EN = props.EN;
     const noticeCardOpen = props.noticeCardOpen;
-    const noticeCard0Open = props.noticeCard0Open;
+    const endCardOpen = props.endCardOpen;
     
     
     function onWithdraw(event, type){
-        // if(!user.airTMNum){
-        //     window.alert(EN ? "Please update yur AirTM email address. Without this email, we don't know where you want the money to be transferred to. Thanks" : "Actualice su dirección de correo electrónico de AirTM. Sin este correo electrónico, no sabemos a dónde desea que se transfiera el dinero. Gracias" )
-        // }else{
+        if(!user.airTMNum){
+            window.alert(EN ? "Please update yur AirTM email address. Without this email, we don't know where you want the money to be transferred to. Thanks" : "Actualice su dirección de correo electrónico de AirTM. Sin este correo electrónico, no sabemos a dónde desea que se transfiera el dinero. Gracias" )
+        }else{
             props.onWithdraw(event, type);
-        // }
+        }
     };
 
     const onEdit = () => {
@@ -30,8 +30,8 @@ function DashboardVisuals(props) {
 
     return (
         <div>
-            <NoticeCard EN={EN} open = {noticeCardOpen} onClose = {props.closeNotice.bind(this)}></NoticeCard>
-            <NoticeCard0 EN={EN} open = {noticeCardOpen} onClose = {props.closeNotice.bind(this)}></NoticeCard0>
+            <NoticeCard EN={EN} open = {noticeCardOpen} name = {props.selectedCampaign} onClose = {props.closeNotice.bind(this)} onWithdraw = {onWithdraw}></NoticeCard>
+            <EndCard EN={EN} open = {endCardOpen} name = {props.selectedCampaign} onClose = {props.closeEnd.bind(this)} onWithdraw = {onWithdraw}></EndCard>
             <WhatsAppButton EN = {EN}></WhatsAppButton>
             <Card className='dash-card'>
                 <CardContent>
@@ -373,6 +373,9 @@ function DashboardVisuals(props) {
                                                 EN={EN} 
                                                 openNotice = {props.openNotice} 
                                                 onWithdraw={onWithdraw}
+                                                openEnd = {props.openEnd}
+                                                closeEnd = {props.closeEnd}
+                                                
                                                 />
                                             )
                                         })

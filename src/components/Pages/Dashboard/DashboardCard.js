@@ -87,7 +87,8 @@ function DashboardCard(props) {
                                         <Grid container spacing={0}>
 
                                             <Grid item xs={6} sm={6}  style={{textAlign:'center'}} >  
-                                                <div style ={{display: "grid", placeItems: "center"}}><button name={campaign.slug} onClick={() => props.openNotice()} id='withdraw'>
+                                                
+                                                <div style ={{display: "grid", placeItems: "center"}}><button name={campaign.slug} onClick={e => props.openNotice(e)} id='withdraw'>
                                                     {EN ? "Withdraw funds" : "Retirar mis fondos"}
                                                 </button></div>
                                                 {/* <div style ={{display: "grid", placeItems: "center"}}><button name={campaign.slug} onClick={e => props.onWithdraw(e,"partial")} id='withdraw'>
@@ -96,9 +97,12 @@ function DashboardCard(props) {
                                                 
                                             </Grid>
                                             <Grid item xs={6} sm={6} style={{textAlign:'center'}} >  
-                                                <div style ={{display: "grid", placeItems: "center"}}><button name={campaign.slug} onClick={e => props.onWithdraw(e,"complete")} id='withdraw'>
+                                                <div style ={{display: "grid", placeItems: "center"}}><button name={campaign.slug} onClick={e => props.openEnd(e)} id='withdraw'>
                                                     {EN ? "End campaign" : "Cerrar campaña"}
                                                 </button></div>
+                                                {/* <div style ={{display: "grid", placeItems: "center"}}><button name={campaign.slug} onClick={e => props.onWithdraw(e,"complete")} id='withdraw'>
+                                                    {EN ? "End campaign" : "Cerrar campaña"}
+                                                </button></div> */}
                                                 
                                             </Grid>
                                         </Grid>  
