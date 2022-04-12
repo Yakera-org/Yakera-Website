@@ -101,6 +101,72 @@
 .campaign-filter .fade {
     opacity: 0.3;
 }
+
+.bottom-images{
+    background-color: grey;
+}
+
+.bottom-images img{
+    margin-top: -10%;
+    width: 75%;
+    margin-bottom: -20%;
+}
+
+.bottom-images p{
+    font-size: 30px;
+    font-weight: bold; 
+    width: 65%;
+    margin-bottom: 15%;
+}
+
+.p1{
+    margin-left: 40%;
+}
+
+.p2 {
+    margin-left: 8%;
+}
+
+.bottom-images span{
+    color: orange;
+}
+
+.img-1{
+    margin-left: 25%;
+}
+
+.campaign-img{
+    margin-top: 5%;
+    width: 75%;
+    margin-left: 23%;
+}
+
+.bottom p{
+    font-size: 30px;
+    width: 70%;
+}
+
+.bottom span{
+    font-weight: bold;
+}
+
+.quote{
+    width: 30%;
+    margin-left: -8%;
+    margin-top: 12%;
+    margin-bottom: -8%;
+}
+
+.bottom button{
+    color: white;
+    background-color: orange;
+    border: none;
+    border-radius: 30px;
+    font-size: 30px;
+    width: 50%;
+    padding: 5px;
+}
+
 @media only screen and (max-width: 600px) {
     .donate-text-grid{
         margin-left: 10%;
