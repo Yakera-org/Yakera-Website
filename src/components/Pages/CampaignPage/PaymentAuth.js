@@ -1,10 +1,16 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import {Card} from '@material-ui/core';
 import PayPal from './Paypal';
 import airtmLogo from '../../../pics/airtmbutton.png';
 import zelleLogo from '../../../pics/zelle.png';
 import ZelleLogic from './ZelleLogic';
+import { loadStripe } from "@stripe/stripe-js"
+import { Elements } from "@stripe/react-stripe-js"
+import StripeForm from './Stripe';
 
+// The public key is currently set to the test public key
+const PUBLIC_KEY = "pk_test_51KjTNTD1ctBA5rzvPq6FjtoOxn2bGAPvUX5GluRXOUnaMrINHjQ55uC3ZqllRDaUcoTAITPjPlvT76cNjNlZAPTM00Y71uOjrE";
+const stripePromise = loadStripe(PUBLIC_KEY);
 
 function PaymentAuth(props) {
     const EN = props.EN
@@ -19,6 +25,33 @@ function PaymentAuth(props) {
     async function onZelle(){
         setOpenZelle(!openZelle)
     }
+
+    const [clientSecret, setClientSecret] = useState("");
+
+    useEffect(() => {
+        // Create payment intent
+        fetch("/create-payment-intent", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ items: [{ id: "donation" }, { id: "tip" }] }),
+        }).then((res) => res.json()).then((data) => setClientSecret(data.clientSecret));
+    }, []);
+
+    const appearance = {
+        theme: "stripe",
+        variables: {
+            colorPrimary: "#eb913b",
+            colorBackground: "#f0f0f0",
+            colorText: "#ffffff",
+            colorDanger: "#c90003",
+            fontFamily: "Ramona-Bold, Ramona-Light, Intro-Regular-Alt, Intro-Thin, Intro-Light",
+        }
+    };
+
+    const options = {
+        clientSecret,
+        appearance,
+    };
 
     const total_amount = parseInt(props.amount) + parseInt(props.tip)
     return (
@@ -80,6 +113,11 @@ function PaymentAuth(props) {
                 :
                 ''
                 }
+                {clientSecret && (
+                    <Elements options={options} stripe={stripePromise}>
+                        <StripeForm />
+                    </Elements>
+                )}
 
 
             <button className='payment-back-btn' onClick={props.onBack}>
