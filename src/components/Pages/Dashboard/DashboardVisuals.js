@@ -29,7 +29,7 @@ function DashboardVisuals(props) {
             <Card className='dash-card'>
                 <CardContent>
                     <div className='dash-card-top'>
-                        <h1> {EN ?'Welcome ' : 'Bienvenido ' }  <span id='dash-name'>{user.firstName}</span> </h1>
+                        <h1> {EN ?'Welcome ' : '¡Hola ' }  <span id='dash-name'>{user.firstName}</span>!</h1>
                         <br />
                     </div>
 
@@ -210,8 +210,7 @@ function DashboardVisuals(props) {
                                 ?
                                 "Looks like we're missing details from you. Click the button below to edit your profile details."
                                 :
-                                "Parece que nos faltan detalles. Haga clic en el botón de abajo para editar los detalles de su perfil."}
-
+                                "Parece que nos faltan algunos detalles de tu cuenta. Haz click en el botón de abajo para editar tu perfil."}
                             </Grid>
                             : (user?.zelleInfo?.email && !user.airTMNum)
                                 ?
@@ -261,7 +260,7 @@ function DashboardVisuals(props) {
                                     ?
                                     "Looks like we're missing details from you. Click the button below to edit your profile details."
                                     :
-                                    "Parece que nos faltan detalles. Haga clic en el botón de abajo para editar los detalles de su perfil."}
+                                    "Parece que nos faltan algunos detalles de tu cuenta. Haz click en el botón de abajo para editar tu perfil"}
                                     </Grid>
                                 </>
                                 : (!user?.zelleInfo?.email && user.airTMNum)
@@ -272,7 +271,7 @@ function DashboardVisuals(props) {
                                             ?
                                             "Looks like we're missing details from you. Click the button below to edit your profile details."
                                             :
-                                            "Parece que nos faltan detalles. Haga clic en el botón de abajo para editar los detalles de su perfil."}
+                                            "Parece que nos faltan algunos detalles de tu cuenta. Haz click en el botón de abajo para editar tu perfil"}
                                         </Grid>
 
                                         <Grid item xs={12} sm={6} id='airTM'>

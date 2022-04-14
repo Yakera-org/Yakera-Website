@@ -64,34 +64,35 @@ const EditPage = () => {
 
     const validateAirTMEmail = (email) => {
         var tempError;
-        tempError = validateFields.validateEmail(email);
+        tempError = validateFields.validateEmailAllowingEmptyEmail(email);
         setAirTMEmailError(tempError)
         if(!tempError){
-            return true
+            return true;
         }else{
-            return false
+            return false;
         }
     };
     const validateZelleEmail = (email) => {
         var tempEmailError;
-        tempEmailError = validateFields.validateEmail(email);
+        tempEmailError = validateFields.validateEmailAllowingEmptyEmail(email);
         setZelleEmailError(tempEmailError);
         if(!tempEmailError){
             return true;
         }else{
-            return false
+            return false;
         }
     };
     const validateZelleName = (name) => {
-        var tempNameError;
-        tempNameError = validateFields.validateName(name);
-        setZelleNameError(tempNameError);
-        if(!tempNameError){
-            return true;
-        }else{
-            return false
-        }
-    }
+        // var tempNameError;
+        // tempNameError = validateFields.validateName(name);
+        setZelleNameError(false);
+        // if(!tempNameError){
+        //     return true;
+        // }else{
+        //     return false;
+        // }
+        return true;
+    };
 
     const handleChange = (e) => {
         setError("")

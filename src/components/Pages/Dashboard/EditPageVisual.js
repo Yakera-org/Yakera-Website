@@ -206,12 +206,12 @@ const EditPageVisual = ({
                 {success
                     ?
                     <Alert color="success" id='alert' style={{width:"50%", marginLeft:"25%"}}>
-                        {success}
+                        {EN ? success : '¡Tu perfil ya está actualizado!'}
                         <br />
                         {EN ? 
                         <>Head to your <a href="/dashboard" style={{color:'darkgreen', textDecoration:'underline'}}> Dashboard</a>.</> 
                         :
-                         <>Dirígete a tu <a href="/dashboard" style={{color:'darkgreen', textDecoration:'underline'}}> Dashboard</a>.</>}                                            
+                         <>Dirígete a tu <a href="/dashboard" style={{color:'darkgreen', textDecoration:'underline'}}> Panel de control</a>.</>}                                            
                     </Alert>
                     :
                     ''
@@ -241,7 +241,11 @@ const EditPageVisual = ({
 
                 <section>
                     <p style={{textAlign:"center"}}>
-                        Want to delete your account? Click <a href = {`mailto:info@yakera.org?subject=Delete Yakera Donor Account&body=Hello Yakera, I would like to delete my Donor Account with email: ${user.email}`}>here</a> to get in touch with one of the members of the team.
+                        {EN ? 'Want to delete your account? Click' : '¿Te gustaría eliminar tu cuenta? Haz click'}
+                        <a href = {`mailto:info@yakera.org?subject=Delete Yakera Donor Account&body=Hello Yakera, I would like to delete my Donor Account with email: ${user.email}`}>
+                            {EN ? ' here ' : ' aquí '}
+                        </a>
+                        {EN ? 'to get in touch with one of the members of the team.' : 'para ponerte en contacto con un miembro de nuestro equipo.'}
                     </p>
                 </section>  
             </div>
