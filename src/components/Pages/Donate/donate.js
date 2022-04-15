@@ -6,6 +6,8 @@ import HashLoader from "react-spinners/HashLoader";
 import pics from './pics';
 import SearchIcon from '@material-ui/icons/Search';
 import { Form, InputGroup } from 'react-bootstrap';
+import ReactPaginate from 'react-paginate';
+import { NavigateNext, NavigateBefore } from '@material-ui/icons';
 
 import './donate.css';
 import api from '../../../services/api';
@@ -104,6 +106,10 @@ class donate extends Component{
                 businessFilter: '',
                 nutritionFilter: '',
                 activeCategory: '',
+                currentItems: null,
+                pageCount: 0,
+                itemOffset: 0,
+                filteredCampaigns: [],
             }
     }
 
@@ -114,6 +120,9 @@ class donate extends Component{
             if (res.data.data.campaigns) {
                 this.setState({
                     campaigns: res.data.data.campaigns,
+                    filteredCampaigns: res.data.data.campaigns,
+                    currentItems: res.data.data.campaigns.slice(this.state.itemOffset, 20),
+                    pageCount: Math.ceil(res.data.data.campaigns.length / 20)
                 });
             }    
         } catch (err) {
@@ -121,10 +130,47 @@ class donate extends Component{
         } finally {
             this.setState({
                 language: lang,
-                loaded:true
+                loaded: true,
+                // filteredCampaigns: this.state.campaigns,
             });
         } 
+        // this.setState({
+        //     // currentItems: this.state.filteredCampaigns.slice(this.state.itemOffset, 20),
+        //     pageCount: 1,
+        // });
     }
+
+    componentDidUpdate(prevProps, prevState) {
+        if(this.state.itemOffset !== prevState.itemOffset) {
+            const endOffset = this.state.itemOffset + 20;   // latter is number of items per page
+            console.log(`Loading items from ${this.state.itemOffset} to ${endOffset}`);
+            this.setState({
+                currentItems: this.state.filteredCampaigns.slice(this.state.itemOffset, endOffset),
+                pageCount: Math.ceil(this.state.filteredCampaigns.length / 20),
+            });
+        }
+        
+        if (this.state.searchQuery !== prevState.searchQuery || this.state.healthcareFilter !== prevState.healthcareFilter) {
+            if (this.state.searchQuery.length !== 0) {
+                this.setState({filteredCampaigns: filterCampaignsBySearch(this.state.campaigns, this.state.searchQuery, this.state.language)});
+                // return filterCampaignsBySearch(this.state.campaigns, this.state.searchQuery, this.state.language);
+            } else if (this.state.healthcareFilter.length !== 0) {
+                this.setState({filteredCampaigns: filterCampaignsByCategory(this.state.campaigns, this.state.activeCategory)});
+                // return filterCampaignsByCategory(this.state.campaigns, this.state.activeCategory);
+            } else {
+                this.setState({filteredCampaigns: this.state.campaigns});
+            }
+        }
+        // return this.state.campaigns;
+    };
+
+    handlePageClick = (e) => {
+        const newOffset = (e.selected * 20) % this.state.filteredCampaigns.length;
+        console.log(`User requested page number ${e.selected}, which is offset ${newOffset}`);
+        this.setState({
+            itemOffset: newOffset,
+        });
+    };
     
     handle_change = (value) => {
         this.setState({ value })
@@ -166,16 +212,19 @@ class donate extends Component{
 
     handleFilteredCampaigns = () => {
         if (this.state.searchQuery.length !== 0) {
+            this.setState({filteredCampaigns: filterCampaignsBySearch(this.state.campaigns, this.state.searchQuery, this.state.language)});
             return filterCampaignsBySearch(this.state.campaigns, this.state.searchQuery, this.state.language);
         } else if (this.state.healthcareFilter.length !== 0) {
+            this.setState({filteredCampaigns: filterCampaignsByCategory(this.state.campaigns, this.state.activeCategory)});
             return filterCampaignsByCategory(this.state.campaigns, this.state.activeCategory);
         }
+        this.setState({filteredCampaigns: this.state.campaigns});
         return this.state.campaigns;
     };
    
     render(){
         var count = 0;
-        var filteredCampaigns = this.handleFilteredCampaigns();
+        // var filteredCampaigns = this.handleFilteredCampaigns();
         if(!this.state.loaded){
             return(
                 <div className="donate-page-loading">
@@ -253,19 +302,52 @@ class donate extends Component{
     
                 <hr id="hr-top"/>
 
-                 <Grid container spacing={5} style={{alignContent:'center', alignItems:'flex-start'}}>
-                    {filteredCampaigns.sort(() => 0.5 - Math.random()).map((cam, i) => {
-                            count++;
-                            return(
-                                <Grid item xs={12} sm={3} key={i}>
-                                    <CampaignCard
-                                        campaign={cam}
-                                        language={this.state.language}
-                                        amount={cam.raised + cam?.zelleRaised}
-                                    />
-                                </Grid>
-                            )                       
-                    })}    
+                <ReactPaginate
+                    breakLabel='...'
+                    nextLabel={<NavigateNext />}
+                    previousLabel={<NavigateBefore />}
+                    onPageChange={this.handlePageClick}
+                    pageRangeDisplayed={5}
+                    pageCount={this.state.pageCount}
+                    renderOnZeroPageCount={null}
+                    pageClassName="page-item"
+                    pageLinkClassName="page-link"
+                    previousClassName="page-item"
+                    previousLinkClassName="page-link"
+                    nextClassName="page-item"
+                    nextLinkClassName="page-link"
+                    breakClassName="page-item"
+                    breakLinkClassName="page-link"
+                    marginPagesDisplayed={2}
+                    containerClassName="pagination"
+                    activeClassName="active"
+                />
+
+                <Grid container spacing={5} style={{alignContent:'center', alignItems:'flex-start'}}>
+                    {/* {filteredCampaigns.sort(() => 0.5 - Math.random()).map((cam, i) => {
+                        count++;
+                        return(
+                            <Grid item xs={12} sm={3} key={i}>
+                                <CampaignCard
+                                    campaign={cam}
+                                    language={this.state.language}
+                                    amount={cam.raised + cam?.zelleRaised}
+                                />
+                            </Grid>
+                        )                       
+                    })}     */}
+                    {this.state.currentItems.map((cam, i) => {
+                        count++;
+                        return(
+                            <Grid item xs={12} sm={3} key={i}>
+                                <CampaignCard
+                                    campaign={cam}
+                                    language={this.state.language}
+                                    amount={cam.raised + cam?.zelleRaised}
+                                />
+                            </Grid>
+                        )                       
+                    })}
 
                 </Grid>
     
