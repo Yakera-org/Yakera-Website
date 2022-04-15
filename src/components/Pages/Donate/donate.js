@@ -6,7 +6,7 @@ import HashLoader from "react-spinners/HashLoader";
 import pics from './pics';
 import SearchIcon from '@material-ui/icons/Search';
 import { Form, InputGroup } from 'react-bootstrap';
-import { Tune, ArrowUpward, ArrowDownward, CameraRollSharp } from '@material-ui/icons';
+import { ArrowUpward, ArrowDownward } from '@material-ui/icons';
 
 import './donate.css';
 import api from '../../../services/api';
@@ -183,8 +183,15 @@ class donate extends Component{
     };
     
     handleGeneralFilter = (filter) => {
-        if(this.state.activeGeneralFilter !== filter) {
-            this.setState({[filter]: ''});
+        // if(this.state.activeGeneralFilter !== filter) {
+        //     this.setState({[filter]: ''});
+        // }
+        if(filter === 'dateFilter') {
+            this.setState({percentageFilter: '', moneyRaisedFilter: ''});
+        } else if(filter == 'percentageFilter') {
+            this.setState({dateFilter: '', moneyRaisedFilter: ''});
+        } else {
+            this.setState({dateFilter: '', percentageFilter: ''});
         }
 
         if(this.state[filter] === '') {
