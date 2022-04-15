@@ -60,9 +60,9 @@ class NoticeCard extends Component{
 
                     <Grid item xs={12} sm={12}>
                     <div style = {{marginTop : "20px"}}>
-                    {this.props.EN ? <span> <b>You are about to end this campaign.</b> All of the money you've raised will be transferred to your AirTM account within 24 to 72 hours.</span>
+                    {this.props.EN ? <span> <b>You are about to end this campaign.</b> All of the money you've raised will be transferred to your Reserve account within 24 to 72 hours.</span>
                     :
-                    "Estás a punto de cerrar tu campaña. Todos tus fondos recaudados serán transferidos a tu cuenta de AirTM en un período de 24 a 72 horas."}
+                    <span><b>Estás a punto de cerrar tu campaña.</b> Todos tus fondos recaudados serán transferidos a tu cuenta de Reserve en un período de 24 a 72 horas.</span>}
                     </div>
                     </Grid>
                     <Grid item xs={12} sm={12}>

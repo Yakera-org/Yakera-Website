@@ -62,7 +62,7 @@ class NoticeCard extends Component{
                     <div style = {{marginTop : "20px"}}>
                     {this.props.EN ? <span> <b>You are about to withdraw the money you've raised for this campaign so far.</b> The campaign will remain active on our platform until you decide to end it.</span>
                     :
-                    "Estás a punto de cerrar tu campaña. Todos tus fondos recaudados serán transferidos a tu cuenta de AirTM en un período de 24 a 72 horas."}
+                    <span><b>Estás a punto de retirar tus fondos recaudados,</b>" los mismos serán transferidos en un período de 24 a 72 horas. Tu campaña seguirá activa en nuestra plataforma hasta que decidas retirarla. </span>}
                     </div>
                     </Grid>
                     <Grid item xs={12} sm={12}>
