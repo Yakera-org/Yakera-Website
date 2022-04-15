@@ -188,7 +188,7 @@ class donate extends Component{
         // }
         if(filter === 'dateFilter') {
             this.setState({percentageFilter: '', moneyRaisedFilter: ''});
-        } else if(filter == 'percentageFilter') {
+        } else if(filter === 'percentageFilter') {
             this.setState({dateFilter: '', moneyRaisedFilter: ''});
         } else {
             this.setState({dateFilter: '', percentageFilter: ''});
