@@ -17,11 +17,11 @@ function DashboardVisuals(props) {
     
     
     function onWithdraw(type){
-        // if(!user.airTMNum){
-        //     window.alert(EN ? "Please update yur AirTM email address. Without this email, we don't know where you want the money to be transferred to. Thanks" : "Actualice su dirección de correo electrónico de AirTM. Sin este correo electrónico, no sabemos a dónde desea que se transfiera el dinero. Gracias" )
-        // }else{
+        if(!user.airTMNum){
+            window.alert(EN ? "Please update yur AirTM email address. Without this email, we don't know where you want the money to be transferred to. Thanks" : "Actualice su dirección de correo electrónico de AirTM. Sin este correo electrónico, no sabemos a dónde desea que se transfiera el dinero. Gracias" )
+        }else{
             props.onWithdraw(type);
-        //}
+        }
     };
 
     const onEdit = () => {
@@ -283,7 +283,7 @@ function DashboardVisuals(props) {
 
                                         <Grid item xs={12} sm={6} id='airTM'>
                                             <div className='dash-left'>
-                                                <p id='dash-stats'>AirTM email:</p>
+                                                <p id='dash-stats'>{EN ? "Reserve account:" : "Usuario de Reserve"}</p>
                                             </div>
                                             <div className='dash-left'>
                                                 <p>{user.airTMNum}</p>

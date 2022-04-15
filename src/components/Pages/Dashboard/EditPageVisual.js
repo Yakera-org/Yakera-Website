@@ -163,16 +163,16 @@ const EditPageVisual = ({
 
                     <Grid item xs={12} sm={6} id='airTM'>
                         <div className='dash-left'>
-                        <p id="prompt">{EN ? "Add your AirTM account to withdraw collected funds!" : "¡Añade los detalles de tu cuenta de Airtm para retirar los fondos recaudados!"}</p>
-                        <p id="description">{EN ? "To transfer the funds you collect through Yakera, you must create an Airtm account and provide the email address here:" : "Para transferir tus fondos recaudados en Yakera es necesario que nos suministres tu correo de AirTM"}</p>
-                            <p id='dash-stats'>AirTM email:</p>
+                        <p id="prompt">{EN ? "Add your Reserve account to withdraw collected funds!" : "¡Añade los detalles de tu cuenta de Reserve para retirar los fondos recaudados!"}</p>
+                        <p id="description">{EN ? "To transfer the funds you collect through Yakera, you must create a Reserve account and provide the email address here:" : "Para transferir tus fondos recaudados en Yakera es necesario que nos suministres tu correo de Reserve"}</p>
+                            <p id='dash-stats'>{EN ? "Reserve Account" : "Usuario de Reserve"}</p>
                         </div>
                         <Grid container spacing={0}>
                             <Grid item xs={12} sm={12} >
                                     <input
                                         type="email"
                                         name="airTMNum"
-                                        placeholder={EN ? "Enter your AirTM email" : "Ingrese su correo electrónico AirTM"}
+                                        placeholder={EN ? "Enter your Reserve account" : "Ingrese su correo electrónico Reserve"}
                                         value={user.airTMNum}
                                         onChange={handleChange}
                                         className={classnames(
