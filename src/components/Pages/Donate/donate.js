@@ -110,6 +110,7 @@ class donate extends Component{
                 pageCount: 0,
                 itemOffset: 0,
                 filteredCampaigns: [],
+                selected: null,
             }
     }
 
@@ -165,10 +166,12 @@ class donate extends Component{
     };
 
     handlePageClick = (e) => {
-        const newOffset = (e.selected * 20) % this.state.filteredCampaigns.length;
+        const selected = e.selected;
+        const newOffset = (selected * 20) % this.state.filteredCampaigns.length;
         console.log(`User requested page number ${e.selected}, which is offset ${newOffset}`);
         this.setState({
             itemOffset: newOffset,
+            selected,
         });
     };
     
@@ -304,8 +307,8 @@ class donate extends Component{
 
                 <ReactPaginate
                     breakLabel='...'
-                    nextLabel={<NavigateNext />}
-                    previousLabel={<NavigateBefore />}
+                    nextLabel={<NavigateNext fontSize='inherit' />}
+                    previousLabel={<NavigateBefore fontSize='inherit' />}
                     onPageChange={this.handlePageClick}
                     pageRangeDisplayed={5}
                     pageCount={this.state.pageCount}
@@ -321,6 +324,7 @@ class donate extends Component{
                     marginPagesDisplayed={2}
                     containerClassName="pagination"
                     activeClassName="active"
+                    forcePage={this.state.selected}
                 />
 
                 <Grid container spacing={5} style={{alignContent:'center', alignItems:'flex-start'}}>
@@ -350,6 +354,28 @@ class donate extends Component{
                     })}
 
                 </Grid>
+
+                <ReactPaginate
+                    breakLabel='...'
+                    nextLabel={<NavigateNext fontSize='inherit' />}
+                    previousLabel={<NavigateBefore fontSize='inherit' />}
+                    onPageChange={this.handlePageClick}
+                    pageRangeDisplayed={5}
+                    pageCount={this.state.pageCount}
+                    renderOnZeroPageCount={null}
+                    pageClassName="page-item"
+                    pageLinkClassName="page-link"
+                    previousClassName="page-item"
+                    previousLinkClassName="page-link"
+                    nextClassName="page-item"
+                    nextLinkClassName="page-link"
+                    breakClassName="page-item"
+                    breakLinkClassName="page-link"
+                    marginPagesDisplayed={2}
+                    containerClassName="pagination"
+                    activeClassName="active"
+                    forcePage={this.state.selected}
+                />
     
                 <div style={{textAlign:'center'}}>
                     <p id='no-cam'>
