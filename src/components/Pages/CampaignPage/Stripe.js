@@ -1,13 +1,40 @@
 import React, { useEffect, useState } from "react";
-import { PaymentElement, useStripe, useElements } from "@stripe/react-stripe-js"
+import { PaymentElement, useStripe, useElements } from "@stripe/react-stripe-js";
+import LanguageService from '../../../services/language';
+import api from '../../../services/api';
 
-function StripeForm()
+function StripeForm(props)
 {
     const stripe = useStripe();
     const elements = useElements();
 
     const [message, setMessage] = useState(null);
     const [isLoading, setIsLoading] = useState(false);
+
+    const addAmount = async (paymentID, status) => {
+        try
+        {
+            const payload = {
+                "slug": this.props.slug,
+                "email": this.state.email,
+                "name": this.state.name,
+                "amount": this.state.amount,
+                "status": status,
+                "tip": this.state.tip,
+                "paymentID": paymentID,
+                "comment": this.state.comment,
+                "language": LanguageService.getLanguage(),
+                "isAnonymous": this.state.isAnon,
+                "stripe": true
+            };
+
+            console.log(await api.post(`/campaigns/donate`, payload));
+        }
+        catch(error)
+        {
+            console.log(error);
+        }
+    }
 
     useEffect(() => {
         if(!stripe)
@@ -27,15 +54,19 @@ function StripeForm()
             {
                 case "succeeded":
                     setMessage("Payment succeeded!");
+                    addAmount(paymentIntent.id, "success");
+                    this.props.openThanks();
                     break;
                 case "processing":
                     setMessage("Your payment is processing.");
                     break;
                 case "requires_payment_method":
                     setMessage("Your payment was not successful, please try again.");
+                    addAmount({}, "error");
                     break;
                 default:
                     setMessage("Something went wrong.");
+                    addAmount({}, "error");
                     break;
             }
         });

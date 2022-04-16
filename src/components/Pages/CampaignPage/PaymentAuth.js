@@ -7,6 +7,7 @@ import ZelleLogic from './ZelleLogic';
 import { loadStripe } from "@stripe/stripe-js"
 import { Elements } from "@stripe/react-stripe-js"
 import StripeForm from './Stripe';
+import api from '../../../services/api';
 
 // The public key is currently set to the test public key
 const PUBLIC_KEY = "pk_test_51KjTNTD1ctBA5rzvPq6FjtoOxn2bGAPvUX5GluRXOUnaMrINHjQ55uC3ZqllRDaUcoTAITPjPlvT76cNjNlZAPTM00Y71uOjrE";
@@ -30,14 +31,11 @@ function PaymentAuth(props) {
 
     useEffect(() => {
         // Create payment intent
-        // Change fetch call to axios
-        fetch("/create-payment-intent", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ items: [{ id: "donation", quantity: this.amount },
-                                           { id: "tip", quantity: this.tip }] }),
-        }).then((res) => res.json()).then((data) => setClientSecret(data.clientSecret));
-    }, []);
+        // Check the payment intent url
+        api.post(`/create-payment-intent`, {
+            items: [{ id: "donation", quantity: props.amount }, { id: "tip", quantity: props.tip }],
+        }).then((res) => setClientSecret(res.data.clientSecret));
+    }, [props]);
 
     const appearance = {
         theme: "stripe",
@@ -117,7 +115,17 @@ function PaymentAuth(props) {
                 }
                 {clientSecret && (
                     <Elements options={options} stripe={stripePromise}>
-                        <StripeForm />
+                        <StripeForm 
+                            EN={EN}
+                            slug={props.slug}
+                            email={props.email}
+                            name={props.name}
+                            amount={props.amount}
+                            tip={props.tip}
+                            comment={props.comment}
+                            isAnon={props.isAnon}
+                            openThanks={props.openThanks}
+                        />
                     </Elements>
                 )}
 
