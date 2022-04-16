@@ -8,33 +8,22 @@ const cors = require("cors");
 app.use(express.json());
 app.use(cors());
 
+const totalPayment = (items) => {
+    return items[0].quantity*100 + items[1].quantity*100;
+}
+
 app.post("/payment", cors(), async (request, response) => {
-    let {amount, id} = request.body;
+    let { items } = request.body;
 
-    try
-    {
-        const payment = await stripe.paymentIntents.create({
-            amount: amount,
-            currency: "USD",
-            description: "Generic Donation Company",
-            payment_method: id,
-            confirm: true
-        })
+    const payment = await stripe.paymentIntents.create({
+        amount: totalPayment(items),
+        currency: "USD",
+        description: "Generic Donation Company",
+        payment_method_types: ["card"],
+    })
 
-        console.log("Payment:", payment);
-        response.json({
-            message: "Payment successful",
-            success: true
-        });
-    }
-    catch(error)
-    {
-        console.log("Error:", error);
-        response.json({
-            message: "Payment failed",
-            success: false
-        });
-    }
+    console.log("Payment:", payment);
+    response.json({clientSecret: payment.client_secret,});
 });
 
 app.listen(process.env.PORT, () => {console.log("Listening on port", process.env.PORT)});

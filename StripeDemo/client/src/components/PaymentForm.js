@@ -1,66 +1,86 @@
-import React, { useState } from "react";
-import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
-import axios from "axios";
+import React, { useEffect, useState } from "react";
+import { PaymentElement, useElements, useStripe } from "@stripe/react-stripe-js";
 
 
 function PaymentForm()
 {
-    const [success, setSuccess] = useState(false);
     const stripe = useStripe();
     const elements = useElements();
 
+    const [message, setMessage] = useState(null);
+    const [isLoading, setIsLoading] = useState(false);
+
+    useEffect(() => {
+        if(!stripe)
+        {
+            return;
+        }
+        
+        const clientSecret = new URLSearchParams(window.location.search).get(
+            "payment_intent_client_secret"
+        );
+
+        if(!clientSecret)
+        {
+            return;
+        }
+
+        stripe.retrievePaymentIntent(clientSecret).then(({ paymentIntent }) => {
+            switch(paymentIntent.status)
+            {
+                case "succeeded":
+                    setMessage("Payment succeded!");
+                    break;
+                case "processing":
+                    setMessage("Your payment is processing.");
+                    break;
+                case "requires_payment_method":
+                    setMessage("Your payment was not successful, please try again.");
+                    break;
+                default:
+                    setMessage("Something went wrong.")
+                    break;
+            }
+        });
+    }, [stripe]);
+
     const handleSubmit = async (event) => {
         event.preventDefault();
-        const {error, paymentMethod} = await stripe.createPaymentMethod({
-            type: "card",
-            card: elements.getElement(CardElement)
+
+        if(!stripe || !elements)
+        {
+            // Stripe has not loaded
+            return;
+        }
+
+        setIsLoading(true);
+
+        const { error } = await stripe.confirmPayment({
+            elements,
+            confirmParams: {
+                return_url: "http://localhost:8000/payment-success"
+            }
         });
 
-        if(!error)
+        if(error.type === "card_error" || error.type === "validation_error")
         {
-            try
-            {
-                const {id} = paymentMethod;
-                // change amount to reflect real amount
-                const response = await axios.post("http://localhost:8000/payment", {
-                    amount: 10000,
-                    id: id
-                })
+            setMessage(error.message);
+        }
 
-                if(response.data.success)
-                {
-                    console.log("Successful payment");
-                    setSuccess(true);
-                }
-            }
-            catch(err)
-            {
-                console.log("Error:", err);
-            }
-        }
-        else
-        {
-            console.log(error.message);
-        }
+        setIsLoading(false);
     }
 
     return (
-        <>
-        {!success ? 
-        <form onSubmit={handleSubmit}>
-            <fieldset>
-                <div>
-                    <CardElement />
-                </div>
-            </fieldset>
-            <button>Pay</button>
+        <form id="payment-form" onSubmit={handleSubmit}>
+            <PaymentElement id="payment-element" />
+            <button disabled={isLoading || !stripe || !elements} id="submit">
+                <span id="button-text">
+                    {isLoading ? <div className="spinner" id="spinner"></div> : "Donate"}
+                </span>
+            </button>
+            {/* Show any error or success message */}
+            {message && <div id="payment-message">{message}</div>}
         </form>
-        :
-        <div>
-            <h2>You have donated successfully</h2>
-        </div>
-        }
-        </>
     )
 }
 
