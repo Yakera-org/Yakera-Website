@@ -3,6 +3,7 @@ import { Grid } from '@material-ui/core';
 import ContentSection from './ContentSection';
 import content from './texts.json'
 import AdvisoryBoardSection from './AdvisoryBoardSection';
+import WhatsAppButton from '../WhatsAppButton/WhatsAppButton.js';
 
 const illustracion1 = 'https://assets.yakera.org/yakera/illustration-aboutus-1.webp'
 const illustracion2 = 'https://assets.yakera.org/yakera/illustration-aboutus-2.webp'
@@ -19,6 +20,7 @@ function AboutUsVisuals(props) {
 
     return (
         <div className='about-us-visuals'>
+            <WhatsAppButton EN = {EN} ></WhatsAppButton>
             <Grid container spacing={0} alignItems="center">
                     <Grid item xs={12} sm={6} >
                         <div className='about-us-top-img'>

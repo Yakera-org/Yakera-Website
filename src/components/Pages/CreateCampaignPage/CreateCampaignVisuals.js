@@ -2,7 +2,9 @@ import React from "react";
 import CreatCampaignDetails from "./CreatCampaignDetails";
 import {Alert} from 'reactstrap'
 import LanguageService from "../../../services/language";
-import './CreateCampaignPage.css'
+import HashLoader from "react-spinners/HashLoader";
+import './CreateCampaignPage.css';
+import WhatsAppButton from "../WhatsAppButton/WhatsAppButton";
 
 function CreateCampaignVisuals(props) {
 
@@ -11,9 +13,7 @@ function CreateCampaignVisuals(props) {
     }, [])
 
     const [language, setLanguage] = React.useState('');
-    const [mainPicture, setMainPicture] = React.useState('');
-    const [documents, setDocuments] = React.useState('');
-    const [campaignPics, setCampaignPics] = React.useState('');
+    const [isUploading, setIsUploading] = React.useState('');
 
     var EN;
     if(language === "en"){
@@ -21,13 +21,9 @@ function CreateCampaignVisuals(props) {
     }else{
         EN = false
     }
-
-    function onSubmit(e){
-        props.submit(e, mainPicture, documents, campaignPics)
-    }
-
     return(
         <div className='create-page'>
+            <WhatsAppButton EN = {EN}></WhatsAppButton>
             <div id='background' >
                 <h1>
                     {EN ? 'Create your campaign' : 'Crea tu campaña'}
@@ -51,20 +47,9 @@ function CreateCampaignVisuals(props) {
                 }
                 
                 
-                <CreatCampaignDetails EN={EN} data={props.data} handleChange={props.handleChange}
-                 setMainPicture={setMainPicture}
-                 setDocuments={setDocuments}
-                 setCampaignPics={setCampaignPics}
-                 />
+                <CreatCampaignDetails EN={EN} data={props.data} handleChange={props.handleChange} setData={props.setData} setIsUploading={setIsUploading}/>
+
                
-                { props.error
-                    ?
-                    <Alert color="danger" id='alert'>
-                        {props.error}
-                    </Alert>
-                    :
-                    ''
-                }
                 { props.success
                     ?
                     <Alert color="success" id='alert'>
@@ -75,12 +60,46 @@ function CreateCampaignVisuals(props) {
                     :
                     ''
                 }
+                { props.error
+                    ?
+                    <Alert color="danger" id='alert'>
+                        {props.error}
+                    </Alert>
+                    :
+                    ''
+                }
+                {
+                    props.loader
+                    ?
+                    <div className="sweet-loading">
+                        <div className='loader-wrapper' style={{marginLeft:'-10px', marginBottom:'10px'}}>
+                            <HashLoader
+                                color={"#ea8737"}
+                                loading={props.loader}
+                            />
+                        </div>
+                    </div> 
+                    :
+                    ""
+                }
                
+                { !props.success
+                ?
                 <div id='create-campaign'>
-                    <button  onClick={onSubmit}>
-                    {EN ? 'Create Campaign' : 'Crear Campaña'}
-                    </button>
+                    {
+                        isUploading
+                        ?
+                            <button  onClick={props.submit} id="disabled-create" disabled={true} style={{backgroundColor:'grey'}}>
+                                {EN ? 'Create Campaign' : 'Crear Campaña'}
+                            </button>
+                        :
+                            <button  onClick={props.submit}>
+                                {EN ? 'Create Campaign' : 'Crear Campaña'}
+                            </button>
+                    }
                 </div>
+                :
+                ""}
             </div>
         </div>
     )

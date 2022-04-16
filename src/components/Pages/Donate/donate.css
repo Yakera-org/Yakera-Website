@@ -89,16 +89,16 @@
     width: 100%;
     object-fit: contain;
 }
-.campaign-filter img{
-    /* padding: 2px; */
+.category-filter img{
+    padding: 2px;
     margin: 20px;
     cursor: pointer;
 }
-.campaign-filter img:hover{
+.category-filter img:hover{
     border-radius: 50%;
     box-shadow: 0 0 0 5px gray;
 }
-.campaign-filter .fade {
+.category-filter .fade {
     opacity: 0.3;
 }
 
@@ -167,6 +167,27 @@
     padding: 5px;
 }
 
+.general-filter {
+    border-radius: 25px;
+    background-color: rgb(238, 238, 238);
+    text-align: center;
+    margin: 0 25%;
+    width: 50%!important;
+}
+.general-filter button{
+    border: none;
+    color: #ea8737;
+    padding: 15px;
+    border-radius: 25px;
+}
+.general-filter button:hover{
+    background-color: gray;
+    color: white;
+}
+.active-general-filter {
+    background-color: gray;
+    color: white!important;
+}
 @media only screen and (max-width: 600px) {
     .donate-text-grid{
         margin-left: 10%;

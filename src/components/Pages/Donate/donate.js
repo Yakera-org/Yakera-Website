@@ -6,6 +6,7 @@ import HashLoader from "react-spinners/HashLoader";
 import pics from './pics';
 import SearchIcon from '@material-ui/icons/Search';
 import { Form, InputGroup } from 'react-bootstrap';
+import { ArrowUpward, ArrowDownward } from '@material-ui/icons';
 
 import './donate.css';
 import api from '../../../services/api';
@@ -91,19 +92,23 @@ class donate extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            value: 0,
-            loaded: false,
-            language: 'en',
-            tab: 'education',
-            dicAmount: {},
-            campaigns: [],
-            searchQuery: '',
-            healthcareFilter: '',
-            educationFilter: '',
-            businessFilter: '',
-            nutritionFilter: '',
-            activeCategory: '',
-        }
+                value: 0,
+                loaded: false,
+                language: 'en',
+                tab:'education',
+                dicAmount:{},
+                campaigns: [],
+                searchQuery:'',
+                healthcareFilter: '',
+                educationFilter: '',
+                businessFilter: '',
+                nutritionFilter: '',
+                activeCategory: '',
+                dateFilter: '',
+                percentageFilter: '',
+                moneyRaisedFilter: '',
+                activeGeneralFilter: '',
+            }
     }
 
     async componentDidMount() {
@@ -112,7 +117,7 @@ class donate extends Component {
             const res = await api.get('/campaigns/');
             if (res.data.data.campaigns) {
                 this.setState({
-                    campaigns: res.data.data.campaigns,
+                    campaigns: res.data.data.campaigns.sort(() => 0.5 - Math.random()),
                 });
             }
         } catch (err) {
@@ -127,7 +132,90 @@ class donate extends Component {
 
     handle_change = (value) => {
         this.setState({ value })
-    }
+    }  
+
+    filterCampaignsByDate = (cams) => {
+        var filteredCams = cams.sort((a, b) => new Date(a.updatedAt) - new Date(b.updatedAt));
+        return filteredCams;
+    } 
+    filterCampaignsByRevDate = (cams) => {
+        var filteredCams = cams.sort((a, b) => new Date(a.updatedAt) - new Date(b.updatedAt)).reverse();
+        return filteredCams;
+    }  
+    filterCampaignsByMoney = (cams) => {
+        var filteredCams = cams.sort((a, b) => (a.raised + a.zelleRaised) - (b.raised + b.zelleRaised));
+        return filteredCams;
+    } 
+    filterCampaignsByRevMoney = (cams) => {
+        var filteredCams = cams.sort((a, b) => (a.raised + a.zelleRaised) - (b.raised + b.zelleRaised)).reverse();
+        return filteredCams;
+    } 
+    filterCampaignsByPer = (cams) => {
+        var filteredCams = cams.sort((a, b) => a.percentage - b.percentage);
+        return filteredCams;
+    } 
+    filterCampaignsByRevPer = (cams) => {
+        var filteredCams = cams.sort((a, b) => a.percentage - b.percentage).reverse();
+        return filteredCams;
+    } 
+
+    handleChangeSortByDate = (cams) => {
+        if(this.state.dateFilter === 'increase') {
+            return this.filterCampaignsByRevDate(cams);
+        } else if(this.state.dateFilter === 'decrease') {
+            return this.filterCampaignsByDate(cams);
+        }
+    };
+    handleChangeSortByPercentage = (cams) => {
+        if(this.state.percentageFilter === 'increase') {
+            return this.filterCampaignsByPer(cams);
+        } else if(this.state.percentageFilter === 'decrease') {
+            return this.filterCampaignsByRevPer(cams);
+        }
+    };
+    handleChangeSortByMoneyRaised = (cams) => {
+        if(this.state.moneyRaisedFilter === 'increase') {
+            return this.filterCampaignsByMoney(cams);
+        } else if(this.state.moneyRaisedFilter === 'decrease') {
+            return this.filterCampaignsByRevMoney(cams);
+        } 
+    };
+    
+    handleGeneralFilter = (filter) => {
+        // if(this.state.activeGeneralFilter !== filter) {
+        //     this.setState({[filter]: ''});
+        // }
+        if(filter === 'dateFilter') {
+            this.setState({percentageFilter: '', moneyRaisedFilter: ''});
+        } else if(filter === 'percentageFilter') {
+            this.setState({dateFilter: '', moneyRaisedFilter: ''});
+        } else {
+            this.setState({dateFilter: '', percentageFilter: ''});
+        }
+
+        if(this.state[filter] === '') {
+            this.setState({[filter]: 'increase'});
+            this.setState({activeGeneralFilter: filter});
+        } else if(this.state[filter] === 'increase') {
+            this.setState({[filter]: 'decrease'});
+            this.setState({activeGeneralFilter: filter});
+        } else {
+            this.setState({[filter]: ''});
+            this.setState({activeGeneralFilter: ''});
+        }
+    };
+
+    handleGeneralFilteredCampaigns = (cams) => {
+        if(this.state.activeGeneralFilter === 'dateFilter') {
+            return this.handleChangeSortByDate(cams);
+        } else if(this.state.activeGeneralFilter === 'percentageFilter') {
+            return this.handleChangeSortByPercentage(cams);
+        } else if(this.state.activeGeneralFilter === 'moneyRaisedFilter') {
+            return this.handleChangeSortByMoneyRaised(cams);
+        } else {
+            return cams;
+        }
+    };
 
     setSearchQuery = (e) => {
         this.setState({
@@ -174,9 +262,12 @@ class donate extends Component {
 
     render() {
         var count = 0;
-        var filteredCampaigns = this.handleFilteredCampaigns();
-        if (!this.state.loaded) {
-            return (
+        var filteredCampaigns = (() => {
+            let filtCams = this.handleFilteredCampaigns();
+            return this.handleGeneralFilteredCampaigns(filtCams);
+        })();
+        if(!this.state.loaded){
+            return(
                 <div className="donate-page-loading">
                     <div className="sweet-loading loader">
                         <HashLoader
@@ -249,17 +340,122 @@ class donate extends Component {
                             </Hidden>
                             <br />
                         </Grid>
-                        <SearchBar
-                            searchQuery={this.state.searchQuery}
-                            setSearchQuery={this.setSearchQuery}
-                            language={this.state.language}
+                    {/* </div>
+                <div className="header-top"> */}
+                    {/* <h1>
+                        {this.state.language === 'en' ? 'CAMPAIGNS' : 'CAMPAÑAS'}
+                    </h1> */}
+                    <div className='category-filter'>
+                        <img 
+                            alt='healthcare-pic'
+                            src={pics.healthcare}
+                            width='75px' height='75px'
+                            className={this.state.healthcareFilter}
+                            onClick={() => {
+                                this.handleFilter('healthcareFilter');
+                            }} 
+                        />
+                        <img
+                            alt='education-pic'
+                            src={pics.education}
+                            width='75px' height='75px'
+                            className={this.state.educationFilter}
+                            onClick={() => {
+                                this.handleFilter('educationFilter');
+                            }} 
+                        />
+                        <img 
+                        alt='business-pic'
+                            src={pics.business}
+                            width='75px' height='75px'
+                            className={this.state.businessFilter}
+                            onClick={() => {
+                                this.handleFilter('businessFilter');
+                            }} 
+                        />
+                        <img
+                            alt='nutrition-pic'
+                            src={pics.nutrition}
+                            width='75px' height='75px'
+                            className={this.state.nutritionFilter}
+                            onClick={() => {
+                                this.handleFilter('nutritionFilter');
+                            }} 
                         />
                     </div>
 
+                    <Grid
+                        container
+                        spacing={0}
+                        className='general-filter'
+                        alignItems='center'
+                        justifyContent='center'
+                    >
+                        <Grid item xs={12} sm={4}>
+                            <button
+                                name='date'
+                                className={this.state.activeGeneralFilter === 'dateFilter' ? 'active-general-filter' : ''}
+                                onClick={() => {
+                                    this.handleGeneralFilter('dateFilter');
+                                }}
+                            >
+                                Sort by Date 
+                                {this.state.dateFilter === 'increase' 
+                                    ? <ArrowUpward fontSize='small' />
+                                    : this.state.dateFilter === 'decrease'
+                                    ? <ArrowDownward fontSize='small' />
+                                    : ''
+                                }
+                            </button>
+                        </Grid>
+                        <Grid item xs={12} sm={4}>
+                            <button
+                                name='percentage'
+                                className={this.state.activeGeneralFilter === 'percentageFilter' ? 'active-general-filter' : ''}
+                                onClick={() => {
+                                    this.handleGeneralFilter('percentageFilter');
+                                }}
+                            >
+                                Sort by Percentage 
+                                {this.state.percentageFilter === 'increase' 
+                                    ? <ArrowUpward fontSize='small' />
+                                    : this.state.percentageFilter === 'decrease'
+                                    ? <ArrowDownward fontSize='small' />
+                                    : ''
+                                }
+                            </button>
+                        </Grid>
+                        <Grid item xs={12} sm={4}>
+                            <button
+                                name='moneyRaised'
+                                className={this.state.activeGeneralFilter === 'moneyRaisedFilter' ? 'active-general-filter' : ''}
+                                onClick={() => {
+                                    this.handleGeneralFilter('moneyRaisedFilter');
+                                }}
+                            >
+                                Sort by Money Raised 
+                                {this.state.moneyRaisedFilter === 'increase' 
+                                    ? <ArrowUpward fontSize='small' />
+                                    : this.state.moneyRaisedFilter === 'decrease'
+                                    ? <ArrowDownward fontSize='small' />
+                                    : ''
+                                }
+                            </button>
+                        </Grid>
+                    </Grid>
+
+                    
+                    <SearchBar 
+                        searchQuery={this.state.searchQuery}
+                        setSearchQuery={this.setSearchQuery}
+                        language={this.state.language}
+                    />
+                </div>
+
                     <hr id="hr-top" />
 
-                    <Grid container spacing={5} style={{ alignContent: 'center', alignItems: 'flex-start' }}>
-                        {filteredCampaigns.sort(() => 0.5 - Math.random()).map((cam, i) => {
+                 <Grid container spacing={5} style={{alignContent:'center', alignItems:'flex-start'}}>
+                    {filteredCampaigns.map((cam, i) => {
                             count++;
                             return (
                                 <Grid item xs={12} sm={3} key={i}>
