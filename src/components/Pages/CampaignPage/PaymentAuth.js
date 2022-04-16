@@ -30,10 +30,12 @@ function PaymentAuth(props) {
 
     useEffect(() => {
         // Create payment intent
+        // Change fetch call to axios
         fetch("/create-payment-intent", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ items: [{ id: "donation" }, { id: "tip" }] }),
+            body: JSON.stringify({ items: [{ id: "donation", quantity: this.amount },
+                                           { id: "tip", quantity: this.tip }] }),
         }).then((res) => res.json()).then((data) => setClientSecret(data.clientSecret));
     }, []);
 

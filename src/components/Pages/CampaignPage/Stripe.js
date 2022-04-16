@@ -46,6 +46,7 @@ function StripeForm()
 
         if(!stripe || !elements)
         {
+            // Stripe has not loaded
             return;
         }
 
