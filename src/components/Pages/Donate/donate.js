@@ -111,6 +111,7 @@ class donate extends Component{
                 itemOffset: 0,
                 filteredCampaigns: [],
                 selected: null,
+                loadingPage: false,
             }
     }
 
@@ -143,12 +144,16 @@ class donate extends Component{
 
     componentDidUpdate(prevProps, prevState) {
         if(this.state.itemOffset !== prevState.itemOffset) {
+            this.setState({ loadingPage: true });
             const endOffset = this.state.itemOffset + 20;   // latter is number of items per page
             console.log(`Loading items from ${this.state.itemOffset} to ${endOffset}`);
             this.setState({
                 currentItems: this.state.filteredCampaigns.slice(this.state.itemOffset, endOffset),
                 pageCount: Math.ceil(this.state.filteredCampaigns.length / 20),
-            });
+            },
+            (() => {
+                this.setState({ loadingPage: false });
+            }));
         }
         
         if (this.state.searchQuery !== prevState.searchQuery || this.state.healthcareFilter !== prevState.healthcareFilter) {
@@ -340,18 +345,27 @@ class donate extends Component{
                             </Grid>
                         )                       
                     })}     */}
-                    {this.state.currentItems.map((cam, i) => {
-                        count++;
-                        return(
-                            <Grid item xs={12} sm={3} key={i}>
-                                <CampaignCard
-                                    campaign={cam}
-                                    language={this.state.language}
-                                    amount={cam.raised + cam?.zelleRaised}
-                                />
-                            </Grid>
-                        )                       
-                    })}
+                    {
+                        this.state.loadingPage ?
+                            // <HashLoader
+                            //     size={150}
+                            //     color={"#01224d"}
+                            //     loading={this.state.loadingPage}
+                            // />
+                            'Loading...'
+                        : this.state.currentItems.map((cam, i) => {
+                            count++;
+                            return(
+                                <Grid item xs={12} sm={3} key={i}>
+                                    <CampaignCard
+                                        campaign={cam}
+                                        language={this.state.language}
+                                        amount={cam.raised + cam?.zelleRaised}
+                                    />
+                                </Grid>
+                            )                       
+                        })
+                    }
 
                 </Grid>
 
