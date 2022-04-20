@@ -4,20 +4,20 @@
                 "title": "About Yakera",
                 "questions":[
                     "What do we do?",
-                    "What’s Yakera’s story?",
+                    "What is Yakera’s story?",
                     "How does Yakera work?",
-                    "How much of my donation goes directly to the recipients?",
-                    "What makes Yakera different from other existing crowdfunding platforms?",
+                    "How much of my donation will arrive to the organizer of the campaign?",
+                    "What is the difference between Yakera and other platforms?",
                     "Why direct transfers?",
                     "Is Yakera a business or a nonprofit organization?"
                 ],
                 "answers":[
-                    "Yakera is an innovative platform that leverages the power of individual stories and human connection to unlock global solidarity. In Yakera, people can open crowdfunding campaigns and receive support directly in their bank accounts through the use of innovative technologies that allow easy international transfers.",
-                    "We were founded by <a href='https://www.linkedin.com/in/raul-romero-martinez/'>Raul Romero</a>, who left Venezuela in 2016. He recruited an international team that is now working 24/7 to bring support and enable meaningful and sustainable humanitarian aid around the world. Read more about us <a href='https://www.xplot.se/news/dare-stories-raul-romero-and-yakera'>here</a>.",
-                    "Yakera directs donations to an e-wallet connected to a user account , facilitated by <a href='https://www.reserve.org/es/'>Reserve</a>. Users can transfer funds to a bank account in local currency or ay for services directly through the <a href='https://www.reserve.org/es/'>Reserve</a> platform.",
-                    "We are committed to ensuring that 100% of donations goes directly to the recipient. Our operational and transaction costs are covered by our advisory board, your tips to Yakera, and your <a href='http://www.yakera.org/supportus'>direct donations<a/>.",
-                    "Yakera is committed to empowering individuals across the world and unlocking global solidarity. Our features and increased accessibility gives people in Venezuela and Latin American countries the opportunity to create crowdfunding campaigns, but what defines us goes beyond our features. We are building a future where individual agency, empathy, and solidarity are what sustains global humanitarian aid.",
-                    "People know how to solve their own problems better than we do. Individual empowerment is at the forefront of Yakera’s mission. Direct transfers expand the efficiency and make humanitarian aid more accessible and efficient.",
+                    "Yakera is an innovative platform that utilizes the power of individual stories and human connection to open the possibilities of global solidarity. With Yakera, the users can open campaigns and receive support directly in their bank accounts through innovative technologies that enable funds to be sent all around the world.",
+                    "Yakera was founded by <a href='https://www.linkedin.com/in/raul-romero-martinez/'>Raul Romero</a>, who left Venezuela in 2016. Since ten, he has recruited an international team that now works 24/7 to bring support and revolutionize the delivery of humanitarian aid around the world. Read more about us <a href='https://www.xplot.se/news/dare-stories-raul-romero-and-yakera'>here</a>.",
+                    "Yakera directs donations to an e-wallet connected to a user account, facilitated by <a href='https://www.reserve.org/es/'>Reserve</a>. Users can transfer funds to a bank account in local currency or pay for services directly through the <a href='https://www.reserve.org/es/'>Reserve</a> platform.",
+                    "We guarantee that 100% of your donation will arrive to the person that created the campaign. Our operating costs are covered by donations made directly to Yakera",
+                    "Yakera is committed to empowering individuals all over the world to open the possibilities of global solidarity. Our services and great accessibility gives people in Venezuela and Latin America the opportunity to create crowdfunding campaigns, but what defines us is more than that. We are constucting a future in which human agency, empathy, and solidarity are components that sustains global humanitarian aid.",
+                    "People know how to solve their problems better than we do. Individual empowerment is a central part of our mission. Direct transfers expand the efficiency and make humanitarian aid more accessible.",
                     "We are a startup-minded team constructing a non-profit organization."
                 ]
             },
@@ -29,11 +29,11 @@
                 ],
                 "answers":[
                     "If you live in Venezuela or Latin America and have a goal that needs economic support, yes! You will have to give us your ID number, your story, a photo, and files or photos that support your application to create the campaign.",
-                    "Your story, the causes, why you need the money, and how you would spend the funds. Making a campaign more personal and telling your story in detail always helps :)"
+                    "Your story, the causes, why you need the money, and how you will spend the funds. Making a campaign more personal and telling your story in detail always helps :)"
                 ]
             },
             {
-                "title": "Withdrawing Funds",
+                "title": "Withdrawing the funds",
                 "questions":[
                     "How can I withdraw the funds from my campaign?",
                     "Where do my raised funds go?",
@@ -74,7 +74,7 @@
                 "answers":[
                     "Yakera es una plataforma innovadora que utiliza el poder de las historias de individuos y la conexión humana para abrir las posibilidades de la solidaridad global. Con Yakera, los usuarios pueden abrir campañas y recibir apoyo directamente a sus cuentas de banco a través de tecnologías innovadoras que permiten el envío de fondos por todo el mundo.",
                     "Yakera fue fundada por <a href='https://www.linkedin.com/in/raul-romero-martinez/'>Raul Romero</a> quien dejó Venezuela en 2016. Desde entonces, ha reclutado un equipo internacional que ahora trabaja 24/7 para traer apoyo y revolucionar el envío de ayuda humanitaria en el mundo. Lea más sobre nosotros <a href='https://www.xplot.se/news/dare-stories-raul-romero-and-yakera'>aqui</a>",
-                    "Yakera dirige donaciones a una billetera digital conectada a la cuenta del usuario, facilitado por <a href='https://www.reserve.org/es/'>Reserve</a>. Los usuarios pueden transferir los fondos a una cuenta bancaria en la moneda local o pagar servicios directamente a través de la plataforma de <a href='https://www.reserve.org/es/'>Reserve</a>.",
+                    "Yakera dirige donaciones a una billetera digital conectada a la cuenta del usuario, facilitada por <a href='https://www.reserve.org/es/'>Reserve</a>. Los usuarios pueden transferir los fondos a una cuenta bancaria en la moneda local o pagar servicios directamente a través de la plataforma de <a href='https://www.reserve.org/es/'>Reserve</a>.",
                     "Nos aseguramos de que el 100% de tu donación llegue a la persona que creó la campaña. Nuestros costos de operación son cubiertos por las donaciones hechas a Yakera directamente.",
                     "Yakera se compromete a empoderar a individuos por todo el mundo y a abrir las posibilidades de la solidaridad global. Nuestros servicios y gran accesibilidad le dan a las personas en Venezuela y Latinoamérica la oportunidad de crear campañas de recaudación de fondos, pero lo que nos define va más allá. Estamos construyendo un futuro en el cual la agencia humana, la empatía, y la solidaridad sean los componentes que sostienen la ayuda humanitaria global.",
                     "Las personas saben cómo resolver sus propios problemas mejor que nosotros. El empoderamiento individual es una parte central de nuestra misión. Las transferencias directas expanden la eficiencia y hacen la ayuda humanitaria más accesible y eficiente.",
@@ -88,7 +88,7 @@
                     "¿Qué debe incluir en mi campaña?"
                 ],
                 "answers":[
-                    "Si vives en Venezuela o Latinoamérica, y tienes una meta por la que necesitas apoyo económico, ¡Claro que puedes!. Tendrás que proveernos el número de su cédula de identidad, su historia, una foto, y archivos o fotos que sostienen su aplicación para crear la campaña.",
+                    "Si vives en Venezuela o Latinoamérica, y tienes una meta por la que necesitas apoyo económico, ¡Claro que puedes!. Tendrás que proveernos el número de tu cédula de identidad, tu historia, una foto, y archivos o fotos que sostengan tu aplicación para crear la campaña.",
                     "Tu historia, las causas, para qué necesita el dinero, y cómo gastarías los fondos. Haciendo la campaña más personal y contando la historia con detalle siempre ayuda :)"
                 ]
             },
