@@ -94,11 +94,9 @@ function Author() {
 
             <hr />
             <div className='section'>
-                {EN ? <p>This page is developed by the <b>Software Engineering Team</b> at <b>Yakera</b> and belongs to the Yakera company</p> : <p>Esta página está desarrollada por el <b> Equipo de Ingeniería de Software </b> en <b> Yakera </b> y pertenece a la empresa Yakera</p>} 
-            </div>
-            <div className='section'>
+                {EN ? <p>This page is developed by the <b>Software Engineering Team</b> at <b>Yakera</b> and belongs to the Yakera company</p> : <p>Esta página está desarrollada por el <b> Equipo de Ingeniería de Software </b> en <b> Yakera </b> y pertenece a la empresa Yakera</p>}
                 {EN ? <p> Partnering with  <img class='footer-img' alt='datacamp-logo' src={datacamplogo}/>  for data education </p> : <p> Asociación con  <img class='footer-img' alt='datacamp-logo' src={datacamplogo}/>  para la educación de datos </p>}
-            </div>  
+            </div>
         </div>
     )
 }
