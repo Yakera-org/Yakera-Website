@@ -145,7 +145,7 @@ class donate extends Component{
     }
 
     componentDidUpdate(prevProps, prevState) {
-        if(this.state.itemOffset !== prevState.itemOffset) {
+        if(this.state.itemOffset !== prevState.itemOffset || this.state.filteredCampaigns !== prevState.filteredCampaigns) {
             this.setState({ loadingPage: true });
             const endOffset = this.state.itemOffset + NUM_OF_ITEMS_PER_PAGE;   // latter is number of items per page
             console.log(`Loading items from ${this.state.itemOffset} to ${endOffset}`);
@@ -158,7 +158,7 @@ class donate extends Component{
             }));
         }
         
-        if (this.state.searchQuery !== prevState.searchQuery || this.state.healthcareFilter !== prevState.healthcareFilter) {
+        if (this.state.searchQuery !== prevState.searchQuery || this.state.activeCategory !== prevState.activeCategory) {
             if (this.state.searchQuery.length !== 0) {
                 this.setState({filteredCampaigns: filterCampaignsBySearch(this.state.campaigns, this.state.searchQuery, this.state.language)});
                 // return filterCampaignsBySearch(this.state.campaigns, this.state.searchQuery, this.state.language);
@@ -168,6 +168,10 @@ class donate extends Component{
             } else {
                 this.setState({filteredCampaigns: this.state.campaigns});
             }
+            this.setState({
+                selected: 0,
+                itemOffset: (0 * NUM_OF_ITEMS_PER_PAGE) % this.state.filteredCampaigns.length,
+            });
         }
         // return this.state.campaigns;
     };
