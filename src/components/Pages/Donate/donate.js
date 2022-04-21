@@ -55,6 +55,8 @@ const filterCampaignsByCategory = (campaigns, categoryState) => {
     })
 };
 
+const NUM_OF_ITEMS_PER_PAGE = 8;
+
 class SearchBar extends React.Component {
     render () {
         return (
@@ -123,8 +125,8 @@ class donate extends Component{
                 this.setState({
                     campaigns: res.data.data.campaigns,
                     filteredCampaigns: res.data.data.campaigns,
-                    currentItems: res.data.data.campaigns.slice(this.state.itemOffset, 20),
-                    pageCount: Math.ceil(res.data.data.campaigns.length / 20)
+                    currentItems: res.data.data.campaigns.slice(this.state.itemOffset, NUM_OF_ITEMS_PER_PAGE),
+                    pageCount: Math.ceil(res.data.data.campaigns.length / NUM_OF_ITEMS_PER_PAGE)
                 });
             }    
         } catch (err) {
@@ -145,11 +147,11 @@ class donate extends Component{
     componentDidUpdate(prevProps, prevState) {
         if(this.state.itemOffset !== prevState.itemOffset) {
             this.setState({ loadingPage: true });
-            const endOffset = this.state.itemOffset + 20;   // latter is number of items per page
+            const endOffset = this.state.itemOffset + NUM_OF_ITEMS_PER_PAGE;   // latter is number of items per page
             console.log(`Loading items from ${this.state.itemOffset} to ${endOffset}`);
             this.setState({
                 currentItems: this.state.filteredCampaigns.slice(this.state.itemOffset, endOffset),
-                pageCount: Math.ceil(this.state.filteredCampaigns.length / 20),
+                pageCount: Math.ceil(this.state.filteredCampaigns.length / NUM_OF_ITEMS_PER_PAGE),
             },
             (() => {
                 this.setState({ loadingPage: false });
@@ -172,7 +174,7 @@ class donate extends Component{
 
     handlePageClick = (e) => {
         const selected = e.selected;
-        const newOffset = (selected * 20) % this.state.filteredCampaigns.length;
+        const newOffset = (selected * NUM_OF_ITEMS_PER_PAGE) % this.state.filteredCampaigns.length;
         console.log(`User requested page number ${e.selected}, which is offset ${newOffset}`);
         this.setState({
             itemOffset: newOffset,
