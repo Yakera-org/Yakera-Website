@@ -158,7 +158,7 @@ class donate extends Component{
             }));
         }
         
-        if (this.state.searchQuery !== prevState.searchQuery || this.state.activeCategory !== prevState.activeCategory) {
+        if (this.state.searchQuery !== prevState.searchQuery || this.state.activeCategory !== prevState.activeCategory || this.state.healthcareFilter !== prevState.healthcareFilter) {
             if (this.state.searchQuery.length !== 0) {
                 this.setState({filteredCampaigns: filterCampaignsBySearch(this.state.campaigns, this.state.searchQuery, this.state.language)});
                 // return filterCampaignsBySearch(this.state.campaigns, this.state.searchQuery, this.state.language);
