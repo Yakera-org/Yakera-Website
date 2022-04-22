@@ -47,6 +47,16 @@ function PaymentAuth(props) {
                 >
                     <img src={airtmLogo} alt="airtm-logo-button" />
                 </button>
+
+                <button
+                    type="submit"
+                    onClick={onAirTM}
+                    className=" airtm-but"
+
+                >
+                    <span>reserve</span>
+                </button>
+
                 { shouldShowZelle
                 ?
                 <div >
