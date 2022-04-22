@@ -1,0 +1,28 @@
+#zelle-top{
+    padding-top: 10px;
+    font-weight: bold;
+    font-size: 17px;
+    color: black;
+}
+#zelle-des{
+    color: #2c1c1c;
+    padding: 0 30px;
+    margin-top: -10px;
+    font-size: 13px;
+}
+.steps #steps {
+    width: 30%;
+    max-width: 150px;
+    min-width: 50px;
+}
+#username-text{
+    color: black;
+    font-weight: bold;
+}
+.input-container{
+    margin: 0vw 6vw 0vw 6vw;
+}
+.input-field{
+    max-width: 35vw;
+    min-width: 30vw;
+}

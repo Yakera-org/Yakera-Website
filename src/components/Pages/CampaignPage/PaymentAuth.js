@@ -1,25 +1,27 @@
 import React from 'react';
 import {Card} from '@material-ui/core';
 import PayPal from './Paypal';
-import airtmLogo from '../../../pics/airtmbutton.png';
+import reserveLogo from '../../../pics/reservebutton.png'
 import zelleLogo from '../../../pics/zelle.png';
 import ZelleLogic from './ZelleLogic';
+import ReserveLogic from './ReserveLogic'
 
 
 function PaymentAuth(props) {
     const EN = props.EN
     const [openZelle, setOpenZelle] = React.useState(false);
+    const [openReserve, setOpenReserve] = React.useState(false);
     
     const shouldShowZelle = props?.isAcceptingZelle;
 
-
-    function onAirTM(){
-        props.onAirTM(total_amount, props.title, props.name, props.email)
+    async function onReserve(){
+        setOpenReserve(!openReserve)
     }
+
     async function onZelle(){
         setOpenZelle(!openZelle)
     }
-
+ 
     const total_amount = parseInt(props.amount) + parseInt(props.tip)
     return (
         <div>
@@ -40,23 +42,21 @@ function PaymentAuth(props) {
                     onCancel={props.OnPaymentCancel}
                 />
                 <button
-                    type="submit"
-                    onClick={onAirTM}
-                    className=" airtm-but"
-
+                  type='submit'
+                  onClick={onReserve}
+                  className="airtm-but"
                 >
-                    <img src={airtmLogo} alt="airtm-logo-button" />
+                    <img src={reserveLogo} alt="reserve-logo-button"></img>
                 </button>
-
-                <button
-                    type="submit"
-                    onClick={onAirTM}
-                    className=" airtm-but"
-
-                >
-                    <span>reserve</span>
-                </button>
-
+                {
+                    openReserve
+                    ?
+                    <ReserveLogic
+                        EN={EN}
+                    />
+                    :
+                    ''
+                }
                 { shouldShowZelle
                 ?
                 <div >
