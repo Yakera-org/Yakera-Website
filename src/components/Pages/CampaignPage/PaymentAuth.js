@@ -33,8 +33,21 @@ function PaymentAuth(props) {
     useEffect(() => {
         // Create payment intent
         // Check the payment intent path/backend call
-        api.post(`/create-payment-intent`, {
-            items: [{ id: "donation", quantity: props.amount }, { id: "tip", quantity: props.tip }],
+        api.post(`/stripe/create-payment-intent`, {
+            items: [
+                {
+                    id: "donation",
+                    quantity: props.amount
+                },
+                {
+                    id: "tips",
+                    quantity: props.tip
+                },
+                {
+                    id: "total",
+                    quantity: props.amount + props.tip
+                },
+            ],
         }).then((res) => setClientSecret(res.data.clientSecret));
     }, [props]);
 
