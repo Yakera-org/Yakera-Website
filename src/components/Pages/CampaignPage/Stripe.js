@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { PaymentElement, useStripe, useElements } from "@stripe/react-stripe-js";
 import LanguageService from '../../../services/language';
 import api from '../../../services/api';
+import "./Stripe.css";
 
 function StripeForm(props)
 {
@@ -106,7 +107,7 @@ function StripeForm(props)
     return (
         <form id="payment-form" onSubmit={handleSubmit}>
             <PaymentElement id="payment-element" />
-            <button disabled={isLoading || !stripe || !elements} id="submit" className=" airtm-but">
+            <button disabled={isLoading || !stripe || !elements} id="submit">
                 <span id="button-text">
                     {isLoading ? <div className="spinner" id="spinner"></div> : "Stripe"}
                 </span>

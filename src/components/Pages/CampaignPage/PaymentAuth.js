@@ -8,6 +8,7 @@ import { loadStripe } from "@stripe/stripe-js"
 import { Elements } from "@stripe/react-stripe-js"
 import StripeForm from './Stripe';
 import api from '../../../services/api';
+import { Accordion, Card as AccordionCard } from 'react-bootstrap';
 
 // The public key is currently set to the test public key
 const PUBLIC_KEY = "pk_test_51KjTNTD1ctBA5rzvPq6FjtoOxn2bGAPvUX5GluRXOUnaMrINHjQ55uC3ZqllRDaUcoTAITPjPlvT76cNjNlZAPTM00Y71uOjrE";
@@ -113,22 +114,32 @@ function PaymentAuth(props) {
                 :
                 ''
                 }
-                {clientSecret && (
-                    <Elements options={options} stripe={stripePromise}>
-                        <StripeForm 
-                            EN={EN}
-                            slug={props.slug}
-                            email={props.email}
-                            name={props.name}
-                            amount={props.amount}
-                            tip={props.tip}
-                            comment={props.comment}
-                            isAnon={props.isAnon}
-                            openThanks={props.openThanks}
-                        />
-                    </Elements>
-                )}
-
+                <Accordion>
+                    <AccordionCard>
+                        <Accordion.Toggle as={AccordionCard.Header} eventKey="0" className=" airtm-but">
+                            Stripe
+                        </Accordion.Toggle>
+                        <Accordion.Collapse eventKey="0">
+                            <AccordionCard.Body>
+                                {clientSecret && (
+                                    <Elements options={options} stripe={stripePromise}>
+                                        <StripeForm 
+                                            EN={EN}
+                                            slug={props.slug}
+                                            email={props.email}
+                                            name={props.name}
+                                            amount={props.amount}
+                                            tip={props.tip}
+                                            comment={props.comment}
+                                            isAnon={props.isAnon}
+                                            openThanks={props.openThanks}
+                                        />
+                                    </Elements>
+                                )}
+                            </AccordionCard.Body>
+                        </Accordion.Collapse>
+                    </AccordionCard>
+                </Accordion>
 
             <button className='payment-back-btn' onClick={props.onBack}>
                 {EN ? 'Return' : 'Regreso'}
