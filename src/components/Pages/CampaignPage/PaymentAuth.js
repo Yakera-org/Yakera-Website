@@ -133,6 +133,7 @@ function PaymentAuth(props) {
                                             comment={props.comment}
                                             isAnon={props.isAnon}
                                             openThanks={props.openThanks}
+                                            clientSecret={clientSecret}
                                         />
                                     </Elements>
                                 )}

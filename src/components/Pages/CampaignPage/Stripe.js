@@ -17,15 +17,15 @@ function StripeForm(props)
         {
             const payload = {
                 "slug": this.props.slug,
-                "email": this.state.email,
-                "name": this.state.name,
-                "amount": this.state.amount,
+                "email": this.props.email,
+                "name": this.props.name,
+                "amount": this.props.amount,
                 "status": status,
-                "tip": this.state.tip,
+                "tip": this.props.tip,
                 "paymentID": paymentID,
-                "comment": this.state.comment,
+                "comment": this.props.comment,
                 "language": LanguageService.getLanguage(),
-                "isAnonymous": this.state.isAnon,
+                "isAnonymous": this.props.isAnon,
                 "stripe": true
             };
 
@@ -43,7 +43,10 @@ function StripeForm(props)
             return;
         }
 
+        /*
         const clientSecret = new URLSearchParams(window.location.search).get("payment_intent_client_secret");
+        */
+       const clientSecret = this.props.clientSecret;
 
         if(!clientSecret)
         {
@@ -55,19 +58,21 @@ function StripeForm(props)
             {
                 case "succeeded":
                     setMessage("Payment succeeded!");
+                    /*
                     addAmount(paymentIntent.id, "success");
                     this.props.openThanks();
+                    */
                     break;
                 case "processing":
                     setMessage("Your payment is processing.");
                     break;
                 case "requires_payment_method":
                     setMessage("Your payment was not successful, please try again.");
-                    addAmount({}, "error");
+                    // addAmount({}, "error");
                     break;
                 default:
                     setMessage("Something went wrong.");
-                    addAmount({}, "error");
+                    // addAmount({}, "error");
                     break;
             }
         });
@@ -92,16 +97,48 @@ function StripeForm(props)
                 return_url: "https://yakera.org/successful-payment-url"
             },
             */
+           redirect: "if_required"
         });
 
-        if(error.type === "card_error" || error.type === "validation_error")
+        if(error)
         {
-            setMessage(error.message);
+            if(error.type === "card_error" || error.type === "validation_error")
+            {
+                setMessage(error.message);
+            }
+            else
+            {
+                setMessage("An unexpected error occured.");
+            }
         }
         else
         {
-            setMessage("An unexpected error occured.");
+            const clientSecret = this.props.clientSecret;
+
+            stripe.retrievePaymentIntent(clientSecret).then(({ paymentIntent }) => {
+                switch(paymentIntent.status)
+                {
+                    case "succeeded":
+                        setMessage("Payment succeeded!");
+                        addAmount(paymentIntent.id, "success");
+                        this.props.openThanks();
+                        break;
+                    case "processing":
+                        setMessage("Your payment is processing.");
+                        break;
+                    case "requires_payment_method":
+                        setMessage("Your payment was not successful, please try again.");
+                        addAmount({}, "error");
+                        break;
+                    default:
+                        setMessage("Something went wrong.");
+                        addAmount({}, "error");
+                        break;
+                }
+            });
         }
+
+        console.log(message);
 
         setIsLoading(false);
     }
@@ -115,7 +152,7 @@ function StripeForm(props)
                 </span>
             </button>
             {/* Show any error or success message */}
-            {message && <div id="payment-message">{message}</div>}
+            {/* message && <div id="payment-message">{message}</div> */}
         </form>
     );
 
