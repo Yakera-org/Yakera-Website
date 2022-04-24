@@ -23,7 +23,19 @@ app.post("/payment", cors(), async (request, response) => {
     })
 
     console.log("Payment:", payment);
-    response.json({clientSecret: payment.client_secret,});
+    response.send({clientSecret: payment.client_secret,});
+});
+
+app.post("/payment-data", cors(), async (request, response) => {
+    let data = request.body;
+
+    console.log("request data: ", data);
+
+    if(data)
+    {
+        console.log("Payment (", data.paymentID, ") status: ", data.status, " - amount: $", data.donation + data.tip);
+        response.send({connectionStatus: "success"});
+    }
 });
 
 app.listen(process.env.PORT, () => {console.log("Listening on port", process.env.PORT)});

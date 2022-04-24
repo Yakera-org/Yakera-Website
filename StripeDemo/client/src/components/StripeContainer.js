@@ -12,6 +12,9 @@ function StripeContainer()
 {
     const [clientSecret, setClientSecret] = useState("");
 
+    let donation = 15;
+    let tip = 5;
+
     useEffect(() => {
         axios.post("http://localhost:8000/payment", {
             items: [{ id: "donation", quantity: 15 }, { id: "tip", quantity: 5 }],
@@ -37,7 +40,11 @@ function StripeContainer()
         <div>
             {clientSecret && (
                 <Elements options={options} stripe={stripeTestPromise}>
-                    <PaymentForm />
+                    <PaymentForm 
+                        donation={donation}
+                        tip={tip}
+                        clientSecret={clientSecret}
+                    />
                 </Elements>
             )}
         </div>

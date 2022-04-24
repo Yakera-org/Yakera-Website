@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { PaymentElement, useElements, useStripe } from "@stripe/react-stripe-js";
+import axios from "axios";
 
 
-function PaymentForm()
+function PaymentForm(props)
 {
     const stripe = useStripe();
     const elements = useElements();
@@ -10,15 +11,29 @@ function PaymentForm()
     const [message, setMessage] = useState(null);
     const [isLoading, setIsLoading] = useState(false);
 
+    const sendStatus = async (paymentID, status) => {
+        let data = {
+            status: status,
+            donation: props.donation,
+            tip: props.tip,
+            paymentID: paymentID
+        }
+
+        console.log(await axios.post("http://localhost:8000/payment-data", data));
+    };
+
     useEffect(() => {
         if(!stripe)
         {
             return;
         }
         
+        /*
         const clientSecret = new URLSearchParams(window.location.search).get(
             "payment_intent_client_secret"
         );
+        */
+       const clientSecret = props.clientSecret;
 
         if(!clientSecret)
         {
@@ -30,15 +45,18 @@ function PaymentForm()
             {
                 case "succeeded":
                     setMessage("Payment succeded!");
+                    // sendStatus(paymentIntent.id, "success");
                     break;
                 case "processing":
                     setMessage("Your payment is processing.");
                     break;
                 case "requires_payment_method":
                     setMessage("Your payment was not successful, please try again.");
+                    // sendStatus({}, "error");
                     break;
                 default:
-                    setMessage("Something went wrong.")
+                    setMessage("Something went wrong.");
+                    // sendStatus({}, "error");
                     break;
             }
         });
@@ -57,14 +75,49 @@ function PaymentForm()
 
         const { error } = await stripe.confirmPayment({
             elements,
+            /*
             confirmParams: {
-                return_url: "http://localhost:8000/payment-success"
-            }
+                return_url: "http://localhost:3000/"
+            },
+            */
+           redirect: "if_required"
         });
 
-        if(error.type === "card_error" || error.type === "validation_error")
+        if(error)
         {
-            setMessage(error.message);
+            if(error.type === "card_error" || error.type === "validation_error")
+            {
+                setMessage(error.message);
+            }
+            else
+            {
+                setMessage("An unexpected error occured.");
+            }
+        }
+        else
+        {
+            const clientSecret = props.clientSecret;
+
+            stripe.retrievePaymentIntent(clientSecret).then(({ paymentIntent }) => {
+                switch(paymentIntent.status)
+                {
+                    case "succeeded":
+                        setMessage("Payment succeded!");
+                        sendStatus(paymentIntent.id, "success");
+                        break;
+                    case "processing":
+                        setMessage("Your payment is processing.");
+                        break;
+                    case "requires_payment_method":
+                        setMessage("Your payment was not successful, please try again.");
+                        sendStatus({}, "error");
+                        break;
+                    default:
+                        setMessage("Something went wrong.");
+                        sendStatus({}, "error");
+                        break;
+                }
+            });
         }
 
         setIsLoading(false);
