@@ -86,10 +86,12 @@ function StripeForm(props)
 
         const { error } = await stripe.confirmPayment({
             elements,
+            /*
             confirmParams: {
                 // Change to successful payment url
                 return_url: "https://yakera.org/successful-payment-url"
             },
+            */
         });
 
         if(error.type === "card_error" || error.type === "validation_error")
