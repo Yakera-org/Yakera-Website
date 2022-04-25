@@ -1,28 +1,49 @@
-#zelle-top{
+#reserve-top{
     padding-top: 10px;
-    font-weight: bold;
-    font-size: 17px;
+    font-weight: 700;
+    font-size: 20px;
     color: black;
 }
-#zelle-des{
-    color: #2c1c1c;
+#reserve-des{
     padding: 0 30px;
     margin-top: -10px;
-    font-size: 13px;
+    font-weight: 400;
+    font-size: 12px;
+    color: #2b292d;
 }
-.steps #steps {
-    width: 30%;
-    max-width: 150px;
-    min-width: 50px;
+.steps {
+    margin-left: 8%;
+}
+.bold{
+    font-size: 12px;
+    margin-right: 38%;
+}
+.steps #text {
+    width: 60%;
+    font-size: 9px;
 }
 #username-text{
     color: black;
+    font-size: 12px;
+    font-weight: 700;
     font-weight: bold;
 }
 .input-container{
     margin: 0vw 6vw 0vw 6vw;
 }
 .input-field{
-    max-width: 35vw;
-    min-width: 30vw;
+    max-width: 18vw;
+    max-height: 2vw;
+    align-items: center;
+    background: #E5E5E5;
+    border: none;
+    text-align: center;
+    border-radius: 15px;
+    font-size: 8px;
+}
+.confirm-button {
+    width:70%;
+}
+.confirm-button:hover {
+    opacity: 0.8;
 }

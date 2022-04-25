@@ -16,6 +16,7 @@ function ReserveVisual(props) {
             :
                 <p id="reserve-top">Monto a donar via Reserve: ${props.amount} </p>
             }
+            <br/>
             {EN ?
                 <p id="reserve-des">These are the steps to donate:</p>
             :
@@ -23,34 +24,47 @@ function ReserveVisual(props) {
             }
             <Grid container spacing={0} className='steps'>
                 <Grid item sm={4}>
-                    <img id='steps' src={ellipse} alt='steps' />
+                    <div id='text'>
+                    {EN
+                    ?
+                    "Go to the Reserve application and transfer the amount shown above to"
+                    :
+                    "Ve a la aplicación de Reserve y transfiere el monto indicado a"
+                    }
+                    </div>
+                    <span class="bold">💸yakera</span>
                 </Grid>
                 <Grid item sm={4}>
-                    <img id='steps' src={ellipse} alt='steps' />
-                </Grid> 
-                <Grid item sm={4}>
-                    <img id='steps' src={ellipse} alt='steps' />
+                    <div id='text'>
+                    {EN 
+                    ? 
+                    "After you have transferred, enter your username in the box below" 
+                    : 
+                    "Después de que hayas hecho la transferencia, introduce tu usuario en la casilla de abajo"
+                    }
+                    </div>
                 </Grid>
                 <Grid item sm={4}>
-                    <div id='text'>Text</div>
-                </Grid>
-                <Grid item sm={4}>
-                    <div id='text'>Text</div>
-                </Grid>
-                <Grid item sm={4}>
-                    <div id='text'>Text</div>
+                    <div id='text'>
+                        {EN 
+                        ? 
+                        "click on the confirm transaction button and ... that's all!" 
+                        : 
+                        "Haz click en el botón de confirmación yiYa está todo listo"
+                        }
+                    </div>
                 </Grid>
             </Grid>
+            <br />
             {EN ?
                 <p id="username-text">Enter your Reserve username</p>
             :
                 <p id="username-text">Ingresa tu usuario de Reserve</p>
             }
             <div className = "input-container">
-                <input
+                <input className='input-field'
                     type="text"
                     name="Username"
-                    className='input-field'
                     placeholder={EN ? "Username here" : "Usuario de Reserve aquí"}
                 />
             </div>
@@ -59,14 +73,15 @@ function ReserveVisual(props) {
                 style={{
                     border:'none',
                     backgroundColor:'black',
-                    borderRadius:'10px',
+                    borderRadius:'15px',
                     color:'white',
                     padding:'10px',
-                    maxWidth:'15vw',
-                    minWidth:'8vw',
-                    fontSize:'13px'
+                    maxHeight:'2vw',
+                    maxWidth:'10vw',
+                    fontSize:'9px',
+                    fontFamily:'Intro-Regular-Alt'
                 }}
-            >{EN ? "Confirm Payment" : "Confirmar Pago"}</Button>
+            >{EN ? "Confirm transaction" : "Confirm transaction"}</Button>
         </div>
     );
 }

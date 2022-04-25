@@ -53,6 +53,7 @@ function PaymentAuth(props) {
                     ?
                     <ReserveLogic
                         EN={EN}
+                        amount={props.amount}
                     />
                     :
                     ''
