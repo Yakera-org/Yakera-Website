@@ -1,5 +1,5 @@
 import React from 'react';
-import { Grid } from '@material-ui/core';
+import { Grid, Hidden } from '@material-ui/core';
 import logo from "../svg/logo.svg";
 import datacamplogo from "../pics/datacamplogo.png";
 import LanguageService from "../services/language";
@@ -95,7 +95,9 @@ function Author() {
             <hr />
             <div className='section'>
                 {EN ? <p>This page is developed by the <b>Software Engineering Team</b> at <b>Yakera</b> and belongs to the Yakera company</p> : <p>Esta página está desarrollada por el <b> Equipo de Ingeniería de Software </b> en <b> Yakera </b> y pertenece a la empresa Yakera</p>}
-                {EN ? <p> Partnering with  <img className='footer-img' alt='datacamp-logo' src={datacamplogo}/>  for data education </p> : <p> Asociación con  <img className='footer-img' alt='datacamp-logo' src={datacamplogo}/>  para la educación de datos </p>}
+                <Hidden xsDown>
+                    {EN ? <p> Partnering with  <img className='footer-img' alt='datacamp-logo' src={datacamplogo}/>  for data education </p> : <p> Asociación con  <img className='footer-img' alt='datacamp-logo' src={datacamplogo}/>  para la educación de datos </p>}
+                </Hidden>
             </div>
         </div>
     )
