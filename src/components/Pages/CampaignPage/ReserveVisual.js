@@ -25,38 +25,46 @@ function ReserveVisual(props) {
             <Grid container spacing={0} className='steps'>
                 <Grid item sm={12}>
                     <CardMedia className='reserve-steps-card' component="img" image={reservebar}
-                        alt='steps-bar' style={{ maxWidth: "90%", float: "center" }} />
-                </Grid>
-                <Grid item sm={4}>
-                    <div id='text'>
-                    {EN
-                    ?
-                    "Go to the Reserve application and transfer the amount shown above to"
-                    :
-                    "Ve a la aplicación de Reserve y transfiere el monto indicado a"
-                    }
-                    </div>
-                    <span class="bold"><span class="money-emoji">💸</span>yakera</span>
-                </Grid>
-                <Grid item sm={4}>
-                    <div id='text'>
-                    {EN 
-                    ? 
-                    "After you have transferred, enter your username in the box below" 
-                    : 
-                    "Después de que hayas hecho la transferencia, introduce tu usuario en la casilla de abajo"
-                    }
+                        alt='steps-bar' style={{ maxWidth: "90%", float: "center" }} 
+                    />
+                    <div className='steps-num'>
+                        <span id='first'>1</span>
+                        <span id='second'>2</span>
+                        <span id='third'>3</span>
                     </div>
                 </Grid>
-                <Grid item sm={4}>
-                    <div id='text'>
+                <Grid container spacing={0} className='reserve-steps-text'>
+                    <Grid item sm={4}>
+                        <div id='text'>
+                        {EN
+                        ?
+                        "Go to the Reserve application and transfer the amount shown above to"
+                        :
+                        "Ve a la aplicación de Reserve y transfiere el monto indicado a"
+                        }
+                        </div>
+                        <span class="bold"><span class="money-emoji">💸</span>yakera</span>
+                    </Grid>
+                    <Grid item sm={4}>
+                        <div id='text'>
                         {EN 
                         ? 
-                        "click on the confirm transaction button and ... that's all!" 
+                        "After you have transferred, enter your username in the box below" 
                         : 
-                        "Haz click en el botón de confirmación yiYa está todo listo"
+                        "Después de que hayas hecho la transferencia, introduce tu usuario en la casilla de abajo"
                         }
-                    </div>
+                        </div>
+                    </Grid>
+                    <Grid item sm={4}>
+                        <div id='text'>
+                            {EN 
+                            ? 
+                            "click on the confirm transaction button and ... that's all!" 
+                            : 
+                            "Haz click en el botón de confirmación yiYa está todo listo"
+                            }
+                        </div>
+                    </Grid>
                 </Grid>
             </Grid>
             <br />
