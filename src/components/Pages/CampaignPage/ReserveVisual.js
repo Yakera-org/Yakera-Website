@@ -1,7 +1,7 @@
 import React from 'react';
 import "./Reserve.css"
-import { Grid, Button } from '@material-ui/core'
-import ellipse from '../../../pics/ellipse.png'
+import { Grid, Button, CardMedia} from '@material-ui/core'
+import reservebar from '../../../pics/reserve-bar.svg'
 
 
 function ReserveVisual(props) {
@@ -23,6 +23,10 @@ function ReserveVisual(props) {
                 <p id="reserve-des">Sigue estos pasos para realizar tu donación</p>
             }
             <Grid container spacing={0} className='steps'>
+                <Grid item sm={12}>
+                    <CardMedia className='reserve-steps-card' component="img" image={reservebar}
+                        alt='steps-bar' style={{ maxWidth: "90%", float: "center" }} />
+                </Grid>
                 <Grid item sm={4}>
                     <div id='text'>
                     {EN
@@ -32,7 +36,7 @@ function ReserveVisual(props) {
                     "Ve a la aplicación de Reserve y transfiere el monto indicado a"
                     }
                     </div>
-                    <span class="bold">💸yakera</span>
+                    <span class="bold"><span class="money-emoji">💸</span>yakera</span>
                 </Grid>
                 <Grid item sm={4}>
                     <div id='text'>
