@@ -12,21 +12,23 @@ function StripeForm(props)
     const [message, setMessage] = useState(null);
     const [isLoading, setIsLoading] = useState(false);
 
-    const addAmount = async (paymentID, status) => {
+    const addAmount = async (paymentIntent, status) => {
         try
         {
             const payload = {
-                "slug": this.props.slug,
-                "email": this.props.email,
-                "name": this.props.name,
-                "amount": this.props.amount,
+                "slug": props.slug,
+                "email": props.email,
+                "name": props.name,
+                "amount": props.amount,
                 "status": status,
-                "tip": this.props.tip,
-                "paymentID": paymentID,
-                "comment": this.props.comment,
+                "tip": props.tip,
+                "paymentID": paymentIntent.id,
+                "comment": props.comment,
                 "language": LanguageService.getLanguage(),
-                "isAnonymous": this.props.isAnon,
-                "stripe": true
+                "isAnonymous": props.isAnon,
+                "stripe": true,
+                "paymentMethod": paymentIntent.payment_method,
+                "paymentMethodTypes": paymentIntent.paymentMethodTypes
             };
 
             console.log(await api.post(`/campaigns/donate`, payload));
@@ -120,7 +122,7 @@ function StripeForm(props)
                 {
                     case "succeeded":
                         setMessage("Payment succeeded!");
-                        addAmount(paymentIntent.id, "success");
+                        addAmount(paymentIntent, "success");
                         this.props.openThanks();
                         break;
                     case "processing":
