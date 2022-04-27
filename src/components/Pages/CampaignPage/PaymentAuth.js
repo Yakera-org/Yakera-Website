@@ -18,14 +18,14 @@ function PaymentAuth(props) {
     const total_amount = parseInt(props.amount) + parseInt(props.tip)
     return (
         <div>
-             <p>{EN ? 'Payment Authentication' : 'Autenticación de pago'}</p>
+             <p>{EN ? 'Payment authentication' : 'Autenticación de pago'}</p>
             <Card className='payment-auth-card'>
 
                 <div className='auth-axplanation'>
                     <h4>
-                    {EN ? 'Amount to be donated:' : 'Monto a donar:'} <label style={{color:'#ea8737'}}>{total_amount} $ </label>
+                    {EN ? 'Amount to donate:' : 'Monto a donar:'} <label style={{color:'#ea8737'}}>{total_amount} $ </label>
                     </h4>
-                    <p>{EN ? 'Please select a payment method' : 'Por favor seleccione un método de pago.'}</p>
+                    <p>{EN ? 'Please select a payment method' : 'Por favor seleccione un método de pago'}</p>
                 </div>
                 <PayPal
                     amount={total_amount}
@@ -70,7 +70,7 @@ function PaymentAuth(props) {
 
 
             <button className='payment-back-btn' onClick={props.onBack}>
-                {EN ? 'Return' : 'Regreso'}
+                {EN ? 'Return' : 'Regresar'}
             </button>
             </Card>
         </div>

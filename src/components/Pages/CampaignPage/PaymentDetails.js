@@ -186,14 +186,15 @@ class PaymentDetails extends PureComponent {
 
                 <ConsentCard open={this.state.openPrivacy} onClose={this.onPrivacy}/>
 
-                <p>{EN ? 'Please enter details below' : 'Ingrese los detalles a continuación'}</p>
+                <p>{EN ? 'Enter the details below' : 'Ingrese los detalles a continuación'}</p>
 
                 
+                <label>{EN ? 'How much do you want to donate?' : '¿Cuánto deseas donar?'}</label>
                 <input
                     type="number"
                     name="amount"
                     value={amount.value}
-                    placeholder={EN ? "Amount ($)*" : 'Cantidad ($)'}
+                    placeholder={'$ 0.00'}
                     className={classnames(
                         'form-control',
                         { 'is-valid': amount.error === false },
@@ -205,28 +206,12 @@ class PaymentDetails extends PureComponent {
                         />
                 <div className='error-msg'>{amount.error}</div> 
 
-                <input
-                    type="text"
-                    name="email"
-                    value={email.value}
-                    placeholder={EN ? "Email*" : 'Email*'}
-                    className={classnames(
-                        'form-control',
-                        { 'is-valid': email.error === false },
-                        { 'is-invalid': email.error }
-                        )}
-                        onChange={evt =>
-                            this.handleChange(validateFields.validateEmail, evt)
-                        }                            
-                        
-                        />
-                <div className='error-msg'>{email.error}</div> 
-                
+                <label>{EN ? 'Name' : 'Nombre'}</label>
                 <input
                     type="text"
                     name="name"
                     value={name.value}
-                    placeholder={EN ? 'Name*' : 'Nombre*'}
+                    placeholder={'Pedro Perez'}
                     className={classnames(
                         'form-control', 
                         { 'is-valid': name.error === false },
@@ -237,15 +222,32 @@ class PaymentDetails extends PureComponent {
                         }                                  
                         
                         />
-                <div className='error-msg'>{name.error}</div> 
+                <div className='error-msg'>{name.error}</div>
 
-                <p id='required'>{EN ? ' * required' : '* requerido'}</p>
+                <label>{EN ? 'Email' : 'Correo electrónico'}</label>
+                <input
+                    type="text"
+                    name="email"
+                    value={email.value}
+                    placeholder={'Pedro@yakera.org'}
+                    className={classnames(
+                        'form-control',
+                        { 'is-valid': email.error === false },
+                        { 'is-invalid': email.error }
+                        )}
+                        onChange={evt =>
+                            this.handleChange(validateFields.validateEmail, evt)
+                        }                            
+                        
+                        />
+                <div className='error-msg'>{email.error}</div>  
                 
+                <label>{EN ? 'Leave a comment!' : '¡Deja un comentario!'}</label>
                 <input
                     type="text"
                     name="comment"
                     value={comment.value}
-                    placeholder={EN ? 'Leave a supportive comment' : 'Deja un comentario de apoyo'}
+                    placeholder={EN ? 'Get better soon!' : '¡Mejórate pronto!'}
                     className={classnames(
                         'form-control',
                         { 'is-valid': comment.error === false },
@@ -275,7 +277,7 @@ class PaymentDetails extends PureComponent {
 
                 <hr id='donate-now-hr'/>
 
-                <p>{EN ? 'Would you like to leave a tip?*' : 'Quisiera dejar una propina?'} </p>
+                <p>{EN ? 'Would you like to leave a tip?' : '¡Quisieras dejar propina?'} </p>
 
                 <input
                     name="tip-yes"
@@ -341,7 +343,7 @@ class PaymentDetails extends PureComponent {
                     {EN ? "No, I don't want to leave a tip" : 'No, no quiero dejar propina.'}   
                 </div>
 
-                <p id='tip-desc'>{EN ? "*Leaving a tip helps us maintain and bring you new features" : '*Dejando propina nos ayuda a mantener y traerle nuevas opciones y servicios.'}   </p>
+                <p id='tip-desc'>{EN ? "Leaving a tip helps us to maintain our operation and bring you new options and features" : '*Dejando propina nos ayudas a mantener y traerle nuevas opciones y servicios!'}   </p>
 
                 <hr id='donate-now-hr'/>
                 
