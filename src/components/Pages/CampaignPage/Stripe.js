@@ -48,7 +48,7 @@ function StripeForm(props)
         /*
         const clientSecret = new URLSearchParams(window.location.search).get("payment_intent_client_secret");
         */
-       const clientSecret = this.props.clientSecret;
+       const clientSecret = props.clientSecret;
 
         if(!clientSecret)
         {
@@ -62,7 +62,7 @@ function StripeForm(props)
                     setMessage("Payment succeeded!");
                     /*
                     addAmount(paymentIntent.id, "success");
-                    this.props.openThanks();
+                    props.openThanks();
                     */
                     break;
                 case "processing":
@@ -78,7 +78,7 @@ function StripeForm(props)
                     break;
             }
         });
-    }, [stripe]);
+    }, [stripe, props]);
 
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -115,7 +115,7 @@ function StripeForm(props)
         }
         else
         {
-            const clientSecret = this.props.clientSecret;
+            const clientSecret = props.clientSecret;
 
             stripe.retrievePaymentIntent(clientSecret).then(({ paymentIntent }) => {
                 switch(paymentIntent.status)
@@ -123,7 +123,7 @@ function StripeForm(props)
                     case "succeeded":
                         setMessage("Payment succeeded!");
                         addAmount(paymentIntent, "success");
-                        this.props.openThanks();
+                        props.openThanks();
                         break;
                     case "processing":
                         setMessage("Your payment is processing.");
