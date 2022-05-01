@@ -291,38 +291,31 @@
     border-radius: 10px;
 }
 
-.airtm-but {
+.reserve-but {
     width: 100%;
     border-radius: 5px;
     min-width: 200px;
     margin-bottom: 15px;
-    height: 4rem;
+    height: 3rem;
     font-size: 30px;
     background-color: white;
     border: 1px solid rgb(39, 39, 39);
     outline: none;
 }
 
-.airtm-but:hover{
+.reserve-but:hover{
     background-color:  rgb(238, 238, 238);
     outline: none;
 
 }
-.airtm-but:active{
+.reserve-but:active{
     background-color: rgb(238, 238, 238);
     outline: none;
 
 }
-.airtm-but:focus{
+.reserve-but:focus{
     outline: none;
-
 }
-
-.airtm-but img{
-    width: 15%;
-    height: auto;
-}
-
 .payment-auth {
     text-align: center;
 }
@@ -331,6 +324,11 @@
     padding: 20px 25%;
     height: auto;
 }
+.reserve-but img{
+    width: 25%;
+    height: auto;
+}
+
 .payment-back-btn{
     border: none;
     font-size: 18px;
@@ -495,12 +493,12 @@
         overflow: hidden;
         font-size: 18px;
     }
-    .airtm-but {
-        width: 100%;
+    .reserve-but {
+        height: 3rem;
         margin-left: 0;
     }
-    .airtm-but img{
-        height: 100%;
+    .reserve-but img{
+        height: 60%;
         padding: 5px 0;
         width: auto;
     }

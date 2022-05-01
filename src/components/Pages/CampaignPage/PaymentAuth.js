@@ -44,7 +44,7 @@ function PaymentAuth(props) {
                 <button
                   type='submit'
                   onClick={onReserve}
-                  className="airtm-but"
+                  className="reserve-but"
                 >
                     <img src={reserveLogo} alt="reserve-logo-button"></img>
                 </button>

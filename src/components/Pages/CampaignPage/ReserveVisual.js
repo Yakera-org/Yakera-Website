@@ -1,6 +1,6 @@
 import React from 'react';
 import "./Reserve.css"
-import { Grid, Button, CardMedia} from '@material-ui/core'
+import { Grid, Button, CardMedia, Hidden} from '@material-ui/core'
 import reservebar from '../../../pics/reserve-bar.svg'
 
 
@@ -23,6 +23,7 @@ function ReserveVisual(props) {
                 <p id="reserve-des">Sigue estos pasos para realizar tu donación</p>
             }
             <Grid container spacing={0} className='steps'>
+                <Hidden xsDown>
                 <Grid item sm={12}>
                     <CardMedia className='reserve-steps-card' component="img" image={reservebar}
                         alt='steps-bar' style={{ maxWidth: "90%", float: "center" }} 
@@ -33,8 +34,9 @@ function ReserveVisual(props) {
                         <span id='third'>3</span>
                     </div>
                 </Grid>
+                </Hidden>
                 <Grid container spacing={0} className='reserve-steps-text'>
-                    <Grid item sm={4}>
+                    <Grid item xs={12} sm={4}>
                         <div id='text'>
                         {EN
                         ?
@@ -45,7 +47,7 @@ function ReserveVisual(props) {
                         </div>
                         <span class="bold"><span class="money-emoji">💸</span>yakera</span>
                     </Grid>
-                    <Grid item sm={4}>
+                    <Grid item xs={12} sm={4}>
                         <div id='text'>
                         {EN 
                         ? 
@@ -55,7 +57,7 @@ function ReserveVisual(props) {
                         }
                         </div>
                     </Grid>
-                    <Grid item sm={4}>
+                    <Grid item xs={12} sm={4}>
                         <div id='text'>
                             {EN 
                             ? 
@@ -76,8 +78,9 @@ function ReserveVisual(props) {
             <div className = "input-container">
                 <input className='input-field'
                     type="text"
-                    name="Username"
+                    name="username"
                     placeholder={EN ? "Username here" : "Usuario de Reserve aquí"}
+                    onChange={props.handleChange}
                 />
             </div>
             <br />
@@ -90,10 +93,10 @@ function ReserveVisual(props) {
                     padding:'10px',
                     maxHeight:'2vw',
                     maxWidth:'10vw',
-                    fontSize:'9px',
-                    fontFamily:'Intro-Regular-Alt'
+                    fontSize:'50%',
+                    textTransform: 'none'
                 }}
-            >{EN ? "Confirm transaction" : "Confirm transaction"}</Button>
+            >{EN ? "Confirm transaction" : "Confirm Transaction"}</Button>
         </div>
     );
 }
