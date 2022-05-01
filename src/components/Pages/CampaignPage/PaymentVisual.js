@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
+import { Grid } from '@material-ui/core';
 import PaymentAuth from './PaymentAuth';
 import PaymentDetails from './PaymentDetails';
 import Loader from "react-loader-spinner";
 import api from "../../../services/api";
 import ThanksCard from './thanksCard';
 import LanguageService from '../../../services/language';
+import "./Payment.css";
 
 class PaymentVisual extends Component {
 
@@ -139,6 +141,7 @@ class PaymentVisual extends Component {
                     title={this.props.title}
                     onClose={this.closeThanks.bind(this)}
                     />
+                <Grid container style={{alignContent:'center', alignItems:'flex-start'}}>
                 <div className="payment-card-sec">
                     <div className='loader'>
                         <Loader
@@ -150,7 +153,7 @@ class PaymentVisual extends Component {
                         />
                     </div>
                 <h1 >
-                    {EN ? 'Donate Now' : 'Donar Ahora' }
+                    {EN ? 'Donate Now!' : '¡Donar Ahora!' }
                 </h1>
                 <hr id='donate-now-hr'/>
 
@@ -191,6 +194,7 @@ class PaymentVisual extends Component {
                         />
                     }
                 </div>
+                </Grid>
             </div>
         );
     }
