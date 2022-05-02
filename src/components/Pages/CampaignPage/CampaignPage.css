@@ -175,13 +175,12 @@
 .payment-card{
     text-align: center;
     margin: 0%;
-    padding: 2%;
+    padding: 0% 28%;
     width: 100%;
-    padding: 2% 35%;
 }
 
 #donate-now-hr{
-    width: 60%;
+    width: 45%;
     background-color: #002453;
     height: 2px;
 }
@@ -223,16 +222,17 @@
     border: none;
 }
 .payment-start-button{
-    width: 50%;
-    margin-left: 25%;
-    height: 50px;
-    font-size: 20px;
-    background-color: #002453;
+    width: 80%;
+    margin-left: 10%;
+    font-size: medium;
+    background-color: #eb913b;
     border: none;
+    border-radius: 10px;
+    margin-top: 4%;
 }
 .payment-start-button:hover{
     opacity: 0.8;
-    background-color: #002453;
+    background-color: #ea8737;
 }
 .payment-slit{
     text-align: center;

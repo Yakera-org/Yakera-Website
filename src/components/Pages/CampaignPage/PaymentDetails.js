@@ -37,7 +37,7 @@ class PaymentDetails extends PureComponent {
                 error: '',
             },
             tip: {
-                value: 5,
+                value: 0,
                 validateOnChange: false,
                 error: '',
             }
@@ -186,15 +186,21 @@ class PaymentDetails extends PureComponent {
 
                 <ConsentCard open={this.state.openPrivacy} onClose={this.onPrivacy}/>
 
-                <p className='details'>{EN ? 'Enter the details below' : 'Ingrese los detalles a continuación'}</p>
+                <div className='details'>
+                    {EN ? 'Enter the details below' : 'Ingrese los detalles a continuación'}
+                </div>
 
-                
-                <p>{EN ? 'How much do you want to donate?' : '¿Cuánto deseas donar?'}</p>
+                <div className='category'>
+                    {EN ? 'How much do you want to donate?' : '¿Cuánto deseas donar?'}
+                </div>
+
+                <div className='money-sign'>{'$'}</div>
                 <input
+                    id="donation-input"
                     type="number"
                     name="amount"
                     value={amount.value}
-                    placeholder={'$ 0.00'}
+                    placeholder={'0.00'}
                     className={classnames(
                         'form-control',
                         { 'is-valid': amount.error === false },
@@ -208,7 +214,10 @@ class PaymentDetails extends PureComponent {
 
                 <Grid container spacing={2} style={{alignItems:'flex-start'}}>
                     <Grid item xs={12} sm={6}>
-                        <p>{EN ? 'Name' : 'Nombre'}</p>
+                        <div className='option'>
+                            {EN ? 'Name' : 'Nombre'}
+                        </div>
+
                         <input
                             type="text"
                             name="name"
@@ -228,7 +237,10 @@ class PaymentDetails extends PureComponent {
                     </Grid>
 
                     <Grid item xs={12} sm={6}>
-                        <p>{EN ? 'Email' : 'Correo electrónico'}</p>
+                        <div className='option'>
+                            {EN ? 'Email' : 'Correo electrónico'}
+                        </div>
+                        
                         <input
                             type="text"
                             name="email"
@@ -248,7 +260,10 @@ class PaymentDetails extends PureComponent {
                     </Grid>
                 </Grid>
                 
-                <p>{EN ? 'Leave a comment!' : '¡Deja un comentario!'}</p>
+                <div className='category'>
+                    {EN ? 'Leave a comment!' : '¡Deja un comentario!'}
+                </div>
+                
                 <input
                     type="text"
                     name="comment"
@@ -265,26 +280,35 @@ class PaymentDetails extends PureComponent {
                         
                 />
 
-                <br />  
+                <label className='checkbox-button'>
                 <input
                     name="anonymous"
                     type="checkbox"
                     checked={this.state.anon}
                     onChange={this.onAnonCheck}
-                    style={{ marginBottom:'5px', marginTop:'-15px', width:'15px', float:'left', clear:'both'}}
+                    style={{marginLeft: '-238px', marginTop:'-10px', width:'15px', float:'left', clear:'both'}}
                     className={classnames(
-                        'form-control'
+                        'form-control',
+                        'checkbox-square'
                         )}
                 />
-                <div className="check-text" style={{margin:'0px'}} >
+                <span className='checkbox-button-control'></span>
+                <div className="description" id="checkbox-text">
                     {EN ? 'I would like to stay anonymous' : 'Me gustaría permanecer en el anonimato'}   
                 </div>
+                </label>
 
-                <p>{EN ? 'Would you like to leave a tip?' : '¡Quisieras dejar propina?'} </p>
+                <div className='category'>
+                    {EN ? 'Would you like to leave a tip?' : '¡Quisieras dejar propina?'}
+                </div>
+                
+                <div className='money-sign'>{'$'}</div>
                 <input 
+                    id="tip-input"
                     name="tip"
                     type="number"
-                    placeholder="$ 0.00"
+                    value={tip.value}
+                    placeholder="0.00"
                     className={classnames(
                         'form-control',
                         { 'is-valid': tip.error === false },
@@ -294,74 +318,8 @@ class PaymentDetails extends PureComponent {
                                 this.handleChange(validateFields.validateNumber, evt)
                         }
                 />
-                {/*
-                <input
-                    name="tip-yes"
-                    type="checkbox"
-                    checked={this.state.yesTip}
-                    onChange={this.onYesTipCheck}
-                    style={{ marginBottom:'5px', marginTop:'-15px', width:'15px', float:'left', clear:'both'}}
-                    className={classnames(
-                        'form-control'
-                        )}
-                />
-                <div className="check-text" style={{margin:'0px'}} >
-                    {EN ? 'Yes, please' : 'Si'}   
-                </div>
 
-                {
-                    this.state.yesTip
-
-                    ?
-                    <div id='tip-area'>
-                        <Grid container spacing={0} style={{ alignItems:'flex-start', padding:'0 10%', marginTop:'-10px'}}>
-                            <Grid item xs={12} sm={4} >
-                                <div className='label'>{EN ? 'Tip ($)' : 'Propina ($)'}:</div>
-                            </Grid>
-                            <Grid item xs={12} sm={8} style={{marginTop:'8px'}}>
-                                <input
-                                    type="number"
-                                    name="tip"
-                                    value={tip.value}
-                                    placeholder={EN ? 'Tip ($)' : 'Propina ($)'}
-                                    className={classnames(
-                                        'form-control',
-                                        { 'is-valid': tip.error === false },
-                                        { 'is-invalid': tip.error }
-                                        )}
-                                        onChange={evt =>
-                                                this.handleChange(validateFields.validateNumber, evt)
-                                        }
-                                />
-                            </Grid>
-                        </Grid>
-                                
-                        <div className='error-msg'>{tip.error}</div> 
-                        <br />
-                    </div>
-
-                    :
-
-                    ''
-                }
-
-                <input
-                    name="tip-no"
-                    type="checkbox"
-                    checked={this.state.noTip}
-                    onChange={this.onNoTipCheck}
-                    style={{ marginBottom:'5px', marginTop:'-15px', width:'15px', float:'left', clear:'both'}}
-                    className={classnames(
-                        'form-control'
-                        )}
-                />
-                
-                <div className="check-text" style={{marginTop:'0px'}} >
-                    {EN ? "No, I don't want to leave a tip" : 'No, no quiero dejar propina.'}   
-                </div>
-                */}
-
-                <p id='tip-desc'>
+                <div className='description'>
                     {
                      EN 
                      ? 
@@ -369,7 +327,7 @@ class PaymentDetails extends PureComponent {
                      : 
                      '*Dejando propina nos ayudas a mantener y traerle nuevas opciones y servicios!'
                     }
-                </p>
+                </div>
                 
                 {/*
                 <input
@@ -411,11 +369,11 @@ class PaymentDetails extends PureComponent {
 
                 <button
                     type="submit"
-                    className="btn btn-secondary btn-block payment-start-button"    
+                    className="btn btn-secondary btn-block payment-start-button"   
                     onClick={this.onContinue}                   
                     >
-                        {EN ? 'Donate' : 'Donar'}
-                </button>               
+                        {EN ? 'Donate!' : '¡Donar!'}
+                </button>        
         </div> 
         )
     }
