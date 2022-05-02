@@ -135,3 +135,23 @@
     font-weight: bold;
     color: #ea8737;
 }
+
+#payment-method-details
+{
+    margin-bottom: 2%;
+}
+
+.payment-data-input::placeholder
+{
+    color: lightgray;
+}
+
+.payment-data-input:-ms-input-placeholder
+{
+    color: lightgray;
+}
+
+.payment-data-input::-ms-input-placeholder
+{
+    color: lightgray;
+}

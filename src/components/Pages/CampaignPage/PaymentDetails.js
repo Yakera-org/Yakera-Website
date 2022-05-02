@@ -230,7 +230,8 @@ class PaymentDetails extends PureComponent {
                             className={classnames(
                                 'form-control', 
                                 { 'is-valid': name.error === false },
-                                { 'is-invalid': name.error }
+                                { 'is-invalid': name.error },
+                                'payment-data-input'
                                 )}
                                 onChange={evt =>
                                     this.handleChange(validateFields.validateName, evt)
@@ -253,7 +254,8 @@ class PaymentDetails extends PureComponent {
                             className={classnames(
                                 'form-control',
                                 { 'is-valid': email.error === false },
-                                { 'is-invalid': email.error }
+                                { 'is-invalid': email.error },
+                                'payment-data-input'
                                 )}
                                 onChange={evt =>
                                     this.handleChange(validateFields.validateEmail, evt)
@@ -276,7 +278,8 @@ class PaymentDetails extends PureComponent {
                     className={classnames(
                         'form-control',
                         { 'is-valid': comment.error === false },
-                        { 'is-invalid': comment.error }
+                        { 'is-invalid': comment.error },
+                        'payment-data-input'
                         )}
                         onChange={evt =>
                             this.handleChange(validateFields.validateName, evt)

@@ -28,7 +28,7 @@ function PaymentAuth(props) {
                     {EN ? 'Amount to donate: ' : 'Monto a donar: '}
                     <span className='donation-amount'>{total_amount.toFixed(2)}$</span>
                     </h3>
-                    <div className='details'>
+                    <div className='details' id="payment-method-details">
                         {EN ? 'Please select a payment method' : 'Por favor seleccione un método de pago'}
                     </div>
                 </div>

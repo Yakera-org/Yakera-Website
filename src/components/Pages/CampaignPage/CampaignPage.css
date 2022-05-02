@@ -339,6 +339,7 @@
     color: white;
     width: 60%;
     height: 38px;
+    margin-top: 1%;
 }
 .payment-auth-card .payment-back-btn:hover{
     opacity: 0.8;
