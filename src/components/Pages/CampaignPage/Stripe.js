@@ -26,9 +26,7 @@ function StripeForm(props)
                 "comment": props.comment,
                 "language": LanguageService.getLanguage(),
                 "isAnonymous": props.isAnon,
-                "stripe": true,
-                "paymentMethod": paymentIntent.payment_method,
-                "paymentMethodTypes": paymentIntent.paymentMethodTypes
+                "paymentMethod": "stripe",
             };
 
             console.log(await api.post(`/campaigns/donate`, payload));
