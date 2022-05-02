@@ -37,7 +37,7 @@ class PaymentDetails extends PureComponent {
                 error: '',
             },
             tip: {
-                value: 0,
+                value: '',
                 validateOnChange: false,
                 error: '',
             }
@@ -280,13 +280,14 @@ class PaymentDetails extends PureComponent {
                         
                 />
 
+                <div className='align-left'>
                 <label className='checkbox-button'>
                 <input
                     name="anonymous"
                     type="checkbox"
                     checked={this.state.anon}
                     onChange={this.onAnonCheck}
-                    style={{marginLeft: '-238px', marginTop:'-10px', width:'15px', float:'left', clear:'both'}}
+                    style={{marginTop:'-10px', width:'15px', float:'left', clear:'both'}}
                     className={classnames(
                         'form-control',
                         'checkbox-square'
@@ -297,8 +298,9 @@ class PaymentDetails extends PureComponent {
                     {EN ? 'I would like to stay anonymous' : 'Me gustaría permanecer en el anonimato'}   
                 </div>
                 </label>
+                </div>
 
-                <div className='category'>
+                <div className='category' id='tip-category'>
                     {EN ? 'Would you like to leave a tip?' : '¡Quisieras dejar propina?'}
                 </div>
                 

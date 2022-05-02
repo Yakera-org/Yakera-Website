@@ -13,6 +13,11 @@
     margin-top: 2%;
 }
 
+#tip-category
+{
+    margin-top: -8px;
+}
+
 .option
 {
     font-size: large;
@@ -33,7 +38,7 @@
 #checkbox-text
 {
     margin-top: -26px;
-    margin-left: -215px;
+    white-space: nowrap;
 }
 
 .checkbox-button
@@ -45,7 +50,6 @@
 {
     opacity: 0;
     background-color: transparent;
-    position: absolute;
 }
 
 .checkbox-button-control
@@ -53,14 +57,12 @@
     display: inline-block;
     width: 24px;
     height: 24px;
-    border-radius: 2px;
+    border-radius: 4px;
     color: #eb913b;
     border: 1px solid gray;
     transform: scale(0.75);
-    position: relative;
-    margin-left: -460px;
     margin-top: 5px;
-    border-radius: 4px;
+    margin-left: -23px;
 }
 
 .checkbox-square:checked + .checkbox-button-control:after
@@ -72,7 +74,7 @@
     width: 12px;
     height: 12px;
     background-color: #eb913b;
-    border-radius: 2px;
+    border-radius: 4px;
     position: absolute;
 }
 
@@ -92,6 +94,18 @@
     color: #eb913b;
 }
 
+#donation-input:-ms-input-placeholder,
+#tip-input:-ms-input-placeholder
+{
+    color: #eb913b;
+}
+
+#donation-input::-ms-input-placeholder,
+#tip-input::-ms-input-placeholder
+{
+    color: #eb913b;
+}
+
 .money-sign
 {
     color: #eb913b;
@@ -99,4 +113,9 @@
     font-weight: bold;
     text-align: left;
     margin: 35px 0px -74px 30px;
+}
+
+.align-left
+{
+    text-align: left;
 }
