@@ -182,7 +182,7 @@
 #donate-now-hr{
     width: 45%;
     background-color: #002453;
-    height: 2px;
+    height: 3px;
 }
 
 .payment-card-sec{
@@ -222,9 +222,9 @@
     border: none;
 }
 .payment-start-button{
-    width: 80%;
-    margin-left: 10%;
-    font-size: medium;
+    width: 70%;
+    margin-left: 15%;
+    font-size: large;
     background-color: #eb913b;
     border: none;
     border-radius: 10px;
@@ -333,13 +333,12 @@
 }
 .payment-back-btn{
     border: none;
-    font-size: 18px;
+    font-size: large;
     border-radius: 10px;
-    background-color: #002453;
+    background-color: #eb913b;
     color: white;
-    padding: 10px 30px;
-    width: auto;
-    margin: 20px 0;
+    width: 60%;
+    height: 38px;
 }
 .payment-auth-card .payment-back-btn:hover{
     opacity: 0.8;

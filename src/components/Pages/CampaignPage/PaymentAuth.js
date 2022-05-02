@@ -15,17 +15,22 @@ function PaymentAuth(props) {
         setOpenZelle(!openZelle)
     }
 
-    const total_amount = parseInt(props.amount) + parseInt(props.tip)
+    const total_amount = Math.round((parseFloat(props.amount) + parseFloat(props.tip)) * Math.pow(10, 2)) / Math.pow(10, 2);
     return (
         <div>
-             <p>{EN ? 'Payment authentication' : 'Autenticación de pago'}</p>
+             <div className='details'>
+                 {EN ? 'Payment authentication' : 'Autenticación de pago'}
+            </div>
             <Card className='payment-auth-card'>
 
                 <div className='auth-axplanation'>
-                    <h4>
-                    {EN ? 'Amount to donate:' : 'Monto a donar:'} <label style={{color:'#ea8737'}}>{total_amount} $ </label>
-                    </h4>
-                    <p>{EN ? 'Please select a payment method' : 'Por favor seleccione un método de pago'}</p>
+                    <h3 className='donation-text'>
+                    {EN ? 'Amount to donate: ' : 'Monto a donar: '}
+                    <span className='donation-amount'>{total_amount.toFixed(2)}$</span>
+                    </h3>
+                    <div className='details'>
+                        {EN ? 'Please select a payment method' : 'Por favor seleccione un método de pago'}
+                    </div>
                 </div>
                 <PayPal
                     amount={total_amount}
@@ -39,7 +44,7 @@ function PaymentAuth(props) {
                 <div >
                     <button
                         type="submit"
-                        className=" airtm-but"
+                        className="airtm-but"
                         onClick={onZelle}
                     >
                         <img src={zelleLogo} alt="zelle-logo-button" />

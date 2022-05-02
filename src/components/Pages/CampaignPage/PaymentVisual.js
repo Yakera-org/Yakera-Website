@@ -152,7 +152,7 @@ class PaymentVisual extends Component {
                             visible={this.state.loading}
                         />
                     </div>
-                <h3>
+                <h3 className='donation-header'>
                     {EN ? 'Donate Now!' : '¡Donar Ahora!' }
                 </h3>
                 <hr id='donate-now-hr'/>

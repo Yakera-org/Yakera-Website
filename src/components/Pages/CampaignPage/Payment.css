@@ -1,6 +1,6 @@
 .details
 {
-    font-size: medium;
+    font-size: large;
     color: gray;
 }
 
@@ -118,4 +118,20 @@
 .align-left
 {
     text-align: left;
+}
+
+.donation-header
+{
+    font-weight: bold;
+}
+
+.donation-text
+{
+    color: #ea8737;
+}
+
+.donation-amount
+{
+    font-weight: bold;
+    color: #ea8737;
 }

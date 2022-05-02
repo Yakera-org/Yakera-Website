@@ -3,6 +3,7 @@ import classnames from 'classnames';
 import { Grid } from '@material-ui/core';
 import { validateFields } from '../Register/Validation';
 import ConsentCard from '../CampaignPage/consentCard';
+import validator from 'validator';
 
 class PaymentDetails extends PureComponent {
     constructor(props) {
@@ -11,8 +12,8 @@ class PaymentDetails extends PureComponent {
         this.state = {
             checkError:"",
             openPrivacy: false,
-            age:false,
-            consent:false,
+            age:true,
+            consent:true,
             anon:false,
             noTip: false,
             yesTip: true,
@@ -101,8 +102,8 @@ class PaymentDetails extends PureComponent {
 
     onContinue(){
         let isValidated = this.validateData()
-        var tip = this.state.tip.value
-        if(this.state.noTip){
+        let tip = this.state.tip.value
+        if(!validator.isNumeric(tip)){
             tip = 0
         }
         if(isValidated){
@@ -134,10 +135,13 @@ class PaymentDetails extends PureComponent {
         }
 
         if(this.state.yesTip){
-            if(!this.state.tip.value){
-                tipError = emptyWarning;
-            }else{
-                tipError = validateFields.validateNumber(this.state.tip.value + '')
+            if(this.state.tip.value)
+            {
+                tipError = validateFields.validateNumber(this.state.tip.value + '');
+            }
+            else
+            {
+                tipError = false;
             }
         }
         
