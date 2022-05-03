@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import CampaignCard from './campaignCard';
 import Author from '../../author';
-import { Grid, Hidden, CardMedia } from '@material-ui/core';
+import { Grid, Hidden, CardMedia, Button } from '@material-ui/core';
 import HashLoader from "react-spinners/HashLoader";
 import pics from './pics';
 import SearchIcon from '@material-ui/icons/Search';
@@ -342,10 +342,7 @@ class donate extends Component {
                         </Grid>
                     {/* </div>
                 <div className="header-top"> */}
-                    {/* <h1>
-                        {this.state.language === 'en' ? 'CAMPAIGNS' : 'CAMPAÑAS'}
-                    </h1> */}
-                    <div className='category-filter'>
+                    {/* <div className='category-filter'>
                         <img 
                             alt='healthcare-pic'
                             src={pics.healthcare}
@@ -382,7 +379,7 @@ class donate extends Component {
                                 this.handleFilter('nutritionFilter');
                             }} 
                         />
-                    </div>
+                    </div> */}
 
                     <Grid
                         container
@@ -443,6 +440,41 @@ class donate extends Component {
                             </button>
                         </Grid>
                     </Grid>
+
+                    <div className='category-filter'>
+                        <Button
+                            className={this.state.healthcareFilter}
+                            onClick={() => {
+                                this.handleFilter('healthcareFilter');
+                            }} 
+                        >
+                            {this.state.language === 'en' ? 'Healthcare' : 'Atencíon médica'}
+                        </Button>
+                        <Button
+                            className={this.state.educationFilter}
+                            onClick={() => {
+                                this.handleFilter('educationFilter');
+                            }} 
+                        >
+                            {this.state.language === 'en' ? 'Education' : 'Educacíon'}
+                        </Button>
+                        <Button
+                            className={this.state.businessFilter}
+                            onClick={() => {
+                                this.handleFilter('businessFilter');
+                            }} 
+                        >
+                            {this.state.language === "en" ? "Small Business" : "Pequeñuos negocios"}
+                        </Button>
+                        <Button
+                            className={this.state.nutritionFilter}
+                            onClick={() => {
+                                this.handleFilter('nutritionFilter');
+                            }} 
+                        >
+                            {this.state.language === "en" ? "Food" : "Comida"}
+                        </Button>
+                    </div>
 
                     
                     <SearchBar 

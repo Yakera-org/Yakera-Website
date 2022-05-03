@@ -89,7 +89,14 @@
     width: 100%;
     object-fit: contain;
 }
-.category-filter img{
+.category-filter{
+    padding: 15px 5px 5px 5px;
+    margin-left: 25%;
+    border-radius: 15px;
+    /* background-color: #f2f2f2; */
+    width: 50%;
+}
+/* .category-filter img{
     padding: 2px;
     margin: 20px;
     cursor: pointer;
@@ -97,9 +104,24 @@
 .category-filter img:hover{
     border-radius: 50%;
     box-shadow: 0 0 0 5px gray;
-}
+} */
 .category-filter .fade {
     opacity: 0.3;
+}
+.category-filter Button{
+    /* color: #EA8737; */
+    /* margin: 0.5px; */
+    font-size: 15px;
+    font-family: Intro-Regular-Alt;
+    text-transform: capitalize;
+}
+.category-filter Button:hover{
+    color: #EA8737;
+    background: none;
+    /* margin: 0.5px; */
+    font-size: 15px;
+    font-family: Intro-Regular-Alt;
+    text-transform: capitalize;
 }
 
 .bottom-images{
@@ -183,6 +205,10 @@
 .general-filter button:hover{
     background-color: gray;
     color: white;
+    transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+    transition-property: background-color, box-shadow, border;
+    transition-duration: 250ms, 250ms, 250ms;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1), cubic-bezier(0.4, 0, 0.2, 1), cubic-bezier(0.4, 0, 0.2, 1);
 }
 .active-general-filter {
     background-color: gray;
@@ -194,6 +220,14 @@
         width: 80%;
     }
 
+    .category-filter{
+        margin-left: 10%;
+        width: 80%;
+    }
+    .category-filter Button{
+        white-space: nowrap;
+        font-size: 13px;
+    }
     .loader {
         display: block;
         margin: 0 auto;
