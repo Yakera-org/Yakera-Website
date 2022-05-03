@@ -515,14 +515,14 @@ class donate extends Component {
                                     src={pics['bottom-1']}
                                     className='img-1'
                                 />
-                                <p className='p1'><span>{this.state.language ? 'All of out campaigns are verified' : 'Todas nuestras campañas son verificadas'}</span>{this.state.language ? ' before publication' : ' antes de su publicación'}</p>
+                                <p className='p1'><span>{this.state.language === 'en' ? 'All of out campaigns are verified' : 'Todas nuestras campañas son verificadas'}</span>{this.state.language ? ' before publication' : ' antes de su publicación'}</p>
                             </Grid>
                             <Grid item sm={6} xs={12}>
                                 <img
                                     alt='bottom-img'
                                     src={pics['bottom-2']}
                                 />
-                                <p className='p2'><span>{this.state.language ? '100% ' : 'El 100% '}</span>{this.state.language ? 'of your donations ' : ' de tus donaciones'} <span>{this.state.language ? ' reach their recipient' : ' llegan a su destinatario'}</span></p>
+                                <p className='p2'><span>{this.state.language === 'en' ? '100% ' : 'El 100% '}</span>{this.state.language ? 'of your donations ' : ' de tus donaciones'} <span>{this.state.language ? ' reach their recipient' : ' llegan a su destinatario'}</span></p>
                             </Grid>
                         </Grid>
                     </div>
@@ -545,14 +545,25 @@ class donate extends Component {
                                             className='quote'
                                         />
                                     </Grid>
-                                    <Grid item sm={12} xs={12}>
+                                    <Grid item sm={12} xs={12} style={{marginBottom: '20px'}}>
                                         <p>
-                                            <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit</span> sed du elusmad tempor incididunt ut labore et dolore magana aliqua. Quis ipsum suspendiase ultrices gravida.
+                                            {this.state.language === 'en'
+                                                ? "Many people around the world started to donate. I can't explain how happy I feel - very soon my dream of access to quality education will come true!"
+                                                : "Muchas personas alrededor del mundo empezaron a donar. No puedo explicar lo feliz que me siento. ¡Muy pronto mi sueño de acceder a una educación de calidad se hará realidad"
+                                            }
                                         </p>
+                                        <span>
+                                            Alexandra Requena
+                                            <br />
+                                            {this.state.language === 'en'
+                                                ? 'Venezuelan Malala'
+                                                : 'Malala Venezolana'
+                                            }
+                                        </span>
                                     </Grid>
                                     <Grid item sm={12} xs={12}>
                                         <button>
-                                            {this.state.language ? 'Read more success stories here' : 'Leer mas historias de exito aqui'}
+                                            {this.state.language === 'en' ? 'Read more success stories here' : 'Leer mas historias de exito aqui'}
                                         </button>
                                     </Grid>
                                 </Grid>
