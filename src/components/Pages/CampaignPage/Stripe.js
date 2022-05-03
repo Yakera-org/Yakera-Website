@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { PaymentElement, useStripe, useElements } from "@stripe/react-stripe-js";
 import LanguageService from '../../../services/language';
 import api from '../../../services/api';
+import { Spinner } from "react-bootstrap";
 import "./Stripe.css";
 
 function StripeForm(props)
@@ -146,10 +147,15 @@ function StripeForm(props)
     return (
         <form id="payment-form" onSubmit={handleSubmit}>
             <PaymentElement id="payment-element" />
-            <button disabled={isLoading || !stripe || !elements} id="submit">
-                <span id="button-text">
-                    {isLoading ? <div className="spinner" id="spinner"></div> : "Stripe"}
-                </span>
+            <button className="stripe-donate-btn" disabled={isLoading || !stripe || !elements} id="submit">
+                {isLoading 
+                 ? 
+                 <Spinner animation="border" role="status">
+                    <span className="visually-hidden">{props.EN ? 'Loading...' : 'Cargando...'}</span>
+                 </Spinner>
+                 : 
+                 <div>{props.EN ? 'Donate!' : '¡Donar!'}</div>
+                }
             </button>
             {/* Show any error or success message */}
             {/* message && <div id="payment-message">{message}</div> */}
