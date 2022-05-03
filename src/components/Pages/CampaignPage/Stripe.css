@@ -21,3 +21,15 @@
   max-width: 9%;
   height: auto;
 }
+
+.yakera-terms
+{
+  color: gray;
+  font-size: small;
+  margin-top: 3%;
+}
+
+.terms-link
+{
+  color: #eb913b;
+}

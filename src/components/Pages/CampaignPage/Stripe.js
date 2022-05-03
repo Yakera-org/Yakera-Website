@@ -159,6 +159,12 @@ function StripeForm(props)
             </button>
             {/* Show any error or success message */}
             {/* message && <div id="payment-message">{message}</div> */}
+            {props.EN
+             ?
+             <div className="yakera-terms">By continuing, you accept the <a className="terms-link" href="/terms" target="_blank">terms and conditions</a> of Yakera</div>
+             :
+             <div className="yakera-terms">Al continuar, aceptas los <a className="terms-link" href="/terms" target="_blank">terminos y condiciones</a> de Yakera</div>
+            }
         </form>
     );
 
