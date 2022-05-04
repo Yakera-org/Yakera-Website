@@ -42,7 +42,7 @@ function FAQVisuals(props) {
                         {EN ?
                             <h1 className="banner-text"><b>Frequently Asked <span style={{ color: "#e98737" }}>Questions</span></b></h1>
                             :
-                            <h1 className="banner-text"><b>Preguntas <span style={{ color: "#e98737" }}>frecuentas</span></b></h1>
+                            <h1 className="banner-text"><b>Preguntas <span style={{ color: "#e98737" }}>Frecuentes</span></b></h1>
 
                         }
                     </Grid>
