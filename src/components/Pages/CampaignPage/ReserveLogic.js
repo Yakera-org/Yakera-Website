@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 
 import api from "../../../services/api";
 import LanguageService from "../../../services/language";
+import { validateFields } from '../Register/Validation';
 
 import ReserveVisual from './ReserveVisual';
 
@@ -9,10 +10,14 @@ import ReserveVisual from './ReserveVisual';
 function ReserveLogic(props) {
 
     const initialState = {
-        username: ""
-    }
+        username: "",
+        errors: {
+            username: null
+        },
+    };
 
     const [data, setData] = useState(initialState);
+    const [error, setError] = useState("");
 
     const handleChange = event => {
         event.persist();
@@ -20,6 +25,34 @@ function ReserveLogic(props) {
             [event.target.name]: event.target.value
         });
     };
+
+    function validateData(){
+        var hasPassed = true
+        
+        if(validateFields.validateName(data.username) !== false){
+            setData(data => ({
+                ...data,
+                errors: {
+                    username: validateFields.validateName(data.username)
+                }
+            }));
+            hasPassed = false
+        }
+        return hasPassed
+    }
+
+    function onConfirm(){
+        setError("")
+        let canContinue = validateData()
+        setData(data => ({
+            ...data,
+            errors: {
+                username: false,
+            },
+        }));
+        console.log("hello");
+        sendToBackend()
+    }
 
     async function sendToBackend() {
         try {
@@ -49,6 +82,7 @@ function ReserveLogic(props) {
                 data = {data}
                 amount = {props.amount}
                 handleChange = {handleChange}
+                onConfirm={onConfirm}
             />
         </div>
     );

@@ -53,7 +53,13 @@ function PaymentAuth(props) {
                     ?
                     <ReserveLogic
                         EN={EN}
+                        slug={props.slug}
+                        email={props.email}
+                        name={props.name}
                         amount={props.amount}
+                        tip={props.tip}
+                        comment={props.comment}
+                        isAnon={props.isAnon}
                     />
                     :
                     ''
