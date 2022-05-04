@@ -49,24 +49,201 @@
     text-align: center;
 }
 #hr-top {
-    margin: 50px 0;
+    margin: 50px 0 25px 0;
 }
 #no-cam{
     font-size: 20px;
 }
-.campaign-filter img{
-    /* padding: 2px; */
+.header-left img{
+    width: 100%;
+    object-fit: contain;
+}
+.header-mid-img img{
+    width: 80%;
+    padding: 15% 10%;
+    object-fit: contain;
+}
+.mid-text-div{
+    text-align: left;
+    font-size: 2.7vw;
+    margin-top: 16%;
+}
+.mid-bubble-div{
+    margin-left: -10%;
+}
+.bubble-quote{
+    font-size: 0.7vw;
+    position: absolute;
+    color: white;
+    margin: -4% 0% 0% 0.5%;
+    transform: translateX(25%);
+}
+.bubble-digit{
+    font-size: 0.7vw;
+    position: absolute;
+    color: black;
+    margin: -3.4% 0% 0% 2.5%;
+    transform: translateX(1100%);
+}
+.header-right img{
+    width: 100%;
+    object-fit: contain;
+}
+.category-filter{
+    padding: 15px 5px 5px 5px;
+    margin-left: 25%;
+    border-radius: 15px;
+    /* background-color: #f2f2f2; */
+    width: 50%;
+}
+/* .category-filter img{
+    padding: 2px;
     margin: 20px;
     cursor: pointer;
 }
-.campaign-filter img:hover{
+.category-filter img:hover{
     border-radius: 50%;
     box-shadow: 0 0 0 5px gray;
-}
-.campaign-filter .fade {
+} */
+.category-filter .fade {
     opacity: 0.3;
 }
+.category-filter Button{
+    /* color: #EA8737; */
+    /* margin: 0.5px; */
+    font-size: 15px;
+    font-family: Intro-Regular-Alt;
+    text-transform: capitalize;
+}
+.category-filter Button:hover{
+    color: #EA8737;
+    background: none;
+    /* margin: 0.5px; */
+    font-size: 15px;
+    font-family: Intro-Regular-Alt;
+    text-transform: capitalize;
+}
+
+.bottom-images{
+    background-color: grey;
+}
+
+.bottom-images img{
+    margin-top: -10%;
+    width: 75%;
+    margin-bottom: -20%;
+}
+
+.bottom-images p{
+    font-size: 30px;
+    font-weight: bold; 
+    width: 65%;
+    margin-bottom: 15%;
+}
+
+.p1{
+    margin-left: 40%;
+}
+
+.p2 {
+    margin-left: 8%;
+}
+
+.bottom-images span{
+    color: orange;
+}
+
+.img-1{
+    margin-left: 25%;
+}
+
+.campaign-img{
+    margin-top: 5%;
+    width: 75%;
+    margin-left: 23%;
+}
+
+.bottom p{
+    font-size: 30px;
+    width: 70%;
+}
+
+.bottom span{
+    font-size: 25px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.quote{
+    width: 30%;
+    margin-left: -8%;
+    margin-top: 12%;
+    margin-bottom: -8%;
+}
+
+.bottom button{
+    color: white;
+    background-color: orange;
+    border: none;
+    border-radius: 30px;
+    font-size: 30px;
+    width: 50%;
+    padding: 5px;
+}
+
+.general-filter {
+    border-radius: 25px;
+    background-color: rgb(238, 238, 238);
+    text-align: center;
+    margin: 0 25%;
+    width: 50%!important;
+}
+.general-filter button{
+    border: none;
+    color: #ea8737;
+    padding: 15px;
+    border-radius: 25px;
+}
+.general-filter button:hover{
+    background-color: gray;
+    color: white;
+    transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+    transition-property: background-color, box-shadow, border;
+    transition-duration: 250ms, 250ms, 250ms;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1), cubic-bezier(0.4, 0, 0.2, 1), cubic-bezier(0.4, 0, 0.2, 1);
+}
+.active-general-filter {
+    background-color: gray;
+    color: white!important;
+}
+
+.pagination {
+    justify-content: center;
+    margin: 25px 0 25px 0;
+}
+.pagination .page-item a {
+    color: var(--brand-orange);
+}
+.pagination .active a {
+    color: var(--brand-blue)!important;
+    opacity: 0.5;
+    border-color: #dee2e6!important;
+}
+
 @media only screen and (max-width: 600px) {
+    .donate-text-grid{
+        margin-left: 10%;
+        width: 80%;
+    }
+
+    .category-filter{
+        margin-left: 10%;
+        width: 80%;
+    }
+    .category-filter Button{
+        white-space: nowrap;
+        font-size: 13px;
+    }
     .loader {
         display: block;
         margin: 0 auto;
@@ -91,6 +268,28 @@
         width: 100%;
         margin-left: 0%;
         margin-bottom: 0px;
+    }
+    .header-mid-text{
+        font-size: 20px;
+    }
+    .mid-text-div{
+        text-align: left;
+        font-size: 5.8vw;
+        margin-top: 15%;
+    }
+    .bubble-quote{
+        font-size: 1.2vw;
+        position: absolute;
+        color: white;
+        margin: -7% 0% 0% 1.5%;
+        transform: translateX(25%);
+    }
+    .bubble-digit{
+        font-size: 1.2vw;
+        position: absolute;
+        color: black;
+        margin: -6% 0% 0% 2.4%;
+        transform: translateX(1250%);
     }
     #hr-top {
         margin: 25px 0;
