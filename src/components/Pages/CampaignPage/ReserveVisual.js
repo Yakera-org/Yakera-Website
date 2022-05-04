@@ -47,7 +47,7 @@ function ReserveVisual(props) {
                         "Ve a la aplicación de Reserve y transfiere el monto indicado a"
                         }
                         </div>
-                        <span class="bold"><span class="money-emoji">💸</span>yakera</span>
+                        <span class="bold"><span role="img" aria-label='fly-dollar'>💸</span>yakera</span>
                     </Grid>
                     <Grid item xs={12} sm={4}>
                         <div id='text'>
