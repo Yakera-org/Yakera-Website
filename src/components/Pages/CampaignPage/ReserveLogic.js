@@ -11,19 +11,27 @@ function ReserveLogic(props) {
 
     const initialState = {
         username: "",
+        loading: false,
         errors: {
             username: null
         },
     };
 
     const [data, setData] = useState(initialState);
+    const [loading, setLoading] = useState(false);
     const [error, setError] = useState("");
 
     const handleChange = event => {
         event.persist();
-        setData({
-            [event.target.name]: event.target.value
-        });
+        setError("")
+        setData(data => ({
+            ...data,
+            [event.target.name]: event.target.value,
+            errors: {
+                ...data.errors,
+                [event.target.name]: null
+            },
+        }));
     };
 
     function validateData(){
@@ -44,14 +52,18 @@ function ReserveLogic(props) {
     function onConfirm(){
         setError("")
         let canContinue = validateData()
-        setData(data => ({
-            ...data,
-            errors: {
-                username: false,
-            },
-        }));
-        console.log("hello");
-        sendToBackend()
+        if (canContinue){
+            setData(data => ({
+                ...data,
+                errors: {
+                    username: false,
+                },
+            }));
+            setLoading(true)
+            sendToBackend()
+        } else {
+            setError(props.EN ? "Please check all fields are filled." : "Por favor, compruebe que todos los campos están llenos.")
+        }
     }
 
     async function sendToBackend() {
@@ -73,6 +85,8 @@ function ReserveLogic(props) {
         } catch (err) {
           console.log(err);
         }
+
+        setLoading(false)
     }    
     
     return (
@@ -81,8 +95,10 @@ function ReserveLogic(props) {
                 EN = {props.EN}
                 data = {data}
                 amount = {props.amount}
+                loading={loading}
                 handleChange = {handleChange}
                 onConfirm={onConfirm}
+                error={error}
             />
         </div>
     );

@@ -1,12 +1,14 @@
 import React from 'react';
 import "./Reserve.css"
 import { Grid, Button, CardMedia, Hidden} from '@material-ui/core'
-import reservebar from '../../../pics/reserve-bar.svg'
+import classnames from 'classnames';
+import reservebar from '../../../pics/reserve-bar.svg';
 
 
 function ReserveVisual(props) {
 
     const EN = props.EN;
+    const data = props.data;
 
     return (
         <div>
@@ -76,15 +78,23 @@ function ReserveVisual(props) {
                 <p id="username-text">Ingresa tu usuario de Reserve</p>
             }
             <div className = "input-container">
-                <input className='input-field'
+                <input id='input-field'
                     type="text"
                     name="username"
                     placeholder={EN ? "Username here" : "Usuario de Reserve aquí"}
                     onChange={props.handleChange}
+                    className={classnames(
+                        'form-control',
+                        { 'is-valid': data.errors.username === false},
+                        { 'is-invalid': data.errors.username},
+                        'input-field'
+                    )}
                 />
+                <div className='invalid-feedback'>{data.errors.username}</div>
             </div>
             <br />
             <Button className='confirm-button'
+                onClick={props.onConfirm}
                 style={{
                     border:'none',
                     backgroundColor:'black',
@@ -96,7 +106,8 @@ function ReserveVisual(props) {
                     fontSize:'50%',
                     textTransform: 'none'
                 }}
-            >{EN ? "Confirm transaction" : "Confirm Transaction"}</Button>
+            >{EN ? "Confirm Transaction" : "Confirm Transaction"}</Button>
+
         </div>
     );
 }
