@@ -93,7 +93,7 @@
         margin-top: -20px;
         margin-bottom: 40px;
         font-weight: 400;
-        font-size: 10px;
+        font-size: 11px;
         color: #2b292d;
     }
     .reserve-steps-text {
@@ -106,7 +106,7 @@
     }
     .steps #text {
         width: 60%;
-        font-size: 8px;
+        font-size: 10px;
     }
     #username-text{
         color: black;
@@ -122,10 +122,10 @@
         border: none;
         text-align: center;
         border-radius: 15px;
-        font-size: 8px;
+        font-size: 7px;
     }
     .input-container{
-        margin: -2vw 5vw -2vw 6vw;
+        margin: 0vw 0vw 0vw 13vw;
     }
     .confirm-button {
         width:100%;
