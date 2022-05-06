@@ -1,19 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import {Card} from '@material-ui/core';
-import PayPal from './Paypal';
-import zelleLogo from '../../../pics/zelle.png';
+
 import ZelleLogic from './ZelleLogic';
 import { loadStripe } from "@stripe/stripe-js"
 import { Elements } from "@stripe/react-stripe-js"
 import StripeForm from './Stripe';
 import api from '../../../services/api';
 import { Accordion, Card as AccordionCard } from 'react-bootstrap';
-import cardImg from '../../../pics/card.png';
 
 // test key: "pk_test_51KjTNTD1ctBA5rzvPq6FjtoOxn2bGAPvUX5GluRXOUnaMrINHjQ55uC3ZqllRDaUcoTAITPjPlvT76cNjNlZAPTM00Y71uOjrE"
 // live key: ""
 const PUBLIC_KEY = "pk_test_51KjTNTD1ctBA5rzvPq6FjtoOxn2bGAPvUX5GluRXOUnaMrINHjQ55uC3ZqllRDaUcoTAITPjPlvT76cNjNlZAPTM00Y71uOjrE";
 const stripePromise = loadStripe(PUBLIC_KEY);
+
+const cardImg = 'https://assets.yakera.org/yakera/card.webp';
+const zelleLogo = 'https://assets.yakera.org/yakera/zelle.webp';
 
 function PaymentAuth(props) {
     const EN = props.EN
@@ -85,7 +86,7 @@ function PaymentAuth(props) {
 
                 <Accordion>
                     <AccordionCard>
-                        <Accordion.Toggle as={AccordionCard.Header} eventKey="0" className="airtm-but">
+                        <Accordion.Toggle as={AccordionCard.Header} eventKey="0" className="stripe-but">
                             <p id="stripe-option"><img className='card-img' alt="card" src={cardImg}></img>{EN ? ' Credit or Debit' : ' Crédito o Débito'}</p>
                         </Accordion.Toggle>
                         <Accordion.Collapse eventKey="0">
@@ -106,6 +107,9 @@ function PaymentAuth(props) {
                                         />
                                     </Elements>
                                 )}
+                                {!clientSecret
+                                ? EN ? 'Something went wrong, please refresh the page.' : 'Algo salió mal, por favor actualice la página.'
+                                : ""}
                             </AccordionCard.Body>
                         </Accordion.Collapse>
                     </AccordionCard>

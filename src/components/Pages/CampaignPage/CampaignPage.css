@@ -291,20 +291,37 @@
     border-radius: 10px;
 }
 
+.stripe-but{
+    width: 100%;
+    padding: 10px;
+    padding-bottom: 0px;
+    min-width: 200px;
+    background-color: transparent;
+    border-radius: 15px;
+    height: 80px;
+    min-height: 80px;
+    max-height: 100px;
+}
+.stripe-but:hover{
+    cursor: pointer;
+    background-color: #edf0f4;
+    border-radius: 15px;
+
+}
 .airtm-but {
     width: 100%;
     border-radius: 5px;
     min-width: 200px;
-    margin-bottom: 15px;
-    height: 4rem;
-    font-size: 30px;
-    background-color: white;
-    border: 1px solid rgb(39, 39, 39);
-    outline: none;
+    margin: 20px 0;
+    height: 80px;
+    min-height: 50px;
+    max-height: 100px;
+    background-color: transparent;
+    border: 1px rgb(220, 220, 220) solid;
 }
 
 .airtm-but:hover{
-    background-color:  rgb(238, 238, 238);
+    background-color:  #ede4f0;
     outline: none;
 
 }
@@ -320,6 +337,7 @@
 
 .airtm-but img{
     width: 15%;
+    max-width: 40%;
     height: auto;
 }
 
@@ -347,6 +365,28 @@
 .payment-visual .loader{
     margin-left: 0%;
     z-index: 100000;
+}
+
+@media only screen and (max-width: 1200px) {
+.stripe-but{
+    width: 100%;
+    padding: 5px;
+    padding-bottom: 0px;
+    min-width: 200px;
+    border-radius: 15px;
+    height: 50px;
+    min-height: 40px;
+    max-height: 50px;
+}
+.airtm-but {
+    width: 100%;
+    height: 50px;
+    min-height: 40px;
+    max-height: 50px;
+}
+.airtm-but img{
+    width: 20%;
+}
 }
 
 @media only screen and (max-width: 600px) {
@@ -495,14 +535,24 @@
         overflow: hidden;
         font-size: 18px;
     }
+    .stripe-but{
+        width: 100%;
+        padding: 10px;
+        padding-bottom: 0px;
+        min-width: 200px;
+        border-radius: 15px;
+        height: 50px;
+        min-height: 40px;
+        max-height: 50px;
+    }
     .airtm-but {
         width: 100%;
-        margin-left: 0;
+        height: 50px;
+        min-height: 40px;
+        max-height: 50px;
     }
     .airtm-but img{
-        height: 100%;
-        padding: 5px 0;
-        width: auto;
+        width: 30%;
     }
     .payment-auth-card{
         padding: 50px 40px;
