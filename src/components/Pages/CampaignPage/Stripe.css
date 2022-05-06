@@ -1,0 +1,35 @@
+.stripe-donate-btn
+{
+  background-color: #eb913b;
+  color: white;
+  font-size: large;
+  border: none;
+  border-radius: 10px;
+  width: 60%;
+  margin-top: 2%;
+  height: 34px;
+}
+
+#stripe-option
+{
+  font-size: large;
+  color: #0e325e;
+}
+
+.card-img
+{
+  max-width: 9%;
+  height: auto;
+}
+
+.yakera-terms
+{
+  color: gray;
+  font-size: small;
+  margin-top: 3%;
+}
+
+.terms-link
+{
+  color: #eb913b;
+}
