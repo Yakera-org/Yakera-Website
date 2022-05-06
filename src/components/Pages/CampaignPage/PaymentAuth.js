@@ -49,15 +49,8 @@ function PaymentAuth(props) {
     }, [props]);
 
     const appearance = {
-        theme: "stripe",
-        variables: {
-            colorPrimary: "#eb913b",
-            colorBackground: "#ffffff",
-            colorText: "#808080",
-            colorDanger: "#ff7d7d",
-            fontFamily: "Ramona-Bold, Ramona-Light, Intro-Regular-Alt, Intro-Thin, Intro-Light",
-        }
-    };
+        theme: 'flat'
+      };
 
     const options = {
         clientSecret,
