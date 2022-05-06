@@ -80,13 +80,13 @@ function PaymentAuth(props) {
                     </h4>
                     <p>{EN ? 'Please select a payment method' : 'Por favor seleccione un método de pago.'}</p>
                 </div>
-                <PayPal
+                 {/*<PayPal
                     amount={total_amount}
                     onSuccess={props.OnSuccessPayment}
                     onClick={props.OnPaymentClick}
                     onError={props.OnPaymentError}
                     onCancel={props.OnPaymentCancel}
-                />
+                /> */}
 
                 <Accordion>
                     <AccordionCard>
