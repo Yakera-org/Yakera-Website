@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import {Card} from '@material-ui/core';
 import PayPal from './Paypal';
-import airtmLogo from '../../../pics/airtmbutton.png';
 import zelleLogo from '../../../pics/zelle.png';
 import ZelleLogic from './ZelleLogic';
 import { loadStripe } from "@stripe/stripe-js"
@@ -22,10 +21,6 @@ function PaymentAuth(props) {
     
     const shouldShowZelle = props?.isAcceptingZelle;
 
-
-    function onAirTM(){
-        props.onAirTM(total_amount, props.title, props.name, props.email)
-    }
     async function onZelle(){
         setOpenZelle(!openZelle)
     }
@@ -116,16 +111,6 @@ function PaymentAuth(props) {
                     </AccordionCard>
                 </Accordion>
 
-                <br />
-
-                <button
-                    type="submit"
-                    onClick={onAirTM}
-                    className=" airtm-but"
-
-                >
-                    <img src={airtmLogo} alt="airtm-logo-button" />
-                </button>
                 { shouldShowZelle
                 ?
                 <div >
