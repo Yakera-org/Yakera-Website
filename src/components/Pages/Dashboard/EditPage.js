@@ -166,8 +166,7 @@ const EditPage = () => {
                 phone: profileData.user.phone,
                 airTMNum: profileData.user.airTMNum,
                 zelleInfo: {
-                    email: profileData.user.zelleInfo.email,
-                    email: profileData.user.zelleInfo ? profileData.user.zelleInfo.email : "",
+                    email: profileData.user.zelleInfo ? profileData.user.zelleInfo.email : "", 
                     name: profileData.user.zelleInfo ? profileData.user.zelleInfo.name : "",
                     isAccepting: profileData.user.zelleInfo ? profileData.user.zelleInfo.isAccepting : false,
                 },
