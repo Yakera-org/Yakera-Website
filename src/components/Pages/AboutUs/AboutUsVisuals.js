@@ -29,7 +29,7 @@ function AboutUsVisuals(props) {
                     </Grid>
                     <Grid item xs={12} sm={6} className='about-title-text' >
                         <p>
-                            {EN ? 'Yakera unlocks international solidarity through empathy and storytelling. We revolutionize humanitarian aid, one story at a time.': 'Yakera abre las puertas a la solidaridad internacional. Cambiamos cómo se distribuye la ayuda humanitaria en el mundo, una historia a la vez.'}
+                            {EN ? 'Yakera unlocks international generosity through empathy and storytelling. We reimagine global development and change the world, one story at a time.': 'Yakera impulsa la solidaridad a nivel global a través de la innovación, la empatía y el empoderamiento individual.'}
                             
                         </p>
                     </Grid>
@@ -71,8 +71,8 @@ function AboutUsVisuals(props) {
                                 100%
                             </div>
                             <p>
-                                <b>Of what you chip in goes to people directly:</b>
-                                &nbsp;no overhead costs, no fees. We are changing how humanitarian aid is delivered around the world.
+                                <b>Of your donation goes directly to people:</b>
+                                &nbsp;no hidden fees. We are revolutionizing how people connect and send and receive donations around the world.
                             </p>
                         </section>
                         :
@@ -82,7 +82,7 @@ function AboutUsVisuals(props) {
                             </div>
                             <p>
                                 <b>De lo que aportas va directamente a las personas:</b>
-                                &nbsp;sin gastos generales, sin comisiones. Estamos cambiando la forma en que se entrega la ayuda humanitaria en todo el mundo.
+                                &nbsp;sin comisiones. Estamos revolucionando la forma en la que las personas se conectan, envían y reciben donaciones en el mundo.
                             </p>
                         </section>
                     }
