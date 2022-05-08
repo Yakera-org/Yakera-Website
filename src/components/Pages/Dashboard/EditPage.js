@@ -48,7 +48,6 @@ const EditPage = () => {
         try {
             const res = await api.get('/profile');
             let data = res.data.data
-            console.log(data)
             setProfileData(data);
             setAirTMEmail(data?.user?.airTMNum);
             setZelleEmail(data?.user?.zelleInfo?.email);
