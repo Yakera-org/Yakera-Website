@@ -167,11 +167,11 @@ const EditPage = () => {
                 airTMNum: profileData.user.airTMNum,
                 zelleInfo: {
                     email: profileData.user.zelleInfo.email,
-                    name: profileData.user.zelleInfo.name,
-                    isAccepting: profileData.user.zelleInfo.isAccepting,
+                    email: profileData.user.zelleInfo ? profileData.user.zelleInfo.email : "",
+                    name: profileData.user.zelleInfo ? profileData.user.zelleInfo.name : "",
+                    isAccepting: profileData.user.zelleInfo ? profileData.user.zelleInfo.isAccepting : false,
                 },
             };
-            console.log(requestBody)
             await api.patch('/profile/update', requestBody);
             setSuccess('Profile updated');
         } catch (err) {
