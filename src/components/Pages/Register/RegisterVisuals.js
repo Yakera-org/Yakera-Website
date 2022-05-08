@@ -154,13 +154,13 @@ export function DetailsSwitch(props) {
     return (
     <div className="switch-area">
         {EN
-            ? <p>I am a {isRecipient ? <b>Recipient</b> : <b>Donor</b>} </p>
+            ? <p>I am a <span className={isRecipient ? "R-on-text" : "R-off-text"}>{isRecipient ? <b>Recipient</b> : <b>Donor</b>}</span> </p>
             : <p>Soy un {isRecipient ? <b>Beneficiaro</b> : <b>Donante</b>} </p>
         }
 
         <div className="switch">
-            <button id="left" className={isRecipient ? "on" : "off"} onClick={actions.on}>{EN ? 'Recipient' : 'Beneficiaro'}</button>
-            <button id="right" className={isRecipient ? "off" : "on"} onClick={actions.off}>{EN ? 'Donor' : 'Donante'}</button>
+            <button id="left" className={isRecipient ? "R-on" : "off"} onClick={actions.on}>{EN ? 'Recipient' : 'Beneficiaro'}</button>
+            <button id="right" className={isRecipient ? "off" : "D-on"} onClick={actions.off}>{EN ? 'Donor' : 'Donante'}</button>
         </div>
     </div>
     );
