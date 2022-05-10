@@ -65,7 +65,7 @@ function PaymentAuth(props) {
 
                 <div className='auth-axplanation'>
                     <h4>
-                    {EN ? 'Amount to be donated:' : 'Monto a donar:'} <label style={{color:'#ea8737'}}>{total_amount} $ </label>
+                    {EN ? 'Amount to be donated:' : 'Monto a donar:'} <label style={{color:'#ea8737'}}>${total_amount}</label>
                     </h4>
                     <p>{EN ? 'Please select a payment method' : 'Por favor seleccione un método de pago.'}</p>
                 </div>
@@ -80,7 +80,9 @@ function PaymentAuth(props) {
                 <Accordion>
                     <AccordionCard>
                         <Accordion.Toggle as={AccordionCard.Header} eventKey="0" className="stripe-but">
-                            <p id="stripe-option"><img className='card-img' alt="card" src={cardImg}></img>{EN ? ' Credit or Debit' : ' Crédito o Débito'}</p>
+                            <p id="stripe-option"><img className='card-img' alt="card" src={cardImg}></img>
+                                {EN ? ' Credit or Debit' : ' Crédito o Débito'}
+                            </p>
                         </Accordion.Toggle>
                         <Accordion.Collapse eventKey="0">
                             <AccordionCard.Body>
