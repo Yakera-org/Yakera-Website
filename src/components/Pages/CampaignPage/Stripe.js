@@ -154,11 +154,17 @@ function StripeForm(props)
                     <span className="visually-hidden">{props.EN ? '' : ''}</span>
                  </Spinner>
                  : 
-                 <div>{props.EN ? 'Donate!' : '¡Donar!'}</div>
+                 <div>{props.EN ? 'Donate' : 'Donar'}</div>
                 }
             </button>
             {/* Show any error or success message */}
             {/* message && <div id="payment-message">{message}</div> */}
+            {props.EN
+                ?
+                <div className="powered-by">Payments powered by <a className="stripe-link" href="https://stripe.com" target="_blank" rel="noopener noreferrer">Stripe</a></div>
+                :
+                <div className="powered-by">Pagos a través de <a className="stripe-link" href="https://stripe.com/es-us" target="_blank" rel="noopener noreferrer">Stripe</a></div>
+            }
             {props.EN
              ?
              <div className="yakera-terms">By continuing, you accept the <a className="terms-link" href="/terms" target="_blank">terms and conditions</a> of Yakera.</div>
