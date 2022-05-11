@@ -79,10 +79,11 @@ function PaymentAuth(props) {
 
                 <Accordion>
                     <AccordionCard>
-                        <Accordion.Toggle as={AccordionCard.Header} eventKey="0" className="stripe-but">
-                            <p id="stripe-option"><img className='card-img' alt="card" src={cardImg}></img>
-                                {EN ? ' Credit or Debit' : ' Crédito o Débito'}
-                            </p>
+                        <Accordion.Toggle as={AccordionCard.Header} eventKey="0" className="stripe-but align-items-center d-flex justify-content-center">
+                            <div>
+                                <img className='card-img' alt="card" src={cardImg}></img>
+                                <span id="stripe-option">{EN ? 'Credit or Debit' : 'Crédito o Débito'}</span>
+                            </div>
                         </Accordion.Toggle>
                         <Accordion.Collapse eventKey="0">
                             <AccordionCard.Body>

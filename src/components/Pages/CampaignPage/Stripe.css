@@ -22,14 +22,14 @@
   font-size: x-large;
   font-family: "CamphorW01-Regular";
   color: #0e325e;
-  margin-right: 8%;
-  margin-top: 2%;
+  margin-right: 10%;
 }
 
 .card-img
 {
-  max-width: 9%;
+  max-width: 18%;
   height: auto;
+  margin-right: 2%;
 }
 
 .yakera-terms
