@@ -42,7 +42,7 @@ function PaymentAuth(props) {
                 },
                 {
                     id: "total",
-                    quantity: parseFloat(props.amount + props.tip)
+                    quantity: parseFloat(props.amount) + parseFloat(props.tip)
                 },
             ],
         }).then((res) => setClientSecret(res.data.clientSecret));
