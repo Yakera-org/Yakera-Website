@@ -34,15 +34,15 @@ function PaymentAuth(props) {
             items: [
                 {
                     id: "donation",
-                    quantity: props.amount
+                    quantity: parseFloat(props.amount)
                 },
                 {
                     id: "tips",
-                    quantity: props.tip
+                    quantity: parseFloat(props.tip)
                 },
                 {
                     id: "total",
-                    quantity: props.amount + props.tip
+                    quantity: parseFloat(props.amount + props.tip)
                 },
             ],
         }).then((res) => setClientSecret(res.data.clientSecret));
