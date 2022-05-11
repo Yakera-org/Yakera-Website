@@ -111,6 +111,8 @@ function StripeForm(props)
             {
                 setMessage("An unexpected error occured.");
             }
+
+            addAmount({}, "error");
         }
         else
         {
