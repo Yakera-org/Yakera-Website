@@ -293,7 +293,7 @@
 
 .stripe-but{
     width: 100%;
-    padding: 10px;
+    padding: 2px;
     padding-bottom: 0px;
     min-width: 200px;
     background-color: transparent;
@@ -301,6 +301,9 @@
     height: 80px;
     min-height: 80px;
     max-height: 100px;
+}
+.stripe-but img{
+    margin-top: -15px;
 }
 .stripe-but:hover{
     cursor: pointer;
@@ -371,12 +374,15 @@
 .stripe-but{
     width: 100%;
     padding: 5px;
-    padding-bottom: 0px;
+    padding-bottom: 5px;
     min-width: 200px;
     border-radius: 15px;
     height: 50px;
     min-height: 40px;
     max-height: 50px;
+}
+#stripe-option{
+    font-size: large;
 }
 .airtm-but {
     width: 100%;
@@ -386,6 +392,7 @@
 }
 .airtm-but img{
     width: 20%;
+    max-width: 20%;
 }
 }
 
@@ -538,7 +545,7 @@
     .stripe-but{
         width: 100%;
         padding: 10px;
-        padding-bottom: 0px;
+        padding-bottom: 10px;
         min-width: 200px;
         border-radius: 15px;
         height: 50px;
