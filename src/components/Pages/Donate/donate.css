@@ -68,6 +68,9 @@
     font-size: 2.7vw;
     margin-top: 16%;
 }
+.mid-text-div .main-text {
+    line-height: 40px;
+}
 .mid-bubble-div{
     margin-left: -10%;
 }
@@ -125,7 +128,7 @@
 }
 
 .bottom-images{
-    background-color: grey;
+    background-color: #f0f0f0;
 }
 
 .bottom-images img{
@@ -164,8 +167,8 @@
 }
 
 .bottom p{
-    font-size: 30px;
-    width: 70%;
+    font-size: 25px;
+    width: 100%;
 }
 
 .bottom span{
@@ -175,10 +178,10 @@
 }
 
 .quote{
-    width: 30%;
-    margin-left: -8%;
+    width: 25%;
+    margin-left: -6%;
     margin-top: 12%;
-    margin-bottom: -8%;
+    margin-bottom: -6%;
 }
 
 .bottom button{
@@ -186,8 +189,8 @@
     background-color: orange;
     border: none;
     border-radius: 30px;
-    font-size: 30px;
-    width: 50%;
+    font-size: 20px;
+    width: 100%;
     padding: 5px;
 }
 
@@ -219,15 +222,27 @@
 
 .pagination {
     justify-content: center;
+    align-items: center;
     margin: 25px 0 25px 0;
 }
 .pagination .page-item a {
     color: var(--brand-orange);
+    border-color: var(--brand-orange);
+    margin-left: 4px;
+    margin-right: 4px;
+}
+.pagination .page-item:first-child a {
+    border: none;
+    background-color: transparent;
+}
+.pagination .page-item:last-child a {
+    border: none;
+    background-color: transparent;
 }
 .pagination .active a {
-    color: var(--brand-blue)!important;
+    color: var(--brand-orange)!important;
     opacity: 0.5;
-    border-color: #dee2e6!important;
+    border-color: var(--brand-orange)!important;
 }
 
 @media only screen and (max-width: 600px) {

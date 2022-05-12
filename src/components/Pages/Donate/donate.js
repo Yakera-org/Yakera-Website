@@ -6,7 +6,7 @@ import HashLoader from "react-spinners/HashLoader";
 import pics from './pics';
 import SearchIcon from '@material-ui/icons/Search';
 import { Form, InputGroup } from 'react-bootstrap';
-import { ArrowUpward, ArrowDownward, NavigateNext, NavigateBefore } from '@material-ui/icons';
+import { ArrowUpward, ArrowDownward, ArrowForward, ArrowBack } from '@material-ui/icons';
 import ReactPaginate from 'react-paginate';
 
 import './donate.css';
@@ -61,21 +61,13 @@ class SearchBar extends React.Component {
         return (
             <InputGroup
                 style={{
-                    border: '1px solid #ced4da',
+                    // border: '1px solid #f0f0f0',
                     borderRadius: '20px',
                     overflow: 'hidden',
                     display: 'inline-flex',
                     marginTop: '10px'
                 }}
             >
-                <InputGroup.Text
-                    style={{
-                        border: 'none',
-                        backgroundColor: 'white',
-                    }}
-                >
-                    <SearchIcon />
-                </InputGroup.Text>
                 <Form.Control
                     type='search'
                     placeholder={this.props.language === 'en' ? 'Search...' : 'Buscar...'}
@@ -83,9 +75,19 @@ class SearchBar extends React.Component {
                     onChange={e => this.props.setSearchQuery(e.target.value)}
                     style={{
                         border: 'none',
-                        backgroundColor: 'white',
+                        backgroundColor: '#f0f0f0',
                     }}
                 />
+                <InputGroup.Text
+                    style={{
+                        border: 'none',
+                        backgroundColor: '#f0f0f0',
+                        borderRadius: 'initial',
+                        color: '#0f335f',
+                    }}
+                >
+                    <SearchIcon />
+                </InputGroup.Text>
             </InputGroup>
         )
     }
@@ -388,9 +390,11 @@ class donate extends Component {
                             <Grid container item={true} xs={6} sm={3}>
                                 <section>
                                     <div className='mid-text-div' style={{ width: '100%' }}>
-                                        {this.state.language === 'en' ? 'Support a story, ' : 'Apoya una historia, '}
-                                        <span style={{ color: '#ea8737' }}>{this.state.language === 'en' ? 'change a life' : 'cambia una vida'}</span>
-                                        <br />
+                                        <div className='main-text'>
+                                            <b>{this.state.language === 'en' ? 'Support a story, ' : 'Apoya una historia, '}</b>
+                                            <span style={{ color: '#ea8737' }}>{this.state.language === 'en' ? 'change a life' : 'cambia una vida'}</span>
+                                        </div>
+                                        {/* <br /> */}
                                         <CardMedia className="mid-bubble-div"
                                             component="img"
                                             alt='header-bubble'
@@ -491,7 +495,7 @@ class donate extends Component {
                                     this.handleFilter('healthcareFilter');
                                 }} 
                             >
-                                {this.state.language === 'en' ? 'Healthcare' : 'Atencíon médica'}
+                                {this.state.language === 'en' ? 'Healthcare' : 'Atención Médica'}
                             </Button>
                             <Button
                                 className={this.state.educationFilter}
@@ -499,7 +503,7 @@ class donate extends Component {
                                     this.handleFilter('educationFilter');
                                 }} 
                             >
-                                {this.state.language === 'en' ? 'Education' : 'Educacíon'}
+                                {this.state.language === 'en' ? 'Education' : 'Educación'}
                             </Button>
                             <Button
                                 className={this.state.businessFilter}
@@ -507,7 +511,7 @@ class donate extends Component {
                                     this.handleFilter('businessFilter');
                                 }} 
                             >
-                                {this.state.language === "en" ? "Small Business" : "Pequeñuos negocios"}
+                                {this.state.language === "en" ? "Small Business" : "Pequeños Negocios"}
                             </Button>
                             <Button
                                 className={this.state.nutritionFilter}
@@ -515,7 +519,7 @@ class donate extends Component {
                                     this.handleFilter('nutritionFilter');
                                 }} 
                             >
-                                {this.state.language === "en" ? "Food" : "Comida"}
+                                {this.state.language === "en" ? "Nutrition" : "Alimentación"}
                             </Button>
                         </div>
 
@@ -529,7 +533,7 @@ class donate extends Component {
 
                     <hr id="hr-top" />
 
-                    <ReactPaginate
+                    {/* <ReactPaginate
                         breakLabel='...'
                         nextLabel={<NavigateNext fontSize='inherit' />}
                         previousLabel={<NavigateBefore fontSize='inherit' />}
@@ -549,7 +553,7 @@ class donate extends Component {
                         containerClassName="pagination"
                         activeClassName="active"
                         forcePage={this.state.selected}
-                    />
+                    /> */}
 
                     <Grid container spacing={5} style={{alignContent:'center', alignItems:'flex-start'}}>
                         {/* {filteredCampaigns.sort(() => 0.5 - Math.random()).map((cam, i) => {
@@ -594,10 +598,10 @@ class donate extends Component {
 
                     <ReactPaginate
                         breakLabel='...'
-                        nextLabel={<NavigateNext fontSize='inherit' />}
-                        previousLabel={<NavigateBefore fontSize='inherit' />}
+                        nextLabel={<ArrowForward  />}
+                        previousLabel={<ArrowBack  />}
                         onPageChange={this.handlePageClick}
-                        pageRangeDisplayed={5}
+                        pageRangeDisplayed={3}
                         pageCount={this.state.pageCount}
                         renderOnZeroPageCount={null}
                         pageClassName="page-item"
@@ -668,11 +672,11 @@ class donate extends Component {
                                             }
                                         </span>
                                     </Grid>
-                                    <Grid item sm={12} xs={12}>
+                                    {/* <Grid item sm={12} xs={12}>
                                         <button>
                                             {this.state.language === 'en' ? 'Read more success stories here' : 'Leer mas historias de exito aqui'}
                                         </button>
-                                    </Grid>
+                                    </Grid> */}
                                 </Grid>
                             </Grid>
                         </Grid>
