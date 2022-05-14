@@ -316,7 +316,7 @@ class PaymentDetails extends PureComponent {
                 </div>
 
                 <div className='category' id='tip-category'>
-                    {EN ? 'Would you like to leave a tip?' : '¡Quisieras dejar propina?'}
+                    {EN ? 'Would you like to leave a tip?' : '¿Quisieras dejar propina?'}
                 </div>
                 
                 <div className='money-sign'>{'$'}</div>
