@@ -15,7 +15,7 @@
 
 #tip-category
 {
-    margin-top: -8px;
+    margin-top: 8px;
 }
 
 .option
@@ -44,6 +44,7 @@
 .checkbox-button
 {
     cursor: pointer;
+    margin-bottom: -5px;
 }
 
 .checkbox-square

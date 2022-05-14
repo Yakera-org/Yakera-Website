@@ -38,7 +38,7 @@ class PaymentDetails extends PureComponent {
                 error: '',
             },
             tip: {
-                value: '',
+                value: '5',
                 validateOnChange: false,
                 error: '',
             }
@@ -121,7 +121,7 @@ class PaymentDetails extends PureComponent {
         if(!this.state.amount.value){
             amountError = emptyWarning;
         }else{
-            amountError = validateFields.validateNumber(this.state.amount.value + '')
+            amountError = validateFields.validateNumberForAmount(this.state.amount.value + '')
         }
         if(!this.state.email.value){
           emailError = emptyWarning;     
@@ -137,7 +137,7 @@ class PaymentDetails extends PureComponent {
         if(this.state.yesTip){
             if(this.state.tip.value)
             {
-                tipError = validateFields.validateNumber(this.state.tip.value + '');
+                tipError = validateFields.validateNumberIncludeZero(this.state.tip.value + '');
             }
             else
             {
@@ -265,6 +265,25 @@ class PaymentDetails extends PureComponent {
                         <div className='error-msg'>{email.error}</div>
                     </Grid>
                 </Grid>
+                <div className='align-left'>
+                <label className='checkbox-button'>
+                <input
+                    name="anonymous"
+                    type="checkbox"
+                    checked={this.state.anon}
+                    onChange={this.onAnonCheck}
+                    style={{marginTop:'-10px', width:'15px', float:'left', clear:'both'}}
+                    className={classnames(
+                        'form-control',
+                        'checkbox-square'
+                        )}
+                />
+                <span className='checkbox-button-control'></span>
+                <div className="description" id="checkbox-text">
+                    {EN ? 'I would like to stay anonymous.' : 'Me gustaría permanecer en el anonimato.'}   
+                </div>
+                </label>
+                </div>
                 
                 <div className='category'>
                     {EN ? 'Leave a comment!' : '¡Deja un comentario!'}
@@ -286,25 +305,14 @@ class PaymentDetails extends PureComponent {
                         }                                  
                         
                 />
-
-                <div className='align-left'>
-                <label className='checkbox-button'>
-                <input
-                    name="anonymous"
-                    type="checkbox"
-                    checked={this.state.anon}
-                    onChange={this.onAnonCheck}
-                    style={{marginTop:'-10px', width:'15px', float:'left', clear:'both'}}
-                    className={classnames(
-                        'form-control',
-                        'checkbox-square'
-                        )}
-                />
-                <span className='checkbox-button-control'></span>
-                <div className="description" id="checkbox-text">
-                    {EN ? 'I would like to stay anonymous' : 'Me gustaría permanecer en el anonimato'}   
-                </div>
-                </label>
+                <div className='description'>
+                    {
+                     EN 
+                     ? 
+                     "Comments are optional, and will be presented on the campaign page for support." 
+                     : 
+                     'Los comentarios son opcionales y se presentarán en la página de la campaña paor apoyo.'
+                    }
                 </div>
 
                 <div className='category' id='tip-category'>
@@ -332,9 +340,9 @@ class PaymentDetails extends PureComponent {
                     {
                      EN 
                      ? 
-                     "Leaving a tip helps us to maintain our operation and bring you new options and features" 
+                     "Leaving a tip helps us to maintain our operations and bring new features to you. Thank you!" 
                      : 
-                     '*Dejando propina nos ayudas a mantener y traerle nuevas opciones y servicios!'
+                     'Dejando propina nos ayudas a mantener y traerle nuevas opciones y servicios. Gracias!'
                     }
                 </div>
                 
