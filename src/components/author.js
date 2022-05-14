@@ -94,9 +94,9 @@ function Author() {
 
             <hr />
             <div className='section'>
-                {EN ? <p>This page is developed by the <b>Software Engineering Team</b> at <b>Yakera</b> and belongs to the Yakera company</p> : <p>Esta página está desarrollada por el <b> Equipo de Ingeniería de Software </b> en <b> Yakera </b> y pertenece a la empresa Yakera</p>}
+                {EN ? <p>This page is developed by the <b>Software Engineering Team</b> at <b>Yakera</b> and belongs to the Yakera company.</p> : <p>Esta página está desarrollada por el <b> Equipo de Ingeniería de Software </b> en <b> Yakera </b> y pertenece a la empresa Yakera.</p>}
                 <Hidden xsDown>
-                    {EN ? <p> Partnering with  <img className='footer-img' alt='datacamp-logo' src={datacamplogo}/>  for data education </p> : <p> Asociación con  <img className='footer-img' alt='datacamp-logo' src={datacamplogo}/>  para la educación de datos </p>}
+                    {EN ? <p> Partnering with  <img className='footer-img' alt='datacamp-logo' src={datacamplogo} onClick={() => window.location.href = "https://www.datacamp.com/donates"}/>  for data education. </p> : <p> Asociación con  <img className='footer-img' alt='datacamp-logo' src={datacamplogo}/>  para la educación de datos.</p>}
                 </Hidden>
             </div>
         </div>
