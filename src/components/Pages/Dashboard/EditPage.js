@@ -48,7 +48,6 @@ const EditPage = () => {
         try {
             const res = await api.get('/profile');
             let data = res.data.data
-            console.log(data)
             setProfileData(data);
             setAirTMEmail(data?.user?.airTMNum);
             setZelleEmail(data?.user?.zelleInfo?.email);
@@ -167,12 +166,11 @@ const EditPage = () => {
                 phone: profileData.user.phone,
                 airTMNum: profileData.user.airTMNum,
                 zelleInfo: {
-                    email: profileData.user.zelleInfo.email,
-                    name: profileData.user.zelleInfo.name,
-                    isAccepting: profileData.user.zelleInfo.isAccepting,
+                    email: profileData.user.zelleInfo ? profileData.user.zelleInfo.email : "", 
+                    name: profileData.user.zelleInfo ? profileData.user.zelleInfo.name : "",
+                    isAccepting: profileData.user.zelleInfo ? profileData.user.zelleInfo.isAccepting : false,
                 },
             };
-            console.log(requestBody)
             await api.patch('/profile/update', requestBody);
             setSuccess('Profile updated');
         } catch (err) {
