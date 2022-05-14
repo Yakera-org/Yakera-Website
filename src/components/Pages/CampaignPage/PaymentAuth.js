@@ -26,6 +26,7 @@ function PaymentAuth(props) {
         setOpenZelle(!openZelle)
     }
 
+    const total_amount = Math.round((parseFloat(props.amount) + parseFloat(props.tip)) * Math.pow(10, 2)) / Math.pow(10, 2);
     const [clientSecret, setClientSecret] = useState("");
 
     useEffect(() => {
@@ -57,10 +58,11 @@ function PaymentAuth(props) {
         appearance,
     };
 
-    const total_amount = parseInt(props.amount) + parseInt(props.tip)
     return (
         <div>
-             <p>{EN ? 'Payment Authentication' : 'Autenticación de pago'}</p>
+             <div className='details'>
+                 {EN ? 'Payment authentication' : 'Autenticación de pago'}
+            </div>
             <Card className='payment-auth-card'>
 
                 <div className='auth-axplanation'>
@@ -116,7 +118,7 @@ function PaymentAuth(props) {
                 <div >
                     <button
                         type="submit"
-                        className=" airtm-but"
+                        className="airtm-but"
                         onClick={onZelle}
                     >
                         <img src={zelleLogo} alt="zelle-logo-button" />
@@ -146,7 +148,7 @@ function PaymentAuth(props) {
                 }
 
             <button className='payment-back-btn' onClick={props.onBack}>
-                {EN ? 'Return' : 'Regreso'}
+                {EN ? 'Return' : 'Regresar'}
             </button>
             </Card>
         </div>
