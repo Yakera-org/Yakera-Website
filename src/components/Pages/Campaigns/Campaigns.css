@@ -1,0 +1,59 @@
+.campaigns-page{
+    margin-top: 150px;
+}
+.grid-header{
+    font-family: Intro-Regular-Alt;
+}
+
+.grid-header img{
+    width: 60%;
+    padding-top: 10%;
+}
+.grid-header .header-mid-img img{
+    padding: 25% 0% 25% 25%
+}
+.grid-header .mid-content{
+    padding: 5% 5% 5% 0;
+}
+.grid-header .mid-content .main-text{
+    font-size: 2.5rem;
+    width: 100%;
+    margin-left: -10%;
+}
+.grid-header .mid-content .main-text span{
+   color: #ea8737;
+}
+.grid-header .mid-content .bubble-text{
+    padding: 5% 5% 5% 0;
+    margin-left: -10%;
+}
+.grid-header .mid-content .bubble-text .bubble-quote{
+    background-color: #ea8737;
+    text-align: left;
+    padding: 10px 35px;
+    border-radius: 40px;
+    width: 75%;
+    color: white;
+    font-family: Intro-Light;
+    float: left;
+}
+.grid-header .mid-content .bubble-text .bubble-quote img{
+    padding: 0%;
+    width: 50px;
+    margin-left: -25px;
+    margin-right: 5px;
+    vertical-align: middle;
+    float: left;
+}
+.grid-header .mid-content .bubble-text .bubble-digit{
+    background-color: rgb(211, 211, 211);
+    float: right;
+    width: 10%;
+    min-width: 70px;
+    margin-left: 1px;
+    text-align: center;
+    padding: 20px 15px;
+    color: rgb(53, 53, 53);
+    border-radius: 40px;
+    font-size: 20px;
+}

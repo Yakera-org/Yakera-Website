@@ -10,7 +10,7 @@ import Campaign from './Pages/CampaignPage/CampaignPage';
 import Terms from './Pages/Terms/terms';
 import Consent from './Pages/Privacy/consent';
 import FAQ from './Pages/FAQ/FAQPage';
-import donate from './Pages/Donate/donate';
+import Campaigns from './Pages/Campaigns/Campaigns';
 import AboutUs from './Pages/AboutUs/AboutUs';
 // import SupportUs from './Pages/SupportUs/SupportUs';
 import NotFoundPage from './Pages/404/NotFoundPage';
@@ -63,7 +63,7 @@ function Main() {
                         <Route exact path="/forgot-password" component={ForgotPassword} />
                         <Route exact path="/reset-password" component={ResetPassword} />
                         {/* <Route exact path="/support" component={SupportUs} /> */}
-                        <Route exact path="/campaigns" component={donate} />
+                        <Route exact path="/campaigns" component={Campaigns} />
                         <Route exact path="/create-campaign" component={CreateCampaign} />
                         <Route exact path="/about" component={AboutUs} />
                         <Route exact path="/campaign/:title" component={Campaign} />
