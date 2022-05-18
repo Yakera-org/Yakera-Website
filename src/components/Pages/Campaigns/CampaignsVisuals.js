@@ -1,12 +1,12 @@
-import React, {useState} from "react";
+import React from "react";
 import { Grid, Hidden, Button } from '@material-ui/core';
 
 import pics from './pics';
 import SearchBar from "./Searchbar";
+import Pageination from "./Pageination";
 
 function CampaignsVisuals(props) {
 
-    const [hasLoaded, setHasLoaded] = useState(false);
     const EN = props.EN;
 
     return (
@@ -94,9 +94,17 @@ function CampaignsVisuals(props) {
                     </Grid>
                 </Grid>
 
-            <hr style={{width:"100%"}}/>
+            <hr style={{width:"100%", marginBottom:"100px"}}/>
             </div>
 
+            <Pageination 
+                EN={EN}
+                campaigns = {props.campaigns}
+                filteredCampaigns = {props.filteredCampaigns}
+                currentItems = {props.currentItems}
+                pageCount = {props.pageCount}
+                hasLoaded = {props.hasLoaded}
+            />
 
         </div>
     );

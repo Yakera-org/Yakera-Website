@@ -76,7 +76,7 @@
     color: #525252;
 }
 .filter-section .filters{
-    border-radius: 15px;
+    border-radius: 5px;
     width: 98%;
     background-color: #f0f0f0;
     text-align: center;
@@ -87,7 +87,7 @@
     color:#525252;
     font-size: 18px;
     padding: 20px;
-    border-radius: 15px;
+    border-radius: 5px;
 }
 .filter-section .filters .quant-filter:hover{
     background-color: rgba(223, 223, 223, 0.748);
@@ -114,4 +114,14 @@
 }
 .filter-section .category-filter Button:hover{
     background-color: #ea883734;
+}
+.pageination{
+    text-align: center;
+    padding: 20px;
+}
+.cam-loader{
+    position: absolute;
+    left: 50%; 
+    margin-bottom: 200px;
+    transform: translate(-50%, -50%);
 }
