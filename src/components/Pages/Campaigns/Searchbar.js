@@ -7,12 +7,7 @@ class SearchBar extends React.Component {
         const EN = this.props.EN;
         return (
             <InputGroup
-                style={{
-                    // border: '1px solid #f0f0f0',
-                    borderRadius: '20px',
-                    overflow: 'hidden',
-                    display: 'inline-flex',
-                }}
+                className='searchbar'
             >
                 <Form.Control
                     type='search'

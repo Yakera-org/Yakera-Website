@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import { Grid, Hidden, CardMedia, Button } from '@material-ui/core';
+import { Grid, Hidden, Button } from '@material-ui/core';
 
 import pics from './pics';
 import SearchBar from "./Searchbar";
@@ -50,7 +50,54 @@ function CampaignsVisuals(props) {
                 <br />
             </Grid>
 
-            <SearchBar EN={EN} />
+            <div className="filter-section">
+                <h2>
+                    {EN ? 'Find a campaign.' : 'Find a campaign.'}
+                </h2>
+
+                <SearchBar EN={EN} />
+                
+                <p>{EN ? 'Sort by:' : 'Sort by:'}</p>
+
+                <Grid container spacing={0} className="filters" style={{ alignItems: 'flex-start' }}>
+                    <Grid item xs={4} sm={4} className="quant-filter">
+                        {EN ? 'Date' : 'Date'}
+                    </Grid>
+                    <Grid item xs={4} sm={4} className="quant-filter">
+                        {EN ? 'Percentage' : 'Percentage'}
+                    </Grid>
+                    <Grid item xs={4} sm={4} className="quant-filter">
+                        {EN ? 'Money raised' : 'Money Raised'}
+                    </Grid>
+                </Grid>
+
+                <Grid container spacing={0} className="category-filter" style={{ alignItems: 'flex-start' }}>
+                    <Grid item xs={3} sm={3} className="cat-filter">
+                        <Button>
+                            {EN ? 'Healthcare' : 'Atención Médica'}
+                        </Button>
+                    </Grid>
+                    <Grid item xs={3} sm={3} className="cat-filter">
+                        <Button>
+                            {EN ? 'Education' : 'Educación'}
+                        </Button>
+                    </Grid>
+                    <Grid item xs={3} sm={3} className="cat-filter">
+                        <Button>
+                            {EN ? "Small Business" : "Pequeños Negocios"}
+                        </Button>
+                    </Grid>
+                    <Grid item xs={3} sm={3} className="cat-filter">
+                        <Button>
+                            {EN ? "Nutrition" : "Alimentación"}
+                        </Button>
+                    </Grid>
+                </Grid>
+
+            <hr style={{width:"100%"}}/>
+            </div>
+
+
         </div>
     );
 }
