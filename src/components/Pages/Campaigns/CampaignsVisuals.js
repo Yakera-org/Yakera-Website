@@ -98,12 +98,11 @@ function CampaignsVisuals(props) {
             </div>
 
             <Pageination 
-                EN={EN}
-                campaigns = {props.campaigns}
-                filteredCampaigns = {props.filteredCampaigns}
-                currentItems = {props.currentItems}
-                pageCount = {props.pageCount}
-                hasLoaded = {props.hasLoaded}
+                 EN={EN} 
+                 loading={props.loading}
+                 campaigns = {props.campaigns}
+                 page = {props.page}
+                 LoadCampaignsForPage={props.LoadCampaignsForPage}
             />
 
         </div>

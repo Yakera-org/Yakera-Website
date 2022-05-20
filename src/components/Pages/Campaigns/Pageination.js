@@ -4,11 +4,20 @@ import { Grid } from '@material-ui/core';
 import CampaignCard from './campaignCard';
 
 function Pageination(props) {
-
-    const [camCount, setCamCount] = useState(0);
     const EN = props.EN;
 
-    if(!props.hasLoaded){
+    React.useEffect(() => {
+        function startup(){
+            LoadCampaigns()  
+        }
+        startup();         
+    }, []);
+
+    async function LoadCampaigns(){
+        await props.LoadCampaignsForPage(props.page)
+    }
+
+    if(props.loading){
         return(
             <div>
                 <div className='cam-loader'>
@@ -26,9 +35,8 @@ function Pageination(props) {
     }else{
         return (
             <div>
-                 <Grid container spacing={5} style={{alignContent:'center', alignItems:'flex-start'}}>
-                        {props.currentItems.map((cam, i) => {
-                            setCamCount(camCount+1)
+                 <Grid container spacing={0} style={{alignContent:'center', alignItems:'flex-start'}}>
+                        {props.campaigns.map((cam, i) => {
                             return (
                                 <Grid item xs={12} sm={3} key={i}>
                                     <CampaignCard
@@ -40,12 +48,6 @@ function Pageination(props) {
                                 )
                         })}
                     </Grid>
-
-                    <div style={{ textAlign: 'center' }}>
-                        <p id='no-cam'>
-                            {camCount === 0 ? EN ? 'No campaigns in this category' : 'No hay campañas en esta categoría.' : ''}
-                        </p>
-                    </div>
             </div>
         );
     }
