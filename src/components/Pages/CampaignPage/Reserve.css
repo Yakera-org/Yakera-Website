@@ -1,14 +1,22 @@
+@font-face {
+    font-family: 'Intro-Book-Alt';
+    src: local('Intro'), url(../../../fonts/Intro-Book-Alt.otf) format('opentype');
+}
+@font-face {
+    font-family: 'Intro-Bold-Alt';
+    src: local('Intro') url(../../../fonts/Intro-Bold-Alt.otf) format('opentype');
+}
 #reserve-top{
     padding-top: 10px;
     font-weight: 700;
-    font-size: 20px;
-    color: black;
+    font-size: 22px;
+    color: #0D325E;
 }
 #reserve-des{
     padding: 0 30px;
     margin-top: -10px;
     font-weight: 400;
-    font-size: 12px;
+    font-size: 16px;
     color: #2b292d;
 }
 .steps {
@@ -16,67 +24,63 @@
     margin-top: -5%;
 }
 .steps-num #first {
-    font-size: 1.5vw;
+    font-size: 2vw;
     position: absolute;
     color: white;
-    margin: -5.6% 0% 0px -15.6%;
+    margin: -6.4% 0 0 -16.8%;
 }
 .steps-num #second {
-    font-size: 1.5vw;
+    font-size: 2vw;
     position: absolute;
     color: white;
-    margin: -5.6% 0% 0px -2.5%;
+    margin: -6.4% 0% 0px -2.3%;
 }
 .steps-num #third {
-    font-size: 1.5vw;
+    font-size: 2vw;
     position: absolute;
     color: white;
-    margin: -5.6% 0% 0px 10.8%;
+    margin: -6.4% 0% 0px 12.4%;
 }
 .reserve-steps-text {
-    margin-left: 2%;
-    margin-top: -4%;
+    margin-left: -2%;
+    margin-top: 1%;
 }
 .bold{
     font-size: 12px;
-    margin-right: 38%;
+    margin-right: 10%;
 }
 .steps #text {
-    width: 60%;
-    font-size: 9px;
+    width: 90%;
+    margin-left: -13%;
+    font-size: 10px;
+    font-family: Intro-Book-Alt;
 }
 #username-text{
     color: black;
-    font-size: 12px;
-    font-weight: 700;
+    font-size: 15px;
     font-weight: bold;
+    font-family: Intro-Book-Alt;
 }
 .input-container{
-    margin: 0vw 0vw 0vw 11vw;
+    margin: 2vw 9vw;
 }
 .input-field{
-    max-width: 18vw;
-    max-height: 2vw;
-    align-items: center;
-    background: #E5E5E5;
+    max-width: 22vw;
+    max-height: 2.2vw;
+    background: #EAEAEA;
     border: none;
     text-align: center;
     border-radius: 15px;
-    font-size: 8px;
+    font-size: 0.6em;
 }
 .invalid-feedback{
     margin: 0vw 0vw 0vw -5.5vw;
 }
 .confirm-button {
     border: none;
-    background-color: black;
-    border-radius: 15px;
-    color: white;
-    padding: 10px;
-    max-height: 2vw;
-    max-width: 10vw;
-    font-size: 9px;
-    text-transform: none;
+    max-height: 2.5vw;
+    max-width: 14vw;
+    font-family: Intro-Book-Alt;
 }
 .confirm-button:hover {
     opacity: 0.8;
@@ -102,7 +106,7 @@
     }
     .bold{
         font-size: 10px;
-        margin-right: 38%;
+        margin-right: 50%;
     }
     .steps #text {
         width: 60%;

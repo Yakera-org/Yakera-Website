@@ -295,11 +295,11 @@
     width: 100%;
     border-radius: 5px;
     min-width: 200px;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
     height: 3rem;
-    font-size: 30px;
     background-color: white;
     border: 1px solid rgb(39, 39, 39);
+    padding: 0.5em 0 2em 0;
     outline: none;
 }
 
@@ -316,6 +316,9 @@
 .reserve-but:focus{
     outline: none;
 }
+.reserve-but img{
+    height: 10em;
+}
 .payment-auth {
     text-align: center;
 }
@@ -331,12 +334,12 @@
 
 .payment-back-btn{
     border: none;
+    width: 22vw;
+    max-height: 2.5vw;
     font-size: 18px;
-    border-radius: 10px;
-    background-color: #002453;
+    border-radius: 5px;
+    background-color: #0D325E;
     color: white;
-    padding: 10px 30px;
-    width: auto;
     margin: 20px 0;
 }
 .payment-auth-card .payment-back-btn:hover{
@@ -494,13 +497,7 @@
         font-size: 18px;
     }
     .reserve-but {
-        height: 3rem;
-        margin-left: 0;
-    }
-    .reserve-but img{
-        height: 60%;
-        padding: 5px 0;
-        width: auto;
+        height: 9vw;
     }
     .payment-auth-card{
         padding: 50px 40px;
@@ -517,5 +514,15 @@
         font-size: 18px;
         color: #2e2e2e;
         vertical-align: middle;
+    }
+    .payment-back-btn{
+        border: none;
+        width: 30vw;
+        max-height: 3.5vw;
+        font-size: 12px;
+        border-radius: 5px;
+        background-color: #0D325E;
+        color: white;
+        margin: 20px 0;
     }
 }

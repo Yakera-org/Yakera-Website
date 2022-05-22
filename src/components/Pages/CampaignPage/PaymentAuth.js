@@ -69,7 +69,7 @@ function PaymentAuth(props) {
                 <div >
                     <button
                         type="submit"
-                        className=" airtm-but"
+                        className="airtm-but"
                         onClick={onZelle}
                     >
                         <img src={zelleLogo} alt="zelle-logo-button" />

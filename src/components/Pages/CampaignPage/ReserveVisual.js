@@ -28,7 +28,7 @@ function ReserveVisual(props) {
                 <Hidden xsDown>
                 <Grid item sm={12}>
                     <CardMedia className='reserve-steps-card' component="img" image={reservebar}
-                        alt='steps-bar' style={{ maxWidth: "90%", float: "center" }} 
+                        alt='steps-bar' style={{ maxWidth: "100%", float: "center", marginLeft: "-4%" }} 
                     />
                     <div className='steps-num'>
                         <span id='first'>1</span>
@@ -36,8 +36,7 @@ function ReserveVisual(props) {
                         <span id='third'>3</span>
                     </div>
                 </Grid>
-                </Hidden>
-                <Grid container spacing={0} className='reserve-steps-text'>
+                <Grid container spacing={4} className='reserve-steps-text'>
                     <Grid item xs={12} sm={4}>
                         <div id='text'>
                         {EN
@@ -46,7 +45,8 @@ function ReserveVisual(props) {
                         :
                         "Ve a la aplicación de Reserve y transfiere el monto indicado a"
                         }
-                        <span class="bold"><span role="img" aria-label='fly-dollar'> 💸</span>yakera</span>
+                        <br />
+                        <span class="bold"><span role="img" aria-label='fly-dollar'>💸yakera</span></span>
                         </div>
                         <br />
                     </Grid>
@@ -63,15 +63,16 @@ function ReserveVisual(props) {
                     </Grid>
                     <Grid item xs={12} sm={4}>
                         <div id='text'>
-                            {EN 
-                            ? 
-                            "click on the confirm transaction button and ... that's all!" 
-                            : 
-                            "Haz click en el botón de confirmación yiYa está todo listo"
-                            }
+                        {EN 
+                        ? 
+                        "click on the confirm transaction button and ... that's all!" 
+                        : 
+                        "Haz click en el botón de confirmación yiYa está todo listo"
+                        }
                         </div>
                     </Grid>
                 </Grid>
+                </Hidden>
             </Grid>
             <br />
             {EN ?
@@ -96,20 +97,17 @@ function ReserveVisual(props) {
             </div>
             <br />
             <Button className='confirm-button'
-                onClick={props.onConfirm}
-                style={{
-                    border:'none',
-                    backgroundColor:'black',
-                    borderRadius:'15px',
-                    color:'white',
-                    padding:'10px',
-                    maxHeight:'2vw',
-                    maxWidth:'10vw',
-                    fontSize:'50%',
-                    textTransform: 'none'
-                }}
+            onClick={props.onConfirm}
+            style={{ backgroundColor: '#70B88F', 
+                        color: 'white', 
+                        fontSize: '0.8em',
+                        textTransform: 'none',
+                        borderRadius: '10px',
+                        maxWidth: '18vw',
+                        fontFamily:'Intro-Book-Alt',
+                        fontWeight: '800',
+                        marginTop: '-10%'}}
             >{EN ? "Confirm Transaction" : "Confirm Transaction"}</Button>
-
         </div>
     );
 }
