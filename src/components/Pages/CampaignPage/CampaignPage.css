@@ -175,15 +175,14 @@
 .payment-card{
     text-align: center;
     margin: 0%;
-    padding: 2%;
+    padding: 0% 28%;
     width: 100%;
-    padding: 2% 35%;
 }
 
 #donate-now-hr{
-    width: 60%;
+    width: 45%;
     background-color: #002453;
-    height: 2px;
+    height: 3px;
 }
 
 .payment-card-sec{
@@ -223,16 +222,17 @@
     border: none;
 }
 .payment-start-button{
-    width: 50%;
-    margin-left: 25%;
-    height: 50px;
-    font-size: 20px;
-    background-color: #002453;
+    width: 70%;
+    margin-left: 15%;
+    font-size: large;
+    background-color: #eb913b;
     border: none;
+    border-radius: 10px;
+    margin-top: 4%;
 }
 .payment-start-button:hover{
     opacity: 0.8;
-    background-color: #002453;
+    background-color: #ea8737;
 }
 .payment-slit{
     text-align: center;
@@ -305,6 +305,42 @@
 
 .reserve-but:hover{
     background-color:  rgb(238, 238, 238);
+  
+.stripe-but{
+    width: 100%;
+    padding: 2px;
+    padding-bottom: 0px;
+    min-width: 200px;
+    background-color: transparent;
+    border-radius: 15px;
+    height: 80px;
+    min-height: 80px;
+    max-height: 100px;
+}
+.stripe-but img{
+    margin-top: -15px;
+}
+.stripe-but:hover{
+    cursor: pointer;
+    background-color: #edf0f4;
+    border-radius: 15px;
+
+}
+.airtm-but {
+    width: 100%;
+    border-radius: 5px;
+    min-width: 200px;
+    margin: 20px 0;
+    height: 80px;
+    min-height: 50px;
+    max-height: 100px;
+    background-color: transparent;
+    border: 1px rgb(220, 220, 220) solid;
+}
+
+.airtm-but:hover{
+    background-color:  #ede4f0;
+
     outline: none;
 
 }
@@ -316,8 +352,16 @@
 .reserve-but:focus{
     outline: none;
 }
+
 .reserve-but img{
     height: 10em;
+ }
+
+.airtm-but img{
+    width: 15%;
+    max-width: 40%;
+    height: auto;
+
 }
 .payment-auth {
     text-align: center;
@@ -334,13 +378,13 @@
 
 .payment-back-btn{
     border: none;
-    width: 22vw;
-    max-height: 2.5vw;
-    font-size: 18px;
-    border-radius: 5px;
-    background-color: #0D325E;
+    font-size: large;
+    border-radius: 10px;
+    background-color: #eb913b;
     color: white;
-    margin: 20px 0;
+    width: 60%;
+    height: 38px;
+    margin-top: 1%;
 }
 .payment-auth-card .payment-back-btn:hover{
     opacity: 0.8;
@@ -348,6 +392,32 @@
 .payment-visual .loader{
     margin-left: 0%;
     z-index: 100000;
+}
+
+@media only screen and (max-width: 1200px) {
+.stripe-but{
+    width: 100%;
+    padding: 5px;
+    padding-bottom: 5px;
+    min-width: 200px;
+    border-radius: 15px;
+    height: 50px;
+    min-height: 40px;
+    max-height: 50px;
+}
+#stripe-option{
+    font-size: large;
+}
+.airtm-but {
+    width: 100%;
+    height: 50px;
+    min-height: 40px;
+    max-height: 50px;
+}
+.airtm-but img{
+    width: 20%;
+    max-width: 20%;
+}
 }
 
 @media only screen and (max-width: 600px) {
@@ -498,9 +568,27 @@
     }
     .reserve-but {
         height: 9vw;
+    .stripe-but{
+        width: 100%;
+        padding: 10px;
+        padding-bottom: 10px;
+        min-width: 200px;
+        border-radius: 15px;
+        height: 50px;
+        min-height: 40px;
+        max-height: 50px;
+    }
+    .airtm-but {
+        width: 100%;
+        height: 50px;
+        min-height: 40px;
+        max-height: 50px;
+    }
+    .airtm-but img{
+        width: 30%;
     }
     .payment-auth-card{
-        padding: 50px 40px;
+        padding: 20px 10px;
         height: auto;
     }
     #tip-area input{
