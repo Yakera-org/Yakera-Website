@@ -162,9 +162,8 @@
         font-size: 12px;
         color: #2b292d;
     }
-
     .steps #text-first {
-        width: 95%;
+        width: 100%;
         margin-left: 10%;
         margin-top: 2%;
         text-align: left;
@@ -172,18 +171,18 @@
         font-family: Intro-Book-Alt;
     }
     .steps #text-second {
-        width: 95%;
+        width: 100%;
         margin-left: 10%;
-        margin-top: -1%;
+        margin-top: 2%;
         text-align: left;
         font-size: 13px;
         font-weight: 400;
         font-family: Intro-Book-Alt;
     }
     .steps #text-third {
-        width: 95%;
+        width: 100%;
         margin-left: 10%;
-        margin-top: 6%;
+        margin-top: 2%;
         text-align: left;
         font-size: 13px;
         font-family: Intro-Book-Alt;

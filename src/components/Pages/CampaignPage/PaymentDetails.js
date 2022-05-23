@@ -226,7 +226,7 @@ class PaymentDetails extends PureComponent {
                             type="text"
                             name="name"
                             value={name.value}
-                            placeholder={'Pedro Perez'}
+                            placeholder={EN ? "Name" : "Nombre"}
                             className={classnames(
                                 'form-control', 
                                 { 'is-valid': name.error === false },
@@ -250,7 +250,7 @@ class PaymentDetails extends PureComponent {
                             type="text"
                             name="email"
                             value={email.value}
-                            placeholder={'Pedro@yakera.org'}
+                            placeholder={EN ? "name@example.com" : "nombre@ejemplo.com"}
                             className={classnames(
                                 'form-control',
                                 { 'is-valid': email.error === false },
@@ -285,7 +285,7 @@ class PaymentDetails extends PureComponent {
                 </label>
                 </div>
                 
-                <div className='category'>
+                <div className='category-comment'>
                     {EN ? 'Leave a comment!' : '¡Deja un comentario!'}
                 </div>
                 

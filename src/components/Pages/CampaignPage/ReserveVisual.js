@@ -16,8 +16,8 @@ function ReserveVisual(props) {
             
             <p id="reserve-top">
                 {
-                    EN ? `Amount to be donated via Reserve: ${props.amount}` 
-                    :`Monto a donar via Reserve: ${props.amount}`
+                    EN ? `Amount to be donated via Reserve: $${props.amount}` 
+                    :`Monto a donar via Reserve: $${props.amount}`
                 }
             </p>
             
@@ -45,7 +45,7 @@ function ReserveVisual(props) {
                         "Ve a la aplicación de Reserve y transfiere el monto indicado a: "
                         }
                         <br />
-                        <span class="bold"><span role="img" aria-label='fly-dollar'>yakera</span></span>
+                        <span className="bold"><span role="img" aria-label='fly-dollar'>yakera</span></span>
                         </div>
                         <br />
                     </Grid>
@@ -81,36 +81,38 @@ function ReserveVisual(props) {
                             alt='steps-bar' style={{ maxWidth: "80%", float: "center", marginLeft: "30%" }} 
                         />  
                     </Grid>
-                    <Grid container direction='row' spacing={3} xs={10}>
-                        <Grid item xs={10}>
-                            <div id='text-first'>
-                            {EN
-                            ?
-                            "Go to the Reserve application and transfer the amount shown above to yakera"
-                            :
-                            "Ve a la aplicación de Reserve y transfiere el monto indicado a yakera"
-                            }
-                            </div>
-                        </Grid>
-                        <Grid item xs={10}>
-                            <div id='text-second'>
-                            {EN 
-                            ? 
-                            "After you have transferred, enter your username in the box below" 
-                            : 
-                            "Después de que hayas hecho la transferencia, introduce tu usuario en la casilla de abajo"
-                            }
-                            </div>
-                        </Grid>
-                        <Grid item xs={10}>
-                            <div id='text-third'>
-                            {EN 
-                            ? 
-                            "click on the confirm transaction button and ... that's all!" 
-                            : 
-                            "Haz click en el botón de confirmación yiYa está todo listo"
-                            }
-                            </div>
+                    <Grid item xs={10}>
+                        <Grid container direction='row' spacing={3}>
+                            <Grid item xs={10}>
+                                <div id='text-first'>
+                                {EN
+                                ?
+                                "Go to the Reserve application and transfer the amount shown above to: yakera"
+                                :
+                                "Ve a la aplicación de Reserve y transfiere el monto indicado a: yakera"
+                                }
+                                </div>
+                            </Grid>
+                            <Grid item xs={10}>
+                                <div id='text-second'>
+                                {EN 
+                                ? 
+                                "After you have transferred, enter your username in the box below" 
+                                : 
+                                "Después de que hayas hecho la transferencia, introduce tu usuario en la casilla de abajo"
+                                }
+                                </div>
+                            </Grid>
+                            <Grid item xs={10}>
+                                <div id='text-third'>
+                                {EN 
+                                ? 
+                                "click on the confirm transaction button and ... that's all!" 
+                                : 
+                                "Haz click en el botón de confirmación yiYa está todo listo"
+                                }
+                                </div>
+                            </Grid>
                         </Grid>
                     </Grid>
             </Grid>

@@ -174,7 +174,7 @@ class PaymentVisual extends Component {
                             EN={EN}
                             language={this.props.language}
                             onClose={this.onClose}
-                            amount={this.state.amount}
+                            amount={parseFloat(this.state.amount)}
                             name={this.state.name}
                             email={this.state.email}
                             isAnon={this.state.isAnon}

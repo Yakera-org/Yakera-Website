@@ -11,11 +11,23 @@
     color: #002453;
     text-align: left;
     margin-top: 2%;
+    margin-bottom: -5%;
 }
+.category-comment
+{
+    font-size: x-large;
+    font-weight: bold;
+    color: #002453;
+    text-align: left;
+    margin-top: 2%;
+    margin-bottom: -2%;
+}
+
 
 #tip-category
 {
-    margin-top: 8px;
+    margin-top: 10px;
+    margin-bottom: -20px;
 }
 
 .option
