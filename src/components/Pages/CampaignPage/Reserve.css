@@ -62,7 +62,7 @@
     font-family: Intro-Book-Alt;
 }
 .input-grid .text-container{
-    margin: 0% 22%;
+    margin: 0% 23%;
 }
 #username-text{
     color: black;
@@ -71,7 +71,7 @@
     font-family: Intro-Book-Alt;
 }
 .input-grid .input-container{
-    margin: -3% 22%;
+    margin: -3% 23%;
 }
 .input-field{
     max-width: 22vw;
@@ -83,7 +83,8 @@
     font-size: 0.6em;
 }
 .input-grid .confirm-container{
-    margin: 10% 22%;
+    margin: 10% 15%;
+    margin-bottom: 2%;
 }
 .confirm-button {
     border: none;
