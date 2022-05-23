@@ -3,11 +3,10 @@ import {Card} from '@material-ui/core';
 
 import PayPal from './Paypal';
 import reserveLogo from '../../../pics/reservebutton.png'
-import zelleLogo from '../../../pics/zelle.png';
+//import zelleLogo from '../../../pics/zelle.png';
 import ZelleLogic from './ZelleLogic';
 import ReserveLogic from './ReserveLogic'
 
-import ZelleLogic from './ZelleLogic';
 import { loadStripe } from "@stripe/stripe-js"
 import { Elements } from "@stripe/react-stripe-js"
 import StripeForm from './Stripe';
@@ -38,10 +37,8 @@ function PaymentAuth(props) {
         setOpenZelle(!openZelle)
     }
  
-    const total_amount = parseInt(props.amount) + parseInt(props.tip)
-    async function onZelle(){
-        setOpenZelle(!openZelle)
-    }
+    //const total_amount = parseInt(props.amount) + parseInt(props.tip)
+
 
     const total_amount = Math.round((parseFloat(props.amount) + parseFloat(props.tip)) * Math.pow(10, 2)) / Math.pow(10, 2);
     const [clientSecret, setClientSecret] = useState("");
@@ -88,7 +85,7 @@ function PaymentAuth(props) {
                     </h4>
                     <p>{EN ? 'Please select a payment method' : 'Por favor seleccione un método de pago.'}</p>
                 </div>
-                 {/*<PayPal
+                <PayPal
                     amount={total_amount}
                     onSuccess={props.OnSuccessPayment}
                     onClick={props.OnPaymentClick}
@@ -118,7 +115,6 @@ function PaymentAuth(props) {
                     :
                     ''
                 }
-                /> */}
 
                 <Accordion>
                     <AccordionCard>

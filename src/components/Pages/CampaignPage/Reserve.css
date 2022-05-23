@@ -20,7 +20,7 @@
     color: #2b292d;
 }
 .steps {
-    margin-left: 5.5%;
+    margin-left: 4.8%;
     margin-top: -5%;
 }
 .steps-num #first {
@@ -33,17 +33,17 @@
     font-size: 2vw;
     position: absolute;
     color: white;
-    margin: -6.4% 0% 0px -2.3%;
+    margin: -6.4% 0% 0px -2.1%;
 }
 .steps-num #third {
     font-size: 2vw;
     position: absolute;
     color: white;
-    margin: -6.4% 0% 0px 12.4%;
+    margin: -6.4% 0% 0px 12.6%;
 }
-.reserve-steps-text {
+.steps .reserve-steps-text {
     margin-left: -2%;
-    margin-top: 1%;
+    margin-top: -8%;
 }
 .bold{
     font-size: 12px;
@@ -55,14 +55,23 @@
     font-size: 10px;
     font-family: Intro-Book-Alt;
 }
+.steps #text-third {
+    width: 90%;
+    margin-left: -6%;
+    font-size: 10px;
+    font-family: Intro-Book-Alt;
+}
+.input-grid .text-container{
+    margin: 0% 22%;
+}
 #username-text{
     color: black;
     font-size: 15px;
     font-weight: bold;
     font-family: Intro-Book-Alt;
 }
-.input-container{
-    margin: 2vw 9vw;
+.input-grid .input-container{
+    margin: -3% 22%;
 }
 .input-field{
     max-width: 22vw;
@@ -73,8 +82,8 @@
     border-radius: 15px;
     font-size: 0.6em;
 }
-.invalid-feedback{
-    margin: 0vw 0vw 0vw 0vw;
+.input-grid .confirm-container{
+    margin: 10% 22%;
 }
 .confirm-button {
     border: none;
@@ -90,46 +99,94 @@
     #reserve-top{
         padding-top: 10px;
         font-weight: 700;
-        font-size: 12px;
-        color: black;
+        font-size: 14px;
+        color: #0D325E;
     }
     #reserve-des{
         margin-top: -20px;
         margin-bottom: 40px;
         font-weight: 400;
-        font-size: 11px;
+        font-size: 12px;
         color: #2b292d;
     }
-    .reserve-steps-text {
-        margin-left: 20%;
-        margin-top: -4%;
+    .steps-num #first {
+        font-size: 7vw;
+        position: absolute;
+        font-weight: 800;
+        color: white;
+        margin: -46% 0 0 1%;
+    }
+    .steps-num #second {
+        font-size: 7vw;
+        font-weight: 800;
+        position: absolute;
+        color: white;
+        margin: -27.5% 0% 0px 0.7%;
+    }
+    .steps-num #third {
+        font-size: 7vw;
+        font-weight: 800;
+        position: absolute;
+        color: white;
+        margin: -9.1% 0% 0px 0.6%;
     }
     .bold{
         font-size: 10px;
         margin-right: 50%;
     }
-    .steps #text {
-        width: 60%;
-        font-size: 10px;
+    .steps #text-first {
+        width: 95%;
+        margin-left: 10%;
+        margin-top: 2%;
+        text-align: left;
+        font-size: 11px;
+        font-family: Intro-Book-Alt;
+    }
+    .steps #text-second {
+        width: 95%;
+        margin-left: 10%;
+        margin-top: -1%;
+        text-align: left;
+        font-size: 11px;
+        font-weight: 400;
+        font-family: Intro-Book-Alt;
+    }
+    .steps #text-third {
+        width: 95%;
+        margin-left: 10%;
+        margin-top: 6%;
+        text-align: left;
+        font-size: 11px;
+        font-family: Intro-Book-Alt;
     }
     #username-text{
         color: black;
-        font-size: 10px;
+        font-size: 12px;
         font-weight: 700;
         font-weight: bold;
     }
+    .input-grid .text-container{
+        margin: 5% 0;
+    }
+    .input-grid .input-container{
+        margin: -10% 26%;
+    }
+    .invalid-feedback{
+        font-size: 6px;
+    }
+    .input-grid .confirm-container{
+        margin: 3% 30%;
+    }
     .input-field{
-        max-width: 35vw;
-        max-height: 3.5vw;
+        max-width: 50vw;
+        max-height: 4vw;
         align-items: center;
         background: #E5E5E5;
         border: none;
         text-align: center;
         border-radius: 15px;
-        font-size: 7px;
-    }
-    .input-container{
-        margin: 0vw 0vw 0vw 13vw;
+        font-size: 6px;
+        margin-left: -10px;
     }
     .confirm-button {
         width:100%;

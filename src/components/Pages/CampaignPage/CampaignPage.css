@@ -299,13 +299,13 @@
     height: 3rem;
     background-color: white;
     border: 1px solid rgb(39, 39, 39);
-    padding: 0.5em 0 2em 0;
+    padding: 0.5em 0 0.5em 0;
     outline: none;
 }
 
 .reserve-but:hover{
     background-color:  rgb(238, 238, 238);
-  
+}
 .stripe-but{
     width: 100%;
     padding: 2px;
@@ -380,7 +380,8 @@
     border: none;
     font-size: large;
     border-radius: 10px;
-    background-color: #eb913b;
+    background-color: #0D325E;
+    ;
     color: white;
     width: 60%;
     height: 38px;
@@ -568,6 +569,7 @@
     }
     .reserve-but {
         height: 9vw;
+    }
     .stripe-but{
         width: 100%;
         padding: 10px;
