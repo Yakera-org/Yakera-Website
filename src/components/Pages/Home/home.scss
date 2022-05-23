@@ -18,7 +18,7 @@
 .home-page .top-left button {
   border: none;
   outline: none;
-  border-radius: 10px;
+  border-radius: 5px;
   background-color: #01224dd9;
   color: white;
   padding: 10px 20px;
@@ -26,12 +26,20 @@
   font-weight: 200;
   margin-top: 5px;
 }
+
+.home-page .top-left button:hover {
+  animation: scale 1000ms ease-in-out forwards;
+}
+@keyframes scale {
+  to {
+    transform: scale(1.2);
+  }
+}
+
+
 .home-page .top-left button a {
   color: white;
   text-decoration: none;
-}
-.home-page .top-left button:hover {
-  opacity: 0.8;
 }
 .home-page .top-right {
   padding: 0%;
@@ -185,6 +193,9 @@
 }
 
 @media only screen and (max-width: 600px) {
+  .home-page .top-left button:hover {
+    animation: none
+  }
 
   .cta-bubble{
     font-size: 2.1vw;
