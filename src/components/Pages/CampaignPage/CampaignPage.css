@@ -216,23 +216,23 @@
     font-size: 15px;
 }
 #privacy-button{
-    color: #01224d;
+    color: #002453;
     font-weight: bolder;
     background-color: transparent;
     border: none;
 }
 .payment-start-button{
-    width: 70%;
-    margin-left: 15%;
+    width: 50%;
+    margin-left: 25%;
     font-size: large;
-    background-color: #eb913b;
+    background-color: #002453;
     border: none;
-    border-radius: 10px;
-    margin-top: 4%;
+    border-radius: 5px;
+    margin-top: 6%;
 }
 .payment-start-button:hover{
     opacity: 0.8;
-    background-color: #ea8737;
+    background-color: #002453;
 }
 .payment-slit{
     text-align: center;
@@ -291,22 +291,8 @@
     border-radius: 10px;
 }
 
-.reserve-but {
-    width: 100%;
-    border-radius: 5px;
-    min-width: 200px;
-    margin-bottom: 10px;
-    height: 3rem;
-    background-color: white;
-    border: 1px solid rgb(39, 39, 39);
-    padding: 0.5em 0 0.5em 0;
-    outline: none;
-}
 
-.reserve-but:hover{
-    background-color:  rgb(238, 238, 238);
-}
-.stripe-but{
+.stripe-but, .reserve-but, .zelle-but{
     width: 100%;
     padding: 2px;
     padding-bottom: 0px;
@@ -317,6 +303,10 @@
     min-height: 80px;
     max-height: 100px;
 }
+.reserve-but:hover{
+    background-color:  #f0f0f0;
+    cursor: pointer;
+}
 .stripe-but img{
     margin-top: -15px;
 }
@@ -326,38 +316,16 @@
     border-radius: 15px;
 
 }
-.airtm-but {
-    width: 100%;
-    border-radius: 5px;
-    min-width: 200px;
-    margin: 20px 0;
-    height: 80px;
-    min-height: 50px;
-    max-height: 100px;
-    background-color: transparent;
-    border: 1px rgb(220, 220, 220) solid;
+
+.zelle-but:hover{
+    background-color:  #ede4f0aa;
+    cursor: pointer;
 }
-
-.airtm-but:hover{
-    background-color:  #ede4f0;
-
-    outline: none;
-
-}
-.reserve-but:active{
-    background-color: rgb(238, 238, 238);
-    outline: none;
-
-}
-.reserve-but:focus{
-    outline: none;
-}
-
 .reserve-but img{
     height: 10em;
  }
 
-.airtm-but img{
+.zelle-but img{
     width: 15%;
     max-width: 40%;
     height: auto;
@@ -379,13 +347,14 @@
 .payment-back-btn{
     border: none;
     font-size: large;
-    border-radius: 10px;
+    border-radius: 5px;
     background-color: #0D325E;
-    ;
     color: white;
-    width: 60%;
-    height: 38px;
-    margin-top: 1%;
+    width: 40%;
+    height: 45px;
+    margin-top: 5%;
+    text-align: center;
+    vertical-align: middle;
 }
 .payment-auth-card .payment-back-btn:hover{
     opacity: 0.8;
@@ -409,13 +378,13 @@
 #stripe-option{
     font-size: large;
 }
-.airtm-but {
+.zelle-but {
     width: 100%;
     height: 50px;
     min-height: 40px;
     max-height: 50px;
 }
-.airtm-but img{
+.zelle-but img{
     width: 20%;
     max-width: 20%;
 }
@@ -580,13 +549,13 @@
         min-height: 40px;
         max-height: 50px;
     }
-    .airtm-but {
+    .zelle-but {
         width: 100%;
         height: 50px;
         min-height: 40px;
         max-height: 50px;
     }
-    .airtm-but img{
+    .zelle-but img{
         width: 30%;
     }
     .payment-auth-card{

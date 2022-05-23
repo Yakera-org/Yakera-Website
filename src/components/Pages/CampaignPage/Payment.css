@@ -85,7 +85,7 @@
     color: #eb913b;
     font-size: xx-large;
     font-weight: bold;
-    height: 80px;
+    height: 60px;
     text-align: right;
 }
 
@@ -113,7 +113,7 @@
     font-size: xx-large;
     font-weight: bold;
     text-align: left;
-    margin: 35px 0px -74px 30px;
+    margin: 35px 0px -64px 30px;
 }
 
 .align-left

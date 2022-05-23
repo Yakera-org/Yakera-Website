@@ -389,7 +389,7 @@ class PaymentDetails extends PureComponent {
                     className="btn btn-secondary btn-block payment-start-button"   
                     onClick={this.onContinue}                   
                     >
-                        {EN ? 'Donate!' : '¡Donar!'}
+                        {EN ? 'Donate' : 'Donar'}
                 </button>        
         </div> 
         )
