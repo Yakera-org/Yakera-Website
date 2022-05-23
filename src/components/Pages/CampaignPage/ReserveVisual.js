@@ -70,7 +70,7 @@ function ReserveVisual(props) {
                         ? 
                         "click on the confirm transaction button and ... that's all!" 
                         : 
-                        "Haz click en el botón de confirmación yiYa está todo listo"
+                        "Haz click en el botón de confirmación y ¡Ya está todo listo!"
                         }
                         </div>
                     </Grid>
@@ -114,7 +114,7 @@ function ReserveVisual(props) {
                                 ? 
                                 "click on the confirm transaction button and ... that's all!" 
                                 : 
-                                "Haz click en el botón de confirmación yiYa está todo listo"
+                                "Haz click en el botón de confirmación y ¡Ya está todo listo!"
                                 }
                                 </div>
                             </Grid>

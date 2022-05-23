@@ -191,7 +191,7 @@ class PaymentDetails extends PureComponent {
                 <ConsentCard open={this.state.openPrivacy} onClose={this.onPrivacy}/>
 
                 <div className='details'>
-                    {EN ? 'Enter the details below' : 'Ingrese los detalles a continuación'}
+                    {EN ? 'Enter the details below' : 'Ingresa los detalles a continuación'}
                 </div>
 
                 <div className='category'>
@@ -311,7 +311,7 @@ class PaymentDetails extends PureComponent {
                      ? 
                      "Comments are optional, and will be presented on the campaign page for support." 
                      : 
-                     'Los comentarios son opcionales y se presentarán en la página de la campaña paor apoyo.'
+                     'Los comentarios son opcionales y se presentarán en la página de la campaña que apoyes.'
                     }
                 </div>
 
@@ -342,7 +342,7 @@ class PaymentDetails extends PureComponent {
                      ? 
                      "Leaving a tip helps us to maintain our operations and bring new features to you. Thank you!" 
                      : 
-                     'Dejando propina nos ayudas a mantener y traerle nuevas opciones y servicios. Gracias!'
+                     'Dejando propina nos ayudas a mantener y traer para ti nuevas funciones y servicios. ¡Gracias!'
                     }
                 </div>
                 
