@@ -30,7 +30,7 @@ function ReserveVisual(props) {
             </p>
             <Hidden xsDown>
             <Grid container spacing={0} className='steps'>
-                <Grid item xs={0} sm={12}>
+                <Grid item sm={12}>
                     <CardMedia className='reserve-steps-card' component="img" image={reservebar}
                         alt='steps-bar' style={{ maxWidth: "100%", float: "center", marginLeft: "-3.8%" }} 
                     />
