@@ -163,28 +163,28 @@
         color: #2b292d;
     }
     .steps #text-first {
-        width: 100%;
+        width: 40vw;
         margin-left: 10%;
-        margin-top: 2%;
+        margin-top: 0.5em;
         text-align: left;
-        font-size: 13px;
+        font-size: 1.7vw;
         font-family: Intro-Book-Alt;
     }
     .steps #text-second {
-        width: 100%;
+        width: 40vw;
         margin-left: 10%;
-        margin-top: 2%;
+        margin-top: 14%;
         text-align: left;
-        font-size: 13px;
+        font-size: 1.7vw;
         font-weight: 400;
         font-family: Intro-Book-Alt;
     }
     .steps #text-third {
-        width: 100%;
+        width: 40vw;
         margin-left: 10%;
-        margin-top: 2%;
+        margin-top: 15%;
         text-align: left;
-        font-size: 13px;
+        font-size: 1.7vw;
         font-family: Intro-Book-Alt;
     }
     .input-field{
@@ -216,5 +216,34 @@
        margin-top: 5px;
        padding: 0px 10px;
        text-align: center;
+    }
+}
+
+@media screen and (max-width: 400px) {
+
+    .steps #text-first {
+        width: 40vw;
+        margin-left: 10%;
+        margin-top: 0.5em;
+        text-align: left;
+        font-size: 1.7vw;
+        font-family: Intro-Book-Alt;
+    }
+    .steps #text-second {
+        width: 40vw;
+        margin-left: 10%;
+        margin-top: 5%;
+        text-align: left;
+        font-size: 1.7vw;
+        font-weight: 400;
+        font-family: Intro-Book-Alt;
+    }
+    .steps #text-third {
+        width: 40vw;
+        margin-left: 10%;
+        margin-top: 5%;
+        text-align: left;
+        font-size: 1.7vw;
+        font-family: Intro-Book-Alt;
     }
 }

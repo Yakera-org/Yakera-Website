@@ -78,7 +78,7 @@ function ReserveVisual(props) {
             <Grid container direction='row' className='steps'>
                     <Grid item xs={2}>
                         <CardMedia className='reserve-steps-card' component="img" image={reserveBarVert}
-                            alt='steps-bar' style={{ maxWidth: "80%", float: "center", marginLeft: "30%" }} 
+                            alt='steps-bar-vert' style={{ maxWidth: "80%", minWidth: "60%", float: "center", marginLeft: "30%" }} 
                         />  
                     </Grid>
                     <Grid item xs={10}>
