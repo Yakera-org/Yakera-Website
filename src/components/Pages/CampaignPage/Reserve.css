@@ -78,7 +78,15 @@
 .confirm-button:hover {
     opacity: 0.8;
 }
-
+.reserve-loader{
+    text-align: center;
+    width: 100%;
+}
+.reserve-loader .css-im6zk2 {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
 @media screen and (max-width: 1000px) {
     #reserve-top{
         padding-top: 0px;

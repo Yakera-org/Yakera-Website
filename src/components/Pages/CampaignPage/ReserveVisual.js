@@ -2,6 +2,9 @@ import React from 'react';
 import "./Reserve.css"
 import { Grid, Button, CardMedia, Hidden} from '@material-ui/core'
 import classnames from 'classnames';
+import HashLoader from "react-spinners/HashLoader";
+import { Alert } from 'reactstrap';
+
 
 const reserveBarVert = 'https://assets.yakera.org/yakera/reserve-step-vert.webp';
 const reservebar = "https://assets.yakera.org/yakera/reserve-bar.webp";
@@ -10,6 +13,7 @@ function ReserveVisual(props) {
 
     const EN = props.EN;
     const data = props.data;
+    const error = props.error;
 
     return (
         <div>
@@ -137,7 +141,6 @@ function ReserveVisual(props) {
                         onChange={props.handleChange}
                         className={classnames(
                             'form-control',
-                            { 'is-valid': data.errors.username === false},
                             { 'is-invalid': data.errors.username},
                             'input-field'
                         )}
@@ -170,6 +173,23 @@ function ReserveVisual(props) {
                     </button>
                 </Grid>
                 </Hidden>
+
+                <div className='reserve-loader'>
+                    <HashLoader
+                        size={40}
+                        color={"#ea8737"}
+                        loading={props.loading}
+                    />
+                </div>
+
+                { error
+                ?
+                    <Alert color="danger" style={{width:"50%", marginLeft:"25%"}}>
+                        { error }
+                    </Alert>
+                :
+                ''
+                }
             </Grid>
         </div>
     );

@@ -61,8 +61,6 @@ function ReserveLogic(props) {
             }));
             setLoading(true)
             sendToBackend()
-        } else {
-            setError(props.EN ? "Please check all fields are filled." : "Por favor, compruebe que todos los campos están llenos.")
         }
     }
 
@@ -82,8 +80,13 @@ function ReserveLogic(props) {
             reserveUsername: data.username,
           };
           await api.post(`/campaigns/donate`, payload);
+          setError("")
         } catch (err) {
-          console.log(err);
+          if(err.response.status === 400){
+              setError(props.EN ? "We couln't find this transaction on our end. Please double check the Reserve transaction went through." : "")
+          }else{
+              setError(props.EN ? "Something went wrong on our end. Please try again." : "Algo salió mal de nuestra parte. Inténtelo de nuevo.")
+          }
         }
 
         setLoading(false)
