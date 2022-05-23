@@ -134,9 +134,7 @@ class PaymentVisual extends Component {
             <div key={this.props.presetAmount} className="payment-visual" id="donateRef">
                 <ThanksCard
                     EN={EN}
-                    //open = {true}
                     open={this.state.thanksOpen}
-
                     amount={Number(this.state.amount)}
                     title={this.props.title}
                     onClose={this.closeThanks.bind(this)}
@@ -157,7 +155,7 @@ class PaymentVisual extends Component {
                 </h3>
                 <hr id='donate-now-hr'/>
 
-                    {this.state.hasDetails
+                    {!this.state.hasDetails
                         ? //ask for payment details
 
                         <div  className="payment-card">

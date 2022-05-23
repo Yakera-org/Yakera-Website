@@ -81,6 +81,7 @@ function ReserveLogic(props) {
           };
           await api.post(`/campaigns/donate`, payload);
           setError("")
+          props.openThanks();
         } catch (err) {
           if(err.response.status === 400){
               setError(props.EN ? "We couln't find this transaction on our end. Please double check the Reserve transaction went through." : "")

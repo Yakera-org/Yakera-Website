@@ -125,6 +125,7 @@ function PaymentAuth(props) {
                                     tip={props.tip}
                                     comment={props.comment}
                                     isAnon={props.isAnon}
+                                    openThanks={props.openThanks}
                                 />
                                 
                             </AccordionCard.Body>
