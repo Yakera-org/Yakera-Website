@@ -157,7 +157,7 @@ class PaymentVisual extends Component {
                 </h3>
                 <hr id='donate-now-hr'/>
 
-                    {this.state.hasDetails
+                    {!this.state.hasDetails
                         ? //ask for payment details
 
                         <div  className="payment-card">
