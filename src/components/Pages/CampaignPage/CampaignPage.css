@@ -552,6 +552,10 @@
     .zelle-but img{
         width: 30%;
     }
+    .reserve-but img{
+        width: 30%;
+        height: auto;
+    }
     .payment-auth-card{
         padding: 20px 10px;
         height: auto;

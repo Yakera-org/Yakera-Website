@@ -45,7 +45,7 @@ function ReserveVisual(props) {
                         "Ve a la aplicación de Reserve y transfiere el monto indicado a: "
                         }
                         <br />
-                        <span className="bold"><span role="img" aria-label='fly-dollar'>yakera</span></span>
+                        <span className="bold"><span role="img" aria-label='fly-dollar'>💸yakera</span></span>
                         </div>
                         <br />
                     </Grid>
@@ -87,10 +87,11 @@ function ReserveVisual(props) {
                                 <div id='text-first'>
                                 {EN
                                 ?
-                                "Go to the Reserve application and transfer the amount shown above to: yakera"
+                                "Go to the Reserve application and transfer the amount shown above to:"
                                 :
-                                "Ve a la aplicación de Reserve y transfiere el monto indicado a: yakera"
+                                "Ve a la aplicación de Reserve y transfiere el monto indicado a:"
                                 }
+                                <span role="img" aria-label='fly-dollar'>💸yakera</span>
                                 </div>
                             </Grid>
                             <Grid item xs={10}>

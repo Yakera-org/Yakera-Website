@@ -30,7 +30,7 @@ function StripeForm(props)
                 "paymentMethod": "stripe",
             };
 
-            console.log(await api.post(`/campaigns/donate`, payload));
+            await api.post(`/campaigns/donate`, payload);
         }
         catch(error)
         {

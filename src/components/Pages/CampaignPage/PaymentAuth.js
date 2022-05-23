@@ -111,7 +111,7 @@ function PaymentAuth(props) {
                     <AccordionCard>
                         <Accordion.Toggle as={AccordionCard.Header} eventKey="0" className="reserve-but align-items-center d-flex justify-content-center">
                             <div>
-                                <img className='card-img' alt="card" src={reserveLogo}></img>
+                                <img alt="card" src={reserveLogo}></img>
                             </div>
                         </Accordion.Toggle>
                         <Accordion.Collapse eventKey="0">
