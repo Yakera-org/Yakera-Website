@@ -188,16 +188,16 @@
         font-family: Intro-Book-Alt;
     }
     .input-field{
-        max-width: 60vw;
         max-height: 4vw;
+        min-width: 100%;
         align-items: center;
         background: #E5E5E5;
         border: none;
         text-align: center;
         border-radius: 15px;
         font-size: 11px;
-        margin-left: -10px;
         padding: 20px;
+        margin: 0%;
     }
     #username-text{
         color: black;
@@ -208,11 +208,13 @@
     }
     .confirm-container .confirm-button {
        width: 100%;
+       min-width: 100%;
        background-color: #70B88F;
        color: white;
-       max-width: 2000px;
        max-height: 200px;
        margin: 0;
+       margin-top: 5px;
        padding: 0px 10px;
+       text-align: center;
     }
 }

@@ -581,5 +581,7 @@
         background-color: #0D325E;
         color: white;
         margin: 20px 0;
+        padding-top: 10px;
+        padding-bottom: 30px;
     }
 }
