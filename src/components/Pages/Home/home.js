@@ -44,7 +44,7 @@ function Home() {
                     <Grid item xs={12} sm={6} >
                         <section className='top-left'>
                             <p>
-                                {EN ? 'Changing how humanitarian aid is delivered around the world, one story at a time.' : 'Reinventando la distribución de ayuda humanitaria en el mundo, una historia a la vez.'}
+                                {EN ? 'Change made human, one story at a time.' : 'Donde la generosidad y las historias se conectan.'}
                             </p>
                             <button>
                                 {EN
