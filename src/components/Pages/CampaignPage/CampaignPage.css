@@ -321,9 +321,6 @@
     background-color:  #ede4f0aa;
     cursor: pointer;
 }
-.reserve-but img{
-    height: 10em;
- }
 
 .zelle-but img{
     width: 15%;
@@ -536,10 +533,7 @@
         overflow: hidden;
         font-size: 18px;
     }
-    .reserve-but {
-        height: 9vw;
-    }
-    .stripe-but{
+    .stripe-but, .reserve-but{
         width: 100%;
         padding: 10px;
         padding-bottom: 10px;

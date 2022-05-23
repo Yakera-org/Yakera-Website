@@ -1,6 +1,5 @@
 import React from 'react';
 import "./Zelle.css"
-import Button from '@material-ui/core/Button';
 import classnames from 'classnames';
 import { Alert } from 'reactstrap';
 import HashLoader from "react-spinners/HashLoader";
