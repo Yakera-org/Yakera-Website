@@ -1,0 +1,59 @@
+.stripe-donate-btn
+{
+  /* background-color: #eb913b; */
+  background-color: #2f476c;
+  color: white;
+  font-size: large;
+  font-family: "CamphorW01-Regular";
+  border: none;
+  border-radius: 10px;
+  width: 60%;
+  margin-top: 3%;
+  height: 34px;
+}
+
+.stripe-donate-btn:hover
+{
+  opacity: 0.8;
+}
+
+#stripe-option
+{
+  font-size: x-large;
+  font-family: "CamphorW01-Regular";
+  color: #0e325e;
+  margin-right: 10%;
+}
+
+.card-img
+{
+  max-width: 18%;
+  height: auto;
+  margin-right: 2%;
+}
+
+.yakera-terms
+{
+  color: gray;
+  font-size: small;
+  margin-top: 3%;
+}
+
+.terms-link
+{
+  color: #eb913b;
+}
+
+.powered-by
+{
+  color: gray;
+  font-size: small;
+  font-family: "CamphorW01-Regular";
+  font-weight: bold;
+  margin-top: 1%;
+}
+
+.stripe-link
+{
+  color: #2f476c;
+}

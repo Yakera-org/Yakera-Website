@@ -3,8 +3,8 @@ import { PayPalButton } from "react-paypal-button-v2";
 class PayPal extends React.Component {
     render() {
         const { amount, onSuccess, onError, onCancel, onClick } = this.props;
-          return (
-              <PayPalButton
+        return (
+            <PayPalButton
                 amount={amount}
                 currency="USD"
                 intent="Yakera transaction"
