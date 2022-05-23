@@ -8,7 +8,7 @@
   font-family: Intro-Light;
 }
 .home-page .top-left {
-  padding: 15% 20%;
+  padding: 15% 15%;
 }
 .home-page .top-left p {
   font-size: 35px;
@@ -18,12 +18,13 @@
 .home-page .top-left button {
   border: none;
   outline: none;
-  border-radius: 20px;
-  background-color: #01224d;
+  border-radius: 10px;
+  background-color: #01224dd9;
   color: white;
   padding: 10px 20px;
   font-size: 20px;
   font-weight: 200;
+  margin-top: 5px;
 }
 .home-page .top-left button a {
   color: white;
