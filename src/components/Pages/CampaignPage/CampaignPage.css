@@ -362,7 +362,7 @@
 }
 
 @media only screen and (max-width: 1200px) {
-.stripe-but{
+.stripe-but, .reserve-but{
     width: 100%;
     padding: 5px;
     padding-bottom: 5px;
