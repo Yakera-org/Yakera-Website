@@ -73,22 +73,22 @@ function CampaignsVisuals(props) {
 
                 <Grid container spacing={0} className="category-filter" style={{ alignItems: 'flex-start' }}>
                     <Grid item xs={3} sm={3} className="cat-filter">
-                        <Button>
+                        <Button onClick={props.setCategory} name="healthcare">
                             {EN ? 'Healthcare' : 'Atención Médica'}
                         </Button>
                     </Grid>
                     <Grid item xs={3} sm={3} className="cat-filter">
-                        <Button>
+                        <Button onClick={props.setCategory} name="education">
                             {EN ? 'Education' : 'Educación'}
                         </Button>
                     </Grid>
                     <Grid item xs={3} sm={3} className="cat-filter">
-                        <Button>
+                        <Button onClick={props.setCategory} name="small_business">
                             {EN ? "Small Business" : "Pequeños Negocios"}
                         </Button>
                     </Grid>
                     <Grid item xs={3} sm={3} className="cat-filter">
-                        <Button>
+                        <Button onClick={props.setCategory} name="nutrition">
                             {EN ? "Nutrition" : "Alimentación"}
                         </Button>
                     </Grid>

@@ -13,6 +13,7 @@ function Campaigns() {
     const [loading, setLoading] = useState(true);
     const [pageCount, setPageCount] = useState(0);
     const [currentPage, setCurrentPage] = useState(1);
+    const [currentCategory, setCurrentCategory] = useState("");
     const [currentCampaigns, setCurrentCampaigns] = useState([]);
 
     React.useEffect(() => {
@@ -22,15 +23,17 @@ function Campaigns() {
         startup();         
     }, []);
 
-    async function LoadCampaignsForPage(page){
+    async function LoadCampaignsForPage(page, category = currentCategory, newCat = false){
         setLoading(true)
         try {
-            const res = await api.get(`/campaigns/?page=${page}&limit=${NUM_OF_ITEMS_PER_PAGE}&sort=desc`);
+            let newPageNum = page
+            if(newCat) newPageNum = 1
+            const res = await api.get(`/campaigns/?page=${newPageNum}&limit=${NUM_OF_ITEMS_PER_PAGE}&sort=desc${category? `&category=${category}`: ""}`);
             let data = res.data
             console.log(data)
             setCurrentCampaigns(data.data.campaigns)
             setPageCount(data.pages)
-            setCurrentPage(page)
+            setCurrentPage(newPageNum)
 
         } catch (err) {
             console.log("Error: " + err)
@@ -38,6 +41,11 @@ function Campaigns() {
             setLoading(false)
         }
        
+    }
+
+    async function setCategory(e){
+        setCurrentCategory(e.target.name)
+        await LoadCampaignsForPage(currentPage, e.target.name, true)
     }
 
     return (
@@ -49,6 +57,7 @@ function Campaigns() {
                 page = {currentPage}
                 pageCount = {pageCount}
                 LoadCampaignsForPage={LoadCampaignsForPage}
+                setCategory={setCategory}
             />
             <Author />
         </div>
