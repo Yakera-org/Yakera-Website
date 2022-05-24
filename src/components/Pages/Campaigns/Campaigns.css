@@ -106,17 +106,29 @@
 .filter-section .category-filter .fade {
     opacity: 0.3;
 }
-.filter-section .category-filter Button{
+.filter-section .category-filter button{
+    border: none;
+    outline: none;
+    border-radius: 5px;
     font-size: 15px;
     font-family: Intro-Regular-Alt;
     text-transform: capitalize;
     background-color: #f0f0f0;
     color: #525252;
     width: 90%;
-    padding: 10px;
+    padding: 12px;
 }
-.filter-section .category-filter Button:hover{
-    background-color: #ea883734;
+.filter-section .category-filter #healthcare:hover, .filter-section .category-filter .on-healthcare{
+    background-color: #ff7d7d50;
+}
+.filter-section .category-filter #education:hover, .filter-section .category-filter .on-education{
+    background-color: #71b98f50;
+}
+.filter-section .category-filter #small_business:hover, .filter-section .category-filter .on-small_business{
+    background-color: #7099d050;
+}
+.filter-section .category-filter #nutrition:hover, .filter-section .category-filter .on-nutrition{
+    background-color: #edc34350;
 }
 .pageination{
     text-align: center;

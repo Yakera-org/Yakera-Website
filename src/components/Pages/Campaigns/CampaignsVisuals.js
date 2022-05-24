@@ -1,9 +1,22 @@
 import React from "react";
-import { Grid, Hidden, Button } from '@material-ui/core';
+import { Grid, Hidden } from '@material-ui/core';
 
 import pics from './pics';
 import SearchBar from "./Searchbar";
 import Pageination from "./Pageination";
+
+const nameDictEN = {
+    "education": "Education",
+    "healthcare": "Healthcare",
+    "small_business":"Small Business",
+    "nutrition": "Nutrition"
+  };
+  const nameDictSP = {
+    "education":"Educación",
+    "healthcare":"Atención Médica",
+    "nutrition":"Nutrición",
+    "small_business":"Pequeños Negocios"
+  };
 
 function CampaignsVisuals(props) {
 
@@ -72,26 +85,15 @@ function CampaignsVisuals(props) {
                 </Grid>
 
                 <Grid container spacing={0} className="category-filter" style={{ alignItems: 'flex-start' }}>
-                    <Grid item xs={3} sm={3} className="cat-filter">
-                        <Button onClick={props.setCategory} name="healthcare">
-                            {EN ? 'Healthcare' : 'Atención Médica'}
-                        </Button>
-                    </Grid>
-                    <Grid item xs={3} sm={3} className="cat-filter">
-                        <Button onClick={props.setCategory} name="education">
-                            {EN ? 'Education' : 'Educación'}
-                        </Button>
-                    </Grid>
-                    <Grid item xs={3} sm={3} className="cat-filter">
-                        <Button onClick={props.setCategory} name="small_business">
-                            {EN ? "Small Business" : "Pequeños Negocios"}
-                        </Button>
-                    </Grid>
-                    <Grid item xs={3} sm={3} className="cat-filter">
-                        <Button onClick={props.setCategory} name="nutrition">
-                            {EN ? "Nutrition" : "Alimentación"}
-                        </Button>
-                    </Grid>
+                    {["healthcare", "education", "small_business", "nutrition"].map((cat,i) => {
+                        return(
+                            <Grid key={i} item xs={3} sm={3} className="cat-filter">
+                                <button onClick={props.setCategory} name={cat} id={cat} className={props.currentCategory===cat?`on-${cat}`:"off"}>
+                                    {EN ? nameDictEN[cat] : nameDictSP[cat]}
+                                </button>
+                            </Grid>
+                        )                        
+                    })}                    
                 </Grid>
 
             <hr style={{width:"100%", marginBottom:"10px"}}/>

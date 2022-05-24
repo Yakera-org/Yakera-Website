@@ -58,6 +58,7 @@ function Campaigns() {
                 pageCount = {pageCount}
                 LoadCampaignsForPage={LoadCampaignsForPage}
                 setCategory={setCategory}
+                currentCategory={currentCategory}
             />
             <Author />
         </div>
