@@ -175,24 +175,24 @@
         margin-left: 10%;
         margin-top: 0.5em;
         text-align: left;
-        font-size: 1.7vw;
+        font-size: 2vw;
         font-family: Intro-Book-Alt;
     }
     .steps #text-second {
         width: 40vw;
         margin-left: 10%;
-        margin-top: 14%;
+        margin-top: 5%;
         text-align: left;
-        font-size: 1.7vw;
+        font-size: 2vw;
         font-weight: 400;
         font-family: Intro-Book-Alt;
     }
     .steps #text-third {
         width: 40vw;
         margin-left: 10%;
-        margin-top: 15%;
+        margin-top: 10%;
         text-align: left;
-        font-size: 1.7vw;
+        font-size: 2vw;
         font-family: Intro-Book-Alt;
     }
     .input-field{
@@ -234,24 +234,24 @@
         margin-left: 10%;
         margin-top: 0.5em;
         text-align: left;
-        font-size: 1.7vw;
+        font-size: 2vw;
         font-family: Intro-Book-Alt;
     }
     .steps #text-second {
         width: 40vw;
         margin-left: 10%;
-        margin-top: 5%;
+        margin-top: 0%;
         text-align: left;
-        font-size: 1.7vw;
+        font-size: 2vw;
         font-weight: 400;
         font-family: Intro-Book-Alt;
     }
     .steps #text-third {
         width: 40vw;
         margin-left: 10%;
-        margin-top: 5%;
+        margin-top: -5%;
         text-align: left;
-        font-size: 1.7vw;
+        font-size: 2vw;
         font-family: Intro-Book-Alt;
     }
 }

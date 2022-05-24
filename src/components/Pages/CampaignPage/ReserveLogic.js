@@ -1,11 +1,8 @@
 import React, { useState } from 'react';
-
 import api from "../../../services/api";
 import LanguageService from "../../../services/language";
 import { validateFields } from '../Register/Validation';
-
 import ReserveVisual from './ReserveVisual';
-
 
 function ReserveLogic(props) {
 
@@ -84,7 +81,7 @@ function ReserveLogic(props) {
           props.openThanks();
         } catch (err) {
           if(err.response.status === 400){
-              setError(props.EN ? "We couln't find this transaction on our end. Please double check the Reserve transaction went through." : "")
+              setError(props.EN ? "We could not locate this transaction on our end. Please check again to confirm that your Reserve transaction was processed." : "No pudimos localizar esta transacción por nuestra parte. Por favor, verifique nuevamente para confirmar que su transacción de Reserve fue procesada.")
           }else{
               setError(props.EN ? "Something went wrong on our end. Please try again." : "Algo salió mal de nuestra parte. Inténtelo de nuevo.")
           }
