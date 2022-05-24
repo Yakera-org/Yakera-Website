@@ -94,7 +94,7 @@ function CampaignsVisuals(props) {
                     </Grid>
                 </Grid>
 
-            <hr style={{width:"100%", marginBottom:"100px"}}/>
+            <hr style={{width:"100%", marginBottom:"10px"}}/>
             </div>
 
             <Pageination 
@@ -102,6 +102,7 @@ function CampaignsVisuals(props) {
                  loading={props.loading}
                  campaigns = {props.campaigns}
                  page = {props.page}
+                 pageCount = {props.pageCount}
                  LoadCampaignsForPage={props.LoadCampaignsForPage}
             />
 

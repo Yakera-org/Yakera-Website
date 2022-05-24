@@ -122,6 +122,39 @@
 .cam-loader{
     position: absolute;
     left: 50%; 
+    margin-top: 200px;
     margin-bottom: 200px;
     transform: translate(-50%, -50%);
+}
+.pagination {
+    justify-content: center;
+    align-items: center;
+    margin: 25px 0;
+    background-color: transparent;
+    width: 30%;
+    margin-left: 35%;
+    min-width: 400px;
+    padding: 10px;
+}
+.pagination .page-item a {
+    color: var(--brand-orange);
+    border-radius: 5px;
+    margin-left: 2px;
+    margin-right: 2px;
+    background-color: transparent;
+}
+.pagination .page-item:first-child a {
+    border: none;
+    background-color: transparent;
+}
+.pagination .page-item:first-child a:hover,.pagination .page-item:last-child a:hover {
+    color: #ea8837bb;
+}
+.pagination .page-item:last-child a {
+    border: none;
+    background-color: transparent;
+}
+.pagination .active a {
+    color: var(--brand-orange)!important;
+    border-color: #ea883746!important;
 }

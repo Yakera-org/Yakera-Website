@@ -11,6 +11,7 @@ function Campaigns() {
 
     const [EN, setEN] = useState(false);
     const [loading, setLoading] = useState(true);
+    const [pageCount, setPageCount] = useState(0);
     const [currentPage, setCurrentPage] = useState(1);
     const [currentCampaigns, setCurrentCampaigns] = useState([]);
 
@@ -22,11 +23,13 @@ function Campaigns() {
     }, []);
 
     async function LoadCampaignsForPage(page){
+        setLoading(true)
         try {
             const res = await api.get(`/campaigns/?page=${page}&limit=${NUM_OF_ITEMS_PER_PAGE}&sort=desc`);
             let data = res.data
             console.log(data)
             setCurrentCampaigns(data.data.campaigns)
+            setPageCount(data.pages)
             setCurrentPage(page)
 
         } catch (err) {
@@ -44,6 +47,7 @@ function Campaigns() {
                 loading={loading}
                 campaigns = {currentCampaigns}
                 page = {currentPage}
+                pageCount = {pageCount}
                 LoadCampaignsForPage={LoadCampaignsForPage}
             />
             <Author />
