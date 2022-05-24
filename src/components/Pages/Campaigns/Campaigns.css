@@ -83,16 +83,22 @@
     margin: 10px 0;
     margin-left: 1%;
 }
-.filter-section .filters .quant-filter{
+.filter-section .filters .on{
+    background-color: #ff943c41!important;
+}
+.filter-section .filters #quant-filter{
     color:#525252;
     font-size: 18px;
     padding: 20px;
     border-radius: 5px;
 }
-.filter-section .filters .quant-filter:hover{
+.filter-section .filters #quant-filter:hover{
     background-color: rgba(223, 223, 223, 0.748);
     cursor: pointer;
-    color: #ea8737;
+}
+.filter-section .filters #quant-filter:active{
+    background-color: #ea883746;
+    cursor: pointer;
 }
 .filter-section .category-filter{
     margin: 20px 0;
@@ -116,7 +122,7 @@
     background-color: #f0f0f0;
     color: #525252;
     width: 90%;
-    padding: 12px;
+    padding: 10px;
 }
 .filter-section .category-filter #healthcare:hover, .filter-section .category-filter .on-healthcare{
     background-color: #ff7d7d50;
@@ -181,5 +187,5 @@
     background-color: #f0f0f05a;
 }
 .cam-card{
-    padding: 30px;
+    padding: 20px;
 }

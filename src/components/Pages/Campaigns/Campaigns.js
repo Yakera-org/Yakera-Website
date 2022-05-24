@@ -15,6 +15,8 @@ function Campaigns() {
     const [currentPage, setCurrentPage] = useState(1);
     const [currentCategory, setCurrentCategory] = useState("");
     const [currentCampaigns, setCurrentCampaigns] = useState([]);
+    const [dateOrder, setDateOrder] = useState("asc");
+    const [currentFilter, setCurrentFilter] = useState("");
 
     React.useEffect(() => {
         function startup(){
@@ -23,12 +25,12 @@ function Campaigns() {
         startup();         
     }, []);
 
-    async function LoadCampaignsForPage(page, category = currentCategory, newCat = false){
+    async function LoadCampaignsForPage(page, category = currentCategory, newCat = false, date = dateOrder){
         setLoading(true)
         try {
             let newPageNum = page
             if(newCat) newPageNum = 1
-            const res = await api.get(`/campaigns/?page=${newPageNum}&limit=${NUM_OF_ITEMS_PER_PAGE}&sort=desc${category? `&category=${category}`: ""}`);
+            const res = await api.get(`/campaigns/?page=${newPageNum}&limit=${NUM_OF_ITEMS_PER_PAGE}&sort=${date}${category? `&category=${category}`: ""}`);
             let data = res.data
             console.log(data)
             setCurrentCampaigns(data.data.campaigns)
@@ -44,8 +46,20 @@ function Campaigns() {
     }
 
     async function setCategory(e){
-        setCurrentCategory(e.target.name)
-        await LoadCampaignsForPage(currentPage, e.target.name, true)
+        var newCategory = e.target.name
+        if(newCategory===currentCategory)newCategory=""
+        setCurrentCategory(newCategory)
+        await LoadCampaignsForPage(currentPage, newCategory, true)
+    }
+
+    async function reverseDateOrder(){
+        const newDate = dateOrder==="asc" ? "desc" : "asc"
+        setDateOrder(newDate)
+        await LoadCampaignsForPage(currentPage, currentCategory, true, newDate)
+    }
+
+    async function setFilter(e){
+        setCurrentFilter(e.target.getAttribute('name'))
     }
 
     return (
@@ -58,7 +72,11 @@ function Campaigns() {
                 pageCount = {pageCount}
                 LoadCampaignsForPage={LoadCampaignsForPage}
                 setCategory={setCategory}
+                reverseDateOrder={reverseDateOrder}
+                dateOrder={dateOrder}
                 currentCategory={currentCategory}
+                currentFilter={currentFilter}
+                setFilter={setFilter}
             />
             <Author />
         </div>
