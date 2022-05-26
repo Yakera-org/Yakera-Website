@@ -8,17 +8,6 @@ import ReactPaginate from 'react-paginate';
 function Pageination(props) {
     const EN = props.EN;
 
-    React.useEffect(() => {
-        function startup(){
-            LoadCampaigns()  
-        }
-        startup();         
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
-
-    async function LoadCampaigns(){
-        await props.LoadCampaignsForPage(props.page)
-    }
     async function handlePageClick(e){
         const selectedPage = e.selected
         await props.LoadCampaignsForPage(selectedPage+1)

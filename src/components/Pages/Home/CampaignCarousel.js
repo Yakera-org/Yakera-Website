@@ -2,7 +2,7 @@ import React from 'react';
 import { Grid } from '@material-ui/core';
 import Carousel from 'react-multi-carousel';
 import api from "../../../services/api";
-import CampaignCard from '../Donate/campaignCard';
+import CampaignCard from '../Campaigns/campaignCard';
 import './home.scss';
 
 

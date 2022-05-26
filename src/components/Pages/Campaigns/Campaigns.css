@@ -112,7 +112,7 @@
 .filter-section .category-filter .fade {
     opacity: 0.3;
 }
-.filter-section .category-filter button, .filter-section .category-filter button:active, .filter-section .category-filter button:focus{
+.filter-section .category-filter button, .filter-section .category-filter .off, .filter-section .category-filter button:active, .filter-section .category-filter button:focus{
     border: none;
     outline: none;
     border-radius: 5px;

@@ -11,19 +11,22 @@ function Campaigns() {
 
     const [EN, setEN] = useState(false);
     const [loading, setLoading] = useState(true);
+    
+    const [dateOrder, setDateOrder] = useState("");
     const [pageCount, setPageCount] = useState(0);
     const [currentPage, setCurrentPage] = useState(1);
     const [currentCategory, setCurrentCategory] = useState("");
     const [currentCampaigns, setCurrentCampaigns] = useState([]);
-    const [dateOrder, setDateOrder] = useState("desc");
-    const [currentFilter, setCurrentFilter] = useState("date");
+    const [currentFilter, setCurrentFilter] = useState("");
 
 
     React.useEffect(() => {
         function startup(){
-            setEN(LanguageService.getLanguage()==="en");       
+            setEN(LanguageService.getLanguage()==="en");   
+            LoadCampaignsForPage(currentPage)    
         }
         startup();         
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     async function LoadCampaignsForPage(page, category = currentCategory, newCat = false, date = dateOrder, filter = currentFilter){
@@ -31,15 +34,17 @@ function Campaigns() {
         try {
             let newPageNum = page
             if(newCat) newPageNum = 1
-            const res = await api.get(`/campaigns/?
+            const payload = `/campaigns/?
                 page=${newPageNum}
                 &limit=${NUM_OF_ITEMS_PER_PAGE}
                 ${filter === "percent" ? `&percentage=desc`: ""}
                 ${filter === "raised" ? `&raised=desc`: ""}
                 ${filter === "date" ? `&sort=${date}`: ""}                
+                ${filter === "" ? `&sort=desc`: ""}                
                 ${category? `&category=${category}`: ""}
-
-                `);
+            `
+            console.log(payload)
+            const res = await api.get(payload);
             let data = res.data
             setCurrentCampaigns(data.data.campaigns)
             setPageCount(data.pages)
@@ -79,6 +84,7 @@ function Campaigns() {
         }
     }
     function getNewFilter(filter){
+        //turn off current filter if active filter is selected (except for date)
         if(filter===currentFilter && filter !== "date"){
             return ""
         }else{
