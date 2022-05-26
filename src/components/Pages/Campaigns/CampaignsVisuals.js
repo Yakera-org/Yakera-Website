@@ -115,7 +115,7 @@ function CampaignsVisuals(props) {
                  campaigns = {props.campaigns}
                  page = {props.page}
                  pageCount = {props.pageCount}
-                 LoadCampaignsForPage={props.LoadCampaignsForPage}
+                 setPage={props.setPage}
             />
 
         </div>

@@ -148,11 +148,15 @@ function Campaigns() {
         let order = dateOrder === "asc" ? "desc" : "asc"
         return (filter === "date") ? order : "" //only for "date" filter   
     }
+
     function getNewFilter(filter){
         //turn off current filter if active filter is selected (except for date)
         let isSameFilter = filter === currentFilter && filter !== "date"
         return isSameFilter ? "" : filter
-        
+    }
+
+    async function setPage(newPage){        
+        await LoadCampaignsForPage({page:newPage+1}) // +1 is needed, as the pagination counts from 0
     }
 
     return (
@@ -163,7 +167,7 @@ function Campaigns() {
                 campaigns = {currentCampaigns}
                 page = {currentPage}
                 pageCount = {pageCount}
-                LoadCampaignsForPage={LoadCampaignsForPage}
+                setPage={setPage}
                 setCategory={setCategory}
                 dateOrder={dateOrder}
                 currentCategory={currentCategory}

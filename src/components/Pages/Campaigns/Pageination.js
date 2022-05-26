@@ -8,9 +8,8 @@ import ReactPaginate from 'react-paginate';
 function Pageination(props) {
     const EN = props.EN;
 
-    async function handlePageClick(e){
-        const selectedPage = e.selected
-        await props.LoadCampaignsForPage({page:selectedPage+1})
+    function handlePageClick(e){
+        props.setPage(e.selected)
     }
 
     if(props.loading){
