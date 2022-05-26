@@ -31,16 +31,20 @@ function Campaigns() {
 
     async function LoadCampaignsForPage(page, category = currentCategory, newCat = false, date = dateOrder, filter = currentFilter){
         setLoading(true)
+        const pageLimit = getPageLimit(filter)
         try {
             let newPageNum = page
             if(newCat) newPageNum = 1
 
-            const payload = `/campaigns/?page=${newPageNum}&limit=${NUM_OF_ITEMS_PER_PAGE}${filter === "percent" ? `&percentage=desc`: ""}${filter === "raised" ? `&raised=desc`: ""}${filter === "date" ? `&sort=${date}`: ""}${filter === "" ? `&sort=desc`: ""}${category? `&category=${category}`: ""}` //has to be one line string
+            const payload = `/campaigns/?${pageLimit ? `page=${newPageNum}` : ""}${pageLimit ? `&limit=${pageLimit}`: ""}${filter === "percent" ? `&percentage=desc`: ""}${filter === "raised" ? `&raised=desc`: ""}${filter === "date" ? `&sort=${date}`: ""}${filter === "" ? `&sort=desc`: ""}${category? `&category=${category}`: ""}` //has to be one line string
 
             const res = await api.get(payload);
             let data = res.data
-            setCurrentCampaigns(data.data.campaigns)
-            setPageCount(data.pages)
+
+            const totalPages = getPageNum(data, filter)
+            const currentCampaigns = getCampaigns(data, filter, newPageNum)
+            setPageCount(totalPages)
+            setCurrentCampaigns(currentCampaigns)
             setCurrentPage(newPageNum)
 
         } catch (err) {
@@ -49,6 +53,29 @@ function Campaigns() {
             setLoading(false)
         }
        
+    }
+
+    function getCampaigns(data, filter, page){
+        const allCampaigns = data.data.campaigns
+        if(filter!=="percent" && filter !== "raised")return allCampaigns //already paginated
+        const _currentPage = page-1
+        const campaignExtract = allCampaigns.slice(NUM_OF_ITEMS_PER_PAGE * _currentPage, NUM_OF_ITEMS_PER_PAGE*(_currentPage+1))
+        return campaignExtract
+    }
+
+    function getPageNum(data, filter){
+        if(filter!=="percent" && filter !== "raised")return data.pages
+        const camNum = data.data.campaigns.length
+        const pageNum = Math.ceil(camNum / NUM_OF_ITEMS_PER_PAGE)
+        return pageNum
+    }
+
+    function getPageLimit(filter){
+        if(filter === "percent" || filter === "raised"){
+            return ""
+        }else{
+            return NUM_OF_ITEMS_PER_PAGE
+        }
     }
 
     async function setCategory(e){
