@@ -6,38 +6,73 @@ import "./Campaigns.css"
 import api from '../../../services/api';
 
 const NUM_OF_ITEMS_PER_PAGE = 8;
-
+const INITIAL_ARGS={
+    page: 1,
+    category: "",
+    newCategory: true,
+    dateOrder: "",
+    filter:""
+}
 function Campaigns() {
 
     const [EN, setEN] = useState(false);
     const [loading, setLoading] = useState(true);
     
-    const [dateOrder, setDateOrder] = useState("");
     const [pageCount, setPageCount] = useState(0);
-    const [currentPage, setCurrentPage] = useState(1);
-    const [currentCategory, setCurrentCategory] = useState("");
     const [currentCampaigns, setCurrentCampaigns] = useState([]);
-    const [currentFilter, setCurrentFilter] = useState("");
+
+    const [dateOrder, setDateOrder] = useState(INITIAL_ARGS.dateOrder);
+    const [currentPage, setCurrentPage] = useState(INITIAL_ARGS.page);
+    const [currentCategory, setCurrentCategory] = useState(INITIAL_ARGS.category);
+    const [currentFilter, setCurrentFilter] = useState(INITIAL_ARGS.filter);
 
 
     React.useEffect(() => {
         function startup(){
             setEN(LanguageService.getLanguage()==="en");   
-            LoadCampaignsForPage(currentPage)    
+            LoadCampaignsForPage({page:currentPage})    
         }
         startup();         
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
-    async function LoadCampaignsForPage(page, category = currentCategory, newCat = false, date = dateOrder, filter = currentFilter){
+    async function LoadCampaignsForPage(args){
+        //the role of this function is to assign the arguments for correct use in the backend call
+        const _args = assignArgs(args)
+        const page = _args[0]
+        const category = _args[1]
+        const newCat = _args[2]
+        const date = _args[3]
+        const filter = _args[4]
+        await LoadCampaignsFromBackend(page, category, newCat, date, filter) // single point of backend connection
+    }
+
+    function assignArgs(args){
+        let finalArgs = Object.assign(
+            {
+                page: 1,
+                category: currentCategory,
+                newCat: false,
+                dateOrder: dateOrder,
+                filter: currentFilter
+            },
+            args
+            );
+
+        return [finalArgs.page, finalArgs.category, finalArgs.newCat, finalArgs.dateOrder, finalArgs.filter]
+
+    }
+
+    //only function that calls to the backend
+    async function LoadCampaignsFromBackend(page, category, newCat, dateOrder, filter){
         setLoading(true)
         const pageLimit = getPageLimit(filter)
         try {
             let newPageNum = page
             if(newCat) newPageNum = 1
 
-            const payload = `/campaigns/?${pageLimit ? `page=${newPageNum}` : ""}${pageLimit ? `&limit=${pageLimit}`: ""}${filter === "percent" ? `&percentage=desc`: ""}${filter === "raised" ? `&raised=desc`: ""}${filter === "date" ? `&sort=${date}`: ""}${filter === "" ? `&sort=desc`: ""}${category? `&category=${category}`: ""}` //has to be one line string
-
+            const payload = `/campaigns/?${pageLimit ? `page=${newPageNum}` : ""}${pageLimit ? `&limit=${pageLimit}`: ""}${filter === "percent" ? `&percentage=desc`: ""}${filter === "raised" ? `&raised=desc`: ""}${filter === "date" ? `&sort=${dateOrder}`: ""}${filter === "" ? `&sort=desc`: ""}${category? `&category=${category}`: ""}` //has to be one line string
+            console.log(payload)
             const res = await api.get(payload);
             let data = res.data
 
@@ -79,20 +114,43 @@ function Campaigns() {
     }
 
     async function setCategory(e){
-        var newCategory = e.target.name
-        if(newCategory===currentCategory)newCategory=""
+        var isSameCat = e.target.name === currentCategory // true if same
+        var newCategory = isSameCat ? "" : e.target.name //turn "off" category if selected again
+        var _currentPage = isSameCat ? currentPage : INITIAL_ARGS.page // go to page 1 if new category
         setCurrentCategory(newCategory)
-        await LoadCampaignsForPage(currentPage, newCategory, true)
+
+        var loadArgs = {
+            page: _currentPage,
+            category: newCategory,
+            newCategory: true
+        }
+        await LoadCampaignsForPage(loadArgs)
     }
 
     async function setFilter(e){
         var newFilter = getNewFilter(e.target.getAttribute('name'))
-        var date = getDateOrder(newFilter)
+        var _dateOrder = getDateOrder(newFilter)
 
         setCurrentFilter(newFilter)
-        setDateOrder(date)
+        setDateOrder(_dateOrder)
 
-        await LoadCampaignsForPage(currentPage, currentCategory, true, date, newFilter)
+        var loadArgs = {
+            newCategory: true,
+            dateOrder: _dateOrder,
+            filter: newFilter
+        }
+
+        if(newFilter==="reset"){
+            loadArgs = resetArgs()
+        }
+        
+        await LoadCampaignsForPage(loadArgs)
+    }
+    
+    function resetArgs(){
+        setCurrentCategory("")
+        setCurrentFilter("")
+        return INITIAL_ARGS
     }
 
     function getDateOrder(filter){

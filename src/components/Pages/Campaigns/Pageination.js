@@ -10,7 +10,7 @@ function Pageination(props) {
 
     async function handlePageClick(e){
         const selectedPage = e.selected
-        await props.LoadCampaignsForPage(selectedPage+1)
+        await props.LoadCampaignsForPage({page:selectedPage+1})
     }
 
     if(props.loading){
