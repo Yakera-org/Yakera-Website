@@ -56,23 +56,20 @@ function Campaigns() {
                 dateOrder: dateOrder,
                 filter: currentFilter
             },
-            args
-            );
+            args);
 
         return [finalArgs.page, finalArgs.category, finalArgs.newCat, finalArgs.dateOrder, finalArgs.filter]
-
     }
 
     //only function that calls to the backend
-    async function LoadCampaignsFromBackend(page, category, newCat, dateOrder, filter){
+    async function LoadCampaignsFromBackend(page, category, isNewCat, dateOrder, filter){
         setLoading(true)
         const pageLimit = getPageLimit(filter)
         try {
-            let newPageNum = page
-            if(newCat) newPageNum = 1
+            let newPageNum = isNewCat ? 1 : page
 
             const payload = `/campaigns/?${pageLimit ? `page=${newPageNum}` : ""}${pageLimit ? `&limit=${pageLimit}`: ""}${filter === "percent" ? `&percentage=desc`: ""}${filter === "raised" ? `&raised=desc`: ""}${filter === "date" ? `&sort=${dateOrder}`: ""}${filter === "" ? `&sort=desc`: ""}${category? `&category=${category}`: ""}` //has to be one line string
-            console.log(payload)
+            
             const res = await api.get(payload);
             let data = res.data
 
@@ -86,8 +83,7 @@ function Campaigns() {
             console.log("Error: " + err)
         }finally{
             setLoading(false)
-        }
-       
+        }       
     }
 
     function getCampaigns(data, filter, page){
@@ -99,18 +95,14 @@ function Campaigns() {
     }
 
     function getPageNum(data, filter){
-        if(filter!=="percent" && filter !== "raised")return data.pages
+        if(filter!=="percent" && filter !== "raised")return data.pages //backend already returns total number of pages
         const camNum = data.data.campaigns.length
         const pageNum = Math.ceil(camNum / NUM_OF_ITEMS_PER_PAGE)
         return pageNum
     }
 
     function getPageLimit(filter){
-        if(filter === "percent" || filter === "raised"){
-            return ""
-        }else{
-            return NUM_OF_ITEMS_PER_PAGE
-        }
+        return (filter === "percent" || filter === "raised") ? "" : NUM_OF_ITEMS_PER_PAGE
     }
 
     async function setCategory(e){
@@ -140,9 +132,7 @@ function Campaigns() {
             filter: newFilter
         }
 
-        if(newFilter==="reset"){
-            loadArgs = resetArgs()
-        }
+        if(newFilter==="reset") loadArgs = resetArgs()
         
         await LoadCampaignsForPage(loadArgs)
     }
@@ -154,20 +144,15 @@ function Campaigns() {
     }
 
     function getDateOrder(filter){
-        if(filter === "date"){
-            //flipflop date order
-            return dateOrder === "asc" ? "desc" : "asc"
-        }else{
-            return ""
-        }
+        //flipflop date order
+        let order = dateOrder === "asc" ? "desc" : "asc"
+        return (filter === "date") ? order : "" //only for "date" filter   
     }
     function getNewFilter(filter){
         //turn off current filter if active filter is selected (except for date)
-        if(filter===currentFilter && filter !== "date"){
-            return ""
-        }else{
-            return filter
-        }
+        let isSameFilter = filter === currentFilter && filter !== "date"
+        return isSameFilter ? "" : filter
+        
     }
 
     return (
