@@ -98,7 +98,7 @@ function CampaignsVisuals(props) {
                 {
                     props.currentFilter || props.currentCategory
                     ?
-                    <button onClick={props.setFilter} name="reset" className="reset-filters">
+                    <button onClick={props.setFilter} name="reset" className="reset-filter">
                         Reset Filters
                     </button>
                     :

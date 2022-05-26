@@ -151,7 +151,7 @@
 .filter-section .category-filter #nutrition:hover, .filter-section .category-filter .on-nutrition:hover{
     background-color: #edc34380;
 }
-.filter-section .reset-filters{
+.filter-section .reset-filter{
     border: none;
     color: #aa5353;
     background-color: transparent;
@@ -161,6 +161,37 @@
     width: 20%;
     margin-left: 80%;
     margin-top: -5px;
+}
+.filter-section .reset-filter{
+    animation: fadeIn 1s;
+    -webkit-animation: fadeIn 1s;
+    -moz-animation: fadeIn 1s;
+    -o-animation: fadeIn 1s;
+    -ms-animation: fadeIn 1s;
+}
+@keyframes fadeIn {
+    0% {opacity:0;}
+    100% {opacity:1;}
+}
+
+@-moz-keyframes fadeIn {
+    0% {opacity:0;}
+    100% {opacity:1;}
+}
+
+@-webkit-keyframes fadeIn {
+    0% {opacity:0;}
+    100% {opacity:1;}
+}
+
+@-o-keyframes fadeIn {
+    0% {opacity:0;}
+    100% {opacity:1;}
+}
+
+@-ms-keyframes fadeIn {
+    0% {opacity:0;}
+    100% {opacity:1;}
 }
 .filter-section .reset-filters:hover{
     text-decoration: underline;
