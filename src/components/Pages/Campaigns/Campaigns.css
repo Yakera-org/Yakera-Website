@@ -86,6 +86,9 @@
 .filter-section .filters .on{
     background-color: #ff943c41!important;
 }
+.filter-section .filters .on:hover{
+    background-color: #ff943c20!important;
+}
 .filter-section .filters #quant-filter{
     color:#525252;
     font-size: 18px;
@@ -112,7 +115,7 @@
 .filter-section .category-filter .fade {
     opacity: 0.3;
 }
-.filter-section .category-filter button, .filter-section .category-filter .off, .filter-section .category-filter button:active, .filter-section .category-filter button:focus{
+.filter-section .category-filter button, .filter-section .category-filter .off{
     border: none;
     outline: none;
     border-radius: 5px;
@@ -124,17 +127,29 @@
     width: 90%;
     padding: 10px;
 }
-.filter-section .category-filter #healthcare:hover, .filter-section .category-filter .on-healthcare{
+.filter-section .category-filter .on-healthcare{
     background-color: #ff7d7d50;
 }
-.filter-section .category-filter #education:hover, .filter-section .category-filter .on-education{
+.filter-section .category-filter #healthcare:hover, .filter-section .category-filter .on-healthcare:hover{
+    background-color: #ff7d7d80;
+}
+.filter-section .category-filter .on-education{
     background-color: #71b98f50;
 }
-.filter-section .category-filter #small_business:hover, .filter-section .category-filter .on-small_business{
+.filter-section .category-filter #education:hover, .filter-section .category-filter .on-education:hover{
+    background-color: #71b98f80;
+}
+.filter-section .category-filter .on-small_business{
     background-color: #7099d050;
 }
-.filter-section .category-filter #nutrition:hover, .filter-section .category-filter .on-nutrition{
+.filter-section .category-filter #small_business:hover, .filter-section .category-filter .on-small_business:hover{
+    background-color: #7099d080;
+}
+.filter-section .category-filter .on-nutrition{
     background-color: #edc34350;
+}
+.filter-section .category-filter #nutrition:hover, .filter-section .category-filter .on-nutrition:hover{
+    background-color: #edc34380;
 }
 .pageination{
     text-align: center;
