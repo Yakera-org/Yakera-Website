@@ -95,6 +95,16 @@ function CampaignsVisuals(props) {
                         )                        
                     })}                    
                 </Grid>
+                {
+                    props.currentFilter || props.currentCategory
+                    ?
+                    <button className="reset-filters">
+                        Reset Filters
+                    </button>
+                    :
+                    ""
+
+                }
 
             <hr style={{width:"100%", marginBottom:"10px"}}/>
             </div>

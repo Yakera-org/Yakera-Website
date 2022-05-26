@@ -151,6 +151,21 @@
 .filter-section .category-filter #nutrition:hover, .filter-section .category-filter .on-nutrition:hover{
     background-color: #edc34380;
 }
+.filter-section .reset-filters{
+    border: none;
+    color: #aa5353;
+    background-color: transparent;
+    outline: none;
+    border-radius: 5px;
+    padding: 5px;
+    width: 20%;
+    margin-left: 80%;
+    margin-top: -5px;
+}
+.filter-section .reset-filters:hover{
+    text-decoration: underline;
+}
+
 .pageination{
     text-align: center;
     padding: 20px;

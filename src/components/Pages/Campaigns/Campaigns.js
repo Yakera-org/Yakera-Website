@@ -34,8 +34,9 @@ function Campaigns() {
         try {
             let newPageNum = page
             if(newCat) newPageNum = 1
-            const payload = `/campaigns/?page=${newPageNum}&limit=${NUM_OF_ITEMS_PER_PAGE}${filter === "percent" ? `&percentage=desc`: ""}${filter === "raised" ? `&raised=desc`: ""}${filter === "date" ? `&sort=${date}`: ""}${filter === "" ? `&sort=desc`: ""}${category? `&category=${category}`: ""}`
-            console.log(payload)
+
+            const payload = `/campaigns/?page=${newPageNum}&limit=${NUM_OF_ITEMS_PER_PAGE}${filter === "percent" ? `&percentage=desc`: ""}${filter === "raised" ? `&raised=desc`: ""}${filter === "date" ? `&sort=${date}`: ""}${filter === "" ? `&sort=desc`: ""}${category? `&category=${category}`: ""}` //has to be one line string
+
             const res = await api.get(payload);
             let data = res.data
             setCurrentCampaigns(data.data.campaigns)
