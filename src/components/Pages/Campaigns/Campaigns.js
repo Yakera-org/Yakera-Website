@@ -15,8 +15,9 @@ function Campaigns() {
     const [currentPage, setCurrentPage] = useState(1);
     const [currentCategory, setCurrentCategory] = useState("");
     const [currentCampaigns, setCurrentCampaigns] = useState([]);
-    const [dateOrder, setDateOrder] = useState("asc");
-    const [currentFilter, setCurrentFilter] = useState("");
+    const [dateOrder, setDateOrder] = useState("desc");
+    const [currentFilter, setCurrentFilter] = useState("date");
+
 
     React.useEffect(() => {
         function startup(){
@@ -25,14 +26,21 @@ function Campaigns() {
         startup();         
     }, []);
 
-    async function LoadCampaignsForPage(page, category = currentCategory, newCat = false, date = dateOrder){
+    async function LoadCampaignsForPage(page, category = currentCategory, newCat = false, date = dateOrder, filter = currentFilter){
         setLoading(true)
         try {
             let newPageNum = page
             if(newCat) newPageNum = 1
-            const res = await api.get(`/campaigns/?page=${newPageNum}&limit=${NUM_OF_ITEMS_PER_PAGE}&sort=${date}${category? `&category=${category}`: ""}`);
+            const res = await api.get(`/campaigns/?
+                page=${newPageNum}
+                &limit=${NUM_OF_ITEMS_PER_PAGE}
+                ${filter === "percent" ? `&percentage=desc`: ""}
+                ${filter === "raised" ? `&raised=desc`: ""}
+                ${filter === "date" ? `&sort=${date}`: ""}                
+                ${category? `&category=${category}`: ""}
+
+                `);
             let data = res.data
-            console.log(data)
             setCurrentCampaigns(data.data.campaigns)
             setPageCount(data.pages)
             setCurrentPage(newPageNum)
@@ -52,14 +60,30 @@ function Campaigns() {
         await LoadCampaignsForPage(currentPage, newCategory, true)
     }
 
-    async function reverseDateOrder(){
-        const newDate = dateOrder==="asc" ? "desc" : "asc"
-        setDateOrder(newDate)
-        await LoadCampaignsForPage(currentPage, currentCategory, true, newDate)
+    async function setFilter(e){
+        var newFilter = getNewFilter(e.target.getAttribute('name'))
+        var date = getDateOrder(newFilter)
+
+        setCurrentFilter(newFilter)
+        setDateOrder(date)
+
+        await LoadCampaignsForPage(currentPage, currentCategory, true, date, newFilter)
     }
 
-    async function setFilter(e){
-        setCurrentFilter(e.target.getAttribute('name'))
+    function getDateOrder(filter){
+        if(filter === "date"){
+            //flipflop date order
+            return dateOrder === "asc" ? "desc" : "asc"
+        }else{
+            return ""
+        }
+    }
+    function getNewFilter(filter){
+        if(filter===currentFilter && filter !== "date"){
+            return ""
+        }else{
+            return filter
+        }
     }
 
     return (
@@ -72,7 +96,6 @@ function Campaigns() {
                 pageCount = {pageCount}
                 LoadCampaignsForPage={LoadCampaignsForPage}
                 setCategory={setCategory}
-                reverseDateOrder={reverseDateOrder}
                 dateOrder={dateOrder}
                 currentCategory={currentCategory}
                 currentFilter={currentFilter}

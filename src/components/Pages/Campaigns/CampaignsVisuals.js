@@ -73,8 +73,8 @@ function CampaignsVisuals(props) {
                 <p>{EN ? 'Sort by:' : 'Sort by:'}</p>
 
                 <Grid container spacing={0} className="filters" style={{ alignItems: 'flex-start' }}>
-                    <Grid item xs={4} sm={4} id="quant-filter" onClick={props.reverseDateOrder}>
-                        {EN ? 'Date' : 'Date'} &nbsp; <b style={{color:"#ea8737"}}>{props.dateOrder === "asc" ? "↑" : "↓"}</b>
+                    <Grid item xs={4} sm={4} id="quant-filter" name="date" onClick={props.setFilter} className={props.currentFilter ==="date" ? "on" : "off"}>
+                        {EN ? 'Date' : 'Date'} &nbsp; <b style={{color:"#ea8737"}}>{props.dateOrder ? (props.dateOrder === "asc" ? "↑" : "↓" ) : ""}</b> 
                     </Grid>
                     <Grid item xs={4} sm={4} id="quant-filter" onClick={props.setFilter} name="percent" className={props.currentFilter ==="percent" ? "on" : "off"}>
                         {EN ? 'Percentage' : 'Percentage'}
