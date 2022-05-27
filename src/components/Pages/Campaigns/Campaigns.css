@@ -70,6 +70,8 @@
     padding: 20px;
     margin-right: 2%;
     font-size: 14px;
+    border: none;
+    background-color: #f0f0f0;
 }
 .searchbar .input-group-text{
     background-color: #f0f0f0;
@@ -266,4 +268,11 @@
 }
 .cam-card{
     padding: 20px;
+}
+.cam-container .no-cards{
+    text-align: center;
+    color: #525252;
+    margin: 20px;
+    font-family: Intro-Regular-Alt;
+    font-size: 18px;
 }

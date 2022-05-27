@@ -52,17 +52,23 @@ function Pageination(props) {
                     forcePage={props.page-1}
                 />
                  <Grid className="cam-container" container spacing={0} style={{alignContent:'center', alignItems:'flex-start'}}>
-                        {props.campaigns.map((cam, i) => {
-                            return (
-                                <Grid className='cam-card' item xs={12} sm={3} key={i}>
-                                    <CampaignCard
-                                        campaign={cam}
-                                        language={EN ? "en" : "es"}
-                                        amount={cam.raised + cam?.zelleRaised}
-                                    />
-                                </Grid>
-                                )
-                        })}
+                        {props.campaigns.length > 0 ?                        
+                            props.campaigns.map((cam, i) => {
+                                return (
+                                    <Grid className='cam-card' item xs={12} sm={3} key={i}>
+                                        <CampaignCard
+                                            campaign={cam}
+                                            language={EN ? "en" : "es"}
+                                            amount={cam.raised + cam?.zelleRaised}
+                                        />
+                                    </Grid>
+                                    )
+                            })
+                            :
+                            <Grid className='no-cards' item xs={12} sm={12}>
+                                <p>{EN ? "No campaigns found that match the filters." : "No se han encontrado campañas que coincidan con los filtros."}</p>
+                            </Grid>
+                        }
                     </Grid>
 
                     <ReactPaginate

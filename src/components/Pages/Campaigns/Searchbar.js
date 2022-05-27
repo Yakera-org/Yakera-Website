@@ -1,12 +1,17 @@
-import React, {useState} from "react";
+import React from "react";
 import { Form, InputGroup } from 'react-bootstrap';
 import SearchIcon from '@material-ui/icons/Search';
 
 function SearchBar(props) {
 
-    const [searchValue, setSearchValue] = useState("");
-
     const EN = props.EN;
+
+    function onKeyDown(e){
+        if(e.key === "Enter"){
+            props.setSearch()
+        }
+    }
+
     return (
         <InputGroup
             className='searchbar'
@@ -14,15 +19,12 @@ function SearchBar(props) {
             <Form.Control
                 type='search'
                 placeholder={EN ? 'Search...' : 'Buscar...'}
-                value={searchValue}
-                onChange={e => setSearchValue(e.target.value)}
-                style={{
-                    border: 'none',
-                    backgroundColor: '#f0f0f0',
-                }}
+                value={props.searchQuery}
+                onChange={e => props.setSearchQuery(e.target.value)}
+                onKeyDown={onKeyDown}
             />
             <InputGroup.Text >
-                <SearchIcon />
+                <SearchIcon onClick={props.setSearch}/>
             </InputGroup.Text>
         </InputGroup>
     )

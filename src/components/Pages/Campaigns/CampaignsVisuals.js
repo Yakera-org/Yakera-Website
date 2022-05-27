@@ -68,7 +68,12 @@ function CampaignsVisuals(props) {
                     {EN ? 'Find a campaign.' : 'Find a campaign.'}
                 </h2>
 
-                <SearchBar EN={EN} />
+                <SearchBar 
+                    EN={EN} 
+                    setSearch={props.setSearch}
+                    searchQuery={props.currentSearchQuery}                
+                    setSearchQuery={props.setCurrentSearchQuery}
+                />
                 
                 <p>{EN ? 'Sort by:' : 'Sort by:'}</p>
 
@@ -96,7 +101,7 @@ function CampaignsVisuals(props) {
                     })}                    
                 </Grid>
                 {
-                    props.currentFilter || props.currentCategory
+                    props.currentFilter || props.currentCategory || props.currentSearchQuery
                     ?
                     <button onClick={props.setFilter} name="reset" className="reset-filter">
                         Reset Filters

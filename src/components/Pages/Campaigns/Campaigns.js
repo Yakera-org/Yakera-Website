@@ -6,13 +6,14 @@ import "./Campaigns.css"
 import api from '../../../services/api';
 
 const NUM_OF_ITEMS_PER_PAGE = 8;
-const INITIAL_ARGS={
+const INITIAL_ARGS= Object.freeze({
     page: 1,
     category: "",
     newCategory: true,
     dateOrder: "",
-    filter:""
-}
+    filter:"",
+    query:""
+})
 function Campaigns() {
 
     const [EN, setEN] = useState(false);
@@ -25,6 +26,7 @@ function Campaigns() {
     const [currentPage, setCurrentPage] = useState(INITIAL_ARGS.page);
     const [currentCategory, setCurrentCategory] = useState(INITIAL_ARGS.category);
     const [currentFilter, setCurrentFilter] = useState(INITIAL_ARGS.filter);
+    const [currentSearchQuery, setCurrentSearchQuery] = useState(INITIAL_ARGS.query);
 
 
     React.useEffect(() => {
@@ -44,27 +46,29 @@ function Campaigns() {
         const newCat = _args[2]
         const date = _args[3]
         const filter = _args[4]
-        await LoadCampaignsFromBackend(page, category, newCat, date, filter) // single point of backend connection
+        const query = _args[5]
+        await LoadCampaignsFromBackend(page, category, newCat, date, filter, query) // single point of backend connection
     }
 
     function assignArgs(args){
         let finalArgs = Object.assign(
             {
-                page: 1,
+                page: INITIAL_ARGS.page,
                 category: currentCategory,
                 newCat: false,
                 dateOrder: dateOrder,
-                filter: currentFilter
+                filter: currentFilter,
+                query: INITIAL_ARGS.query
             },
             args);
 
-        return [finalArgs.page, finalArgs.category, finalArgs.newCat, finalArgs.dateOrder, finalArgs.filter]
+        return [finalArgs.page, finalArgs.category, finalArgs.newCat, finalArgs.dateOrder, finalArgs.filter, finalArgs.query]
     }
 
     //only function that calls to the backend
-    async function LoadCampaignsFromBackend(page, category, isNewCat, dateOrder, filter){
+    async function LoadCampaignsFromBackend(page, category, isNewCat, dateOrder, filter, query){
         setLoading(true)
-        const pageLimit = getPageLimit(filter)
+        const pageLimit = getPageLimit(filter, query)
         try {
             let newPageNum = isNewCat ? 1 : page
 
@@ -73,8 +77,8 @@ function Campaigns() {
             const res = await api.get(payload);
             let data = res.data
 
-            const totalPages = getPageNum(data, filter)
-            const currentCampaigns = getCampaigns(data, filter, newPageNum)
+            const totalPages = getPageNum(data, filter, query)
+            const currentCampaigns = getCampaigns(data, filter, newPageNum, query)
             setPageCount(totalPages)
             setCurrentCampaigns(currentCampaigns)
             setCurrentPage(newPageNum)
@@ -86,23 +90,36 @@ function Campaigns() {
         }       
     }
 
-    function getCampaigns(data, filter, page){
+    function getCampaigns(data, filter, page, query){
         const allCampaigns = data.data.campaigns
-        if(filter!=="percent" && filter !== "raised")return allCampaigns //already paginated
+        const extractedCampaigns = !query ? allCampaigns : extractCampaigns(allCampaigns, query)
+        if(filter!=="percent" && filter !== "raised" && !query)return extractedCampaigns //already paginated
         const _currentPage = page-1
-        const campaignExtract = allCampaigns.slice(NUM_OF_ITEMS_PER_PAGE * _currentPage, NUM_OF_ITEMS_PER_PAGE*(_currentPage+1))
+        const campaignExtract = extractedCampaigns.slice(NUM_OF_ITEMS_PER_PAGE * _currentPage, NUM_OF_ITEMS_PER_PAGE*(_currentPage+1))
         return campaignExtract
     }
 
-    function getPageNum(data, filter){
-        if(filter!=="percent" && filter !== "raised")return data.pages //backend already returns total number of pages
-        const camNum = data.data.campaigns.length
+    function extractCampaigns(campaigns, query){
+        var filteredCampaigns = campaigns.filter((campaign) => {
+                let campaignTitles = campaign.translations["en"] ? campaign.translations["en"].title.toLowerCase() : ""
+                campaignTitles += campaign.translations["es"] ? campaign.translations["es"].title.toLowerCase() : ""
+                campaignTitles += " " + campaign.title.toLowerCase(); // add translated language title
+
+                return campaignTitles.includes(query.toLowerCase());
+            });
+
+        return filteredCampaigns
+    }  
+
+    function getPageNum(data, filter, query){
+        if(filter!=="percent" && filter !== "raised" && !query)return data.pages //backend already returns total number of pages
+        const camNum = !query ? data.data.campaigns.length : extractCampaigns(data.data.campaigns, query).length
         const pageNum = Math.ceil(camNum / NUM_OF_ITEMS_PER_PAGE)
         return pageNum
     }
 
-    function getPageLimit(filter){
-        return (filter === "percent" || filter === "raised") ? "" : NUM_OF_ITEMS_PER_PAGE
+    function getPageLimit(filter, query){
+        return (filter === "percent" || filter === "raised" || query) ? "" : NUM_OF_ITEMS_PER_PAGE
     }
 
     async function setCategory(e){
@@ -110,6 +127,7 @@ function Campaigns() {
         var newCategory = isSameCat ? "" : e.target.name //turn "off" category if selected again
         var _currentPage = isSameCat ? currentPage : INITIAL_ARGS.page // go to page 1 if new category
         setCurrentCategory(newCategory)
+        setCurrentSearchQuery(INITIAL_ARGS.query)
 
         var loadArgs = {
             page: _currentPage,
@@ -123,6 +141,7 @@ function Campaigns() {
         var newFilter = getNewFilter(e.target.getAttribute('name'))
         var _dateOrder = getDateOrder(newFilter)
 
+        setCurrentSearchQuery(INITIAL_ARGS.query)
         setCurrentFilter(newFilter)
         setDateOrder(_dateOrder)
 
@@ -133,13 +152,14 @@ function Campaigns() {
         }
 
         if(newFilter==="reset") loadArgs = resetArgs()
-        
+
         await LoadCampaignsForPage(loadArgs)
     }
     
     function resetArgs(){
-        setCurrentCategory("")
-        setCurrentFilter("")
+        setCurrentCategory(INITIAL_ARGS.category)
+        setCurrentFilter(INITIAL_ARGS.filter)
+        setCurrentSearchQuery(INITIAL_ARGS.query)
         return INITIAL_ARGS
     }
 
@@ -159,6 +179,14 @@ function Campaigns() {
         await LoadCampaignsForPage({page:newPage+1}) // +1 is needed, as the pagination counts from 0
     }
 
+    async function setSearch(){
+        var loadArgs = Object.assign({}, INITIAL_ARGS)
+        setCurrentCategory(INITIAL_ARGS.category)
+        setCurrentFilter(INITIAL_ARGS.filter)
+        loadArgs["query"] = currentSearchQuery
+        await LoadCampaignsForPage(loadArgs)
+    }
+
     return (
         <div className='campaigns-page'>
             <CampaignsVisuals 
@@ -173,6 +201,9 @@ function Campaigns() {
                 currentCategory={currentCategory}
                 currentFilter={currentFilter}
                 setFilter={setFilter}
+                setSearch={setSearch}
+                currentSearchQuery={currentSearchQuery}
+                setCurrentSearchQuery={setCurrentSearchQuery}
             />
             <Author />
         </div>
