@@ -59,11 +59,28 @@
     font-size: 20px;
 }
 .searchbar{
-    border-radius: 20px;
     overflow: hidden;
     display: inline-flex;
-    width: 100%;
+    width: 98%;
     margin: 20px 0;
+    margin-left: 1%;
+}
+.searchbar .form-control{
+    border-radius: 5px!important;
+    padding: 20px;
+    margin-right: 2%;
+    font-size: 14px;
+}
+.searchbar .input-group-text{
+    background-color: #f0f0f0;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    min-width:50px;
+}
+.searchbar .input-group-text:hover{
+    background-color: rgb(223, 223, 223);
+    cursor: pointer;
 }
 .filter-section {
     text-align: left;
