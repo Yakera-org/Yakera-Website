@@ -212,7 +212,7 @@
     0% {opacity:0;}
     100% {opacity:1;}
 }
-.filter-section .reset-filters:hover{
+.filter-section .reset-filter:hover{
     text-decoration: underline;
 }
 
