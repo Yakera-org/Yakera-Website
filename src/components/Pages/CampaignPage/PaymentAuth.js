@@ -121,7 +121,7 @@ function PaymentAuth(props) {
                                     slug={props.slug}
                                     email={props.email}
                                     name={props.name}
-                                    amount={props.amount}
+                                    amount={parseFloat(props.amount) + parseFloat(props.tip)}
                                     tip={props.tip}
                                     comment={props.comment}
                                     isAnon={props.isAnon}
