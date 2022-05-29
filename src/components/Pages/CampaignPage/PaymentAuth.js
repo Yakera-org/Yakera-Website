@@ -16,17 +16,26 @@ import { Accordion, Card as AccordionCard } from 'react-bootstrap';
 const PUBLIC_KEY = "pk_live_51KjTNTD1ctBA5rzvx5iDGT7idBMfOQjoZ8Ic3MbbQTPg14bMM9aIURbyUTURypVEkqvsJK5jNBUD4DocFRSuK79B00cuzpMyr8";
 const stripePromise = loadStripe(PUBLIC_KEY);
 
-
 const cardImg = 'https://assets.yakera.org/yakera/card.webp';
 const zelleLogo = 'https://assets.yakera.org/yakera/zelle.webp';
+
 
 function PaymentAuth(props) {
     const EN = props.EN
     
     const shouldShowZelle = props?.isAcceptingZelle;
-
+    
     const total_amount = Math.round((parseFloat(props.amount) + parseFloat(props.tip)) * Math.pow(10, 2)) / Math.pow(10, 2);
     const [clientSecret, setClientSecret] = useState("");
+    
+    async function onPaymentAuthClick(e){
+        const authname = e.target.getAttribute("name")
+        try {
+            console.log(await api.get(`/track?path=authentication/${authname}`));
+        } catch (err) {
+            console.log('Error. ' + err)
+        }
+    }
 
     useEffect(() => {
         // Create payment intent
@@ -73,10 +82,10 @@ function PaymentAuth(props) {
 
                 <Accordion>
                     <AccordionCard>
-                        <Accordion.Toggle as={AccordionCard.Header} eventKey="0" className="stripe-but align-items-center d-flex justify-content-center">
-                            <div>
-                                <img className='card-img' alt="card" src={cardImg}></img>
-                                <span id="stripe-option">{EN ? 'Credit or Debit' : 'Crédito o Débito'}</span>
+                        <Accordion.Toggle name="creditcard" onClick={onPaymentAuthClick} as={AccordionCard.Header} eventKey="0" className="stripe-but align-items-center d-flex justify-content-center">
+                            <div name="creditcard">
+                                <img name="creditcard" className='card-img' alt="card" src={cardImg}></img>
+                                <span name="creditcard" id="stripe-option">{EN ? 'Credit or Debit' : 'Crédito o Débito'}</span>
                             </div>
                         </Accordion.Toggle>
                         <Accordion.Collapse eventKey="0">
@@ -109,9 +118,9 @@ function PaymentAuth(props) {
 
                 <Accordion>
                     <AccordionCard>
-                        <Accordion.Toggle as={AccordionCard.Header} eventKey="0" className="reserve-but align-items-center d-flex justify-content-center">
-                            <div>
-                                <img alt="card" src={reserveLogo}></img>
+                        <Accordion.Toggle as={AccordionCard.Header} name="reserve" onClick={onPaymentAuthClick} eventKey="0" className="reserve-but align-items-center d-flex justify-content-center">
+                            <div name="reserve">
+                                <img name="reserve" alt="card" src={reserveLogo}></img>
                             </div>
                         </Accordion.Toggle>
                         <Accordion.Collapse eventKey="0">
@@ -139,9 +148,9 @@ function PaymentAuth(props) {
                 ?
                 <Accordion>
                     <AccordionCard>
-                        <Accordion.Toggle as={AccordionCard.Header} eventKey="0" className="zelle-but align-items-center d-flex justify-content-center">
-                            <div>
-                                <img src={zelleLogo} alt="zelle-logo-button" />
+                        <Accordion.Toggle as={AccordionCard.Header} name="zelle" onClick={onPaymentAuthClick} eventKey="0" className="zelle-but align-items-center d-flex justify-content-center">
+                            <div name="zelle" >
+                                <img name="zelle" src={zelleLogo} alt="zelle-logo-button" />
                             </div>
                         </Accordion.Toggle>
                         <Accordion.Collapse eventKey="0">
