@@ -31,7 +31,7 @@ function PaymentAuth(props) {
     async function onPaymentAuthClick(e){
         const authname = e.target.getAttribute("name")
         try {
-            console.log(await api.get(`/track?path=authentication/${authname}`));
+            await api.get(`/track?path=authentication/${authname}`);
         } catch (err) {
             console.log('Error. ' + err)
         }
