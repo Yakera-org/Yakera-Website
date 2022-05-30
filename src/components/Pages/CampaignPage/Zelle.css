@@ -36,10 +36,10 @@
   width: 70%;
 }
 .zelle-button{
-  width: 100%;
+  width: 50%;
   border: none;
   background-color:#ea8737;
-  border-radius:10px;
+  border-radius:5px;
   color:white;
   padding:10px;
   font-size: 13px;
@@ -84,7 +84,14 @@
   left: 49%;
 }
 .confirm-button {
-  width:70%;
+  width: 60%;
+  border: none;
+  background-color:#6d1ed4;
+  border-radius:5px;
+  color:white;
+  font-size: 15px;
+  padding-bottom: 10px;
+  padding-top: 6px;
 }
 .confirm-button:hover {
   opacity: 0.8;

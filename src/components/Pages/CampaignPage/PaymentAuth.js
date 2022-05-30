@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import {Card} from '@material-ui/core';
-
+import reserveLogo from '../../../pics/reservebutton.png'
+//import zelleLogo from '../../../pics/zelle.png';
 import ZelleLogic from './ZelleLogic';
+import ReserveLogic from './ReserveLogic'
+
 import { loadStripe } from "@stripe/stripe-js"
 import { Elements } from "@stripe/react-stripe-js"
 import StripeForm from './Stripe';
@@ -16,17 +19,23 @@ const stripePromise = loadStripe(PUBLIC_KEY);
 const cardImg = 'https://assets.yakera.org/yakera/card.webp';
 const zelleLogo = 'https://assets.yakera.org/yakera/zelle.webp';
 
+
 function PaymentAuth(props) {
     const EN = props.EN
-    const [openZelle, setOpenZelle] = React.useState(false);
     
     const shouldShowZelle = props?.isAcceptingZelle;
-
-    async function onZelle(){
-        setOpenZelle(!openZelle)
-    }
-
+    
+    const total_amount = Math.round((parseFloat(props.amount) + parseFloat(props.tip)) * Math.pow(10, 2)) / Math.pow(10, 2);
     const [clientSecret, setClientSecret] = useState("");
+    
+    async function onPaymentAuthClick(e){
+        const authname = e.target.getAttribute("name")
+        try {
+            await api.get(`/track?path=authentication/${authname}`);
+        } catch (err) {
+            console.log('Error. ' + err)
+        }
+    }
 
     useEffect(() => {
         // Create payment intent
@@ -57,10 +66,11 @@ function PaymentAuth(props) {
         appearance,
     };
 
-    const total_amount = parseInt(props.amount) + parseInt(props.tip)
     return (
         <div>
-             <p>{EN ? 'Payment Authentication' : 'Autenticación de pago'}</p>
+             <div className='details'>
+                 {EN ? 'Payment authentication' : 'Autenticación de pago'}
+            </div>
             <Card className='payment-auth-card'>
 
                 <div className='auth-axplanation'>
@@ -69,20 +79,13 @@ function PaymentAuth(props) {
                     </h4>
                     <p>{EN ? 'Please select a payment method' : 'Por favor seleccione un método de pago.'}</p>
                 </div>
-                 {/*<PayPal
-                    amount={total_amount}
-                    onSuccess={props.OnSuccessPayment}
-                    onClick={props.OnPaymentClick}
-                    onError={props.OnPaymentError}
-                    onCancel={props.OnPaymentCancel}
-                /> */}
 
                 <Accordion>
                     <AccordionCard>
-                        <Accordion.Toggle as={AccordionCard.Header} eventKey="0" className="stripe-but align-items-center d-flex justify-content-center">
-                            <div>
-                                <img className='card-img' alt="card" src={cardImg}></img>
-                                <span id="stripe-option">{EN ? 'Credit or Debit' : 'Crédito o Débito'}</span>
+                        <Accordion.Toggle name="creditcard" onClick={onPaymentAuthClick} as={AccordionCard.Header} eventKey="0" className="stripe-but align-items-center d-flex justify-content-center">
+                            <div name="creditcard">
+                                <img name="creditcard" className='card-img' alt="card" src={cardImg}></img>
+                                <span name="creditcard" id="stripe-option">{EN ? 'Credit or Debit' : 'Crédito o Débito'}</span>
                             </div>
                         </Accordion.Toggle>
                         <Accordion.Collapse eventKey="0">
@@ -110,43 +113,72 @@ function PaymentAuth(props) {
                         </Accordion.Collapse>
                     </AccordionCard>
                 </Accordion>
+                                
+                <br />
+
+                <Accordion>
+                    <AccordionCard>
+                        <Accordion.Toggle as={AccordionCard.Header} name="reserve" onClick={onPaymentAuthClick} eventKey="0" className="reserve-but align-items-center d-flex justify-content-center">
+                            <div name="reserve">
+                                <img name="reserve" alt="card" src={reserveLogo}></img>
+                            </div>
+                        </Accordion.Toggle>
+                        <Accordion.Collapse eventKey="0">
+                            <AccordionCard.Body>
+                                <ReserveLogic
+                                    EN={EN}
+                                    slug={props.slug}
+                                    email={props.email}
+                                    name={props.name}
+                                    amount={parseFloat(props.amount) + parseFloat(props.tip)}
+                                    tip={props.tip}
+                                    comment={props.comment}
+                                    isAnon={props.isAnon}
+                                    openThanks={props.openThanks}
+                                />
+                                
+                            </AccordionCard.Body>
+                        </Accordion.Collapse>
+                    </AccordionCard>
+                </Accordion>
+
+                <br />
 
                 { shouldShowZelle
                 ?
-                <div >
-                    <button
-                        type="submit"
-                        className=" airtm-but"
-                        onClick={onZelle}
-                    >
-                        <img src={zelleLogo} alt="zelle-logo-button" />
-                    </button>
-                    {
-                        openZelle
-                        ?
-                        <ZelleLogic
-                            EN={EN}
-                            slug={props.slug}
-                            email={props.email}
-                            name={props.name}
-                            amount={props.amount}
-                            tip={props.tip}
-                            comment={props.comment}
-                            isAnon={props.isAnon}
-                            openThanks={props.openThanks}
-                            recipientName={props.recipientName}
-                            recipientEmail={props.recipientEmail}
-                        />
-                        :
-                        ''
-                    }
-                </div>
-                :
-                ''
-                }
+                <Accordion>
+                    <AccordionCard>
+                        <Accordion.Toggle as={AccordionCard.Header} name="zelle" onClick={onPaymentAuthClick} eventKey="0" className="zelle-but align-items-center d-flex justify-content-center">
+                            <div name="zelle" >
+                                <img name="zelle" src={zelleLogo} alt="zelle-logo-button" />
+                            </div>
+                        </Accordion.Toggle>
+                        <Accordion.Collapse eventKey="0">
+                            <AccordionCard.Body>
+                                <ZelleLogic
+                                    EN={EN}
+                                    slug={props.slug}
+                                    email={props.email}
+                                    name={props.name}
+                                    amount={props.amount}
+                                    tip={props.tip}
+                                    comment={props.comment}
+                                    isAnon={props.isAnon}
+                                    openThanks={props.openThanks}
+                                    recipientName={props.recipientName}
+                                    recipientEmail={props.recipientEmail}
+                                />                                
+                            </AccordionCard.Body>
+                        </Accordion.Collapse>
+                    </AccordionCard>
+                </Accordion>
+                               
+            :
+            ''
+            }
 
             <button className='payment-back-btn' onClick={props.onBack}>
-                {EN ? 'Return' : 'Regreso'}
+                <i className="fas fa-angle-left"></i>{EN ? ' Return' : ' Regresar'}
             </button>
             </Card>
         </div>

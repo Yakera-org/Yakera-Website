@@ -45,6 +45,22 @@ class ValidateFields {
     }
     return false;
   }
+  validateNumberIncludeZero(num){
+    if(validator.isEmpty(num)){
+      return EN ? 'This field cannot be empty' : 'Este campo no puede estar vacío';
+    } else if (!validator.isNumeric(num) || num < 0){
+        return EN ? 'Invalid Number' : 'Número invalido';
+    }
+    return false;
+  }
+  validateNumberForAmount(num){
+    if(validator.isEmpty(num)){
+      return EN ? 'This field cannot be empty' : 'Este campo no puede estar vacío';
+    } else if (!validator.isNumeric(num) || num < 0.1){
+        return EN ? 'Number too small' : 'Número invalido';
+    }
+    return false;
+  }
   validateAddress(address){
     if(validator.isEmpty(address)){
       return EN ? 'This field cannot be empty' : 'Este campo no puede estar vacío';
