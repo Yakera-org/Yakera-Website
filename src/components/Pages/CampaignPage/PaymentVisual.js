@@ -6,6 +6,13 @@ import api from "../../../services/api";
 import ThanksCard from './thanksCard';
 import AirTM from './AirTM';
 import LanguageService from '../../../services/language';
+import crypto from 'crypto'
+
+const sign = (string, secret) =>
+  crypto
+    .createHmac('sha256', Buffer.from(secret, 'utf-8').toString())
+    .update(Buffer.from(string, 'utf-8').toString())
+    .digest('hex')
 
 class PaymentVisual extends Component {
 
@@ -113,7 +120,15 @@ class PaymentVisual extends Component {
                 "language": LanguageService.getLanguage(),
                 "isAnonymous": this.state.isAnon
             }
-            console.log(await api.post(`/campaigns/donate`, payload))
+            
+            const payload_str = JSON.stringify(payload)
+            const hmac = sign(payload_str, 'test')
+            const options =  { 
+                headers: {
+                    'Yakera-Signature' : hmac
+                }
+            }   
+            console.log(await api.post(`/campaigns/donate/`, payload, options))
         } catch (err) {
             console.log(err);
         }
