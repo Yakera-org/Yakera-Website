@@ -11,8 +11,8 @@ function Dashboard() {
 
     const [loaded, setLoaded] = useState(false);
     const [EN, setEN] = useState(false);
-    const [airTMemail, setAirTMEmail] = useState('');
-    const [airTMEmailError, setAirTMEmailError] = useState('');
+    const [reserveUsername, setReserveUsername] = useState('');
+    const [airTMEmailError, setReserveUsernameError] = useState('');
     const [error, setError] = useState('');
     const [profileData, setProfileData] = useState({});
 
@@ -107,18 +107,18 @@ function Dashboard() {
 
     function handleChange(event){
         validate(event.target.value)
-        setAirTMEmail(event.target.value)
+        setReserveUsername(event.target.value)
     }
     function validate(email){
         var tempError;
         tempError = validateFields.validateEmail(email);
-        setAirTMEmailError(tempError)
+        setReserveUsernameError(tempError)
         if(!tempError){
             return true
         }
     }
     function onSubmitEmail(){
-        if(validate(airTMemail)){
+        if(validate(reserveUsername)){
             backendPatch()
         }
     }
@@ -164,7 +164,7 @@ function Dashboard() {
     async function backendPatch(){
         try {
             const requestBody = {      
-                airTMNum: airTMemail,
+                reserveUsername: reserveUsername,
                 zelleInfo: {
                     email: zelleEmail,
                     name: zelleName,

@@ -17,8 +17,8 @@ function DashboardVisuals(props) {
     
     
     function onWithdraw(type){
-        if(!user.airTMNum){
-            window.alert(EN ? "Please update your Reserve account. Without an account, we don't know where you want the money to be transferred to. Thanks" : "Actualice su dirección de correo electrónico de AirTM. Sin este correo electrónico, no sabemos a dónde desea que se transfiera el dinero. Gracias" )
+        if(!user.reserveUsername){
+            window.alert(EN ? "Please update your Reserve account. Without an account, we don't know where you want the money to be transferred to. Thanks" : "Actualice su usuario de Reserve. Sin este usuario, no sabemos a dónde desea que se transfiera el dinero. Gracias" )
         }else{
             props.onWithdraw(type);
         }
@@ -167,14 +167,14 @@ function DashboardVisuals(props) {
                             </Grid>                                        
                         </Grid> */}
 
-                        {/* <Grid item xs={12} sm={6} id='airTM'>
+                        {/* <Grid item xs={12} sm={6} id='reserve'>
                             <div className='dash-left'>
                             <p id="prompt">{EN ? "Add your AirTM account to withdraw collected funds!" : "¡Añade los detalles de tu cuenta de Airtm para retirar los fondos recaudados!"}</p>
                             <p id="description">{EN ? "To transfer the funds you collect through Yakera, you must create an Airtm account and provide the email address here:" : "Para transferir tus fondos recaudados en Yakera es necesario que nos suministres tu correo de AirTM"}</p>
                                 <p id='dash-stats'>AirTM email:</p>
                             </div>
                             {
-                                !user.airTMNum
+                                !user.reserveUsername
                                 ?
                                 <Grid container spacing={0}>
                                     <Grid item xs={12} sm={8} >
@@ -205,12 +205,12 @@ function DashboardVisuals(props) {
                                 </Grid> 
                                 :
                                 <div className='dash-left'>
-                                    <p>{user.airTMNum}</p>
+                                    <p>{user.reserveUsername}</p>
                                 </div>
                             }
                         </Grid> */}
 
-                        {(!user?.zelleInfo?.email && !user.airTMNum)
+                        {(!user?.zelleInfo?.email && !user.reserveUsername)
                             ?
                             <Grid item xs={12} sm={12} className='details-missing'>
                                 {EN
@@ -219,7 +219,7 @@ function DashboardVisuals(props) {
                                 :
                                 "Parece que nos faltan algunos detalles de tu cuenta. Haz click en el botón de abajo para editar tu perfil."}
                             </Grid>
-                            : (user?.zelleInfo?.email && !user.airTMNum)
+                            : (user?.zelleInfo?.email && !user.reserveUsername)
                                 ?
                                 <>
                                     <Grid item xs={12} sm={6} id='zelle'>
@@ -262,7 +262,7 @@ function DashboardVisuals(props) {
                                         </Grid>
                                     </Grid>
 
-                                    <Grid item xs={12} sm={6} id='airTM' className='details-missing'>
+                                    <Grid item xs={12} sm={6} id='reserve' className='details-missing'>
                                     {EN
                                     ?
                                     "Looks like we're missing details from you. Click the button below to edit your profile details."
@@ -270,7 +270,7 @@ function DashboardVisuals(props) {
                                     "Parece que nos faltan algunos detalles de tu cuenta. Haz click en el botón de abajo para editar tu perfil"}
                                     </Grid>
                                 </>
-                                : (!user?.zelleInfo?.email && user.airTMNum)
+                                : (!user?.zelleInfo?.email && user.reserveUsername)
                                     ?
                                     <>
                                         <Grid item xs={12} sm={6} id='zelle' className='details-missing'>
@@ -281,12 +281,12 @@ function DashboardVisuals(props) {
                                             "Parece que nos faltan algunos detalles de tu cuenta. Haz click en el botón de abajo para editar tu perfil"}
                                         </Grid>
 
-                                        <Grid item xs={12} sm={6} id='airTM'>
+                                        <Grid item xs={12} sm={6} id='reserve'>
                                             <div className='dash-left'>
                                                 <p id='dash-stats'>{EN ? "Reserve account:" : "Usuario de Reserve"}</p>
                                             </div>
                                             <div className='dash-left'>
-                                                <p>{user.airTMNum}</p>
+                                                <p>{user.reserveUsername}</p>
                                             </div>
                                         </Grid>
                                     </>
@@ -332,12 +332,12 @@ function DashboardVisuals(props) {
                                             </Grid>
                                         </Grid>
 
-                                        <Grid item xs={12} sm={6} id='airTM'>
+                                        <Grid item xs={12} sm={6} id='reserve'>
                                             <div className='dash-left'>
-                                                <p id='dash-stats'>AirTM email:</p>
+                                                <p id='dash-stats'>Reserve Username:</p>
                                             </div>
                                             <div className='dash-left'>
-                                                <p>{user.airTMNum}</p>
+                                                <p>{user.reserveUsername}</p>
                                             </div>
                                         </Grid>
                                     </>
