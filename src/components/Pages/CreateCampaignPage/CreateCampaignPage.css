@@ -208,3 +208,20 @@ aside h6{
         padding: 5%;
     }
 }
+
+.category-label
+{
+    color: #eb913b;
+}
+
+.question-label
+{
+    color: #eb913b;
+    margin-left: 1%;
+}
+
+.img-label
+{
+    color: #0e325e;
+    font-size: xx-large;
+}

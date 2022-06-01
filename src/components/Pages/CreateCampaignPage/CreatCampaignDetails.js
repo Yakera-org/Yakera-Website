@@ -360,7 +360,7 @@ function CreateCampaignDetails(props) {
             <Form container='true' spacing={3} style={{ alignItems:'flex-start' }}>
                 <FormGroup item='true' xs={12} sm={6}>
                     <FormLabel>
-                        {EN ? 'Campaign Category' : 'Categoría de campaña'}
+                        <div className="category-label">{EN ? 'Campaign Category' : 'Categoría de campaña'}</div>
                     </FormLabel>
                     {[EN ? 'Healthcare' : 'Salud',
                      EN ? 'Education' : 'Educación',
@@ -380,7 +380,7 @@ function CreateCampaignDetails(props) {
                     ))}
                 </FormGroup>
                 <FormGroup>
-                    <FormLabel>{EN ? 'Name of your Campaign' : 'Título de su campaña'}</FormLabel>
+                    <FormLabel className="question-label">{EN ? 'Name of your Campaign' : 'Título de su campaña'}</FormLabel>
                     <FormControl
                         type='campaign-name'
                         as='input'
@@ -398,7 +398,7 @@ function CreateCampaignDetails(props) {
                     <div className="invalid-feedback">{props.data.errors.campaignname}</div>
                 </FormGroup>
                 <FormGroup>
-                    <FormLabel>{EN ? 'Amount (in USD)' : 'Cantidad ($USD)'}</FormLabel>
+                    <FormLabel className="question-label">{EN ? 'Amount (in USD)' : 'Cantidad ($USD)'}</FormLabel>
                     <FormControl
                         type='number'
                         as='input'
@@ -416,7 +416,7 @@ function CreateCampaignDetails(props) {
                     <div className="invalid-feedback">{props.data.errors.amount}</div>
                 </FormGroup>
                 <FormGroup>
-                    <FormLabel>{EN ? 'Short Description' : 'Breve descripción'}</FormLabel>
+                    <FormLabel className="question-label">{EN ? 'Short Description' : 'Breve descripción'}</FormLabel>
                     <FormControl
                         type='description'
                         as="input"
@@ -433,7 +433,7 @@ function CreateCampaignDetails(props) {
                     <div className="invalid-feedback">{props.data.errors.description}</div>
                 </FormGroup>
                 <FormGroup>
-                    <FormLabel>
+                    <FormLabel className="question-label">
                         {EN ? 'Your story (we recommend referencing your personal story, the need behind your campaign, why you are opening a campaign, how will you spend the money, and what will the support of people in Yakera allow you to do). Usually successful campaigns have between 3-6 paragraphs.' : 'Su historia (recomendamos se refiera a su propia historia, las necesidades que quiere cubrir con los fondos, por qué está abriendo una campaña, cómo va a gastar los fondos, y qué podrá hacer con los fondos). Escriba de 2 a 6 párrafos añadiendo detalles.'}
                     </FormLabel>
                     <FormControl
@@ -454,7 +454,7 @@ function CreateCampaignDetails(props) {
                     <div className="invalid-feedback">{props.data.errors.story}</div>
                 </FormGroup>
                 <FormGroup>
-                    <FormLabel>{EN ? 'Itemized budget for each item you will purchase with the donations.' : 'Presupuesto específico de cada cosa que comprará con los fondos.'}</FormLabel>
+                    <FormLabel className="question-label">{EN ? 'Itemized budget for each item you will purchase with the donations.' : 'Presupuesto específico de cada cosa que comprará con los fondos.'}</FormLabel>
                     <FormControl
                         type='itemized-budget'
                         as='textarea'
@@ -473,7 +473,7 @@ function CreateCampaignDetails(props) {
                 </FormGroup>
 
                 <FormGroup className="mb-3">
-                    <FormLabel>{EN ? 'Main Campaign picture' : 'Imagen principal de la campaña'}</FormLabel>
+                    <FormLabel><div className="img-label">{EN ? 'Main Campaign picture' : 'Imagen principal de la campaña'}</div></FormLabel>
                     <div className="pictures-info">
                         {EN ? 'Your title picture that represents your campaign.' : 'Imagen que representará su campaña.'}
                         {
@@ -539,76 +539,7 @@ function CreateCampaignDetails(props) {
                 </FormGroup>
 
                 <FormGroup className="mb-3">
-                    <FormLabel>{EN ? 'Documents' : 'Documentos '}</FormLabel>
-                    <div className="pictures-info">
-                        {EN ? 'Documents that support your ask (i.e medical orders or notes, tuition receipt, pictures of your small business, budget, etc.)' : 'Documentos que apoyen su aplicación (historia médica, récipe médico, fotos de su negocio pequeño, etc.)'}  <br />
-                        {EN ? 'These docuemnts are only seen by Yakera to validate your campaign. They will not be posted on the site.' : 'Solomente Yakera ve estos documentos para validar su campaña. No se publicarán en el sitio.'}
-                        {
-                            EN
-                        ?
-                            <div><br />Requirements:
-                                <ul>
-                                    <li>Maximum of 2 pictures</li>
-                                    <li>Minimum of 1 picture</li>
-                                    <li>Maximum size: 10 MB</li>
-                                </ul>
-                            </div>
-                        :
-                            <div><br />Requisitos:
-                                <ul>
-                                    <li>Máximo de 2 imágenes</li>
-                                    <li>Mínimo de 1 imagen</li>
-                                    <li>Tamaño máximo: 10 MB</li>
-                                </ul>
-                            </div>
-                        }                              
-                    </div>
-                    <DroppingZone  
-                        campaignFiles= {campaignFiles} 
-                        mainFile= {mainFile} 
-                        documentFiles= {documentFiles} 
-                        file = {documentFiles} 
-                        tag = {"document"} 
-                        EN = {EN}
-                        setFile={setDocumentFiles} 
-                        setLoading={setDocLoading} 
-                        onUpload={onUpload} 
-                        numberOfFilesLimit={2} 
-                        totalSizeLimit={10000000} 
-                    />
-
-                    { props.data.errors.camPics
-                    ?
-                        <Alert color="danger" id='alert'>
-                            {props.data.errors.camPics}
-                        </Alert>
-                    :
-                        ''
-                    }
-                    
-                    <aside>
-                        <h6>{EN ? "Files ready for Upload:" : "Archivos:" }</h6>
-                        <ul>{documentThumbs}</ul>
-                        {
-                            documentFiles.length === 0
-                            ?
-                            <h6 style={{fontSize: "15px", color: "grey", fontFamily:'Intro-Light'}}>{EN ? "Please select files to upload!" : "¡Seleccione los archivos para cargar!" }</h6>
-                            :
-                            ""
-                        }
-                        <div className="sweet-loading">
-                            <div className='loader-wrapper'>
-                                <HashLoader
-                                    color={"#ea8737"}
-                                    loading={docLoading}
-                                />
-                            </div>
-                        </div> 
-                    </aside>
-                </FormGroup>
-
-                <FormGroup className="mb-3">
-                    <FormLabel>{EN ? 'Campaign pictures' : 'Otras fotos de la campaña'}</FormLabel>
+                    <FormLabel><div className="img-label">{EN ? 'Campaign pictures' : 'Otras fotos de la campaña'}</div></FormLabel>
                     <div className="pictures-info">
                         {EN ? 'Pictures that support your campaign. These pictures will get uploaded to the site.' : 'Imágenes que apoyan su campaña. Estas imágenes se subirán al sitio.'}
                         
@@ -674,6 +605,75 @@ function CreateCampaignDetails(props) {
                             </div>
                         </div> 
                     </aside> 
+                </FormGroup>
+
+                <FormGroup className="mb-3">
+                    <FormLabel><div className="img-label">{EN ? 'Documents' : 'Documentos '}</div></FormLabel>
+                    <div className="pictures-info">
+                        {EN ? 'Documents that support your ask (i.e medical orders or notes, tuition receipt, pictures of your small business, budget, etc.)' : 'Documentos que apoyen su aplicación (historia médica, récipe médico, fotos de su negocio pequeño, etc.)'}  <br />
+                        {EN ? 'These docuemnts are only seen by Yakera to validate your campaign. They will not be posted on the site.' : 'Solomente Yakera ve estos documentos para validar su campaña. No se publicarán en el sitio.'}
+                        {
+                            EN
+                        ?
+                            <div><br />Requirements:
+                                <ul>
+                                    <li>Maximum of 2 pictures</li>
+                                    <li>Minimum of 1 picture</li>
+                                    <li>Maximum size: 10 MB</li>
+                                </ul>
+                            </div>
+                        :
+                            <div><br />Requisitos:
+                                <ul>
+                                    <li>Máximo de 2 imágenes</li>
+                                    <li>Mínimo de 1 imagen</li>
+                                    <li>Tamaño máximo: 10 MB</li>
+                                </ul>
+                            </div>
+                        }                              
+                    </div>
+                    <DroppingZone  
+                        campaignFiles= {campaignFiles} 
+                        mainFile= {mainFile} 
+                        documentFiles= {documentFiles} 
+                        file = {documentFiles} 
+                        tag = {"document"} 
+                        EN = {EN}
+                        setFile={setDocumentFiles} 
+                        setLoading={setDocLoading} 
+                        onUpload={onUpload} 
+                        numberOfFilesLimit={2} 
+                        totalSizeLimit={10000000} 
+                    />
+
+                    { props.data.errors.camPics
+                    ?
+                        <Alert color="danger" id='alert'>
+                            {props.data.errors.camPics}
+                        </Alert>
+                    :
+                        ''
+                    }
+                    
+                    <aside>
+                        <h6>{EN ? "Files ready for Upload:" : "Archivos:" }</h6>
+                        <ul>{documentThumbs}</ul>
+                        {
+                            documentFiles.length === 0
+                            ?
+                            <h6 style={{fontSize: "15px", color: "grey", fontFamily:'Intro-Light'}}>{EN ? "Please select files to upload!" : "¡Seleccione los archivos para cargar!" }</h6>
+                            :
+                            ""
+                        }
+                        <div className="sweet-loading">
+                            <div className='loader-wrapper'>
+                                <HashLoader
+                                    color={"#ea8737"}
+                                    loading={docLoading}
+                                />
+                            </div>
+                        </div> 
+                    </aside>
                 </FormGroup>
             </Form>
 
