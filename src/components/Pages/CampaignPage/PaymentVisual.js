@@ -8,10 +8,10 @@ import AirTM from './AirTM';
 import LanguageService from '../../../services/language';
 import crypto from 'crypto'
 
-const sign = (string, secret) =>
+const hmacEncryption = (body, secret) =>
   crypto
-    .createHmac('sha256', Buffer.from(secret, 'utf-8').toString())
-    .update(Buffer.from(string, 'utf-8').toString())
+    .createHmac('sha256', secret)
+    .update(body)
     .digest('hex')
 
 class PaymentVisual extends Component {
@@ -121,16 +121,15 @@ class PaymentVisual extends Component {
                 "isAnonymous": this.state.isAnon
             }
             
-            const payload_str = JSON.stringify(payload)
-            const hmac = sign(payload_str, 'test')
+            const encryptedRequestBody = hmacEncryption(JSON.stringify(payload), 'test')
             const options =  { 
                 headers: {
-                    'Yakera-Signature' : hmac
+                    'Yakera-Signature' : encryptedRequestBody
                 }
             }   
             console.log(await api.post(`/campaigns/donate/`, payload, options))
         } catch (err) {
-            console.log(err);
+            console.error(err);
         }
     }
     openThanks(){
