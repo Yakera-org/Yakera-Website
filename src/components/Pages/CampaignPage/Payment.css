@@ -1,0 +1,170 @@
+.details
+{
+    font-size: large;
+    color: gray;
+}
+
+.category
+{
+    font-size: x-large;
+    font-weight: bold;
+    color: #002453;
+    text-align: left;
+    margin-top: 2%;
+    margin-bottom: -5%;
+}
+.category-comment
+{
+    font-size: x-large;
+    font-weight: bold;
+    color: #002453;
+    text-align: left;
+    margin-top: 2%;
+    margin-bottom: -2%;
+}
+
+
+#tip-category
+{
+    margin-top: 10px;
+    margin-bottom: -20px;
+}
+
+.option
+{
+    font-size: large;
+    color: gray;
+    text-align: left;
+    margin-top: 8px;
+    margin-bottom: -8px;
+}
+
+.description
+{
+    font-size: small;
+    color: gray;
+    text-align: left;
+    margin: 0%;
+}
+
+#checkbox-text
+{
+    margin-top: -26px;
+    white-space: nowrap;
+}
+
+.checkbox-button
+{
+    cursor: pointer;
+    margin-bottom: -5px;
+}
+
+.checkbox-square
+{
+    opacity: 0;
+    background-color: transparent;
+}
+
+.checkbox-button-control
+{
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    border-radius: 4px;
+    color: #eb913b;
+    border: 1px solid gray;
+    transform: scale(0.75);
+    margin-top: 5px;
+    margin-left: -23px;
+}
+
+.checkbox-square:checked + .checkbox-button-control:after
+{
+    content: "";
+    display: block;
+    top: 5px;
+    left: 5px;
+    width: 12px;
+    height: 12px;
+    background-color: #eb913b;
+    border-radius: 4px;
+    position: absolute;
+}
+
+#donation-input,
+#tip-input
+{
+    color: #eb913b;
+    font-size: xx-large;
+    font-weight: bold;
+    height: 60px;
+    text-align: right;
+}
+
+#donation-input::placeholder,
+#tip-input::placeholder
+{
+    color: #eb913b;
+}
+
+#donation-input:-ms-input-placeholder,
+#tip-input:-ms-input-placeholder
+{
+    color: #eb913b;
+}
+
+#donation-input::-ms-input-placeholder,
+#tip-input::-ms-input-placeholder
+{
+    color: #eb913b;
+}
+
+.money-sign
+{
+    color: #eb913b;
+    font-size: xx-large;
+    font-weight: bold;
+    text-align: left;
+    margin: 35px 0px -64px 30px;
+}
+
+.align-left
+{
+    text-align: left;
+}
+
+.donation-header
+{
+    font-weight: bold;
+}
+
+.donation-text
+{
+    color: #ea8737;
+}
+
+.donation-amount
+{
+    font-weight: bold;
+    color: #ea8737;
+}
+
+#payment-method-details
+{
+    margin-bottom: 2%;
+}
+
+.payment-data-input::placeholder
+{
+    color: lightgray;
+}
+
+.payment-data-input:-ms-input-placeholder
+{
+    color: lightgray;
+}
+
+.payment-data-input::-ms-input-placeholder
+{
+    color: lightgray;
+}

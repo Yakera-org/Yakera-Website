@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
+import { Grid } from '@material-ui/core';
 import PaymentAuth from './PaymentAuth';
 import PaymentDetails from './PaymentDetails';
 import Loader from "react-loader-spinner";
 import api from "../../../services/api";
 import ThanksCard from './thanksCard';
-import AirTM from './AirTM';
 import LanguageService from '../../../services/language';
+import "./Payment.css";
 import crypto from 'crypto'
 
 const hmacEncryption = (body, secret) =>
@@ -140,11 +141,6 @@ class PaymentVisual extends Component {
     closeThanks(){
         window.location.reload(false);
     }
-    onAirTM(val, title){
-        AirTM(val, title)
-        //this.switchLoader(true)
-    }
-
 
     render() {
         const EN = this.state.EN
@@ -152,13 +148,12 @@ class PaymentVisual extends Component {
             <div key={this.props.presetAmount} className="payment-visual" id="donateRef">
                 <ThanksCard
                     EN={EN}
-                    //open = {true}
                     open={this.state.thanksOpen}
-
                     amount={Number(this.state.amount)}
                     title={this.props.title}
                     onClose={this.closeThanks.bind(this)}
                     />
+                <Grid container style={{alignContent:'center', alignItems:'flex-start'}}>
                 <div className="payment-card-sec">
                     <div className='loader'>
                         <Loader
@@ -169,9 +164,9 @@ class PaymentVisual extends Component {
                             visible={this.state.loading}
                         />
                     </div>
-                <h1 >
-                    {EN ? 'Donate Now' : 'Donar Ahora' }
-                </h1>
+                <h3 className='donation-header'>
+                    {EN ? 'Donate Now!' : '¡Donar Ahora!' }
+                </h3>
                 <hr id='donate-now-hr'/>
 
                     {!this.state.hasDetails
@@ -191,12 +186,11 @@ class PaymentVisual extends Component {
                             EN={EN}
                             language={this.props.language}
                             onClose={this.onClose}
-                            amount={this.state.amount}
+                            amount={parseFloat(this.state.amount)}
                             name={this.state.name}
                             email={this.state.email}
                             isAnon={this.state.isAnon}
                             slug={this.props.slug}
-                            onAirTM={this.onAirTM.bind(this)}
                             tip={this.state.tip}
                             onBack={this.onBack}
                             title={this.props.title}
@@ -212,6 +206,7 @@ class PaymentVisual extends Component {
                         />
                     }
                 </div>
+                </Grid>
             </div>
         );
     }

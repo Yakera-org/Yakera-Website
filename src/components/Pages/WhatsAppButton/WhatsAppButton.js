@@ -32,7 +32,7 @@ function WhatsAppButton(props) {
   }, [targetRef, options])
 
   const contactUs = () => {
-    window.location.href = 'https://chat.whatsapp.com/LcSFQzsohaC1hmlgdbij3D';
+    window.location.href = 'https://wa.link/i9fray';
   }
 
   return (

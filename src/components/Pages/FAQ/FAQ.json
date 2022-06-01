@@ -4,46 +4,50 @@
                 "title": "About Yakera",
                 "questions":[
                     "What do we do?",
-                    "What’s Yakera’s story?",
+                    "What is Yakera’s story?",
                     "How does Yakera work?",
-                    "How much of my donation goes directly to the recipients?",
-                    "What makes Yakera different from other existing crowdfunding platforms?",
-                    "Why cash transfers?"
+                    "How much of my donation will arrive to the organizer of the campaign?",
+                    "What is the difference between Yakera and other platforms?",
+                    "Why direct transfers?",
+                    "Is Yakera a business or a nonprofit organization?"
                 ],
                 "answers":[
-                    "Yakera is an innovative platform that leverages the power of individual stories and human connection to unlock global solidarity. In Yakera, people can open crowdfunding campaigns and receive support directly in their bank accounts through the use of innovative technologies that allow easy international transfers.",
-                    "We were founded by <a href='https://www.linkedin.com/in/raul-romero-martinez/'>Raul Romero</a>, who left Venezuela in 2016. He recruited an international team that is now working 24/7 to bring support and enable meaningful and sustainable humanitarian aid around the world. Read more about us <a href='https://www.xplot.se/news/dare-stories-raul-romero-and-yakera'>here</a>.",
-                    "Yakera channels donations to an e-wallet account of the recipient, powered by <a href='https://www.airtm.com/es/'>Airtm</a>. Recipients can withdraw funds in their bank account in local currency or spend it directly via Airtm’s <a href='https://directory.airtm.com/'>network of local partners<a/>.",
-                    "We are committed to ensuring that 100% of donations goes directly to the recipient. Our operational and transaction costs are covered by our advisory board, your tips to Yakera, and your <a href='http://www.yakera.org/supportus'>direct donations<a/>.",
-                    "Yakera is committed to empowering individuals across the world and unlocking global solidarity. Our features and increased accessibility gives people in Venezuela and Latin American countries the opportunity to create crowdfunding campaigns, but what defines us goes beyond our features. We are building a future where individual agency, empathy, and solidarity are what sustains global humanitarian aid.",
-                    "People know how to solve their own problems better than we do. Individual empowerment is at the forefront of Yakera’s mission. Cash transfers expand agency and make humanitarian aid more accessible and efficient."
+                    "Yakera is an innovative platform that utilizes the power of individual stories and human connection to open the possibilities of global solidarity. With Yakera, the users can open campaigns and receive support directly in their bank accounts through innovative technologies that enable funds to be sent all around the world.",
+                    "Yakera was founded by <a href='https://www.linkedin.com/in/raul-romero-martinez/'>Raul Romero</a>, who left Venezuela in 2016. Since ten, he has recruited an international team that now works 24/7 to bring support and revolutionize the delivery of humanitarian aid around the world. Read more about us <a href='https://www.xplot.se/news/dare-stories-raul-romero-and-yakera'>here</a>.",
+                    "Yakera directs donations to an e-wallet connected to a user account, facilitated by <a href='https://www.reserve.org/es/'>Reserve</a>. Users can transfer funds to a bank account in local currency or pay for services directly through the <a href='https://www.reserve.org/es/'>Reserve</a> platform.",
+                    "We guarantee that 100% of your donation will arrive to the person that created the campaign. Our operating costs are covered by donations made directly to Yakera",
+                    "Yakera is committed to empowering individuals all over the world to open the possibilities of global solidarity. Our services and great accessibility gives people in Venezuela and Latin America the opportunity to create crowdfunding campaigns, but what defines us is more than that. We are constucting a future in which human agency, empathy, and solidarity are components that sustains global humanitarian aid.",
+                    "People know how to solve their problems better than we do. Individual empowerment is a central part of our mission. Direct transfers expand the efficiency and make humanitarian aid more accessible.",
+                    "We are a startup-minded team constructing a non-profit organization."
                 ]
             },
             {
-                "title": "Create a campaign",
+                "title": "Creating a campaign",
                 "questions":[
-                    "Can I make a campaign?",
-                    "How can you receive the funds once your campaign is completed?",
-                    "What should you include in your campaign?"
+                    "Can I create a campaign?",
+                    "What should I include in my campaign?"
                 ],
                 "answers":[
-                    "If you live in Venezuela or Latin America, you need to provide your ID number, your story, a picture, and files or pictures that prove your request.",
-                    "Via Airtm. You will need to open an account, verify your identity, and then you can either spend the money directly or exchange it for other currencies.",
-                    "A story of the issue you have, the causes, what you need money for, and how you would spend the money. Making your campaign more personal and telling your story in detail always helps your cause :)"
+                    "If you live in Venezuela or Latin America and have a goal that needs economic support, yes! You will have to give us your ID number, your story, a photo, and files or photos that support your application to create the campaign.",
+                    "Your story, the causes, why you need the money, and how you will spend the funds. Making a campaign more personal and telling your story in detail always helps :)"
                 ]
             },
             {
-                "title": "Withdrawing Funds",
+                "title": "Withdrawing the funds",
                 "questions":[
-                    "How can I withdraw money from my Yakera campaign?",
-                    "Why do I have trouble accessing the Airtm page?",
-                    "How can you use Airtm?"
+                    "How can I withdraw the funds from my campaign?",
+                    "Where do my raised funds go?",
+                    "What is <a href='https://www.reserve.org/es/'>Reserve</a>?",
+                    "How do I create a Reserve account?",
+                    "How long will it take for the funds to be transferred to my account?"
                 ],
                 "answers":[
-                    "You can visit your profile and follow the steps to withdraw money on your account. Usually it takes us between 1-3 business days to process your request.",
-                    "It's possible, especially on mobile browsers, for Airtm to be blocked. Normally, you can fix this by accessing the page on a desktop computer or on the Airtm app in Android. If you still can´t access Airtm on desktop (or you only have access to a mobile phone), here is an article from Medium (which should not be blocked) explaining how to use a VPN and which ones you could use to access Airtm.        Airtm itself recommends <a href='https://psiphon.ca/es/download.html'>Psiphon<a/> but there are others that work as well: <a href='https://psiphon.ca/es/download.html'>TunnelBear<a/>, <a href='https://www.hotspotshield.com/vpn/'>HotSpot Shield<a/>, <a href='https://speedify.com/'>Speedify<a/>, <a href='https://protonvpn.com/'>ProtonVPN<a/>, <a href='https://hide.me/es/'>Hide.me<a/>, <a href='https://www.privatetunnel.com/'>PrivateTunnel<a/>, <a href='https://play.google.com/store/apps/details?id=com.savagevpn.android&hl=es_MX'>SavageVPN<a/>, <a href='https://www.surfeasy.com/lang/es'>SurfEasy<a/>, <a href='https://windscribe.com/'>Windsribe<a/>, and <a href='http://hola.org/'>HolaVPN<a/>.",
-                    "Airtm has quite a <a href='https://www.youtube.com/playlist?list=PLsLrldF-2m8Hjv-I0qT9tW49bahAgPEP4'>few tutorials</a> that you can watch to learn more about <a href='https://www.youtube.com/playlist?list=PLsLrldF-2m8Hjv-I0qT9tW49bahAgPEP4'>how to do everything</a> on Airtm!"
-                ]
+                    "To withdraw your funds you should go to your account, enter your campaign, and click the button that says “Withdraw my funds”.",
+                    "After clicking “Withdraw my funds” or “Withdraw campaign,” the Yakera team will work to send all of your raised funds to your Reserve account.",
+                    "Reserve is a digital platform that lets you save, transfer, and buy with a stable currency. Their application works as an e-wallet where you can receive dollars and have the option to exchange them for bolívares, cryptocurrencies, argentine pesos, colombian pesos, or soles if you like.",
+                    "To create a Reserve account, go to the Play Store or Apple Store on your phone, install the application, and register. It’s very easy!",
+                    "After you click “Withdraw my funds” or “Withdraw campaign,” all your raised funds will be transferred to your Reserve account in 24 to 72 hours."
+                    ]
             },
             {
                 "title": "Support Us",
@@ -60,19 +64,19 @@
                 "title": "Sobre Yakera",
                 "questions":[
                     "¿Qué hacemos?",
-                    "¿Qué es la historia de Yakera?",
-                    "¿Cómo funciona Yakera",
-                    "¿Cuánta de mi donación llegará al organizador de la campaña?",
-                    "¿Cómo es Yakera diferente de otras plataformas?",
+                    "¿Cuál es la historia de Yakera?",
+                    "¿Cómo funciona Yakera?",
+                    "¿Cuánto de mi donación llegará al organizador de la campaña?",
+                    "¿Qué diferencia a Yakera de otras plataformas?",
                     "¿Por qué transferencias directas?",
-                    "¿Yakera es un negocio u organización sin fines de lucro?"
+                    "¿Yakera es un negocio o una organización sin fines de lucro?"
                 ],
                 "answers":[
                     "Yakera es una plataforma innovadora que utiliza el poder de las historias de individuos y la conexión humana para abrir las posibilidades de la solidaridad global. Con Yakera, los usuarios pueden abrir campañas y recibir apoyo directamente a sus cuentas de banco a través de tecnologías innovadoras que permiten el envío de fondos por todo el mundo.",
-                    "Fuimos fundado por <a href='https://www.linkedin.com/in/raul-romero-martinez/'>Raul Romero</a>               quien dejó Venezuela en 2016. Desde entonces, ha reclutado un equipo internacional que ahora trabaja 24/7 para traer apoyo y revolucionar el envío de ayuda humanitaria en el mundo. Lea más sobre nosotros <a href='https://www.xplot.se/news/dare-stories-raul-romero-and-yakera'>aqui</a>",
-                    "Yakera dirige donaciones a una e-billetera conectado a la cuenta del usuario, facilitado por Airtm. Usuarios pueden sacar los fondos a una cuenta bancaria en la moneda local o gastarlos directamente a través del red de organizaciones asociadas con Airtm.",
-                    "Nos aseguramos que el 100% de tu donación llegue a la persona que creó la campaña. Nuestros costos de operación son cubiertos por las donaciones hechas a Yakera.",
-                    "Yakera se compromete a empoderar a individuos por todo el mundo y a abrir las posibilidades de la solidaridad global. Nuestros servicios y gran accesibilidad le dan a las personas en Venezuela y Latinoamérica la oportunidad de crear campañas de crowdfunding, pero lo que nos define va más allá. Estamos construyendo un futuro en el cual la agencia humana, la empatía, y la solidaridad sean los componentes que sostienen la ayuda humanitaria global.",
+                    "Yakera fue fundada por <a href='https://www.linkedin.com/in/raul-romero-martinez/'>Raul Romero</a> quien dejó Venezuela en 2016. Desde entonces, ha reclutado un equipo internacional que ahora trabaja 24/7 para traer apoyo y revolucionar el envío de ayuda humanitaria en el mundo. Lea más sobre nosotros <a href='https://www.xplot.se/news/dare-stories-raul-romero-and-yakera'>aqui</a>",
+                    "Yakera dirige donaciones a una billetera digital conectada a la cuenta del usuario, facilitada por <a href='https://www.reserve.org/es/'>Reserve</a>. Los usuarios pueden transferir los fondos a una cuenta bancaria en la moneda local o pagar servicios directamente a través de la plataforma de <a href='https://www.reserve.org/es/'>Reserve</a>.",
+                    "Nos aseguramos de que el 100% de tu donación llegue a la persona que creó la campaña. Nuestros costos de operación son cubiertos por las donaciones hechas a Yakera directamente.",
+                    "Yakera se compromete a empoderar a individuos por todo el mundo y a abrir las posibilidades de la solidaridad global. Nuestros servicios y gran accesibilidad le dan a las personas en Venezuela y Latinoamérica la oportunidad de crear campañas de recaudación de fondos, pero lo que nos define va más allá. Estamos construyendo un futuro en el cual la agencia humana, la empatía, y la solidaridad sean los componentes que sostienen la ayuda humanitaria global.",
                     "Las personas saben cómo resolver sus propios problemas mejor que nosotros. El empoderamiento individual es una parte central de nuestra misión. Las transferencias directas expanden la eficiencia y hacen la ayuda humanitaria más accesible y eficiente.",
                     "Somos un equipo con mentalidad de start-up construyendo una organización sin fines de lucro."
                 ]
@@ -81,26 +85,28 @@
                 "title": "Crear una campaña",
                 "questions":[
                     "¿Yo puedo crear una campaña?",
-                    "¿Cómo sacar los fondos de una campaña?",
-                    "¿Qué debe incluir en la campaña?"
+                    "¿Qué debe incluir en mi campaña?"
                 ],
                 "answers":[
-                    "Si usted vive en Venezuela o Latinoamérica, tendrá que proveer el número de su cédula de identidad, su historia, una foto, y archivos o fotos que sostienen su aplicación para crear la campaña.",
-                    "A través de Airtm. Tendrá que abrir una cuenta, verificar su identidad, y podrá gastar los fondos directamente o cambiarlos a otras monedas.",
-                    "Una historia de su problema, las causas, para qué necesita el dinero, y cómo gastaría los fondos. Haciendo la campaña más personal y contando la historia con detalle siempre ayuda :)"
+                    "Si vives en Venezuela o Latinoamérica, y tienes una meta por la que necesitas apoyo económico, ¡Claro que puedes!. Tendrás que proveernos el número de tu cédula de identidad, tu historia, una foto, y archivos o fotos que sostengan tu aplicación para crear la campaña.",
+                    "Tu historia, las causas, para qué necesita el dinero, y cómo gastarías los fondos. Haciendo la campaña más personal y contando la historia con detalle siempre ayuda :)"
                 ]
             },
             {
-                "title": "Sacando Los Fondos",
+                "title": "Retirando los fondos",
                 "questions":[
                     "¿Cómo puedo sacar los fondos de mi campaña?",
-                    "¿Por qué tengo problemas de acceso a Airtm?",
-                    "¿Qué más se puede hacer con Airtm?"
+                    "¿A dónde van mis fondos recaudados?",
+                    "¿Qué es Reserve?",
+                    "¿Cómo me creo una cuenta en Reserve?",
+                    "¿En cuánto tiempo los fondos son transferidos a mi cuenta?"
                 ],
                 "answers":[
-                    "Usted puede visitar su perfil y seguir los pasos para sacar el dinero a su cuenta. Típicamente las transferencias se procesan en 1-3 días.",
-                    "Es posible, especialmente con navegadores móviles, que Airtm esté bloqueado. Típicamente se puede resolver esto por acceder a la página desde una computadora de escritorio o por la aplicación de Airtm en Android. Si todavía no se puede acceder a Airtm (o si usted sólo tenga acceso a una versión móvil), aquí está un artículo de Medium (que no debe estar bloqueado) que explica cómo usar un VPN y cuáles podría usar para acceder a Airtm. ",
-                    " Airtm ofrece muchas lecciones que usted puede mirar para aprender más de los servicios que ofrece Airtm."
+                    "Para retirar tus fondos debes dirigirte a tu cuenta, ingresar a tu campaña y dar click en “Retirar mis fondos”.",
+                    "Una vez hayas hecho click en “Retirar mis fondos” o en “Retirar campaña”, el equipo de Yakera trabajará en enviar todo tu dinero recaudado a tu cuenta de Reserve.",
+                    "Reserve es una plataforma digital que te permite ahorrar, transferir y comprar en una moneda estable. Su aplicación funciona como una billetera digital en donde podrás recibir dólares y tendrás la opción de cambiarlos a bolívares, criptomonedas, pesos argentinos, pesos colombianos o soles si así lo deseas.",
+                    "Para crearte una cuenta de Reserve dirígete a la Play Store o Apple Store de tu celular, instala su aplicación y regístrate. ¡Es muy fácil!",
+                    "Una vez hayas hecho click en “Retirar mis fondos” o en “Retirar campaña”, todo tu dinero recaudado será transferido a tu cuenta de Reserve en un período de 24 a 72 horas."
                 ]
             },
             {

@@ -135,7 +135,7 @@ const EditPageVisual = ({
                             <>
                                 <Grid container spacing={0} className='dash-left'>
                                     <Grid item>
-                                        <p id='dash-stats'>{EN ? 'Accepting payment?:' : '¿Aceptando pago?:'}</p>
+                                        <p id='dash-stats'>{EN ? 'Accepting Zelle payment?:' : '¿Aceptando Zelle pago?:'}</p>
                                     </Grid>
                                 </Grid>
                                 <Grid container spacing={0}>
