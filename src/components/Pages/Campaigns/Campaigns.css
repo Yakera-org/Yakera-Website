@@ -521,10 +521,13 @@
         padding: 5%;
         margin-bottom: -50px;
     }
+    .filter-section .category-filter .off{
+        margin: 10px;
+    }
     .cam-container{
-        padding: 0 50px;
+        padding: 0 30px;
     }
     .cam-card{
-        padding: 30px;
+        padding: 20px;
     }
 }

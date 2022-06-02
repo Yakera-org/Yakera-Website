@@ -51,9 +51,6 @@ function Author() {
                                 <button id='link' name='contact' onClick={EN ? sendMail : contactUs}>{EN ? 'Contact Us' : 'Contáctanos'}</button>
                             </Grid>
                             <Grid item xs={3} sm={3} >
-                                <button id='link' name='support' onClick={onLinkClick}>{EN ? 'Support Us' : 'Apóyanos'}</button>
-                            </Grid>
-                            <Grid item xs={3} sm={3} >
                                 <button id='link' name='about' onClick={onLinkClick}>{EN ? 'About Us' : 'Sobre nosotros'}</button>
                             </Grid>
                             <Grid item xs={3} sm={3} >

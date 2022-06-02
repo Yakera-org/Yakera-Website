@@ -64,20 +64,20 @@ function CampaignsVisuals(props) {
 
                 <Grid container spacing={0} className="filters" style={{ alignItems: 'flex-start' }}>
                     <Grid item xs={4} sm={4} id="quant-filter" name="date" onClick={props.setFilter} className={props.currentFilter ==="date" ? "on" : "off"}>
-                        {EN ? 'Date' : 'Date'} &nbsp; <b style={{color:"#ea8737"}}>{props.dateOrder ? (props.dateOrder === "asc" ? "↑" : "↓" ) : ""}</b> 
+                        {EN ? 'Date' : 'Fecha'} &nbsp; <b style={{color:"#ea8737"}}>{props.dateOrder ? (props.dateOrder === "asc" ? "↑" : "↓" ) : ""}</b> 
                     </Grid>
                     <Grid item xs={4} sm={4} id="quant-filter" onClick={props.setFilter} name="percent" className={props.currentFilter ==="percent" ? "on" : "off"}>
-                        {EN ? 'Percentage' : 'Percentage'}
+                        {EN ? 'Percentage' : 'Porcentaje'}
                     </Grid>
                     <Grid item xs={4} sm={4} id="quant-filter" onClick={props.setFilter} name="raised" className={props.currentFilter ==="raised" ? "on" : "off"}>
-                        {EN ? 'Money raised' : 'Money Raised'}
+                        {EN ? 'Money raised' : 'Dinero recaudado'}
                     </Grid>
                 </Grid>
 
                 <Grid container spacing={0} className="category-filter" style={{ alignItems: 'flex-start' }}>
                     {["healthcare", "education", "small_business", "nutrition"].map((cat,i) => {
                         return(
-                            <Grid key={i} item xs={3} sm={3} className="cat-filter">
+                            <Grid key={i} item xs={6} sm={3} className="cat-filter">
                                 <button onClick={props.setCategory} name={cat} id={cat} className={props.currentCategory===cat?`on-${cat}`:"off"}>
                                     {EN ? nameDictEN[cat] : nameDictSP[cat]}
                                 </button>
