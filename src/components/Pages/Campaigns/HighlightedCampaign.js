@@ -26,7 +26,7 @@ function HighlightedCampaign(props) {
                     <div className='bubble-text'>
                         <div className='bubble-quote'>
                             <img alt='donate-figure' src="https://assets.yakera.org/yakera/profile-icon-1.webp" />
-                            <b> {hasLoaded ? campaign?.donations[2]?.name : "..."} </b> <br />
+                            <b> {hasLoaded ? campaign?.donations[2]?.name.split(" ")[0] : "..."} </b> <br />
                             { hasLoaded ? campaign?.donations[2]?.comment  : "..."}
                         </div>
                         <div className='bubble-digit'>
