@@ -3,7 +3,6 @@ import classnames from 'classnames';
 import { Grid } from '@material-ui/core';
 import { validateFields } from '../Register/Validation';
 import ConsentCard from '../CampaignPage/consentCard';
-import validator from 'validator';
 
 class PaymentDetails extends PureComponent {
     constructor(props) {
@@ -15,8 +14,6 @@ class PaymentDetails extends PureComponent {
             age:true,
             consent:true,
             anon:false,
-            noTip: false,
-            yesTip: true,
             amount: {
                 value: this.props.presetAmount ? this.props.presetAmount : '',
                 validateOnChange: false,
@@ -54,8 +51,11 @@ class PaymentDetails extends PureComponent {
     }
 
     handleChange(validationFunc, evt) {
-        const fieldVal = evt.target.value;
         const field = evt.target.name;
+        let fieldVal = evt.target.value;
+        if(field === "amount" || field === "tip"){
+            fieldVal = fieldVal<0 ? 0 : fieldVal
+        }
         this.setState(state => ({
           [field]: {
             ...state[field],
@@ -101,22 +101,18 @@ class PaymentDetails extends PureComponent {
     }
 
     onContinue(){
-        let isValidated = this.validateData()
-        let tip = this.state.tip.value
-        if(!validator.isNumeric(tip)){
-            tip = 0
-        }
-        if(isValidated){
-            this.props.onContinue(this.state.amount.value, this.state.email.value, this.state.name.value, tip, this.state.comment.value, this.state.anon);
+        if(this.validateData()){
+            this.props.onContinue(this.state.amount.value, this.state.email.value, this.state.name.value, this.state.tip.value, this.state.comment.value, this.state.anon);
         }
     }
 
     validateData(){
         let emptyWarning = this.props.EN ? 'This field cannot be empty': 'Este campo no puede estar vacío';
-        let amountError, emailError, nameError, tipError;
+        let amountError, emailError, nameError, tipError, commentError;
 
         let isValid = false;
     
+        commentError = validateFields.validateName(this.state.comment.value + '')
         
         if(!this.state.amount.value){
             amountError = emptyWarning;
@@ -134,15 +130,10 @@ class PaymentDetails extends PureComponent {
             nameError = validateFields.validateName(this.state.name.value)
         }
 
-        if(this.state.yesTip){
-            if(this.state.tip.value)
-            {
-                tipError = validateFields.validateNumberIncludeZero(this.state.tip.value + '');
-            }
-            else
-            {
-                tipError = false;
-            }
+        if(!this.state.tip.value){
+            tipError = emptyWarning
+        }else{
+            tipError = validateFields.validateNumberIncludeZero(this.state.tip.value + '');
         }
         
         this.setState(state => ({
@@ -161,6 +152,10 @@ class PaymentDetails extends PureComponent {
             tip:{
                 ...state['tip'],
                 error: tipError
+            },
+            comment:{
+                ...state['comment'],
+                error: commentError
             }
         }))
 
@@ -302,9 +297,9 @@ class PaymentDetails extends PureComponent {
                         )}
                         onChange={evt =>
                             this.handleChange(validateFields.validateName, evt)
-                        }                                  
-                        
+                        }
                 />
+                <div className='error-msg'>{comment.error}</div>
                 <div className='description'>
                     {
                      EN 
@@ -335,6 +330,7 @@ class PaymentDetails extends PureComponent {
                                 this.handleChange(validateFields.validateNumber, evt)
                         }
                 />
+                <div className='error-msg'>{tip.error}</div>
 
                 <div className='description'>
                     {
@@ -345,44 +341,6 @@ class PaymentDetails extends PureComponent {
                      'Dejando propina nos ayudas a mantener y traer para ti nuevas funciones y servicios. ¡Gracias!'
                     }
                 </div>
-                
-                {/*
-                <input
-                    name="consent"
-                    type="checkbox"
-                    onChange={this.onConsentCheck}
-                    id="check-consent"            
-                    style={{ marginBottom:'0px', marginTop:'0px', width:'15px', float:'left', clear:'both'}}                        
-                    className={classnames(
-                        'form-control'
-                        )}
-                />  
-                <div className="check-text" style={{marginTop:'30px'}}>
-                        {EN ? 'I consent to the' : 'Asiento a la'}
-                    <button
-                        id="privacy-button" 
-                        onClick={this.onPrivacy}
-                        >
-                        {EN ? 'privacy form *' : 'forma de privacidad *'}
-                    </button>  
-                </div>
-
-                <input
-                    name="age"
-                    type="checkbox"
-                    onChange={this.onAgeCheck}
-                    style={{ marginBottom:'5px', marginTop:'-15px', width:'15px', float:'left', clear:'both'}}
-                    className={classnames(
-                        'form-control'
-                        )}
-                />
-                <div className="check-text" style={{marginTop:'0px'}} >
-                    {EN ? 'I confirm to be 18 or over *' : 'Tengo más de 18 años de edad *'}   
-                </div>
-
-                <div className='error-msg' style={{marginTop:'-20px', textAlign:'left', marginLeft:'20px'}}>{this.state.checkError}</div>
-                <br />
-                */}
 
                 <button
                     type="submit"
