@@ -14,7 +14,7 @@ function HighlightedCampaign(props) {
                             EN ? "Campaign of the week": "Campaign of the week"
                         }
                     </h2>
-                    <img alt='donate-figure' src={hasLoaded ? campaign?.mainPicture?.url : ""} />
+                    <img alt='donate-figure' src={hasLoaded ? campaign?.mainPicture?.url : ""} onClick={() => window.location = `/campaign/${hasLoaded ? campaign?.slug : ""}` }/>
                 </Grid>
 
                 <Grid item xs={6} sm={6} className='mid-content'>

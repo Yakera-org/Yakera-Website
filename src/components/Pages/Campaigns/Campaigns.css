@@ -26,6 +26,9 @@
     border-radius: 5px;
     box-shadow: 15px 15px 1px rgb(223, 223, 223);
 }
+.grid-header .header-mid-img img:hover{
+    cursor: pointer;
+}
 .grid-header .mid-content{
     padding: 0%;
     padding-top: 2%;
