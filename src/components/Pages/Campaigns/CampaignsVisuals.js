@@ -65,7 +65,7 @@ function CampaignsVisuals(props) {
 
             <div className="filter-section">
                 <h2>
-                    {EN ? 'Find a campaign.' : 'Find a campaign.'}
+                    {EN ? 'Find a campaign.' : 'Buscar una campaña.'}
                 </h2>
 
                 <SearchBar 
@@ -104,7 +104,7 @@ function CampaignsVisuals(props) {
                     props.currentFilter || props.currentCategory || props.currentSearchQuery
                     ?
                     <button onClick={props.setFilter} name="reset" className="reset-filter">
-                        Reset Filters
+                        {EN ? "Reset Filters" : "Restablecer filtros"}
                     </button>
                     :
                     ""
