@@ -55,6 +55,7 @@ class PaymentDetails extends PureComponent {
         let fieldVal = evt.target.value;
         if(field === "amount" || field === "tip"){
             fieldVal = fieldVal<0 ? 0 : fieldVal
+            fieldVal = fieldVal==="" ? 0 : fieldVal
         }
         this.setState(state => ({
           [field]: {
@@ -108,11 +109,10 @@ class PaymentDetails extends PureComponent {
 
     validateData(){
         let emptyWarning = this.props.EN ? 'This field cannot be empty': 'Este campo no puede estar vacío';
-        let amountError, emailError, nameError, tipError, commentError;
+        let amountError, emailError, nameError, tipError;
 
         let isValid = false;
-    
-        commentError = validateFields.validateName(this.state.comment.value + '')
+        tipError = validateFields.validateNumberIncludeZero(this.state.tip.value + '');
         
         if(!this.state.amount.value){
             amountError = emptyWarning;
@@ -129,13 +129,8 @@ class PaymentDetails extends PureComponent {
         }else{
             nameError = validateFields.validateName(this.state.name.value)
         }
-
-        if(!this.state.tip.value){
-            tipError = emptyWarning
-        }else{
-            tipError = validateFields.validateNumberIncludeZero(this.state.tip.value + '');
-        }
         
+
         this.setState(state => ({
             amount:{
                 ...state['amount'],
@@ -152,10 +147,6 @@ class PaymentDetails extends PureComponent {
             tip:{
                 ...state['tip'],
                 error: tipError
-            },
-            comment:{
-                ...state['comment'],
-                error: commentError
             }
         }))
 
@@ -299,7 +290,6 @@ class PaymentDetails extends PureComponent {
                             this.handleChange(validateFields.validateName, evt)
                         }
                 />
-                <div className='error-msg'>{comment.error}</div>
                 <div className='description'>
                     {
                      EN 
