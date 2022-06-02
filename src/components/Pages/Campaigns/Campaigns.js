@@ -38,6 +38,14 @@ function Campaigns() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
+    async function sendFilterNameToBackend(name){
+        try {
+            await api.get(`/track?path=camaignFilter/${name}`);
+        } catch (err) {
+            console.log('Error. ' + err)
+        }
+    }
+
     async function LoadCampaignsForPage(args){
         //the role of this function is to assign the arguments for correct use in the backend call
         const _args = assignArgs(args)
@@ -123,11 +131,14 @@ function Campaigns() {
     }
 
     async function setCategory(e){
-        var isSameCat = e.target.name === currentCategory // true if same
-        var newCategory = isSameCat ? "" : e.target.name //turn "off" category if selected again
+        const name = e.target.name
+        var isSameCat = name === currentCategory // true if same
+        var newCategory = isSameCat ? "" : name //turn "off" category if selected again
         var _currentPage = isSameCat ? currentPage : INITIAL_ARGS.page // go to page 1 if new category
         setCurrentCategory(newCategory)
         setCurrentSearchQuery(INITIAL_ARGS.query)
+
+        await sendFilterNameToBackend(name)
 
         var loadArgs = {
             page: _currentPage,
@@ -138,7 +149,9 @@ function Campaigns() {
     }
 
     async function setFilter(e){
-        var newFilter = getNewFilter(e.target.getAttribute('name'))
+        let name = e.target.getAttribute('name')
+        await sendFilterNameToBackend(name)
+        var newFilter = getNewFilter(name)
         var _dateOrder = getDateOrder(newFilter)
 
         setCurrentSearchQuery(INITIAL_ARGS.query)
