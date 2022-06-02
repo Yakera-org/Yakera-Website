@@ -14,7 +14,7 @@ function HighlightedCampaign(props) {
                             EN ? "Campaign of the week": "Campaign of the week"
                         }
                     </h2>
-                    <img alt='donate-figure' src={hasLoaded ? campaign?.mainPicture?.url : ""} onClick={() => window.location = `/campaign/${hasLoaded ? campaign?.slug : ""}` }/>
+                    <img alt='donate-figure' src={hasLoaded ? campaign?.mainPicture?.url : ""} onClick={() => window.location = `/campaign/${hasLoaded ? campaign?.slug : "..."}` }/>
                 </Grid>
 
                 <Grid item xs={6} sm={6} className='mid-content'>
@@ -26,11 +26,11 @@ function HighlightedCampaign(props) {
                     <div className='bubble-text'>
                         <div className='bubble-quote'>
                             <img alt='donate-figure' src="https://assets.yakera.org/yakera/profile-icon-1.webp" />
-                            <b> {hasLoaded ? campaign?.donations[2]?.name : ""} </b> <br />
-                            { hasLoaded ? campaign?.donations[2]?.comment  : ""}
+                            <b> {hasLoaded ? campaign?.donations[2]?.name : "..."} </b> <br />
+                            { hasLoaded ? campaign?.donations[2]?.comment  : "..."}
                         </div>
                         <div className='bubble-digit'>
-                            ${hasLoaded ? campaign?.donations[2]?.amount : ""}
+                            ${hasLoaded ? campaign?.donations[2]?.amount : "..."}
                         </div>
                     </div>
                 </Grid>

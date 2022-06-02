@@ -28,6 +28,7 @@
 }
 .grid-header .header-mid-img img:hover{
     cursor: pointer;
+    box-shadow: 15px 15px 1px rgb(205, 205, 205);
 }
 .grid-header .mid-content{
     padding: 0%;
@@ -294,4 +295,38 @@
     margin: 20px;
     font-family: Intro-Regular-Alt;
     font-size: 18px;
+}
+.bottom-images{
+    background-color: #f0f0f0;
+    text-align: center;
+    padding: 0 10%;
+}
+.bottom-images img{
+    margin: -18% 0 -22% 0;
+    width: 90%;
+    min-width: 100px;
+}
+.bottom-images p{
+    font-family: Intro-Regular-Alt;
+    color: #525252;
+    font-size: 1.4rem; 
+    width: 80%;
+    margin-left: 10%;
+}
+.bottom-images p span{
+    color: #ea8737;
+}
+.bottom-quote{
+    text-align: center;
+    padding: 0 10%;
+}
+.bottom-quote .campaign-img{
+    width: 100%;
+}
+.bottom-quote .campaign-quote{
+    text-align: left;
+    padding-top: 10%;
+}
+.bottom-quote .quote{
+    width: 20%;
 }

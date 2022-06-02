@@ -108,6 +108,51 @@ function CampaignsVisuals(props) {
                  setPage={props.setPage}
             />
 
+            <Grid container spacing={0} className='bottom-images'>
+                <Grid item sm={6} xs={12} className='img-1'>
+                    <img
+                        alt='bottom-img'
+                        src={pics['bottom-1']}
+                        
+                    />
+                    <p className='p1'><span>{EN ? 'All of out campaigns are verified' : 'Todas nuestras campañas son verificadas'}</span>{EN ? ' before publication.' : ' antes de su publicación.'}</p>
+                </Grid>
+                <Grid item sm={6} xs={12} className='img-2'>
+                    <img
+                        alt='bottom-img'
+                        src={pics['bottom-2']}
+                        
+                    />
+                    <p className='p2'><span>{EN ? '100% ' : 'El 100% '}</span>{EN ? 'of your donations ' : ' de tus donaciones'} <span>{EN ? ' reach their recipient.' : ' llegan a su destinatario.'}</span></p>
+                </Grid>
+            </Grid>
+
+            {/* <Grid container spacing={0} className='bottom-quote'>
+                <Grid item sm={6} xs={12}>
+                    <img
+                        alt='campaign-img'
+                        src={pics['campaign-img']}
+                        className='campaign-img'
+                    />
+                </Grid>
+                <Grid item sm={6} xs={12}>
+                    <Grid container spacing={0} className='campaign-quote'>
+                        <Grid item sm={12} xs={12}>
+                            <img
+                                alt='quotes'
+                                src={pics['quote']}
+                                className='quote'
+                            />
+                        </Grid>
+                        <Grid item sm={12} xs={12}>
+                            <p>
+                                <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit</span> sed du elusmad tempor incididunt ut labore et dolore magana aliqua. Quis ipsum suspendiase ultrices gravida.
+                            </p>
+                        </Grid>
+                    </Grid>
+                </Grid>
+            </Grid> */}
+
         </div>
     );
 }
