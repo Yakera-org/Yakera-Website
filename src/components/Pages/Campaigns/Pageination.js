@@ -1,6 +1,7 @@
 import React from 'react';
 import HashLoader from "react-spinners/HashLoader";
 import { Grid } from '@material-ui/core';
+import OLDCampaignCard from './OLDcampaignCard';
 import CampaignCard from './campaignCard';
 import { ArrowForward, ArrowBack } from '@material-ui/icons';
 import ReactPaginate from 'react-paginate';
@@ -54,9 +55,14 @@ function Pageination(props) {
                         props.campaigns.map((cam, i) => {
                             return (
                                 <Grid className='cam-card' item xs={12} sm={3} key={i}>
-                                    <CampaignCard
+                                    {/* <OLDCampaignCard
                                         campaign={cam}
                                         language={EN ? "en" : "es"}
+                                        amount={cam.raised + cam?.zelleRaised}
+                                    /> */}
+                                    <CampaignCard
+                                        campaign={cam}
+                                        EN={EN}
                                         amount={cam.raised + cam?.zelleRaised}
                                     />
                                 </Grid>
