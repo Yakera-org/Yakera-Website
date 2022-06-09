@@ -59,7 +59,7 @@ function FilePreview(props){
                 ?
                 <div className="aws-upload">
                     <div className="aws-button-success">
-                        Success
+                        {props.EN ? "Success" : "Éxito"}
                     </div>
                 </div>
                 :
@@ -67,17 +67,17 @@ function FilePreview(props){
                     ?
                     <div className="aws-upload">
                         <div className="aws-button-fail">
-                            Failed
+                             {props.EN ? "Failed" : "Fracasado"}
                         </div>
                         <button className="aws-button retry" id={props.id} file={file} name={file.name} onClick={props.onRetry}>
-                            Retry
+                             {props.EN ? "Retry" : "Reintentar"}
                         </button>
                     </div>
 
                     :
                     <div className="aws-upload">
                         <div className="aws-button">
-                            Uploading...
+                            {props.EN ? "Uploading..." : "Cargar..."}                            
                         </div>
                     </div>
             }   
