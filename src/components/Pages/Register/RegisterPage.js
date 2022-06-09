@@ -43,7 +43,6 @@ function Register() {
     address: "",
     phone: "",
     socialNum: "",
-    airTMNum: "",
     loaded:false,
     isSubmitting: false,
     error: '',
@@ -60,7 +59,6 @@ function Register() {
       address: null,
       phone: null,
       socialNum: null,
-      airTMNum: null,
     },
   };
   const [data, setData] = useState(initialState);
@@ -125,8 +123,6 @@ function Register() {
         error = validateFields.validateName(value)
       }
     }
-    // line below could be used later when airTM account number is required
-    // else if(name === 'firstName' || name === 'lastName' || name === 'address' || name === 'phone' || name === 'airTMNum' || name === 'socialNum'){
     else if(name === 'firstName' || name === 'lastName' || name === 'address' || name === 'phone' || name === 'socialNum' || name === 'location' || name === 'donor_phone' || name === 'age' || name === 'bio' || name === 'preference'){
       error = validateFields.validateName(value);
     }
@@ -214,7 +210,6 @@ function Register() {
     
     let addressError = false;
     let phoneError = false;
-    //let airTMNumError = false;
     let socialNumError = false;
     
     if(!data.address){
@@ -223,9 +218,6 @@ function Register() {
     if(!data.phone){
       phoneError = emptyWarning;      
     }
-    // if(!data.airTMNum){
-    //   airTMNumError = emptyWarning;      
-    // }
     if(!data.socialNum){
       socialNumError = emptyWarning;      
     }
@@ -234,7 +226,6 @@ function Register() {
       ...data,
       errors: { 
         phone: phoneError,
-        // airTMNum: airTMNumError,
         address: addressError,
         socialNum: socialNumError,
       }
