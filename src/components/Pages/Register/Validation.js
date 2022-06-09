@@ -40,6 +40,12 @@ class ValidateFields {
     }
     return false;
   }
+  validateNameIncludeEmpty(name){
+    if(name.length > 200){
+      return EN ?'This value is too long.' : 'Este valor es mas largo.';
+    }
+    return false;
+  }
   validateNumber(num){
     if(validator.isEmpty(num)){
       return EN ? 'This field cannot be empty' : 'Este campo no puede estar vacío';

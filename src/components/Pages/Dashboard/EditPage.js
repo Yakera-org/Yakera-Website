@@ -63,7 +63,7 @@ const EditPage = () => {
 
     const validateReserveName = (name) => {
         var tempError;
-        tempError = validateFields.validateName(name);
+        tempError = validateFields.validateNameIncludeEmpty(name);
         setReserveNameError(tempError)
         if(!tempError){
             return true;
