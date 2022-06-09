@@ -14,8 +14,8 @@ const EditPage = () => {
     const [success, setSuccess] = useState("");
     const [isSame, setIsSame] = useState(true);
 
-    const [airTMemail, setAirTMEmail] = useState('');
-    const [airTMEmailError, setAirTMEmailError] = useState('');
+    const [reserveName, setReserveName] = useState('');
+    const [reserveNameError, setReserveNameError] = useState('');
     const [error, setError] = useState('');
     const [profileData, setProfileData] = useState({});
 
@@ -49,7 +49,7 @@ const EditPage = () => {
             const res = await api.get('/profile');
             let data = res.data.data
             setProfileData(data);
-            setAirTMEmail(data?.user?.airTMNum);
+            setReserveName(data?.user?.reserveUsername);
             setZelleEmail(data?.user?.zelleInfo?.email);
             setZelleName(data?.user?.zelleInfo?.name);
         } catch (err) {
@@ -61,10 +61,10 @@ const EditPage = () => {
         setLoaded(true);
     };
 
-    const validateAirTMEmail = (email) => {
+    const validateReserveName = (name) => {
         var tempError;
-        tempError = validateFields.validateEmailAllowingEmptyEmail(email);
-        setAirTMEmailError(tempError)
+        tempError = validateFields.validateName(name);
+        setReserveNameError(tempError)
         if(!tempError){
             return true;
         }else{
@@ -106,8 +106,8 @@ const EditPage = () => {
                     [eventTargetName]: eventTargetVal,
                 }
             });
-        } else if(eventTargetName === 'airTMNum') {
-            validateAirTMEmail(eventTargetVal);
+        } else if(eventTargetName === 'reserveUsername') {
+            validateReserveName(eventTargetVal);
             setProfileData({
                 ...profileData,
                 user: {
@@ -138,7 +138,7 @@ const EditPage = () => {
         setLoading(true);
         const checkZelleEmail = validateZelleEmail(profileData.user.zelleInfo ? profileData.user.zelleInfo.email : "");
         const checkZelleName = validateZelleName(profileData.user.zelleInfo ? profileData.user.zelleInfo.name : "");
-        const checkAirTMEmail = validateAirTMEmail(profileData.user.airTMNum ? profileData.user.airTMNum : "");
+        const checkReserveName = validateReserveName(profileData.user.reserveUsername ? profileData.user.reserveUsername : "");
 
         if(zelleEmail !== profileData.user?.zelleInfo?.email || zelleName !== profileData.user?.zelleInfo?.name) {
             if(checkZelleEmail && checkZelleName) {
@@ -147,8 +147,8 @@ const EditPage = () => {
                 setError(EN ? "Please check the fields are filled correctly" : "Por favor, compruebe que los campos están rellenados correctamente")
                 setLoading(false)
             }
-        } else if(airTMemail !== profileData.user.airTMNum) {
-            if(checkAirTMEmail) {
+        } else if(reserveName !== profileData.user.reserveUsername) {
+            if(checkReserveName) {
                 backendPatch();
             }else{
                 setError(EN ? "Please check the fields are filled correctly" : "Por favor, compruebe que los campos están rellenados correctamente")
@@ -164,7 +164,7 @@ const EditPage = () => {
             const requestBody = {
                 address: profileData.user.address,
                 phone: profileData.user.phone,
-                airTMNum: profileData.user.airTMNum,
+                reserveUsername: profileData.user.reserveUsername,
                 zelleInfo: {
                     email: profileData.user.zelleInfo ? profileData.user.zelleInfo.email : "", 
                     name: profileData.user.zelleInfo ? profileData.user.zelleInfo.name : "",
@@ -201,7 +201,7 @@ const EditPage = () => {
                 EN={EN}
                 handleChange={handleChange}
                 onSubmit={onSubmit}
-                airTMEmailError={airTMEmailError}
+                reserveNameError={reserveNameError}
                 zelleEmailError={zelleEmailError}
                 zelleNameError={zelleNameError}
                 isSame={isSame}

@@ -11,8 +11,8 @@ function Dashboard() {
 
     const [loaded, setLoaded] = useState(false);
     const [EN, setEN] = useState(false);
-    const [airTMemail, setAirTMEmail] = useState('');
-    const [airTMEmailError, setAirTMEmailError] = useState('');
+    const [reserveName, setReserveName] = useState('');
+    const [reserveNameError, setReserveNameError] = useState('');
     const [error, setError] = useState('');
     const [profileData, setProfileData] = useState({});
 
@@ -50,6 +50,7 @@ function Dashboard() {
         try {
             const res = await api.get('/profile');
             let data = res.data.data
+            console.log(data)
             setProfileData(data);
             setZelleCheckbox(data?.user?.zelleInfo?.isAccepting)
             setZelleEmail(data?.user?.zelleInfo?.email)
@@ -83,18 +84,18 @@ function Dashboard() {
 
     function handleChange(event){
         validate(event.target.value)
-        setAirTMEmail(event.target.value)
+        setReserveName(event.target.value)
     }
     function validate(email){
         var tempError;
         tempError = validateFields.validateEmail(email);
-        setAirTMEmailError(tempError)
+        setReserveNameError(tempError)
         if(!tempError){
             return true
         }
     }
     function onSubmitEmail(){
-        if(validate(airTMemail)){
+        if(validate(reserveName)){
             backendPatch()
         }
     }
@@ -140,7 +141,7 @@ function Dashboard() {
     async function backendPatch(){
         try {
             const requestBody = {      
-                airTMNum: airTMemail,
+                reserveUsername: reserveName,
                 zelleInfo: {
                     email: zelleEmail,
                     name: zelleName,
@@ -175,7 +176,7 @@ function Dashboard() {
                     data={profileData}
                     onWithdraw={onWithdraw}
                     handleChange={handleChange}
-                    airTMEmailError={airTMEmailError}
+                    reserveNameError={reserveNameError}
                     onSubmitEmail={onSubmitEmail}
                     handleChangeZelleCheckbox={handleChangeZelleCheckbox}
                     handleChangeZelleEmail={handleChangeZelleEmail}
