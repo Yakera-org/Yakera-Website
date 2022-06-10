@@ -52,7 +52,7 @@ function RegisterVisuals(props) {
     return (
         <div className='register-page'>
             <div id='background'>
-                    <Card id='card' className='login-card'>
+                    <Card id='card' className='register-card'>
                         <CardContent>
 
                             <h1 style = {{fontSize : "30px"}}>{EN ? 'Join the Yakera community in 3 easy steps' : 'Únete a la comunidad de Yakera en 3 simples pasos'}</h1>

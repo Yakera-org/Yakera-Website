@@ -1,0 +1,42 @@
+.login-page{
+    margin-top: 160px;
+    font-family: Intro-Regular-Alt;
+}
+.login-page .login-card{
+    width: 50%;
+    margin-left: 25%;
+    text-align: center;
+    padding: 10px;
+}
+.login-page .login-card h2{
+    color: #052a5c;
+}
+.login-page .login-card h4{
+    color: #2c2c2c;
+    padding: 2px;
+}
+.login-page .login-card .login-form{
+    width: 70%;
+    margin-left: 15%;
+}
+.login-page .login-card .login-form hr{
+    width: 100%
+}
+.login-page .login-card .login-form input{
+    font-family: Intro-Light;
+    border-radius: 3px;
+}
+.login-page .login-card .login-form .login-button{
+    width: 100%;
+    background-color: #052a5c;
+    border: none;
+    outline: none;
+    color: white;
+    font-family: Intro-Light;
+    font-size: 18px;
+    padding: 10px;
+    border-radius: 3px;
+}
+.login-page .login-card .login-form .login-button:hover{
+    background-color: #052b5cd9;
+}

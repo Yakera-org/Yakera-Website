@@ -1,7 +1,7 @@
 import React from 'react';
 import { Redirect, BrowserRouter, Switch, Route } from "react-router-dom";
 import axios from 'axios'
-import login from './Pages/Login/LoginPage';
+import login from './Pages/Login/Login';
 import register from './Pages/Register/RegisterPage';
 import ForgotPassword from './Pages/ForgotPassword/ForgotPasswordPage';
 import ResetPassword from './Pages/ResetPassword/ResetPasswordPage';
@@ -12,7 +12,6 @@ import Consent from './Pages/Privacy/consent';
 import FAQ from './Pages/FAQ/FAQPage';
 import donate from './Pages/Donate/donate';
 import AboutUs from './Pages/AboutUs/AboutUs';
-// import SupportUs from './Pages/SupportUs/SupportUs';
 import NotFoundPage from './Pages/404/NotFoundPage';
 import CreateCampaign from './Pages/CreateCampaignPage/CreateCampaign';
 import Dashboard from './Pages/Dashboard/Dashboard';
