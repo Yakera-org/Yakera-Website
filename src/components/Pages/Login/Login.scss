@@ -83,3 +83,13 @@
     0% {opacity:0;}
     100% {opacity:1;}
 }
+
+
+@media only screen and (max-width: 600px) {
+    .login-page .login-card{
+        width: 90%;
+        margin-left: 5%;
+        text-align: center;
+        padding: 5px;
+    }
+}
