@@ -86,7 +86,7 @@ const EditPageVisual = ({
                                 <p id="prompt"><span id="star">{EN ? "NEW!" : "¡Nuevo!"} </span>{EN ? "Now you can also receive donations through Zelle!" : "¡Ahora también puedes recibir donaciones por Zelle!"}<span id="star">*</span> </p>
                                 <p id="description">{EN ? "To activate this payment method, you must provide the following information:" : "Para activar este método de pago es necesario que nos suministres la siguiente información:"} </p>
                             </Grid>
-                            <Grid item xs={12} sm={12}>
+                            <Grid item xs={12} sm={12} style={{marginTop: "20px"}}>
                                 <p id='dash-stats'>Zelle email:</p>
                             </Grid>
                         </Grid>
