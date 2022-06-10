@@ -1,7 +1,8 @@
 import React from 'react';
-import { Form, FormGroup, Input, Alert} from 'reactstrap'
+import { FormGroup, Input, Alert} from 'reactstrap'
 import { Grid, Link, Card, CardContent} from '@material-ui/core';
 import classnames from 'classnames';
+import HashLoader from "react-spinners/HashLoader";
 
 function LoginVisual(props) {
     const EN = props.EN
@@ -16,10 +17,9 @@ function LoginVisual(props) {
                         </h2>
                         <h4>
                             {EN ? 'Please Log In' : 'Iniciar Sesión'}
-                        </h4>
-                        
+                        </h4>                        
 
-                    <Form noValidate className='login-form' onSubmit={()=>console.log("submit")}>
+                    <div className='login-form'>
                         <hr />
                         <FormGroup>
                         <Input
@@ -29,9 +29,7 @@ function LoginVisual(props) {
                             value={data.email}
                             onChange={props.handleChange}
                             className={classnames(
-                            'form-control',
-                            { 'is-valid': data.errors.email === false},
-                            { 'is-invalid': data.errors.email }
+                            'form-control'
                             )}
                             required
                         />
@@ -45,23 +43,42 @@ function LoginVisual(props) {
                             value={data.password}
                             onChange={props.handleChange}
                             className={classnames(
-                            'form-control',
-                            { 'is-valid': data.errors.password === false},
-                            { 'is-invalid': data.errors.password }
+                            'form-control'
                             )}
                             required
                         />
                         </FormGroup>
-                        
+
                         <button
                             className='login-button'
                             type="submit"
                             value={data.loading ? 'Loading...' : 'Login'}
-                            onClick={()=>console.log("login")}
+                            onClick={props.submit}
                         >
-                            {EN ? 'Login' : 'Iniciar'}
+                            {!props.loading ? 
+                                EN ? 'Login' : 'Iniciar'
+                                :
+                                // loader
+                                <div className="loader-wrapper">
+                                    <HashLoader
+                                        size={30}
+                                        color={"#ffffff"}
+                                        loading={true}
+                                        />
+                                </div>
+                            }
                         </button>
 
+                        {
+                            props.error ?
+
+                            <Alert className="alert" color="danger">
+                                {props.error}
+                            </Alert>
+                            :
+                            ""
+                        }
+                        
                         <Grid container style={{marginTop:'4%', textAlign:'left'}}>
                         <Grid item xs>
                             <Link href="/forgot-password">
@@ -75,7 +92,7 @@ function LoginVisual(props) {
                         </Grid>
                         </Grid>
 
-                    </Form>
+                    </div>
                 </CardContent>
             </Card>
         </div>
