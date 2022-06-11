@@ -4,6 +4,7 @@ import LoginVisual from './LoginVisual';
 import "./Login.scss"
 import LanguageService from '../../../services/language';
 import api from "../../../services/api";
+import TokenService from '../../../services/token';
 
 const initialState = {
     email: "",
@@ -52,16 +53,18 @@ function Login() {
     async function callBackend(requestBody){
         try {
             const res = await api.post("/auth/login", requestBody);
-            console.log(res)
+            TokenService.setAccessToken(res.data.access_token);
+            TokenService.setRefreshToken(res.data.refresh_token);
+            TokenService.setUserType(res.data.user.role)
+            window.location.href = "profile"
         } catch (err) {
             setData({
                 ...data,
                 password: initialState.password
               });
             setError(EN ? "User not found." : "Usuario no encontrado.")
-        } finally{
             setLoading(false)
-        }
+        } 
     }
 
     return (

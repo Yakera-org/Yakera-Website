@@ -1,0 +1,16 @@
+.profile-page{
+    margin-top: 150px;
+    margin: 0 auto;
+    width: 70%;
+    background-color: white;
+}
+
+.profile-page .banner{
+    width: 100%;
+}
+.profile-page .loader-wrapper{
+    position: absolute;
+    left: 50%; 
+    transform: translate(-50%, -50%);
+    margin-top: 5%;
+}

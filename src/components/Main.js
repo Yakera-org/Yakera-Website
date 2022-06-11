@@ -20,6 +20,7 @@ import DonorHub from './Pages/DonorHub/DonorHub';
 import LanguageService from '../services/language';
 import DonorHubEditPage from './Pages/DonorHub/EditPage';
 import DashboardEditPage from './Pages/Dashboard/EditPage';
+import Profile from './Pages/Profile/Profile';
 
 
 function Main() {
@@ -60,8 +61,8 @@ function Main() {
                         <Route exact path="/login" component={login} />
                         <Route exact path="/register" component={register} />
                         <Route exact path="/forgot-password" component={ForgotPassword} />
-                        <Route exact path="/reset-password" component={ResetPassword} />
-                        {/* <Route exact path="/support" component={SupportUs} /> */}
+                        <Route exact path="/reset-password" component={ResetPassword} />                        
+                        <Route exact path="/profile" component={Profile} />                        
                         <Route exact path="/campaigns" component={donate} />
                         <Route exact path="/create-campaign" component={CreateCampaign} />
                         <Route exact path="/about" component={AboutUs} />
