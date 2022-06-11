@@ -54,6 +54,10 @@ function Login() {
             const res = await api.post("/auth/login", requestBody);
             console.log(res)
         } catch (err) {
+            setData({
+                ...data,
+                password: initialState.password
+              });
             setError(EN ? "User not found." : "Usuario no encontrado.")
         } finally{
             setLoading(false)

@@ -8,8 +8,14 @@ function LoginVisual(props) {
     const EN = props.EN
     const data = props.data
 
+    function onKeyDown(e){
+        if(e.key === "Enter"){
+            props.submit(e)
+        }
+    }
+
     return (
-        <div className='login-page'>
+        <div className='login-page' onKeyDown={onKeyDown}>
             <Card className='login-card'>
                 <CardContent>
                         <h2>
