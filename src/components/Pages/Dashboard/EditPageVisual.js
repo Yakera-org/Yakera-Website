@@ -10,7 +10,7 @@ const EditPageVisual = ({
     EN,
     handleChange,
     onSubmit,
-    airTMEmailError,
+    reserveNameError,
     zelleEmailError,
     zelleNameError,
     isSame,
@@ -86,7 +86,7 @@ const EditPageVisual = ({
                                 <p id="prompt"><span id="star">{EN ? "NEW!" : "¡Nuevo!"} </span>{EN ? "Now you can also receive donations through Zelle!" : "¡Ahora también puedes recibir donaciones por Zelle!"}<span id="star">*</span> </p>
                                 <p id="description">{EN ? "To activate this payment method, you must provide the following information:" : "Para activar este método de pago es necesario que nos suministres la siguiente información:"} </p>
                             </Grid>
-                            <Grid item xs={12} sm={12}>
+                            <Grid item xs={12} sm={12} style={{marginTop: "20px"}}>
                                 <p id='dash-stats'>Zelle email:</p>
                             </Grid>
                         </Grid>
@@ -161,27 +161,27 @@ const EditPageVisual = ({
                         </Grid>                                        
                     </Grid>
 
-                    <Grid item xs={12} sm={6} id='airTM'>
+                    <Grid item xs={12} sm={6} id='reserve'>
                         <div className='dash-left'>
-                        <p id="prompt">{EN ? "Add your AirTM account to withdraw collected funds!" : "¡Añade los detalles de tu cuenta de Airtm para retirar los fondos recaudados!"}</p>
-                        <p id="description">{EN ? "To transfer the funds you collect through Yakera, you must create an Airtm account and provide the email address here:" : "Para transferir tus fondos recaudados en Yakera es necesario que nos suministres tu correo de AirTM"}</p>
-                            <p id='dash-stats'>AirTM email:</p>
+                        <p id="prompt">{EN ? "Add your Reserve account to withdraw collected funds!" : "¡Añade los detalles de tu cuenta de Reserve para retirar los fondos recaudados!"}</p>
+                        <p id="description">{EN ? "To transfer the funds you collect through Yakera, you must create a Reserve account and provide the username here." : "Para transferir tus fondos recaudados en Yakera es necesario que nos suministres tu usuario de Reserve aqui."}</p>
+                            <p id='dash-stats'>{EN ? "Reserve account:" : "Usuario de Reserve:"}</p>
                         </div>
                         <Grid container spacing={0}>
                             <Grid item xs={12} sm={12} >
                                     <input
                                         type="email"
-                                        name="airTMNum"
-                                        placeholder={EN ? "Enter your AirTM email" : "Ingrese su correo electrónico AirTM"}
-                                        value={user.airTMNum}
+                                        name="reserveUsername"
+                                        placeholder={EN ? "Enter your Reserve username" : "Ingrese su usuario de Reserve"}
+                                        value={user.reserveUsername}
                                         onChange={handleChange}
                                         className={classnames(
                                             'form-control',
-                                            { 'is-valid': airTMEmailError === false },
-                                            { 'is-invalid': airTMEmailError }
+                                            { 'is-valid': reserveNameError === false },
+                                            { 'is-invalid': reserveNameError }
                                         )}
                                     />
-                                    <p className="invalid-feedback">{airTMEmailError}</p>
+                                    <p className="invalid-feedback">{reserveNameError}</p>
                             </Grid>
                             <Grid className="help-contact" item xs={12} sm={10}>
                                 <p >{EN ? "Do you have any questions or need assistance?" : "¿Tienes alguna pregunta o necesitas apoyo?"} </p>

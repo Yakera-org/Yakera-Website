@@ -35,6 +35,15 @@ class ValidateFields {
     if(validator.isEmpty(name)){
         return EN ?'This field cannot be empty' : 'Este campo no puede estar vacío';
     }
+    if(name.length > 200){
+      return EN ?'This value is too long.' : 'Este valor es mas largo.';
+    }
+    return false;
+  }
+  validateNameIncludeEmpty(name){
+    if(name.length > 200){
+      return EN ?'This value is too long.' : 'Este valor es mas largo.';
+    }
     return false;
   }
   validateNumber(num){
