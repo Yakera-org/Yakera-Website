@@ -7,6 +7,13 @@ import api from "../../../services/api";
 import ThanksCard from './thanksCard';
 import LanguageService from '../../../services/language';
 import "./Payment.css";
+import crypto from 'crypto'
+
+const hmacEncryption = (body, secret) =>
+  crypto
+    .createHmac('sha256', secret)
+    .update(body)
+    .digest('hex')
 
 class PaymentVisual extends Component {
 
@@ -114,9 +121,16 @@ class PaymentVisual extends Component {
                 "language": LanguageService.getLanguage(),
                 "isAnonymous": this.state.isAnon
             }
-            console.log(await api.post(`/campaigns/donate`, payload))
+            
+            const encryptedRequestBody = hmacEncryption(JSON.stringify(payload), 'test')
+            const options =  { 
+                headers: {
+                    'Yakera-Signature' : encryptedRequestBody
+                }
+            }   
+            console.log(await api.post(`/campaigns/donate/`, payload, options))
         } catch (err) {
-            console.log(err);
+            console.error(err);
         }
     }
     openThanks(){
