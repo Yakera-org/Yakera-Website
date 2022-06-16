@@ -7,28 +7,6 @@
 - npm install
 - npm start
 
-## Pages
-
-### Home
-interactive home page
-
-### About Us
-info about who we are and what we do
-
-### Support Us
-info on how to support us
-
-### Campaigns
-shows all active campaigns
-
-### FAQ
-frequently asked questions about yakera
-
-### Dashboard
-see your profile information and current active campiagns of yours
-
-### Create new campaign
-when logged in, you can create a new campaign here
-
-### login/register
+## Status
+[![Netlify Status](https://api.netlify.com/api/v1/badges/dc9a79dc-3ef9-4f0e-b138-1361650bd794/deploy-status)](https://app.netlify.com/sites/yakera-venezuela/deploys)
 
