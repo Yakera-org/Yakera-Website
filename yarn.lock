@@ -10023,9 +10023,9 @@ react-multi-carousel@^2.6.5:
   resolved "https://registry.yarnpkg.com/react-multi-carousel/-/react-multi-carousel-2.8.1.tgz#b56e941579abe2e38d93c7bc5ccea75ab2d1b890"
   integrity sha512-IxeVB9yG8TpsNxE6akQbuOMyr1lh3PJlf5xcR7m+W9FPht1L6PDaQocwoZBVD9gElBkI1yd0G2zPfbBykYgS4w==
 
-"react-multi-form-custom@github:Remakh/react-multi-form-custom":
+"react-multi-form-custom@git+https://github.com/Remakh/react-multi-form-custom.git":
   version "1.0.5"
-  resolved "https://codeload.github.com/Remakh/react-multi-form-custom/tar.gz/8944e30b6a314b37e5b747dd4416b0b43f6cd5fb"
+  resolved "git+https://github.com/Remakh/react-multi-form-custom.git#8944e30b6a314b37e5b747dd4416b0b43f6cd5fb"
   dependencies:
     styled-components "^5.1.1"
 

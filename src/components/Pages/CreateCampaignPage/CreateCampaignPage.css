@@ -212,6 +212,8 @@ aside h6{
 .category-label
 {
     color: #eb913b;
+    font-size: x-large;
+    margin-left: 1%;
 }
 
 .question-label
@@ -224,4 +226,53 @@ aside h6{
 {
     color: #0e325e;
     font-size: xx-large;
+}
+
+.info-highlight
+{
+    color: #eb913b;
+}
+
+.info-text
+{
+    color: #0e325e;
+}
+
+.step-btn
+{
+    color: #f3f3f3;
+    background-color: #eb913b;
+    border-radius: 5%;
+    min-width: 100px;
+}
+
+.center-btn
+{
+    text-align: center;
+}
+
+.details-text
+{
+    margin-bottom: -1.4%;
+}
+
+.radio-card-input
+{
+    display: none;
+}
+
+.radio-card
+{
+    margin: 10px;
+    padding: 00px;
+}
+
+.radio-card:hover
+{
+    cursor: pointer;
+}
+
+.radio-card-input:checked + .radio-card
+{
+    box-shadow: 0 0 1px 1px #289455;
 }

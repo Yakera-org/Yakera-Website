@@ -42,11 +42,11 @@ function CreateCampaignVisuals(props) {
     }
     return(
         <div className='create-page'>
-            {/* <WhatsAppButton EN = {EN}></WhatsAppButton> */}
+            {!EN ? <WhatsAppButton EN = {EN}></WhatsAppButton> : ''}
             <div id='background' >
             <MultiStepForm pillSize={50} activeStep={step} inactiveColor={'#999'}>
             <Step label={1}>                       
-                <CampaignIntroPage></CampaignIntroPage>
+                <CampaignIntroPage EN={EN} handleChange={props.handleChange}></CampaignIntroPage>
             </Step>  
             <Step label={2}> 
                 <CreatCampaignDetails EN={EN} data={props.data} handleChange={props.handleChange} setData={props.setData} setIsUploading={setIsUploading}/>
@@ -89,8 +89,10 @@ function CreateCampaignVisuals(props) {
                     ""
                 }
                 
-            <Button onClick={prevStep}>Previous</Button>
-            <Button onClick={nextStep}>Next</Button>
+            <div className="center-btn">
+                <Button onClick={prevStep} className="step-btn">{EN ? 'Previous' : 'Regresar'}</Button>
+                <Button onClick={nextStep} className="step-btn">{EN ? 'Next' : 'Siguiente'}</Button>
+            </div>
 
 
             </div>
