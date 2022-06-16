@@ -1,10 +1,16 @@
 import React from "react";
 import CreatCampaignDetails from "./CreatCampaignDetails";
+import CampaignIntroPage from "./createCampaignIntro";
 import {Alert} from 'reactstrap'
 import LanguageService from "../../../services/language";
 import HashLoader from "react-spinners/HashLoader";
 import './CreateCampaignPage.css';
 import WhatsAppButton from "../WhatsAppButton/WhatsAppButton";
+import { MultiStepForm, Step } from 'react-multi-form-custom'
+import { Button } from "react-bootstrap";
+import './createCampaignIntro'
+import './CreateCampaignLast'
+import CampaignLastPage from "./CreateCampaignLast";
 
 function CreateCampaignVisuals(props) {
 
@@ -14,6 +20,19 @@ function CreateCampaignVisuals(props) {
 
     const [language, setLanguage] = React.useState('');
     const [isUploading, setIsUploading] = React.useState('');
+    const [step, setStep] = React.useState(1)
+    const totalSteps = 4;
+    const nextStep = () => { 
+        if (step < totalSteps + 1 ) {
+            setStep(step => step + 1)
+        }
+    }
+
+    const prevStep = () => { 
+        if (step > 1 ) {
+            setStep(step => step - 1)
+        }
+    }
 
     var EN;
     if(language === "en"){
@@ -23,33 +42,20 @@ function CreateCampaignVisuals(props) {
     }
     return(
         <div className='create-page'>
-            <WhatsAppButton EN = {EN}></WhatsAppButton>
+            {/* <WhatsAppButton EN = {EN}></WhatsAppButton> */}
             <div id='background' >
-                <h1>
-                    {EN ? 'Create your campaign' : 'Crea tu campaña'}
-                </h1>
-                <p id="info-text">
-                    {EN ? 'Yakera is a crowdfunding platform that allows people to tell their stories and receive donations for healthcare, education, nutrition, and small business. We believe in people\'s dignity and ability to satisfy their own needs via direct transfers.' : 'Yakera es una plataforma de crowdfunding que empodera a los usuarios a contar sus historias y recibir donaciones a campañas que se enfocan en las categorías de salud, educación, alimentación, y pequeños negocios. Creemos en la dignidad de nuestros usuarios y su capacidad de satisfacer sus propias necesidades a través de transferencias directas.'}
-                    
-                </p>
-                <p id="info-text">
-                    {EN ? 'In this form you can tell us your story so that it\'s featured in Yakera\'s website and you can start receiving donations.' : 'Con esta forma usted puede contarnos su historia para que aparezca en el sitio de Yakera para recibir donaciones.'}
-                </p>
-                {EN ? 
-                <p id="info-text">
-                    If you have any questions, text us in WhatsApp at  <b>+1 740-462-2212 </b> 
-                    or <b>+56 9 5699 7352</b> or at <b>info@yakera.org</b>. We are here to help you
-                    and answer any questions.
-                </p> : 
-                <p id="info-text">
-                   Si tiene más dudas, envíe un mensaje al WhatsApp <b>+1 (740)462-2212</b> o <b>+56 9 5699 7352</b>. También puede enviar un correo electrónico a <b>info@yakera.org</b>
-                </p>
-                }
-                
-                
+            <MultiStepForm pillSize={50} activeStep={step} inactiveColor={'#999'}>
+            <Step label={1}>                       
+                <CampaignIntroPage></CampaignIntroPage>
+            </Step>  
+            <Step label={2}> 
                 <CreatCampaignDetails EN={EN} data={props.data} handleChange={props.handleChange} setData={props.setData} setIsUploading={setIsUploading}/>
-
-               
+            </Step> 
+            <Step label={3}> </Step>     
+            <Step label={4}>  
+            <CampaignLastPage isUploading={isUploading} EN={EN} submit={props.submit}></CampaignLastPage>
+            </Step>  
+                </MultiStepForm>       
                 { props.success
                     ?
                     <Alert color="success" id='alert'>
@@ -76,31 +82,19 @@ function CreateCampaignVisuals(props) {
                             <HashLoader
                                 color={"#ea8737"}
                                 loading={props.loader}
-                            />
+                                />
                         </div>
                     </div> 
                     :
                     ""
                 }
-               
-                { !props.success
-                ?
-                <div id='create-campaign'>
-                    {
-                        isUploading
-                        ?
-                            <button  onClick={props.submit} id="disabled-create" disabled={true} style={{backgroundColor:'grey'}}>
-                                {EN ? 'Create Campaign' : 'Crear Campaña'}
-                            </button>
-                        :
-                            <button  onClick={props.submit}>
-                                {EN ? 'Create Campaign' : 'Crear Campaña'}
-                            </button>
-                    }
-                </div>
-                :
-                ""}
+                
+            <Button onClick={prevStep}>Previous</Button>
+            <Button onClick={nextStep}>Next</Button>
+
+
             </div>
+
         </div>
     )
 }
