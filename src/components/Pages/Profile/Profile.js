@@ -35,7 +35,32 @@ function Profile() {
     async function getUser() {
         try {
             const res = await api.get('/profile');
+            const newdata = {
+                "user":{
+                "donorInfo": {
+                    "location": "World",
+                    "age": "99",
+                    "bio": "Hi.",
+                    "preference": "email"
+                },
+                "zelleInfo": {
+                    "email": "sdfdsgf",
+                    "name": "",
+                    "isAccepting": false
+                },
+                "role": "user",
+                "email": "jangbel99@gmail.com",
+                "firstName": "Jang",
+                "lastName": "Belche",
+                "phone": "123",
+                "address": "UK",
+                "IDNumber": "123456",
+                "airTMNum": "fsdv@sdc.com",
+                "reserveUsername": ""
+            }
+        }
             setData(res.data.data)
+            setData(newdata)
         } catch (errors) {
             timedOut()
         } finally {
@@ -57,7 +82,9 @@ function Profile() {
                     EN={EN}
                     data={data}
                     loading={loading}
+                    type={TokenService.identifyUserType(data?.user?.role)}
                 />
+                <br />
                 <br />
                 <br />
                 <br />

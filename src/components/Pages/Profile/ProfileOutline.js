@@ -1,5 +1,7 @@
 import React from 'react';
 import HashLoader from "react-spinners/HashLoader";
+import DashboardStats from './DashboardStats';
+import DonorHubStats from './DonorHubStats';
 
 const bannerBig = 'https://assets.yakera.org/yakera/banner-donorhub-large.svg';
 const banner = 'https://assets.yakera.org/yakera/banner-donorhub-big.svg';
@@ -9,6 +11,8 @@ function ProfileOutline(props) {
     const data = props.data
     const user = data.user
     const loading = props.loading
+    const userType = props.type
+
 
     return (
         <div className="profile-page">
@@ -19,7 +23,7 @@ function ProfileOutline(props) {
             //loader
             <div className="loader-wrapper">
                 <HashLoader
-                    size={80}
+                    size={60}
                     color={"#ea8737"}
                     loading={true}
                     />
@@ -27,7 +31,12 @@ function ProfileOutline(props) {
            :
             <div className='profile-content'>
                 <section className='profile-stats'>
-                    {user.firstName}
+                    {userType === "recipient"
+                    ?
+                    <DashboardStats user={user} EN={EN} />
+                    :
+                    <DonorHubStats user={user} EN={EN} />
+                    }
                 </section>
 
                 <hr />

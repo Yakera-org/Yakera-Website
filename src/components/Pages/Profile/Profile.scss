@@ -1,16 +1,30 @@
+#orange{
+color: #ea8737;
+}
+#grey{
+    color: #bbbbbb;
+}
 .profile-page{
     margin-top: 150px;
     margin: 0 auto;
     width: 70%;
     background-color: white;
+    font-family: Intro-Regular-Alt;
 }
 
 .profile-page .banner{
     width: 100%;
+    margin-top: -40px;
+}
+.profile-page .banner img{
+    border-radius: 0 0 5px 5px;
 }
 .profile-page .loader-wrapper{
     position: absolute;
     left: 50%; 
     transform: translate(-50%, -50%);
     margin-top: 5%;
+}
+.profile-page .profile-content{
+    padding: 2%;
 }
