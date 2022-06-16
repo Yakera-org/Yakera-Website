@@ -27,10 +27,10 @@
 .dash-left input{
     font-family: Intro-Light;
 }
-#airTM .dash-left{
+#reserve .dash-left{
     margin-bottom: -20px;
 }
-#airTM button{
+#reserve button{
     background-color: #ea8737;
     border: none;
     outline: none;
@@ -40,20 +40,20 @@
     margin-left: 5px;
     font-family: Intro-Regular-Alt;
 }
-#airTM button:hover{
+#reserve button:hover{
    opacity: 0.8;
 }
-#airTM .help-contact{
+#reserve .help-contact{
     padding: 30px 0;
     text-align: center;
 }
-#airTM .help-contact p{
+#reserve .help-contact p{
     font-family: Intro-Regular-Alt;
     font-size: 22px;
     width: 100%;
     text-align: center;
 }
-#airTM .help-contact button{
+#reserve .help-contact button{
     background-color: #ea8737;
     text-align: center;
     margin: 0;
@@ -108,12 +108,12 @@
 #zelle .new-circle{
     text-align: left;
 }
-#airTM #prompt{
+#reserve #prompt{
     color: #000000;
     font-size: 22px;
     width: 80%;
 }
-#airTM #description{
+#reserve #description{
     color: #7a7a7a;
     font-family: Intro-Light;
     font-size: 15px;
@@ -295,7 +295,7 @@
         font-size: 20px;
         margin-bottom: 10px;
     }
-    #airTM button{
+    #reserve button{
         color: white;
         margin-left: 0px;
         margin-top: 5px;

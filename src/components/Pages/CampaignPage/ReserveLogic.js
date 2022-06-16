@@ -23,7 +23,7 @@ function ReserveLogic(props) {
         setError("")
         setData(data => ({
             ...data,
-            [event.target.name]: event.target.value,
+            [event.target.name]: event.target.value.toLowerCase(),
             errors: {
                 ...data.errors,
                 [event.target.name]: null

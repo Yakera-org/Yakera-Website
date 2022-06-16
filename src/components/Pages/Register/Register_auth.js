@@ -40,21 +40,7 @@ function Register_auth(props) {
             <div className="invalid-feedback">{props.data.errors.phone}</div>
 
             <br /> 
-            <input
-                type="text"
-                name="airTMNum"
-                placeholder={EN ? "Enter your AirTM address (if available)" : "Correo electrónico de AirTM (si está disponible)" }
-                value={props.data.airTMNum}
-                onChange={props.handleChange}
-                className={classnames(
-                    'form-control',
-                    { 'is-valid': props.data.errors.airTMNum === false },
-                    { 'is-invalid': props.data.errors.airTMNum }
-                )}
-            />
-            <div className="invalid-feedback">{props.data.errors.airTMNum}</div>
 
-            <br /> 
             <input
                 type="text"
                 name="socialNum"
@@ -75,8 +61,3 @@ function Register_auth(props) {
 }
 
 export default Register_auth
-
-//address
-// phone
-// social number
-// AirTM number
