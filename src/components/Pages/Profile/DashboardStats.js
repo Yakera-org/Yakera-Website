@@ -59,9 +59,6 @@ function DashboardStats(props) {
                 ""
                 }     
             </Grid>
-            <button className='edit-button'>
-                {EN ? 'Edit profile' : 'Editar perfil'}
-            </button>
         </div>
     );
 }

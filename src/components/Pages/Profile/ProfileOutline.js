@@ -37,6 +37,9 @@ function ProfileOutline(props) {
                     :
                     <DonorHubStats user={user} EN={EN} />
                     }
+                    <button className='edit-button' onClick={()=>window.location.href="/profile/edit"}>
+                        {EN ? 'Edit profile' : 'Editar perfil'}
+                    </button>
                 </section>
 
                 <hr />

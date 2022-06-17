@@ -20,6 +20,7 @@ import DonorHub from './Pages/DonorHub/DonorHub';
 import LanguageService from '../services/language';
 import DonorHubEditPage from './Pages/DonorHub/EditPage';
 import DashboardEditPage from './Pages/Dashboard/EditPage';
+import ProfileEditPage from './Pages/Profile/EditPage/EditPage';
 import Profile from './Pages/Profile/Profile';
 
 
@@ -71,6 +72,7 @@ function Main() {
                         <Route exact path="/consent" component={Consent} />
                         <Route exact path="/frequently-asked-questions" component={FAQ} />
                         <Route exact path="/dashboard" component={isAuthenticated ? Dashboard : login} />
+                        <Route exact path="/profile/edit" component={ProfileEditPage} />
                         <Route exact path="/dashboard/edit" component={DashboardEditPage} />
                         <Route exact path="/verify-email" component={EmailVerification} />
                         <Route exact path="/" component={home} />
