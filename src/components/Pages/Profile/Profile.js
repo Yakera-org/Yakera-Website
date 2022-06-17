@@ -6,6 +6,7 @@ import "./Profile.scss"
 import TokenService from '../../../services/token';
 import api from "../../../services/api";
 import Author from '../../author';
+import {userServices} from './UserService';
 
 function Profile() {
 
@@ -26,7 +27,7 @@ function Profile() {
 
     function verifyUser(){
        if(!TokenService.getLocalAccessToken()){
-           timedOut()
+            userServices.timedOut()
        }else{
            setValidatedUser(true)
        }
@@ -34,47 +35,16 @@ function Profile() {
 
     async function getUser() {
         try {
-            const res = await api.get('/profile');
-            const newdata = {
-                "user":{
-                "donorInfo": {
-                    "location": "World",
-                    "age": "99",
-                    "bio": "Hi.",
-                    "preference": "email"
-                },
-                "zelleInfo": {
-                    "email": "sdfdsgf",
-                    "name": "",
-                    "isAccepting": false
-                },
-                "role": "user",
-                "email": "jangbel99@gmail.com",
-                "firstName": "Jang",
-                "lastName": "Belche",
-                "phone": "123",
-                "address": "UK",
-                "IDNumber": "123456",
-                "airTMNum": "fsdv@sdc.com",
-                "reserveUsername": ""
-            }
-        }
-            setData(res.data.data)
-            setData(newdata)
+            const user = await userServices.getUserData()
+            setData(user)
         } catch (errors) {
-            timedOut()
+            userServices.timedOut()
         } finally {
             setLoading(false)
         }
     }
 
-    function timedOut(){
-        TokenService.removeAccessToken()
-        TokenService.removeRefreshToken()
-        localStorage.removeItem("email")
-        localStorage.removeItem("name")
-        window.location.href="/login"
-    }
+   
     if(validatedUser){
         return (
             <div>
