@@ -276,3 +276,15 @@ aside h6{
 {
     box-shadow: 0 0 1px 1px #289455;
 }
+
+.radio-title
+{
+    color: #eb913b;
+    font-size: medium;
+    text-align: center;
+}
+
+.radio-title-checked
+{
+    color: #70B88F;
+}

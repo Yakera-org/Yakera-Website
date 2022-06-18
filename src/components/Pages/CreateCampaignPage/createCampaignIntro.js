@@ -5,6 +5,28 @@ import './CreateCampaignPage.css';
 function CampaignIntroPage(props) {
     let EN = props.EN;
 
+    const handleRadioChange = event => {
+        const cat0 = document.getElementById('text-category0');
+        const cat1 = document.getElementById('text-category1');
+        const cat2 = document.getElementById('text-category2');
+        const cat3 = document.getElementById('text-category3');
+
+        const unsetClass = element => {
+            if(element.classList.contains('radio-title-checked'))
+                element.classList.toggle('radio-title-checked');
+        };
+
+        unsetClass(cat0);
+        unsetClass(cat1);
+        unsetClass(cat2);
+        unsetClass(cat3);
+
+        const selected = document.getElementById(`text-${event.target.id}`);
+        selected.classList.toggle('radio-title-checked');
+
+        return props.handleChange(event);
+    }
+
     return(
     <div>
         <h1>{EN ? 'Create your Campaign' : 'Crea tu Campaña'}</h1>
@@ -31,13 +53,13 @@ function CampaignIntroPage(props) {
         <div className="row">
             <div className="col">
                 <label>
-                    <input type="radio" name="campaigncategory" id="category0" radioGroup="category" onChange={props.handleChange} className="radio-card-input" />
+                    <input type="radio" name="campaigncategory" id="category0" radioGroup="category" onChange={handleRadioChange} className="radio-card-input" />
                     <div className="panel panel-default radio-card">
                         <div className="panel-heading">
                             <img src="" alt="Healthcare" />
                         </div>
                         <div className="panel-body">
-                            Content
+                            <p className="radio-title" id="text-category0">{EN ? 'Healthcare' : 'Salud'}</p>
                         </div>
                     </div>
                 </label>
@@ -45,13 +67,13 @@ function CampaignIntroPage(props) {
 
             <div className="col">
                 <label>
-                    <input type="radio" name="campaigncategory" id="category1" radioGroup="category" onChange={props.handleChange} className="radio-card-input" />
+                    <input type="radio" name="campaigncategory" id="category1" radioGroup="category" onChange={handleRadioChange} className="radio-card-input" />
                     <div className="panel panel-default radio-card">
                         <div className="panel-heading">
                             <img src="" alt="Education" />
                         </div>
                         <div className="panel-body">
-                            Content
+                            <p className="radio-title" id="text-category1">{EN ? 'Education' : 'Educación'}</p>
                         </div>
                     </div>
                 </label>
@@ -59,13 +81,13 @@ function CampaignIntroPage(props) {
 
             <div className="col">
                 <label>
-                    <input type="radio" name="campaigncategory" id="category2" radioGroup="category" onChange={props.handleChange} className="radio-card-input" />
+                    <input type="radio" name="campaigncategory" id="category2" radioGroup="category" onChange={handleRadioChange} className="radio-card-input" />
                     <div className="panel panel-default radio-card">
                         <div className="panel-heading">
                             <img src="" alt="Small Business" />
                         </div>
                         <div className="panel-body">
-                            Content
+                            <p className="radio-title" id="text-category2">{EN ? 'Small Business' : 'Pequeños Negocios'}</p>
                         </div>
                     </div>
                 </label>
@@ -73,34 +95,18 @@ function CampaignIntroPage(props) {
 
             <div className="col">
                 <label>
-                    <input type="radio" name="campaigncategory" id="category3" radioGroup="category" onChange={props.handleChange} className="radio-card-input" />
+                    <input type="radio" name="campaigncategory" id="category3" radioGroup="category" onChange={handleRadioChange} className="radio-card-input" />
                     <div className="panel panel-default radio-card">
                         <div className="panel-heading">
                             <img src="" alt="Nutrition" />
                         </div>
                         <div className="panel-body">
-                            Content
+                            <p className="radio-title" id="text-category3">{EN ? 'Nutrition' : 'Nutrición'}</p>
                         </div>
                     </div>
                 </label>
             </div>
         </div>
-        {/*[EN ? 'Healthcare' : 'Salud',
-            EN ? 'Education' : 'Educación',
-            EN ? 'Small Business' : 'Pequeños negocios',
-            EN ? 'Nutrition' : 'Alimentación'].map((val, index) => (
-            <FormCheck
-                key={index}
-                name={'campaigncategory'}
-                value={val.toLowerCase()}
-                type='radio'
-                id={`category${index}`}
-                label={val}
-                group='category'
-                // defaultChecked= {props.data.campaignCategory}
-                onChange={props.handleChange}
-            />
-        ))*/}
     </div>
     )
 }
