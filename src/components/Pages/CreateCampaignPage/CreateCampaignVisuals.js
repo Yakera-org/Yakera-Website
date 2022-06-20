@@ -1,5 +1,5 @@
 import React from "react";
-import CreatCampaignDetails from "./CreatCampaignDetails";
+import CreatCampaignDetails from "./CreateCampaignDetailsNew.js";
 import CampaignIntroPage from "./createCampaignIntro";
 import {Alert} from 'reactstrap'
 import LanguageService from "../../../services/language";
