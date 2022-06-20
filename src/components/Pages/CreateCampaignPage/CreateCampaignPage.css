@@ -242,8 +242,24 @@ aside h6{
 {
     color: #f3f3f3;
     background-color: #eb913b;
-    border-radius: 5%;
-    min-width: 100px;
+    border-radius: 8px;
+    min-width: 160px;
+    max-height: 38px;
+    font-size: 22px;
+    text-align: center;
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.left-btn
+{
+    margin-right: 0.8%;
+}
+
+.right-btn
+{
+    margin-left: 0.8%;
 }
 
 .center-btn
@@ -274,7 +290,7 @@ aside h6{
 
 .radio-card-input:checked + .radio-card
 {
-    box-shadow: 0 0 1px 1px #289455;
+    box-shadow: 0 0 1px 1px #70B88F;
 }
 
 .radio-title
@@ -287,4 +303,34 @@ aside h6{
 .radio-title-checked
 {
     color: #70B88F;
+}
+
+.radio-body
+{
+    color: #0e325e;
+    font-size: small;
+    text-align: center;
+}
+
+.radio-body-hidden
+{
+    display: none;
+}
+
+.center-img
+{
+    display: flex;
+    justify-content: center;
+}
+
+.campaign-img
+{
+    max-width: 50%;
+    height: auto;
+}
+
+.category-img
+{
+    max-width: 200px;
+    height: auto;
 }
