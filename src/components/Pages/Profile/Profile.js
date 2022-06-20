@@ -4,7 +4,6 @@ import ProfileOutline from './ProfileOutline';
 
 import "./Profile.scss"
 import TokenService from '../../../services/token';
-import api from "../../../services/api";
 import Author from '../../author';
 import {userServices} from './UserService';
 

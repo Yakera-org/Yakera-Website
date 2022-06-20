@@ -5,33 +5,33 @@ class UserService{
     async getUserData() {
         try {
             const res = await api.get('/profile');
-            const newdata = {
-                "user":{
-                "donorInfo": {
-                    "location": "World",
-                    "age": "23",
-                    "bio": "My bioooo",
-                    "preference": "email"
-                },
-                "zelleInfo": {
-                    "email": "zelle",
-                    "name": "jango",
-                    "isAccepting": true
-                },
-                "role": "donor",
-                "email": "jangbel99@gmail.com",
-                "firstName": "Jang",
-                "lastName": "Belche",
-                "phone": "253464946",
-                "address": "UK",
-                "profilePicture": "https://yakera-files.s3.us-east-2.amazonaws.com/profile-pictures/gT8tvxPLrKAq2SXUQ2KAoR.png",
-                "IDNumber": "123456",
-                "airTMNum": "fsdv@sdc.com",
-                "reserveUsername": "yfgdfb"
-            }
-            }
-            //return res.data.data
-            return newdata
+            // const newdata = {
+            //     "user":{
+            //     "donorInfo": {
+            //         "location": "World",
+            //         "age": "23",
+            //         "bio": "My bioooo",
+            //         "preference": "email"
+            //     },
+            //     "zelleInfo": {
+            //         "email": "zelle",
+            //         "name": "jango",
+            //         "isAccepting": true
+            //     },
+            //     "role": "donor",
+            //     "email": "jangbel99@gmail.com",
+            //     "firstName": "Jang",
+            //     "lastName": "Belche",
+            //     "phone": "253464946",
+            //     "address": "UK",
+            //     "profilePicture": "https://yakera-files.s3.us-east-2.amazonaws.com/profile-pictures/gT8tvxPLrKAq2SXUQ2KAoR.png",
+            //     "IDNumber": "123456",
+            //     "airTMNum": "fsdv@sdc.com",
+            //     "reserveUsername": "yfgdfb"
+            // }
+            // }
+            return res.data.data
+            //return newdata
         } catch (e) {
             throw e 
         }

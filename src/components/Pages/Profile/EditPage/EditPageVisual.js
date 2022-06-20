@@ -1,6 +1,7 @@
 import React from 'react';
 import HashLoader from "react-spinners/HashLoader";
 import EditContent from './EditContent';
+import { Alert } from 'reactstrap';
 
 function EditPageVisual(props) {
     const EN = props.EN
@@ -33,9 +34,38 @@ function EditPageVisual(props) {
                 <EditContent EN={EN} user={user} type={type} setIsSame={props.setIsSame} handleChange={props.handleChange}/>
 
                 <section className='save-area'>
+                    {props.success
+                        ?
+                        <Alert color="success" id='alert' style={{width:"50%", marginLeft:"25%"}}>
+                            {props.success}
+                            <br />
+                            {EN ? "Head to your " : "Dirígete a tu "} <a href="/profile" style={{color:'darkgreen', textDecoration:'underline'}}>{type==="recipient" ? EN ? "Dashboard" : "Mi Cuenta" : "Donor Hub"}</a>.
+                        </Alert>
+                        :
+                        ''
+                    }
+                    {props.error
+                        ?
+                        <Alert color="danger" id='alert' style={{width:"50%", marginLeft:"25%"}}>
+                            {props.error}
+                        </Alert>
+                        :
+                        ''
+                    }
                     <hr />
                     <button className={props.activeChange ? "active" : "disabled"} onClick={props.onSubmit}>
-                        {EN ? 'Save changes' : 'Guardar cambios'}
+                        {!props.submitLoading ? 
+                            EN ? 'Save changes' : 'Guardar cambios'
+                            :
+                            // loader
+                            <div className="submit-loader-wrapper">
+                                <HashLoader
+                                    size={30}
+                                    color={"#ea8837"}
+                                    loading={true}
+                                    />
+                            </div>
+                        }
                     </button>
                     <p>
                         {EN ? 'Want to delete your account? Click ' : '¿Te gustaría eliminar tu cuenta? Haz click '}

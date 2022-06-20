@@ -32,6 +32,12 @@
     transform: translate(-50%, -50%);
     margin-top: 50px;
 }
+.edit-page .edit-container .submit-loader-wrapper{
+    position: absolute;
+    left: 50%; 
+    transform: translate(-50%, -50%);
+    margin-top: 0px;
+}
 .edit-page .edit-container .edit-content{
     padding-left: 7.5%;
     padding-top: 0;
@@ -40,6 +46,9 @@
     padding: 30px;
     text-align: center;
     font-family: Intro-Light;
+}
+.edit-page .edit-container .save-area button{ 
+    min-height: 50px;
 }
 .edit-page .edit-container .save-area .active{
     border: none;

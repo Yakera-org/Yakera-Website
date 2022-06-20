@@ -1,17 +1,21 @@
 import React from 'react';
 import EditPageVisual from './EditPageVisual';
 import LanguageService from '../../../../services/language';
-import "./EditPage.scss"
+import api from "../../../../services/api";
 import { userServices } from '../UserService';
 import TokenService from '../../../../services/token';
+import "./EditPage.scss"
 
 function EditPage() {
 
     const [EN, setEN] = React.useState(false);
     const [data, setData] = React.useState({});
     const [loading, setLoading] = React.useState(true);
+    const [submitLoading, setSubmitLoading] = React.useState(false);
     const [activeChange, setActiveChange] = React.useState(false);
-    const [isSame, setIsSame] = React.useState(false);
+    const [success, setSuccess] = React.useState("");
+    const [error, setError] = React.useState("");
+    const [setIsSame] = React.useState(false);
 
     React.useEffect(() => {
         setEN(LanguageService.getLanguage()==='en')
@@ -87,9 +91,35 @@ function EditPage() {
         }
     }
 
-    function onSubmit(){
+    function onSubmit(e){
+        e.preventDefault()
+        setSubmitLoading(true)
         console.log(data)
+        backendPatch()
     }
+
+    const backendPatch = async () => {
+        try {
+            const payload = {
+                address: data.user.address,
+                phone: data.user.phone,
+                reserveUsername: data.user.reserveUsername,
+                zelleInfo: {
+                    email: data.user.zelleInfo?.email, 
+                    name: data.user.zelleInfo?.name,
+                    isAccepting: data.user.zelleInfo?.isAccepting
+                }
+            };
+            await api.patch('/profile/update', payload);
+            setSuccess(EN ? 'Profile updated successfully!' : "¡Tu perfil ya está actualizado!'");
+            setActiveChange(false);
+        } catch (err) {
+            console.error('Error. ' + err)
+            setError(EN ? "Sorry, something went wrong, please try again." : "Lo sentimos, algo salió mal, por favor inténtalo de nuevo.");
+        }finally{
+            setSubmitLoading(false);
+        }
+    };
     
     return (
         <div className='edit-page'>
@@ -97,11 +127,14 @@ function EditPage() {
                 EN={EN} 
                 data={data}
                 loading={loading}
+                submitLoading={submitLoading}
                 type={TokenService.identifyUserType(data?.user?.role)}
                 activeChange={activeChange}
                 setIsSame={setIsSame}
                 onSubmit={onSubmit}
                 handleChange={handleChange}
+                success={success}
+                error={error}
             />
         </div>
     );
