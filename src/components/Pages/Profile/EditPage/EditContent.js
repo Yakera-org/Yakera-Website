@@ -1,6 +1,7 @@
 import React from 'react';
 import { Grid } from '@material-ui/core';
 import RecipientOnly from './RecipientOnly';
+import DonorOnly from './DonorOnly';
 
 function RecipientEdit(props) {
     const user = props.user
@@ -9,10 +10,9 @@ function RecipientEdit(props) {
 
     const editFileds = type === "donor" ?
     {
+        "location": user.donorInfo?.location || "",
         "phone": user.phone || "",
-        "location": user.userInfo?.location || "",
-        "age": user.userInfo?.age || "",
-        "bio": user.userInfo?.bio || "",
+        "age": user.donorInfo?.age || "",
     }
     :
     {
@@ -25,7 +25,10 @@ function RecipientEdit(props) {
         address: EN ? "Address" : "Teléfono",
         zelleEmail: "Zelle Email",
         zelleName: EN ? "Zelle Name" : "Zelle Nombre",
-        reserveUsername: EN ? "Reserve Username": "Usuario de Reserve"
+        reserveUsername: EN ? "Reserve Username": "Usuario de Reserve",
+        location: EN ? "Location" : "Ubicación",
+        age: EN ? "Age" : "Edad",
+        bio: EN ? "Biography" : "Biografía"
 
     }
 
@@ -34,7 +37,10 @@ function RecipientEdit(props) {
         address: EN ? "Enter your address" : "Tu dirección",
         zelleEmail: EN ? 'Enter your Zelle email' : 'Ingrese su correo electrónico Zelle',
         zelleName: EN ? 'Enter your Zelle name' : 'Ingrese su Zelle nombre',
-        reserveUsername: EN ? "Enter your Reserve username" : "Ingrese su usuario de Reserve"
+        reserveUsername: EN ? "Enter your Reserve username" : "Ingrese su usuario de Reserve",
+        location: EN ? "Enter your location" : "Ingrese su ubicación",
+        age: EN ? "Enter your age" : "Tu edad",
+        bio: EN ? "Enter a short description about yourself" : "Una descripción personal breve"
 
     }
 
@@ -61,8 +67,9 @@ function RecipientEdit(props) {
             ?
                <RecipientOnly EN={EN} user={user} fieldPlaceHolders={fieldPlaceHolders} fieldDict={fieldDict}/>
             :
-            ""
-        }
+                <DonorOnly EN={EN} user={user} fieldPlaceHolders={fieldPlaceHolders} fieldDict={fieldDict} setIsSame={props.setIsSame}/>
+            }
+            
         </Grid>
     );
 }

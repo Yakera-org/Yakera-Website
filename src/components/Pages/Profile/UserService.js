@@ -10,7 +10,7 @@ class UserService{
                 "donorInfo": {
                     "location": "World",
                     "age": "23",
-                    "bio": "Hi",
+                    "bio": "My bioooo",
                     "preference": "email"
                 },
                 "zelleInfo": {

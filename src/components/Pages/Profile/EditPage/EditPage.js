@@ -11,6 +11,7 @@ function EditPage() {
     const [data, setData] = React.useState({});
     const [loading, setLoading] = React.useState(true);
     const [activeChange, setActiveChange] = React.useState(false);
+    const [isSame, setIsSame] = React.useState(false);
 
     React.useEffect(() => {
         setEN(LanguageService.getLanguage()==='en')
@@ -40,6 +41,7 @@ function EditPage() {
                 loading={loading}
                 type={TokenService.identifyUserType(data?.user?.role)}
                 activeChange={activeChange}
+                setIsSame={setIsSame}
             />
         </div>
     );
