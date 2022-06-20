@@ -13,7 +13,8 @@ function DonorOnly(props) {
                     <textarea
                         type="textarea"
                         name={"bio"}
-                        maxLength="20"
+                        maxLength="200"
+                        onChange={props.handleChange}
                         placeholder={fieldPlaceHolders["bio"]}
                         value={user.donorInfo.bio}
                         className='form-control'

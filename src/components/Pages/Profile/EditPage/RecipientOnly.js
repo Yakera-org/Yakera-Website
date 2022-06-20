@@ -18,25 +18,28 @@ function RecipientOnly(props) {
                 <p id="description">
                     {EN ? "To activate this payment method, you must provide the following information:" : "Para activar este método de pago es necesario que nos suministres la siguiente información:"}
                 </p>
-                {["zelleEmail", "zelleName"].map((field, i) => {
+                {["email", "name"].map((field, i) => {
                     return(
-                        <>
+                        <div key={i}>
                         <span id="field-span">{fieldDict[field]}</span>
                         <input
                             type="text"
                             name={field}
                             maxLength="50"
+                            onChange={props.handleChange}
                             placeholder={fieldPlaceHolders[field]}
-                            value={field === "zelleEmail" ? user.zelleInfo?.email : user.zelleInfo?.name }
+                            value={ user.zelleInfo[field] }
                             className='form-control'
                         /> 
-                        </>
+                        </div>
                     )
                 })}
 
                 <span id="field-span">{EN ? 'Accepting Zelle payment?' : '¿Aceptando Zelle pago?'}</span>
                 <Checkbox
                     checked={user.zelleInfo?.isAccepting}
+                    onChange={props.handleChange}
+                    name="acceptZelle"
                     style={{
                         marginTop:"-5px",
                         color: '#ea8737',
@@ -62,6 +65,7 @@ function RecipientOnly(props) {
                     type="text"
                     name="reserveUsername"
                     maxLength="50"
+                    onChange={props.handleChange}
                     placeholder={fieldPlaceHolders["reserveUsername"]}
                     value={user.reserveUsername }
                     className='form-control'

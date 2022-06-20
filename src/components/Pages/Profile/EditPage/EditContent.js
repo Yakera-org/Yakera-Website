@@ -23,8 +23,8 @@ function RecipientEdit(props) {
     const fieldDict = {
         phone: EN ? "Phone Number" : "Teléfono",
         address: EN ? "Address" : "Teléfono",
-        zelleEmail: "Zelle Email",
-        zelleName: EN ? "Zelle Name" : "Zelle Nombre",
+        email: "Zelle Email",
+        name: EN ? "Zelle Name" : "Zelle Nombre",
         reserveUsername: EN ? "Reserve Username": "Usuario de Reserve",
         location: EN ? "Location" : "Ubicación",
         age: EN ? "Age" : "Edad",
@@ -35,8 +35,8 @@ function RecipientEdit(props) {
     const fieldPlaceHolders = {
         phone: EN ? "Enter your Phone Number" : "Tu teléfono",
         address: EN ? "Enter your address" : "Tu dirección",
-        zelleEmail: EN ? 'Enter your Zelle email' : 'Ingrese su correo electrónico Zelle',
-        zelleName: EN ? 'Enter your Zelle name' : 'Ingrese su Zelle nombre',
+        email: EN ? 'Enter your Zelle email' : 'Ingrese su correo electrónico Zelle',
+        name: EN ? 'Enter your Zelle name' : 'Ingrese su Zelle nombre',
         reserveUsername: EN ? "Enter your Reserve username" : "Ingrese su usuario de Reserve",
         location: EN ? "Enter your location" : "Ingrese su ubicación",
         age: EN ? "Enter your age" : "Tu edad",
@@ -52,12 +52,13 @@ function RecipientEdit(props) {
                         <Grid item xs={12} sm={6} key={i}>
                             <span id="field-span">{fieldDict[key]}</span>
                             <input
-                                type="text"
+                                type={key==="age" || key==="phone" ? "number": "text"}
                                 name={key}
                                 maxLength="20"
                                 placeholder={fieldPlaceHolders[key]}
                                 value={value}
                                 className='form-control'
+                                onChange={props.handleChange}
                             /> 
                         </Grid>
                     )                    
@@ -65,9 +66,9 @@ function RecipientEdit(props) {
 
             {type === "recipient"
             ?
-               <RecipientOnly EN={EN} user={user} fieldPlaceHolders={fieldPlaceHolders} fieldDict={fieldDict}/>
+                <RecipientOnly EN={EN} user={user} fieldPlaceHolders={fieldPlaceHolders} fieldDict={fieldDict} handleChange={props.handleChange}/>
             :
-                <DonorOnly EN={EN} user={user} fieldPlaceHolders={fieldPlaceHolders} fieldDict={fieldDict} setIsSame={props.setIsSame}/>
+                <DonorOnly EN={EN} user={user} fieldPlaceHolders={fieldPlaceHolders} fieldDict={fieldDict} setIsSame={props.setIsSame} handleChange={props.handleChange}/>
             }
             
         </Grid>

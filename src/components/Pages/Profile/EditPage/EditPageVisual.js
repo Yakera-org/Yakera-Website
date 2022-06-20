@@ -30,11 +30,11 @@ function EditPageVisual(props) {
             </div>
             :
             <>
-                <EditContent EN={EN} user={user} type={type} setIsSame={props.setIsSame}/>
+                <EditContent EN={EN} user={user} type={type} setIsSame={props.setIsSame} handleChange={props.handleChange}/>
 
                 <section className='save-area'>
                     <hr />
-                    <button className={props.activeChange ? "active" : "disabled"}>
+                    <button className={props.activeChange ? "active" : "disabled"} onClick={props.onSubmit}>
                         {EN ? 'Save changes' : 'Guardar cambios'}
                     </button>
                     <p>

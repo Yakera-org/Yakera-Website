@@ -31,6 +31,64 @@ function EditPage() {
 
     function handleChange(e){
         setActiveChange(true)
+        switch(e.target.name){
+            case "phone":
+            case "address":
+            case "reserveUsername":
+                setData({
+                        ...data,
+                        user:{
+                            ...data.user,
+                            [e.target.name]: e.target.value
+                        }
+                    })
+                break;
+            case "email":
+            case "name":
+                setData({
+                    ...data,
+                    user:{
+                        ...data.user,
+                        zelleInfo:{
+                            ...data.user.zelleInfo,
+                            [e.target.name]: e.target.value
+                        }
+                    }
+                })
+            break;
+            case "acceptZelle":
+                setData({
+                    ...data,
+                    user:{
+                        ...data.user,
+                        zelleInfo:{
+                            ...data.user.zelleInfo,
+                            isAccepting: !data.user?.zelleInfo?.isAccepting
+                        }
+                    }
+                })
+            break;
+            case "location":
+            case "age":
+            case "bio":
+                setData({
+                    ...data,
+                    user:{
+                        ...data.user,
+                        donorInfo:{
+                            ...data.user.donorInfo,
+                            [e.target.name]: e.target.value
+                        }
+                    }
+                })
+                break;
+            default:
+                break;
+        }
+    }
+
+    function onSubmit(){
+        console.log(data)
     }
     
     return (
@@ -42,6 +100,8 @@ function EditPage() {
                 type={TokenService.identifyUserType(data?.user?.role)}
                 activeChange={activeChange}
                 setIsSame={setIsSame}
+                onSubmit={onSubmit}
+                handleChange={handleChange}
             />
         </div>
     );
