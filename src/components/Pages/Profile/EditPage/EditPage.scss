@@ -17,7 +17,7 @@
 }
 .edit-page .edit-container .sub-banner{
     font-family: Intro-Light;
-    padding: 20px;
+    padding: 30px;
 }
 .edit-page .edit-container .sub-banner a{
     color: #202020;
@@ -31,4 +31,95 @@
     left: 50%; 
     transform: translate(-50%, -50%);
     margin-top: 50px;
+}
+.edit-page .edit-container .edit-content{
+    padding-left: 7.5%;
+    padding-top: 0;
+}
+.edit-page .edit-container .save-area{
+    padding: 30px;
+    text-align: center;
+    font-family: Intro-Light;
+}
+.edit-page .edit-container .save-area .active{
+    border: none;
+    outline: none;
+    padding: 15px 5px;
+    border-radius: 5px;
+    width: 20%;
+    background-color: #ea883750;
+    font-size: 18px;
+}
+.edit-page .edit-container .save-area .disabled{
+    border: none;
+    outline: none;
+    padding: 15px 5px;
+    border-radius: 5px;
+    width: 20%;
+    background-color: #aaa;
+    font-size: 18px;
+}
+.edit-page .edit-container .save-area .disabled:hover{
+    cursor:not-allowed;
+}
+.edit-page .edit-container .save-area p{
+    margin: 20px 0;
+}
+.edit-page .edit-container .save-area a{
+    text-decoration: underline;
+}
+.edit-page .edit-container .save-area a:hover{
+    color: #777;
+}
+.edit-page .edit-container .edit-content #field-span{
+    color: #ea8837;
+    font-size: large;
+    width: 80%;
+}
+.edit-page .edit-container .edit-content input{
+    margin: 10px 0px;
+    width: 80%;
+    font-family: Intro-Light;
+}
+.edit-page .edit-container .edit-content .zelle-fields, .edit-page .edit-container .edit-content .reserve-fields{
+    margin-top: 15px;
+}
+.edit-page .edit-container .edit-content .zelle-fields #top-header, .edit-page .edit-container .edit-content .reserve-fields #top-header{
+    width: 80%;
+    font-size: 20px;
+    text-align: justify;
+}
+.edit-page .edit-container .edit-content .zelle-fields #description, .edit-page .edit-container .edit-content .reserve-fields #description{
+    width: 80%;
+    font-family: Intro-Light;
+    text-align: justify;
+    font-size: 16px;
+    margin-top: 5px;
+}
+.edit-page .edit-container .edit-content .zelle-fields .star-des{
+    width: 80%;
+    font-family: Intro-Light;
+    text-align: justify;
+    font-size: 15px;
+}
+.edit-page .edit-container .edit-content .reserve-fields .help-area{
+    text-align: center;
+    width: 80%;
+    margin-top: 20px;
+}
+.edit-page .edit-container .edit-content .reserve-fields .help-area p{
+    font-size: 18px;
+    margin-bottom: -5px;
+}
+.edit-page .edit-container .edit-content .reserve-fields .help-area button{
+    width: 30%;
+    border: none;
+    outline: none;
+    border-radius: 50px;
+    background-color: #ea8837;
+    color: white;
+    padding: 10px 5px;
+}
+.edit-page .edit-container .edit-content .reserve-fields .help-area button:hover{
+    opacity: 0.8;
 }

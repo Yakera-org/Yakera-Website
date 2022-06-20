@@ -10,6 +10,7 @@ function EditPage() {
     const [EN, setEN] = React.useState(false);
     const [data, setData] = React.useState({});
     const [loading, setLoading] = React.useState(true);
+    const [activeChange, setActiveChange] = React.useState(false);
 
     React.useEffect(() => {
         setEN(LanguageService.getLanguage()==='en')
@@ -26,6 +27,10 @@ function EditPage() {
             setLoading(false)
         }
     }
+
+    function handleChange(e){
+        setActiveChange(true)
+    }
     
     return (
         <div className='edit-page'>
@@ -34,6 +39,7 @@ function EditPage() {
                 data={data}
                 loading={loading}
                 type={TokenService.identifyUserType(data?.user?.role)}
+                activeChange={activeChange}
             />
         </div>
     );

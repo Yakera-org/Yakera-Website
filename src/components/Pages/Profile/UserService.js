@@ -14,20 +14,20 @@ class UserService{
                     "preference": "email"
                 },
                 "zelleInfo": {
-                    "email": "sdfdsgf",
-                    "name": "",
-                    "isAccepting": false
+                    "email": "zelle",
+                    "name": "jango",
+                    "isAccepting": true
                 },
                 "role": "user",
                 "email": "jangbel99@gmail.com",
                 "firstName": "Jang",
                 "lastName": "Belche",
-                "phone": "123",
+                "phone": "253464946",
                 "address": "UK",
                 "profilePicture": "https://yakera-files.s3.us-east-2.amazonaws.com/profile-pictures/gT8tvxPLrKAq2SXUQ2KAoR.png",
                 "IDNumber": "123456",
                 "airTMNum": "fsdv@sdc.com",
-                "reserveUsername": ""
+                "reserveUsername": "yfgdfb"
             }
             }
             //return res.data.data
