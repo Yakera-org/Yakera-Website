@@ -1,0 +1,30 @@
+.donorhub-stats{
+    width: 100%;
+    line-break: auto;
+    text-align: center;
+    min-height: 200px;
+    max-height: 500px;
+}
+.donorhub-stats .user-img{
+    object-fit: cover;
+    text-align: center;
+}
+.donorhub-stats .user-img .profile-pic{
+    margin-top: -100px;
+    border: solid #ea8737 10px;
+    width : 20%;
+    height: 20%;
+    border-radius: 50%;
+    object-fit:cover;
+}
+.donorhub-stats .name{
+    margin: 10px 0;
+}
+.donorhub-stats hr{
+    width: 15%;
+    height: 1.5px;
+    background-color: #ea8737;
+}
+.donorhub-stats #user-bio{
+    overflow: hidden;
+}

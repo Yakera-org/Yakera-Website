@@ -9,20 +9,21 @@ function DashboardStats(props) {
     const StatDictionary ={
         email: EN ? "Email" : "Email",
         phone: EN ? "Phone Number" : "Teléfono",
-        address: EN ? "Address" : "Teléfono",
+        address: EN ? "Address" : "Dirección",
         zelleEmail: EN ? "Zelle Email" : "Email Zelle",
+        zelleName: EN ? "Zelle Name" : "Zelle Nombre",
         acceptingZelle: EN ? "Accepting Zelle Payments?" : "¿Aceptando pago?",
         reserveUsername: EN ? "Reserve Username": "Usuario de Reserve"
     }
     const user = props.user
     const userStats = {
-        email: props.user.email || "",
-        phone: props.user.phone || "",
-        address: props.user.address || "",
-        reserveUsername: props.user.reserveUsername || "",
-        zelleEmail: props.user.zelleInfo.email || "",
+        email: user.email || "",
+        phone: user.phone || "",
+        address: user.address || "",
+        zelleEmail: user?.zelleInfo?.email || "",
+        zelleName: user?.zelleInfo?.name || "",
+        reserveUsername: user.reserveUsername || "",
     }
-    console.log(user)
     return (
         <div className='dashboard-stats'>
             <h2> {EN ?'Welcome ' : '¡Hola ' }  <span id='orange'>{user.firstName}</span>!</h2>

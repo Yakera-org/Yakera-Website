@@ -9,8 +9,8 @@ class UserService{
                 "user":{
                 "donorInfo": {
                     "location": "World",
-                    "age": "99",
-                    "bio": "Hi.",
+                    "age": "23",
+                    "bio": "Hi",
                     "preference": "email"
                 },
                 "zelleInfo": {
@@ -18,7 +18,7 @@ class UserService{
                     "name": "jango",
                     "isAccepting": true
                 },
-                "role": "user",
+                "role": "donor",
                 "email": "jangbel99@gmail.com",
                 "firstName": "Jang",
                 "lastName": "Belche",
