@@ -16,7 +16,6 @@ import NotFoundPage from './Pages/404/NotFoundPage';
 import CreateCampaign from './Pages/CreateCampaignPage/CreateCampaign';
 import Dashboard from './Pages/Dashboard/Dashboard';
 import EmailVerification from './Pages/EmailVerification/EmailVerificationPage';
-import DonorHub from './Pages/DonorHub/DonorHub';
 import LanguageService from '../services/language';
 import ProfileEditPage from './Pages/Profile/EditPage/EditPage';
 import Profile from './Pages/Profile/Profile';
@@ -74,7 +73,6 @@ function Main() {
                         <Route exact path="/profile/edit" component={ProfileEditPage} />
                         <Route exact path="/verify-email" component={EmailVerification} />
                         <Route exact path="/" component={home} />
-                        <Route exact path='/donor-hub' component={DonorHub} />
                         <Route path="/404" component={NotFoundPage} />
                         <Redirect to="/404" />
 
