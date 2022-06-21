@@ -1,6 +1,8 @@
 import React from 'react';
 import HashLoader from "react-spinners/HashLoader";
+import DashboardContent from './DashboardContent';
 import DashboardStats from './DashboardStats';
+import DonorHubContent from './DonorHubContent';
 import DonorHubStats from './DonorHubStats';
 
 const bannerBig = 'https://assets.yakera.org/yakera/banner-donorhub-large.svg';
@@ -45,7 +47,12 @@ function ProfileOutline(props) {
                 <hr />
             
                 <section className='profile-main'>
-                    campaigns, ...
+                    {userType === "recipient"
+                    ?
+                    <DashboardContent data={data} EN={EN} />
+                    :
+                    <DonorHubContent data={data} EN={EN} />
+                    }
                 </section>
             </div>
             }
