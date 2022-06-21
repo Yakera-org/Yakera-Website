@@ -31,7 +31,7 @@ function EditPageVisual(props) {
             </div>
             :
             <>
-                <EditContent EN={EN} user={user} type={type} setIsSame={props.setIsSame} handleChange={props.handleChange}/>
+                <EditContent EN={EN} user={user} type={type} handleChange={props.handleChange}/>
 
                 <section className='save-area'>
                     {props.success

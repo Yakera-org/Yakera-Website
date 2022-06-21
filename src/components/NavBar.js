@@ -211,7 +211,7 @@ class NavBar extends Component {
                                             'DASHBOARD'
                                             :
                                             <div 
-                                                name='dashboard'
+                                                name='profile'
                                                 className = "nav-spanish-text"
                                             >
                                                 MI CUENTA
@@ -222,7 +222,7 @@ class NavBar extends Component {
                                             'DONOR HUB'
                                             :
                                             <div 
-                                                name='donor-hub'
+                                                name='profile'
                                                 className = "nav-spanish-text"
                                             >
                                                 DONOR HUB
