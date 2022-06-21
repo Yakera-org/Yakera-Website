@@ -61,4 +61,8 @@
 .payment-error
 {
   color: #eb3b3b;
+  text-align: left;
+  margin-top: 2%;
+  margin-bottom: 1%;
+  font-weight: lighter;
 }
