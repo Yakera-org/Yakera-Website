@@ -381,6 +381,31 @@ function CreateCampaignDetails(props) {
                         />
                     ))}
                 </FormGroup>
+                <FormGroup item='true' xs={12} sm={6}>
+                    <FormLabel>
+                        {EN ? 'Campaign Tags' : 'Etiquetas de campaña'}
+                    </FormLabel>
+                    {[EN ? 'Women' : 'Mujers',
+                     EN ? 'Children' : 'Children',
+                     EN ? 'COVID-19' : 'COVID-19',
+                     EN ? 'LGBTQ+' : 'LGBTQ+',
+                     EN ? 'Eco-friendly' : 'Eco-friendly',
+                     EN ? 'Refugee' : 'Refugee',
+                     EN ? 'Technology' : 'Tecnología',
+                    ].map((val, index) => (
+                        <FormCheck
+                            key={index}
+                            name={'campaigntag'}
+                            value={val.toLowerCase()}
+                            type='checkbox'
+                            id={`tag${index}`}
+                            label={val}
+                            group='tag'
+                            // defaultChecked= {props.data.campaignCategory}
+                            onChange={props.handleChange}
+                        />
+                    ))}
+                </FormGroup>
                 <FormGroup>
                     <FormLabel>{EN ? 'Name of your Campaign' : 'Título de su campaña'}</FormLabel>
                     <FormControl
