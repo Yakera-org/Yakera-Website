@@ -1,6 +1,18 @@
 import api from "../../../services/api";
 import TokenService from "../../../services/token";
+import imageCompression from 'browser-image-compression';
+import S3 from "aws-s3";
+import * as AWSkeys from "../../../services/AWSkeys"
 
+
+const config_aws = {
+    bucketName: AWSkeys.S3_BUCKET,
+    region: AWSkeys.REGION,
+    dirName: 'profile-pictures',
+    accessKeyId: AWSkeys.ACCESS_KEY,
+    secretAccessKey: AWSkeys.SECRET_ACCESS_KEY
+}
+const S3Client = new S3(config_aws);
 class UserService{
     async getUserData() {
         try {
@@ -42,6 +54,32 @@ class UserService{
         localStorage.removeItem("email")
         localStorage.removeItem("name")
         window.location.href="/login"
+    }
+
+    async compressFile(img) {
+        const options = {
+          maxSizeMB: 1,
+          useWebWorker: true
+        }
+        try {
+          const compressedFile = await imageCompression(img, options);
+
+          return compressedFile
+        } catch (error) {
+          console.error(error);
+          return img
+        }
+
+    }
+    async uploadtoAWS(file){
+        try{
+            const res = await S3Client.uploadFile(file)
+            return "https://assets.yakera.org/" + res.key
+        }
+        catch(error){
+            console.error(error)
+            return error
+        }
     }
 }
 

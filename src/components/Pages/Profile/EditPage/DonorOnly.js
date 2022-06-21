@@ -1,6 +1,8 @@
 import React from 'react';
 import { Grid } from '@material-ui/core';
 
+const imagePlaceholder = "https://assets.yakera.org/yakera/yakera-y-7.png" //in case no profile picture is found
+
 function DonorOnly(props) {
     const EN = props.EN
     const user = props.user
@@ -21,7 +23,12 @@ function DonorOnly(props) {
                 /> 
             </Grid>
 
-            <CardProfile EN={EN} user={user} seed={Math.floor(Math.random()*random_profiles.length)} setIsSame={props.setIsSame}/>
+            <CardProfile 
+                EN={EN} 
+                user={user} 
+                seed={Math.floor(Math.random()*random_profiles.length)} 
+                handleChange={props.handleChange}
+            />
         </>
     );
 }
@@ -57,7 +64,7 @@ const ImgUpload =({
 class CardProfile extends React.Component {
     state = {
       file: '',
-      imagePreviewUrl: this.props.user.profilePicture,
+      imagePreviewUrl: this.props.user.profilePicture || imagePlaceholder,
       reader: new FileReader()
     }
 
@@ -77,7 +84,6 @@ class CardProfile extends React.Component {
                 var extFile = fileName.substr(idxDot, fileName.length).toLowerCase();
                 if (extFile==="jpg" || extFile==="jpeg" || extFile==="png"){
                     reader.onloadend = () => {
-                        this.props.setIsSame(false)
                         this.setState({
                             file: file,
                             imagePreviewUrl: reader.result
@@ -85,6 +91,7 @@ class CardProfile extends React.Component {
                     }
                     reader.readAsDataURL(file);
                     this.props.user.profilePicture = file
+                    this.props.handleChange(e)
                 }else{
                     alert(this.props.EN ? "Only png/jpg/jpeg and png files are allowed." : "Solamente se acepta archivos png./jpg/jpeg." )
                 }              
@@ -101,6 +108,7 @@ class CardProfile extends React.Component {
                 reader: new FileReader()
             })
         this.props.user.profilePicture = random_pic
+        this.props.handleChange(e)
     }
     randomPhoto = e =>{
         e.preventDefault();
@@ -112,8 +120,8 @@ class CardProfile extends React.Component {
                 file: '',
                 imagePreviewUrl: random_profiles[index]
             })
-        this.props.setIsSame(false)
         this.props.user.profilePicture = random_profiles[index]
+        this.props.handleChange(e)
     }
     
     render() {

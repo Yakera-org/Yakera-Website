@@ -45,10 +45,11 @@ function Main() {
                 LanguageService.setLanguageFromIP('en')
             }
         } catch (e) {
-            console.log(e)
             LanguageService.setLanguageFromIP('en')
         }
-        setLoaded(true)
+        finally{
+            setLoaded(true)
+        }
     }
     if (!loaded) {
         return (<p>Loading...</p>)

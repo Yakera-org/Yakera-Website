@@ -12,10 +12,12 @@
 .donorhub-stats .user-img .profile-pic{
     margin-top: -100px;
     border: solid #ea8737 10px;
-    width : 20%;
-    height: 20%;
+    width : 200px;
+    height: 200px;
     border-radius: 50%;
     object-fit:cover;
+    background-color: #fff0e4;
+    padding: 5px;
 }
 .donorhub-stats .name{
     margin: 10px 0;

@@ -15,7 +15,6 @@ function EditPage() {
     const [activeChange, setActiveChange] = React.useState(false);
     const [success, setSuccess] = React.useState("");
     const [error, setError] = React.useState("");
-    const [setIsSame] = React.useState(false);
 
     React.useEffect(() => {
         setEN(LanguageService.getLanguage()==='en')
@@ -91,25 +90,45 @@ function EditPage() {
         }
     }
 
-    function onSubmit(e){
+    async function onSubmit(e){
         e.preventDefault()
-        setSubmitLoading(true)
-        console.log(data)
-        backendPatch()
+        setSubmitLoading(true)        
+        backendPatch(await setProfilePicture())
     }
 
-    const backendPatch = async () => {
+    async function setProfilePicture(){
+        const currentPicture = data.user.profilePicture
+        if(typeof currentPicture === 'string' ){
+            // string is a random yakera profile
+            return currentPicture
+        }else{
+            // compress file
+            const compressedImage = await userServices.compressFile(currentPicture)
+            // upload to aws
+            const newImageName = await userServices.uploadtoAWS(compressedImage)
+            if(typeof newImageName === "string")return newImageName
+        }
+    }
+
+    const backendPatch = async (profilePicture) => {
         try {
             const payload = {
                 address: data.user.address,
                 phone: data.user.phone,
                 reserveUsername: data.user.reserveUsername,
+                profilePicture: profilePicture,
                 zelleInfo: {
                     email: data.user.zelleInfo?.email, 
                     name: data.user.zelleInfo?.name,
                     isAccepting: data.user.zelleInfo?.isAccepting
+                },
+                donorInfo:{
+                    location: data.user.donorInfo?.location,
+                    age:  data.user.donorInfo?.age,
+                    bio:  data.user.donorInfo?.bio,
                 }
             };
+            console.log(payload)
             await api.patch('/profile/update', payload);
             setSuccess(EN ? 'Profile updated successfully!' : "¡Tu perfil ya está actualizado!'");
             setActiveChange(false);
@@ -130,7 +149,6 @@ function EditPage() {
                 submitLoading={submitLoading}
                 type={TokenService.identifyUserType(data?.user?.role)}
                 activeChange={activeChange}
-                setIsSame={setIsSame}
                 onSubmit={onSubmit}
                 handleChange={handleChange}
                 success={success}

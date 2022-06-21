@@ -1,6 +1,6 @@
 import React from 'react';
 import "./Donorhub.scss"
-
+const imagePlaceholder = "https://assets.yakera.org/yakera/yakera-y-7.png" //in case no profile picture is found
 function DonorHubStats(props) {
     const EN = props.EN
 
@@ -17,10 +17,10 @@ function DonorHubStats(props) {
     return (
         <div className='donorhub-stats'>
             <div className='user-img'>
-                <img src = {userStats.profilePicture} alt="profile-pic" className = "profile-pic"/>
+                <img src = {userStats.profilePicture ? userStats.profilePicture : imagePlaceholder} alt="profile-pic" className = "profile-pic"/>
             </div>
             <h2 className='name'>
-                {userStats.firstName} {userStats.lastName}, 
+                {userStats.firstName} {userStats.lastName}{userStats.age ? "," : ""} 
                 <span id="grey" style={{marginLeft:"3px"}}>{userStats.age}</span>
             </h2>
             <h6>{userStats.location}</h6>

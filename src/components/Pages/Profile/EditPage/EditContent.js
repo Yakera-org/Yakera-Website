@@ -68,7 +68,7 @@ function RecipientEdit(props) {
             ?
                 <RecipientOnly EN={EN} user={user} fieldPlaceHolders={fieldPlaceHolders} fieldDict={fieldDict} handleChange={props.handleChange}/>
             :
-                <DonorOnly EN={EN} user={user} fieldPlaceHolders={fieldPlaceHolders} fieldDict={fieldDict} setIsSame={props.setIsSame} handleChange={props.handleChange}/>
+                <DonorOnly EN={EN} user={user} fieldPlaceHolders={fieldPlaceHolders} fieldDict={fieldDict} handleChange={props.handleChange}/>
             }
             
         </Grid>
