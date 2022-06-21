@@ -109,22 +109,31 @@ function StripeForm(props)
             {
                 if(error.payment_intent)
                 {
-                    if(error.payment_intent.charges.data[0].outcome.type === 'blocked')
+                    if(error.payment_intent.last_payment_error.payment_method.billing_details.address.country === 'US')
                     {
                         if(props.EN)
                         {
-                            setMessage('There was an error handling the transaction. It might be because we are not currently accepting US based cards.')
+                            setMessage('Please note that at this time we are unable to accept cards from the United States. If you have a card from the US, please make your contribution directly with Zelle or use a different card to complete your payment.');
                         }
                         else
                         {
-                            setMessage('Ha ocurrido un error manejando la transacción. Puede que se haya debido a que no estamos aceptando tarjetas de los EEUU en estos momentos.')
+                            setMessage('Por favor note que actualmente no nos encontramos aceptando tarjetas de los Estados Unidos. Si tiene una tarjeta de los EEUU, por favor haga su contribución directamente con Zelle o utilice otra tarjeta para completar el pago.');
                         }
 
                         setDisplayError(true);
                     }
                     else
                     {
-                        setMessage(error.message);
+                        if(props.EN)
+                        {
+                            setMessage('There was an error handling the transaction. If you have a card from the United States then that might be the cause of the error, due to us not currently accepting payments from the US. If this is the case, please make your contribution using Zelle or a different card.');
+                        }
+                        else
+                        {
+                            setMessage('Ha ocurrido un error manejando la transacción. Si tiene una tarjeta de los Estados Unidos entonces eso podría ser la causa del error, debido a que no estamos aceptando pagos desde los EEUU actualmente. Si este es el caso, por favor haga su aporte utilizando Zelle u otra tarjeta.');
+                        }
+
+                        setDisplayError(true);
                     }
                 }
                 else
@@ -149,6 +158,7 @@ function StripeForm(props)
                     case "succeeded":
                         setMessage("Payment succeeded!");
                         addAmount(paymentIntent, "success");
+                        setDisplayError(false);
                         props.openThanks();
                         break;
                     case "processing":
@@ -174,6 +184,9 @@ function StripeForm(props)
     return (
         <form id="payment-form" onSubmit={handleSubmit}>
             <PaymentElement id="payment-element" />
+            {/* Show any error or success message */}
+            {/* message && <div id="payment-message">{message}</div> */}
+            {message && displayError && <div id="payment-message" className="payment-error">{message}</div>}
             <button className="stripe-donate-btn" disabled={isLoading || !stripe || !elements} id="submit">
                 {isLoading 
                  ? 
@@ -184,9 +197,6 @@ function StripeForm(props)
                  <div>{props.EN ? 'Donate' : 'Donar'}</div>
                 }
             </button>
-            {/* Show any error or success message */}
-            {/* message && <div id="payment-message">{message}</div> */}
-            {message && displayError && <div id="payment-message">{message}</div>}
             {props.EN
                 ?
                 <div className="powered-by">Payments powered by <a className="stripe-link" href="https://stripe.com" target="_blank" rel="noopener noreferrer">Stripe</a></div>
