@@ -11,11 +11,9 @@ class PaymentDetails extends PureComponent {
         this.state = {
             checkError:"",
             openPrivacy: false,
-            age:false,
-            consent:false,
+            age:true,
+            consent:true,
             anon:false,
-            noTip: false,
-            yesTip: true,
             amount: {
                 value: this.props.presetAmount ? this.props.presetAmount : '',
                 validateOnChange: false,
@@ -37,7 +35,7 @@ class PaymentDetails extends PureComponent {
                 error: '',
             },
             tip: {
-                value: 5,
+                value: '5',
                 validateOnChange: false,
                 error: '',
             }
@@ -53,8 +51,12 @@ class PaymentDetails extends PureComponent {
     }
 
     handleChange(validationFunc, evt) {
-        const fieldVal = evt.target.value;
         const field = evt.target.name;
+        let fieldVal = evt.target.value;
+        if(field === "amount" || field === "tip"){
+            fieldVal = fieldVal<0 ? 0 : fieldVal
+            fieldVal = fieldVal==="" ? 0 : fieldVal
+        }
         this.setState(state => ({
           [field]: {
             ...state[field],
@@ -100,13 +102,8 @@ class PaymentDetails extends PureComponent {
     }
 
     onContinue(){
-        let isValidated = this.validateData()
-        var tip = this.state.tip.value
-        if(this.state.noTip){
-            tip = 0
-        }
-        if(isValidated){
-            this.props.onContinue(this.state.amount.value, this.state.email.value, this.state.name.value, tip, this.state.comment.value, this.state.anon);
+        if(this.validateData()){
+            this.props.onContinue(this.state.amount.value, this.state.email.value, this.state.name.value, this.state.tip.value, this.state.comment.value, this.state.anon);
         }
     }
 
@@ -115,12 +112,12 @@ class PaymentDetails extends PureComponent {
         let amountError, emailError, nameError, tipError;
 
         let isValid = false;
-    
+        tipError = validateFields.validateNumberIncludeZero(this.state.tip.value + '');
         
         if(!this.state.amount.value){
             amountError = emptyWarning;
         }else{
-            amountError = validateFields.validateNumber(this.state.amount.value + '')
+            amountError = validateFields.validateNumberForAmount(this.state.amount.value + '')
         }
         if(!this.state.email.value){
           emailError = emptyWarning;     
@@ -132,15 +129,8 @@ class PaymentDetails extends PureComponent {
         }else{
             nameError = validateFields.validateName(this.state.name.value)
         }
-
-        if(this.state.yesTip){
-            if(!this.state.tip.value){
-                tipError = emptyWarning;
-            }else{
-                tipError = validateFields.validateNumber(this.state.tip.value + '')
-            }
-        }
         
+
         this.setState(state => ({
             amount:{
                 ...state['amount'],
@@ -182,18 +172,25 @@ class PaymentDetails extends PureComponent {
         const { amount, name, email, comment, tip } = this.state;
         const EN = this.props.EN
         return (
-            <div >
+            <div>
 
                 <ConsentCard open={this.state.openPrivacy} onClose={this.onPrivacy}/>
 
-                <p>{EN ? 'Please enter details below' : 'Ingrese los detalles a continuación'}</p>
+                <div className='details'>
+                    {EN ? 'Enter the details below' : 'Ingresa los detalles a continuación'}
+                </div>
 
-                
+                <div className='category'>
+                    {EN ? 'How much do you want to donate?' : '¿Cuánto deseas donar?'}
+                </div>
+
+                <div className='money-sign'>{'$'}</div>
                 <input
+                    id="donation-input"
                     type="number"
                     name="amount"
                     value={amount.value}
-                    placeholder={EN ? "Amount ($)*" : 'Cantidad ($)'}
+                    placeholder={'0.00'}
                     className={classnames(
                         'form-control',
                         { 'is-valid': amount.error === false },
@@ -205,190 +202,143 @@ class PaymentDetails extends PureComponent {
                         />
                 <div className='error-msg'>{amount.error}</div> 
 
-                <input
-                    type="text"
-                    name="email"
-                    value={email.value}
-                    placeholder={EN ? "Email*" : 'Email*'}
-                    className={classnames(
-                        'form-control',
-                        { 'is-valid': email.error === false },
-                        { 'is-invalid': email.error }
-                        )}
-                        onChange={evt =>
-                            this.handleChange(validateFields.validateEmail, evt)
-                        }                            
-                        
-                        />
-                <div className='error-msg'>{email.error}</div> 
-                
-                <input
-                    type="text"
-                    name="name"
-                    value={name.value}
-                    placeholder={EN ? 'Name*' : 'Nombre*'}
-                    className={classnames(
-                        'form-control', 
-                        { 'is-valid': name.error === false },
-                        { 'is-invalid': name.error }
-                        )}
-                        onChange={evt =>
-                            this.handleChange(validateFields.validateName, evt)
-                        }                                  
-                        
-                        />
-                <div className='error-msg'>{name.error}</div> 
+                <Grid container spacing={2} style={{alignItems:'flex-start'}}>
+                    <Grid item xs={12} sm={6}>
+                        <div className='option'>
+                            {EN ? 'Name' : 'Nombre'}
+                        </div>
 
-                <p id='required'>{EN ? ' * required' : '* requerido'}</p>
-                
-                <input
-                    type="text"
-                    name="comment"
-                    value={comment.value}
-                    placeholder={EN ? 'Leave a supportive comment' : 'Deja un comentario de apoyo'}
-                    className={classnames(
-                        'form-control',
-                        { 'is-valid': comment.error === false },
-                        { 'is-invalid': comment.error }
-                        )}
-                        onChange={evt =>
-                            this.handleChange(validateFields.validateName, evt)
-                        }                                  
-                        
-                />
+                        <input
+                            type="text"
+                            name="name"
+                            value={name.value}
+                            placeholder={EN ? "Name" : "Nombre"}
+                            className={classnames(
+                                'form-control', 
+                                { 'is-valid': name.error === false },
+                                { 'is-invalid': name.error },
+                                'payment-data-input'
+                                )}
+                                onChange={evt =>
+                                    this.handleChange(validateFields.validateName, evt)
+                                }                                  
+                                
+                                />
+                        <div className='error-msg'>{name.error}</div>
+                    </Grid>
 
-                <br />  
+                    <Grid item xs={12} sm={6}>
+                        <div className='option'>
+                            {EN ? 'Email' : 'Correo electrónico'}
+                        </div>
+                        
+                        <input
+                            type="text"
+                            name="email"
+                            value={email.value}
+                            placeholder={EN ? "name@example.com" : "nombre@ejemplo.com"}
+                            className={classnames(
+                                'form-control',
+                                { 'is-valid': email.error === false },
+                                { 'is-invalid': email.error },
+                                'payment-data-input'
+                                )}
+                                onChange={evt =>
+                                    this.handleChange(validateFields.validateEmail, evt)
+                                }                            
+                                
+                                />
+                        <div className='error-msg'>{email.error}</div>
+                    </Grid>
+                </Grid>
+                <div className='align-left'>
+                <label className='checkbox-button'>
                 <input
                     name="anonymous"
                     type="checkbox"
                     checked={this.state.anon}
                     onChange={this.onAnonCheck}
-                    style={{ marginBottom:'5px', marginTop:'-15px', width:'15px', float:'left', clear:'both'}}
+                    style={{marginTop:'-10px', width:'15px', float:'left', clear:'both'}}
                     className={classnames(
-                        'form-control'
+                        'form-control',
+                        'checkbox-square'
                         )}
                 />
-                <div className="check-text" style={{margin:'0px'}} >
-                    {EN ? 'I would like to stay anonymous' : 'Me gustaría permanecer en el anonimato'}   
+                <span className='checkbox-button-control'></span>
+                <div className="description" id="checkbox-text">
+                    {EN ? 'I would like to stay anonymous.' : 'Me gustaría permanecer en el anonimato.'}   
+                </div>
+                </label>
                 </div>
                 
-
-                <hr id='donate-now-hr'/>
-
-                <p>{EN ? 'Would you like to leave a tip?*' : 'Quisiera dejar una propina?'} </p>
-
-                <input
-                    name="tip-yes"
-                    type="checkbox"
-                    checked={this.state.yesTip}
-                    onChange={this.onYesTipCheck}
-                    style={{ marginBottom:'5px', marginTop:'-15px', width:'15px', float:'left', clear:'both'}}
-                    className={classnames(
-                        'form-control'
-                        )}
-                />
-                <div className="check-text" style={{margin:'0px'}} >
-                    {EN ? 'Yes, please' : 'Si'}   
+                <div className='category-comment'>
+                    {EN ? 'Leave a comment!' : '¡Deja un comentario!'}
                 </div>
-
-                {
-                    this.state.yesTip
-
-                    ?
-                    <div id='tip-area'>
-                        <Grid container spacing={0} style={{ alignItems:'flex-start', padding:'0 10%', marginTop:'-10px'}}>
-                            <Grid item xs={12} sm={4} >
-                                <div className='label'>{EN ? 'Tip ($)' : 'Propina ($)'}:</div>
-                            </Grid>
-                            <Grid item xs={12} sm={8} style={{marginTop:'8px'}}>
-                                <input
-                                    type="number"
-                                    name="tip"
-                                    value={tip.value}
-                                    placeholder={EN ? 'Tip ($)' : 'Propina ($)'}
-                                    className={classnames(
-                                        'form-control',
-                                        { 'is-valid': tip.error === false },
-                                        { 'is-invalid': tip.error }
-                                        )}
-                                        onChange={evt =>
-                                                this.handleChange(validateFields.validateNumber, evt)
-                                        }
-                                />
-                            </Grid>
-                        </Grid>
-                                
-                        <div className='error-msg'>{tip.error}</div> 
-                        <br />
-                    </div>
-
-                    :
-
-                    ''
-                }
-
-                <input
-                    name="tip-no"
-                    type="checkbox"
-                    checked={this.state.noTip}
-                    onChange={this.onNoTipCheck}
-                    style={{ marginBottom:'5px', marginTop:'-15px', width:'15px', float:'left', clear:'both'}}
-                    className={classnames(
-                        'form-control'
-                        )}
-                />
-                <div className="check-text" style={{marginTop:'0px'}} >
-                    {EN ? "No, I don't want to leave a tip" : 'No, no quiero dejar propina.'}   
-                </div>
-
-                <p id='tip-desc'>{EN ? "*Leaving a tip helps us maintain and bring you new features" : '*Dejando propina nos ayuda a mantener y traerle nuevas opciones y servicios.'}   </p>
-
-                <hr id='donate-now-hr'/>
-                
                 
                 <input
-                    name="consent"
-                    type="checkbox"
-                    onChange={this.onConsentCheck}
-                    id="check-consent"            
-                    style={{ marginBottom:'0px', marginTop:'0px', width:'15px', float:'left', clear:'both'}}                        
+                    type="text"
+                    name="comment"
+                    value={comment.value}
+                    placeholder={EN ? 'Get better soon!' : '¡Mejórate pronto!'}
                     className={classnames(
-                        'form-control'
+                        'form-control',
+                        { 'is-valid': comment.error === false },
+                        { 'is-invalid': comment.error },
+                        'payment-data-input'
                         )}
-                />  
-                <div className="check-text" style={{marginTop:'30px'}}>
-                        {EN ? 'I consent to the' : 'Asiento a la'}
-                    <button
-                        id="privacy-button" 
-                        onClick={this.onPrivacy}
-                        >
-                        {EN ? 'privacy form *' : 'forma de privacidad *'}
-                    </button>  
-                </div>
-
-                <input
-                    name="age"
-                    type="checkbox"
-                    onChange={this.onAgeCheck}
-                    style={{ marginBottom:'5px', marginTop:'-15px', width:'15px', float:'left', clear:'both'}}
-                    className={classnames(
-                        'form-control'
-                        )}
+                        onChange={evt =>
+                            this.handleChange(validateFields.validateName, evt)
+                        }
                 />
-                <div className="check-text" style={{marginTop:'0px'}} >
-                    {EN ? 'I confirm to be 18 or over *' : 'Tengo más de 18 años de edad *'}   
+                <div className='description'>
+                    {
+                     EN 
+                     ? 
+                     "Comments are optional, and will be presented on the campaign page for support." 
+                     : 
+                     'Los comentarios son opcionales y se presentarán en la página de la campaña que apoyes.'
+                    }
                 </div>
 
-                <div className='error-msg' style={{marginTop:'-20px', textAlign:'left', marginLeft:'20px'}}>{this.state.checkError}</div>
-                <br />
+                <div className='category' id='tip-category'>
+                    {EN ? 'Would you like to leave a tip?' : '¿Quisieras dejar propina?'}
+                </div>
+                
+                <div className='money-sign'>{'$'}</div>
+                <input 
+                    id="tip-input"
+                    name="tip"
+                    type="number"
+                    value={tip.value}
+                    placeholder="0.00"
+                    className={classnames(
+                        'form-control',
+                        { 'is-valid': tip.error === false },
+                        { 'is-invalid': tip.error }
+                        )}
+                        onChange={evt =>
+                                this.handleChange(validateFields.validateNumber, evt)
+                        }
+                />
+                <div className='error-msg'>{tip.error}</div>
+
+                <div className='description'>
+                    {
+                     EN 
+                     ? 
+                     "Leaving a tip helps us to maintain our operations and bring new features to you. Thank you!" 
+                     : 
+                     'Dejando propina nos ayudas a mantener y traer para ti nuevas funciones y servicios. ¡Gracias!'
+                    }
+                </div>
 
                 <button
                     type="submit"
-                    className="btn btn-secondary btn-block payment-start-button"    
+                    className="btn btn-secondary btn-block payment-start-button"   
                     onClick={this.onContinue}                   
                     >
                         {EN ? 'Donate' : 'Donar'}
-                </button>               
+                </button>        
         </div> 
         )
     }

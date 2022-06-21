@@ -1,0 +1,19 @@
+.dashboard-stats{
+    padding: 2%;
+    text-align: center;
+}
+.dashboard-stats h2{
+    text-align: left;
+}
+.dashboard-stats .dashboard-stats-grid{
+    margin-top: 30px;
+    text-align: left;    
+    font-size: 16px;
+}
+.dashboard-stats .dashboard-stats-grid #grey:hover{
+    text-decoration: underline;
+    cursor: pointer;
+}
+.dashboard-stats .dashboard-stats-grid p{
+    margin-left: 5%;  
+}

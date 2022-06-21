@@ -1,6 +1,5 @@
 import React from 'react';
 import "./Zelle.css"
-import Button from '@material-ui/core/Button';
 import classnames from 'classnames';
 import { Alert } from 'reactstrap';
 import HashLoader from "react-spinners/HashLoader";
@@ -81,16 +80,9 @@ function ZelleVisual(props) {
                 <div className="invalid-feedback">{data.errors.reference}</div>
                </div>
                <br />
-               <Button className = "confirm-button"
+               <button className = "confirm-button"
                    onClick={props.OnConfirm}
-                   style={{
-                     border:'none',
-                     backgroundColor:'#0046A8',
-                     borderRadius:'10px',
-                     color:'white',
-                     padding:'10px',
-                     fontSize: '13px',                 }}
-                 >{EN ? "Confirm Payment" : "Confirmar Pago"}</Button>
+                 >{EN ? "Confirm Payment" : "Confirmar Pago"}</button>
 
             <div className="sweet-loading">
                 <div className='loader-wrapper'>
@@ -125,7 +117,7 @@ const ImgUpload =({
   <>
     <label id="upload-area" htmlFor="screenshot-upload">
       <button className = "zelle-button">
-                          {EN ? "Upload Screenshot" : "Subir captura de pantalla"}
+            {EN ? "Upload Screenshot" : "Subir captura de pantalla"}
         </button>
       <p id="ss-name">{name!== "" ? EN ? "File uploaded: " + name : "Archivo subido: " + name : ""}</p>
       <input id="screenshot-upload" type="file" accept="image/*" onChange={photoUpload}/>

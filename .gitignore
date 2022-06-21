@@ -23,7 +23,7 @@ package-lock.json
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-.env
-.env
 yarn.lock
-yarn.lock
+
+# stripe demo
+StripeDemo/

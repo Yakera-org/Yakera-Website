@@ -18,6 +18,10 @@
   font-family: 'Intro-Light';
   src: local('Intro'), url(./fonts/Intro-Light-Alt-Regular.otf) format('opentype');
 }
+@font-face {
+  font-family: "CamphorW01-Regular";
+  src: url("//db.onlinewebfonts.com/t/22f912b4b10a938d5f28b7fe79ed7466.ttf") format("truetype");
+}
 
 :root {
   --brand-orange: #eb913b;

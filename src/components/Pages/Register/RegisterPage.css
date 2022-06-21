@@ -1,5 +1,5 @@
 .register-page {
-    margin-top: 50px;
+    margin-top: 160px;
 }
 
 .register-page input{
@@ -33,16 +33,18 @@
 #step-btn button:active, #step-btn button:focus{
     outline: none;
 }
-.login-card{
+.register-card{
+    width: 40%;
+    margin-left: 30%;
     text-align: center;
     padding: 10px 50px;
 }
-.login-card h1{
+.register-card h1{
     color: #052a5c;
     font-family: Intro-Regular-Alt;
     margin-bottom: 20px;
 }
-.login-card h2{
+.register-card h2{
     font-family: Intro-Regular-Alt;
     margin-top: 20px;
 }
@@ -225,12 +227,12 @@
         margin-top: 180px;
     }
     
-    .login-card{
+    .register-card{
         text-align: center;
         padding: 0px 25px;
     }
 
-    .login-card input{
+    .register-card input{
         width: 100%;
     }
     .switch button{

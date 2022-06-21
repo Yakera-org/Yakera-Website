@@ -198,8 +198,8 @@ class NavBar extends Component {
                             </Nav.Link>
 
                             <Nav.Link 
-                                id={this.state.currentTab === (isAuthenticated ? isRecipient ? 'dashboard' : 'donor-hub' : 'login') ? 'nav-tab-selected': 'nav-tab'} 
-                                name={isAuthenticated ? isRecipient ? 'dashboard' : 'donor-hub' : 'login'}  
+                                id={this.state.currentTab === (isAuthenticated ? "profile" : 'login') ? 'nav-tab-selected': 'nav-tab'} 
+                                name={isAuthenticated ? "profile" : 'login'}  
                                 onClick={this.onTabClick.bind(this)}
                                 >
                                     {isAuthenticated 

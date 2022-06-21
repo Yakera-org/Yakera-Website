@@ -42,22 +42,25 @@ function CreateCampaignDetails(props) {
     const [mainLoading, setMainLoading] = useState(false);
     const [docLoading, setDocLoading] = useState(false);
     const [camLoading, setCamLoading] = useState(false);
+    
+    const EN = props.EN
 
     // https://github.com/react-dropzone/react-dropzone/tree/master/examples/previews
     const mainThumbs = mainFile.map(file => {
         return(
-            <FilePreview key={file.name} file={file} onRemove={onRemove} onRetry={onRetry} id="main" uploadSuccess={uploadSuccess}uploadFailures={uploadFailures}/>        )
+            <FilePreview EN={EN} key={file.name} file={file} onRemove={onRemove} onRetry={onRetry} id="main" uploadSuccess={uploadSuccess}uploadFailures={uploadFailures}/>       
+        )
     });
 
     const documentThumbs = documentFiles.map(file => {
         return(
-            <FilePreview key={file.name} file={file} onRemove={onRemove} onRetry={onRetry} id="document" uploadSuccess={uploadSuccess} uploadFailures={uploadFailures}/>
+            <FilePreview EN={EN} key={file.name} file={file} onRemove={onRemove} onRetry={onRetry} id="document" uploadSuccess={uploadSuccess} uploadFailures={uploadFailures}/>
         )
     });
 
     const campaignThumbs = campaignFiles.map((file, i) => {
         return(
-            <FilePreview key={file.name + i} file={file} onRemove={onRemove}  onRetry={onRetry} id="campaign" uploadSuccess={uploadSuccess} uploadFailures={uploadFailures}/>
+            <FilePreview EN={EN} key={file.name + i} file={file} onRemove={onRemove}  onRetry={onRetry} id="campaign" uploadSuccess={uploadSuccess} uploadFailures={uploadFailures}/>
         )
     });
 
@@ -156,7 +159,7 @@ function CreateCampaignDetails(props) {
            
             })
             .catch(err => {
-                console.log(err)
+                console.error(err)
                 let failStatus = uploadFailures
                 failStatus.push(filename)
                 setUploadFailures(failStatus)
@@ -349,7 +352,6 @@ function CreateCampaignDetails(props) {
 
       }
 
-    const EN = props.EN
     return(
         <div className='campaign-details'>
             <h2>
