@@ -13,6 +13,8 @@ function StripeForm(props)
     const [message, setMessage] = useState(null);
     const [isLoading, setIsLoading] = useState(false);
 
+    const [displayError, setDisplayError] = useState(false);
+
     const addAmount = async (paymentIntent, status) => {
         try
         {
@@ -105,7 +107,30 @@ function StripeForm(props)
         {
             if(error.type === "card_error" || error.type === "validation_error")
             {
-                setMessage(error.message);
+                if(error.payment_intent)
+                {
+                    if(error.payment_intent.charges.data[0].outcome.type === 'blocked')
+                    {
+                        if(props.EN)
+                        {
+                            setMessage('There was an error handling the transaction. It might be because we are not currently accepting US based cards.')
+                        }
+                        else
+                        {
+                            setMessage('Ha ocurrido un error manejando la transacción. Puede que se haya debido a que no estamos aceptando tarjetas de los EEUU en estos momentos.')
+                        }
+
+                        setDisplayError(true);
+                    }
+                    else
+                    {
+                        setMessage(error.message);
+                    }
+                }
+                else
+                {
+                    setMessage(error.message);
+                }
             }
             else
             {
@@ -161,6 +186,7 @@ function StripeForm(props)
             </button>
             {/* Show any error or success message */}
             {/* message && <div id="payment-message">{message}</div> */}
+            {message && displayError && <div id="payment-message">{message}</div>}
             {props.EN
                 ?
                 <div className="powered-by">Payments powered by <a className="stripe-link" href="https://stripe.com" target="_blank" rel="noopener noreferrer">Stripe</a></div>
