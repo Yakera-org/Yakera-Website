@@ -11,6 +11,7 @@ import { Button } from "react-bootstrap";
 import './createCampaignIntro'
 import './CreateCampaignLast'
 import CampaignLastPage from "./CreateCampaignLast";
+import CampaignThirdPage from "./CreateCampaignThird";
 
 function CreateCampaignVisuals(props) {
 
@@ -51,9 +52,11 @@ function CreateCampaignVisuals(props) {
             <Step label={2}> 
                 <CreatCampaignDetails EN={EN} data={props.data} handleChange={props.handleChange} setData={props.setData} setIsUploading={setIsUploading}/>
             </Step> 
-            <Step label={3}> </Step>     
+            <Step label={3}>
+                <CampaignThirdPage EN={EN} data={props.data} handleChange={props.handleChange} setData={props.setData}></CampaignThirdPage>
+            </Step>     
             <Step label={4}>  
-            <CampaignLastPage isUploading={isUploading} EN={EN} submit={props.submit}></CampaignLastPage>
+                <CampaignLastPage isUploading={isUploading} EN={EN} submit={props.submit}></CampaignLastPage>
             </Step>  
                 </MultiStepForm>       
                 { props.success
@@ -90,8 +93,8 @@ function CreateCampaignVisuals(props) {
                 }
                 
             <div className="center-btn">
-                <Button onClick={prevStep} className="step-btn">{EN ? 'Previous' : 'Regresar'}</Button>
-                <Button onClick={nextStep} className="step-btn">{EN ? 'Next' : 'Siguiente'}</Button>
+                <Button onClick={prevStep} className="step-btn left-btn">{EN ? 'Previous' : 'Regresar'}</Button>
+                <Button onClick={nextStep} className="step-btn right-btn">{EN ? 'Next' : 'Siguiente'}</Button>
             </div>
 
 

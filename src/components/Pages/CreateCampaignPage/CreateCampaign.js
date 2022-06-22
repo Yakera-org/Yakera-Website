@@ -22,7 +22,9 @@ function CreateCampaign() {
             campaignname: null,
             amount: null,
             story: null,
+            publicStory: null,
             description: null,
+            moneyUse: null,
             itemizedbudget: null,
             mainPic: null,
             camPics: null,
@@ -107,7 +109,7 @@ function CreateCampaign() {
     function validateData(){
         let emptyWarning = EN ? 'This field cannot be empty' : 'Este campo no puede estar vacío' ;
         let emptyPicWarning = EN ? 'No files uploaded' : 'No hay archivos subidos' ;
-        let nameError, amountError, storyError, descriptionError, budgetError, mainPicError, camPicsError, supportPicsError;
+        let nameError, amountError, storyError, publicStoryError, descriptionError, moneyError, budgetError, mainPicError, camPicsError, supportPicsError;
 
         if(!data.amount){
             amountError = emptyWarning;
@@ -124,10 +126,20 @@ function CreateCampaign() {
         }else{
             storyError = validateFields.validateName(data.story)
         }
+        if(!data.publicStory){
+            publicStoryError = emptyWarning;      
+        }else{
+            publicStoryError = validateFields.validateName(data.story)
+        }
         if(!data.description){
             descriptionError = emptyWarning;      
         }else{
             descriptionError = validateFields.validateName(data.description)
+        }
+        if(!data.moneyUse){
+            moneyError = emptyWarning;      
+        }else{
+        moneyError = validateFields.validateName(data.itemizedbudget)
         }
         if(!data.itemizedbudget){
             budgetError = emptyWarning;      
@@ -150,6 +162,8 @@ function CreateCampaign() {
                 campaignname: nameError,
                 amount: amountError,
                 story: storyError,
+                publicStory: publicStoryError,
+                moneyUse: moneyError,
                 itemizedbudget: budgetError,
                 description: descriptionError,
                 mainPic: mainPicError,
@@ -158,7 +172,7 @@ function CreateCampaign() {
             },
         })
         
-        if(!amountError && !storyError && !descriptionError && !nameError && !budgetError && !mainPicError && !camPicsError && !supportPicsError){
+        if(!amountError && !storyError && !publicStoryError && !descriptionError && !nameError && !moneyError && !budgetError && !mainPicError && !camPicsError && !supportPicsError){
             return true
         }
         
