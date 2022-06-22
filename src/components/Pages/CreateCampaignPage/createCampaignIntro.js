@@ -1,6 +1,7 @@
 import React from "react";
 import './CreateCampaignPage.css';
 import campaignImgEs from '../../../pics/campaign-img-es.png';
+import campaignImgEn from '../../../pics/campaign-img-en.png';
 import healthcare from '../../../pics/healthcare-campaign.png';
 import education from '../../../pics/education-campaign.png';
 import smallbusiness from '../../../pics/smallbusiness-campaign.png';
@@ -52,23 +53,33 @@ function CampaignIntroPage(props) {
     return(
     <div>
         <h1>{EN ? 'Create your Campaign' : 'Crea tu Campaña'}</h1>
-        {/* Replace the empty source with the campaign image when ready */}
         <div className="center-img">
-            <img src={campaignImgEs} alt="Campaign Creation" className="campaign-img" />
+            <img src={EN ? campaignImgEn : campaignImgEs} alt="Campaign Creation" className="campaign-img" />
         </div>
         <p className="info-text">
             {EN
             ?
-            'If you have any questions, send a Whatsapp to the number '
+            'If you have any questions, text us in Whatsapp at '
             :
             'Si tienes dudas, envía un Whatsapp al número '}
             <span className="info-highlight">+1 (740) 324-9244</span>
             {EN
             ?
-            ' o envía un correo electrónico a '
+            ' or '
             :
-            ' or send an email to '}
+            ' o al '}
+            <span className="info-highlight">+56 9 5699 7352</span>
+            {EN
+            ?
+            ' or send an email to '
+            :
+            ' o envía un correo electrónico a '}
             <span className="info-highlight">info@yakera.org</span>
+            {EN
+            ?
+            '. We are here to help you and answer any questions.'
+            :
+            '. Estamos aquí para ayudarte y responder cualquier pregunta.'}
         </p>
 
         <h2 className="details-text">{EN ? 'Details' : 'Detalles'}</h2>
