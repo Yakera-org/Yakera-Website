@@ -7,6 +7,7 @@ import RegisterDetails from "./Register_details";
 import RegisterAuth from "./Register_auth";
 import RegisterConf from "./Register_confirmation";
 import { useBoolean } from "react-use-boolean";
+import api from '../../../services/api';
 
 
 import './RegisterPage.css'
@@ -47,6 +48,23 @@ function RegisterVisuals(props) {
             error: ''
         })
         nextStep(step - 1);
+    }
+
+    async function resendEmail() {
+        const response = await api.post(`/auth/resend-email`, {email: props.data.email});
+        const message = document.getElementById('resent-email-status');
+        console.log(response.data);
+        
+        if(response.data.success)
+        {
+            message.classList.toggle('status-good');
+            message.innerHTML = EN ? 'If your email is correct, you are going to receive an email to verify your account' : 'Si tu correo es correcto, vas a recibir un correo para verificar tu cuenta';
+        }
+        else
+        {
+            message.classList.toggle('status-bad');
+            message.innerHTML = EN ? 'Something went wrong, try again later' : 'Hubo un error, inténtelo de nuevo más tarde';
+        }
     }
 
     return (
@@ -97,6 +115,12 @@ function RegisterVisuals(props) {
                                     { props.success }
                                     <div style={{fontSize:'15px'}}>
                                         { EN ? 'Please make sure to check your spam folder.' : 'Asegúrese de revisar su carpeta de correo no deseado.' }
+                                    </div>
+                                    <div className="resend-email-area">
+                                        <button onClick={resendEmail} className="resend-email-btn">
+                                            {EN ? 'Resend verification email' : 'Reenviar email de confirmación'}
+                                        </button>
+                                        <div id="resent-email-status" className="resend-email-status"></div>
                                     </div>
                                 </Alert>
                             :
