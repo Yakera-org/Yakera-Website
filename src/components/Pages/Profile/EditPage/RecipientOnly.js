@@ -90,7 +90,7 @@ function RecipientOnly(props) {
                         {EN ? "Do you have any questions or need assistance?" : "¿Tienes alguna pregunta o necesitas apoyo?"}
                     </p>
                     <img width="150" src={questionmarkSVG} alt="questionmark-help" />
-                    <button onClick={() => window.location.href = "https://chat.whatsapp.com/LcSFQzsohaC1hmlgdbij3D"}>
+                    <button onClick={() => window.location.href = "https://walink.co/6d9a42"}>
                         {EN ? "Contact us!" : "¡Contáctanos!"}
                     </button>
                 </section>

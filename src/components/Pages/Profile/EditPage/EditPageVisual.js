@@ -3,11 +3,15 @@ import HashLoader from "react-spinners/HashLoader";
 import EditContent from './EditContent';
 import { Alert } from 'reactstrap';
 
+
 function EditPageVisual(props) {
     const EN = props.EN
     const user = props.data.user
     const type = props.type
     const loading = props.loading
+
+    const EmailTemplate = EN ? `Delete Yakera Donor Account&body=Hello Yakera team, I would like to delete my account with email: ${user?.email}.` : `Hola equipo de Yakera, quisiera eliminar mi cuenta con el email: ${user?.email}.`
+
     return (
         <div className='edit-container'>
             <section className='banner'>
@@ -69,7 +73,7 @@ function EditPageVisual(props) {
                     </button>
                     <p>
                         {EN ? 'Want to delete your account? Click ' : '¿Te gustaría eliminar tu cuenta? Haz click '}
-                        <a href = {`mailto:info@yakera.org?subject=Delete Yakera Donor Account&body=Hello Yakera, I would like to delete my Donor Account with email: ${user.email}`}>
+                        <a href = {`mailto:info@yakera.org?subject=${EmailTemplate}`}>
                             {EN ? 'here' : 'aquí'}
                         </a>
                         {EN ? ' to get in touch with one of the members of the team.' : ' para ponerte en contacto con un miembro de nuestro equipo.'}
