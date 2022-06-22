@@ -107,34 +107,14 @@ function StripeForm(props)
         {
             if(error.type === "card_error" || error.type === "validation_error")
             {
-                if(error.payment_intent)
+                if(error.payment_intent?.last_payment_error.payment_method.billing_details.address.country === 'US')
                 {
-                    if(error.payment_intent.last_payment_error.payment_method.billing_details.address.country === 'US')
-                    {
-                        if(props.EN)
-                        {
-                            setMessage('Please note that at this time we are unable to accept cards from the United States. If you have a card from the US, please make your contribution directly with Zelle or use a different card to complete your payment.');
-                        }
-                        else
-                        {
-                            setMessage('Por favor note que actualmente no nos encontramos aceptando tarjetas de los Estados Unidos. Si tiene una tarjeta de los EEUU, por favor haga su contribución directamente con Zelle o utilice otra tarjeta para completar el pago.');
-                        }
-
-                        setDisplayError(true);
-                    }
-                    else
-                    {
-                        if(props.EN)
-                        {
-                            setMessage('There was an error handling the transaction. If you have a card from the United States then that might be the cause of the error, due to us not currently accepting payments from the US. If this is the case, please make your contribution using Zelle or a different card.');
-                        }
-                        else
-                        {
-                            setMessage('Ha ocurrido un error manejando la transacción. Si tiene una tarjeta de los Estados Unidos entonces eso podría ser la causa del error, debido a que no estamos aceptando pagos desde los EEUU actualmente. Si este es el caso, por favor haga su aporte utilizando Zelle u otra tarjeta.');
-                        }
-
-                        setDisplayError(true);
-                    }
+                    setMessage(props.EN
+                        ?
+                        'Please note that at this time we are unable to accept cards from the United States. If you have a card from the US, please make your contribution directly with Zelle or use a different card to complete your payment.'
+                        :
+                        'Por favor note que actualmente no nos encontramos aceptando tarjetas de los Estados Unidos. Si tiene una tarjeta de los EEUU, por favor haga su contribución directamente con Zelle o utilice otra tarjeta para completar el pago.');
+                    setDisplayError(true);
                 }
                 else
                 {
