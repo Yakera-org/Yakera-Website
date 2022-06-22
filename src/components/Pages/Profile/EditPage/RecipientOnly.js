@@ -1,6 +1,8 @@
 import React from 'react';
 import { Grid, Checkbox } from '@material-ui/core';
 
+const reserveLogo = "https://assets.yakera.org/yakera/reserve_black.svg";
+const zelleLogo = 'https://assets.yakera.org/yakera/zelle.webp';
 const questionmarkSVG = "https://assets.yakera.org/yakera/icon-questionmark.svg";
 
 function RecipientOnly(props) {
@@ -18,6 +20,13 @@ function RecipientOnly(props) {
                 <p id="description">
                     {EN ? "To activate this payment method, you must provide the following information:" : "Para activar este método de pago es necesario que nos suministres la siguiente información:"}
                 </p>
+                <section className='powered-by'>
+                    <p>
+                        {EN ? "Powered by:" : "Funciona con:"}
+                    </p>
+                    <img src={zelleLogo} alt="zelleLogo" onClick={()=>window.location.href="https://www.zellepay.com/"}/>
+                </section>
+                
                 {["email", "name"].map((field, i) => {
                     return(
                         <div key={i}>
@@ -60,6 +69,12 @@ function RecipientOnly(props) {
                 <p id="description">
                     {EN ? "To transfer the funds you collect through Yakera, you must create a Reserve account and provide the username here." : "Para transferir tus fondos recaudados en Yakera es necesario que nos suministres tu usuario de Reserve aqui."}
                 </p>
+                <section className='powered-by'>
+                    <p>
+                        {EN ? "Powered by:" : "Funciona con:"}
+                    </p>
+                    <img src={reserveLogo} alt="reserveLogo" onClick={()=>window.location.href="https://reserve.org/"}/>
+                </section>
                 <span id="field-span">{fieldDict["reserveUsername"]}</span>
                 <input
                     type="text"

@@ -34,7 +34,7 @@ function DashboardStats(props) {
                     return( 
                         <Grid item xs={12} sm={4} key={i}>
                             <p>
-                                <span id="orange">{StatDictionary[key]}</span>: {value ? value : <span id="grey">{EN ? "missing" : "desaparecido"} </span>}
+                                <span id="orange">{StatDictionary[key]}</span>: {value ? value : <span ><a id="grey" href="/profile/edit">{EN ? "missing" : "desaparecido"}</a> </span>}
                             </p>
                         </Grid>
                     )                    

@@ -68,7 +68,7 @@
     padding: 15px 5px;
     border-radius: 5px;
     width: 20%;
-    background-color: #aaa;
+    background-color: #cccccccc;
     font-size: 18px;
 }
 .edit-page .edit-container .save-area .disabled:hover{
@@ -82,6 +82,26 @@
 }
 .edit-page .edit-container .save-area a:hover{
     color: #777;
+}
+.edit-page .edit-content .powered-by{
+    width: 80%;
+    text-align: center;
+}
+.edit-page .edit-content .powered-by p{
+    text-align: left;
+    margin-bottom: 5px;
+    font-family: Intro-Light;
+    color: #202020bb;
+    font-size: 15px;
+}
+.edit-page .edit-content .powered-by img{
+    width: 50%;
+    margin-bottom: 20px;
+    max-width: 180px;
+}
+.edit-page .edit-content .powered-by img:hover{
+    cursor: pointer;
+    opacity: 0.8;
 }
 .edit-page .edit-container .edit-content #field-span{
     color: #ea8837;

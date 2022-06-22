@@ -1,5 +1,5 @@
 import validator from 'validator'; 
-import LanguageService from "../../../services/language";
+import LanguageService from './language';
 
 /*
  * This class contains methods for validating fields using 'validator.js' library methods
@@ -8,14 +8,7 @@ import LanguageService from "../../../services/language";
  * See their docs here https://github.com/validatorjs/validator.js
  */
 
-const language = LanguageService.getLanguage()
-
-var EN;
-if(language === "en"){
-    EN = true
-}else{
-    EN = false
-}
+const EN = LanguageService.getLanguage()==="en"
 class ValidateFields {
 
   /*
