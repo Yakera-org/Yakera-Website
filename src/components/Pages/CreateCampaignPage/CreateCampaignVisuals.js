@@ -46,51 +46,51 @@ function CreateCampaignVisuals(props) {
             {!EN ? <WhatsAppButton EN = {EN}></WhatsAppButton> : ''}
             <div id='background' >
             <MultiStepForm pillSize={50} activeStep={step} inactiveColor={'#999'}>
-            <Step label={1}>                       
-                <CampaignIntroPage EN={EN} handleChange={props.handleChange}></CampaignIntroPage>
-            </Step>  
-            <Step label={2}> 
-                <CreatCampaignDetails EN={EN} data={props.data} handleChange={props.handleChange} setData={props.setData} setIsUploading={setIsUploading}/>
-            </Step> 
-            <Step label={3}>
-                <CampaignThirdPage EN={EN} data={props.data} handleChange={props.handleChange} setData={props.setData}></CampaignThirdPage>
-            </Step>     
-            <Step label={4}>  
-                <CampaignLastPage isUploading={isUploading} EN={EN} submit={props.submit}></CampaignLastPage>
-            </Step>  
-                </MultiStepForm>       
-                { props.success
-                    ?
-                    <Alert color="success" id='alert'>
-                        {props.success}
-                        <br />
-                        {EN ? <>Head to your <a href="/dashboard" style={{color:'darkgreen', textDecoration:'underline'}}> Dashboard</a>.</> : <>Dirígete a tu <a href="/dashboard" style={{color:'darkgreen', textDecoration:'underline'}}> Mi Cuenta</a>.</>}                                            
-                    </Alert>
-                    :
-                    ''
-                }
-                { props.error
-                    ?
-                    <Alert color="danger" id='alert'>
-                        {props.error}
-                    </Alert>
-                    :
-                    ''
-                }
-                {
-                    props.loader
-                    ?
-                    <div className="sweet-loading">
-                        <div className='loader-wrapper' style={{marginLeft:'-10px', marginBottom:'10px'}}>
-                            <HashLoader
-                                color={"#ea8737"}
-                                loading={props.loader}
-                                />
-                        </div>
-                    </div> 
-                    :
-                    ""
-                }
+                <Step label={1}>
+                    <CampaignIntroPage EN={EN} handleChange={props.handleChange}></CampaignIntroPage>
+                </Step>
+                <Step label={2}>
+                    <CreatCampaignDetails EN={EN} data={props.data} handleChange={props.handleChange} setData={props.setData} setIsUploading={setIsUploading}/>
+                </Step>
+                <Step label={3}>
+                    <CampaignThirdPage EN={EN} data={props.data} handleChange={props.handleChange} setData={props.setData}></CampaignThirdPage>
+                </Step>
+                <Step label={4}>
+                    <CampaignLastPage isUploading={isUploading} EN={EN} submit={props.submit}></CampaignLastPage>
+                </Step>
+            </MultiStepForm>
+            { props.success
+                ?
+                <Alert color="success" id='alert'>
+                    {props.success}
+                    <br />
+                    {EN ? <>Head to your <a href="/dashboard" style={{color:'darkgreen', textDecoration:'underline'}}> Dashboard</a>.</> : <>Dirígete a tu <a href="/dashboard" style={{color:'darkgreen', textDecoration:'underline'}}> Mi Cuenta</a>.</>}                                            
+                </Alert>
+                :
+                ''
+            }
+            { props.error
+                ?
+                <Alert color="danger" id='alert'>
+                    {props.error}
+                </Alert>
+                :
+                ''
+            }
+            {
+                props.loader
+                ?
+                <div className="sweet-loading">
+                    <div className='loader-wrapper' style={{marginLeft:'-10px', marginBottom:'10px'}}>
+                        <HashLoader
+                            color={"#ea8737"}
+                            loading={props.loader}
+                            />
+                    </div>
+                </div> 
+                :
+                ""
+            }
                 
             <div className="center-btn">
                 <Button onClick={prevStep} className="step-btn left-btn">{EN ? 'Previous' : 'Regresar'}</Button>
