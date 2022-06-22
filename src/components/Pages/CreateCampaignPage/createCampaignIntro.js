@@ -77,7 +77,7 @@ function CampaignIntroPage(props) {
         <div className="row">
             <div className="col">
                 <label>
-                    <input type="radio" name="campaigncategory" id="category0" radioGroup="category" onChange={handleRadioChange} className="radio-card-input" />
+                    <input type="radio" name="campaigncategory" id="category0" value={EN ? 'healthcare' : 'salud'} radioGroup="category" onChange={handleRadioChange} className="radio-card-input" />
                     <div className="panel panel-default radio-card">
                         <div className="panel-heading">
                             <div className="center-img">
@@ -100,7 +100,7 @@ function CampaignIntroPage(props) {
 
             <div className="col">
                 <label>
-                    <input type="radio" name="campaigncategory" id="category1" radioGroup="category" onChange={handleRadioChange} className="radio-card-input" />
+                    <input type="radio" name="campaigncategory" id="category1"  value={EN ? 'education' : 'educación'} radioGroup="category" onChange={handleRadioChange} className="radio-card-input" />
                     <div className="panel panel-default radio-card">
                         <div className="panel-heading">
                             <div className="center-img">
@@ -123,7 +123,7 @@ function CampaignIntroPage(props) {
 
             <div className="col">
                 <label>
-                    <input type="radio" name="campaigncategory" id="category2" radioGroup="category" onChange={handleRadioChange} className="radio-card-input" />
+                    <input type="radio" name="campaigncategory" id="category2"  value={EN ? 'small business' : 'pequeños negocios'} radioGroup="category" onChange={handleRadioChange} className="radio-card-input" />
                     <div className="panel panel-default radio-card">
                         <div className="panel-heading">
                             <div className="center-img">
@@ -146,7 +146,7 @@ function CampaignIntroPage(props) {
 
             <div className="col">
                 <label>
-                    <input type="radio" name="campaigncategory" id="category3" radioGroup="category" onChange={handleRadioChange} className="radio-card-input" />
+                    <input type="radio" name="campaigncategory" id="category3"  value={EN ? 'nutrition' : 'alimentación'} radioGroup="category" onChange={handleRadioChange} className="radio-card-input" />
                     <div className="panel panel-default radio-card">
                         <div className="panel-heading">
                             <div className="center-img">
