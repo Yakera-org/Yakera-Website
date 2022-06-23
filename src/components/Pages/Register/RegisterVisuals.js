@@ -57,12 +57,12 @@ function RegisterVisuals(props) {
         if(response.data.success)
         {
             message.classList.toggle('status-good');
-            message.innerHTML = EN ? 'An email has been sent to verify your account' : 'Se ha enviado un correo para verificar tu cuenta';
+            message.innerHTML = EN ? 'An email has been sent to verify your account.' : 'Se ha enviado un correo para verificar tu cuenta.';
         }
         else
         {
             message.classList.toggle('status-bad');
-            message.innerHTML = EN ? 'Something went wrong, try again later' : 'Hubo un error, inténtelo de nuevo más tarde';
+            message.innerHTML = EN ? 'Something went wrong, try again later.' : 'Hubo un error, inténtelo de nuevo más tarde.';
         }
     }
 
