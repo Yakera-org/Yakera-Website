@@ -23,7 +23,7 @@ const zelleLogo = 'https://assets.yakera.org/yakera/zelle.webp';
 function PaymentAuth(props) {
     const EN = props.EN
     
-    const shouldShowZelle = props?.isAcceptingZelle;
+    const shouldShowZelle = props?.isAcceptingZelle && props?.recipientName && props?.recipientEmail;
     
     const total_amount = Math.round((parseFloat(props.amount) + parseFloat(props.tip)) * Math.pow(10, 2)) / Math.pow(10, 2);
     const [clientSecret, setClientSecret] = useState("");
