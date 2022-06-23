@@ -247,7 +247,8 @@ function CreateCampaign() {
                 "url": "https://assets.yakera.org/" + data.mainPicture
             },
             pictures: pics,
-            supportDocs: support
+            supportDocs: support,
+            personalID: id
         }   
 
         //console.log(payload)
