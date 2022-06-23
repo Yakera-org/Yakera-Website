@@ -108,7 +108,7 @@ function RegisterVisuals(props) {
                             :
                             ''
                             }
-                            { props.success || true
+                            { props.success
                             ?
                                 <Alert color="success">
                                     { props.success }
