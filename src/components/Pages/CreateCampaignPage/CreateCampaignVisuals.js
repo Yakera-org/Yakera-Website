@@ -19,6 +19,7 @@ function CreateCampaignVisuals(props) {
         setLanguage(LanguageService.getLanguage());
     }, [])
 
+    
     const [language, setLanguage] = React.useState('');
     const [isUploading, setIsUploading] = React.useState('');
     const [step, setStep] = React.useState(1)
@@ -28,7 +29,11 @@ function CreateCampaignVisuals(props) {
             setStep(step => step + 1)
         }
     }
-
+    
+    React.useEffect(() => {
+        window.scrollTo(0,0)
+    }, [step])
+    
     const prevStep = () => { 
         if (step > 1 ) {
             setStep(step => step - 1)
@@ -56,7 +61,7 @@ function CreateCampaignVisuals(props) {
                 <CampaignThirdPage EN={EN} data={props.data} handleChange={props.handleChange} setData={props.setData}></CampaignThirdPage>
             </Step>     
             <Step label={4}>  
-                <CampaignLastPage isUploading={isUploading} EN={EN} submit={props.submit}></CampaignLastPage>
+                <CampaignLastPage EN={EN} data={props.data} handleChange={props.handleChange} setData={props.setData} setIsUploading={setIsUploading}> </CampaignLastPage>
             </Step>  
                 </MultiStepForm>       
                 { props.success

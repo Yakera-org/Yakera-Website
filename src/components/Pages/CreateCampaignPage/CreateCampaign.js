@@ -18,6 +18,7 @@ function CreateCampaign() {
         mainPicture: "",
         camPics: [],
         supportPics: [],
+        idPics: [],
         errors: {
             campaignname: null,
             amount: null,
@@ -28,7 +29,8 @@ function CreateCampaign() {
             itemizedbudget: null,
             mainPic: null,
             camPics: null,
-            supportPics: null
+            supportPics: null,
+            idPics: null
         },
     };
     const [data, setData] = useState(initialState);
@@ -109,7 +111,7 @@ function CreateCampaign() {
     function validateData(){
         let emptyWarning = EN ? 'This field cannot be empty' : 'Este campo no puede estar vacío' ;
         let emptyPicWarning = EN ? 'No files uploaded' : 'No hay archivos subidos' ;
-        let nameError, amountError, storyError, publicStoryError, descriptionError, moneyError, budgetError, mainPicError, camPicsError, supportPicsError;
+        let nameError, amountError, storyError, publicStoryError, descriptionError, moneyError, budgetError, mainPicError, camPicsError, supportPicsError, idPicsError;
 
         if(!data.amount){
             amountError = emptyWarning;
@@ -156,6 +158,9 @@ function CreateCampaign() {
         if(data.camPics.length === 0){
             camPicsError = emptyPicWarning
         }
+        if(data.idPics.length === 0){
+            idPicsError = emptyPicWarning
+        }
         setData({
             ...data,
             errors: {
@@ -168,11 +173,12 @@ function CreateCampaign() {
                 description: descriptionError,
                 mainPic: mainPicError,
                 camPics: camPicsError,
-                supportPics: supportPicsError
+                supportPics: supportPicsError,
+                idPics: idPicsError,
             },
         })
         
-        if(!amountError && !storyError && !publicStoryError && !descriptionError && !nameError && !moneyError && !budgetError && !mainPicError && !camPicsError && !supportPicsError){
+        if(!amountError && !storyError && !publicStoryError && !descriptionError && !nameError && !moneyError && !budgetError && !mainPicError && !camPicsError && !supportPicsError && !idPicsError){
             return true
         }
         
@@ -224,6 +230,10 @@ function CreateCampaign() {
         data.supportPics.forEach(picName => {
             support.push({"url": "https://assets.yakera.org/" + picName})
         });
+
+        var id = []
+        data.idPics.forEach(picName => {
+            id.push({"url": "https://assets.yakera.org/" + picName})})
 
         const payload = {
             title: data.campaignname,
