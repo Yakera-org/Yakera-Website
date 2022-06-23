@@ -82,8 +82,7 @@ function CampaignIntroPage(props) {
             '. Estamos aquí para ayudarte y responder cualquier pregunta.'}
         </p>
 
-        <h2 className="details-text">{EN ? 'Details' : 'Detalles'}</h2>
-        <hr />
+        <h2 className="subtitle-text"><span>{EN ? 'Details' : 'Detalles'}</span></h2>
         <p className="category-label">{EN ? 'Campaign Category' : 'Categoría de campaña'}</p>
         <div className="row">
             <div className="col">

@@ -209,10 +209,15 @@ aside h6{
     }
 }
 
-.category-label
+.category-label,
+.summary-label
 {
     color: #eb913b;
     font-size: x-large;
+}
+
+.category-label
+{
     margin-left: 1%;
 }
 
@@ -267,9 +272,26 @@ aside h6{
     text-align: center;
 }
 
-.details-text
+.subtitle-text
 {
-    margin-bottom: -1.4%;
+    display: flex;
+    justify-content: left;
+    text-align: left;
+}
+
+.subtitle-text span
+{
+    background: #fff;
+    margin: 0 15px 0 0;
+}
+
+.subtitle-text:after
+{
+    background: #cecdcd;
+    height: 2px;
+    flex: 1;
+    content: '';
+    margin-top: 1.8%;
 }
 
 .radio-card-input
@@ -333,4 +355,16 @@ aside h6{
 {
     max-width: 200px;
     height: auto;
+}
+
+.summary-hidden
+{
+    display: none;
+}
+
+.summary-funds
+{
+    color: #70b88f;
+    font-size: x-large;
+    font-weight: bold;
 }

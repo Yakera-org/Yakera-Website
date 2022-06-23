@@ -8,10 +8,9 @@ function CreateCampaignDetails(props) {
 
     return(
         <div className='campaign-details'>
-            <h2>
-                {EN ? 'Details' : 'Detalles'}
+            <h2 className="subtitle-text">
+                <span>{EN ? 'Details' : 'Detalles'}</span>
             </h2>
-            <hr />
 
             <FormGroup>
                 <FormLabel className="question-label">{EN ? 'Name of your Campaign' : 'Título de la campaña'}</FormLabel>
