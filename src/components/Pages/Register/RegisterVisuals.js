@@ -53,12 +53,11 @@ function RegisterVisuals(props) {
     async function resendEmail() {
         const response = await api.post(`/auth/resend-email`, {email: props.data.email});
         const message = document.getElementById('resent-email-status');
-        console.log(response.data);
         
         if(response.data.success)
         {
             message.classList.toggle('status-good');
-            message.innerHTML = EN ? 'If your email is correct, you are going to receive an email to verify your account' : 'Si tu correo es correcto, vas a recibir un correo para verificar tu cuenta';
+            message.innerHTML = EN ? 'An email has been sent to verify your account' : 'Se ha enviado un correo para verificar tu cuenta';
         }
         else
         {
@@ -109,16 +108,18 @@ function RegisterVisuals(props) {
                             :
                             ''
                             }
-                            { props.success
+                            { props.success || true
                             ?
                                 <Alert color="success">
                                     { props.success }
+                                    {/*
                                     <div style={{fontSize:'15px'}}>
                                         { EN ? 'Please make sure to check your spam folder.' : 'Asegúrese de revisar su carpeta de correo no deseado.' }
                                     </div>
+                                    */}
                                     <div className="resend-email-area">
                                         <button onClick={resendEmail} className="resend-email-btn">
-                                            {EN ? 'Resend verification email' : 'Reenviar email de confirmación'}
+                                            {EN ? 'Resend verification email' : 'Reenviar correo de confirmación'}
                                         </button>
                                         <div id="resent-email-status" className="resend-email-status"></div>
                                     </div>
