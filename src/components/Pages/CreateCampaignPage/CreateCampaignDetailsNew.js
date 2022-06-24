@@ -4,13 +4,17 @@ import {FormControl, FormGroup, FormLabel} from "react-bootstrap";
 
 function CreateCampaignDetails(props) {
     
-    const EN = props.EN
+    const EN = props.EN;
+    const isMobile = props.isMobile;
 
     return(
         <div className='campaign-details'>
-            <h2 className="subtitle-text">
-                <span>{EN ? 'Details' : 'Detalles'}</span>
-            </h2>
+            {isMobile
+            ?
+            <h2 className="subtitle-text-mobile"><span>{EN ? 'Details' : 'Detalles'}</span></h2>
+            :
+            <h2 className="subtitle-text"><span>{EN ? 'Details' : 'Detalles'}</span></h2>
+            }
 
             <FormGroup>
                 <FormLabel className="question-label">{EN ? 'Name of your Campaign' : 'Título de la campaña'}</FormLabel>

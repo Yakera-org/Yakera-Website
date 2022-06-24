@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import './CreateCampaignPage.css';
 import campaignImgEs from '../../../pics/campaign-img-es.png';
 import campaignImgEn from '../../../pics/campaign-img-en.png';
@@ -10,22 +10,7 @@ import nutrition from '../../../pics/nutrition-campaign.png';
 
 function CampaignIntroPage(props) {
     let EN = props.EN;
-
-    const [width, setWidth] = useState(window.innerWidth);
-
-    let isMobile = width < 700 ? true : false;
-
-    const handleWindowSize = () => {
-        setWidth(window.innerWidth);
-    };
-
-    useEffect(() => {
-        window.addEventListener('resize', handleWindowSize);
-
-        return () => {
-            window.removeEventListener('resize', handleWindowSize);
-        };
-    }, []);
+    let isMobile = props.isMobile;
 
     const handleRadioChange = event => {
         const cat0 = document.getElementById('text-category0');
@@ -109,7 +94,7 @@ function CampaignIntroPage(props) {
         :
         <h2 className="subtitle-text"><span>{EN ? 'Details' : 'Detalles'}</span></h2>
         }
-        <p className="category-label">{EN ? 'Campaign Category' : 'Categoría de campaña'}</p>
+        <p className="category-label">{EN ? 'Campaign Category' : 'Categoría de la campaña'}</p>
 
         { isMobile
         ?

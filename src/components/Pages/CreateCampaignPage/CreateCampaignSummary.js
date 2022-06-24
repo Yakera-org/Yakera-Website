@@ -3,6 +3,7 @@ import React, { useEffect } from "react";
 function CampaignSummary(props)
 {
     let EN = props.EN;
+    let isMobile = props.isMobile;
 
     useEffect(() => {
         const summary = document.getElementById('campaign-summary');
@@ -15,7 +16,13 @@ function CampaignSummary(props)
 
     return (
         <div id="campaign-summary" className="summary-hidden">
+            {isMobile
+            ?
+            <h2 className="subtitle-text-mobile"><span>{EN ? 'Summary' : 'Resumen'}</span></h2>
+            :
             <h2 className="subtitle-text"><span>{EN ? 'Summary' : 'Resumen'}</span></h2>
+            }
+
             <p className="info-text">
                 {EN
                 ?

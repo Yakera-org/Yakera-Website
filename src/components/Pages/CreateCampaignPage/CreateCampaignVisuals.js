@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import CreatCampaignDetails from "./CreateCampaignDetailsNew.js";
 import CampaignIntroPage from "./createCampaignIntro";
 import {Alert} from 'reactstrap'
@@ -15,15 +15,25 @@ import CampaignThirdPage from "./CreateCampaignThird";
 import CampaignSummary from "./CreateCampaignSummary.js";
 
 function CreateCampaignVisuals(props) {
+    const [width, setWidth] = useState(window.innerWidth);
 
-    React.useEffect(() =>{
+    let isMobile = width < 700 ? true : false;
+
+    const handleWindowSize = () => {
+        setWidth(window.innerWidth);
+    };
+
+    useEffect(() =>{
         setLanguage(LanguageService.getLanguage());
+
+        window.addEventListener('resize', handleWindowSize);
+        return () => window.removeEventListener('resize', handleWindowSize);
     }, [])
 
     
-    const [language, setLanguage] = React.useState('');
-    const [isUploading, setIsUploading] = React.useState('');
-    const [step, setStep] = React.useState(1)
+    const [language, setLanguage] = useState('');
+    const [isUploading, setIsUploading] = useState('');
+    const [step, setStep] = useState(1)
     const totalSteps = 4;
     const nextStep = () => { 
         if (step < totalSteps + 1 ) {
@@ -31,7 +41,7 @@ function CreateCampaignVisuals(props) {
         }
     }
     
-    React.useEffect(() => {
+    useEffect(() => {
         window.scrollTo(0,0)
     }, [step])
     
@@ -47,25 +57,26 @@ function CreateCampaignVisuals(props) {
     }else{
         EN = false
     }
-    return(
+
+    return (
         <div className='create-page'>
             {!EN ? <WhatsAppButton EN = {EN}></WhatsAppButton> : ''}
             <div id='background' >
             <MultiStepForm pillSize={50} activeStep={step} inactiveColor={'#999'}>
                 <Step label={1}>
-                    <CampaignIntroPage EN={EN} handleChange={props.handleChange} />
+                    <CampaignIntroPage EN={EN} handleChange={props.handleChange} isMobile={isMobile} />
                 </Step>
                 <Step label={2}>
-                    <CreatCampaignDetails EN={EN} data={props.data} handleChange={props.handleChange} setData={props.setData} setIsUploading={setIsUploading} />
+                    <CreatCampaignDetails EN={EN} data={props.data} handleChange={props.handleChange} setData={props.setData} setIsUploading={setIsUploading} isMobile={isMobile} />
                 </Step>
                 <Step label={3}>
-                    <CampaignThirdPage EN={EN} data={props.data} handleChange={props.handleChange} setData={props.setData} />
+                    <CampaignThirdPage EN={EN} data={props.data} handleChange={props.handleChange} setData={props.setData} isMobile={isMobile} />
                 </Step>
                 <Step label={4}>  
-                  <CampaignLastPage EN={EN} data={props.data} handleChange={props.handleChange} setData={props.setData} setIsUploading={setIsUploading}> </CampaignLastPage>
-              </Step> 
+                  <CampaignLastPage EN={EN} data={props.data} handleChange={props.handleChange} setData={props.setData} setIsUploading={setIsUploading} isMobile={isMobile} />
+                </Step> 
             </MultiStepForm>
-            <CampaignSummary step={step} data={props.data} EN={EN} />
+            <CampaignSummary step={step} data={props.data} EN={EN} isMobile={isMobile} />
             { props.success
                 ?
                 <Alert color="success" id='alert'>
@@ -133,7 +144,7 @@ function CreateCampaignVisuals(props) {
             </div>
 
         </div>
-    )
+    );
 }
 
 export default CreateCampaignVisuals;

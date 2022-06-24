@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import {Form, FormGroup, FormLabel} from "react-bootstrap";
+import { FormGroup } from "react-bootstrap";
 import {Alert} from 'reactstrap'
 import S3 from "aws-s3"
 import HashLoader from "react-spinners/HashLoader";
@@ -43,10 +43,11 @@ function CreateCampaignLast(props) {
     const [mainLoading, setMainLoading] = useState(false);
     const [docLoading, setDocLoading] = useState(false);
     const [camLoading, setCamLoading] = useState(false);
-    const [idLoading, setIdLoading] = useState(false);
+    // const [idLoading, setIdLoading] = useState(false);
 
     
-    const EN = props.EN
+    const EN = props.EN;
+    const isMobile = props.isMobile;
 
     // https://github.com/react-dropzone/react-dropzone/tree/master/examples/previews
     const mainThumbs = mainFile.map(file => {
@@ -357,288 +358,286 @@ function CreateCampaignLast(props) {
 
     return(
         <div className='campaign-details'>
-            <Form container='true' spacing={4} style={{ alignItems:'flex-start' }}>
-                <FormGroup className="mb-3">
-                    <FormLabel><div className="label-last">{EN ? 'Main Campaign picture' : 'Imagen principal de la campaña'}</div></FormLabel>
-                    <div className="pictures-info">
-                        {EN ? 'Your title picture that represents your campaign.' : 'Será la portada de tu campaña y lo primero que las personas verán.'}
-                        {
-                            EN
-                        ?
-                            <div><br />
-                            <p className="category-label">Requirements: </p>
-                                <ul className='bold-text'>
-                                    <li>Maximum of 1 picture</li>
-                                    <li>Maximum size: 6 MB</li>
-                                </ul>
-                            </div>
-                        :
-                            <div><br/>
-                            <p className="category-label">Requisitos: </p>
-                                <ul className='bold-text'>
-                                    <li>Máximo de 1 imágen</li>
-                                    <li>Tamaño máximo: 6 MB</li>
-                                </ul>
-                            </div>
-                        }     
-                    </div>
-
-                    <DroppingZone  
-                        campaignFiles= {campaignFiles} 
-                        mainFile= {mainFile} 
-                        file= {mainFile} 
-                        idFiles = {idFiles}
-                        tag = {"main"} 
-                        documentFiles= {documentFiles} 
-                        EN = {EN}setFile={setMainFile} 
-                        setLoading={setMainLoading} 
-                        onUpload={onUpload} 
-                        numberOfFilesLimit={1} 
-                        totalSizeLimit={6000000} 
-                    />
-
-                    { props.data.errors.mainPic
+            <FormGroup className="mb-3">
+                <div className="label-last"><h2 className={isMobile ? "subtitle-text-mobile" : "subtitle-text"}><span>{EN ? 'Main Campaign picture' : 'Imagen principal de la campaña'}</span></h2></div>
+                <div className="pictures-info">
+                    {EN ? 'Your title picture that represents your campaign.' : 'Será la portada de tu campaña y lo primero que las personas verán.'}
+                    {
+                        EN
                     ?
-                        <Alert color="danger" id='alert'>
-                            {props.data.errors.mainPic}
-                        </Alert>
-                    :
-                        ''
-                    }
-
-                    <aside>
-                        <h6>{EN ? "File ready for Upload:" : "Archivo:" }</h6>
-                        <ul>{mainThumbs}</ul>
-                        {
-                            mainFile.length === 0
-                            ?
-                            <h6 style={{fontSize: "15px", color: "grey", fontFamily:'Intro-Light'}}>{EN ? "Please select files to upload!" : "¡Seleccione los archivos para cargar!" }</h6>
-                            :
-                            ""
-                        }
-                        <div className="sweet-loading">
-                            <div className='loader-wrapper'>
-                                <HashLoader
-                                    color={"#ea8737"}
-                                    loading={mainLoading}
-                                />
-                            </div>
+                        <div><br />
+                        <p className="category-label">Requirements: </p>
+                            <ul className='bold-text'>
+                                <li>Maximum of 1 picture</li>
+                                <li>Maximum size: 6 MB</li>
+                            </ul>
                         </div>
-                    </aside>                   
-                </FormGroup>
-
-                <FormGroup className="mb-3">
-                    <FormLabel><div className="img-label">{EN ? 'Campaign pictures' : 'Otras fotos de la campaña'}</div></FormLabel>
-                    <div className="pictures-info">
-                        {EN ? 'Pictures that support your campaign. These pictures will get uploaded to the site.' : 'Imágenes que apoyan su campaña. Estas imágenes se subirán al sitio.'}
-                        
-                        {
-                            EN
-                        ?
-                            <div><br /><p className="category-label">Requirements: </p>
-                                <ul className='bold-text'>
-                                    <li>Maximum of 4 pictures</li>
-                                    <li>Minimum of 1 picture</li>
-                                    <li>Maximum size: 20 MB</li>
-                                </ul>
-                            </div>
-                        :
-                            <div><br /><p className="category-label">Requisitos: </p>
-                                <ul className='bold-text'>
-                                    <li>Máximo de 4 imágenes</li>
-                                    <li>Mínimo de 1 imagen</li>
-                                    <li>Tamaño máximo: 20 MB</li>
-                                </ul>
-                            </div>
-                        }                    
-                    </div>
-                    <DroppingZone  
-                        campaignFiles= {campaignFiles} 
-                        file = {campaignFiles} 
-                        mainFile= {mainFile} 
-                        idFiles = {idFiles}
-                        documentFiles= {documentFiles} 
-                        tag = {"campaign"} 
-                        EN = {EN}
-                        setFile={setCampaignFiles} 
-                        setLoading={setCamLoading} 
-                        onUpload={onUpload} 
-                        numberOfFilesLimit={4} 
-                        totalSizeLimit={20000000} 
-                    />
-
-                    { props.data.errors.supportPics
-                    ?
-                        <Alert color="danger" id='alert'>
-                            {props.data.errors.supportPics}
-                        </Alert>
                     :
-                        ''
-                    }
-                   
-                    <aside>
-                        <h6>{EN ? "Files ready for Upload:" : "Archivos:" }</h6>
-                        <ul>{campaignThumbs}</ul>
-                        {
-                            campaignFiles.length === 0
-                            ?
-                            <h6 style={{fontSize: "15px", color: "grey", fontFamily:'Intro-Light'}}>{EN ? "Please select files to upload!" : "¡Seleccione los archivos para cargar!" }</h6>
-                            :
-                            ""
-                        }
-                        <div className="sweet-loading">
-                            <div className='loader-wrapper'>
-                                <HashLoader
-                                    color={"#ea8737"}
-                                    loading={camLoading}
-                                />
-                            </div>
-                        </div> 
-                    </aside> 
-                </FormGroup>
+                        <div><br/>
+                        <p className="category-label">Requisitos: </p>
+                            <ul className='bold-text'>
+                                <li>Máximo de 1 imágen</li>
+                                <li>Tamaño máximo: 6 MB</li>
+                            </ul>
+                        </div>
+                    }     
+                </div>
 
-                <FormGroup className="mb-3">
-                    <FormLabel><div className="img-label">{EN ? 'Documents' : 'Documentos '}</div></FormLabel>
-                    <div className="pictures-info">
-                        {EN ? 'Documents that support your ask (i.e medical orders or notes, tuition receipt, pictures of your small business, budget, etc.)' : 'Sube documentos que apoyen tu historia (fotos de historia médica, recetas médicas, fotos del pequeño negocio, etc.)'}  <br />
-                        {EN ? 'These docuemnts are only seen by Yakera to validate your campaign. They will not be posted on the site.' : 'Estos archivos solo son necesarios para la evaluación de la campaña y no serán publicados en el sitio.'}
-                        {
-                            EN
+                <DroppingZone  
+                    campaignFiles= {campaignFiles} 
+                    mainFile= {mainFile} 
+                    file= {mainFile} 
+                    idFiles = {idFiles}
+                    tag = {"main"} 
+                    documentFiles= {documentFiles} 
+                    EN = {EN}setFile={setMainFile} 
+                    setLoading={setMainLoading} 
+                    onUpload={onUpload} 
+                    numberOfFilesLimit={1} 
+                    totalSizeLimit={6000000} 
+                />
+
+                { props.data.errors.mainPic
+                ?
+                    <Alert color="danger" id='alert'>
+                        {props.data.errors.mainPic}
+                    </Alert>
+                :
+                    ''
+                }
+
+                <aside>
+                    <h6>{EN ? "File ready for Upload:" : "Archivo:" }</h6>
+                    <ul>{mainThumbs}</ul>
+                    {
+                        mainFile.length === 0
                         ?
-                            <div><br />
-                        <p className="category-label">Requirements: </p>                 
-                                <ul className='bold-text'>
-                                    <li>Maximum of 2 pictures</li>
-                                    <li>Minimum of 1 picture</li>
-                                    <li>Maximum size: 10 MB</li>
-                                </ul>
-                            </div>
+                        <h6 style={{fontSize: "15px", color: "grey", fontFamily:'Intro-Light'}}>{EN ? "Please select files to upload!" : "¡Seleccione los archivos para cargar!" }</h6>
                         :
-                            <div><br />
-                            <p className="category-label">Requisitos: </p>
-                                <ul className='bold-text'>
-                                    <li>Máximo de 2 imágenes</li>
-                                    <li>Mínimo de 1 imagen</li>
-                                    <li>Tamaño máximo: 10 MB</li>
-                                </ul>
-                            </div>
-                        }                              
-                    </div>
-                    <DroppingZone  
-                        campaignFiles= {campaignFiles} 
-                        mainFile= {mainFile} 
-                        idFiles = {idFiles}
-                        documentFiles= {documentFiles} 
-                        file = {documentFiles} 
-                        tag = {"document"} 
-                        EN = {EN}
-                        setFile={setDocumentFiles} 
-                        setLoading={setDocLoading} 
-                        onUpload={onUpload} 
-                        numberOfFilesLimit={2} 
-                        totalSizeLimit={10000000} 
-                    />
-
-                    { props.data.errors.camPics
-                    ?
-                        <Alert color="danger" id='alert'>
-                            {props.data.errors.camPics}
-                        </Alert>
-                    :
-                        ''
+                        ""
                     }
+                    <div className="sweet-loading">
+                        <div className='loader-wrapper'>
+                            <HashLoader
+                                color={"#ea8737"}
+                                loading={mainLoading}
+                            />
+                        </div>
+                    </div>
+                </aside>                   
+            </FormGroup>
+
+            <FormGroup className="mb-3">
+                <div className="img-label"><h2 className={isMobile ? "subtitle-text-mobile" : "subtitle-text"}><span>{EN ? 'Campaign pictures' : 'Otras fotos de la campaña'}</span></h2></div>
+                <div className="pictures-info">
+                    {EN ? 'Pictures that support your campaign. These pictures will get uploaded to the site.' : 'Imágenes que apoyan la historia de tu campaña. Estas imágenes serán publicadas en el sitio.'}
                     
-                    <aside>
-                        <h6>{EN ? "Files ready for Upload:" : "Archivos:" }</h6>
-                        <ul>{documentThumbs}</ul>
-                        {
-                            documentFiles.length === 0
-                            ?
-                            <h6 style={{fontSize: "15px", color: "grey", fontFamily:'Intro-Light'}}>{EN ? "Please select files to upload!" : "¡Seleccione los archivos para cargar!" }</h6>
-                            :
-                            ""
-                        }
-                        <div className="sweet-loading">
-                            <div className='loader-wrapper'>
-                                <HashLoader
-                                    color={"#ea8737"}
-                                    loading={docLoading}
-                                />
-                            </div>
-                        </div> 
-                    </aside>
-                </FormGroup>
-
-                <FormGroup className="mb-3">
-                    <FormLabel><div className="img-label">{EN ? 'CC/DNI/CI/Passport' : 'CC/DNI/CI/Pasaporte '}</div></FormLabel>
-                    <div className="pictures-info">
-                        {
-                            EN
-                        ?
-                            <div><br />
-                                <p className="category-label">Requirements: </p>                 
-                                <ul className='bold-text'>
-                                    <li>Maximum of 2 pictures</li>
-                                    <li>Minimum of 1 picture</li>
-                                    <li>Maximum size: 10 MB</li>
-                                </ul>
-                            </div>
-                        :
-                            <div><br />
-                            <p className="category-label">Requisitos: </p>
-                                <ul className='bold-text'>
-                                    <li>Máximo de 2 imágenes</li>
-                                    <li>Mínimo de 1 imagen</li>
-                                    <li>Tamaño máximo: 10 MB</li>
-                                </ul>
-                            </div>
-                        }                              
-                    </div>
-                    <DroppingZone  
-                        campaignFiles= {campaignFiles} 
-                        mainFile= {mainFile} 
-                        idFiles = {idFiles}
-                        documentFiles= {documentFiles} 
-                        file = {idFiles} 
-                        tag = {"document"} 
-                        EN = {EN}
-                        setFile={setIdFiles} 
-                        setLoading={setDocLoading} 
-                        onUpload={onUpload} 
-                        numberOfFilesLimit={2} 
-                        totalSizeLimit={10000000} 
-                    />
-
-                    { props.data.errors.camPics
+                    {
+                        EN
                     ?
-                        <Alert color="danger" id='alert'>
-                            {props.data.errors.camPics}
-                        </Alert>
+                        <div><br /><p className="category-label">Requirements: </p>
+                            <ul className='bold-text'>
+                                <li>Maximum of 4 pictures</li>
+                                <li>Minimum of 1 picture</li>
+                                <li>Maximum size: 20 MB</li>
+                            </ul>
+                        </div>
                     :
-                        ''
+                        <div><br /><p className="category-label">Requisitos: </p>
+                            <ul className='bold-text'>
+                                <li>Máximo de 4 imágenes</li>
+                                <li>Mínimo de 1 imagen</li>
+                                <li>Tamaño máximo: 20 MB</li>
+                            </ul>
+                        </div>
+                    }                    
+                </div>
+                <DroppingZone  
+                    campaignFiles= {campaignFiles} 
+                    file = {campaignFiles} 
+                    mainFile= {mainFile} 
+                    idFiles = {idFiles}
+                    documentFiles= {documentFiles} 
+                    tag = {"campaign"} 
+                    EN = {EN}
+                    setFile={setCampaignFiles} 
+                    setLoading={setCamLoading} 
+                    onUpload={onUpload} 
+                    numberOfFilesLimit={4} 
+                    totalSizeLimit={20000000} 
+                />
+
+                { props.data.errors.supportPics
+                ?
+                    <Alert color="danger" id='alert'>
+                        {props.data.errors.supportPics}
+                    </Alert>
+                :
+                    ''
+                }
+                
+                <aside>
+                    <h6>{EN ? "Files ready for Upload:" : "Archivos:" }</h6>
+                    <ul>{campaignThumbs}</ul>
+                    {
+                        campaignFiles.length === 0
+                        ?
+                        <h6 style={{fontSize: "15px", color: "grey", fontFamily:'Intro-Light'}}>{EN ? "Please select files to upload!" : "¡Seleccione los archivos para cargar!" }</h6>
+                        :
+                        ""
                     }
-                    
-                    <aside>
-                        <h6>{EN ? "Files ready for Upload:" : "Archivos:" }</h6>
-                        <ul>{documentThumbs}</ul>
-                        {
-                            documentFiles.length === 0
-                            ?
-                            <h6 style={{fontSize: "15px", color: "grey", fontFamily:'Intro-Light'}}>{EN ? "Please select files to upload!" : "¡Seleccione los archivos para cargar!" }</h6>
-                            :
-                            ""
-                        }
-                        <div className="sweet-loading">
-                            <div className='loader-wrapper'>
-                                <HashLoader
-                                    color={"#ea8737"}
-                                    loading={docLoading}
-                                />
-                            </div>
-                        </div> 
-                    </aside>
-                </FormGroup>
-            </Form>
+                    <div className="sweet-loading">
+                        <div className='loader-wrapper'>
+                            <HashLoader
+                                color={"#ea8737"}
+                                loading={camLoading}
+                            />
+                        </div>
+                    </div> 
+                </aside> 
+            </FormGroup>
+
+            <FormGroup className="mb-3">
+                <div className="img-label"><h2 className={isMobile ? "subtitle-text-mobile" : "subtitle-text"}><span>{EN ? 'Documents' : 'Documentos '}</span></h2></div>
+                <div className="pictures-info">
+                    {EN ? 'Documents that support your ask (i.e medical orders or notes, tuition receipt, pictures of your small business, budget, etc.)' : 'Sube documentos que apoyen tu historia (fotos de historia médica, recetas médicas, fotos del pequeño negocio, etc.)'}  <br />
+                    {EN ? 'These docuemnts are only seen by Yakera to validate your campaign. They will not be posted on the site.' : 'Estos archivos solo son necesarios para la evaluación de la campaña y no serán publicados en el sitio.'}
+                    {
+                        EN
+                    ?
+                        <div><br />
+                    <p className="category-label">Requirements: </p>                 
+                            <ul className='bold-text'>
+                                <li>Maximum of 2 pictures</li>
+                                <li>Minimum of 1 picture</li>
+                                <li>Maximum size: 10 MB</li>
+                            </ul>
+                        </div>
+                    :
+                        <div><br />
+                        <p className="category-label">Requisitos: </p>
+                            <ul className='bold-text'>
+                                <li>Máximo de 2 imágenes</li>
+                                <li>Mínimo de 1 imagen</li>
+                                <li>Tamaño máximo: 10 MB</li>
+                            </ul>
+                        </div>
+                    }                              
+                </div>
+                <DroppingZone  
+                    campaignFiles= {campaignFiles} 
+                    mainFile= {mainFile} 
+                    idFiles = {idFiles}
+                    documentFiles= {documentFiles} 
+                    file = {documentFiles} 
+                    tag = {"document"} 
+                    EN = {EN}
+                    setFile={setDocumentFiles} 
+                    setLoading={setDocLoading} 
+                    onUpload={onUpload} 
+                    numberOfFilesLimit={2} 
+                    totalSizeLimit={10000000} 
+                />
+
+                { props.data.errors.camPics
+                ?
+                    <Alert color="danger" id='alert'>
+                        {props.data.errors.camPics}
+                    </Alert>
+                :
+                    ''
+                }
+                
+                <aside>
+                    <h6>{EN ? "Files ready for Upload:" : "Archivos:" }</h6>
+                    <ul>{documentThumbs}</ul>
+                    {
+                        documentFiles.length === 0
+                        ?
+                        <h6 style={{fontSize: "15px", color: "grey", fontFamily:'Intro-Light'}}>{EN ? "Please select files to upload!" : "¡Seleccione los archivos para cargar!" }</h6>
+                        :
+                        ""
+                    }
+                    <div className="sweet-loading">
+                        <div className='loader-wrapper'>
+                            <HashLoader
+                                color={"#ea8737"}
+                                loading={docLoading}
+                            />
+                        </div>
+                    </div> 
+                </aside>
+            </FormGroup>
+
+            <FormGroup className="mb-3">
+                <div className="img-label"><h2 className={isMobile ? "subtitle-text-mobile" : "subtitle-text"}><span>{EN ? 'CC/DNI/CI/Passport' : 'CC/DNI/CI/Pasaporte '}</span></h2></div>
+                <div className="pictures-info">
+                    {
+                        EN
+                    ?
+                        <div><br />
+                            <p className="category-label">Requirements: </p>                 
+                            <ul className='bold-text'>
+                                <li>Maximum of 2 pictures</li>
+                                <li>Minimum of 1 picture</li>
+                                <li>Maximum size: 10 MB</li>
+                            </ul>
+                        </div>
+                    :
+                        <div><br />
+                        <p className="category-label">Requisitos: </p>
+                            <ul className='bold-text'>
+                                <li>Máximo de 2 imágenes</li>
+                                <li>Mínimo de 1 imagen</li>
+                                <li>Tamaño máximo: 10 MB</li>
+                            </ul>
+                        </div>
+                    }                              
+                </div>
+                <DroppingZone  
+                    campaignFiles= {campaignFiles} 
+                    mainFile= {mainFile} 
+                    idFiles = {idFiles}
+                    documentFiles= {documentFiles} 
+                    file = {idFiles} 
+                    tag = {"document"} 
+                    EN = {EN}
+                    setFile={setIdFiles} 
+                    setLoading={setDocLoading} 
+                    onUpload={onUpload} 
+                    numberOfFilesLimit={2} 
+                    totalSizeLimit={10000000} 
+                />
+
+                { props.data.errors.camPics
+                ?
+                    <Alert color="danger" id='alert'>
+                        {props.data.errors.camPics}
+                    </Alert>
+                :
+                    ''
+                }
+                
+                <aside>
+                    <h6>{EN ? "Files ready for Upload:" : "Archivos:" }</h6>
+                    <ul>{documentThumbs}</ul>
+                    {
+                        documentFiles.length === 0
+                        ?
+                        <h6 style={{fontSize: "15px", color: "grey", fontFamily:'Intro-Light'}}>{EN ? "Please select files to upload!" : "¡Seleccione los archivos para cargar!" }</h6>
+                        :
+                        ""
+                    }
+                    <div className="sweet-loading">
+                        <div className='loader-wrapper'>
+                            <HashLoader
+                                color={"#ea8737"}
+                                loading={docLoading}
+                            />
+                        </div>
+                    </div> 
+                </aside>
+            </FormGroup>
 
         </div>
     )
