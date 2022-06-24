@@ -17,33 +17,263 @@ class UserService{
     async getUserData() {
         try {
             const res = await api.get('/profile');
-            // const newdata = {
-            //     "user":{
-            //     "donorInfo": {
-            //         "location": "World",
-            //         "age": "23",
-            //         "bio": "My bioooo",
-            //         "preference": "email"
-            //     },
-            //     "zelleInfo": {
-            //         "email": "zelle",
-            //         "name": "jango",
-            //         "isAccepting": true
-            //     },
-            //     "role": "donor",
-            //     "email": "jangbel99@gmail.com",
-            //     "firstName": "Jang",
-            //     "lastName": "Belche",
-            //     "phone": "253464946",
-            //     "address": "UK",
-            //     "profilePicture": "https://yakera-files.s3.us-east-2.amazonaws.com/profile-pictures/gT8tvxPLrKAq2SXUQ2KAoR.png",
-            //     "IDNumber": "123456",
-            //     "airTMNum": "fsdv@sdc.com",
-            //     "reserveUsername": "yfgdfb"
-            // }
-            // }
-            return res.data.data
-            //return newdata
+            const newdata = {
+    "user": {
+        "donorInfo": {
+            "location": "World",
+            "age": "99",
+            "bio": "Hi."
+        },
+        "zelleInfo": {
+            "email": "zelle@test.com",
+            "name": "nameee",
+            "isAccepting": true
+        },
+        "role": "user",
+        "email": "jangbel99@gmail.com",
+        "firstName": "Jang",
+        "lastName": "Belche",
+        "phone": "123",
+        "address": "home",
+        "IDNumber": "123456",
+        "airTMNum": "fsdv@sdc.com",
+        "reserveUsername": "reserve"
+    },
+    "campaigns": [
+        {
+            "targetAmount": 5000,
+            "country": "Venezuela",
+            "approved": true,
+            "completed": false,
+            "withdrawn": 0,
+            "disabled": false,
+            "slug": "testttt",
+            "_user": "6238eee91ce80141908c81a5",
+            "title": "Approved Campaign with Zelle",
+            "category": "healthcare",
+            "description": "Please work",
+            "story": "Hello there",
+            "itemizedBudget": "lots of it",
+            "pictures": [],
+            "supportDocs": [],
+            "updates": [],
+            "donations": [
+                null,
+                {
+                    "amount": 500,
+                    "tip": 0,
+                    "isP2P": false,
+                    "isAnonymous": false,
+                    "name": "asf",
+                    "status": "success",
+                    "comment": ""
+                },
+                {
+                    "amount": 5,
+                    "tip": 0,
+                    "isP2P": false,
+                    "isAnonymous": false,
+                    "name": "Jango test",
+                    "status": "success",
+                    "comment": "test donation"
+                },
+                {
+                    "amount": 1,
+                    "tip": 0,
+                    "status": "success",
+                    "comment": "",
+                    "isP2P": false,
+                    "isAnonymous": true
+                },
+                {
+                    "amount": 1,
+                    "tip": 0,
+                    "status": "success",
+                    "comment": "",
+                    "isP2P": false,
+                    "isAnonymous": true
+                },
+                null,
+                null,
+                null,
+                null
+            ],
+            "createdAt": "2022-03-23T19:15:10.675Z",
+            "updatedAt": "2022-03-23T19:15:10.675Z",
+            "personalID": [],
+            "raised": 500,
+            "zelleRaised": 10,
+            "percentage": 0.24,
+            "created": "23/03/2022"
+        },
+        {
+            "targetAmount": 210,
+            "country": "Venezuela",
+            "approved": false,
+            "completed": false,
+            "withdrawn": 0,
+            "disabled": false,
+            "slug": "test2",
+            "_user": "6238eee91ce80141908c81a5",
+            "title": "Campaign in revision process",
+            "category": "nutrition",
+            "description": "pls help",
+            "story": "oh yeah",
+            "itemizedBudget": "lots",
+            "pictures": [],
+            "supportDocs": [],
+            "updates": [],
+            "donations": [],
+            "createdAt": "2022-03-23T19:21:15.689Z",
+            "updatedAt": "2022-03-23T19:21:15.689Z",
+            "personalID": [],
+            "raised": 0,
+            "zelleRaised": 0,
+            "percentage": 0,
+            "created": "23/03/2022"
+        },
+        {
+            "targetAmount": 210,
+            "country": "Venezuela",
+            "approved": false,
+            "completed": false,
+            "withdrawn": 0,
+            "disabled": true,
+            "slug": "test2",
+            "_user": "6238eee91ce80141908c81a5",
+            "title": "Rejected campaign ",
+            "category": "education",
+            "description": "pls help",
+            "story": "oh yeah",
+            "itemizedBudget": "lots",
+            "pictures": [],
+            "supportDocs": [],
+            "updates": [],
+            "donations": [],
+            "createdAt": "2022-03-23T19:21:15.689Z",
+            "updatedAt": "2022-03-23T19:21:15.689Z",
+            "personalID": [],
+            "raised": 0,
+            "zelleRaised": 0,
+            "percentage": 0,
+            "created": "23/03/2022"
+        },
+        {
+            "targetAmount": 333,
+            "country": "Venezuela",
+            "approved": true,
+            "completed": false,
+            "withdrawn": 0,
+            "disabled": false,
+            "slug": "lets-go",
+            "_user": "6238eee91ce80141908c81a5",
+            "title": "Help Jango (no zelle)",
+            "category": "education",
+            "description": "dsc",
+            "story": "sdcs",
+            "itemizedBudget": "sdc",
+            "mainPicture": {
+                "url": "https://assets.yakera.org/testing/umbc_me.jpg"
+            },
+            "pictures": [
+                {
+                    "url": "https://assets.yakera.org/yakera/2.jpg"
+                },
+                {
+                    "url": "https://assets.yakera.org/yakera/4.jpg"
+                }
+            ],
+            "supportDocs": [
+                {
+                    "url": "https://assets.yakera.org/yakera/webYakera.png"
+                },
+                {
+                    "url": "https://assets.yakera.org/yakera/hack.png"
+                },
+                {
+                    "url": "https://assets.yakera.org/yakera/6.jpg"
+                },
+                {
+                    "url": "https://assets.yakera.org/yakera/6 - Copy.jpg"
+                }
+            ],
+            "updates": [],
+            "donations": [],
+            "createdAt": "2022-03-29T15:37:49.511Z",
+            "updatedAt": "2022-03-29T15:37:49.511Z",
+            "personalID": [],
+            "raised": 30700000,
+            "zelleRaised": 0,
+            "percentage": 0,
+            "created": "29/03/2022"
+        },
+        {
+            "targetAmount": 2222,
+            "country": "Venezuela",
+            "approved": true,
+            "completed": false,
+            "withdrawn": 100,
+            "disabled": false,
+            "slug": "pls-work",
+            "_user": "6238eee91ce80141908c81a5",
+            "title": "campaign with zelle and partial withdraw",
+            "category": "healthcare",
+            "description": "sdfc",
+            "story": "",
+            "itemizedBudget": "sdf",
+            "mainPicture": {
+                "url": "https://assets.yakera.org/yakera/cami-img.jpg"
+            },
+            "pictures": [
+                {
+                    "url": "https://assets.yakera.org/testing/hack.png"
+                },
+                {
+                    "url": "https://assets.yakera.org/testing/4.jpg"
+                }
+            ],
+            "supportDocs": [
+                {
+                    "url": "https://assets.yakera.org/testing/phoneController.png"
+                },
+                {
+                    "url": "https://assets.yakera.org/testing/hackKosice.png"
+                },
+                {
+                    "url": "https://assets.yakera.org/testing/7.jpg"
+                },
+                {
+                    "url": "https://assets.yakera.org/testing/7 - Copy.jpg"
+                }
+            ],
+            "updates": [],
+            "donations": [],
+            "createdAt": "2022-03-29T15:40:48.168Z",
+            "updatedAt": "2022-03-29T15:40:48.168Z",
+            "personalID": [],
+            "raised": 10,
+            "zelleRaised": 150,
+            "percentage": 0,
+            "created": "29/03/2022"
+        },
+        {
+            "targetAmount": 2222,
+            "country": "Venezuela",
+            "approved": true,
+            "completed": false,
+            "withdrawn": 100,
+            "disabled": false,
+            "slug": "pls-work",
+            "_user": "6238eee91ce80141908c81a5",
+            "title": "campaign with zelle and partial withdraw",
+            "category": "healthcare",
+            "description": "sdfc",
+            "story": "",
+        }
+    ]
+}
+            //return res.data.data
+            return newdata
         } catch (e) {
             throw e 
         }
@@ -81,6 +311,14 @@ class UserService{
             return error
         }
     }
+    inverse(obj){
+        var retobj = {};
+        for(var key in obj){
+          retobj[obj[key]] = key;
+        }
+        return retobj;
+      }
+        
 }
 
 
