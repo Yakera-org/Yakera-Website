@@ -28,6 +28,7 @@ function DashboardCampaign(props) {
                     : ""
     campaign = {
         title: campaign.title || "",
+        slug: campaign.slug || "",
         targetAmount: campaign.targetAmount || 0,
         created: campaign.created || "",
         category: campaign.category?.charAt(0).toUpperCase() + campaign.category?.slice(1)  || "",
@@ -126,17 +127,17 @@ function DashboardCampaign(props) {
 
                 <Grid container spacing={1} className='button-area' id={campaign.status === STATUS.denied ? "no-display" :""}>
                     <Grid item xs={6} sm={6} >
-                        <button id="top">
+                        <button name={campaign.slug} id="top" onClick={props.withdrawFunds}>
                             {EN ? "Withdraw Funds" : "Retirar Fondos"}
                         </button>
                     </Grid>
                     <Grid item xs={6} sm={6} >
-                        <button id="top">
+                        <button name={campaign.slug} id="top" onClick={props.closeCampaign}>
                             {EN ? "Close Campaign" : "Cerrar Campaña"}
                         </button>
                     </Grid>
                     <Grid item xs={12} sm={12} >
-                        <button>
+                        <button name={campaign.slug} onClick={props.goToCampaign}>
                             {EN ? "Go to my campaign" : "Ir a mi Campaña"}  
                         </button>
                     </Grid>
