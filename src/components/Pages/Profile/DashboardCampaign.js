@@ -57,7 +57,7 @@ function DashboardCampaign(props) {
                 <p><span id="status">{EN ? "Status" : "Estado"}</span>: <span id={inversedSTATUS[campaign.status]}>{campaign.status}</span></p>
             </section>
 
-            <section className="in-revision" id={campaign.status !== STATUS.approved ? "greyed-out" :""}>
+            <section className="in-revision" id={campaign.status !== STATUS.approved ? "greyed-out" : ""}>
                 <div className='img-wrapper'>
                     <img src={campaign.image} alt="campaign-banner" />
                 </div>
@@ -124,7 +124,7 @@ function DashboardCampaign(props) {
                 }
 
 
-                <Grid container spacing={1} className='button-area' >
+                <Grid container spacing={1} className='button-area' id={campaign.status === STATUS.denied ? "no-display" :""}>
                     <Grid item xs={6} sm={6} >
                         <button id="top">
                             {EN ? "Withdraw Funds" : "Retirar Fondos"}

@@ -255,20 +255,6 @@ class UserService{
             "zelleRaised": 150,
             "percentage": 0,
             "created": "29/03/2022"
-        },
-        {
-            "targetAmount": 2222,
-            "country": "Venezuela",
-            "approved": true,
-            "completed": false,
-            "withdrawn": 100,
-            "disabled": false,
-            "slug": "pls-work",
-            "_user": "6238eee91ce80141908c81a5",
-            "title": "campaign with zelle and partial withdraw",
-            "category": "healthcare",
-            "description": "sdfc",
-            "story": "",
         }
     ]
 }

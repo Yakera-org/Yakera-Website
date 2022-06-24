@@ -87,6 +87,9 @@
     filter: grayscale(100%);
     opacity: 0.8;
 }
+.dashboard-campaigns-area #no-display{
+    display: none;
+}
 .dashboard-campaigns-area .in-revision{
     text-align: center;
 }
@@ -113,6 +116,10 @@
 }
 .dashboard-campaign .button-area button:hover{
     opacity: 0.8;
+}
+.dashboard-campaigns-area #greyed-out button:hover{
+    opacity: 1;
+    pointer-events: none;
 }
 .dashboard-campaign .totals{
     padding: 10px;
