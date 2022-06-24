@@ -189,8 +189,8 @@ function CreateCampaign() {
 
     async function submit(event){
         event.preventDefault();
-        setError("")
-        let formattedStory = linkify(data.story)
+        setError("");
+        let formattedStory = linkify(data.story + '\n' + data.publicstory + '\n' + data.moneyuse);
         formattedStory = formattedStory.replace(/\n/g, " <br />");
 
         let isValidated = validateData();
@@ -198,7 +198,7 @@ function CreateCampaign() {
             setLoader(true);
             submitToBackend(formattedStory);
         }else{
-            setError(EN ? 'Some fields are not valid.' : 'Algunos campos no son válidos.')
+            setError(EN ? 'Some fields are not valid.' : 'Algunos campos no son válidos.');
         }
         
     }

@@ -117,7 +117,7 @@ function CreateCampaignVisuals(props) {
                         ?
                         <Button onClick={props.submit} id="disabled-create" disabled={true} style={{backgroundColor:'grey'}} className="step-btn right-btn">{EN ? 'Create Campaign' : 'Crear Campaña'}</Button>
                         :
-                        <Button onClick={props.submit} className="step-btn right-btn">{EN ? 'Create Campaign' : 'Crear Campaña'}</Button>
+                        <Button onClick={props.submit} className="step-btn right-btn">{EN ? 'Finish' : 'Finalizar'}</Button>
                     )
                     :
                     ''

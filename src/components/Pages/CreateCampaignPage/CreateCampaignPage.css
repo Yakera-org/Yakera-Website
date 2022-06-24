@@ -272,26 +272,34 @@ aside h6{
     text-align: center;
 }
 
-.subtitle-text
+.subtitle-text,
+.subtitle-text-mobile
 {
     display: flex;
     justify-content: left;
     text-align: left;
 }
 
-.subtitle-text span
+.subtitle-text span,
+.subtitle-text-mobile span
 {
     background: #fff;
     margin: 0 15px 0 0;
 }
 
-.subtitle-text:after
+.subtitle-text:after,
+.subtitle-text-mobile:after
 {
     background: #cecdcd;
     height: 2px;
     flex: 1;
     content: '';
     margin-top: 1.8%;
+}
+
+.subtitle-text-mobile:after
+{
+    margin-top: 4%;
 }
 
 .radio-card-input
@@ -302,7 +310,9 @@ aside h6{
 .radio-card
 {
     margin: 10px;
-    padding: 00px;
+    padding: 1px;
+    padding-left: 10px;
+    padding-right: 10px;
 }
 
 .radio-card:hover
@@ -313,13 +323,23 @@ aside h6{
 .radio-card-input:checked + .radio-card
 {
     box-shadow: 0 0 1px 1px #70B88F;
+    border-radius: 5px;
 }
 
-.radio-title
+.radio-title,
+.radio-title-mobile
 {
     color: #eb913b;
     font-size: medium;
     text-align: center;
+}
+
+.radio-title-mobile
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
 }
 
 .radio-title-checked
@@ -327,11 +347,17 @@ aside h6{
     color: #70B88F;
 }
 
-.radio-body
+.radio-body,
+.radio-body-mobile
 {
     color: #0e325e;
     font-size: small;
     text-align: center;
+}
+
+.radio-body-mobile
+{
+    text-align: left;
 }
 
 .radio-body-hidden
@@ -345,6 +371,12 @@ aside h6{
     justify-content: center;
 }
 
+.mobile-img
+{
+    display: flex;
+    justify-content: flex-start;
+}
+
 .campaign-img
 {
     max-width: 50%;
@@ -354,6 +386,12 @@ aside h6{
 .category-img
 {
     max-width: 200px;
+    height: auto;
+}
+
+.category-img-mobile
+{
+    max-width: 150px;
     height: auto;
 }
 
