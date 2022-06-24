@@ -43,7 +43,7 @@ function CreateCampaignLast(props) {
     const [mainLoading, setMainLoading] = useState(false);
     const [docLoading, setDocLoading] = useState(false);
     const [camLoading, setCamLoading] = useState(false);
-    // const [idLoading, setIdLoading] = useState(false);
+    const [idLoading, setIdLoading] = useState(false);
 
     
     const EN = props.EN;
@@ -68,7 +68,13 @@ function CreateCampaignLast(props) {
         )
     });
 
-    function onRemove(e){
+    const idThumbs = idFiles.map((file, i) => {
+        return(
+            <FilePreview EN={EN} key={file.name + i} file={file} onRemove={onRemove}  onRetry={onRetry} id="ids" uploadSuccess={uploadSuccess} uploadFailures={uploadFailures}/>
+        )
+    });
+
+    function onRemove(e) {
         e.preventDefault()
         var filename = e.target.getAttribute('name')
 
@@ -135,6 +141,26 @@ function CreateCampaignLast(props) {
                 }
             }) 
        }
+       else if (e.target.getAttribute('id') === "ids"){
+        newFiles = idFiles.filter(function(item) {
+           return item.path !==  filename
+       })
+       setIdFiles(newFiles)
+
+       let _idpics = []
+        newFiles.forEach(pic => {
+            _idpics.push(pic.name)
+        });
+
+        props.setData({
+            ...props.data,
+            idPics: _idpics,
+            errors:{
+                ...props.data.errors,
+                idPics: ""
+            }
+        }) 
+   }
        props.setIsUploading(false)
     }
 
@@ -215,6 +241,34 @@ function CreateCampaignLast(props) {
                     errors:{
                         ...props.data.errors,
                         supportPics: ""
+                    }
+                })    
+            })
+            .catch(err => {
+                console.log(err)
+                let failStatus = uploadFailures
+                failStatus.push(filename)
+                setUploadFailures(failStatus)
+                var filteredArray = uploadSuccess.filter(e => e !== filename)
+                setUploadSuccess(filteredArray)
+            })       
+        }
+        else if (id === "ids") {
+            await S3Client_picture.uploadFile(theFile)
+            .then((data) => {
+                let statusArray = uploadSuccess
+                statusArray.push(filename)
+                setUploadSuccess(statusArray)
+                
+                var _idpics = props.data.supportPics
+                _idpics.push(data.key)
+
+                props.setData({
+                    ...props.data,
+                    idpics: _idpics,
+                    errors:{
+                        ...props.data.errors,
+                        idpics: ""
                     }
                 })    
             })
@@ -333,8 +387,39 @@ function CreateCampaignLast(props) {
                 failStatus.push(filename)
                 setUploadFailures(failStatus)
             })          
+            setCamLoading(false)
+        } else if (e.target.getAttribute('id') === "ids"){
+            setIdLoading(true)
+            idFiles.forEach(file => {
+                if(file.name === filename){
+                    theFile = file
+                }
+            });
+            theFile = await compressFile(theFile)
+            await S3Client_picture.uploadFile(theFile)
+            .then((data) => {
+                let statusArray = uploadSuccess
+                statusArray.push(filename)
+                setUploadSuccess(statusArray)
+                
+                var _idpics = props.data.idPics.push(data.key)
+                props.setData({
+                    ...props.data,
+                    idPics: _idpics,
+                    errors:{
+                        ...props.data.errors,
+                        idPics: ""
+                    }
+                })    
+            })
+            .catch(err => {
+                console.log(err)
+                let failStatus = uploadFailures
+                failStatus.push(filename)
+                setUploadFailures(failStatus)
+            })          
+            setIdLoading(false)
         }
-        setCamLoading(false)
 
         props.setIsUploading(false)
     }
@@ -467,10 +552,10 @@ function CreateCampaignLast(props) {
                     totalSizeLimit={20000000} 
                 />
 
-                { props.data.errors.supportPics
+                { props.data.errors.camPics
                 ?
                     <Alert color="danger" id='alert'>
-                        {props.data.errors.supportPics}
+                        {props.data.errors.camPics}
                     </Alert>
                 :
                     ''
@@ -539,10 +624,10 @@ function CreateCampaignLast(props) {
                     totalSizeLimit={10000000} 
                 />
 
-                { props.data.errors.camPics
+                { props.data.errors.supportPics
                 ?
                     <Alert color="danger" id='alert'>
-                        {props.data.errors.camPics}
+                        {props.data.errors.supportPics}
                     </Alert>
                 :
                     ''
@@ -600,7 +685,7 @@ function CreateCampaignLast(props) {
                     idFiles = {idFiles}
                     documentFiles= {documentFiles} 
                     file = {idFiles} 
-                    tag = {"document"} 
+                    tag = {"id"} 
                     EN = {EN}
                     setFile={setIdFiles} 
                     setLoading={setDocLoading} 
@@ -609,10 +694,10 @@ function CreateCampaignLast(props) {
                     totalSizeLimit={10000000} 
                 />
 
-                { props.data.errors.camPics
+                { props.data.errors.idPics
                 ?
                     <Alert color="danger" id='alert'>
-                        {props.data.errors.camPics}
+                        {props.data.errors.idPics}
                     </Alert>
                 :
                     ''
@@ -620,9 +705,9 @@ function CreateCampaignLast(props) {
                 
                 <aside>
                     <h6>{EN ? "Files ready for Upload:" : "Archivos:" }</h6>
-                    <ul>{documentThumbs}</ul>
+                    <ul>{idThumbs}</ul>
                     {
-                        documentFiles.length === 0
+                        idFiles.length === 0
                         ?
                         <h6 style={{fontSize: "15px", color: "grey", fontFamily:'Intro-Light'}}>{EN ? "Please select files to upload!" : "¡Seleccione los archivos para cargar!" }</h6>
                         :
@@ -632,7 +717,7 @@ function CreateCampaignLast(props) {
                         <div className='loader-wrapper'>
                             <HashLoader
                                 color={"#ea8737"}
-                                loading={docLoading}
+                                loading={idLoading}
                             />
                         </div>
                     </div> 
