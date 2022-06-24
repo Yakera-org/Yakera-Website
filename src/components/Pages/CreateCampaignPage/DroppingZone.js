@@ -1,10 +1,12 @@
 import React from 'react';
 import Dropzone from 'react-dropzone';
+import fileUploadImage from '../../../pics/upload-image-campaign.png'
 
 const DroppingZone = (props) => {
     var campaignFiles = props.campaignFiles
     var mainFile = props.mainFile
     var documentFiles = props.documentFiles
+    var idFiles = props.idFiles
     var EN = props.EN
     var setFile = props.setFile
     var setLoading = props.setLoading
@@ -25,7 +27,7 @@ const DroppingZone = (props) => {
                 if (extFile!=="jpg" && extFile!=="jpeg" && extFile!=="png"){
                    isValid = false
                 }   
-                campaignFiles.concat(mainFile).concat(documentFiles).forEach(camFile => {
+                campaignFiles.concat(mainFile).concat(documentFiles).concat(idFiles).forEach(camFile => {
                     if (file.path === camFile.path){
                         isDuplicate = true
                     }
@@ -33,12 +35,12 @@ const DroppingZone = (props) => {
             })
             if(isValid){
                 if(!isDuplicate){
-                    if (acceptedFiles.concat(file).length <= numberOfFilesLimit){
+                    if (acceptedFiles.concat(file).length <= numberOfFilesLimit) {
                         var totalSize = 0
                         acceptedFiles.concat(file).forEach(file => {
                             totalSize += file.size
                         });
-                        if(totalSize < totalSizeLimit){
+                        if(totalSize < totalSizeLimit) {
                             setFile(acceptedFiles.concat(file).map(file => Object.assign(file, {
                                 preview: URL.createObjectURL(file)
                             })));
@@ -68,13 +70,9 @@ const DroppingZone = (props) => {
                  <section className="container" id="upload-zone">
                     <div {...getRootProps({className: 'dropzone'})}>
                         <input {...getInputProps()} />
-                        {EN
-                        ?
-                            <p id="info-text" >Drag 'n' drop files here, or click <b>here</b> to select files. </p>
-                        :
-                            <p id="info-text" >Arrastra y suelta archivos aquí, o haz clic <b>aquí</b> para seleccionar archivos</p>
-                        }
-                        <i className="fas fa-4x fa-file-upload"></i>
+                        <div className="center-img">
+                            <img src={fileUploadImage} alt='upload file' className='upload-file-image'/>
+                        </div>
                     </div>
                 </section>
             )}

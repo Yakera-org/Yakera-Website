@@ -172,11 +172,11 @@
 }
 #upload-zone {
     background-color: #f3f3f3;
-    border-radius: 10px;
+    border-radius: 5px;
     border: dotted #ea8737;
     margin: 10px 20px ;
-    width: 100%;
-    max-width: 80%;
+    width: 50%;
+    max-width: 60%;
     padding: 20px;
     cursor: pointer;
 }
@@ -227,8 +227,11 @@ aside h6{
     margin-left: 1%;
 }
 
+
+
 .img-label
 {
+    margin-left: 20px;
     color: #0e325e;
     font-size: xx-large;
 }
@@ -390,6 +393,25 @@ aside h6{
     height: auto;
 }
 
+.upload-file-image 
+{
+    mix-blend-mode: overlay;
+}
+
+.bold-text {
+    font-weight: bold;
+}
+
+.label-last {
+    /* Imagen principal de la campaña */
+    font-style: normal;
+    font-weight: 400;
+    font-size: 35px;
+    line-height: 27px;
+    /* identical to box height, or 77% */
+    color: #062759;
+    margin-left: 20px;
+}
 .category-img-mobile
 {
     max-width: 150px;
