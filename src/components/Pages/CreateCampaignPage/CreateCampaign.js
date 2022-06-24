@@ -116,7 +116,7 @@ function CreateCampaign() {
         if(!data.amount){
             amountError = emptyWarning;
         }else{
-            amountError = validateFields.validateNumber(data.amount + '')
+            amountError = validateFields.validateNumber(data.amount + '');
         }
         if(!data.campaignname){
             nameError = emptyWarning;     
@@ -126,40 +126,40 @@ function CreateCampaign() {
         if(!data.story){
             storyError = emptyWarning;      
         }else{
-            storyError = validateFields.validateName(data.story)
+            storyError = validateFields.validateName(data.story);
         }
         if(!data.publicstory){
             publicStoryError = emptyWarning;      
         }else{
-            publicStoryError = validateFields.validateName(data.story)
+            publicStoryError = validateFields.validateName(data.publicstory);
         }
         if(!data.description){
             descriptionError = emptyWarning;      
         }else{
-            descriptionError = validateFields.validateName(data.description)
+            descriptionError = validateFields.validateName(data.description);
         }
         if(!data.moneyuse){
             moneyError = emptyWarning;      
         }else{
-        moneyError = validateFields.validateName(data.itemizedbudget)
+            moneyError = validateFields.validateName(data.moneyuse);
         }
         if(!data.itemizedbudget){
             budgetError = emptyWarning;      
         }else{
-        budgetError = validateFields.validateName(data.itemizedbudget)
+            budgetError = validateFields.validateName(data.itemizedbudget);
         }
 
         if(!data.mainPicture){
-            mainPicError = emptyPicWarning
+            mainPicError = emptyPicWarning;
         }
         if(data.supportPics.length === 0){
-            supportPicsError = emptyPicWarning
+            supportPicsError = emptyPicWarning;
         }
         if(data.camPics.length === 0){
-            camPicsError = emptyPicWarning
+            camPicsError = emptyPicWarning;
         }
         if(data.idPics.length === 0){
-            idPicsError = emptyPicWarning
+            idPicsError = emptyPicWarning;
         }
         setData({
             ...data,
