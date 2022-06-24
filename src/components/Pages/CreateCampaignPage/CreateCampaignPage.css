@@ -209,10 +209,15 @@ aside h6{
     }
 }
 
-.category-label
+.category-label,
+.summary-label
 {
     color: #eb913b;
     font-size: x-large;
+}
+
+.category-label
+{
     margin-left: 1%;
 }
 
@@ -268,11 +273,37 @@ aside h6{
 .center-btn
 {
     text-align: center;
+    margin-top: 4%;
 }
 
-.details-text
+.subtitle-text,
+.subtitle-text-mobile
 {
-    margin-bottom: -1.4%;
+    display: flex;
+    justify-content: left;
+    text-align: left;
+}
+
+.subtitle-text span,
+.subtitle-text-mobile span
+{
+    background: #fff;
+    margin: 0 15px 0 0;
+}
+
+.subtitle-text:after,
+.subtitle-text-mobile:after
+{
+    background: #cecdcd;
+    height: 2px;
+    flex: 1;
+    content: '';
+    margin-top: 1.8%;
+}
+
+.subtitle-text-mobile:after
+{
+    margin-top: 4%;
 }
 
 .radio-card-input
@@ -283,7 +314,9 @@ aside h6{
 .radio-card
 {
     margin: 10px;
-    padding: 00px;
+    padding: 1px;
+    padding-left: 10px;
+    padding-right: 10px;
 }
 
 .radio-card:hover
@@ -294,13 +327,23 @@ aside h6{
 .radio-card-input:checked + .radio-card
 {
     box-shadow: 0 0 1px 1px #70B88F;
+    border-radius: 5px;
 }
 
-.radio-title
+.radio-title,
+.radio-title-mobile
 {
     color: #eb913b;
     font-size: medium;
     text-align: center;
+}
+
+.radio-title-mobile
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
 }
 
 .radio-title-checked
@@ -308,11 +351,17 @@ aside h6{
     color: #70B88F;
 }
 
-.radio-body
+.radio-body,
+.radio-body-mobile
 {
     color: #0e325e;
     font-size: small;
     text-align: center;
+}
+
+.radio-body-mobile
+{
+    text-align: left;
 }
 
 .radio-body-hidden
@@ -324,6 +373,12 @@ aside h6{
 {
     display: flex;
     justify-content: center;
+}
+
+.mobile-img
+{
+    display: flex;
+    justify-content: flex-start;
 }
 
 .campaign-img
@@ -356,4 +411,21 @@ aside h6{
     /* identical to box height, or 77% */
     color: #062759;
     margin-left: 20px;
+}
+.category-img-mobile
+{
+    max-width: 150px;
+    height: auto;
+}
+
+.summary-hidden
+{
+    display: none;
+}
+
+.summary-funds
+{
+    color: #70b88f;
+    font-size: x-large;
+    font-weight: bold;
 }

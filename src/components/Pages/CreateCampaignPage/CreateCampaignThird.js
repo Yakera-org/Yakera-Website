@@ -9,6 +9,21 @@ function CampaignThirdPage(props)
 
     return (
         <div>
+            <h2 className="subtitle-text"><span>{EN ? 'Tell us your story' : 'Cuéntanos tu historia'}</span></h2>
+            <p className="info-text">
+                {EN
+                ?
+                "We'll ask for as much detail as possible so people can understand your campaign and genuinely connect with your story. Remember that "
+                :
+                'Te pediremos la mayor cantidad de detalles posibles para que las personas puedan entender tu campaña y conectar genuinamente con tu historia. Recuerda que '}
+                <strong>
+                    {EN
+                    ?
+                    'being transparent and authentic can help you receive more support.'
+                    :
+                    'ser transparente y auténtico puede ayudarte a recibir más apoyo.'}
+                </strong>
+            </p>
             <FormGroup>
                 <FormLabel className="category-label">
                     {EN ? 'Tell us the situation that you want to resolve with your campaign' : 'Cuéntanos la situación que quieres resolver con la campaña'}
@@ -50,10 +65,10 @@ function CampaignThirdPage(props)
                     'Describe como crees que podrás resolver la situación con las donaciones y por qué esta campaña será de ayuda para ti.'}
                 </p>
                 <FormControl
-                    type='public-story'
+                    type='publicStory'
                     autoComplete="off" 
                     as="textarea"
-                    name='public-story'
+                    name='publicStory'
                     style={{minHeight:'100px'}}
                     placeholder={EN ? 'I need to get...' : 'Necesito conseguir...'}
                     // value={props.data.publicStory}
@@ -79,10 +94,10 @@ function CampaignThirdPage(props)
                     'Cuéntale a los demás en que usarás el dinero para que las personas tengan más conocimiento sobre qué estarán aportando.'}
                 </p>
                 <FormControl
-                    type='money-use'
+                    type='moneyUse'
                     autoComplete="off" 
                     as="textarea"
-                    name='money-use'
+                    name='moneyUse'
                     style={{minHeight:'100px'}}
                     placeholder={EN ? "With the money I'll get..." : 'Con el dinero que reciba...'}
                     // value={props.data.moneyUse}

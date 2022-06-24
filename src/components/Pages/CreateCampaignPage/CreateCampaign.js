@@ -23,9 +23,9 @@ function CreateCampaign() {
             campaignname: null,
             amount: null,
             story: null,
-            publicStory: null,
+            publicstory: null,
             description: null,
-            moneyUse: null,
+            moneyuse: null,
             itemizedbudget: null,
             mainPic: null,
             camPics: null,
@@ -128,7 +128,7 @@ function CreateCampaign() {
         }else{
             storyError = validateFields.validateName(data.story)
         }
-        if(!data.publicStory){
+        if(!data.publicstory){
             publicStoryError = emptyWarning;      
         }else{
             publicStoryError = validateFields.validateName(data.story)
@@ -138,7 +138,7 @@ function CreateCampaign() {
         }else{
             descriptionError = validateFields.validateName(data.description)
         }
-        if(!data.moneyUse){
+        if(!data.moneyuse){
             moneyError = emptyWarning;      
         }else{
         moneyError = validateFields.validateName(data.itemizedbudget)
@@ -167,8 +167,8 @@ function CreateCampaign() {
                 campaignname: nameError,
                 amount: amountError,
                 story: storyError,
-                publicStory: publicStoryError,
-                moneyUse: moneyError,
+                publicstory: publicStoryError,
+                moneyuse: moneyError,
                 itemizedbudget: budgetError,
                 description: descriptionError,
                 mainPic: mainPicError,
@@ -195,8 +195,8 @@ function CreateCampaign() {
 
     async function submit(event){
         event.preventDefault();
-        setError("")
-        let formattedStory = linkify(data.story)
+        setError("");
+        let formattedStory = linkify(data.story + '\n' + data.publicstory + '\n' + data.moneyuse);
         formattedStory = formattedStory.replace(/\n/g, " <br />");
 
         let isValidated = validateData();
@@ -204,7 +204,7 @@ function CreateCampaign() {
             setLoader(true);
             submitToBackend(formattedStory);
         }else{
-            setError(EN ? 'Some fields are not valid.' : 'Algunos campos no son válidos.')
+            setError(EN ? 'Some fields are not valid.' : 'Algunos campos no son válidos.');
         }
         
     }
