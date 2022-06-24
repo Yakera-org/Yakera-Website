@@ -18,7 +18,7 @@ function CreateCampaignDetails(props) {
                     type='campaign-name'
                     as='input'
                     name='campaignname'
-                    autoComplete="off" 
+                    autoComplete="off"
                     placeholder={EN ? 'Enter a title that catches the attention of potential donors' : 'Escribe un título que llame la atención de donantes potenciales'}
                     onChange={props.handleChange}
                     className={classnames(
@@ -35,7 +35,7 @@ function CreateCampaignDetails(props) {
                     type='number'
                     as='input'
                     name='amount'
-                    autoComplete="off" 
+                    autoComplete="off"
                     placeholder={EN ? 'Enter the amount that you wish to raise (in USD)' : 'Llene con la cantidad que desea recaudar en $USD'}
                     onChange={props.handleChange}
                     className={classnames(
@@ -57,8 +57,9 @@ function CreateCampaignDetails(props) {
                 </p>
                 <FormControl
                     type='description'
-                    as="input"
+                    as="textarea"
                     autoComplete="off" 
+                    style={{minHeight:'100px'}}
                     name='description'
                     placeholder={EN ? 'Description...' : 'Descripción...'}
                     onChange={props.handleChange}
