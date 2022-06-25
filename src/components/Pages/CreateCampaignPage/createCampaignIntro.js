@@ -270,6 +270,8 @@ function CampaignIntroPage(props) {
             </div>
         </div>
         }
+
+        {props.categoryError && <div className="missing-data">{props.categoryError}</div>}
     </div>
     )
 }

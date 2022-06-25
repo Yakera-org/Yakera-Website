@@ -429,3 +429,14 @@ aside h6{
     font-size: x-large;
     font-weight: bold;
 }
+
+.missing-data
+{
+    color: #cf2e2e;
+    text-align: center;
+}
+
+.invalid-data
+{
+    font-size: medium;
+}

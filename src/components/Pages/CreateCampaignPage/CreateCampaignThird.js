@@ -8,6 +8,12 @@ function CampaignThirdPage(props)
     let EN = props.EN;
     let isMobile = props.isMobile;
 
+    const handleTextAreaChange = (event, validation) => {
+        validation();
+
+        return props.handleChange(event);
+    }
+
     return (
         <div>
             {isMobile
@@ -49,14 +55,17 @@ function CampaignThirdPage(props)
                     style={{minHeight:'100px'}}
                     placeholder={EN ? "I'm going through..." : 'Estoy atravesando...'}
                     // value={props.data.story}
-                    onChange={props.handleChange}
+                    onChange={(event) => handleTextAreaChange(event, props.validations.validateStory)}
                     className={classnames(
                         'form-control',
-                        {'is-valid': props.data.errors.story === false},
-                        {'is-invalid': props.data.errors.story }
+                        {/*'is-valid': props.data.errors.story === false*/},
+                        {/*'is-invalid': props.data.errors.story*/},
+                        {'is-valid': (!props.errors.storyError && props.data.story)},
+                        {'is-invalid': props.errors.storyError}
                     )}
                 />
-                <div className="invalid-feedback">{props.data.errors.story}</div>
+                {/*<div className="invalid-feedback">{props.data.errors.story}</div>*/}
+                <div className="invalid-feedback invalid-data">{props.errors.storyError}</div>
             </FormGroup>
 
             <FormGroup>
@@ -77,15 +86,18 @@ function CampaignThirdPage(props)
                     name='publicStory'
                     style={{minHeight:'100px'}}
                     placeholder={EN ? 'I need to get...' : 'Necesito conseguir...'}
-                    // value={props.data.publicStory}
-                    onChange={props.handleChange}
+                    // value={props.data.publicstory}
+                    onChange={(event) => handleTextAreaChange(event, props.validations.validatePublicStory)}
                     className={classnames(
                         'form-control',
-                        {'is-valid': props.data.errors.publicStory === false},
-                        {'is-invalid': props.data.errors.publicStory }
+                    {/*'is-valid': props.data.errors.publicStory === false*/},
+                    {/*'is-invalid': props.data.errors.publicStory*/},
+                    {'is-valid': (!props.errors.publicStoryError && props.data.publicstory)},
+                    {'is-invalid': props.errors.publicStoryError}
                     )}
                 />
-                <div className="invalid-feedback">{props.data.errors.publicStory}</div>
+                {/*<div className="invalid-feedback">{props.data.errors.publicStory}</div>*/}
+                <div className="invalid-feedback invalid-data">{props.errors.publicStoryError}</div>
             </FormGroup>
 
             <FormGroup>
@@ -106,15 +118,18 @@ function CampaignThirdPage(props)
                     name='moneyUse'
                     style={{minHeight:'100px'}}
                     placeholder={EN ? "With the money I'll get..." : 'Con el dinero que reciba...'}
-                    // value={props.data.moneyUse}
-                    onChange={props.handleChange}
+                    // value={props.data.moneyuse}
+                    onChange={(event) => handleTextAreaChange(event, props.validations.validateMoneyUse)}
                     className={classnames(
                         'form-control',
-                        {'is-valid': props.data.errors.moneyUse === false},
-                        {'is-invalid': props.data.errors.moneyUse }
+                        {/*'is-valid': props.data.errors.moneyUse === false*/},
+                        {/*'is-invalid': props.data.errors.moneyUse*/},
+                        {'is-valid': (!props.errors.moneyUseError && props.data.moneyuse)},
+                        {'is-invalid': props.errors.moneyUseError}
                     )}
                 />
-                <div className="invalid-feedback">{props.data.errors.moneyUse}</div>
+                {/*<div className="invalid-feedback">{props.data.errors.moneyUse}</div>*/}
+                <div className="invalid-feedback invalid-data">{props.errors.moneyUseError}</div>
             </FormGroup>
 
             <FormGroup>
@@ -135,15 +150,18 @@ function CampaignThirdPage(props)
                     autoComplete="off" 
                     style={{minHeight:'100px'}}
                     placeholder={EN ? 'Enter the amount (USD) and item descriptions' : 'Llene con las cosas que comprará y los precios en $USD'}
-                    // value={props.data.itemizedBudget}
-                    onChange={props.handleChange}
+                    // value={props.data.itemizedbudget}
+                    onChange={(event) => handleTextAreaChange(event, props.validations.validateBudget)}
                     className={classnames(
                         'form-control',
-                        {'is-valid': props.data.errors.itemizedbudget === false},
-                        {'is-invalid': props.data.errors.itemizedbudget }
+                        {/*'is-valid': props.data.errors.itemizedbudget === false*/},
+                        {/*'is-invalid': props.data.errors.itemizedbudget*/},
+                        {'is-valid': (!props.errors.budgetError && props.data.itemizedbudget)},
+                        {'is-invalid': props.errors.budgetError}
                     )}
                 />
-                <div className="invalid-feedback">{props.data.errors.itemizedbudget}</div>
+                {/*<div className="invalid-feedback">{props.data.errors.itemizedbudget}</div>*/}
+                <div className="invalid-feedback invalid-data">{props.errors.budgetError}</div>
             </FormGroup>
         </div>
     );
