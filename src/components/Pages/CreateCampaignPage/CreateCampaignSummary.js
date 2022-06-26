@@ -38,7 +38,7 @@ function CampaignSummary(props)
             <p className="info-text">{props.data.campaignname}</p>
             
             <p className="summary-label">{EN ? 'Objective (in USD)' : 'Objetivo ($USD)'}</p>
-            <p className="summary-funds">${Math.round((parseFloat(props.data.amount) * 100) / 100).toFixed(2)}</p>
+            <p className="summary-funds">${parseFloat(props.data.amount).toFixed(2)}</p>
             
             <p className="summary-label">{EN ? 'Short description' : 'Breve descripción'}</p>
             <p className="info-text">{props.data.description}</p>

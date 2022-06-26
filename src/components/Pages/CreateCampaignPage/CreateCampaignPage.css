@@ -441,3 +441,58 @@ aside h6{
 {
     font-size: medium;
 }
+
+.success-card
+{
+    background-color: #fbefe2;
+    justify-content: center;
+}
+
+.success-card h1
+{
+    font-size: 40px;
+    color: #ea8737;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 4%;
+}
+
+.success-card p
+{
+    color: #ea8737;
+    font-size: medium;
+    text-align: left;
+}
+
+.success-card button
+{
+    background-color: #ea8737;
+    border-radius: 16px;
+    color: #fff;
+    border: none;
+    min-width: 120px;
+    min-height: 30px;
+    margin-bottom: 4%;
+}
+
+.success-card-img
+{
+    width: 40%;
+    height: auto;
+    margin-left: 2%;
+    margin-bottom: 4%;
+}
+
+.success-line
+{
+    display: flex;
+}
+
+.success-line:after
+{
+    background: #ea8737;
+    height: 2px;
+    flex: 1;
+    content: '';
+    margin-bottom: 2%;
+}

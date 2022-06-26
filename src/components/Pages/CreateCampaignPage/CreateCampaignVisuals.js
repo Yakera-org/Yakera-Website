@@ -14,6 +14,7 @@ import CampaignLastPage from "./CreateCampaignLast";
 import CampaignThirdPage from "./CreateCampaignThird";
 import CampaignSummary from "./CreateCampaignSummary.js";
 import { validateFields } from '../Register/Validation';
+import SuccessCard from "./CampaignSuccessCard.js";
 
 function CreateCampaignVisuals(props) {
     const [width, setWidth] = useState(window.innerWidth);
@@ -29,6 +30,7 @@ function CreateCampaignVisuals(props) {
     const [supportImagesError, setSupportImagesError] = useState('');
     const [camImagesError, setCamImagesError] = useState('');
     const [idImagesError, setIdImagesError] = useState('');
+    const [openSuccess, setOpenSuccess] = useState(false);
 
     let isMobile = width < 700 ? true : false;
 
@@ -285,6 +287,18 @@ function CreateCampaignVisuals(props) {
         }
     }
 
+    const closeSuccessCard = () => {
+        window.location.href = '/dashboard';
+    }
+
+    const submitCampaign = async (event) => {
+        await props.submit(event);
+
+        if (props.success) {
+            setOpenSuccess(true);
+        }
+    }
+
     var EN;
     if(language === "en"){
         EN = true
@@ -294,6 +308,7 @@ function CreateCampaignVisuals(props) {
 
     return (
         <div className='create-page'>
+            <SuccessCard EN={EN} open={openSuccess} onClose={closeSuccessCard} isMobile={isMobile} />
             {!EN ? <WhatsAppButton EN = {EN}></WhatsAppButton> : ''}
             <div id='background' >
             <MultiStepForm pillSize={50} activeStep={step} inactiveColor={'#999'}>
@@ -311,7 +326,7 @@ function CreateCampaignVisuals(props) {
                 </Step> 
             </MultiStepForm>
             <CampaignSummary step={step} data={props.data} EN={EN} isMobile={isMobile} />
-            { props.success
+            { /*props.success
                 ?
                 <Alert color="success" id='alert'>
                     {props.success}
@@ -319,7 +334,7 @@ function CreateCampaignVisuals(props) {
                     {EN ? <>Head to your <a href="/dashboard" style={{color:'darkgreen', textDecoration:'underline'}}> Dashboard</a>.</> : <>Dirígete a tu <a href="/dashboard" style={{color:'darkgreen', textDecoration:'underline'}}> Mi Cuenta</a>.</>}                                            
                 </Alert>
                 :
-                ''
+                ''*/
             }
             { props.error
                 ?
@@ -365,9 +380,9 @@ function CreateCampaignVisuals(props) {
                     (
                         isUploading
                         ?
-                        <Button onClick={props.submit} id="disabled-create" disabled={true} style={{backgroundColor:'grey'}} className="step-btn right-btn">{EN ? 'Create Campaign' : 'Crear Campaña'}</Button>
+                        <Button onClick={submitCampaign} id="disabled-create" disabled={true} style={{backgroundColor:'grey'}} className="step-btn right-btn">{EN ? 'Create Campaign' : 'Crear Campaña'}</Button>
                         :
-                        <Button onClick={props.submit} className="step-btn right-btn">{EN ? 'Finish' : 'Finalizar'}</Button>
+                        <Button onClick={submitCampaign} className="step-btn right-btn">{EN ? 'Finish' : 'Finalizar'}</Button>
                     )
                     :
                     ''
