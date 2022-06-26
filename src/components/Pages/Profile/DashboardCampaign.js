@@ -55,7 +55,7 @@ function DashboardCampaign(props) {
                 <p><span id="orange">{EN ? "Created" : "Creado"}</span>: {campaign.created}</p>
                 <p><span id="orange">{EN ? "Category" : "Categoría"}</span>: {campaign.category}</p>
                 <p><span id="orange">{EN ? "Description" : "Descripción"}</span>: {campaign.description}</p>
-                <p><span id="status">{EN ? "Status" : "Estado"}</span>: <span id={inversedSTATUS[campaign.status]}>{campaign.status}</span></p>
+                <p><span id="status">{EN ? "Status" : "Estatus"}</span>: <span id={inversedSTATUS[campaign.status]}>{campaign.status}</span></p>
             </section>
 
             <section className="in-revision" id={campaign.status !== STATUS.approved ? "greyed-out" : ""}>
@@ -84,14 +84,14 @@ function DashboardCampaign(props) {
                                 <p>
                                     {EN ? "Yakera: " : "Yakera: "} 
                                     
-                                    <span id='orange'> {campaign.raised}$</span> 
+                                    <span id='orange'> ${campaign.raised}</span> 
                                 </p>
                                 
                                 {campaign.zelleRaised > 0?
                                     <p>
                                         {EN ? "Zelle: " : "Zelle: "} 
                                         
-                                        <span id='purple'> {campaign.zelleRaised}$</span> 
+                                        <span id='purple'> ${campaign.zelleRaised}</span> 
                                     </p>
                                     :
                                     ""
@@ -102,7 +102,7 @@ function DashboardCampaign(props) {
                                     <p>
                                         {EN ? "Amount withdrawn:" : "Cantidad retirada:"}
 
-                                        <span id="orange"> -{campaign.withdrawn}$</span>
+                                        <span id="orange"> -${campaign.withdrawn}</span>
                                     </p>
                                     </>
                                     :
@@ -113,9 +113,9 @@ function DashboardCampaign(props) {
                                 <hr />
                                 
                                 <p id='total'>
-                                    {EN ? "Total Funds Remaining: " : "Total Fondos Restante: "} 
+                                    {EN ? "Available Funds: " : "Fondos disponibles: "} 
                                     
-                                    <span id='orange'><b>{campaign.raised + campaign.zelleRaised - campaign.withdrawn}$</b></span> 
+                                    <span id={campaign.raised - campaign.withdrawn === 0? "grey" : 'green'}><b>${campaign.raised - campaign.withdrawn}</b></span> 
                                 </p>
                             </section>
                         </section>

@@ -124,12 +124,19 @@
 .dashboard-campaign .totals{
     padding: 10px;
     padding-top: 20px;
+    text-align: center;
 }
 .dashboard-campaign .totals .raised{
+    width: 70%;
+    margin-left: 0%;
     padding-top: 10px;
 }
+.dashboard-campaign .totals .raised p{
+    text-align: right;
+}
 .dashboard-campaign .totals hr{
-    width: 50%;
+    width: 100%;
+    margin-left: 15%;
 }
 .dashboard-campaign .totals .raised .no-zelle{
     font-family: Intro-Regular-Alt;

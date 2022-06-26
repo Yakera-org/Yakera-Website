@@ -251,8 +251,57 @@ class UserService{
             "createdAt": "2022-03-29T15:40:48.168Z",
             "updatedAt": "2022-03-29T15:40:48.168Z",
             "personalID": [],
-            "raised": 10,
+            "raised": 100,
             "zelleRaised": 150,
+            "percentage": 0,
+            "created": "29/03/2022"
+        },
+        {
+            "targetAmount": 2222,
+            "country": "Venezuela",
+            "approved": true,
+            "completed": false,
+            "withdrawn": 100,
+            "disabled": false,
+            "slug": "pls-work",
+            "_user": "6238eee91ce80141908c81a5",
+            "title": "campaign without zelle and with partial withdraw",
+            "category": "healthcare",
+            "description": "sdfc",
+            "story": "",
+            "itemizedBudget": "sdf",
+            "mainPicture": {
+                "url": "https://assets.yakera.org/yakera/cami-img.jpg"
+            },
+            "pictures": [
+                {
+                    "url": "https://assets.yakera.org/testing/hack.png"
+                },
+                {
+                    "url": "https://assets.yakera.org/testing/4.jpg"
+                }
+            ],
+            "supportDocs": [
+                {
+                    "url": "https://assets.yakera.org/testing/phoneController.png"
+                },
+                {
+                    "url": "https://assets.yakera.org/testing/hackKosice.png"
+                },
+                {
+                    "url": "https://assets.yakera.org/testing/7.jpg"
+                },
+                {
+                    "url": "https://assets.yakera.org/testing/7 - Copy.jpg"
+                }
+            ],
+            "updates": [],
+            "donations": [],
+            "createdAt": "2022-03-29T15:40:48.168Z",
+            "updatedAt": "2022-03-29T15:40:48.168Z",
+            "personalID": [],
+            "raised": 200,
+            "zelleRaised": 0,
             "percentage": 0,
             "created": "29/03/2022"
         }
