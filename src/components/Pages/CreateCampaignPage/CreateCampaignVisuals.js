@@ -25,6 +25,10 @@ function CreateCampaignVisuals(props) {
     const [publicStoryError, setPublicStoryError] = useState('');
     const [moneyUseError, setMoneyUseError] = useState('');
     const [budgetError, setBudgetError] = useState('');
+    const [mainImageError, setMainImageError] = useState('');
+    const [supportImagesError, setSupportImagesError] = useState('');
+    const [camImagesError, setCamImagesError] = useState('');
+    const [idImagesError, setIdImagesError] = useState('');
 
     let isMobile = width < 700 ? true : false;
 
@@ -53,6 +57,7 @@ function CreateCampaignVisuals(props) {
     };
 
     let emptyWarning = props.EN ? 'This field cannot be empty' : 'Este campo no puede estar vacío';
+    let emptyPicWarning = props.EN ? 'No files uploaded' : 'No hay archivos subidos' ;
 
     const validateTitle = () => {
         if (!props.data.campaignname) {
@@ -173,6 +178,46 @@ function CreateCampaignVisuals(props) {
         }
     }
 
+    const validateMainImage = () => {
+        if (!props.data.mainPicture) {
+            setMainImageError(emptyPicWarning);
+            return false;
+        } else {
+            setMainImageError('');
+            return true;
+        }
+    }
+
+    const validateSupportImages = () => {
+        if (props.data.supportPics.length === 0) {
+            setSupportImagesError(emptyPicWarning);
+            return false;
+        } else {
+            setSupportImagesError('');
+            return true;
+        }
+    }
+
+    const validateCamImages = () => {
+        if (props.data.camPics.length === 0) {
+            setCamImagesError(emptyPicWarning);
+            return false;
+        } else {
+            setCamImagesError('');
+            return true;
+        }
+    }
+
+    const validateIdImages = () => {
+        if (props.data.idPics.length === 0) {
+            setIdImagesError(emptyPicWarning);
+            return false;
+        } else {
+            setIdImagesError('');
+            return true;
+        }
+    }
+
     const validatePage = (page) => {
         if (page === 1) {
             return validateCategory();
@@ -200,6 +245,18 @@ function CreateCampaignVisuals(props) {
                 return false;
             }
         }
+        else if (page === 4) {
+            let mainImage = validateMainImage();
+            let support = validateSupportImages();
+            let cam  = validateCamImages();
+            let idImages = validateIdImages();
+
+            if (mainImage && support && cam && idImages) {
+                return true;
+            } else {
+                return false;
+            }
+        }
         else {
             return true;
         }
@@ -207,7 +264,7 @@ function CreateCampaignVisuals(props) {
     
     const [language, setLanguage] = useState('');
     const [isUploading, setIsUploading] = useState('');
-    const [step, setStep] = useState(1)
+    const [step, setStep] = useState(1);
     const totalSteps = 4;
 
     const nextStep = () => {
@@ -219,12 +276,12 @@ function CreateCampaignVisuals(props) {
     }
     
     useEffect(() => {
-        window.scrollTo(0,0)
+        window.scrollTo(0,0);
     }, [step])
     
     const prevStep = () => { 
         if (step > 1 ) {
-            setStep(step => step - 1)
+            setStep(step => step - 1);
         }
     }
 
@@ -250,7 +307,7 @@ function CreateCampaignVisuals(props) {
                     <CampaignThirdPage EN={EN} data={props.data} handleChange={props.handleChange} setData={props.setData} isMobile={isMobile} errors={{storyError, publicStoryError, moneyUseError, budgetError}} validations={{validateStory, validatePublicStory, validateMoneyUse, validateBudget}} />
                 </Step>
                 <Step label={4}>  
-                  <CampaignLastPage EN={EN} data={props.data} handleChange={props.handleChange} setData={props.setData} setIsUploading={setIsUploading} isMobile={isMobile} />
+                  <CampaignLastPage EN={EN} data={props.data} handleChange={props.handleChange} setData={props.setData} setIsUploading={setIsUploading} isMobile={isMobile} errors={{mainImageError, supportImagesError, camImagesError, idImagesError}} />
                 </Step> 
             </MultiStepForm>
             <CampaignSummary step={step} data={props.data} EN={EN} isMobile={isMobile} />

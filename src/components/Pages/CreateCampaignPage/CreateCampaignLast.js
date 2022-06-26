@@ -260,17 +260,17 @@ function CreateCampaignLast(props) {
                 statusArray.push(filename)
                 setUploadSuccess(statusArray)
                 
-                var _idpics = props.data.supportPics
+                var _idpics = props.data.idPics
                 _idpics.push(data.key)
 
                 props.setData({
                     ...props.data,
-                    idpics: _idpics,
+                    idPics: _idpics,
                     errors:{
                         ...props.data.errors,
-                        idpics: ""
+                        idPics: ""
                     }
-                })    
+                })
             })
             .catch(err => {
                 console.log(err)
@@ -439,9 +439,9 @@ function CreateCampaignLast(props) {
           return img
         }
 
-      }
+    }
 
-    return(
+    return (
         <div className='campaign-details'>
             <FormGroup className="mb-3">
                 <div className="label-last"><h2 className={isMobile ? "subtitle-text-mobile" : "subtitle-text"}><span>{EN ? 'Main Campaign picture' : 'Imagen principal de la campaña'}</span></h2></div>
@@ -482,10 +482,11 @@ function CreateCampaignLast(props) {
                     totalSizeLimit={6000000} 
                 />
 
-                { props.data.errors.mainPic
+                { /*props.data.errors.mainPic*/ props.errors.mainImageError
                 ?
                     <Alert color="danger" id='alert'>
-                        {props.data.errors.mainPic}
+                        {/*props.data.errors.mainPic*/}
+                        {props.errors.mainImageError}
                     </Alert>
                 :
                     ''
@@ -552,10 +553,11 @@ function CreateCampaignLast(props) {
                     totalSizeLimit={20000000} 
                 />
 
-                { props.data.errors.camPics
+                { /*props.data.errors.camPics*/ props.errors.camImagesError
                 ?
                     <Alert color="danger" id='alert'>
-                        {props.data.errors.camPics}
+                        {/*props.data.errors.camPics*/}
+                        {props.errors.camImagesError}
                     </Alert>
                 :
                     ''
@@ -624,10 +626,11 @@ function CreateCampaignLast(props) {
                     totalSizeLimit={10000000} 
                 />
 
-                { props.data.errors.supportPics
+                { /*props.data.errors.supportPics*/ props.errors.supportImagesError
                 ?
                     <Alert color="danger" id='alert'>
-                        {props.data.errors.supportPics}
+                        {/*props.data.errors.supportPics*/}
+                        {props.errors.supportImagesError}
                     </Alert>
                 :
                     ''
@@ -685,19 +688,20 @@ function CreateCampaignLast(props) {
                     idFiles = {idFiles}
                     documentFiles= {documentFiles} 
                     file = {idFiles} 
-                    tag = {"id"} 
+                    tag = {"ids"}
                     EN = {EN}
                     setFile={setIdFiles} 
-                    setLoading={setDocLoading} 
+                    setLoading={setIdLoading} 
                     onUpload={onUpload} 
                     numberOfFilesLimit={2} 
                     totalSizeLimit={10000000} 
                 />
 
-                { props.data.errors.idPics
+                { /*props.data.errors.idPics*/ props.errors.idImagesError
                 ?
                     <Alert color="danger" id='alert'>
-                        {props.data.errors.idPics}
+                        {/*props.data.errors.idPics*/}
+                        {props.errors.idImagesError}
                     </Alert>
                 :
                     ''
@@ -725,7 +729,7 @@ function CreateCampaignLast(props) {
             </FormGroup>
 
         </div>
-    )
+    );
 }
 
 export default CreateCampaignLast;
