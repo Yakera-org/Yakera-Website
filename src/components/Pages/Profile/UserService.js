@@ -1,4 +1,4 @@
-import api from "../../../services/api";
+//import api from "../../../services/api";
 import TokenService from "../../../services/token";
 import imageCompression from 'browser-image-compression';
 import S3 from "aws-s3";
@@ -16,7 +16,7 @@ const S3Client = new S3(config_aws);
 class UserService{
     async getUserData() {
         try {
-            const res = await api.get('/profile');
+            //const res = await api.get('/profile');
             const newdata = {
     "user": {
         "donorInfo": {
