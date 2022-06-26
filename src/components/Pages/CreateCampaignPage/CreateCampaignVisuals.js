@@ -37,7 +37,7 @@ function CreateCampaignVisuals(props) {
 
         window.addEventListener('resize', handleWindowSize);
         return () => window.removeEventListener('resize', handleWindowSize);
-    }, [])
+    }, []);
 
     const validateCategory = () => {
         if(!props.data.campaigncategory)
@@ -105,22 +105,73 @@ function CreateCampaignVisuals(props) {
         }
     }
 
-    const validateTextArea = (value, setError) => {
-        if (!value) {
-            setError(emptyWarning);
+    const validateStory = () => {
+        if (!props.data.story) {
+            setStoryError(emptyWarning);
             return false;
         } else {
-            let invalid = validateFields.validateName(value);
+            let invalid = validateFields.validateName(props.data.story);
 
             if (invalid) {
-                setError(invalid);
+                setStoryError(invalid);
                 return false;
             }
 
-            setError('');
+            setStoryError('');
             return true;
         }
-    };
+    }
+
+    const validatePublicStory = () => {
+        if (!props.data.publicstory) {
+            setPublicStoryError(emptyWarning);
+            return false;
+        } else {
+            let invalid = validateFields.validateName(props.data.publicstory);
+
+            if (invalid) {
+                setPublicStoryError(invalid);
+                return false;
+            }
+
+            setPublicStoryError('');
+            return true;
+        }
+    }
+
+    const validateMoneyUse = () => {
+        if (!props.data.moneyuse) {
+            setMoneyUseError(emptyWarning);
+            return false;
+        } else {
+            let invalid = validateFields.validateName(props.data.moneyuse);
+
+            if (invalid) {
+                setMoneyUseError(invalid);
+                return false;
+            }
+
+            setMoneyUseError('');
+            return true;
+        }
+    }
+
+    const validateBudget = () => {
+        if (!props.data.itemizedbudget) {
+            setBudgetError(emptyWarning);
+            return false;
+        } else {
+            let invalid = validateFields.validateName(props.data.itemizedbudget);
+
+            if (invalid) {
+                setBudgetError(invalid);
+                return false;
+            }
+
+            setBudgetError('');
+            return true;
+        }
+    }
 
     const validatePage = (page) => {
         if (page === 1) {
@@ -138,10 +189,10 @@ function CreateCampaignVisuals(props) {
             }
         }
         else if (page === 3) {
-            let story = validateTextArea(props.data.story, setStoryError);
-            let publicStory = validateTextArea(props.data.publicstory, setPublicStoryError);
-            let money = validateTextArea(props.data.moneyuse, setMoneyUseError);
-            let budget = validateTextArea(props.data.itemizedbudget, setBudgetError);
+            let story = validateStory();
+            let publicStory = validatePublicStory();
+            let money = validateMoneyUse();
+            let budget = validateBudget();
 
             if (story && publicStory && money && budget) {
                 return true;
@@ -196,7 +247,7 @@ function CreateCampaignVisuals(props) {
                     <CreatCampaignDetails EN={EN} data={props.data} handleChange={props.handleChange} setData={props.setData} setIsUploading={setIsUploading} isMobile={isMobile}  errors={{nameError, amountError, descriptionError}} validations={{validateTitle, validateAmount, validateDescription}} />
                 </Step>
                 <Step label={3}>
-                    <CampaignThirdPage EN={EN} data={props.data} handleChange={props.handleChange} setData={props.setData} isMobile={isMobile} errors={{storyError, publicStoryError, moneyUseError, budgetError}} validations={{validateStory: () => validateTextArea(props.data.story, setStoryError), validatePublicStory: () => validateTextArea(props.data.publicstory, setPublicStoryError), validateMoneyUse: () => validateTextArea(props.data.moneyuse, setMoneyUseError), validateBudget: validateTextArea(props.data.itemizedbudget, setBudgetError)}} />
+                    <CampaignThirdPage EN={EN} data={props.data} handleChange={props.handleChange} setData={props.setData} isMobile={isMobile} errors={{storyError, publicStoryError, moneyUseError, budgetError}} validations={{validateStory, validatePublicStory, validateMoneyUse, validateBudget}} />
                 </Step>
                 <Step label={4}>  
                   <CampaignLastPage EN={EN} data={props.data} handleChange={props.handleChange} setData={props.setData} setIsUploading={setIsUploading} isMobile={isMobile} />
