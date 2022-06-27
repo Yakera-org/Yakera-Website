@@ -1,9 +1,9 @@
 import React from 'react';
 import HashLoader from "react-spinners/HashLoader";
-import DashboardContent from './DashboardContent';
-import DashboardStats from './DashboardStats';
-import DonorHubContent from './DonorHubContent';
-import DonorHubStats from './DonorHubStats';
+import DashboardContent from './Dashboard/DashboardContent';
+import DashboardStats from './Dashboard/DashboardStats';
+import DonorHubContent from './DonorHub/DonorHubContent';
+import DonorHubStats from './DonorHub/DonorHubStats';
 
 const bannerBig = 'https://assets.yakera.org/yakera/banner-donorhub-large.svg';
 const banner = 'https://assets.yakera.org/yakera/banner-donorhub-big.svg';

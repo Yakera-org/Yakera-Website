@@ -1,5 +1,5 @@
 import React from 'react';
-import { userServices } from './UserService';
+import { userServices } from '../UserService';
 import { Progress } from 'react-sweet-progress';
 import { Grid } from '@material-ui/core';
 
@@ -127,17 +127,17 @@ function DashboardCampaign(props) {
 
                 <Grid container spacing={1} className='button-area' id={campaign.status === STATUS.denied ? "no-display" :""}>
                     <Grid item xs={6} sm={6} >
-                        <button name={campaign.slug} id="top" onClick={props.withdrawFunds}>
+                        <button name={campaign.slug} id="top" onClick={props.withdrawFunds} disabled={campaign.status !== STATUS.approved}>
                             {EN ? "Withdraw Funds" : "Retirar Fondos"}
                         </button>
                     </Grid>
                     <Grid item xs={6} sm={6} >
-                        <button name={campaign.slug} id="top" onClick={props.closeCampaign}>
+                        <button name={campaign.slug} id="top" onClick={props.closeCampaign} disabled={campaign.status !== STATUS.approved}>
                             {EN ? "Close Campaign" : "Cerrar Campaña"}
                         </button>
                     </Grid>
                     <Grid item xs={12} sm={12} >
-                        <button name={campaign.slug} onClick={props.goToCampaign}>
+                        <button name={campaign.slug} onClick={props.goToCampaign} disabled={campaign.status !== STATUS.approved}>
                             {EN ? "Go to my campaign" : "Ir a mi Campaña"}  
                         </button>
                     </Grid>

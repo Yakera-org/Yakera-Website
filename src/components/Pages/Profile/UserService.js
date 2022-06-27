@@ -3,7 +3,7 @@ import TokenService from "../../../services/token";
 import imageCompression from 'browser-image-compression';
 import S3 from "aws-s3";
 import * as AWSkeys from "../../../services/AWSkeys"
-
+import api from "../../../services/api";
 
 const config_aws = {
     bucketName: AWSkeys.S3_BUCKET,
@@ -16,7 +16,7 @@ const S3Client = new S3(config_aws);
 class UserService{
     async getUserData() {
         try {
-            //const res = await api.get('/profile');
+            const res = await api.get('/profile');
             const newdata = {
     "user": {
         "donorInfo": {
@@ -307,8 +307,8 @@ class UserService{
         }
     ]
 }
-            //return res.data.data
-            return newdata
+            return res.data.data
+            //return newdata
         } catch (e) {
             throw e 
         }

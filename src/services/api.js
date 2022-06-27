@@ -5,7 +5,7 @@ import TokenService from "./token";
 const instance = axios.create({
   //live: baseURL: "https://api.yakera.org/api"
   //dev: baseURL: "https://yakera-backend.herokuapp.com/api"
-    baseURL: "https://api.yakera.org/api",
+    baseURL: "https://yakera-backend.herokuapp.com/api",
     headers: {
       "Content-Type": "application/json",
     },

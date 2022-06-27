@@ -1,6 +1,6 @@
 import React from 'react';
 import { Grid } from '@material-ui/core';
-import * as dictionaries from "./dictionaries";
+import * as dictionaries from "../dictionaries";
 const donorCTA = 'https://assets.yakera.org/yakera/donor-cta.svg';
 
 function DonorHubContent(props) {
