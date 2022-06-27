@@ -48,6 +48,7 @@ function DashboardStats(props) {
                             disabled
                             checked={user.zelleInfo.isAccepting}
                             style={{
+                                zIndex:"0",
                                 color: '#ea8737',
                                 '&.MuiChecked': {
                                     color: 'rgba(234, 135, 55, .5)'

@@ -1,5 +1,8 @@
 import React from 'react';
+import { userServices } from '../UserService';
 import "./OverlayAlert.scss"
+import HashLoader from "react-spinners/HashLoader";
+import { Alert } from 'reactstrap';
 
 const withdrawImage = "https://assets.yakera.org/yakera/partial-withdrawal-notification.webp";
 const endImage = "https://assets.yakera.org/yakera/end-campaign-notification.webp";
@@ -9,10 +12,39 @@ function OverlayAlert(props) {
     const data = props.data
     const slug = data.slugToBeWithdrawn
     const type =  data.typeOfWithdraw
-    console.log(type)
+
+    const [loading, setLoading] = React.useState(false);
+    const [error, setError] = React.useState("");
+    const [success, setSuccess] = React.useState("");
+    
+
     function onClose(){
         window.onscroll=function(){};
         props.onClose(false)
+    }
+
+    async function onWithdraw(e){
+        setError("")
+        setSuccess("")
+        e.preventDefault()
+        setLoading(true)
+        try{
+            await userServices.withdrawFunds({
+                "slug": slug,
+                "type": type
+            })
+            setSuccess(EN?"Funds withdrawn successfully, please refresh the page." : "Fondos retirados con éxito, actualice la página.")
+        } 
+        catch(e){
+            if(e.response.data.code === 422){
+                setError(EN? "This campaign already has an ongoing withdrawal request." : "Esta campaña ya tiene una solicitud de retiro en curso.")
+            }else{
+                setError(EN ? "Sorry, something went wrong, please try again." : "Lo sentimos, algo salió mal, por favor inténtalo de nuevo.");
+            }
+        }
+        finally{
+            setLoading(false)
+        } 
     }
     
     return (
@@ -52,17 +84,43 @@ function OverlayAlert(props) {
                                 "Todos tus fondos recaudados serán transferidos a tu cuenta de Reserve en un período de 24 a 72 horas."
                             }
                     </p>
-                    <button>
-                        {type==="partial"?
-                            EN ?
-                            "I understand!"
-                            :
-                            "¡Entiendo!"
+                    {success
+                        ?
+                        <Alert color="success" id='alert' style={{width:"50%", marginLeft:"25%"}}>
+                            {success}
+                        </Alert>
                         :
-                            EN ?
-                            "Close Campaign"
+                        ''
+                    }
+                    {error
+                        ?
+                        <Alert color="danger" id='alert' style={{width:"50%", marginLeft:"25%"}}>
+                            {error}
+                        </Alert>
+                        :
+                        ''
+                    }
+                    <button style={{display:success?"none":""}} onClick={onWithdraw}>
+                        {loading
+                        ?
+                        <div className="loader-wrapper">
+                            <HashLoader
+                                size={20}
+                                color={"#fff"}
+                                loading={true}
+                                />
+                        </div>
+                        :
+                        type==="partial"?
+                                EN ?
+                                "I understand!"
+                                :
+                                "¡Entiendo!"
                             :
-                            "Cerrar campaña"
+                                EN ?
+                                "Close Campaign"
+                                :
+                                "Cerrar campaña"
                         }
                     </button>
                 </div>
