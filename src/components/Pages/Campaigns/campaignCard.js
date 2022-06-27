@@ -5,7 +5,7 @@ import CardHeader from '@material-ui/core/CardHeader';
 import CardContent from '@material-ui/core/CardContent';
 import { Progress } from 'react-sweet-progress';
 import "react-sweet-progress/lib/style.css";
-import icons from './icons';
+import * as dictionaries from './dictionaries';
 
 import './campaignCard.css';
 
@@ -76,7 +76,7 @@ class CampaignCard extends Component {
       description = campaign.description;
     }
     const category = campaign.category;
-    const icon = icons[category] ;
+    const icon = dictionaries.icons[category] ;
 
     const target = campaign.targetAmount;
 

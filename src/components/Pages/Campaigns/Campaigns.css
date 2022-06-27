@@ -15,20 +15,27 @@
     padding-right: 4%;
     text-align: center;
 }
-.grid-header .header-mid-img h2{
-    color: #525252;
-    font-size: 1.5rem;
-    margin-bottom: 15px;
+.grid-header .header-mid-img .image-top{
+    background-color: #ea8737;
+    font-family: Intro-Light;
+    color: white;
+    border-radius: 10px 10px 0 0;
+    font-size: 15px;
+    width: 40%;
+    margin-left: 30%;
+    padding: 1% 5%;
+    box-shadow: 15px 15px 1px rgb(223, 223, 223);
 }
 .grid-header .header-mid-img img{
     width: 40%;
     padding: 0%;
-    border-radius: 5px;
+    border-radius: 0 0 10px 10px;
     box-shadow: 15px 15px 1px rgb(223, 223, 223);
+    margin-top: -2px;
 }
 .grid-header .header-mid-img img:hover{
     cursor: pointer;
-    box-shadow: 15px 15px 1px rgb(205, 205, 205);
+    opacity: 0.9;
 }
 .grid-header .mid-content{
     padding: 0%;
@@ -38,10 +45,11 @@
     font-size: 2.5rem;
     width: 75%;
     margin-left: -10%;
-    color: #525252;
+    color: #222;
 }
 .grid-header .mid-content .main-text span{
    color: #ea8737;
+   font-weight: bold;
 }
 .grid-header .mid-content .bubble-text{
     padding: 5% 5% 5% 0;
@@ -50,19 +58,30 @@
 .grid-header .mid-content .bubble-text .bubble-quote{
     background-color: #ea8737;
     text-align: left;
-    padding: 10px 35px;
-    border-radius: 40px;
-    width: 75%;
+    border-radius: 30px;
+    width: 70%;
+    max-height: 100px;
+    min-height: 60px;
     color: white;
     font-size: 18px;
     font-family: Intro-Light;
     float: left;
 }
+.grid-header .mid-content .bubble-text .bubble-quote #text{
+    padding: 10px;
+    word-break: break-word;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    line-height: 20px; /* fallback */
+    -webkit-line-clamp: 3; /* number of lines to show */
+    -webkit-box-orient: vertical;
+}
 .grid-header .mid-content .bubble-text .bubble-quote img{
-    padding: 0%;
-    width: 50px;
-    margin-left: -25px;
-    margin-right: 5px;
+    padding: 5px;
+    margin-left: 5px;
+    width: 20%;
+    min-width: 50px;
     vertical-align: middle;
     float: left;
 }
@@ -73,9 +92,9 @@
     min-width: 100px;
     margin-left: 1px;
     text-align: center;
-    padding: 20px 15px;
-    color: #525252;
-    border-radius: 40px;
+    padding: 30px 15px;
+    color: #222;
+    border-radius: 30px;
     font-size: 20px;
 }
 .searchbar{
@@ -109,10 +128,11 @@
     width: 50%;
     margin-left: 25%;
     font-family: Intro-Regular-Alt;
-    margin-top: 0px;
+    margin-top: 10px;
 }
-.filter-section h2, .filter-section p{
-    color: #525252;
+.filter-section h2{
+    color: #222;
+    text-align: center;
 }
 .filter-section .filters{
     border-radius: 5px;
@@ -129,7 +149,7 @@
     background-color: #ff943c20!important;
 }
 .filter-section .filters #quant-filter{
-    color:#525252;
+    color:#222;
     font-size: 18px;
     padding: 20px;
     border-radius: 5px;
@@ -162,7 +182,7 @@
     font-family: Intro-Regular-Alt;
     text-transform: capitalize;
     background-color: #f0f0f0;
-    color: #525252;
+    color: #222;
     width: 90%;
     padding: 10px;
 }
@@ -292,7 +312,7 @@
 }
 .cam-container .no-cards{
     text-align: center;
-    color: #525252;
+    color: #222;
     margin: 20px;
     font-family: Intro-Regular-Alt;
     font-size: 18px;
@@ -309,7 +329,7 @@
 }
 .bottom-images p{
     font-family: Intro-Regular-Alt;
-    color: #525252;
+    color: #222;
     font-size: 1.4rem; 
     width: 80%;
     margin-left: 10%;
@@ -340,9 +360,12 @@
         text-align: center;
     }
     .grid-header .header-mid-img h2{
-        color: #525252;
         font-size: 1.5rem;
         margin-bottom: 15px;
+    }
+    .grid-header .header-mid-img .image-top{
+        width: 55%;
+        margin-left: 22.5%;
     }
     .grid-header .header-mid-img img{
         width: 55%;
@@ -361,26 +384,28 @@
         margin-left: -5%;
     }
     .grid-header .mid-content .bubble-text .bubble-quote{
-        padding: 10px 35px;
-        border-radius: 40px;
-        width: 60%;
+        border-radius: 30px;
+        width: 65%;
         font-size: 16px;
         float: left;
+        max-height:70px
+    }
+    .grid-header .mid-content .bubble-text .bubble-quote #text{    
+        padding: 5px 1%;    
+        font-size: 14px;
     }
     .grid-header .mid-content .bubble-text .bubble-quote img{
-        padding: 0%;
-        width: 50px;
-        margin-left: -25px;
-        margin-right: 5px;
-        vertical-align: middle;
-        float: left;
+        padding:0;
+        padding-top: 2%;
     }
     .grid-header .mid-content .bubble-text .bubble-digit{
         float: right;
         width: 10%;
         min-width: 100px;
+        min-height: 60px;
+        max-height: 100px;
         margin-left: 1px;
-        padding: 20px 15px;
+        padding: 15px 0;
         font-size: 20px;
     }
 }
@@ -392,10 +417,13 @@
         padding-top: 5%;
     }
     .grid-header .mid-content .bubble-text .bubble-quote{
-        padding: 10px 35px;
+        padding: 0 10px;
         width: 100%;
         font-size: 18px;
         float: none;
+    }
+    .grid-header .mid-content .bubble-text .bubble-quote#text{
+        padding:10px;
     }
     .grid-header .mid-content .bubble-text .bubble-digit{
         display: none;   
@@ -436,13 +464,11 @@
     .grid-header .mid-content .bubble-text .bubble-quote{
         width: 100%;
     }
+    .grid-header .mid-content .bubble-text .bubble-quote #text{
+        padding: 5px 10px ;
+    }
     .grid-header .mid-content .bubble-text .bubble-quote img{
-        padding: 0%;
-        width: 0px;
-        margin-left: -25px;
-        margin-right: 5px;
-        vertical-align: middle;
-        float: left;
+        display: none;
     }
     .grid-header .mid-content .bubble-text .bubble-digit{
         float: right;
@@ -470,7 +496,6 @@
         font-family: Intro-Regular-Alt;
         text-transform: capitalize;
         background-color: #f0f0f0;
-        color: #525252;
         width: 90%;
         padding: 10px;
         min-height: 80px;
@@ -488,8 +513,14 @@
         font-size: 1.5rem;
         margin-bottom: 15px;
     }
+    .grid-header .header-mid-img .image-top{
+        width: 60%;
+        font-size: 12px;
+        margin-left: 20%;
+        padding: 5px;  
+    }
     .grid-header .header-mid-img img{
-        width: 50%;
+        width: 60%;
         padding: 0%;
     }
     .grid-header .mid-content{
@@ -502,16 +533,6 @@
         margin-left: 0%;
     }
     .grid-header .mid-content .bubble-text{
-        padding: 5% 5% 5% 0;
-        margin-left: 0%;
-    }
-    .grid-header .mid-content .bubble-text .bubble-quote{
-        padding: 10px 35px;
-        width: 100%;
-        font-size: 18px;
-        float: none;
-    }
-    .grid-header .mid-content .bubble-text .bubble-quote img{
         display: none;
     }
     .filter-section {
@@ -520,6 +541,7 @@
         margin-left: 0%;
         padding: 5%;
         margin-bottom: -50px;
+        margin-top: -10px;
     }
     .filter-section .category-filter .off{
         margin: 10px;
@@ -528,6 +550,6 @@
         padding: 0 30px;
     }
     .cam-card{
-        padding: 20px;
+        padding: 20px 0;
     }
 }

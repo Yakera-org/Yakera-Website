@@ -1,23 +1,12 @@
 import React from "react";
 import { Grid, Hidden } from '@material-ui/core';
 
-import pics from './pics';
 import SearchBar from "./Searchbar";
 import Pageination from "./Pageination";
 import HighlightedCampaign from "./HighlightedCampaign";
+import HashLoader from "react-spinners/HashLoader";
 
-const nameDictEN = {
-    "education": "Education",
-    "healthcare": "Healthcare",
-    "small_business":"Small Business",
-    "nutrition": "Nutrition"
-  };
-  const nameDictSP = {
-    "education":"Educación",
-    "healthcare":"Atención Médica",
-    "nutrition":"Nutrición",
-    "small_business":"Pequeños Negocios"
-  };
+import * as dictionaries from "./dictionaries"
 
 function CampaignsVisuals(props) {
 
@@ -28,19 +17,29 @@ function CampaignsVisuals(props) {
             <Grid container spacing={0} className="grid-header" style={{ alignItems: 'flex-start' }}>
                 <Hidden xsDown>
                     <Grid item sm={3} className='header-left' style={{ textAlign: "center" }}>
-                        <img alt='line-left' src={pics['line-left']} />
+                        <img alt='line-left' src={dictionaries.pics['line-left']} />
                     </Grid>
                 </Hidden>
 
                 <Grid item xs={12} sm={6}>
+                    {props.loading?
+                    <div className='cam-loader' style={{marginTop:"100px"}}>
+                        <HashLoader
+                            size={100}
+                            color={"#ea8737"}
+                            loading={true}
+                            />
+                    </div>
+                    :
                     <HighlightedCampaign EN={EN} campaign={props.highlightStory}/>
+                    }
                 </Grid>
                 
                 <Hidden xsDown>
                     <Grid item={true} sm={3} className='header-right' style={{ textAlign: "center" }}>
                         <img
                             alt='line-right'
-                            src={pics['line-right']}
+                            src={dictionaries.pics['line-right']}
                             width='375px'
                         />
                     </Grid>
@@ -49,8 +48,9 @@ function CampaignsVisuals(props) {
             </Grid>
 
             <div className="filter-section">
+                <hr />
                 <h2>
-                    {EN ? 'Find a campaign.' : 'Buscar una campaña.'}
+                    {EN ? 'Find a campaign' : 'Busca una campaña'}
                 </h2>
 
                 <SearchBar 
@@ -79,7 +79,7 @@ function CampaignsVisuals(props) {
                         return(
                             <Grid key={i} item xs={6} sm={3} className="cat-filter">
                                 <button onClick={props.setCategory} name={cat} id={cat} className={props.currentCategory===cat?`on-${cat}`:"off"}>
-                                    {EN ? nameDictEN[cat] : nameDictSP[cat]}
+                                    {EN ? dictionaries.nameDictEN[cat] : dictionaries.nameDictSP[cat]}
                                 </button>
                             </Grid>
                         )                        
@@ -112,7 +112,7 @@ function CampaignsVisuals(props) {
                 <Grid item sm={6} xs={12} className='img-1'>
                     <img
                         alt='bottom-img'
-                        src={pics['bottom-1']}
+                        src={dictionaries.pics['bottom-1']}
                         
                     />
                     <p className='p1'><span>{EN ? 'All of out campaigns are verified' : 'Todas nuestras campañas son verificadas'}</span>{EN ? ' before publication.' : ' antes de su publicación.'}</p>
@@ -120,7 +120,7 @@ function CampaignsVisuals(props) {
                 <Grid item sm={6} xs={12} className='img-2'>
                     <img
                         alt='bottom-img'
-                        src={pics['bottom-2']}
+                        src={dictionaries.pics['bottom-2']}
                         
                     />
                     <p className='p2'><span>{EN ? '100% ' : 'El 100% '}</span>{EN ? 'of your donations ' : ' de tus donaciones'} <span>{EN ? ' reach their recipient.' : ' llegan a su destinatario.'}</span></p>
@@ -131,7 +131,7 @@ function CampaignsVisuals(props) {
                 <Grid item sm={6} xs={12}>
                     <img
                         alt='campaign-img'
-                        src={pics['campaign-img']}
+                        src={dictionaries.pics['campaign-img']}
                         className='campaign-img'
                     />
                 </Grid>
@@ -140,7 +140,7 @@ function CampaignsVisuals(props) {
                         <Grid item sm={12} xs={12}>
                             <img
                                 alt='quotes'
-                                src={pics['quote']}
+                                src={dictionaries.pics['quote']}
                                 className='quote'
                             />
                         </Grid>
