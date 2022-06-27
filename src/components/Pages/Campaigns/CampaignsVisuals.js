@@ -23,9 +23,9 @@ function CampaignsVisuals(props) {
 
                 <Grid item xs={12} sm={6}>
                     {props.loadingHighlight?
-                    <div className='cam-loader' style={{marginTop:"100px"}}>
+                    <div className='cam-loader' style={{marginTop:"100px", height:"200px"}}>
                         <HashLoader
-                            size={100}
+                            size={50}
                             color={"#ea8737"}
                             loading={true}
                             />
