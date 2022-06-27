@@ -22,7 +22,7 @@ function CampaignsVisuals(props) {
                 </Hidden>
 
                 <Grid item xs={12} sm={6}>
-                    {props.loading?
+                    {props.loadingHighlight?
                     <div className='cam-loader' style={{marginTop:"100px"}}>
                         <HashLoader
                             size={100}
@@ -31,7 +31,7 @@ function CampaignsVisuals(props) {
                             />
                     </div>
                     :
-                    <HighlightedCampaign EN={EN} campaign={props.highlightStory}/>
+                    <HighlightedCampaign EN={EN} campaign={props.highlightStory} />
                     }
                 </Grid>
                 
@@ -64,13 +64,13 @@ function CampaignsVisuals(props) {
 
                 <Grid container spacing={0} className="filters" style={{ alignItems: 'flex-start' }}>
                     <Grid item xs={4} sm={4} id="quant-filter" name="date" onClick={props.setFilter} className={props.currentFilter ==="date" ? "on" : "off"}>
-                        {EN ? 'Date' : 'Fecha'} &nbsp; <b style={{color:"#ea8737"}}>{props.dateOrder ? (props.dateOrder === "asc" ? "↑" : "↓" ) : ""}</b> 
+                        {EN ? 'Date' : 'Fecha'} &nbsp; <b style={{color:"#eee"}}>{props.dateOrder ? (props.dateOrder === "asc" ? "↑" : "↓" ) : ""}</b> 
                     </Grid>
                     <Grid item xs={4} sm={4} id="quant-filter" onClick={props.setFilter} name="percent" className={props.currentFilter ==="percent" ? "on" : "off"}>
                         {EN ? 'Percentage' : 'Porcentaje'}
                     </Grid>
                     <Grid item xs={4} sm={4} id="quant-filter" onClick={props.setFilter} name="raised" className={props.currentFilter ==="raised" ? "on" : "off"}>
-                        {EN ? 'Money raised' : 'Dinero recaudado'}
+                        {EN ? 'Money' : 'Dinero'}
                     </Grid>
                 </Grid>
 

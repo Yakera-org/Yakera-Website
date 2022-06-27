@@ -143,13 +143,13 @@
     margin-left: 1%;
 }
 .filter-section .filters .on{
-    background-color: #ff943c41!important;
+    background-color: #0e325e!important;
+    color: white;
 }
 .filter-section .filters .on:hover{
-    background-color: #ff943c20!important;
+    background-color: #0e325ee6!important;
 }
 .filter-section .filters #quant-filter{
-    color:#222;
     font-size: 18px;
     padding: 20px;
     border-radius: 5px;
@@ -159,9 +159,9 @@
     cursor: pointer;
 }
 .filter-section .filters #quant-filter:active{
-    background-color: #ea883746;
+    background-color: #0e325e46;
     cursor: pointer;
-}
+}   
 .filter-section .category-filter{
     margin: 20px 0;
 }
@@ -187,25 +187,29 @@
     padding: 10px;
 }
 .filter-section .category-filter .on-healthcare{
-    background-color: #ff7d7d50;
+    background-color: #ff7d7d;
+    color: white;
 }
 .filter-section .category-filter #healthcare:hover, .filter-section .category-filter .on-healthcare:hover{
     background-color: #ff7d7d80;
 }
 .filter-section .category-filter .on-education{
-    background-color: #71b98f50;
+    background-color: #71b98f;
+    color: white;
 }
 .filter-section .category-filter #education:hover, .filter-section .category-filter .on-education:hover{
     background-color: #71b98f80;
 }
 .filter-section .category-filter .on-small_business{
-    background-color: #7099d050;
+    background-color: #7099d0;
+    color: white;
 }
 .filter-section .category-filter #small_business:hover, .filter-section .category-filter .on-small_business:hover{
     background-color: #7099d080;
 }
 .filter-section .category-filter .on-nutrition{
-    background-color: #edc34350;
+    background-color: #edc343;
+    color: white;
 }
 .filter-section .category-filter #nutrition:hover, .filter-section .category-filter .on-nutrition:hover{
     background-color: #edc34380;
@@ -481,9 +485,10 @@
 }
 @media only screen and (max-width: 900px) {
     .filter-section .filters #quant-filter{
-        font-size: 16px;
-        padding: 20px;
-        margin-bottom: -10px;
+        font-size: 14px;
+        padding: 20px 0;
+        margin: 0;
+        margin-bottom: 0px;
     }
     .filter-section .category-filter{
         margin: 15px 0;
@@ -543,7 +548,7 @@
         margin-bottom: -50px;
         margin-top: -10px;
     }
-    .filter-section .category-filter .off{
+    .filter-section .category-filter .off,.filter-section .category-filter .on-education, .filter-section .category-filter .on-healthcare, .filter-section .category-filter .on-nutrition, .filter-section .category-filter .on-small_business{
         margin: 10px;
     }
     .cam-container{
@@ -551,5 +556,10 @@
     }
     .cam-card{
         padding: 20px 0;
+    }
+    .filter-section .reset-filter{
+        padding: 0px;
+        width: 40%;
+        margin-left: 30%;
     }
 }

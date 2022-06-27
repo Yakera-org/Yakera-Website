@@ -20,6 +20,7 @@ function Campaigns() {
 
     const [EN, setEN] = useState(false);
     const [loading, setLoading] = useState(true);
+    const [loadingHighlight, setLoadingHighlight] = useState(true);
     
     const [highlightStory, setHighlightStory] = useState({});
 
@@ -35,13 +36,17 @@ function Campaigns() {
 
     React.useEffect(() => {
         function startup(){
-            setEN(LanguageService.getLanguage()==="en");   
+            setEN(LanguageService.getLanguage()==="en"); 
             getHighlightedCampaign()   
             LoadCampaignsForPage({page:currentPage})
         }
         startup();         
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
+
+    function scrollToTop(){
+        window.scrollTo({ top: 900, behavior: 'smooth' });
+    }
 
     async function getHighlightedCampaign(){
         try {
@@ -50,7 +55,8 @@ function Campaigns() {
         } catch (err) {
             console.error('Error. ' + err)
             setHighlightStory(dictionaries.staticStory)
-
+        } finally{
+            setLoadingHighlight(false)
         }
     }
 
@@ -162,6 +168,7 @@ function Campaigns() {
             newCategory: true
         }
         await LoadCampaignsForPage(loadArgs)
+        scrollToTop()
     }
 
     async function setFilter(e){
@@ -183,6 +190,7 @@ function Campaigns() {
         if(newFilter==="reset") loadArgs = resetArgs()
 
         await LoadCampaignsForPage(loadArgs)
+        scrollToTop()
     }
     
     function resetArgs(){
@@ -205,6 +213,7 @@ function Campaigns() {
     }
 
     async function setPage(newPage){        
+        scrollToTop()
         await LoadCampaignsForPage({page:newPage+1}) // +1 is needed, as the pagination counts from 0
     }
 
@@ -214,6 +223,7 @@ function Campaigns() {
         setCurrentFilter(INITIAL_ARGS.filter)
         loadArgs["query"] = currentSearchQuery
         await LoadCampaignsForPage(loadArgs)
+        scrollToTop()
     }
 
     return (
@@ -234,6 +244,7 @@ function Campaigns() {
                 currentSearchQuery={currentSearchQuery}
                 setCurrentSearchQuery={setCurrentSearchQuery}
                 highlightStory={highlightStory}
+                loadingHighlight={loadingHighlight}
             />
             <Author />
         </div>
