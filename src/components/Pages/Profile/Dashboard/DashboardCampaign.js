@@ -41,7 +41,6 @@ function DashboardCampaign(props) {
         withdrawn: campaign.withdrawn || 0,
         percent: Math.min((100* ((campaign.raised + campaign?.zelleRaised) / campaign.targetAmount)).toFixed(1), 100) || 0,
     }
-    console.log(campaign)
 
     return (
         <div className='dashboard-campaign'>

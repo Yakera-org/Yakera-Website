@@ -6,6 +6,7 @@ import "./Profile.scss"
 import TokenService from '../../../services/token';
 import Author from '../../author';
 import {userServices} from './UserService';
+import OverlayAlert from './Dashboard/OverlayAlert';
 
 function Profile() {
 
@@ -13,6 +14,7 @@ function Profile() {
     const [data, setData] = React.useState({});
     const [loading, setLoading] = React.useState(true);
     const [validatedUser, setValidatedUser] = React.useState(false);
+    const [openOverlayAlert, setOpenOverlayAlert] = React.useState(false);
 
     React.useEffect(() => {
         function startup(){
@@ -43,15 +45,29 @@ function Profile() {
         }
     }
 
+    async function onWithdraw(event, type){
+        setOpenOverlayAlert(true)
+        window.scrollTo({ top: 0, behavior: 'smooth' }); //scroll to top
+        window.onscroll = function () { window.scrollTo(0, 0); };
+        setData({
+            ...data,
+            slugToBeWithdrawn: event.target.name,
+            typeOfWithdraw: type
+        })
+        
+    }
+
    
     if(validatedUser){
         return (
             <div>
+                {openOverlayAlert?<OverlayAlert EN={EN} data={data} onClose={setOpenOverlayAlert}/> :""}
                 <ProfileOutline
                     EN={EN}
                     data={data}
                     loading={loading}
                     type={TokenService.identifyUserType(data?.user?.role)}
+                    onWithdraw={onWithdraw}
                 />
                 <br />
                 <br />

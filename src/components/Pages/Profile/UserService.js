@@ -313,6 +313,7 @@ class UserService{
             throw e 
         }
     }
+    
     timedOut(){
         TokenService.removeAccessToken()
         TokenService.removeRefreshToken()
@@ -352,7 +353,15 @@ class UserService{
           retobj[obj[key]] = key;
         }
         return retobj;
-      }
+    }
+    async withdrawFunds(payload) {
+        try {
+            const res = await api.post('/campaigns/withdraw', payload);
+            console.log(res)
+        } catch (e) {
+            throw e 
+        }
+    }
         
 }
 

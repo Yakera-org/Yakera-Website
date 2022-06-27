@@ -12,13 +12,13 @@ function DashboardContent(props) {
         e.preventDefault();
         window.location.href = "../campaign/" + e.target.name
     }
-
+    
     function closeCampaign(e){
-        window.alert("close campaign: " + e.target.name)
+        props.onWithdraw(e, "complete")
     }
     
     function withdrawFunds(e){
-        window.alert("Withdraw from : " + e.target.name)
+        props.onWithdraw(e, "partial")
     }
 
     return (

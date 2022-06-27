@@ -49,7 +49,7 @@ function ProfileOutline(props) {
                 <section className='profile-main'>
                     {userType === "recipient"
                     ?
-                    <DashboardContent data={data} EN={EN} />
+                    <DashboardContent data={data} EN={EN} onWithdraw={props.onWithdraw}/>
                     :
                     <DonorHubContent data={data} EN={EN} />
                     }
