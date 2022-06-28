@@ -18,15 +18,19 @@ function CreateCampaign() {
         mainPicture: "",
         camPics: [],
         supportPics: [],
+        idPics: [],
         errors: {
             campaignname: null,
             amount: null,
             story: null,
+            publicstory: null,
             description: null,
+            moneyuse: null,
             itemizedbudget: null,
             mainPic: null,
             camPics: null,
-            supportPics: null
+            supportPics: null,
+            idPics: null
         },
     };
     const [data, setData] = useState(initialState);
@@ -107,12 +111,12 @@ function CreateCampaign() {
     function validateData(){
         let emptyWarning = EN ? 'This field cannot be empty' : 'Este campo no puede estar vacío' ;
         let emptyPicWarning = EN ? 'No files uploaded' : 'No hay archivos subidos' ;
-        let nameError, amountError, storyError, descriptionError, budgetError, mainPicError, camPicsError, supportPicsError;
+        let nameError, amountError, storyError, publicStoryError, descriptionError, moneyError, budgetError, mainPicError, camPicsError, supportPicsError, idPicsError;
 
         if(!data.amount){
             amountError = emptyWarning;
         }else{
-            amountError = validateFields.validateNumber(data.amount + '')
+            amountError = validateFields.validateNumber(data.amount + '');
         }
         if(!data.campaignname){
             nameError = emptyWarning;     
@@ -122,27 +126,40 @@ function CreateCampaign() {
         if(!data.story){
             storyError = emptyWarning;      
         }else{
-            storyError = validateFields.validateName(data.story)
+            storyError = validateFields.validateName(data.story);
+        }
+        if(!data.publicstory){
+            publicStoryError = emptyWarning;      
+        }else{
+            publicStoryError = validateFields.validateName(data.publicstory);
         }
         if(!data.description){
             descriptionError = emptyWarning;      
         }else{
-            descriptionError = validateFields.validateName(data.description)
+            descriptionError = validateFields.validateName(data.description);
+        }
+        if(!data.moneyuse){
+            moneyError = emptyWarning;      
+        }else{
+            moneyError = validateFields.validateName(data.moneyuse);
         }
         if(!data.itemizedbudget){
             budgetError = emptyWarning;      
         }else{
-        budgetError = validateFields.validateName(data.itemizedbudget)
+            budgetError = validateFields.validateName(data.itemizedbudget);
         }
 
         if(!data.mainPicture){
-            mainPicError = emptyPicWarning
+            mainPicError = emptyPicWarning;
         }
         if(data.supportPics.length === 0){
-            supportPicsError = emptyPicWarning
+            supportPicsError = emptyPicWarning;
         }
         if(data.camPics.length === 0){
-            camPicsError = emptyPicWarning
+            camPicsError = emptyPicWarning;
+        }
+        if(data.idPics.length === 0){
+            idPicsError = emptyPicWarning;
         }
         setData({
             ...data,
@@ -150,15 +167,18 @@ function CreateCampaign() {
                 campaignname: nameError,
                 amount: amountError,
                 story: storyError,
+                publicstory: publicStoryError,
+                moneyuse: moneyError,
                 itemizedbudget: budgetError,
                 description: descriptionError,
                 mainPic: mainPicError,
                 camPics: camPicsError,
-                supportPics: supportPicsError
+                supportPics: supportPicsError,
+                idPics: idPicsError,
             },
         })
         
-        if(!amountError && !storyError && !descriptionError && !nameError && !budgetError && !mainPicError && !camPicsError && !supportPicsError){
+        if(!amountError && !storyError && !publicStoryError && !descriptionError && !nameError && !moneyError && !budgetError && !mainPicError && !camPicsError && !supportPicsError && !idPicsError){
             return true
         }
         
@@ -175,8 +195,8 @@ function CreateCampaign() {
 
     async function submit(event){
         event.preventDefault();
-        setError("")
-        let formattedStory = linkify(data.story)
+        setError("");
+        let formattedStory = linkify(data.story + '\n' + data.publicstory + '\n' + data.moneyuse);
         formattedStory = formattedStory.replace(/\n/g, " <br />");
 
         let isValidated = validateData();
@@ -184,7 +204,7 @@ function CreateCampaign() {
             setLoader(true);
             submitToBackend(formattedStory);
         }else{
-            setError(EN ? 'Some fields are not valid.' : 'Algunos campos no son válidos.')
+            setError(EN ? 'Some fields are not valid.' : 'Algunos campos no son válidos.');
         }
         
     }
@@ -211,6 +231,10 @@ function CreateCampaign() {
             support.push({"url": "https://assets.yakera.org/" + picName})
         });
 
+        var id = []
+        data.idPics.forEach(picName => {
+            id.push({"url": "https://assets.yakera.org/" + picName})})
+
         const payload = {
             title: data.campaignname,
             targetAmount: data.amount,
@@ -223,7 +247,8 @@ function CreateCampaign() {
                 "url": "https://assets.yakera.org/" + data.mainPicture
             },
             pictures: pics,
-            supportDocs: support
+            supportDocs: support,
+            personalID: id
         }   
 
         //console.log(payload)

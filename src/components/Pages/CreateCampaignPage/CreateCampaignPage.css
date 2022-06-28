@@ -172,11 +172,11 @@
 }
 #upload-zone {
     background-color: #f3f3f3;
-    border-radius: 10px;
+    border-radius: 5px;
     border: dotted #ea8737;
     margin: 10px 20px ;
-    width: 100%;
-    max-width: 80%;
+    width: 50%;
+    max-width: 60%;
     padding: 20px;
     cursor: pointer;
 }
@@ -207,4 +207,292 @@ aside h6{
         margin-top: 140px;
         padding: 5%;
     }
+}
+
+.category-label,
+.summary-label
+{
+    color: #eb913b;
+    font-size: x-large;
+}
+
+.category-label
+{
+    margin-left: 1%;
+}
+
+.question-label
+{
+    color: #eb913b;
+    margin-left: 1%;
+}
+
+
+
+.img-label
+{
+    margin-left: 20px;
+    color: #0e325e;
+    font-size: xx-large;
+}
+
+.info-highlight
+{
+    color: #eb913b;
+}
+
+.info-text
+{
+    color: #0e325e;
+}
+
+.step-btn
+{
+    color: #f3f3f3;
+    background-color: #eb913b;
+    border-radius: 8px;
+    min-width: 160px;
+    max-height: 38px;
+    font-size: 22px;
+    text-align: center;
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.left-btn
+{
+    margin-right: 0.8%;
+}
+
+.right-btn
+{
+    margin-left: 0.8%;
+}
+
+.center-btn
+{
+    text-align: center;
+    margin-top: 4%;
+}
+
+.subtitle-text,
+.subtitle-text-mobile
+{
+    display: flex;
+    justify-content: left;
+    text-align: left;
+}
+
+.subtitle-text span,
+.subtitle-text-mobile span
+{
+    background: inherit;
+    margin: 0 15px 0 0;
+}
+
+.subtitle-text:after,
+.subtitle-text-mobile:after
+{
+    background: #cecdcd;
+    height: 2px;
+    flex: 1;
+    content: '';
+    margin-top: 1.8%;
+}
+
+.subtitle-text-mobile:after
+{
+    margin-top: 4%;
+}
+
+.radio-card-input
+{
+    display: none;
+}
+
+.radio-card
+{
+    margin: 10px;
+    padding: 1px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.radio-card:hover
+{
+    cursor: pointer;
+}
+
+.radio-card-input:checked + .radio-card
+{
+    box-shadow: 0 0 1px 1px #70B88F;
+    border-radius: 5px;
+}
+
+.radio-title,
+.radio-title-mobile
+{
+    color: #eb913b;
+    font-size: medium;
+    text-align: center;
+}
+
+.radio-title-mobile
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+}
+
+.radio-title-checked
+{
+    color: #70B88F;
+}
+
+.radio-body,
+.radio-body-mobile
+{
+    color: #0e325e;
+    font-size: small;
+    text-align: center;
+}
+
+.radio-body-mobile
+{
+    text-align: left;
+}
+
+.radio-body-hidden
+{
+    display: none;
+}
+
+.center-img
+{
+    display: flex;
+    justify-content: center;
+}
+
+.mobile-img
+{
+    display: flex;
+    justify-content: flex-start;
+}
+
+.campaign-img
+{
+    max-width: 50%;
+    height: auto;
+}
+
+.category-img
+{
+    max-width: 200px;
+    height: auto;
+}
+
+.upload-file-image 
+{
+    mix-blend-mode: overlay;
+}
+
+.bold-text {
+    font-weight: bold;
+}
+
+.label-last {
+    /* Imagen principal de la campaña */
+    font-style: normal;
+    font-weight: 400;
+    font-size: 35px;
+    line-height: 27px;
+    /* identical to box height, or 77% */
+    color: #062759;
+    margin-left: 20px;
+}
+.category-img-mobile
+{
+    max-width: 150px;
+    height: auto;
+}
+
+.summary-hidden
+{
+    display: none;
+}
+
+.summary-funds
+{
+    color: #70b88f;
+    font-size: x-large;
+    font-weight: bold;
+}
+
+.missing-data
+{
+    color: #dc3545;
+    text-align: center;
+    font-size: medium;
+}
+
+.invalid-data
+{
+    font-size: medium;
+}
+
+.success-card
+{
+    background-color: #fbefe2;
+    justify-content: center;
+}
+
+.success-card h1
+{
+    font-size: 40px;
+    color: #ea8737;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 4%;
+}
+
+.success-card p
+{
+    color: #ea8737;
+    font-size: medium;
+    text-align: left;
+}
+
+.success-card button
+{
+    background-color: #ea8737;
+    border-radius: 16px;
+    color: #fff;
+    border: none;
+    min-width: 120px;
+    min-height: 30px;
+    margin-bottom: 4%;
+}
+
+.success-card-img
+{
+    width: 40%;
+    height: auto;
+    margin-left: 2%;
+    margin-bottom: 4%;
+}
+
+.success-line
+{
+    display: flex;
+}
+
+.success-line:after
+{
+    background: #ea8737;
+    height: 2px;
+    flex: 1;
+    content: '';
+    margin-bottom: 2%;
 }
