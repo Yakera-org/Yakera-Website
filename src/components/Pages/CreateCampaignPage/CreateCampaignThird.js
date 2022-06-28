@@ -45,7 +45,7 @@ function CampaignThirdPage(props)
                     ?
                     'Describe what made you open a campaign to raise funds and clearly comment the situation that you want to resolve.'
                     : 
-                    'Describe que te llevó a abrir una campaña para recaudar fondos y comenta claramente la situación que deseas resolver.'}
+                    'Describe qué te llevó a abrir una campaña para recaudar fondos y comenta claramente la situación que deseas resolver.'}
                 </p>
                 <FormControl
                     type='story'
@@ -77,7 +77,7 @@ function CampaignThirdPage(props)
                     ?
                     'Describe how do you think you will be able to fix the situation with the donations and why this campaign would be useful to you.'
                     : 
-                    'Describe como crees que podrás resolver la situación con las donaciones y por qué esta campaña será de ayuda para ti.'}
+                    'Describe cómo crees que podrás resolver la situación con las donaciones y por qué esta campaña será de ayuda para ti.'}
                 </p>
                 <FormControl
                     type='publicStory'
@@ -109,7 +109,7 @@ function CampaignThirdPage(props)
                     ?
                     'Tell evryone else what will ypu use the money for, so that people have more knowledge about what they are contributing to.'
                     : 
-                    'Cuéntale a los demás en que usarás el dinero para que las personas tengan más conocimiento sobre qué estarán aportando.'}
+                    'Cuéntale a los demás en qué usarás el dinero para que las personas tengan más conocimiento sobre qué estarán aportando.'}
                 </p>
                 <FormControl
                     type='moneyUse'

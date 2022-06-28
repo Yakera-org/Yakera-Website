@@ -1,11 +1,12 @@
 import React from "react";
 import './CreateCampaignPage.css';
-import campaignImgEs from '../../../pics/campaign-img-es.png';
-import campaignImgEn from '../../../pics/campaign-img-en.png';
-import healthcare from '../../../pics/healthcare-campaign.png';
-import education from '../../../pics/education-campaign.png';
-import smallbusiness from '../../../pics/smallbusiness-campaign.png';
-import nutrition from '../../../pics/nutrition-campaign.png';
+
+const campaignImgEs = 'https://assets.yakera.org/yakera/campaign-img-es.webp';
+const campaignImgEn = 'https://assets.yakera.org/yakera/campaign-img-en.webp';
+const healthcare = 'https://assets.yakera.org/yakera/healthcare-campaign.webp';
+const education = 'https://assets.yakera.org/yakera/education-campaign.webp';
+const smallbusiness = 'https://assets.yakera.org/yakera/smallbusiness-campaign.webp';
+const nutrition = 'https://assets.yakera.org/yakera/nutrition-campaign.webp';
 
 
 function CampaignIntroPage(props) {

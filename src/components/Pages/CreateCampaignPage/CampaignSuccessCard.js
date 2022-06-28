@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Dialog } from '@material-ui/core';
-import campaignSuccess from '../../../pics/campaign-success.png';
 
+const campaignSuccess = 'https://assets.yakera.org/yakera/campaign-success.webp';
 
 class SuccessCard extends Component {
     constructor(props) {

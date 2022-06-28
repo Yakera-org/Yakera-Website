@@ -266,6 +266,7 @@ function CreateCampaignVisuals(props) {
     
     const [language, setLanguage] = useState('');
     const [isUploading, setIsUploading] = useState('');
+    const [isUploadingCampaign, setIsUploadingCampaign] = useState(false);
     const [step, setStep] = useState(1);
     const totalSteps = 4;
 
@@ -292,7 +293,9 @@ function CreateCampaignVisuals(props) {
     }
 
     const submitCampaign = async (event) => {
+        setIsUploadingCampaign(true);
         await props.submit(event);
+        setIsUploadingCampaign(false);
 
         if (props.success) {
             setOpenSuccess(true);
@@ -378,7 +381,7 @@ function CreateCampaignVisuals(props) {
                     step === 5
                     ?
                     (
-                        isUploading
+                        isUploadingCampaign || isUploading
                         ?
                         <Button onClick={submitCampaign} id="disabled-create" disabled={true} style={{backgroundColor:'grey'}} className="step-btn right-btn">{EN ? 'Create Campaign' : 'Crear Campaña'}</Button>
                         :
