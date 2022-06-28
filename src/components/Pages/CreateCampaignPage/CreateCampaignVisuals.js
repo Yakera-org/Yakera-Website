@@ -295,11 +295,12 @@ function CreateCampaignVisuals(props) {
     const submitCampaign = async (event) => {
         setIsUploadingCampaign(true);
         await props.submit(event);
-        setIsUploadingCampaign(false);
 
         if (props.success) {
             setOpenSuccess(true);
         }
+
+        setIsUploadingCampaign(false);
     }
 
     var EN;
@@ -307,6 +308,10 @@ function CreateCampaignVisuals(props) {
         EN = true
     }else{
         EN = false
+    }
+
+    if (props.success && !openSuccess) {
+        setOpenSuccess(true);
     }
 
     return (
