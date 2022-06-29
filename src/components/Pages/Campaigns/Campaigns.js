@@ -6,7 +6,8 @@ import "./Campaigns.css"
 import api from '../../../services/api';
 import * as dictionaries from "./dictionaries"
 
-const NUM_OF_ITEMS_PER_PAGE = 8;
+const NUM_OF_ITEMS_PER_PAGE = window.innerWidth < 600 ? 4 : 8
+
 const INITIAL_ARGS= Object.freeze({
     page: 1,
     category: "",

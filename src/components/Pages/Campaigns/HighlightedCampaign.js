@@ -3,7 +3,6 @@ import { Grid } from '@material-ui/core';
 
 function HighlightedCampaign(props) {
     const EN = props.EN
-    console.log(props.campaign)
     const numberOfCampaigns = props.campaign?.donations?.length 
     const campaign = {
         picture: props.campaign?.mainPicture?.url || "",

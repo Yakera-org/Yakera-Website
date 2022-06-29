@@ -191,28 +191,28 @@
     color: white;
 }
 .filter-section .category-filter #healthcare:hover, .filter-section .category-filter .on-healthcare:hover{
-    background-color: #ff7d7d80;
+    background-color: #ff7d7d;
 }
 .filter-section .category-filter .on-education{
     background-color: #71b98f;
     color: white;
 }
 .filter-section .category-filter #education:hover, .filter-section .category-filter .on-education:hover{
-    background-color: #71b98f80;
+    background-color: #71b98f;
 }
 .filter-section .category-filter .on-small_business{
     background-color: #7099d0;
     color: white;
 }
 .filter-section .category-filter #small_business:hover, .filter-section .category-filter .on-small_business:hover{
-    background-color: #7099d080;
+    background-color: #7099d0;
 }
 .filter-section .category-filter .on-nutrition{
     background-color: #edc343;
     color: white;
 }
 .filter-section .category-filter #nutrition:hover, .filter-section .category-filter .on-nutrition:hover{
-    background-color: #edc34380;
+    background-color: #edc343;
 }
 .filter-section .reset-filter{
     border: none;
