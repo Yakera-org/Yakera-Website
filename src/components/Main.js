@@ -19,7 +19,7 @@ import EmailVerification from './Pages/EmailVerification/EmailVerificationPage';
 import LanguageService from '../services/language';
 import ProfileEditPage from './Pages/Profile/EditPage/EditPage';
 import Profile from './Pages/Profile/Profile';
-import SwitchAccountPage from './Pages/Profile/EditPage/SwitchAccountPage';
+import SwitchAccountPage from './Pages/Profile/SwitchAccount/SwitchAccountPage';
 
 
 function Main() {
