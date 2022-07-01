@@ -160,3 +160,12 @@
 .btn-wrapper button:hover{
     opacity: 0.8;
 }
+@media only screen and (max-width: 600px) {
+    .btn-wrapper button{
+        width: 80%;
+        margin-bottom: 0;
+    }
+    .dashboard-campaigns-area .dashboard-campaign .img-wrapper{
+        padding: 30px;
+    }
+}
