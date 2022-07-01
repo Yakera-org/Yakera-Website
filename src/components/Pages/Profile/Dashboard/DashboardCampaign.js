@@ -126,7 +126,7 @@ function DashboardCampaign(props) {
 
                 <Grid container spacing={1} className='button-area' id={campaign.status === STATUS.denied ? "no-display" :""}>
                     <Grid item xs={6} sm={6} >
-                        <button name={campaign.slug} id="top" onClick={props.withdrawFunds} disabled={campaign.status !== STATUS.approved}>
+                        <button name={campaign.slug} id="top" style={{backgroundColor:campaign.raised - campaign.withdrawn === 0 ?"grey":""}} onClick={props.withdrawFunds} disabled={campaign.status !== STATUS.approved || campaign.raised - campaign.withdrawn === 0 }>
                             {EN ? "Withdraw Funds" : "Retirar Fondos"}
                         </button>
                     </Grid>
