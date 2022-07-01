@@ -72,6 +72,13 @@ function EditPageVisual(props) {
                         }
                     </button>
                     <p>
+                        {EN ? 'Want to switch account types? Click ' : ''}
+                        <a href = {'./switch'}>
+                            {EN ? 'here' : 'aquí'}
+                        </a>
+                        {EN ? ' to go through the process.' : ''}
+                    </p>
+                    <p>
                         {EN ? 'Want to delete your account? Click ' : '¿Te gustaría eliminar tu cuenta? Haz click '}
                         <a href = {`mailto:info@yakera.org?subject=${EmailTemplate}`}>
                             {EN ? 'here' : 'aquí'}

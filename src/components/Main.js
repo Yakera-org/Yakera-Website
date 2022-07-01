@@ -19,6 +19,7 @@ import EmailVerification from './Pages/EmailVerification/EmailVerificationPage';
 import LanguageService from '../services/language';
 import ProfileEditPage from './Pages/Profile/EditPage/EditPage';
 import Profile from './Pages/Profile/Profile';
+import SwitchAccountPage from './Pages/Profile/EditPage/SwitchAccountPage';
 
 
 function Main() {
@@ -71,6 +72,7 @@ function Main() {
                         <Route exact path="/frequently-asked-questions" component={FAQ} />
                         <Route exact path="/dashboard" component={isAuthenticated ? Dashboard : login} />
                         <Route exact path="/profile/edit" component={ProfileEditPage} />
+                        <Route exact path='/profile/switch' component={SwitchAccountPage} />
                         <Route exact path="/verify-email" component={EmailVerification} />
                         <Route exact path="/" component={home} />
                         <Route path="/404" component={NotFoundPage} />
