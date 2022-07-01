@@ -143,3 +143,20 @@
     font-weight: bold;
     font-size: 25px;
 }
+.btn-wrapper{
+    text-align: center;
+}
+.btn-wrapper button{
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    background-color: #ea8737;
+    color: white;
+    padding: 10px;
+    margin-bottom: -10px;
+    width: 20%;
+    min-width: 100px;
+}
+.btn-wrapper button:hover{
+    opacity: 0.8;
+}

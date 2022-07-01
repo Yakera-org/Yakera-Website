@@ -61,6 +61,11 @@ function DashboardStats(props) {
                 ""
                 }     
             </Grid>
+            <div className='btn-wrapper'>
+                <button onClick={()=>window.location.href="/create-campaign"}>
+                    {EN ? "Create new campaign": "Crear nueva campaña"}
+                </button>
+            </div>
         </div>
     );
 }
