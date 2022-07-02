@@ -1,0 +1,30 @@
+.img-container {
+    margin-bottom: 10px;
+    width: 200px;
+    height: 200px;
+}
+
+.img-preview {
+    width: 178px;
+    height: 100px;
+    margin-bottom: 10px;
+    border: 2px solid;
+}
+
+.crop_button{
+    border: none;
+    border-radius: 10px;
+    background-color: #ea8737;
+    color: white;
+    font-size: 25px;
+    outline: none;
+    margin-bottom: 10px;
+}
+.crop_button:hover{
+    background-color: #e99e60;
+    outline: none;
+}
+.crop_button:active{
+    background-color: #e9b488;
+    outline: none;
+}

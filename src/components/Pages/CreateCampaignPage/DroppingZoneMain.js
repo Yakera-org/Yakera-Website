@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import Dropzone from 'react-dropzone';
 import fileUploadImage from '../../../pics/upload-image-campaign.png'
 
-const DroppingZone = (props) => {
+
+const DroppingZoneMain = (props) => {
     var campaignFiles = props.campaignFiles
     var mainFile = props.mainFile
     var documentFiles = props.documentFiles
@@ -44,16 +45,7 @@ const DroppingZone = (props) => {
                         if(totalSize < totalSizeLimit) {
                             setFile(acceptedFiles.concat(file).map(file => Object.assign(file, {
                                 preview: URL.createObjectURL(file)
-                            })));
-                            setLoading(true)
-                        
-                            acceptedFiles.forEach(async (file, i) => {
-                                await onUpload(file, tag).then(()=>{
-                                    if (i === acceptedFiles.length -1) {
-                                        setLoading(false) 
-                                    } 
-                                })
-                            }); 
+                            })));        
                         }else{
                             alert(EN ? 'File too big.' : 'La imágen son demasiado grandes.')
                         }
@@ -83,4 +75,4 @@ const DroppingZone = (props) => {
     );
 };
 
-export default DroppingZone;
+export default DroppingZoneMain;
