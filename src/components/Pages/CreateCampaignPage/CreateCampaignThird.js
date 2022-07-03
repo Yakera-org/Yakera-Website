@@ -107,7 +107,7 @@ function CampaignThirdPage(props)
                 <p className="info-text">
                     {EN
                     ?
-                    'Tell evryone else what will ypu use the money for, so that people have more knowledge about what they are contributing to.'
+                    'Tell everyone else what will you use the money for, so that people have more knowledge about what they are contributing to.'
                     : 
                     'Cuéntale a los demás en qué usarás el dinero para que las personas tengan más conocimiento sobre qué estarán aportando.'}
                 </p>
