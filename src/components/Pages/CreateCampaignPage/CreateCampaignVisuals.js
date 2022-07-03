@@ -335,8 +335,6 @@ function CreateCampaignVisuals(props) {
         if (props.success) {
             setOpenSuccess(true);
         }
-
-        setIsUploadingCampaign(false);
     }
 
     var EN;
@@ -348,6 +346,9 @@ function CreateCampaignVisuals(props) {
 
     if (props.success && !openSuccess) {
         setOpenSuccess(true);
+    }
+    else if (props.error) {
+        setIsUploadingCampaign(false);
     }
 
     return (
