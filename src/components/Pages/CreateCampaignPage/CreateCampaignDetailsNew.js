@@ -8,19 +8,19 @@ function CreateCampaignDetails(props) {
     const isMobile = props.isMobile;
 
     const handleTitleChange = (event) => {
-        props.validations.validateTitle();
+        props.validations.validateTitle(event.target.value);
 
         return props.handleChange(event);
     };
 
     const handleAmountChange = (event) => {
-        props.validations.validateAmount();
+        props.validations.validateAmount(event.target.value);
 
         return props.handleChange(event);
     }
 
     const handleDescriptionChange = (event) => {
-        props.validations.validateDescription();
+        props.validations.validateDescription(event.target.value);
 
         return props.handleChange(event);
     }

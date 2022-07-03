@@ -9,7 +9,7 @@ function CampaignThirdPage(props)
     let isMobile = props.isMobile;
 
     const handleTextAreaChange = (event, validation) => {
-        validation();
+        validation(event.target.value);
 
         return props.handleChange(event);
     }

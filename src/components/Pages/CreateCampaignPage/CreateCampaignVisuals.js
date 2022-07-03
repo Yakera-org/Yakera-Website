@@ -61,7 +61,11 @@ function CreateCampaignVisuals(props) {
     let emptyWarning = props.EN ? 'This field cannot be empty' : 'Este campo no puede estar vacío';
     let emptyPicWarning = props.EN ? 'No files uploaded' : 'No hay archivos subidos' ;
 
-    const validateTitle = () => {
+    const validateTitle = (optional = '') => {
+        if (optional) {
+            return true
+        }
+
         if (!props.data.campaignname) {
             setNameError(emptyWarning);
             return false;
@@ -78,7 +82,19 @@ function CreateCampaignVisuals(props) {
         }
     };
 
-    const validateAmount = () => {
+    const validateAmount = (optional = '') => {
+        if (optional) {
+            let invalid = validateFields.validateNumber(optional);
+            
+            if (invalid) {
+                setAmountError(invalid);
+                return false;
+            }
+
+            setAmountError('');
+            return true;
+        }
+
         if (!props.data.amount) {
             setAmountError(emptyWarning);
             return false;
@@ -95,7 +111,11 @@ function CreateCampaignVisuals(props) {
         }
     };
 
-    const validateDescription = () => {
+    const validateDescription = (optional = '') => {
+        if (optional) {
+            return true
+        }
+
         if (!props.data.description) {
             setDescriptionError(emptyWarning);
             return false;
@@ -112,7 +132,11 @@ function CreateCampaignVisuals(props) {
         }
     }
 
-    const validateStory = () => {
+    const validateStory = (optional = '') => {
+        if (optional) {
+            return true
+        }
+
         if (!props.data.story) {
             setStoryError(emptyWarning);
             return false;
@@ -129,7 +153,11 @@ function CreateCampaignVisuals(props) {
         }
     }
 
-    const validatePublicStory = () => {
+    const validatePublicStory = (optional = '') => {
+        if (optional) {
+            return true
+        }
+
         if (!props.data.publicstory) {
             setPublicStoryError(emptyWarning);
             return false;
@@ -146,7 +174,11 @@ function CreateCampaignVisuals(props) {
         }
     }
 
-    const validateMoneyUse = () => {
+    const validateMoneyUse = (optional = '') => {
+        if (optional) {
+            return true
+        }
+
         if (!props.data.moneyuse) {
             setMoneyUseError(emptyWarning);
             return false;
@@ -163,7 +195,11 @@ function CreateCampaignVisuals(props) {
         }
     }
 
-    const validateBudget = () => {
+    const validateBudget = (optional = '') => {
+        if (optional) {
+            return true
+        }
+
         if (!props.data.itemizedbudget) {
             setBudgetError(emptyWarning);
             return false;
