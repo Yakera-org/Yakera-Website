@@ -2,8 +2,8 @@ const ENVIRONMENTS = {
     production: "production",
     dev: "dev"
 }
-//const currentEnv = ENVIRONMENTS.dev
-const currentEnv = ENVIRONMENTS.production
+
+const currentEnv = ENVIRONMENTS.dev
 
 const getBackendUrl = () => {
     let backendUrl = "https://api.yakera.org/api"

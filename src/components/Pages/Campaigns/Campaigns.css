@@ -68,12 +68,13 @@
     float: left;
 }
 .grid-header .mid-content .bubble-text .bubble-quote #text{
-    padding: 10px;
+    padding-top: 5px;
+    font-size: 17px;
     word-break: break-word;
     overflow: hidden;
     text-overflow: ellipsis;
     display: -webkit-box;
-    line-height: 20px; /* fallback */
+    line-height: 21px; /* fallback */
     -webkit-line-clamp: 3; /* number of lines to show */
     -webkit-box-orient: vertical;
 }
@@ -92,7 +93,7 @@
     min-width: 100px;
     margin-left: 1px;
     text-align: center;
-    padding: 30px 15px;
+    padding: 25px 10px;
     color: #222;
     border-radius: 30px;
     font-size: 20px;
