@@ -262,3 +262,31 @@
     }
     
 }
+
+.resend-email-area
+{
+    margin-top: 2%;
+}
+
+.resend-email-btn
+{
+    color: #646464;
+    background-color: transparent;
+    border: none;
+    text-decoration: underline;
+}
+
+.resend-email-status
+{
+    margin-top: 1%;
+}
+
+.status-good
+{
+    color: #155724;
+}
+
+.status-bad
+{
+    color: #721c24;
+}

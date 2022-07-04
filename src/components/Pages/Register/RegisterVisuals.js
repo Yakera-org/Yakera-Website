@@ -7,6 +7,7 @@ import RegisterDetails from "./Register_details";
 import RegisterAuth from "./Register_auth";
 import RegisterConf from "./Register_confirmation";
 import { useBoolean } from "react-use-boolean";
+import api from '../../../services/api';
 
 
 import './RegisterPage.css'
@@ -47,6 +48,22 @@ function RegisterVisuals(props) {
             error: ''
         })
         nextStep(step - 1);
+    }
+
+    async function resendEmail() {
+        const response = await api.post(`/auth/resend-email`, {email: props.data.email});
+        const message = document.getElementById('resent-email-status');
+        
+        if(response.data.success)
+        {
+            message.classList.toggle('status-good');
+            message.innerHTML = EN ? 'An email has been sent to verify your account.' : 'Se ha enviado un correo para verificar tu cuenta.';
+        }
+        else
+        {
+            message.classList.toggle('status-bad');
+            message.innerHTML = EN ? 'Something went wrong, try again later.' : 'Hubo un error, inténtelo de nuevo más tarde.';
+        }
     }
 
     return (
@@ -95,8 +112,16 @@ function RegisterVisuals(props) {
                             ?
                                 <Alert color="success">
                                     { props.success }
+                                    {/*
                                     <div style={{fontSize:'15px'}}>
                                         { EN ? 'Please make sure to check your spam folder.' : 'Asegúrese de revisar su carpeta de correo no deseado.' }
+                                    </div>
+                                    */}
+                                    <div className="resend-email-area">
+                                        <button onClick={resendEmail} className="resend-email-btn">
+                                            {EN ? 'Resend verification email' : 'Reenviar correo de confirmación'}
+                                        </button>
+                                        <div id="resent-email-status" className="resend-email-status"></div>
                                     </div>
                                 </Alert>
                             :
