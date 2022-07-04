@@ -23,8 +23,7 @@
   background-color: transparent;
   border: none;
   font-size: 18px;
-  /* color: rgb(80, 80, 80); */
-  color: #bdbdbd;
+  color: #808080;
 }
 .footer #link:hover {
   text-decoration: underline;
@@ -46,9 +45,14 @@
   margin-right: 1%;
 }
 
-.icon-color
+.footer-icon
 {
   color: #eb913b;
+}
+
+.footer-icon:hover
+{
+  opacity: 0.8;
 }
 
 .yakera-footer-logo
@@ -93,4 +97,16 @@
 .section-mobile
 {
   padding-top: 0 !important;
+}
+
+.datacamp
+{
+  padding-left: 6%;
+}
+
+.vertical-align
+{
+  padding: 0;
+  padding-top: 3%;
+  vertical-align: center;
 }
