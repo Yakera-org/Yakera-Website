@@ -1,0 +1,814 @@
+.donorhub-stats{
+    width: 100%;
+    line-break: auto;
+    text-align: center;
+    min-height: 200px;
+    max-height: 500px;
+}
+.donorhub-stats .user-img{
+    object-fit: cover;
+    text-align: center;
+}
+.donorhub-stats .user-img .profile-pic{
+    margin-top: -100px;
+    border: solid #ea8737 10px;
+    width : 200px;
+    height: 200px;
+    border-radius: 50%;
+    object-fit:cover;
+    background-color: #fff0e4;
+    padding: 5px;
+}
+.donorhub-stats .name{
+    margin: 10px 0;
+}
+.donorhub-stats hr{
+    width: 15%;
+    height: 1.5px;
+    background-color: #ea8737;
+}
+.donorhub-stats #user-bio{
+    overflow: hidden;
+}
+
+.total-donations hr {
+    background-color: #ea8737;
+    height: 6px;
+    width: 8%;
+    border-radius: 16px;
+    transform: rotate(90deg);
+    margin-right: 85.5%;
+    margin-top: 100px;
+  }
+  
+  .total-donations h5{
+    margin-top: -46px;
+    margin-bottom: 30px;
+    margin-left: 12%;
+    width: 80%;
+    text-align: left;
+    font-size: 20px;
+  }
+  
+  .esp-txt{
+    font-size: 20px;
+    color: #ea8737;
+    margin-top: -32px;
+    margin-left: -326px;
+  }
+  
+  .en-txt{
+    font-size: 20px;
+    color: #ea8737;
+    margin-top: -32px;
+    margin-left: -275px;
+  }
+  
+  .campaigns-preview{
+    padding: 10px 100px ;
+    padding-left: 60px;
+  }
+  
+  .campaigns-preview .campaign-circle {
+    background-color: #ea8737;
+    border-radius: 50%;
+    width: 43px;
+    height: 43px;
+    margin-bottom: -35px;
+  }
+  
+  .campaigns-preview button {
+    border: none;
+    outline: none;
+    border-radius: 50%;
+    background-color: #c4c4c4;
+    color: #575757;
+    width: 43px;
+    height: 43px;
+    margin: 0 2px;
+  }
+  .campaigns-preview i:hover {
+    cursor: pointer;
+    color: #7e7e7ed8;
+  }
+  .campaigns-preview button:hover {
+    background-color: #c4c4c488;
+    color: #7e7e7ed8;
+  }
+
+
+.donations-info {
+    margin: 0px;
+  }
+  .donations-info h2 {
+    margin-top: -20px;
+    margin-bottom: -50px;
+  }
+  .donations-info #sub{
+     margin-top: 10px; 
+  }
+  .donation-circles, .donation-circle {
+   padding: 10%;
+  }
+  
+  .circle-1{
+    width: 200px;
+    height: 200px;
+    background-color: #ea8737;
+    border-radius: 50%;
+    margin-left: 40%;
+    margin-top: 40%;
+    color: white;
+    font-weight: bolder;
+    font-size: 30px;
+    position: relative;
+  }
+  
+  .circle-1 .circle-1-inside{
+    position: absolute;
+    top: 35%;
+    left: 22%;
+  }
+  
+  .circle-1 p{
+    font-size: 15px;
+    font-weight: normal;
+    margin: 0;
+    padding: 0%;
+  }
+  
+  .circle-2, .circle-3, .circle-4, .circle-5 {
+    width: 70px;
+    height: 70px;
+    border-radius: 100%;
+    margin-top: 15px;
+    margin-left: 10%;
+    padding:20px;
+    color: white;
+  }
+  
+  .circle-2 {
+    background-color: #7099d0;
+    border: 5px solid #b6d0f3d2;
+    margin-left: 0%;
+  }
+  
+  .circle-3 {
+    background-color: #ff7d7d;
+    border: 5px solid rgb(250, 200, 200);
+    margin-left: 20%;
+  }
+  
+  .circle-4{
+    background-color: #71b98f;
+    border: 5px solid #b5e4c8;
+    margin-left: 20%;
+  }
+  .circle-5{
+    background-color: #edc343;
+    border: 5px solid #ffe596;
+    margin-left: 0%;
+    margin-top: 5%;
+  }
+  
+  .progress-txt {
+    margin-top: -20px;
+    text-align: left;
+    margin-left:27%;
+    font-size: 18px;
+  }
+  
+  .progress-text, .progress-text2 {
+    margin-top: 2%;
+    text-align: left;
+    margin-left: 27%;
+    font-size: 18px;
+    width:40%;
+  }
+  
+  .progress-text span {
+    font-size: 25px;
+  }
+  
+  .donor-progress {
+    display: flex;
+    position: relative;
+    width: 40%;
+    margin-left: 27%;
+  }
+  
+  .donation-progress, .progress-bar{
+    background-color: rgb(223, 223, 223);
+    position: absolute;
+    height: 8px;
+    width: 100%;
+    border-radius: 16px;
+  }
+  
+  .progress-bar{
+    background-color: #ea8737;
+    z-index: 1;
+  }
+  
+  .recent-act {
+    padding: 5%;
+  }
+  
+  .recent-act h3 , .recent-act p{
+    text-align:left;
+  }
+  
+  .recent-act p {
+    font-size: 16px;
+  }
+  
+  .recent-act h3{
+    color: #ea8737;
+    margin-bottom: 15px;
+  }
+  
+  .recent-act hr{
+    background-color: rgb(184, 184, 184);
+    width: 75%;
+    height: 1px;
+    margin-left: 0;
+    margin-top: -10px;
+  }
+  
+  .recent-act p {
+    margin-top: -12px;
+  }
+  
+  .recent-box{
+    width: 95%;
+    margin-top: 25px;
+  }
+  .recent-box .update{
+    padding: 0 10px;
+  }
+  .recent-box .update p{
+    font-size: 15px;
+  }
+  .recent-box .update #comment{
+    font-size: 15px;
+  }
+  .recent-box #title{
+    text-align: left;
+    font-size: 18px;
+    font-weight: bold;
+  }
+  .recent-box #amount{
+    font-size: 20px;
+    color: #ea8737;
+  }
+  .recent-box #comment{
+    font-size: 20px;
+    text-align: left;
+    font-weight: bold;
+    font-size: 18px;
+    margin-top: -22px;
+    font-family: Intro-Light;
+  }
+  .recent-box p{
+    padding: 10px 0;
+    font-size: 18px;
+    font-family: Intro-Light;
+  }
+  .recent-box b{
+    text-align: center;
+    font-size: 18px;
+  }
+  .recent-box a{
+    color: #333333;
+    margin-top: -20px;
+    text-align: right;
+    text-decoration: underline;
+  }
+  .recent-box a:hover{
+    color: #ea8737;
+  }
+  
+  .recent-box .image-circle{
+    border-radius: 50%;
+    margin-top: 5px;
+  }
+  .recent-box .image-circle img{
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+  
+  .increase-impact{
+    text-align: left;
+    padding: 10%;
+    margin-top: -10px;
+  }
+  .increase-impact h4{
+    margin: 5px 20px;
+  }
+  .increase-impact button {
+    text-align: center;
+    border-radius: 20px;
+    border: none;
+    color: white;
+    background-color: #ea8737;
+    font-size: 15px;
+    padding: 10px 15px;
+    text-decoration: none;
+    margin: 5px 20px;
+  }
+  .increase-impact button:hover {
+    opacity: 0.8;
+  }
+  
+  @media only screen and (max-width: 1500px) {
+
+    .donorhub-container{
+      margin: 0 auto;
+      margin-top: 0%;
+      width: 75%;
+      background-color: white;
+    }
+    
+    .banner{
+      background-color: #fbefe2;
+      height: auto;
+      padding-top: 0px;
+    }
+    
+    .user-info{
+      padding: 10px;
+      margin: 0 auto;
+    }
+    
+    .user-info .user-img{
+      margin-bottom: 0px;
+      object-fit: cover;
+    }
+    .user-info .user-img img{
+      text-align: center;
+      border-width: 7px;
+      width: 170px;
+      height: 170px;
+    }
+    
+    .user-info hr{
+      width: 30%;
+      height: 1.5px;
+      background-color: #ea8737;
+    }
+    
+    .user-info p {
+      text-align: center;
+      font-size: 16px;
+    }
+    
+    .user-info #user-desc{
+      width: 70%;
+      margin: 10px auto;
+    }
+    
+    .user-info #user-friends {
+      color: #01224d;
+      margin-top: 1%;
+      font-size: 18px;
+    }
+    
+    .donations-info{
+      height: auto;
+    }
+  
+    .total-donations hr {
+      width: 11%;
+      margin-right: 80%;
+      margin-top: 100px;
+    }
+    
+    .donation-circle {
+     padding: 20%;
+    }
+    
+    .circle-1{
+      width: 180px;
+      height: 180px;
+      margin-left: 0%;
+      margin-top: 0%;
+      font-size: 30px;
+    }
+    .circle-1 .circle-1-inside{
+      top: 33%;
+      left: 20%;
+    }
+    
+    .circle-1 p{
+      font-size: 15px;
+      font-weight: normal;
+    }
+    
+    .circle-2, .circle-3, .circle-4, .circle-5 {
+      width: 70px;
+      height: 70px;
+      border-radius: 100%;
+      margin-top: 15px;
+      margin-left: 10%;
+      color: white;
+    }
+    
+    .circle-3 {
+      margin-left: 23%;
+    }
+    
+    .donor-progress {
+      display: flex;
+      position: relative;
+      width: 70%;
+      margin-left: 15%;
+    }
+    
+    .donation-progress, .progress-bar{
+      background-color: rgb(201, 200, 200);
+      position: absolute;
+      height: 8px;
+      width: 100%;
+      border-radius: 16px;
+    }
+    
+    .progress-bars{
+      margin-bottom: -50px;
+    }
+    
+    .progress-bar{
+      background-color: #ea8737;
+      z-index: 1;
+    }
+    
+    .progress-text, .progress-text2 {
+      margin-top: 2%;
+      text-align: left;
+      margin-left: 15%;
+      font-size: 18px;
+      width:70%;
+    }
+    
+    .progress-txt {
+      margin-top: -20px;
+      text-align: left;
+      margin-left:15%;
+      font-size: 18px;
+    }
+    
+    .total-donations h5{
+      margin-left: 18%;
+      width: 70%;
+    }
+    
+    .recent-act h3 , .recent-act p{
+      text-align:left;
+    }
+    
+    .recent-act p {
+      margin-top: -10px;
+      font-size: 16px;
+      margin-left: 4%;
+    }
+    
+    .recent-act h3{
+      color: #ea8737;
+      margin-left: 4%;
+    }
+    
+    .recent-act hr{
+      background-color: rgb(184, 184, 184);
+      width: 90%;
+      height: 1px;
+      margin-left: 4%;
+      margin-top: 0px;
+    }
+    
+    .recent-box{
+      width: 80%;
+      margin-top: 15px;
+    }
+    .recent-box .update{
+      padding: 0%;
+      padding-left: 40px;
+      padding-top: 5px;
+    }
+    .recent-box #title{
+      text-align: left;
+      font-size: 16px;
+      font-weight: bold;
+      margin-bottom: -10px;
+      overflow: visible;
+    }
+    .recent-box #amount{
+      font-size: 18px;
+      color: #ea8737;
+    }
+    .recent-box #comment{
+      font-size: 18px;
+      text-align: center;
+      font-weight: bold;
+      padding: 0;
+      margin: 0;
+      margin-top: -5px;
+    }
+    .recent-box p{
+      font-size: 16px;
+      margin: 0;
+      width: 110%;
+    }
+    .recent-box b{
+      text-align: center;
+      font-size: 18px;
+    }
+    .recent-box a{
+      display: none;
+    }
+    .recent-box a:hover{
+      color: #ea8737;
+    }
+    .circle-5{
+      margin-left: -30%;
+      margin-top: 0%;
+    }
+    .increase-impact{
+      text-align: left;
+      width: 80%;
+      padding: 10%;
+      margin-top: 0px;
+      margin-bottom: 0px;
+    }
+    .increase-impact h4, .increase-impact a{
+      margin-left: 30px;
+    }
+    }
+  @media only screen and (max-width: 1000px) {
+  
+      .donorhub-container{
+        margin: 0 auto;
+        margin-top: 0%;
+        width: 90%;
+        background-color: white;
+      }
+  }
+  @media only screen and (max-width: 900px) {
+  
+    .donorhub-container{
+      margin: 0 auto;
+      margin-top: 0%;
+      width: 100%;
+      background-color: white;
+    }
+  }
+  @media only screen and (max-width: 700px) {
+  
+  .donorhub-container{
+    margin: 0 auto;
+    margin-top: 37%;
+    width: 100%;
+    background-color: white;
+  }
+  
+  .banner{
+    background-color: #fbefe2;
+    height: auto;
+    border-radius: 0 0 10px 10px;
+    padding-top: 60px;
+  }
+  
+  .user-info{
+    background-color: white;
+    padding: 10px;
+    margin: 0 auto;
+  }
+  
+  .user-info .user-img{
+    margin-bottom: 0px;
+    object-fit: cover;
+  }
+  .user-info .user-img img{
+    text-align: center;
+    border-width: 7px;
+    width: 120px;
+    height: 120px;
+  }
+  
+  .user-info hr{
+    width: 50%;
+    height: 1.5px;
+    background-color: #ea8737;
+  }
+  
+  .user-info p {
+    text-align: center;
+    font-size: 16px;
+  }
+  
+  .user-info #user-desc{
+    width: 70%;
+    margin: 10px auto;
+  }
+  
+  .user-info #user-friends {
+    color: #01224d;
+    margin-top: 1%;
+    font-size: 18px;
+  }
+  
+  .donations-info{
+    height: auto;
+  }
+  
+  .esp-txt{
+    font-size: 20px;
+    color: #ea8737;
+    margin-top: -32px;
+    margin-left: 0px;
+  }
+  
+  .en-txt{
+    font-size: 20px;
+    color: #ea8737;
+    margin-top: -32px;
+    margin-left: -20px;
+  }
+  
+  .total-donations hr {
+    width: 11%;
+    margin-right: 80%;
+    margin-top: 100px;
+  }
+  
+  .donation-circles, .donation-circle {
+   padding: 10%;
+  }
+  
+  .circle-1{
+    width: 180px;
+    height: 180px;
+    background-color: #ea8737;
+    border-radius: 100%;
+    margin-left: 0%;
+    margin-top: 50%;
+    color: white;
+    font-weight: bolder;
+    font-size: 30px;
+  }
+  .circle-1 .circle-1-inside{
+    top: 30%;
+  }
+  
+  .circle-1 p{
+    font-size: 13px;
+    font-weight: normal;
+  }
+  
+  .circle-2, .circle-3, .circle-4, .circle-5 {
+    width: 70px;
+    height: 70px;
+    border-radius: 100%;
+    margin-top: 15px;
+    margin-left: 10%;
+    color: white;
+  }
+  
+  .circle-3 {
+    margin-left: 23%;
+  }
+  
+  .donor-progress {
+    display: flex;
+    position: relative;
+    width: 70%;
+    margin-left: 15%;
+  }
+  
+  .donation-progress, .progress-bar{
+    background-color: rgb(201, 200, 200);
+    position: absolute;
+    height: 8px;
+    width: 100%;
+    border-radius: 16px;
+  }
+  
+  .progress-bars{
+    margin-bottom: -50px;
+  }
+  
+  .progress-bar{
+    background-color: #ea8737;
+    z-index: 1;
+  }
+  
+  .progress-text, .progress-text2 {
+    margin-top: 2%;
+    text-align: left;
+    margin-left: 15%;
+    font-size: 18px;
+    width:70%;
+  }
+  
+  .progress-txt {
+    margin-top: -20px;
+    text-align: left;
+    margin-left:15%;
+    font-size: 18px;
+  }
+  
+  .total-donations h5{
+    margin-left: 18%;
+    width: 70%;
+  }
+  
+  .recent-act h3 , .recent-act p{
+    text-align:left;
+  }
+  
+  .recent-act p {
+    margin-top: -10px;
+    font-size: 16px;
+    margin-left: 4%;
+  }
+  
+  .recent-act h3{
+    color: #ea8737;
+    margin-left: 4%;
+  }
+  
+  .recent-act hr{
+    background-color: rgb(184, 184, 184);
+    width: 97%;
+    height: 1px;
+    margin-left: 4%;
+    margin-top: -10px;
+  }
+  
+  .recent-box{
+    width: 100%;
+    margin-top: 10px;
+  }
+  .recent-box .update{
+    padding: 0%;
+    padding-left: 50px;
+    padding-top: 5px;
+  }
+  .recent-box #title{
+    text-align: left;
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: -10px;
+    overflow: visible;
+  }
+  .recent-box #amount{
+    font-size: 18px;
+    color: #ea8737;
+  }
+  .recent-box #comment{
+    font-size: 18px;
+    text-align: center;
+    font-weight: bold;
+    padding: 0;
+    margin: 0;
+    margin-top: -5px;
+  }
+  .recent-box p{
+    font-size: 16px;
+    margin: 0;
+    width: 110%;
+  }
+  .recent-box b{
+    text-align: center;
+    font-size: 18px;
+  }
+  .recent-box a{
+    display: none;
+  }
+  .recent-box a:hover{
+    color: #ea8737;
+  }
+  .circle-5{
+    margin-left: -30%;
+    margin-top: 0%;
+  }
+  .increase-impact{
+    text-align: left;
+    padding: 10%;
+    margin-top: -20px;
+  }
+  .increase-impact h4{
+    margin: 0;
+    margin-left: 50px;
+    margin-bottom: 5px;
+    font-size: 18px;
+  }
+  .increase-impact button{
+    margin-left: 50px;
+    padding: 5px;
+    font-size: 15px ;
+  }
+  .user-info button{
+    width: 60%;
+  }
+  }  

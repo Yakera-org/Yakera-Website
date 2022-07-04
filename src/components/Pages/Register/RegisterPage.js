@@ -6,22 +6,18 @@ import Loader from "react-loader-spinner";
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 import LanguageService from "../../../services/language";
 import S3 from "aws-s3";
+import * as AWSkeys from "../../../services/AWSkeys"
 
 const _axios = require('axios');
 const axios = _axios.create();
 const yakeraBackUrl = 'https://api.yakera.org';
 
-const S3_BUCKET = process.env.REACT_APP_S3_BUCKET
-const REGION = process.env.REACT_APP_REGION
-const ACCESS_KEY = process.env.REACT_APP_ACCESS_KEY
-const SECRET_ACCESS_KEY = process.env.REACT_APP_SECRET_ACCESS_KEY
-
 const config_aws = {
-    bucketName: S3_BUCKET,
-    region: REGION,
+    bucketName: AWSkeys.S3_BUCKET,
+    region: AWSkeys.REGION,
     dirName: 'profile-pictures',
-    accessKeyId: ACCESS_KEY,
-    secretAccessKey: SECRET_ACCESS_KEY
+    accessKeyId: AWSkeys.ACCESS_KEY,
+    secretAccessKey: AWSkeys.SECRET_ACCESS_KEY
 }
 
 const S3Client = new S3(config_aws);

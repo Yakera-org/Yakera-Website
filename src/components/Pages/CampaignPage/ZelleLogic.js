@@ -4,18 +4,14 @@ import ZelleVisual from './ZelleVisual';
 import api from "../../../services/api";
 import S3 from "aws-s3";
 import LanguageService from '../../../services/language';
-
-const S3_BUCKET = process.env.REACT_APP_S3_BUCKET
-const REGION = process.env.REACT_APP_REGION
-const ACCESS_KEY = process.env.REACT_APP_ACCESS_KEY
-const SECRET_ACCESS_KEY = process.env.REACT_APP_SECRET_ACCESS_KEY
+import * as AWSkeys from "../../../services/AWSkeys"
 
 const config_aws = {
-    bucketName: S3_BUCKET,
-    region: REGION,
-    dirName: 'zelle-screenshots',
-    accessKeyId: ACCESS_KEY,
-    secretAccessKey: SECRET_ACCESS_KEY
+  bucketName: AWSkeys.S3_BUCKET,
+  region: AWSkeys.REGION,
+  dirName: 'zelle-screenshots',
+  accessKeyId: AWSkeys.ACCESS_KEY,
+  secretAccessKey: AWSkeys.SECRET_ACCESS_KEY
 }
 
 const S3Client = new S3(config_aws)
