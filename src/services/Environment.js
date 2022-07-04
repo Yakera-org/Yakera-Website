@@ -3,6 +3,7 @@ const ENVIRONMENTS = {
     dev: "dev"
 }
 
+//change this next line
 const currentEnv = ENVIRONMENTS.dev
 
 const getBackendUrl = () => {
