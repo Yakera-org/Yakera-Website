@@ -65,6 +65,10 @@ function Register() {
       else setEN(false)
   }, []);
   const handleChange = event => {
+    setData({
+      ...data,
+      error:'',
+    })
     if(event.target.name === 'terms'){
       setData({
         ...data,

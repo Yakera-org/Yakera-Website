@@ -230,10 +230,15 @@
     .register-card{
         text-align: center;
         padding: 0px 25px;
+        width: 80%;
+        margin-left: 10%;
     }
 
     .register-card input{
         width: 100%;
+    }
+    .register-card .invalid-feedback{
+        font-size: 12px;
     }
     .switch button{
         background-color: transparent;
