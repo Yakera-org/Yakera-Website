@@ -6,11 +6,8 @@ import Loader from "react-loader-spinner";
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 import LanguageService from "../../../services/language";
 import S3 from "aws-s3";
+import api from "../../../services/api";
 import * as AWSkeys from "../../../services/AWSkeys"
-
-const _axios = require('axios');
-const axios = _axios.create();
-const yakeraBackUrl = 'https://api.yakera.org';
 
 const config_aws = {
     bucketName: AWSkeys.S3_BUCKET,
@@ -233,21 +230,12 @@ function Register() {
   }
   async function validateEmail(email){
     if(!email)return false
-    const url = yakeraBackUrl + '/api/auth/check-email';
-
-    var payload = JSON.stringify({"email":email});
-
-    var config = {
-      method: 'post',
-      url: url,
-      headers: { 
-        'Content-Type': 'application/json'
-      },
-      data : payload
-    };    
-     
+         
     try {
-      const res = await axios(config)
+      const emailBody={
+        "email":email
+      }
+      const res = await api.post('/auth/check-email', emailBody);
 
       if(res.data){
         setData({
@@ -287,8 +275,6 @@ function Register() {
   }
 
   async function callRegisterBackend(){
-    const url = yakeraBackUrl + '/api/auth/register';
-
     // register credentials
     const requestBody = {      
         firstName: data.firstName,
@@ -302,39 +288,15 @@ function Register() {
     }
 
     let payload = JSON.stringify(requestBody)
-    
-    axios.post(url, payload, {
-      headers: {
-        // Overwrite Axios's automatically set Content-Type
-        'Content-Type': 'application/json'
-      }
-    }).then(response => {
-      setLoading(true)
+    setLoading(true)
 
-      if (response.status === 201) {
-        setSuccess(EN ? 'Signed up successfully. Email verification was sent.' : 'Se registró correctamente. Se envió la verificación por correo electrónico.')
-        setLoading(false)
-      }
-
-    }).catch(error => {
-      var errorMessage;
-      console.log(error);
-      if(error.response){  
-        errorMessage = EN ? "Something went wrong. Please try again later." : "Se produjo un error. Vuelva a intentarlo más tarde.";
-      }
-      setLoading(false)
-      setData({
-        ...data,
-        error: errorMessage
-      })
-    });
+    callBackend(payload)    
 }
 
 async function callDonorRegister(){
-  const url = yakeraBackUrl + '/api/auth/register';
   var profile = data.profile_pic
   if(typeof data.profile_pic !== 'string'){
-    profile = "https://yakera-files.s3.us-east-2.amazonaws.com/profile-pictures/" + data.profile_pic.name
+    profile = "https://assets.yakera.org/profile-pictures/" + data.profile_pic.name
     handleUpload(data.profile_pic)
   }
   // register credentials
@@ -356,31 +318,23 @@ async function callDonorRegister(){
   }
   
   let payload = JSON.stringify(requestBody)
-  axios.post(url, payload, {
-    headers: {
-      // Overwrite Axios's automatically set Content-Type
-      'Content-Type': 'application/json'
-    }
-  }).then(response => {
-    setLoading(true)
+  callBackend(payload)
+}
 
-    if (response.status === 201) {
-      setSuccess(EN ? 'Signed up successfully. Email verification was sent.' : 'Se registró correctamente. Se envió la verificación por correo electrónico.')
-      setLoading(false)
-    }
-
-  }).catch(error => {
-    var errorMessage;
-    console.log(error);
-    if(error.response){  
-      errorMessage = EN ? "Something went wrong. Please try again later." : "Se produjo un error. Vuelva a intentarlo más tarde.";
-    }
-    setLoading(false)
+async function callBackend(payload){
+  try{
+    await api.post('/auth/register', payload)  
+    setSuccess(EN ? 'Signed up successfully. Email verification was sent.' : 'Se registró correctamente. Se envió la verificación por correo electrónico.')
+  }catch(e){
+    console.error(e)
+    let errorMessage = EN ? "Something went wrong. Please try again later." : "Se produjo un error. Vuelva a intentarlo más tarde.";
     setData({
       ...data,
       error: errorMessage
     })
-  });
+  }finally{
+    setLoading(false)
+  }
 }
 
 async function handleUpload (file){
