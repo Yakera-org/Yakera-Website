@@ -163,6 +163,13 @@ function StripeForm(props)
 
     return (
         <form id="payment-form" onSubmit={handleSubmit}>
+            <div className="card-notice">
+                {props.EN
+                ?
+                'At this time we cannot accept US-based debit or credit cards. If you have a card from the US, please use another card or payment method to complete your contribution. Thank you!'
+                :
+                'En este momento no podemos aceptar tarjetas de débito o crédito basadas en EE.UU. Si tiene una tarjeta de los EE.UU., por favor utilice otra tarjeta o método de pago para completar su contribución. ¡Gracias!'}
+            </div>
             <PaymentElement id="payment-element" />
             {/* Show any error or success message */}
             {/* message && <div id="payment-message">{message}</div> */}
