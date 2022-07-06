@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Dropzone from 'react-dropzone';
 import fileUploadImage from '../../../pics/upload-image-campaign.png'
 
@@ -10,12 +10,12 @@ const DroppingZoneMain = (props) => {
     var idFiles = props.idFiles
     var EN = props.EN
     var setFile = props.setFile
-    var setLoading = props.setLoading
-    var onUpload = props.onUpload
+    // var setLoading = props.setLoading
+    // var onUpload = props.onUpload
     var numberOfFilesLimit = props.numberOfFilesLimit
     var totalSizeLimit = props.totalSizeLimit
     var file = props.file
-    var tag = props.tag
+    // var tag = props.tag
 
     return (
         <>

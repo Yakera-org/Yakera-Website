@@ -1,5 +1,5 @@
 .img-container {
-    margin-bottom: 10px;
+    margin-bottom: 5px;
     width: 200px;
     height: 200px;
 }
@@ -11,7 +11,7 @@
     border: 2px solid;
 }
 
-.crop_button{
+.btn{
     border: none;
     border-radius: 10px;
     background-color: #ea8737;
@@ -19,6 +19,7 @@
     font-size: 25px;
     outline: none;
     margin-bottom: 10px;
+    margin-right: 5px;
 }
 .crop_button:hover{
     background-color: #e99e60;

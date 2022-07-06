@@ -7,8 +7,8 @@ const thumb = {
     border: '1px solid #eaeaea',
     marginBottom: 80,
     marginRight: 8,
-    width: 100,
-    height: 100,
+    width: '178px',
+    height: '100px',
     padding: 4,
     boxSizing: 'border-box',
 };
@@ -33,7 +33,7 @@ function FilePreview(props){
                 <div style={thumbInner}>
                     <img
                         alt="dropzone-img"
-                        src={file.preview}
+                        src={props.id==="main" ? props.prev : file.preview}
                         style={img}
                     />
                 </div>

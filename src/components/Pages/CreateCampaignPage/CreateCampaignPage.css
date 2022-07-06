@@ -135,9 +135,11 @@
     border-radius: 5px;
     padding: 5px;
     position:absolute;
-    left: -110px;
+    /* left: -110px; */
+    left: -184px;
     top: 20px;
-    width: 100px;
+    /* width: 100px; */
+    width: 178px;
 }
 .aws-upload .retry{
     top: 60px;
@@ -152,9 +154,11 @@
     border-radius: 5px;
     padding: 5px;
     position:absolute;
-    left: -110px;
+    /* left: -110px; */
+    left: -184px;
     top: 20px;
-    width: 100px; 
+    /* width: 100px;  */
+    width: 178px;
 }
 .aws-upload .aws-button-fail{
     background-color: #ff5c46;
@@ -166,9 +170,11 @@
     border-radius: 5px;
     padding: 5px;
     position:absolute;
-    left: -110px;
+    /* left: -110px; */
+    left: -184px;
     top: 20px;
-    width: 100px; 
+    /* width: 100px;  */
+    width: 178px; 
 }
 #upload-zone {
     background-color: #f3f3f3;

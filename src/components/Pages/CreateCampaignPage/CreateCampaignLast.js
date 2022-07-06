@@ -56,16 +56,16 @@ function CreateCampaignLast(props) {
     const cropZone = mainFile.map(file => {
         return(
             <>
-            <CropImage image={file} setLoading={setMainLoading} onUpload={onUpload} />
+            <CropImage image={file} setLoading={setMainLoading} onUpload={onUpload} EN={EN} key={file.name} file={file} onRemove={onRemove} onRetry={onRetry} id="main" uploadSuccess={uploadSuccess}uploadFailures={uploadFailures}/>
             </>
         )
     });
 
-    const mainThumbs = mainFile.map(file => {
-        return(
-            <FilePreview EN={EN} key={file.name} file={file} onRemove={onRemove} onRetry={onRetry} id="main" uploadSuccess={uploadSuccess}uploadFailures={uploadFailures}/>       
-        )
-    });
+    // const mainThumbs = mainFile.map(file => {
+    //     return(
+    //         // <FilePreview EN={EN} key={file.name} file={file} onRemove={onRemove} onRetry={onRetry} id="main" uploadSuccess={uploadSuccess}uploadFailures={uploadFailures}/>       
+    //     )
+    // });
 
     const documentThumbs = documentFiles.map(file => {
         return(
@@ -505,8 +505,8 @@ function CreateCampaignLast(props) {
 
                 <aside>
                     <ul>{cropZone}</ul>
-                    <h6>{EN ? "File ready for Upload:" : "Archivo:" }</h6>
-                    <ul>{mainThumbs}</ul>
+                    {/* <h6>{EN ? "File ready for Upload:" : "Archivo:" }</h6> */}
+                    {/* <ul>{mainThumbs}</ul> */}
                     {
                         mainFile.length === 0
                         ?

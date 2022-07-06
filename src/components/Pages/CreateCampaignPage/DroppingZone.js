@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Dropzone from 'react-dropzone';
 import fileUploadImage from '../../../pics/upload-image-campaign.png'
 
