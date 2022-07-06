@@ -5,6 +5,13 @@ import LanguageService from "../services/language";
 
 import './author.css';
 
+const socialMedia = [
+    {iconLink: 'https://www.facebook.com/yakeraorg', iconClass: 'fa-facebook-square'},
+    {iconLink: 'https://twitter.com/yakeraorg', iconClass: 'fa-twitter-square'},
+    {iconLink: 'https://www.instagram.com/yakeraorg', iconClass: 'fa-instagram'},
+    // {iconLink: 'https://medium.com/@yakera.venezuela/yakera-re-imagining-peer-to-peer-aid-for-venezuelans-793024ac9767', iconClass: 'fa-medium'},
+];
+
 function SocialMediaIcon(props) {
     return (
         <div className={`m${props.iconMargin}-1`}>
@@ -50,14 +57,11 @@ function Author() {
         window.location.href = 'mailto: raul@yakera.org'
     }
 
-    let copyrightText = `© ${new Date().getFullYear()} Yakera`;
+    const datacampLink = () => {
+        window.location.href = 'https://www.datacamp.com/donates';
+    }
 
-    let socialMedia = [
-        {iconLink: 'https://www.facebook.com/yakeraorg', iconClass: 'fa-facebook-square'},
-        {iconLink: 'https://twitter.com/yakeraorg', iconClass: 'fa-twitter-square'},
-        {iconLink: 'https://www.instagram.com/yakeraorg', iconClass: 'fa-instagram'},
-        // {iconLink: 'https://medium.com/@yakera.venezuela/yakera-re-imagining-peer-to-peer-aid-for-venezuelans-793024ac9767', iconClass: 'fa-medium'},
-    ];
+    let copyrightText = `© ${new Date().getFullYear()} Yakera`;
 
     let socialMediaIcons = [];
 
@@ -128,7 +132,11 @@ function Author() {
                 <div className="row">
                     <div className="col"></div>
                     <div className="col-6 datacamp">
-                        {EN ? <p className="footer-text">Partnering with <img className='footer-img' alt='datacamp-logo' src={datacamplogo} onClick={() => window.location.href = "https://www.datacamp.com/donates"} /> for data education.</p> : <p>Asociación con <img className='footer-img' alt='datacamp-logo' src={datacamplogo} /> para la educación de datos.</p>}
+                        <p className="footer-text">
+                            {EN ? 'Partnering with ' : 'Asociación con '}
+                            <img className='footer-img' alt='datacamp-logo' src={datacamplogo} onClick={datacampLink} />
+                            {EN ? ' for data education.' : ' para la educación de datos.'}
+                        </p>
                     </div>
                     <div className="col right-margin">
                         <p className="footer-text copyright">{copyrightText}</p>
