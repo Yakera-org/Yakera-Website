@@ -78,7 +78,7 @@ function Author() {
             iconMargin = 'x';
         }
 
-        socialMediaIcons.push(<SocialMediaIcon iconMargin={iconMargin} iconLink={value.iconLink} iconClass={value.iconClass} />)
+        socialMediaIcons.push(<SocialMediaIcon key={index} iconMargin={iconMargin} iconLink={value.iconLink} iconClass={value.iconClass} />)
     });
 
     return (
