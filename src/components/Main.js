@@ -14,7 +14,6 @@ import Campaigns from './Pages/Campaigns/Campaigns';
 import AboutUs from './Pages/AboutUs/AboutUs';
 import NotFoundPage from './Pages/404/NotFoundPage';
 import CreateCampaign from './Pages/CreateCampaignPage/CreateCampaign';
-import Dashboard from './Pages/Dashboard/Dashboard';
 import EmailVerification from './Pages/EmailVerification/EmailVerificationPage';
 import LanguageService from '../services/language';
 import ProfileEditPage from './Pages/Profile/EditPage/EditPage';
@@ -22,8 +21,6 @@ import Profile from './Pages/Profile/Profile';
 
 
 function Main() {
-
-    let isAuthenticated = true;
 
     React.useEffect(() => {
         //passing getData method to the lifecycle method
@@ -69,7 +66,6 @@ function Main() {
                         <Route exact path="/terms" component={Terms} />
                         <Route exact path="/consent" component={Consent} />
                         <Route exact path="/frequently-asked-questions" component={FAQ} />
-                        <Route exact path="/dashboard" component={isAuthenticated ? Dashboard : login} />
                         <Route exact path="/profile/edit" component={ProfileEditPage} />
                         <Route exact path="/verify-email" component={EmailVerification} />
                         <Route exact path="/" component={home} />
