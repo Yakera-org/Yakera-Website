@@ -7,28 +7,23 @@
 - npm install
 - npm start
 
-## Pages
+## Netlify Status
+[![Netlify Status](https://api.netlify.com/api/v1/badges/dc9a79dc-3ef9-4f0e-b138-1361650bd794/deploy-status)](https://app.netlify.com/sites/yakera-venezuela/deploys)
 
-### Home
-interactive home page
+## Github structure
+### Live Deployment
+`master`
+This branch is directly connected to our live site, any changes to this branch automatically triggers a redeploy
 
-### About Us
-info about who we are and what we do
+### Staging
+`dev`
+Used to stage and internally test our releases.
+Releases are staged here, and then released to master with a Merge Request.
+An automatic netlify preview is generated when creating a MR to master
 
-### Support Us
-info on how to support us
+`staging-2`
+Used when `dev` is occupied with a prioritized release.
 
-### Campaigns
-shows all active campaigns
-
-### FAQ
-frequently asked questions about yakera
-
-### Dashboard
-see your profile information and current active campiagns of yours
-
-### Create new campaign
-when logged in, you can create a new campaign here
-
-### login/register
+### Feature branches
+branch off from `dev` into their seperate features
 

@@ -7,25 +7,21 @@ import HashLoader from "react-spinners/HashLoader";
 import imageCompression from 'browser-image-compression';
 import FilePreview from "./FilePreview";
 import DroppingZone from "./DroppingZone";
-
-const S3_BUCKET = process.env.REACT_APP_S3_BUCKET
-const REGION = process.env.REACT_APP_REGION
-const ACCESS_KEY = process.env.REACT_APP_ACCESS_KEY
-const SECRET_ACCESS_KEY = process.env.REACT_APP_SECRET_ACCESS_KEY
+import * as AWSkeys from "../../../services/AWSkeys"
 
 const config_aws_pic = {
-    bucketName: S3_BUCKET,
-    region: REGION,
+    bucketName: AWSkeys.S3_BUCKET,
+    region: AWSkeys.REGION,
     dirName: 'pictures',
-    accessKeyId: ACCESS_KEY,
-    secretAccessKey: SECRET_ACCESS_KEY
+    accessKeyId: AWSkeys.ACCESS_KEY,
+    secretAccessKey: AWSkeys.SECRET_ACCESS_KEY
 }
 const config_aws_file = {
-    bucketName: S3_BUCKET,
-    region: REGION,
+    bucketName: AWSkeys.S3_BUCKET,
+    region: AWSkeys.REGION,
     dirName: 'files',
-    accessKeyId: ACCESS_KEY,
-    secretAccessKey: SECRET_ACCESS_KEY
+    accessKeyId: AWSkeys.ACCESS_KEY,
+    secretAccessKey: AWSkeys.SECRET_ACCESS_KEY
 }
 
 const S3Client_picture = new S3(config_aws_pic)
@@ -64,7 +60,7 @@ function CreateCampaignDetails(props) {
         )
     });
 
-    function onRemove(e){
+    async function onRemove(e){
         e.preventDefault()
         var filename = e.target.getAttribute('name')
 
@@ -92,14 +88,17 @@ function CreateCampaignDetails(props) {
             }) 
         }
         else if (e.target.getAttribute('id') === "document"){
-            newFiles = documentFiles.filter(function(item) {
+            newFiles = documentFiles.filter( function(item) {
                 return item.path !==  filename
             })
             setDocumentFiles(newFiles)
 
             let _pics = []
-            newFiles.forEach(pic => {
-                _pics.push(pic.name)
+            newFiles.forEach(async function(pic) {
+                await S3Client_picture.uploadFile(await compressFile(pic))
+                .then((data) => {
+                    _pics.push(data.key)
+                })
             });
             
             props.setData({
@@ -116,10 +115,12 @@ function CreateCampaignDetails(props) {
                return item.path !==  filename
            })
            setCampaignFiles(newFiles)
-
            let _supppics = []
-            newFiles.forEach(pic => {
-                _supppics.push(pic.name)
+            newFiles.forEach(async function(pic) {
+                await S3Client_picture.uploadFile(await compressFile(pic))
+                .then((data) => {
+                    _supppics.push(data.key)
+                })
             });
 
             props.setData({

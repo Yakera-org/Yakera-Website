@@ -88,15 +88,11 @@ function FAQVisuals(props) {
                             <div style={{ padding: "10px 0px 50px 0px" }}>
                                 {EN ?
                                     <div>
-                                        You can contact us on <a href="https://chat.whatsapp.com/LcSFQzsohaC1hmlgdbij3D"><u>Yakera Community Group with this link</u></a>,
-                                        via an email to <a href="mailto: abc@example.com"><u>info@yakera.org</u></a>{", or through our social media "}
-                                        <u><a href="https://twitter.com/yakeraorg">@yakeraorg</a></u>.
+                                        Contact a member of our support team at <a href="https://walink.co/6d9a42">this link</a>, via email at <a href="mailto: info@yakera.org">info@yakera.org</a> or through our social media by finding us as <a href="https://twitter.com/yakeraorg">@yakeraorg</a>.
                                     </div>
                                     :
                                     <div>
-                                        Puedes contactarnos en nuestro grupo de la Comunidad Yakera en <a href="https://chat.whatsapp.com/LcSFQzsohaC1hmlgdbij3D"><u>este link</u></a>
-                                        , vía mail a <a href="mailto: abc@example.com"><u>info@yakera.org</u></a>
-                                        {" o por nuestras redes sociales encontrándonos como "}<u><a href="https://twitter.com/yakeraorg">@yakeraorg</a></u>.
+                                        Ponte en contacto con un miembro de nuestro equipo de soporte en <a href="https://walink.co/6d9a42">este link</a>, vía mail a <a href="mailto: info@yakera.org">info@yakera.org</a> o por nuestras redes sociales encontrándonos como <a href="https://twitter.com/yakeraorg">@yakeraorg</a>.
 
                                     </div>
 

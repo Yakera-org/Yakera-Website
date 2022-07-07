@@ -1,0 +1,70 @@
+#orange{
+color: #ea8737;
+}
+#grey{
+    color: #bbbbbb;
+}
+#green{
+    color: #71b98f;
+}
+#purple{
+    color: #6d1ed4;
+}
+.profile-page{
+    margin-top: 150px;
+    margin: 0 auto;
+    width: 70%;
+    background-color: white;
+    font-family: Intro-Regular-Alt;
+}
+
+.profile-page .banner{
+    width: 100%;
+    margin-top: -40px;
+}
+.profile-page .banner img{
+    border-radius: 0 0 5px 5px;
+}
+.profile-page .loader-wrapper{
+    position: absolute;
+    left: 50%; 
+    transform: translate(-50%, -50%);
+    margin-top: 5%;
+}
+.profile-page .profile-content{
+    padding: 2%;
+}
+.profile-stats {
+    text-align: center;
+}
+.profile-stats .edit-button{
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    background-color:#dddddd60 ;
+    padding: 5px 25px;
+    text-align: center;
+    color: #565656;
+    font-size: 13px;
+    width: 15%;
+    min-width: 100px;
+    text-align: center;
+}
+.profile-stats .edit-button:hover{
+    background-color:#dddddd ;
+}
+
+@media only screen and (max-width: 800px) {
+    .profile-page{
+        width: 90%;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .profile-page{
+        width: 100%;
+    }
+    .profile-stats .edit-button{
+        width: 70%;
+    }
+}

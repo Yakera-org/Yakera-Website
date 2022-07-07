@@ -1,11 +1,10 @@
 import axios from "axios";
+import Environment from "./Environment";
 import TokenService from "./token";
 
 
 const instance = axios.create({
-  //live: baseURL: "https://api.yakera.org/api"
-  //dev: baseURL: "https://express-backend-api.herokuapp.com/api"
-    baseURL: "https://api.yakera.org/api",
+    baseURL: Environment.getBackendUrl(),
     headers: {
       "Content-Type": "application/json",
     },

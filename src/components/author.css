@@ -23,7 +23,7 @@
   background-color: transparent;
   border: none;
   font-size: 18px;
-  color: rgb(80, 80, 80);
+  color: #808080;
 }
 .footer #link:hover {
   text-decoration: underline;
@@ -43,4 +43,70 @@
   height: auto;
   margin-left: 1%;
   margin-right: 1%;
+}
+
+.footer-icon
+{
+  color: #eb913b;
+}
+
+.footer-icon:hover
+{
+  opacity: 0.8;
+}
+
+.yakera-footer-logo
+{
+  width: 14% !important;
+  height: auto;
+}
+
+.yakera-footer-logo-mobile
+{
+  width: 35% !important;
+  height: auto;
+}
+
+.left-margin
+{
+  margin-left: 2%;
+}
+
+.right-margin
+{
+  margin-right: 2%;
+}
+
+.footer-text
+{
+  color: #808080;
+}
+
+.copyright
+{
+  font-size: small !important;
+  text-align: end;
+  margin-bottom: 0;
+}
+
+.mobile-btn
+{
+  font-size: small !important;
+}
+
+.section-mobile
+{
+  padding-top: 0 !important;
+}
+
+.datacamp
+{
+  padding-left: 6%;
+}
+
+.vertical-align
+{
+  padding: 0;
+  padding-top: 3%;
+  vertical-align: center;
 }

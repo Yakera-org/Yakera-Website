@@ -57,3 +57,21 @@
 {
   color: #2f476c;
 }
+
+.payment-error
+{
+  color: #eb3b3b;
+  text-align: left;
+  margin-top: 2%;
+  margin-bottom: 1%;
+  font-weight: lighter;
+}
+
+.card-notice
+{
+  color: #7e7c75;
+  text-align: justify;
+  margin-bottom: 2%;
+  font-weight: lighter;
+  font-family: 'Intro-Light';
+}
