@@ -1,15 +1,13 @@
 import React, { useState, useEffect } from "react";
-import CreatCampaignDetails from "./CreateCampaignDetailsNew.js";
-import CampaignIntroPage from "./createCampaignIntro";
-import {Alert} from 'reactstrap'
+import CreateCampaignDetails from "./CreateCampaignDetails.js";
+import CampaignIntroPage from "./CreateCampaignIntro";
+import { Alert } from 'reactstrap'
 import LanguageService from "../../../services/language";
 import HashLoader from "react-spinners/HashLoader";
 import './CreateCampaignPage.css';
 import WhatsAppButton from "../WhatsAppButton/WhatsAppButton";
 import { MultiStepForm, Step } from 'react-multi-form-custom'
 import { Button } from "react-bootstrap";
-import './createCampaignIntro'
-import './CreateCampaignLast'
 import CampaignLastPage from "./CreateCampaignLast";
 import CampaignThirdPage from "./CreateCampaignThird";
 import CampaignSummary from "./CreateCampaignSummary.js";
@@ -63,6 +61,7 @@ function CreateCampaignVisuals(props) {
 
     const validateTitle = (optional = '') => {
         if (optional) {
+            setNameError('');
             return true
         }
 
@@ -113,6 +112,7 @@ function CreateCampaignVisuals(props) {
 
     const validateDescription = (optional = '') => {
         if (optional) {
+            setDescriptionError('');
             return true
         }
 
@@ -134,6 +134,7 @@ function CreateCampaignVisuals(props) {
 
     const validateStory = (optional = '') => {
         if (optional) {
+            setStoryError('');
             return true
         }
 
@@ -155,6 +156,7 @@ function CreateCampaignVisuals(props) {
 
     const validatePublicStory = (optional = '') => {
         if (optional) {
+            setPublicStoryError('');
             return true
         }
 
@@ -176,6 +178,7 @@ function CreateCampaignVisuals(props) {
 
     const validateMoneyUse = (optional = '') => {
         if (optional) {
+            setMoneyUseError('');
             return true
         }
 
@@ -197,6 +200,7 @@ function CreateCampaignVisuals(props) {
 
     const validateBudget = (optional = '') => {
         if (optional) {
+            setBudgetError('');
             return true
         }
 
@@ -361,7 +365,7 @@ function CreateCampaignVisuals(props) {
                     <CampaignIntroPage EN={EN} handleChange={props.handleChange} isMobile={isMobile} categoryError={categoryError} />
                 </Step>
                 <Step label={2}>
-                    <CreatCampaignDetails EN={EN} data={props.data} handleChange={props.handleChange} setData={props.setData} setIsUploading={setIsUploading} isMobile={isMobile}  errors={{nameError, amountError, descriptionError}} validations={{validateTitle, validateAmount, validateDescription}} />
+                    <CreateCampaignDetails EN={EN} data={props.data} handleChange={props.handleChange} setData={props.setData} setIsUploading={setIsUploading} isMobile={isMobile}  errors={{nameError, amountError, descriptionError}} validations={{validateTitle, validateAmount, validateDescription}} />
                 </Step>
                 <Step label={3}>
                     <CampaignThirdPage EN={EN} data={props.data} handleChange={props.handleChange} setData={props.setData} isMobile={isMobile} errors={{storyError, publicStoryError, moneyUseError, budgetError}} validations={{validateStory, validatePublicStory, validateMoneyUse, validateBudget}} />
@@ -415,7 +419,13 @@ function CreateCampaignVisuals(props) {
                 {
                     step < 5
                     ?
-                    <Button onClick={nextStep} className="step-btn right-btn">{EN ? 'Next' : 'Siguiente'}</Button>
+                    (
+                        !props.data.campaigncategory
+                        ?
+                        <Button onClick={nextStep} id="disabled-create" disabled={true} style={{backgroundColor:'grey'}} className="step-btn right-btn">{EN ? 'Next' : 'Siguiente'}</Button>
+                        :
+                        <Button onClick={nextStep} className="step-btn right-btn">{EN ? 'Next' : 'Siguiente'}</Button>
+                    )
                     :
                     ''
                 }

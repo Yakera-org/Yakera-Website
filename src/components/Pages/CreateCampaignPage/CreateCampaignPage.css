@@ -260,6 +260,15 @@ aside h6{
     justify-content: space-around;
 }
 
+.step-btn:hover,
+.step-btn:focus
+{
+    opacity: 1;
+    background-color: #ee811c;
+    border: 2px solid #fc8414;
+    color: #f3f3f3;
+}
+
 .left-btn
 {
     margin-right: 0.8%;
@@ -268,6 +277,7 @@ aside h6{
 .right-btn
 {
     margin-left: 0.8%;
+    background-color: #ff8e24;
 }
 
 .center-btn
@@ -282,6 +292,7 @@ aside h6{
     display: flex;
     justify-content: left;
     text-align: left;
+    color: #01224d;
 }
 
 .subtitle-text span,
@@ -495,4 +506,23 @@ aside h6{
     flex: 1;
     content: '';
     margin-bottom: 2%;
+}
+
+.contact-link
+{
+    background-color: transparent;
+    border: none;
+    color: inherit;
+    font-size: inherit;
+    cursor: pointer;
+}
+
+.contact-link:hover
+{
+    text-decoration: underline;
+}
+
+.contact-link:focus
+{
+    outline: none;
 }

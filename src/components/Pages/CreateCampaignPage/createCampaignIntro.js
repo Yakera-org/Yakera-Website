@@ -1,4 +1,5 @@
 import React from "react";
+import { Alert } from "react-bootstrap";
 import './CreateCampaignPage.css';
 
 const campaignImgEs = 'https://assets.yakera.org/yakera/campaign-img-es.webp';
@@ -52,6 +53,14 @@ function CampaignIntroPage(props) {
         return props.handleChange(event);
     }
 
+    const contactMessage = () => {
+        window.location.href = 'https://walink.co/6d9a42';
+    }
+
+    const contactEmail = () => {
+        window.location.href = 'mailto: info@yakera.org';
+    }
+
     return(
     <div>
         <h1>{EN ? 'Create your Campaign' : 'Crea tu Campaña'}</h1>
@@ -68,19 +77,21 @@ function CampaignIntroPage(props) {
             'If you have any questions, text us in Whatsapp at '
             :
             'Si tienes dudas, envía un Whatsapp al número '}
-            <span className="info-highlight">+1 (740) 324-9244</span>
+            <span className="info-highlight"><a className="contact-link" href={contactMessage}>+1 (740) 324-9244</a></span>
+            {/*
             {EN
             ?
             ' or '
             :
             ' o al '}
             <span className="info-highlight">+56 9 5699 7352</span>
+            */}
             {EN
             ?
             ' or send an email to '
             :
             ' o envía un correo electrónico a '}
-            <span className="info-highlight">info@yakera.org</span>
+            <span className="info-highlight"><a className="contact-link" href={contactEmail}>info@yakera.org</a></span>
             {EN
             ?
             '. We are here to help you and answer any questions.'
@@ -272,7 +283,13 @@ function CampaignIntroPage(props) {
         </div>
         }
 
-        {props.categoryError && <div className="missing-data">{props.categoryError}</div>}
+        {/* This alert might be irrelevant due to the button being disabled if there is no category, but just in case */}
+        {props.categoryError && 
+        <Alert key={'danger'} variant={'danger'}>
+            <div className="d-flex justify-content-center">
+                {props.categoryError}
+            </div>
+        </Alert>}
     </div>
     )
 }
