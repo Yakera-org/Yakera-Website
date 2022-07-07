@@ -60,7 +60,7 @@ function CreateCampaignDetails(props) {
         )
     });
 
-    function onRemove(e){
+    async function onRemove(e){
         e.preventDefault()
         var filename = e.target.getAttribute('name')
 
@@ -88,14 +88,17 @@ function CreateCampaignDetails(props) {
             }) 
         }
         else if (e.target.getAttribute('id') === "document"){
-            newFiles = documentFiles.filter(function(item) {
+            newFiles = documentFiles.filter( function(item) {
                 return item.path !==  filename
             })
             setDocumentFiles(newFiles)
 
             let _pics = []
-            newFiles.forEach(pic => {
-                _pics.push(pic.name)
+            newFiles.forEach(async function(pic) {
+                await S3Client_picture.uploadFile(await compressFile(pic))
+                .then((data) => {
+                    _pics.push(data.key)
+                })
             });
             
             props.setData({
@@ -112,10 +115,12 @@ function CreateCampaignDetails(props) {
                return item.path !==  filename
            })
            setCampaignFiles(newFiles)
-
            let _supppics = []
-            newFiles.forEach(pic => {
-                _supppics.push(pic.name)
+            newFiles.forEach(async function(pic) {
+                await S3Client_picture.uploadFile(await compressFile(pic))
+                .then((data) => {
+                    _supppics.push(data.key)
+                })
             });
 
             props.setData({
