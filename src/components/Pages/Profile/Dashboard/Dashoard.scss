@@ -76,12 +76,13 @@
 .dashboard-campaigns-area .dashboard-campaign #approved{
     color: #71b98f;
 }
-.dashboard-campaigns-area .dashboard-campaign #progress{
+.dashboard-campaigns-area .dashboard-campaign #progress, .dashboard-campaigns-area .dashboard-campaign #isWithdrawing{
     color: #edc343;
 }
-.dashboard-campaigns-area .dashboard-campaign #denied{
+.dashboard-campaigns-area .dashboard-campaign #denied, .dashboard-campaigns-area .dashboard-campaign #closed{
     color: #ff7d7d;
 }
+
 .dashboard-campaigns-area #greyed-out{
     -webkit-filter: grayscale(100%);
     filter: grayscale(100%);

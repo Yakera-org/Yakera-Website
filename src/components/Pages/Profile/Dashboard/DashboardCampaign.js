@@ -13,11 +13,14 @@ function DashboardCampaign(props) {
         approved: EN ? "Approved": "Approbada",
         denied: EN ? "Denied": "Rechazada",
         progress: EN ? "In Revision": "En Revisión",
-        closed: EN ? "Closed": "Cerrado"
+        closed: EN ? "Closed": "Cerrado",
+        isWithdrawing: EN ? "Withdrawal in process": "Retiro en proceso"
     }
     const inversedSTATUS = userServices.inverse(STATUS)
 
-    const status =  campaign.approved && !campaign.disabled ?
+    const status =  campaign.withdrawalInProgress?
+                        STATUS.isWithdrawing
+                    : campaign.approved && !campaign.disabled ?
                         STATUS.approved 
                     : campaign.disabled && !campaign.approved?
                         STATUS.denied
@@ -54,10 +57,14 @@ function DashboardCampaign(props) {
                 <p><span id="orange">{EN ? "Created" : "Creado"}</span>: {campaign.created}</p>
                 <p><span id="orange">{EN ? "Category" : "Categoría"}</span>: {campaign.category}</p>
                 <p><span id="orange">{EN ? "Description" : "Descripción"}</span>: {campaign.description}</p>
+                {campaign.status === STATUS.closed?
+                    <p><span id="orange">{EN ? "Total Raised" : "Recaudado total"}</span>: ${campaign.amount}</p>
+                :
+                ""}
                 <p><span id="status">{EN ? "Status" : "Estatus"}</span>: <span id={inversedSTATUS[campaign.status]}>{campaign.status}</span></p>
-            </section>
+                </section>
 
-            <section className="in-revision" id={campaign.status !== STATUS.approved ? "greyed-out" : ""}>
+            <section className="in-revision" id={campaign.status !== STATUS.approved && campaign.status !== STATUS.isWithdrawing ? "greyed-out" : ""}>
                 <div className='img-wrapper'>
                     <img src={campaign.image} alt="campaign-banner" />
                 </div>
@@ -124,7 +131,7 @@ function DashboardCampaign(props) {
                 }
 
 
-                <Grid container spacing={1} className='button-area' id={campaign.status === STATUS.denied ? "no-display" :""}>
+                <Grid container spacing={1} className='button-area' id={campaign.status === STATUS.denied || campaign.status === STATUS.closed ? "no-display" :""}>
                     <Grid item xs={6} sm={6} >
                         <button name={campaign.slug} id="top" style={{backgroundColor:campaign.raised - campaign.withdrawn === 0 ?"grey":""}} onClick={props.withdrawFunds} disabled={campaign.status !== STATUS.approved || campaign.raised - campaign.withdrawn === 0 }>
                             {EN ? "Withdraw Funds" : "Retirar Fondos"}
@@ -136,7 +143,7 @@ function DashboardCampaign(props) {
                         </button>
                     </Grid>
                     <Grid item xs={12} sm={12} >
-                        <button name={campaign.slug} onClick={props.goToCampaign} disabled={campaign.status !== STATUS.approved}>
+                        <button name={campaign.slug} onClick={props.goToCampaign} disabled={campaign.status !== STATUS.approved && campaign.status !== STATUS.isWithdrawing}>
                             {EN ? "Go to my campaign" : "Ir a mi Campaña"}  
                         </button>
                     </Grid>
