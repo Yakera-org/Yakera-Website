@@ -1,5 +1,5 @@
 .register-page {
-    margin-top: 50px;
+    margin-top: 160px;
 }
 
 .register-page input{
@@ -33,16 +33,18 @@
 #step-btn button:active, #step-btn button:focus{
     outline: none;
 }
-.login-card{
+.register-card{
+    width: 40%;
+    margin-left: 30%;
     text-align: center;
     padding: 10px 50px;
 }
-.login-card h1{
+.register-card h1{
     color: #052a5c;
     font-family: Intro-Regular-Alt;
     margin-bottom: 20px;
 }
-.login-card h2{
+.register-card h2{
     font-family: Intro-Regular-Alt;
     margin-top: 20px;
 }
@@ -225,13 +227,18 @@
         margin-top: 180px;
     }
     
-    .login-card{
+    .register-card{
         text-align: center;
         padding: 0px 25px;
+        width: 80%;
+        margin-left: 10%;
     }
 
-    .login-card input{
+    .register-card input{
         width: 100%;
+    }
+    .register-card .invalid-feedback{
+        font-size: 12px;
     }
     .switch button{
         background-color: transparent;
@@ -259,4 +266,32 @@
         margin-bottom: 15px;
     }
     
+}
+
+.resend-email-area
+{
+    margin-top: 2%;
+}
+
+.resend-email-btn
+{
+    color: #646464;
+    background-color: transparent;
+    border: none;
+    text-decoration: underline;
+}
+
+.resend-email-status
+{
+    margin-top: 1%;
+}
+
+.status-good
+{
+    color: #155724;
+}
+
+.status-bad
+{
+    color: #721c24;
 }
