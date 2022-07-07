@@ -5,7 +5,20 @@ import DashboardCampaign from './DashboardCampaign';
 function DashboardContent(props) {
     const data = props.data
     const EN = props.EN
-    const campaigns = data.campaigns
+    
+    // filter so that active campaigns are on top
+    const campaigns = data.campaigns.sort(function(a, b) {
+        if((a.withdrawalInProgress) && !(b.withdrawalInProgress)){
+            return -1;
+        }
+        if((a.approved && !a.disabled) && !(b.approved && !b.disabled)){
+            return -1;
+        }
+        if((!a.approved && !a.disabled) && !(!b.approved && !b.disabled)){
+            return -1;
+        }
+        return 0
+      });
     
     
     function goToCampaign(e){
