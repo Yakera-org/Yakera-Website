@@ -80,14 +80,6 @@ function PaymentAuth(props) {
                     <p>{EN ? 'Please select a payment method' : 'Por favor seleccione un método de pago.'}</p>
                 </div>
 
-                <PayPal
-                    amount={total_amount}
-                    onSuccess={props.OnSuccessPayment}
-                    onClick={props.OnPaymentClick}
-                    onErrror={props.OnPaymentError}
-                    onCancel={props.OnPaymentCancel}
-                />
-
                 <Accordion>
                     <AccordionCard>
                         <Accordion.Toggle name="creditcard" onClick={onPaymentAuthClick} as={AccordionCard.Header} eventKey="0" className="stripe-but align-items-center d-flex justify-content-center">
@@ -149,6 +141,16 @@ function PaymentAuth(props) {
                         </Accordion.Collapse>
                     </AccordionCard>
                 </Accordion>
+
+                <br />
+
+                <PayPal
+                    amount={total_amount}
+                    onSuccess={props.OnSuccessPayment}
+                    onClick={props.OnPaymentClick}
+                    onErrror={props.OnPaymentError}
+                    onCancel={props.OnPaymentCancel}
+                />
 
                 <br />
 
