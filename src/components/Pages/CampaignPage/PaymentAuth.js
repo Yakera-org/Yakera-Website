@@ -10,6 +10,7 @@ import { Elements } from "@stripe/react-stripe-js"
 import StripeForm from './Stripe';
 import api from '../../../services/api';
 import { Accordion, Card as AccordionCard } from 'react-bootstrap';
+import PayPal from './Paypal';
 import Environment from '../../../services/Environment';
 
 const PUBLIC_KEY = Environment.getStripeToken();
@@ -78,6 +79,14 @@ function PaymentAuth(props) {
                     </h4>
                     <p>{EN ? 'Please select a payment method' : 'Por favor seleccione un método de pago.'}</p>
                 </div>
+
+                <PayPal
+                    amount={total_amount}
+                    onSuccess={props.OnSuccessPayment}
+                    onClick={props.OnPaymentClick}
+                    onErrror={props.OnPaymentError}
+                    onCancel={props.OnPaymentCancel}
+                />
 
                 <Accordion>
                     <AccordionCard>
