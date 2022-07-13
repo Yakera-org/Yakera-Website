@@ -98,12 +98,18 @@ function EditPage() {
         if (validate(data)) backendPatch(await setProfilePicture())
     }
     function validate(data){
-        if(validateFields.validateEmail(data.user?.zelleInfo?.email)){
-            setError(EN? "Please check the Zelle Email." : "Por favor, revise el correo electrónico de Zelle.")
-            setSubmitLoading(false)
+        let zelleEmail = data.user?.zelleInfo?.email
+        if (zelleEmail){
+            if(validateFields.validateEmail()){
+                setError(EN? "Please check the Zelle Email." : "Por favor, revise el correo electrónico de Zelle.")
+                setSubmitLoading(false)
+            }else{
+                return true
+            }
         }else{
             return true
         }
+        
     }
 
     async function setProfilePicture(){
