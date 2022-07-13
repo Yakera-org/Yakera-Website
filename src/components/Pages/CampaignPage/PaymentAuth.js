@@ -18,6 +18,7 @@ const stripePromise = loadStripe(PUBLIC_KEY);
 
 const cardImg = 'https://assets.yakera.org/yakera/card.webp';
 const zelleLogo = 'https://assets.yakera.org/yakera/zelle.webp';
+const paypalLogo = 'https://assets.yakera.org/yakera/paypal-logo.webp';
 
 
 function PaymentAuth(props) {
@@ -120,7 +121,7 @@ function PaymentAuth(props) {
                     <AccordionCard>
                         <Accordion.Toggle as={AccordionCard.Header} name="reserve" onClick={onPaymentAuthClick} eventKey="0" className="reserve-but align-items-center d-flex justify-content-center">
                             <div name="reserve">
-                                <img name="reserve" alt="card" src={reserveLogo}></img>
+                                <img name="reserve" alt="reserve-logo" src={reserveLogo} />
                             </div>
                         </Accordion.Toggle>
                         <Accordion.Collapse eventKey="0">
@@ -144,13 +145,27 @@ function PaymentAuth(props) {
 
                 <br />
 
-                <PayPal
-                    amount={total_amount}
-                    onSuccess={props.OnSuccessPayment}
-                    onClick={props.OnPaymentClick}
-                    onErrror={props.OnPaymentError}
-                    onCancel={props.OnPaymentCancel}
-                />
+                <Accordion>
+                    <AccordionCard>
+                        <Accordion.Toggle as={AccordionCard.Header} name="paypal-options" onClick={onPaymentAuthClick} eventKey="0" className="paypal-but align-item-center d-flex justify-content-center">
+                            <div name="paypal-options">
+                                <img name="paypal-options" src={paypalLogo} alt="paypal-logo" />
+                            </div>
+                        </Accordion.Toggle>
+                        <Accordion.Collapse eventKey="0">
+                            <AccordionCard.Body>
+                                <PayPal
+                                    EN={EN}
+                                    amount={total_amount}
+                                    onSuccess={props.OnSuccessPayment}
+                                    onClick={props.OnPaymentClick}
+                                    onErrror={props.OnPaymentError}
+                                    onCancel={props.OnPaymentCancel}
+                                />
+                            </AccordionCard.Body>
+                        </Accordion.Collapse>
+                    </AccordionCard>
+                </Accordion>
 
                 <br />
 

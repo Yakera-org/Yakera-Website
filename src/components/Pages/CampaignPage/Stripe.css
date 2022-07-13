@@ -58,6 +58,12 @@
   color: #2f476c;
 }
 
+.stripe-link:hover
+{
+  color: #2f476c;
+  text-decoration: underline;
+}
+
 .payment-error
 {
   color: #eb3b3b;

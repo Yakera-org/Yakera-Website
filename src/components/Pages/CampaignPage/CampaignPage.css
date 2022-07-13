@@ -292,7 +292,7 @@
 }
 
 
-.stripe-but, .reserve-but, .zelle-but{
+.stripe-but, .reserve-but, .zelle-but, .paypal-but{
     width: 100%;
     padding: 2px;
     padding-bottom: 0px;
@@ -315,6 +315,20 @@
     background-color: #edf0f4;
     border-radius: 15px;
 
+}
+
+.paypal-but:hover
+{
+    background-color: #f0f0e4aa;
+    cursor: pointer;
+}
+
+.paypal-but img
+{
+    width: 30%;
+    max-width: 40%;
+    height: auto;
+    margin-top: 2.5%;
 }
 
 .zelle-but:hover{
@@ -362,7 +376,7 @@
 }
 
 @media only screen and (max-width: 1200px) {
-.stripe-but, .reserve-but{
+.stripe-but, .reserve-but, .paypal-but{
     width: 100%;
     padding: 5px;
     padding-bottom: 5px;
@@ -533,7 +547,7 @@
         overflow: hidden;
         font-size: 18px;
     }
-    .stripe-but, .reserve-but{
+    .stripe-but, .reserve-but, .paypal-but{
         width: 100%;
         padding: 10px;
         padding-bottom: 10px;
