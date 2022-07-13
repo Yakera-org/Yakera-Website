@@ -163,6 +163,18 @@
 .btn-wrapper button:hover{
     opacity: 0.8;
 }
+.dashboard-stats-grid .switch {
+    padding: 5px;
+    border-radius: 5px;
+    margin-left: 5px;
+    color: white;
+}
+.dashboard-stats-grid p #on{
+    background-color: #71b98f;
+}
+.dashboard-stats-grid p #off{
+    background-color: #ff7d7d;
+}
 @media only screen and (max-width: 600px) {
     .btn-wrapper button{
         width: 80%;

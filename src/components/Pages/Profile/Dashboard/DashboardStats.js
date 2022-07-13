@@ -1,5 +1,5 @@
 import React from 'react';
-import { Grid, Checkbox } from '@material-ui/core';
+import { Grid } from '@material-ui/core';
 import "./Dashoard.scss"
 
 
@@ -39,27 +39,20 @@ function DashboardStats(props) {
                         </Grid>
                     )                    
                 })} 
-                {userStats.zelleEmail
-                ?
                 <Grid item xs={12} sm={4}>
                     <p style={{marginTop:"-10px"}}>
                         <span id="orange">{StatDictionary["acceptingZelle"]}</span>:  
-                        <Checkbox
-                            disabled
-                            checked={user.zelleInfo.isAccepting}
-                            style={{
-                                zIndex:"0",
-                                color: '#ea8737',
-                                '&.MuiChecked': {
-                                    color: 'rgba(234, 135, 55, .5)'
-                                },
-                            }}
-                            />
+                        {user.zelleInfo.isAccepting && userStats.zelleEmail && userStats.zelleName
+                        ?
+                        // on
+                        <span className='switch' id='on'>ON</span>
+                        :
+                        // off
+                        <span className='switch' id='off'>OFF</span>
+
+                        }
                     </p>
-                </Grid>
-                :
-                ""
-                }     
+                </Grid>  
             </Grid>
             <div className='btn-wrapper'>
                 <button onClick={()=>window.location.href="/create-campaign"}>

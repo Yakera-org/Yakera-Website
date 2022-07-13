@@ -100,7 +100,7 @@ function EditPage() {
     function validate(data){
         let zelleEmail = data.user?.zelleInfo?.email
         if (zelleEmail){
-            if(validateFields.validateEmail()){
+            if(validateFields.validateEmail(zelleEmail)){
                 setError(EN? "Please check the Zelle Email." : "Por favor, revise el correo electrónico de Zelle.")
                 setSubmitLoading(false)
             }else{
