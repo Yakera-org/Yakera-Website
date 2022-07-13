@@ -68,6 +68,8 @@
     max-width: 100%;
     min-width: 200px;
     border-radius: 5px;
+    max-height: 400px;
+    object-fit: cover;
 }
 .dashboard-campaigns-area .dashboard-campaign #status{
     color: #0e325e;
