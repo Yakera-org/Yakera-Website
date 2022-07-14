@@ -63,6 +63,13 @@
     outline: none;
 }
 
+#background
+{
+    background-color: #fff;
+    padding: 3%;
+    margin: 1% -4%;
+}
+
 #submit-btn button {
     font-family: Intro-Light;
     font-size: 20px;
@@ -525,4 +532,14 @@ aside h6{
 .contact-link:focus
 {
     outline: none;
+}
+
+.padded-text
+{
+    padding: 0.5%;
+}
+
+.mobile-row
+{
+    margin: -5% 0;
 }

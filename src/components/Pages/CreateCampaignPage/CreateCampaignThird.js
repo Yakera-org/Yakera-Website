@@ -52,7 +52,7 @@ function CampaignThirdPage(props)
                     autoComplete="off" 
                     as="textarea"
                     name='story'
-                    style={{minHeight:'100px'}}
+                    style={{minHeight:'100px', maxHeight:'200px'}}
                     placeholder={EN ? "I'm going through..." : 'Estoy atravesando...'}
                     // value={props.data.story}
                     onChange={(event) => handleTextAreaChange(event, props.validations.validateStory)}
@@ -84,7 +84,7 @@ function CampaignThirdPage(props)
                     autoComplete="off" 
                     as="textarea"
                     name='publicStory'
-                    style={{minHeight:'100px'}}
+                    style={{minHeight:'100px', maxHeight:'200px'}}
                     placeholder={EN ? 'I need to get...' : 'Necesito conseguir...'}
                     // value={props.data.publicstory}
                     onChange={(event) => handleTextAreaChange(event, props.validations.validatePublicStory)}
@@ -116,7 +116,7 @@ function CampaignThirdPage(props)
                     autoComplete="off" 
                     as="textarea"
                     name='moneyUse'
-                    style={{minHeight:'100px'}}
+                    style={{minHeight:'100px', maxHeight:'200px'}}
                     placeholder={EN ? "With the money I'll get..." : 'Con el dinero que reciba...'}
                     // value={props.data.moneyuse}
                     onChange={(event) => handleTextAreaChange(event, props.validations.validateMoneyUse)}
@@ -148,7 +148,7 @@ function CampaignThirdPage(props)
                     as='textarea'
                     name='itemizedbudget'
                     autoComplete="off" 
-                    style={{minHeight:'100px'}}
+                    style={{minHeight:'100px', maxHeight:'200px'}}
                     placeholder={EN ? 'Enter the amount (USD) and item descriptions' : 'Llene con las cosas que comprará y los precios en $USD'}
                     // value={props.data.itemizedbudget}
                     onChange={(event) => handleTextAreaChange(event, props.validations.validateBudget)}
