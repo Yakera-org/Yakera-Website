@@ -71,7 +71,7 @@ function CampaignIntroPage(props) {
         ?
         ''
         :
-        <p className="info-text">
+        <p className="info-text padded-text">
             {EN
             ?
             'If you have any questions, text us in Whatsapp at '
@@ -130,7 +130,7 @@ function CampaignIntroPage(props) {
                 </label>
             </div>
 
-            <div className="row">
+            <div className="row mobile-row">
                 <label>
                     <input type="radio" name="campaigncategory" id="category1" value={EN ? 'education' : 'educación'} radioGroup="category" onChange={handleRadioChange} className="radio-card-input" />
                     <div className="row radio-card">
@@ -149,7 +149,7 @@ function CampaignIntroPage(props) {
                 </label>
             </div>
 
-            <div className="row">
+            <div className="row mobile-row">
                 <label>
                     <input type="radio" name="campaigncategory" id="category2" value={EN ? 'small business' : 'pequeños negocios'} radioGroup="category" onChange={handleRadioChange} className="radio-card-input" />
                     <div className="row radio-card">
@@ -168,7 +168,7 @@ function CampaignIntroPage(props) {
                 </label>
             </div>
 
-            <div className="row">
+            <div className="row mobile-row">
                 <label>
                     <input type="radio" name="campaigncategory" id="category3" value={EN ? 'nutrition' : 'alimentación'} radioGroup="category" onChange={handleRadioChange} className="radio-card-input" />
                     <div className="row radio-card">

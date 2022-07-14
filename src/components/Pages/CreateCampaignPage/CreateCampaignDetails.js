@@ -87,7 +87,7 @@ function CreateCampaignDetails(props) {
                     type='description'
                     as="textarea"
                     autoComplete="off" 
-                    style={{minHeight:'100px'}}
+                    style={{minHeight:'100px', maxHeight:'200px'}}
                     name='description'
                     placeholder={EN ? 'Description...' : 'Descripción...'}
                     onChange={handleDescriptionChange}

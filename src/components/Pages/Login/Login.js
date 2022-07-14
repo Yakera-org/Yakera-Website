@@ -34,7 +34,7 @@ function Login() {
     async function submit(e){
         e.preventDefault()
         if(!validateData()){
-            setError(EN ? "Invalid fields." : "Campos no válidos.")
+            setError(EN ? "Invalid fields" : "Campos no válidos")
             return
         }
 
@@ -62,7 +62,7 @@ function Login() {
                 ...data,
                 password: initialState.password
               });
-            setError(EN ? "User not found." : "Usuario no encontrado.")
+            setError(EN ? "Incorrect email or password" : "Email o contraseña inválida")
             setLoading(false)
         } 
     }
