@@ -22,7 +22,7 @@ function RecipientEdit(props) {
 
     const fieldDict = {
         phone: EN ? "Phone Number" : "Teléfono",
-        address: EN ? "Address" : "Teléfono",
+        address: EN ? "Address" : "Dirección",
         email: "Zelle Email",
         name: EN ? "Zelle Name" : "Zelle Nombre",
         reserveUsername: EN ? "Reserve Username": "Usuario de Reserve",
