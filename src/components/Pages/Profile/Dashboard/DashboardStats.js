@@ -43,7 +43,7 @@ function DashboardStats(props) {
                 ) : (
                   <span>
                     <a id="grey" href="/profile/edit">
-                      {EN ? "missing" : "desaparecido"}
+                      {EN ? "missing" : "vacío"}
                     </a>{" "}
                   </span>
                 )}
