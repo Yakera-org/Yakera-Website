@@ -1,22 +1,25 @@
 import React from 'react'
 import { Grid } from '@material-ui/core';
 import FAQQuestion from './FAQQuestion';
-import aboutYakera from "../../../pics/aboutYakera.png"
-import createCampaign from "../../../pics/createCampaign.png"
-import withdrawing from "../../../pics/withdrawing.png"
-import supportUs from "../../../pics/supportUs.png"
 
 function FAQDrawer(props) {
       const title = props.title
       const questions = props.questions
       const answers = props.answers
       const image = props.image
-      var nameToImage = {};
-      nameToImage["aboutYakera"] = aboutYakera
-      nameToImage["createCampaign"] = createCampaign
-      nameToImage["withdrawing"] = withdrawing
-      nameToImage["supportUs"] = supportUs
-      console.log(image)
+
+      const aboutYakera = "https://yakera-files.s3.us-east-2.amazonaws.com/yakera/aboutYakera.webp";
+      const createCampaign = "https://yakera-files.s3.us-east-2.amazonaws.com/yakera/createCampaign.webp";
+      const withdrawing = "https://yakera-files.s3.us-east-2.amazonaws.com/yakera/withdrawing.webp";
+      const supportUs = "https://yakera-files.s3.us-east-2.amazonaws.com/yakera/supportUs.webp";
+
+      const nameToImage = {
+        "aboutYakera": aboutYakera,
+        "createCampaign": createCampaign,
+        "withdrawing": withdrawing,
+        "supportUs": supportUs,
+      }
+
     return (
         <div>
             <Grid container spacing={1} style={{ alignItems:'center'}}>

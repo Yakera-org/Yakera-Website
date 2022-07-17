@@ -4,11 +4,11 @@ import Drawer from './FAQDrawer'
 import Author from '../../author';
 import content from './FAQ.json';
 import WhatsAppButton from '../WhatsAppButton/WhatsAppButton.js';
-import FAQBottom from "../../../pics/FAQBottom.png"
 
 const banner_left = "https://yakera-files.s3.us-east-2.amazonaws.com/yakera/FAQ-Banner-Left.png";
 const banner_right = "https://yakera-files.s3.us-east-2.amazonaws.com/yakera/FAQ-Banner-Right.png";
 const bottom_pic = 'https://yakera-files.s3.us-east-2.amazonaws.com/yakera/FAQ-Bottom.png';
+const FAQBottom = 'https://yakera-files.s3.us-east-2.amazonaws.com/yakera/FAQBottom.webp';
 
 function FAQVisuals(props) {
 
