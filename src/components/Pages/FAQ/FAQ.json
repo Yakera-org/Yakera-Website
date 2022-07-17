@@ -65,6 +65,7 @@
         ],
     "es":[
             {
+                "image": "aboutYakera",
                 "title": "Sobre Yakera",
                 "questions":[
                     "¿Qué hacemos?",
@@ -86,6 +87,7 @@
                 ]
             },
             {
+                "image": "createCampaign",
                 "title": "Crear una campaña",
                 "questions":[
                     "¿Yo puedo crear una campaña?",
@@ -97,6 +99,7 @@
                 ]
             },
             {
+                "image": "withdrawing",
                 "title": "Retirando los fondos",
                 "questions":[
                     "¿Cómo puedo sacar los fondos de mi campaña?",
@@ -114,6 +117,7 @@
                 ]
             },
             {
+                "image": "supportUs",
                 "title": "Tu apoyo a Yakera",
                 "questions":[
                     "¿Qué hacen con las donaciones directas a Yakera?"
