@@ -1,6 +1,7 @@
 {
     "en":[
             {
+                "image": "aboutYakera",
                 "title": "About Yakera",
                 "questions":[
                     "What do we do?",
@@ -22,6 +23,7 @@
                 ]
             },
             {
+                "image": "createCampaign",
                 "title": "Creating a campaign",
                 "questions":[
                     "Can I create a campaign?",
@@ -33,6 +35,7 @@
                 ]
             },
             {
+                "image": "withdrawing",
                 "title": "Withdrawing the funds",
                 "questions":[
                     "How can I withdraw the funds from my campaign?",
@@ -50,6 +53,7 @@
                     ]
             },
             {
+                "image": "supportUs",
                 "title": "Support Us",
                 "questions":[
                     "What do you do with the money that I donate to Yakera directly (not in campaigns)?"

@@ -4,6 +4,7 @@ import Drawer from './FAQDrawer'
 import Author from '../../author';
 import content from './FAQ.json';
 import WhatsAppButton from '../WhatsAppButton/WhatsAppButton.js';
+import FAQBottom from "../../../pics/FAQBottom.png"
 
 const banner_left = "https://yakera-files.s3.us-east-2.amazonaws.com/yakera/FAQ-Banner-Left.png";
 const banner_right = "https://yakera-files.s3.us-east-2.amazonaws.com/yakera/FAQ-Banner-Right.png";
@@ -62,6 +63,7 @@ function FAQVisuals(props) {
                             filteredContent.map((element, i) => {
                                 return (
                                     <Drawer
+                                        image={element.image}
                                         title={element.title}
                                         questions={element.questions}
                                         answers={element.answers}
@@ -77,6 +79,7 @@ function FAQVisuals(props) {
                         <Hidden xsDown>
                             <Grid item xs={12} sm={5}>  <img alt='banner-pic' className="bottom-pic" src={bottom_pic} style={{ width: "100%", marginLeft: "0%" }} /> </Grid>
                         </Hidden>
+                        <div className='bottom-img-mweb'><img alt='banner-img' className="banner-img" src={FAQBottom}/></div>
                         <Grid item xs={12} sm={7}> <div style={{ padding: "10px 0px 10px 0px" }}>
                             {EN ?
                                 <b className="bottom-text">How do I contact Yakera if I have a question or need support?</b>
@@ -88,11 +91,15 @@ function FAQVisuals(props) {
                             <div style={{ padding: "10px 0px 50px 0px" }}>
                                 {EN ?
                                     <div>
-                                        Contact a member of our support team at <a href="https://walink.co/6d9a42">this link</a>, via email at <a href="mailto: info@yakera.org">info@yakera.org</a> or through our social media by finding us as <a href="https://twitter.com/yakeraorg">@yakeraorg</a>.
+                                        You can contact us on <a href="https://chat.whatsapp.com/LcSFQzsohaC1hmlgdbij3D"><u>Yakera Community Group with this link</u></a>,
+                                        via an email to <a href="mailto: abc@example.com"><u>info@yakera.org</u></a>{", or through our social media "}
+                                        <u><a href="https://twitter.com/yakeraorg">@yakeraorg</a></u>.
                                     </div>
                                     :
                                     <div>
-                                        Ponte en contacto con un miembro de nuestro equipo de soporte en <a href="https://walink.co/6d9a42">este link</a>, vía mail a <a href="mailto: info@yakera.org">info@yakera.org</a> o por nuestras redes sociales encontrándonos como <a href="https://twitter.com/yakeraorg">@yakeraorg</a>.
+                                        Puedes contactarnos en nuestro grupo de la Comunidad Yakera en <a href="https://chat.whatsapp.com/LcSFQzsohaC1hmlgdbij3D"><u>este link</u></a>
+                                        , vía mail a <a href="mailto: abc@example.com"><u>info@yakera.org</u></a>
+                                        {" o por nuestras redes sociales encontrándonos como "}<u><a href="https://twitter.com/yakeraorg">@yakeraorg</a></u>.
 
                                     </div>
 

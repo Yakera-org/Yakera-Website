@@ -63,6 +63,12 @@
    width: 70%;
    float: center;
 }
+.banner-img-mweb{
+    display:none;
+}
+.bottom-img-mweb{
+    display: none;
+}
 .banner-text{
     font-size: 30px;
     text-align: center;
@@ -122,5 +128,19 @@
         color: rgb(51, 51, 51);
         font-size: 16px;
     }
-
+    .banner-img-mweb{
+        width: 20%;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: -5%;
+    }
+    .bottom-img-mweb{
+        width: 100%;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        margin-left: 20%;
+        margin-bottom: 5%;
+    }
 }
