@@ -10,7 +10,7 @@ function DashboardStats(props) {
     address: EN ? "Address" : "Dirección",
     zelleEmail: EN ? "Zelle Email" : "Email Zelle",
     zelleName: EN ? "Zelle Name" : "Zelle Nombre",
-    acceptingZelle: EN ? "Accepting Zelle Payments?" : "¿Aceptando pago?",
+    acceptingZelle: EN ? "Accepting Zelle Payments?" : "¿Aceptando pagos de Zelle?",
     reserveUsername: EN ? "Reserve Username" : "Usuario de Reserve",
   };
   const user = props.user;
