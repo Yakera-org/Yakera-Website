@@ -8,9 +8,13 @@ function DashboardStats(props) {
     email: EN ? "Email" : "Email",
     phone: EN ? "Phone Number" : "Teléfono",
     address: EN ? "Address" : "Dirección",
-    zelleEmail: EN ? "Zelle Email" : "Email Zelle",
+    zelleContact: EN
+      ? "Zelle Email or Zelle Phone Number"
+      : "Email Zelle o Teléfono Zelle",
     zelleName: EN ? "Zelle Name" : "Zelle Nombre",
-    acceptingZelle: EN ? "Accepting Zelle Payments?" : "¿Aceptando pagos de Zelle?",
+    acceptingZelle: EN
+      ? "Accepting Zelle Payments?"
+      : "¿Aceptando pagos de Zelle?",
     reserveUsername: EN ? "Reserve Username" : "Usuario de Reserve",
   };
   const user = props.user;
@@ -18,7 +22,7 @@ function DashboardStats(props) {
     email: user.email || "",
     phone: user.phone || "",
     address: user.address || "",
-    zelleEmail: user?.zelleInfo?.email || "",
+    zelleContact: user?.zelleInfo?.email || "",
     zelleName: user?.zelleInfo?.name || "",
     reserveUsername: user.reserveUsername || "",
   };
@@ -55,7 +59,7 @@ function DashboardStats(props) {
           <p style={{ marginTop: "-10px" }}>
             <span id="orange">{StatDictionary["acceptingZelle"]}</span>:
             {user.zelleInfo?.isAccepting &&
-            userStats.zelleEmail &&
+            userStats.zelleContact &&
             userStats.zelleName ? (
               // on
               <span className="switch" id="on">

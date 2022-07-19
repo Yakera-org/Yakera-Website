@@ -4,7 +4,6 @@ import api from "../../../../services/api";
 import { userServices } from "../UserService";
 import TokenService from "../../../../services/token";
 import "./EditPage.scss";
-import { validateFields } from "../../../../services/Validation";
 import LanguageService from "../../../../services/language";
 
 function EditPage() {
@@ -97,18 +96,9 @@ function EditPage() {
     if (validate(data)) backendPatch(await setProfilePicture());
   }
   function validate(data) {
-    let zelleEmail = data.user?.zelleInfo?.email;
-    if (zelleEmail) {
-      if (validateFields.validateEmail(zelleEmail)) {
-        setError(
-          EN
-            ? "Please check the Zelle Email."
-            : "Por favor, revise el correo electrónico de Zelle."
-        );
-        setSubmitLoading(false);
-      } else {
-        return true;
-      }
+    if (!true) {
+      return false;
+      // leave tthis for potential future input validations
     } else {
       return true;
     }
