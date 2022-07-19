@@ -16,12 +16,7 @@ function CampaignThirdPage(props)
 
     return (
         <div>
-            {isMobile
-            ?
-            <h2 className="subtitle-text-mobile"><span>{EN ? 'Tell us your story' : 'Cuéntanos tu historia'}</span></h2>
-            :
-            <h2 className="subtitle-text"><span>{EN ? 'Tell us your story' : 'Cuéntanos tu historia'}</span></h2>
-            }
+            <h2 className={isMobile ? 'subtitle-text-mobile' : 'subtitle-text'}><span>{EN ? 'Tell us your story' : 'Cuéntanos tu historia'}</span></h2>
             <p className="info-text">
                 {EN
                 ?

@@ -27,12 +27,7 @@ function CreateCampaignDetails(props) {
 
     return(
         <div className='campaign-details'>
-            {isMobile
-            ?
-            <h2 className="subtitle-text-mobile"><span>{EN ? 'Details' : 'Detalles'}</span></h2>
-            :
-            <h2 className="subtitle-text"><span>{EN ? 'Details' : 'Detalles'}</span></h2>
-            }
+            <h2 className={isMobile ? 'subtitle-text-mobile' : 'subtitle-text'}><span>{EN ? 'Details' : 'Detalles'}</span></h2>
 
             <FormGroup>
                 <FormLabel className="question-label">{EN ? 'Name of your Campaign' : 'Título de la campaña'}</FormLabel>

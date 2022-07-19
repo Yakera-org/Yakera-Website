@@ -20,19 +20,9 @@ function CampaignIntroPage(props) {
         const cat2 = document.getElementById('text-category2');
         const cat3 = document.getElementById('text-category3');
 
-        const bdy0 = document.getElementById('body-category0');
-        const bdy1 = document.getElementById('body-category1');
-        const bdy2 = document.getElementById('body-category2');
-        const bdy3 = document.getElementById('body-category3');
-
         const unsetClass = element => {
             if(element.classList.contains('radio-title-checked'))
                 element.classList.toggle('radio-title-checked');
-        };
-
-        const setHidden = element => {
-            if(!element.classList.contains('radio-body-hidden'))
-                element.classList.toggle('radio-body-hidden');
         };
 
         unsetClass(cat0);
@@ -40,15 +30,8 @@ function CampaignIntroPage(props) {
         unsetClass(cat2);
         unsetClass(cat3);
 
-        setHidden(bdy0);
-        setHidden(bdy1);
-        setHidden(bdy2);
-        setHidden(bdy3);
-
         const selected = document.getElementById(`text-${event.target.id}`);
         selected.classList.toggle('radio-title-checked');
-        const body = document.getElementById(`body-${event.target.id}`);
-        body.classList.toggle('radio-body-hidden');
 
         return props.handleChange(event);
     }
@@ -100,26 +83,24 @@ function CampaignIntroPage(props) {
         </p>
         }
 
-        { isMobile
-        ?
-        <h2 className="subtitle-text-mobile"><span>{EN ? 'Details' : 'Detalles'}</span></h2>
-        :
-        <h2 className="subtitle-text"><span>{EN ? 'Details' : 'Detalles'}</span></h2>
-        }
+        {/*
+        <h2 className={isMobile ? 'subtitle-text-mobile' : 'subtitle-text'}><span>{EN ? 'Details' : 'Detalles'}</span></h2>
+        */}
         <p className="category-label">{EN ? 'Campaign Category' : 'Categoría de la campaña'}</p>
+        <p className="info-text-margin">{EN ? 'Please choose the category that you identify with your campaign.' : 'Por favor elige la categoría que identificas con tu campaña.'}</p>
 
         { isMobile
         ?
         <div className="col">
-            <div className="row">
-                <label>
+            <div className="row mobile-row">
+                <label className="category-healthcare">
                     <input type="radio" name="campaigncategory" id="category0" value={EN ? 'healthcare' : 'salud'} radioGroup="category" onChange={handleRadioChange} className="radio-card-input" />
-                    <div className="row radio-card">
+                    <div className="row radio-card-mobile">
                         <div className="mobile-img">
                             <img src={healthcare} alt="Healthcare" className="category-img-mobile" />
                         </div>
                         <p className="radio-title-mobile" id="text-category0">{EN ? 'Healthcare' : 'Salud'}</p>
-                        <p className="radio-body-mobile radio-body-hidden" id="body-category0">
+                        <p className="radio-body-mobile" id="body-category0">
                             {EN
                              ?
                              'Raise funds to cover medical treatments, operations, tests, medications or any product/service that affects the quality of your health or that of someone else.'
@@ -131,14 +112,14 @@ function CampaignIntroPage(props) {
             </div>
 
             <div className="row mobile-row">
-                <label>
+                <label className="category-education">
                     <input type="radio" name="campaigncategory" id="category1" value={EN ? 'education' : 'educación'} radioGroup="category" onChange={handleRadioChange} className="radio-card-input" />
-                    <div className="row radio-card">
+                    <div className="row radio-card-mobile">
                         <div className="mobile-img">
                             <img src={education} alt="Education" className="category-img-mobile" />
                         </div>
                         <p className="radio-title-mobile" id="text-category1">{EN ? 'Education' : 'Educación'}</p>
-                        <p className="radio-body-mobile radio-body-hidden" id="body-category1">
+                        <p className="radio-body-mobile" id="body-category1">
                             {EN
                              ?
                              'Raise funds to be able to pay for any product/service that directly or indirectly affects the quality of learning and education.'
@@ -150,14 +131,14 @@ function CampaignIntroPage(props) {
             </div>
 
             <div className="row mobile-row">
-                <label>
+                <label className="category-business">
                     <input type="radio" name="campaigncategory" id="category2" value={EN ? 'small business' : 'pequeños negocios'} radioGroup="category" onChange={handleRadioChange} className="radio-card-input" />
-                    <div className="row radio-card">
+                    <div className="row radio-card-mobile">
                         <div className="mobile-img">
                             <img src={smallbusiness} alt="Small Business" className="category-img-mobile" />
                         </div>
                         <p className="radio-title-mobile" id="text-category2">{EN ? 'Small Business' : 'Pequeños Negocios'}</p>
-                        <p className="radio-body-mobile radio-body-hidden" id="body-category2">
+                        <p className="radio-body-mobile" id="body-category2">
                             {EN
                              ?
                              'Raise funds to pay for projects that will improve your economy and/or quality of life. For example: get a home or grow a business.'
@@ -169,14 +150,14 @@ function CampaignIntroPage(props) {
             </div>
 
             <div className="row mobile-row">
-                <label>
+                <label className="category-nutrition">
                     <input type="radio" name="campaigncategory" id="category3" value={EN ? 'nutrition' : 'alimentación'} radioGroup="category" onChange={handleRadioChange} className="radio-card-input" />
-                    <div className="row radio-card">
+                    <div className="row radio-card-mobile">
                         <div className="mobile-img">
                             <img src={nutrition} alt="Nutrition" className="category-img-mobile" />
                         </div>
                         <p className="radio-title-mobile" id="text-category3">{EN ? 'Nutrition' : 'Nutrición'}</p>
-                        <p className="radio-body-mobile radio-body-hidden" id="body-category3">
+                        <p className="radio-body-mobile" id="body-category3">
                             {EN
                              ?
                              'Raise funds to contribute to the daily food of your family, a soup kitchen or shelter. It can be for both people and animals.'
@@ -190,7 +171,7 @@ function CampaignIntroPage(props) {
         :
         <div className="row">
             <div className="col">
-                <label>
+                <label className="category-healthcare">
                     <input type="radio" name="campaigncategory" id="category0" value={EN ? 'healthcare' : 'salud'} radioGroup="category" onChange={handleRadioChange} className="radio-card-input" />
                     <div className="panel panel-default radio-card">
                         <div className="panel-heading">
@@ -200,7 +181,7 @@ function CampaignIntroPage(props) {
                         </div>
                         <div className="panel-body">
                             <p className="radio-title" id="text-category0">{EN ? 'Healthcare' : 'Salud'}</p>
-                            <p className="radio-body radio-body-hidden" id="body-category0">
+                            <p className="radio-body" id="body-category0">
                                 {EN
                                  ?
                                  'Raise funds to cover medical treatments, operations, tests, medications or any product/service that affects the quality of your health or that of someone else.'
@@ -213,7 +194,7 @@ function CampaignIntroPage(props) {
             </div>
 
             <div className="col">
-                <label>
+                <label className="category-education">
                     <input type="radio" name="campaigncategory" id="category1"  value={EN ? 'education' : 'educación'} radioGroup="category" onChange={handleRadioChange} className="radio-card-input" />
                     <div className="panel panel-default radio-card">
                         <div className="panel-heading">
@@ -223,7 +204,7 @@ function CampaignIntroPage(props) {
                         </div>
                         <div className="panel-body">
                             <p className="radio-title" id="text-category1">{EN ? 'Education' : 'Educación'}</p>
-                            <p className="radio-body radio-body-hidden" id="body-category1">
+                            <p className="radio-body" id="body-category1">
                                 {EN
                                  ?
                                  'Raise funds to be able to pay for any product/service that directly or indirectly affects the quality of learning and education.'
@@ -236,7 +217,7 @@ function CampaignIntroPage(props) {
             </div>
 
             <div className="col">
-                <label>
+                <label className="category-business">
                     <input type="radio" name="campaigncategory" id="category2"  value={EN ? 'small business' : 'pequeños negocios'} radioGroup="category" onChange={handleRadioChange} className="radio-card-input" />
                     <div className="panel panel-default radio-card">
                         <div className="panel-heading">
@@ -246,7 +227,7 @@ function CampaignIntroPage(props) {
                         </div>
                         <div className="panel-body">
                             <p className="radio-title" id="text-category2">{EN ? 'Small Business' : 'Pequeños Negocios'}</p>
-                            <p className="radio-body radio-body-hidden" id="body-category2">
+                            <p className="radio-body" id="body-category2">
                                 {EN
                                  ?
                                  'Raise funds to pay for projects that will improve your economy and/or quality of life. For example: get a home or grow a business.'
@@ -259,7 +240,7 @@ function CampaignIntroPage(props) {
             </div>
 
             <div className="col">
-                <label>
+                <label className="category-nutrition">
                     <input type="radio" name="campaigncategory" id="category3"  value={EN ? 'nutrition' : 'alimentación'} radioGroup="category" onChange={handleRadioChange} className="radio-card-input" />
                     <div className="panel panel-default radio-card">
                         <div className="panel-heading">
@@ -269,7 +250,7 @@ function CampaignIntroPage(props) {
                         </div>
                         <div className="panel-body">
                             <p className="radio-title" id="text-category3">{EN ? 'Nutrition' : 'Nutrición'}</p>
-                            <p className="radio-body radio-body-hidden" id="body-category3">
+                            <p className="radio-body" id="body-category3">
                                 {EN
                                  ?
                                  'Raise funds to contribute to the daily food of your family, a soup kitchen or shelter. It can be for both people and animals.'

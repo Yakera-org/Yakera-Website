@@ -248,9 +248,15 @@ aside h6{
     color: #eb913b;
 }
 
-.info-text
+.info-text,
+.info-text-margin
 {
     color: #0e325e;
+}
+
+.info-text-margin
+{
+    margin-left: 1%;
 }
 
 .step-btn
@@ -329,12 +335,21 @@ aside h6{
     display: none;
 }
 
-.radio-card
+.radio-card,
+.radio-card-mobile
 {
     margin: 10px;
     padding: 1px;
     padding-left: 10px;
     padding-right: 10px;
+    border: 2px solid #a6a8a7;
+    border-style: dashed;
+    min-height: 390px;
+}
+
+.radio-card-mobile
+{
+    min-height: 256px;
 }
 
 .radio-card:hover
@@ -342,10 +357,37 @@ aside h6{
     cursor: pointer;
 }
 
-.radio-card-input:checked + .radio-card
+.radio-card-input:checked + .radio-card,
+.radio-card-input:checked + .radio-card-mobile
 {
-    box-shadow: 0 0 1px 1px #70B88F;
+    /* box-shadow: 0 0 1px 1px #70B88F; */
+    border-color: #70b88f;
+    border-style: solid;
     border-radius: 5px;
+}
+
+.category-healthcare .radio-card-input:checked + .radio-card,
+.category-healthcare .radio-card-input:checked + .radio-card-mobile
+{
+    border-color: #f55c70;
+}
+
+.category-education .radio-card-input:checked + .radio-card,
+.category-education .radio-card-input:checked + .radio-card-mobile
+{
+    border-color: #4ae48d;
+}
+
+.category-business .radio-card-input:checked + .radio-card,
+.category-business .radio-card-input:checked + .radio-card-mobile
+{
+    border-color: #e6d70f;
+}
+
+.category-nutrition .radio-card-input:checked + .radio-card,
+.category-nutrition .radio-card-input:checked + .radio-card-mobile
+{
+    border-color: #f84040;
 }
 
 .radio-title,
@@ -366,7 +408,27 @@ aside h6{
 
 .radio-title-checked
 {
-    color: #70B88F;
+    color: #70b88f;
+}
+
+.category-healthcare .radio-title-checked
+{
+    color: #f55c70;
+}
+
+.category-education .radio-title-checked
+{
+    color: #4ae48d;
+}
+
+.category-business .radio-title-checked
+{
+    color: #e6d70f;
+}
+
+.category-nutrition .radio-title-checked
+{
+    color: #f84040;
 }
 
 .radio-body,
@@ -380,11 +442,6 @@ aside h6{
 .radio-body-mobile
 {
     text-align: left;
-}
-
-.radio-body-hidden
-{
-    display: none;
 }
 
 .center-img
