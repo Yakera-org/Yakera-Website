@@ -59,7 +59,7 @@ class CampaignPage extends Component{
                         campaign={campaign} 
                         amount={campaign.raised + campaign?.zelleRaised} 
                         language={this.state.language}
-                        isAcceptingZelle={this.state.isAcceptingZelle}
+                        isAcceptingZelle={this.state.isAcceptingZelle && campaign?._user?.zelleInfo?.name && campaign?._user?.zelleInfo?.email}
                      />
 
                      <hr style={{width:'90%', marginLeft:'6%'}}/>
