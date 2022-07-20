@@ -84,10 +84,15 @@ function CreateCampaignVisuals(props) {
     const validateAmount = (optional = '') => {
         if (optional) {
             let invalid = validateFields.validateNumber(optional);
-            
+
             if (invalid) {
                 setAmountError(invalid);
                 return false;
+            } else {
+                if (optional.includes('.') || optional.includes(',')) {
+                    setAmountError(EN ? "Number must be an integer. Don't use dots or commas to separate a number" : 'Número debe ser entero. No use puntos o comas para separar el número');
+                    return false;
+                }
             }
 
             setAmountError('');
@@ -103,6 +108,11 @@ function CreateCampaignVisuals(props) {
             if (invalid) {
                 setAmountError(invalid);
                 return false;
+            } else {
+                if (props.data.amount.includes('.') || props.data.amount.includes(',')) {
+                    setAmountError(EN ? "Number must be an integer. Don't use dots or commas to separate a number" : 'Número debe ser entero. No use puntos o comas para separar el número');
+                    return false;
+                }
             }
 
             setAmountError('');
