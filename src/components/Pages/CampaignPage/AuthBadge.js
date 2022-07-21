@@ -2,19 +2,15 @@ import React, { Component } from 'react';
 import  { Card, CardMedia } from '@material-ui/core';
 
 let viewportWidth = window.innerWidth;
-console.log(viewportWidth);
-if (viewportWidth<500){console.log('phone');}
-    else {console.log('scale');}
-
 
 class AuthBadge extends Component {
     render() {
         const language = this.props.language;
         var EN = true;
 
-        if(language ==="en"){
+        if(language ==="en") {
             EN=true
-        }else{
+        } else {
             EN=false
         }
 
@@ -28,7 +24,7 @@ class AuthBadge extends Component {
                     }}
                     elevation={0}
                 >
-                    <div className='auth-badge-content'>
+                    <div className='auth-badge-div'>
                         <p className={viewportWidth<500 ? 'auth-badge-phone' : 'auth-badge-scale'}>
                             {EN ? 'This campaign is verified by ' : 'Yakera ha verificado esta '}
                             <span className='nobreak-wrap'>

@@ -70,32 +70,28 @@
     height: 1px;
 }
 
-/* campaign authenticity badge right */
+/* campaign authenticity badge */
 .auth-badge {
-    padding: 0% 3%;
-    margin-bottom: 5%;
+    padding: 0% 3%; /* 2nd one should match p's top & bottom margins below */
+    margin-bottom: 5%; /* space between Cards */
 }
 .nobreak-wrap {
-  white-space: nowrap;
+  white-space: nowrap; /* prevents a linebreak right before the icon */
+}
+.auth-badge p {
+    width: 100%;
+    text-align: center;
+    margin-top: 3%;
+    margin-bottom: 3%;
+    color: #70B88F;
+    display: inline-block;
 }
 .auth-badge-phone {
-    width: 100%;
-    text-align: center;
-    margin-top: 3%;
-    margin-bottom: 3%;
-    font-size: 13px;
-    font-size: calc(12px + .6vw);
-    color: #70B88F;
-    display: inline-block;
+    font-size: 13px; /* fallback */
+    font-size: calc(12px + .6vw); /* keeps font size >= 12px */
 }
 .auth-badge-scale {
-    width: 100%;
-    text-align: center;
-    margin-top: 3%;
-    margin-bottom: 3%;
     font-size: 1.2vw;
-    color: #70B88F;
-    display: inline-block;
 }
 .auth-badge-icon-phone {
     width: 25px;
@@ -105,7 +101,7 @@
     width: 2.2vw;
     height: auto;
 }
-.auth-badge-content {
+.auth-badge-div {
     padding: 0% 0%;
 }
 
