@@ -70,6 +70,40 @@
     height: 1px;
 }
 
+/* campaign authenticity badge right */
+.auth-badge {
+    padding: 0% 3%;
+    margin-bottom: 5%;
+    /* white-space: nowrap; */
+}
+.nobreak-wrap {
+  white-space: nowrap;
+}
+.auth-badge p{
+    width: 100%;
+    text-align: center;
+    margin-top: 3%;
+    margin-bottom: 3%;
+    font-size: 18px;
+    /* font-size: 1.2vw; */
+    /* font-size:calc(10px + .5vw);*/ /* font shrinks with viewport, stops at min of 10px */
+    color: #70B88F;
+    display: inline-block;
+}
+.auth-badge-icon {
+    /* max-width: 11%; */
+    /* min-width: 25px;
+    max-width: 25px; */
+    /* max-width: 2.2vw; */
+    /* max-height: 25px; */
+    width: 35px;
+    height: auto;
+}
+.auth-badge-content {
+    padding: 0% 0%;
+}
+
+
 /* donate card right */
 .donate-page-card {
     padding: 5% 0%;
@@ -100,7 +134,7 @@
     padding: 0% 10%;
 }
 .donate-page-card-buttons button{
-   border-radius: 20px; 
+   border-radius: 20px;
 }
 .donate-page-card-buttons button:hover{
     opacity: 0.8;
@@ -395,7 +429,7 @@
         overflow: hidden;
         margin-top:  -280px;
     }
-    
+
     .campaign-page-title-img{
         padding: 5% 0%;
     }
