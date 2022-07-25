@@ -30,6 +30,12 @@ function Login() {
         "content",
         "https://s3picturehouses.s3.eu-central-1.amazonaws.com/cinema/ph_15616375045d14b28089c38.png"
       );
+    document
+      .querySelector('meta[property="og:description"]')
+      .setAttribute("content", "whats up");
+    document
+      .querySelector('meta[name="description"]')
+      .setAttribute("content", "whats up");
   }, []);
 
   function handleChange(e) {
