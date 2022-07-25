@@ -21,8 +21,15 @@ function Login() {
   React.useEffect(() => {
     setEN(LanguageService.getLanguage() === "en");
     document.title = "Yakera Login";
-    document.image =
-      "https://s3picturehouses.s3.eu-central-1.amazonaws.com/cinema/ph_15616375045d14b28089c38.png";
+    document
+      .querySelector('meta[property="og:title"]')
+      .setAttribute("content", "lol");
+    document
+      .querySelector('meta[property="og:image"]')
+      .setAttribute(
+        "content",
+        "https://s3picturehouses.s3.eu-central-1.amazonaws.com/cinema/ph_15616375045d14b28089c38.png"
+      );
   }, []);
 
   function handleChange(e) {
