@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
-import  { Card, CardMedia } from '@material-ui/core';
-
-let viewportWidth = window.innerWidth;
+import  { Card } from '@material-ui/core';
 
 class AuthBadge extends Component {
     render() {
@@ -15,6 +13,7 @@ class AuthBadge extends Component {
         }
 
         return (
+
             <div>
                 <Card
                     className='auth-badge'
@@ -25,11 +24,11 @@ class AuthBadge extends Component {
                     elevation={0}
                 >
                     <div className='auth-badge-div'>
-                        <p className={viewportWidth<500 ? 'auth-badge-phone' : 'auth-badge-scale'}>
-                            {EN ? 'This campaign is verified by ' : 'Yakera ha verificado esta '}
+                        <p className='auth-badge-content'>
+                            {EN ? 'This campaign is verified ' : 'Yakera ha verificado '}
                             <span className='nobreak-wrap'>
-                                {EN ? 'Yakera' : 'campaña'}&nbsp;
-                                <img className={viewportWidth<500 ? 'auth-badge-icon-phone' : 'auth-badge-icon-scale'} alt='' src={'https://cdn.discordapp.com/attachments/999630410965331988/999630601437073488/authbadge.png'} />
+                                {EN ? 'by Yakera' : 'esta campaña'}&nbsp;
+                                <img className='auth-badge-icon' alt='' src={'https://cdn.discordapp.com/attachments/999630410965331988/999630601437073488/authbadge.png'} />
                             </span>
                         </p>
                     </div>

@@ -72,8 +72,11 @@
 
 /* campaign authenticity badge */
 .auth-badge {
-    padding: 0% 3%; /* 2nd one should match p's top & bottom margins below */
+    padding: 0% 3%; /* 2nd value should match p's top & bottom margins below */
     margin-bottom: 5%; /* space between Cards */
+}
+.auth-badge-div {
+    padding: 0% 0%;
 }
 .nobreak-wrap {
   white-space: nowrap; /* prevents a linebreak right before the icon */
@@ -86,23 +89,22 @@
     color: #70B88F;
     display: inline-block;
 }
-.auth-badge-phone {
-    font-size: 13px; /* fallback */
-    font-size: calc(12px + .6vw); /* keeps font size >= 12px */
-}
-.auth-badge-scale {
+.auth-badge-content {
     font-size: 1.2vw;
 }
-.auth-badge-icon-phone {
-    width: 25px;
-    height: auto;
-}
-.auth-badge-icon-scale {
+.auth-badge-icon {
     width: 2.2vw;
     height: auto;
 }
-.auth-badge-div {
-    padding: 0% 0%;
+@media only screen and (max-width: 599px) { /* must be 599px to trigger at the same time as the 600px below */
+    .auth-badge-content {
+        font-size: 13px; /* fallback */
+        font-size: calc(10px + 1vw);
+    }
+    .auth-badge-icon {
+        width: 25px;
+        height: auto;
+    }
 }
 
 
