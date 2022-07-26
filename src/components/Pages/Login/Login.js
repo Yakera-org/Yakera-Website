@@ -63,7 +63,7 @@ function Login() {
         password: initialState.password,
       });
       // filter 401 errors
-      if (err.response.status === 401) {
+      if (err?.response?.status === 401) {
         setError(
           EN ? "Incorrect email or password" : "Email o contraseña inválida"
         );
