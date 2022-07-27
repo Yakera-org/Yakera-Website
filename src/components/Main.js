@@ -47,7 +47,7 @@ function Main() {
     }
   };
   if (!loaded) {
-    return <p>Loading...</p>;
+    return "...";
   } else {
     return (
       <BrowserRouter>

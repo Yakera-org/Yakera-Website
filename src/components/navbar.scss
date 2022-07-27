@@ -1,0 +1,12 @@
+.navbar{
+    background-color: orange;
+    height: 150px;
+    margin-bottom: -150px;
+}
+.navbar .tabs{
+    display: flex;
+    flex-direction: row;   
+}
+.navbar .tabs .tab{
+    padding: 5%;
+}
