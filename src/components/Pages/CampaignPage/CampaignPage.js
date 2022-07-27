@@ -66,7 +66,7 @@ class CampaignPage extends Component {
 
           {/* Images gallery */}
           <div className="gallery" id="gallery">
-            {campaign.pictures.map((im, i) => (
+            {campaign?.pictures.map((im, i) => (
               <img src={im.url} alt={i} key={i} />
             ))}
           </div>
@@ -75,8 +75,8 @@ class CampaignPage extends Component {
 
           <PaymentVisual
             language={"en"}
-            title={campaign.title}
-            slug={campaign.slug}
+            title={campaign?.title}
+            slug={campaign?.slug}
             recipientName={campaign?._user?.zelleInfo?.name}
             recipientEmail={campaign?._user?.zelleInfo?.email}
             isAcceptingZelle={this.state.isAcceptingZelle}
