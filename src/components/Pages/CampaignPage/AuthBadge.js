@@ -28,7 +28,7 @@ class AuthBadge extends Component {
                             {EN ? 'This campaign is verified ' : 'Yakera ha verificado '}
                             <span className='nobreak-wrap'>
                                 {EN ? 'by Yakera' : 'esta campaña'}&nbsp;
-                                <img className='auth-badge-icon' alt='' src={'https://cdn.discordapp.com/attachments/999630410965331988/999630601437073488/authbadge.png'} />
+                                <img className='auth-badge-icon' alt='' src={'https://assets.yakera.org/yakera/authbadge.webp'} />
                             </span>
                         </p>
                     </div>
