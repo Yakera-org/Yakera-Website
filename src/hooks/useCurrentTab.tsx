@@ -4,10 +4,11 @@ const tabMapping = {
   "/": "home",
   "/login": "login",
   "/register": "login",
+  "/forgot-password": "login",
   "/about": "about",
-  "/create": "create",
+  "/create": "profile",
   "/success": "success",
-  "/frequently-asked-questions": "FAQ",
+  "/frequently-asked-questions": "frequently-asked-questions",
   "/campaign": "campaigns",
   "/profile": "profile",
 };

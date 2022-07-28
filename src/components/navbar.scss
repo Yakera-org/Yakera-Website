@@ -1,12 +1,34 @@
 .navbar{
-    background-color: orange;
+    background-color: white;
     height: 150px;
     margin-bottom: -150px;
+    font-family: Intro-Regular-Alt;
 }
 .navbar .tabs{
     display: flex;
     flex-direction: row;   
+    flex-wrap: nowrap;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 60%;
 }
 .navbar .tabs .tab{
-    padding: 5%;
+    font-size: 18px;
+}
+.navbar .tabs .brand-wrapper {
+    width: 20%
+}
+.navbar .tabs .brand-wrapper img{
+    width: 100%;
+}
+.navbar .tabs .brand-wrapper img:hover{
+    cursor: pointer;
+    opacity: 0.8;
+}
+.navbar .tabs .tab #current{
+    color: var(--brand-orange);
+}
+.navbar .tabs .tab a{
+    font-size: 20px;
+    text-decoration: none;
 }

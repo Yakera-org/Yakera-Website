@@ -1,26 +1,29 @@
 @font-face {
-  font-family: 'Ramona-Bold';
-  src: local('Ramona'), url(./fonts/Ramona-Bold.ttf) format('truetype');
+  font-family: "Ramona-Bold";
+  src: local("Ramona"), url(./fonts/Ramona-Bold.ttf) format("truetype");
 }
 @font-face {
-  font-family: 'Ramona-Light';
-  src: local('Ramona'), url(./fonts/Ramona-Light.ttf) format('truetype');
+  font-family: "Ramona-Light";
+  src: local("Ramona"), url(./fonts/Ramona-Light.ttf) format("truetype");
 }
 @font-face {
-  font-family: 'Intro-Regular-Alt';
-  src: local('Intro'), url(./fonts/Intro-Regular-Alt.otf) format('opentype');
+  font-family: "Intro-Regular-Alt";
+  src: local("Intro"), url(./fonts/Intro-Regular-Alt.otf) format("opentype");
 }
 @font-face {
-  font-family: 'Intro-Thin';
-  src: local('Intro'), url(./fonts/Intro-Thin-Alt-Regular.otf) format('opentype');
+  font-family: "Intro-Thin";
+  src: local("Intro"),
+    url(./fonts/Intro-Thin-Alt-Regular.otf) format("opentype");
 }
 @font-face {
-  font-family: 'Intro-Light';
-  src: local('Intro'), url(./fonts/Intro-Light-Alt-Regular.otf) format('opentype');
+  font-family: "Intro-Light";
+  src: local("Intro"),
+    url(./fonts/Intro-Light-Alt-Regular.otf) format("opentype");
 }
 @font-face {
   font-family: "CamphorW01-Regular";
-  src: url("//db.onlinewebfonts.com/t/22f912b4b10a938d5f28b7fe79ed7466.ttf") format("truetype");
+  src: url("//db.onlinewebfonts.com/t/22f912b4b10a938d5f28b7fe79ed7466.ttf")
+    format("truetype");
 }
 
 :root {
@@ -32,76 +35,4 @@
   --category-red: #ff7d7d;
   --category-yellow: #edc343;
   --category-dark-blue: #0e325e;
-}
-
-.nav-bar {
-font-size: 20px;
-}
-
-#navbar {
-  position: absolute;
-  height: 150px;
-}
-#nav-brand {
-  pointer-events:none;
-  max-width:200px;
-  margin-left:10px;
-  height:100px
-}
-#nav-tab {
-  color:#0e325e;
-  font-family:Intro-Regular-Alt;
-  margin-left: 30px;
-  margin-top: 0px;
-}
-#nav-tab-selected {
-  color:#ea8737;
-  font-family:Intro-Regular-Alt;
-  margin-left: 30px;
-  margin-top: 0px;
-}
-#nav-tab:hover {
-  color: #ea8737;
-}
-.navbar-dark .navbar-nav .nav-link{
-  color: #ea8737;
-}
-.isSelected{
-  color: #ea8737
-}
-.logout, .logout-mobile {
-  color: #0e325e;
-}
-.logout label, .logout-mobile label {
-  font-family:Intro-Regular-Alt;
-}
-.logout:hover, .logout-mobile:hover{
-  color: #ea8737;
-}
-.logout label:hover, .logout-mobile label:hover{
-  cursor: pointer;
-}
-.logout i:hover, .logout-mobile i:hover{
-  cursor: pointer;
-}
-.logout-mobile{
-  display: none;
-}
-
-.nav-spanish-text{
-  font-size: 18px;
-}
-@media only screen and (max-width: 600px) {
-  #nav-brand {
-    margin-left:0px;
-    height:100px
-  }
-  .logout {
-    display: none;
-  }
-  .logout-mobile{
-    display: block;
-    padding-left: 30px;
-  }
-
 }
