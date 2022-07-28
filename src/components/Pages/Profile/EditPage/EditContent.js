@@ -12,11 +12,11 @@ function RecipientEdit(props) {
     type === "donor"
       ? {
           location: user.donorInfo?.location || "",
-          phone: user.phone || "",
+          phone: user?.phone || "",
           age: user.donorInfo?.age || "",
         }
       : {
-          phone: user.phone || "",
+          phone: user?.phone || "",
           address: user.address || "",
         };
 

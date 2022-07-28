@@ -11,7 +11,7 @@ function DonorHubStats(props) {
     location: user?.donorInfo?.location || "",
     bio: user?.donorInfo?.bio || "",
     age: user?.donorInfo?.age || "",
-    profilePicture: user.profilePicture || "",
+    profilePicture: user?.profilePicture || "",
   };
 
   return (
