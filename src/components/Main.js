@@ -32,14 +32,12 @@ function Main() {
   const getData = async () => {
     try {
       const res = await axios.get("https://geolocation-db.com/json/");
-      if (
+      LanguageService.setLanguageFromIP(
         res.data.country_name === "Venezuela" ||
-        res.data.country_name === "Spain"
-      ) {
-        LanguageService.setLanguageFromIP("es");
-      } else {
-        LanguageService.setLanguageFromIP("en");
-      }
+          res.data.country_name === "Spain"
+          ? "sp"
+          : "en"
+      );
     } catch (e) {
       LanguageService.setLanguageFromIP("en");
     } finally {

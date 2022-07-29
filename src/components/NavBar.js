@@ -4,6 +4,8 @@ import useCurrentTab from "../hooks/useCurrentTab.tsx";
 import useCheckAuthenticated from "../hooks/useCheckAuthenticated.tsx";
 import "./navbar.scss";
 import TokenService from "../services/token";
+import api from "../services/api";
+import LanguageService from "../services/language";
 
 const yakeraLogo = "https://assets.yakera.org/yakera/logo.svg";
 
@@ -26,7 +28,30 @@ function NavBar() {
     campaigns: EN ? "CAMPAIGNS" : "CAMPAÑAS",
     "frequently-asked-questions": EN ? "FAQ" : "PREGUNTAS",
     login: EN ? "LOG IN" : "INICIAR SESIÓN",
+    logout: EN ? "SIGN OUT" : "CERRAR SESIÓN",
     profile: isDonor ? EN && "DONOR HUB" : EN ? "DASHBOARD" : "MI CUENTA",
+  };
+
+  const onLogOut = async () => {
+    try {
+      await api.post("/auth/logout");
+      window.alert(
+        EN ? "User logged out successfully!" : "¡Cierre de sesión con éxito!"
+      );
+    } finally {
+      TokenService.removeAccessToken();
+      TokenService.removeRefreshToken();
+      localStorage.removeItem("userType");
+      localStorage.removeItem("email");
+      localStorage.removeItem("name");
+      localStorage.setItem("currentTab", "home");
+      window.location.href = "/";
+    }
+  };
+
+  const onLanguage = () => {
+    LanguageService.setLanguage();
+    window.location.reload(false);
   };
 
   return (
@@ -49,7 +74,23 @@ function NavBar() {
               </div>
             );
           })}
+        <div className="tab language-switch">
+          <input
+            type="checkbox"
+            id="switch"
+            class="checkbox"
+            onChange={onLanguage}
+            checked={EN}
+          />
+          <label for="switch" class="toggle"></label>
+        </div>
       </div>
+      {isAuthenticated && (
+        <div className="tab logout" onClick={onLogOut}>
+          <i className="fas fa-sign-out-alt"></i>
+          {tabDictionary["logout"]}
+        </div>
+      )}
     </div>
   );
 }

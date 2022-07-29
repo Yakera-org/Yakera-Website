@@ -12,11 +12,13 @@
     align-items: center;
     width: 60%;
 }
-.navbar .tabs .tab{
+.navbar .tab{
+    color: var(--brand-blue);
     font-size: 18px;
 }
 .navbar .tabs .brand-wrapper {
-    width: 20%
+    width: 20%;
+    text-align: center;
 }
 .navbar .tabs .brand-wrapper img{
     width: 100%;
@@ -31,4 +33,14 @@
 .navbar .tabs .tab a{
     font-size: 20px;
     text-decoration: none;
+}
+.navbar .logout{
+    padding: 0 3%;
+}
+.navbar .logout:hover {
+    color: var(--brand-orange);
+    cursor: pointer;
+}
+.navbar .logout i{
+    padding: 0 5px;
 }
