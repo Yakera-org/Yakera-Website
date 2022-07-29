@@ -1,31 +1,52 @@
 .img-container {
-    margin-bottom: 5px;
-    width: 200px;
-    height: 200px;
+    margin-bottom: 6rem;
+    width: 280px;
+    height: 308px;
+    margin-right: 3rem;
+    border-radius: 5rem;
+}
+
+#image_being_cropped {
+    border-radius: 1rem;
 }
 
 .img-preview {
-    width: 178px;
-    height: 100px;
+    width: 280px;
+    height: 308px;
     margin-bottom: 10px;
     border: 2px solid;
+    /* border-radius: 1rem; */
 }
 
-.btn{
+.upld-btn{
     border: none;
     border-radius: 10px;
-    background-color: #ea8737;
+    background-color: #70b88f;
     color: white;
     font-size: 25px;
     outline: none;
     margin-bottom: 10px;
-    margin-right: 5px;
 }
-.crop_button:hover{
-    background-color: #e99e60;
-    outline: none;
+
+.far {
+    color: white;
+    cursor: pointer;
 }
-.crop_button:active{
-    background-color: #e9b488;
-    outline: none;
+
+.far:hover {
+    color: black;
 }
+
+.fas {
+    color: #ff7d7d;
+}
+.fa-stack {
+    margin-left: -3rem;
+    margin-top: -16rem;
+}
+
+p{
+    color: #EA8737;
+    font-size: larger;
+}
+

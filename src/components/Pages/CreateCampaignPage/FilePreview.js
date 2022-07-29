@@ -7,7 +7,7 @@ const thumb = {
     border: '1px solid #eaeaea',
     marginBottom: 80,
     marginRight: 8,
-    width: '178px',
+    width: '100px',
     height: '100px',
     padding: 4,
     boxSizing: 'border-box',

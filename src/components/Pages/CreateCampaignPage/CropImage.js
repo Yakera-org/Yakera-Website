@@ -26,8 +26,8 @@ class CropImage extends React.Component {
         this.setState({ loading: false })    
         this.cropper = new Cropper(this.imageElement.current, {
             dragMode: 'move',
-            aspectRatio: 16 / 9,
-            autoCropArea: 0.65,
+            aspectRatio: 1 / 1.1,
+            autoCropArea: 1,
             restore: false,
             guides: false,
             center: false,
@@ -36,6 +36,7 @@ class CropImage extends React.Component {
             cropBoxResizable: false,
             toggleDragModeOnDblclick: false,
             ready: () => {
+                document.getElementById("cropbox").style.float = "left";
                 document.getElementById("cropbox").style.visibility = "visible";
                 this.canvas = this.cropper.getCroppedCanvas();
                 this.setState({ imageDestination: this.canvas.toDataURL("image/png") });
@@ -81,16 +82,21 @@ class CropImage extends React.Component {
         return (
             <div>
                 <div class="img-container" id="cropbox" style={{visibility: "hidden"}}>
-                    <img ref={this.imageElement} src={this.props.image.preview} alt="Source" crossorigin />
+                    <p>Cut</p>
+                    <img ref={this.imageElement} id="image_being_cropped" src={this.props.image.preview} alt="Source" crossorigin />
                 </div>
 
                 <div id="result" style={{visibility: "hidden"}}>
+                    <p>Preview</p>
                     <img src={this.state.imageDestination} class="img-preview" alt="Destination"/>
-                    <i name={this.props.image.name} id={this.props.id} onClick={this.props.onRemove} className="far fa-2x fa-times-circle"></i>
+                    <span class="fa-stack">
+                        <i class="fas fa-circle fa-stack-2x"></i>
+                        <i name={this.props.image.name} id={this.props.id} onClick={this.props.onRemove} className="far fa-stack-2x fa-2x fa-times-circle"></i>
+                    </span>
                 </div>
 
-                <div id="cropandupload" style={{visibility: "hidden", float: "left"}}>
-                    <input type="Button" value="Upload" class="btn" onClick={this.updateDestination} />
+                <div id="cropandupload" style={{visibility: "hidden"}}>
+                    <input type="Button" value="Upload" class="btn upld-btn" onClick={this.updateDestination} />
                 </div>
 
                 <div>
