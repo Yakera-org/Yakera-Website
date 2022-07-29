@@ -54,42 +54,44 @@ function NavBar() {
   };
 
   return (
-    <div className="navbar">
+    <div className="nav-bar">
       <div className="tabs">
-        <a href="/" className="brand-wrapper">
-          <img src={yakeraLogo} alt="yakera-brand-logo" />
-        </a>
-        {navTabs
-          .filter((t) => t !== "" && typeof t === "string")
-          .map((tab, i) => {
-            return (
-              <div key={i} className="tab">
-                <a
-                  id={currentTab === tab ? "current" : undefined}
-                  href={`/${tab}`}
-                >
-                  {tabDictionary[tab]}
-                </a>
-              </div>
-            );
-          })}
-        <div className="tab language-switch">
-          <input
-            type="checkbox"
-            id="switch"
-            class="checkbox"
-            onChange={onLanguage}
-            checked={EN}
-          />
-          <label for="switch" class="toggle"></label>
+        <div className="active-tabs">
+          <a href="/" className="brand-wrapper">
+            <img src={yakeraLogo} alt="yakera-brand-logo" />
+          </a>
+          {navTabs
+            .filter((t) => t !== "" && typeof t === "string")
+            .map((tab, i) => {
+              return (
+                <div key={i} className="tab">
+                  <a
+                    id={currentTab === tab ? "current" : undefined}
+                    href={`/${tab}`}
+                  >
+                    {tabDictionary[tab]}
+                  </a>
+                </div>
+              );
+            })}
+          <div className="tab language-switch">
+            <input
+              type="checkbox"
+              id="switch"
+              className="checkbox"
+              onChange={onLanguage}
+              checked={EN}
+            />
+            <label htmlFor="switch" className="toggle"></label>
+          </div>
         </div>
+        {isAuthenticated && (
+          <div className="tab logout" onClick={onLogOut}>
+            <i className="fas fa-sign-out-alt"></i>
+            {tabDictionary["logout"]}
+          </div>
+        )}
       </div>
-      {isAuthenticated && (
-        <div className="tab logout" onClick={onLogOut}>
-          <i className="fas fa-sign-out-alt"></i>
-          {tabDictionary["logout"]}
-        </div>
-      )}
     </div>
   );
 }

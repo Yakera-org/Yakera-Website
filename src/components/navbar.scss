@@ -1,46 +1,58 @@
-.navbar{
+.nav-bar{
     background-color: white;
     height: 150px;
     margin-bottom: -150px;
     font-family: Intro-Regular-Alt;
+    display: flex;
 }
-.navbar .tabs{
+.nav-bar .tabs{
+    width: 100%;
+    display: flex;
+    flex-direction: row;   
+    flex-wrap: nowrap;
+    align-items: center;
+}
+.nav-bar .tabs .active-tabs{
     display: flex;
     flex-direction: row;   
     flex-wrap: nowrap;
     justify-content: space-evenly;
     align-items: center;
-    width: 60%;
+    width: 65%;
+    text-align: left;
 }
-.navbar .tab{
+.nav-bar .tab{
     color: var(--brand-blue);
     font-size: 18px;
+    align-items: center;
 }
-.navbar .tabs .brand-wrapper {
+.nav-bar .tabs .brand-wrapper {
     width: 20%;
     text-align: center;
 }
-.navbar .tabs .brand-wrapper img{
+.nav-bar .tabs .brand-wrapper img{
     width: 100%;
 }
-.navbar .tabs .brand-wrapper img:hover{
+.nav-bar .tabs .brand-wrapper img:hover{
     cursor: pointer;
     opacity: 0.8;
 }
-.navbar .tabs .tab #current{
+.nav-bar .tabs .tab #current{
     color: var(--brand-orange);
 }
-.navbar .tabs .tab a{
+.nav-bar .tabs .tab a{
     font-size: 20px;
     text-decoration: none;
 }
-.navbar .logout{
+.nav-bar .logout{
     padding: 0 3%;
+    width: 35%;
+    text-align: right;
 }
-.navbar .logout:hover {
+.nav-bar .logout:hover {
     color: var(--brand-orange);
     cursor: pointer;
 }
-.navbar .logout i{
+.nav-bar .logout i{
     padding: 0 5px;
 }
