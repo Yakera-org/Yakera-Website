@@ -44,7 +44,6 @@ function NavBar() {
       localStorage.removeItem("userType");
       localStorage.removeItem("email");
       localStorage.removeItem("name");
-      localStorage.setItem("currentTab", "home");
       window.location.href = "/";
     }
   };
