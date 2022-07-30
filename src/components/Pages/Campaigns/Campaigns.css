@@ -23,7 +23,7 @@
     font-size: 15px;
     width: 40%;
     margin-left: 30%;
-    padding: 1% 5%;
+    padding: 2% 5%;
     box-shadow: 15px 15px 1px rgb(223, 223, 223);
 }
 .grid-header .header-mid-img img{
@@ -68,7 +68,7 @@
     float: left;
 }
 .grid-header .mid-content .bubble-text .bubble-quote #text{
-    padding-top: 5px;
+    padding-top: 10px;
     font-size: 17px;
     word-break: break-word;
     overflow: hidden;
@@ -93,7 +93,7 @@
     min-width: 100px;
     margin-left: 1px;
     text-align: center;
-    padding: 25px 10px;
+    padding: 27px 10px 23px;
     color: #222;
     border-radius: 30px;
     font-size: 20px;
@@ -162,7 +162,7 @@
 .filter-section .filters #quant-filter:active{
     background-color: #0e325e46;
     cursor: pointer;
-}   
+}
 .filter-section .category-filter{
     margin: 20px 0;
 }
@@ -267,7 +267,7 @@
 }
 .cam-loader{
     position: absolute;
-    left: 50%; 
+    left: 50%;
     margin-top: 200px;
     margin-bottom: 200px;
     transform: translate(-50%, -50%);
@@ -335,7 +335,7 @@
 .bottom-images p{
     font-family: Intro-Regular-Alt;
     color: #222;
-    font-size: 1.4rem; 
+    font-size: 1.4rem;
     width: 80%;
     margin-left: 10%;
 }
@@ -393,10 +393,10 @@
         width: 65%;
         font-size: 16px;
         float: left;
-        max-height:70px
+        max-height: 100px;
     }
-    .grid-header .mid-content .bubble-text .bubble-quote #text{    
-        padding: 5px 1%;    
+    .grid-header .mid-content .bubble-text .bubble-quote #text{
+        padding: 10px 1%;
         font-size: 14px;
     }
     .grid-header .mid-content .bubble-text .bubble-quote img{
@@ -410,8 +410,8 @@
         min-height: 60px;
         max-height: 100px;
         margin-left: 1px;
-        padding: 15px 0;
-        font-size: 20px;
+        padding: 17px 0 13px;
+        font-size: 23px;
     }
 }
 @media only screen and (max-width: 1200px) {
@@ -431,7 +431,7 @@
         padding:10px;
     }
     .grid-header .mid-content .bubble-text .bubble-digit{
-        display: none;   
+        display: none;
     }
     .pagination {
         text-align: center;
@@ -440,7 +440,7 @@
     }
 }
 @media only screen and (max-width: 1000px) {
-   
+
     .grid-header .header-mid-img{
         padding: 0;
         padding-top: 8%;
@@ -468,9 +468,10 @@
     }
     .grid-header .mid-content .bubble-text .bubble-quote{
         width: 100%;
+        max-height: 100px;
     }
     .grid-header .mid-content .bubble-text .bubble-quote #text{
-        padding: 5px 10px ;
+        padding: 10px 10px ;
     }
     .grid-header .mid-content .bubble-text .bubble-quote img{
         display: none;
@@ -506,7 +507,7 @@
         padding: 10px;
         min-height: 80px;
     }
-    
+
 }
 @media only screen and (max-width: 600px) {
     .grid-header .header-mid-img{
@@ -523,7 +524,7 @@
         width: 60%;
         font-size: 12px;
         margin-left: 20%;
-        padding: 5px;  
+        padding: 5px;
     }
     .grid-header .header-mid-img img{
         width: 60%;
