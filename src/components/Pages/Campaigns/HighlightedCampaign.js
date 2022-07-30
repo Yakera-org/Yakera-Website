@@ -38,7 +38,7 @@ function HighlightedCampaign(props) {
                             <img alt='donate-figure' src="https://assets.yakera.org/yakera/profile-icon-1.webp" />
                             <div id="text">
                                 <b> {campaign.anon ? 'Anonymous' : campaign.donationName} </b> <br />
-                                {campaign.donationComment ? campaign.donationComment : EN ? 'Most recent donor' : 'Donante más reciente'}
+                                {campaign.donationComment ? '"' + campaign.donationComment + '"' : EN ? 'Most recent donor' : 'Donante más reciente'}
                             </div>
                         </div>
                         <div className='bubble-digit'>
