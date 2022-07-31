@@ -11,7 +11,7 @@
     color: #002453;
     text-align: left;
     margin-top: 2%;
-    margin-bottom: -5%;
+    margin-bottom: -1%;
 }
 .category-comment
 {
@@ -27,7 +27,7 @@
 #tip-category
 {
     margin-top: 10px;
-    margin-bottom: -20px;
+    margin-bottom: -5px;
 }
 
 .option
@@ -45,11 +45,12 @@
     color: gray;
     text-align: left;
     margin: 0%;
+    padding-top: 1%;
 }
 
 #checkbox-text
 {
-    margin-top: -26px;
+    margin-top: -28px;
     white-space: nowrap;
 }
 
@@ -75,7 +76,7 @@
     border: 1px solid gray;
     transform: scale(0.75);
     margin-top: 5px;
-    margin-left: -23px;
+    margin-left: -25px;
 }
 
 .checkbox-square:checked + .checkbox-button-control:after
@@ -98,7 +99,7 @@
     font-size: xx-large;
     font-weight: bold;
     height: 60px;
-    text-align: right;
+    text-align: left;
 }
 
 #donation-input::placeholder,
@@ -119,18 +120,37 @@
     color: #eb913b;
 }
 
+.flex-container {
+    display: flex;
+}
+
 .money-sign
 {
     color: #eb913b;
     font-size: xx-large;
     font-weight: bold;
     text-align: left;
-    margin: 35px 0px -64px 30px;
+    margin: 20px 10px -64px 0px;
+}
+
+.USD-sign
+{
+    color: #eb913b;
+    font-size: xx-large;
+    font-weight: bold;
+    text-align: right;
+    margin: 20px 0px -64px 5px;
+}
+
+.flex-field
+{
+    margin: 35px 5px 0px 5px;
 }
 
 .align-left
 {
     text-align: left;
+    margin-left: 3px;
 }
 
 .donation-header

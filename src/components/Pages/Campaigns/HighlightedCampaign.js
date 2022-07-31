@@ -3,7 +3,7 @@ import { Grid } from '@material-ui/core';
 
 function HighlightedCampaign(props) {
     const EN = props.EN
-    const numberOfCampaigns = props.campaign?.donations?.length 
+    const numberOfCampaigns = props.campaign?.donations?.length
     const campaign = {
         picture: props.campaign?.mainPicture?.url || "",
         slug: props.campaign?.slug || "",
@@ -28,7 +28,7 @@ function HighlightedCampaign(props) {
                         <b>{EN ? 'Support a story, ' : 'Apoya una historia, '}</b>
                         <span>{EN ? 'change a life.' : 'cambia una vida.'}</span>
                     </div>
-                                
+
                     <div className='bubble-text'>
                         <div className='bubble-quote'>
                             <img alt='donate-figure' src="https://assets.yakera.org/yakera/profile-icon-1.webp" />
@@ -38,7 +38,7 @@ function HighlightedCampaign(props) {
                             </div>
                         </div>
                         <div className='bubble-digit'>
-                            ${campaign.donationAmout}
+                            ${campaign.donationAmout} USD
                         </div>
                     </div>
                 </Grid>
