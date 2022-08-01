@@ -1,0 +1,58 @@
+.nav-bar{
+    background-color: white;
+    height: 150px;
+    margin-bottom: -150px;
+    font-family: Intro-Regular-Alt;
+    display: flex;
+}
+.nav-bar .tabs{
+    width: 100%;
+    display: flex;
+    flex-direction: row;   
+    flex-wrap: nowrap;
+    align-items: center;
+}
+.nav-bar .tabs .active-tabs{
+    display: flex;
+    flex-direction: row;   
+    flex-wrap: nowrap;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 65%;
+    text-align: left;
+}
+.nav-bar .tab{
+    color: var(--brand-blue);
+    font-size: 18px;
+    align-items: center;
+}
+.nav-bar .tabs .brand-wrapper {
+    width: 20%;
+    text-align: center;
+}
+.nav-bar .tabs .brand-wrapper img{
+    width: 100%;
+}
+.nav-bar .tabs .brand-wrapper img:hover{
+    cursor: pointer;
+    opacity: 0.8;
+}
+.nav-bar .tabs .tab #current{
+    color: var(--brand-orange);
+}
+.nav-bar .tabs .tab a{
+    font-size: 20px;
+    text-decoration: none;
+}
+.nav-bar .logout{
+    padding: 0 3%;
+    width: 35%;
+    text-align: right;
+}
+.nav-bar .logout:hover {
+    color: var(--brand-orange);
+    cursor: pointer;
+}
+.nav-bar .logout i{
+    padding: 0 5px;
+}
