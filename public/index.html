@@ -2,27 +2,39 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta property='og:title' content='Yakera' />
-    <meta property='og:image' content='https://assets.yakera.org/yakera/yakeraLogo.png' />
-    <meta property='og:description' content='Yakera is a crowdfunding platform that changes how humanitarian aid is delivered around the world. We leverage the power of storytelling to build global solidarity and accelerate international development. Our mission is to empower individuals to tell their stories and create a secure pathway for cash transfers across borders' data-rh="true">
-    <meta property='og:url' content='https://www.yakera.org/' />
-    <meta property='og:type' content='website' />
-    <meta property='fb:app_id' content='102285321478297' />
+    <meta property="og:title" content="Yakera" />
+    <meta
+      property="og:image"
+      content="https://assets.yakera.org/yakera/yakeraLogo.png"
+    />
+    <meta
+      property="og:description"
+      content="Yakera is a crowdfunding platform that changes how humanitarian aid is delivered around the world. We leverage the power of storytelling to build global solidarity and accelerate international development. Our mission is to empower individuals to tell their stories and create a secure pathway for cash transfers across borders"
+      data-rh="true"
+    />
+    <meta property="og:url" content="https://www.yakera.org/" />
+    <meta property="og:type" content="website" />
+    <meta property="fb:app_id" content="102285321478297" />
 
-    <meta name="author" content="Yakera dev team - CTO: Jang Belche">
+    <meta name="author" content="Yakera dev team - CTO: Jang Belche" />
 
     <meta
       name="viewport"
       content="minimum-scale=1, initial-scale=1, width=device-width"
     />
     <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
-    <script src="https://kit.fontawesome.com/e9d257aa78.js" crossorigin="anonymous"></script>
-    
+    <script
+      src="https://kit.fontawesome.com/e9d257aa78.js"
+      crossorigin="anonymous"
+    ></script>
+
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:title" content="Yakera" />
-    <meta name="twitter:description" content="Yakera is a crowdfunding platform that changes how humanitarian aid is delivered around the world. We leverage the power of storytelling to build global solidarity and accelerate international development. Our mission is to empower individuals to tell their stories and create a secure pathway for cash transfers across borders." />
+    <meta
+      name="twitter:description"
+      content="Yakera is a crowdfunding platform that changes how humanitarian aid is delivered around the world. We leverage the power of storytelling to build global solidarity and accelerate international development. Our mission is to empower individuals to tell their stories and create a secure pathway for cash transfers across borders."
+    />
     <meta property="twitter:url" content="https://www.yakera.org/" />
-
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#000000" />
@@ -31,19 +43,25 @@
       content="Yakera is a crowdfunding platform developed to provide a safe and vetted pathway for all Venezuelans to receive financial support that will help them weather the humanitarian crisis which they are currently facing"
     />
     <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
+    />
 
     <!--
       manifest.json provides metadata used when your web app is installed on a
       user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
     -->
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+    />
     <!-- <script src="https://www.paypal.com/sdk/js?client-id=AQMyTaoohTvLTTKQoNaRyr3pH0wtHr1Yj8QxaxCahDV_X1Tbt49yboUyc4YqgjmkpZdU4hJaGmNjJWlp"></script> -->
 
     <!-- sandbox: AZkSvUt1RiwtGclqKXhvgsoXv58UkR439TBBGLx9q-AJ-ZxIxOMmSnRL7dJxiqkxLddYxvsbMJGVBxl7
     real: AQMyTaoohTvLTTKQoNaRyr3pH0wtHr1Yj8QxaxCahDV_X1Tbt49yboUyc4YqgjmkpZdU4hJaGmNjJWlp -->
-        <!--
+    <!--
       Notice the use of %PUBLIC_URL% in the tags above.
       It will be replaced with the URL of the `public` folder during the build.
       Only files inside the `public` folder can be referenced from the HTML.
@@ -54,23 +72,32 @@
     -->
 
     <title>Yakera</title>
+    <script src="https://swetrix.org/swetrix.js" defer></script>
   </head>
   <body>
     <script>
-      if ('serviceWorker' in navigator) {
-      window.addEventListener('load', function() {
-      navigator.serviceWorker.register('serviceWorker.js',{
-        scope: '.' // <--- THIS BIT IS REQUIRED
-    }).then(function(registration) {
-      // Registration was successful
-      console.log('ServiceWorker registration successful with scope: ', registration.scope);
-      }, function(err) {
-      // registration failed :(
-      console.log('ServiceWorker registration failed: ', err);
-      });
-      });
+      if ("serviceWorker" in navigator) {
+        window.addEventListener("load", function () {
+          navigator.serviceWorker
+            .register("serviceWorker.js", {
+              scope: ".", // <--- THIS BIT IS REQUIRED
+            })
+            .then(
+              function (registration) {
+                // Registration was successful
+                console.log(
+                  "ServiceWorker registration successful with scope: ",
+                  registration.scope
+                );
+              },
+              function (err) {
+                // registration failed :(
+                console.log("ServiceWorker registration failed: ", err);
+              }
+            );
+        });
       }
-      </script>
+    </script>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
     <!--
@@ -90,7 +117,7 @@
         https://firebase.google.com/docs/web/setup#available-libraries -->
     <script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-analytics.js"></script>
 
-   <!-- <script>
+    <!-- <script>
       // Your web app's Firebase configuration
       // For Firebase JS SDK v7.20.0 and later, measurementId is optional
       var firebaseConfig = {
@@ -108,14 +135,38 @@
     </script> -->
 
     <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-2LEVRJSX7W"></script>
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-2LEVRJSX7W"
+    ></script>
     <script>
       window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
 
-      gtag('config', 'G-2LEVRJSX7W');
+      gtag("config", "G-2LEVRJSX7W");
     </script>
-  
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        // Initialising the script with the Project ID
+        // you can find in the dashboard
+        swetrix.init("VCFuIKiNPriH");
+
+        // Tracking page views
+        swetrix.trackViews();
+      });
+    </script>
+    <noscript>
+      <!--
+      Don't forget to change YOUR_PROJECT_ID in the link to your Project ID
+      -->
+      <img
+        src="https://api.swetrix.com/log/noscript?pid=VCFuIKiNPriH"
+        alt=""
+        referrerpolicy="no-referrer-when-downgrade"
+      />
+    </noscript>
   </body>
 </html>
