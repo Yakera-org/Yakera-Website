@@ -4,6 +4,8 @@
     margin-bottom: -150px;
     font-family: Intro-Regular-Alt;
     display: flex;
+    z-index: 1;
+    position: relative;
 }
 .nav-bar .tabs{
     width: 100%;
