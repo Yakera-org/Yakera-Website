@@ -300,9 +300,9 @@ aside h6 {
   opacity: 0.5;
 }
 .center-btn .btn-disabled:hover {
-  background-color: grey;
-  opacity: 0.5;
-  color: #212529;
+  background-color: grey !important;
+  opacity: 0.5 !important;
+  color: #212529 !important;
 }
 
 .subtitle-text,
@@ -420,19 +420,19 @@ aside h6 {
 }
 
 .category-healthcare .radio-title-checked {
-  color: #f55c70;
+  color: #ff7d7d;
 }
 
 .category-education .radio-title-checked {
-  color: #4ae48d;
+  color: #71b98f;
 }
 
 .category-business .radio-title-checked {
-  color: #e6d70f;
+  color: #7099d0;
 }
 
 .category-nutrition .radio-title-checked {
-  color: #f84040;
+  color: #edc343;
 }
 
 .radio-body,

@@ -495,7 +495,7 @@ function CreateCampaignVisuals(props) {
           {step < 5 ? (
             <Button
               onClick={nextStep}
-              id="disabled-create"
+              id={!props.data.campaigncategory ? "disabled-create" : ""}
               disabled={!props.data.campaigncategory}
               className={`step-btn right-btn ${
                 !props.data.campaigncategory && `btn-disabled`
@@ -507,21 +507,16 @@ function CreateCampaignVisuals(props) {
             ""
           )}
           {step === 5 ? (
-            isUploadingCampaign || isUploading ? (
-              <Button
-                onClick={submitCampaign}
-                id="disabled-create"
-                disabled={true}
-                style={{ backgroundColor: "grey" }}
-                className="step-btn right-btn"
-              >
-                {EN ? "Create Campaign" : "Crear Campaña"}
-              </Button>
-            ) : (
-              <Button onClick={submitCampaign} className="step-btn right-btn">
-                {EN ? "Finish" : "Finalizar"}
-              </Button>
-            )
+            <Button
+              onClick={submitCampaign}
+              id={isUploadingCampaign || isUploading ? "disabled-create" : ""}
+              disabled={isUploadingCampaign || isUploading}
+              className={`step-btn right-btn ${
+                (isUploadingCampaign || isUploading) && `btn-disabled`
+              }`}
+            >
+              {EN ? "Create Campaign" : "Crear Campaña"}
+            </Button>
           ) : (
             ""
           )}
