@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {Dialog, Grid} from '@material-ui/core';
+import AuthBadge from './AuthBadge';
 import DonateCard from './DonateCard';
 import {capitalizeFirstLetter} from '../../../stringUtils';
 import { Navbar, Container, Nav } from 'react-bootstrap';
@@ -98,8 +99,8 @@ class CampaignPageVisual extends Component {
             const mql = window.matchMedia('(max-width: 600px)');
             window.onscroll = () => {
                 let offset = marginOffset;
-                let currentScrollPos = window.pageYOffset;  
-                
+                let currentScrollPos = window.pageYOffset;
+
                 if(document.getElementById('left-col')){
                     var lowerBoundary = document.getElementById('left-col').offsetHeight - 800;
                 }
@@ -110,12 +111,12 @@ class CampaignPageVisual extends Component {
                 if(!mql.matches){
                     this.setState({
                             marginCard: currentScrollPos + offset
-                            })  
+                            })
                     }
                 else{
                     this.setState({
                         marginCard: 0
-                        })  
+                        })
                     }
                 }
         }
@@ -158,7 +159,7 @@ class CampaignPageVisual extends Component {
         return (
             <div className = "camp-page-vis">
                 <CampaignCategory categoryType={category} />
-                    <h1 style={{color: 'var(--brand-blue'}}>{title}</h1>  
+                    <h1 style={{color: 'var(--brand-blue'}}>{title}</h1>
                 <Grid container spacing={4} style={{ alignItems:'flex-start'}}>
                     <Grid item xs={12} sm={8} id="left-col">
                         {/* left column  */}
@@ -180,23 +181,23 @@ class CampaignPageVisual extends Component {
                             <Dialog
                                 fullWidth={true}
                                 maxWidth='lg'
-                                open={this.state.imgClicked}    
+                                open={this.state.imgClicked}
                                 onClose={this.imgClick}
-                            >            
-                                <img 
+                            >
+                                <img
                                     id="exp-img"
                                     onClick={this.imgClick}
-                                    src={mainPicture} 
+                                    src={mainPicture}
                                     alt="title.img"
                                 />
                             </Dialog>
-                             
+
                         </div>
 
                         <p id="author-credit">{capitalizeFirstLetter(campaign._user.firstName)} {capitalizeFirstLetter(campaign._user.lastName)} - {getHumanReadableDate(campaign.createdAt)}</p>
 
                         {/* <hr style={{marginBottom:'-10px'}}/> */}
-                        
+
                         <Navbar>
                             <Container style={{justifyContent: 'center'}}>
                                 <Nav className='camp-page-navbar'>
@@ -227,6 +228,11 @@ class CampaignPageVisual extends Component {
                     <Grid item xs={12} sm={4}>
                          {/* right column  */}
                          <div style={{marginTop:this.state.marginCard+'px', width:'100%'}}>
+                         <AuthBadge
+                            language={language}
+                            />
+                         </div>
+                         <div style={{width:'100%'}}>
                          <DonateCard
                             amount={amount}
                             target={target}
@@ -260,14 +266,14 @@ class CampaignPageVisual extends Component {
                                             }else {
                                                 name = donation.name;
                                             }
-                                            
+
                                             return(
                                                <Grid key={i} container spacing={0} className='ind-comment' style={{justifyContent: 'center'}}>
                                                    <Grid item xs={3} sm={2} className='img-wrapper'>
                                                        <img src={pic_url} alt='comment-profile' />
                                                    </Grid>
                                                    {
-                                                       comment 
+                                                       comment
                                                        ?
                                                        <Grid item xs={9} sm={10} >
                                                            <div className='cmt-wrapper'>
@@ -288,20 +294,20 @@ class CampaignPageVisual extends Component {
                                                            </div>
                                                        </Grid>
                                                    }
-                                                   
+
                                                </Grid>
                                             )
                                         }else return ''
                                     })
-                                        
+
                                  }
-                                
-                             </div> 
+
+                             </div>
                          </div>
-                             
-                        
+
+
                     </Grid>
-                    
+
                 </Grid>
 
             </div>
