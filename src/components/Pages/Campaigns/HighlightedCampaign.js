@@ -42,7 +42,7 @@ function HighlightedCampaign(props) {
                             </div>
                         </div>
                         <div className='bubble-digit'>
-                            ${campaign.donationAmount}
+                            ${campaign.donationAmout} USD
                         </div>
                     </div>
                 </Grid>

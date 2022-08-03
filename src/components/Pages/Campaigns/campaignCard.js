@@ -38,9 +38,9 @@ class CampaignCard extends Component {
     }
     this.hanldeClick = this.hanldeClick.bind(this);
     this.handleHover = this.handleHover.bind(this);
-  }   
-  
-  hanldeClick(){    
+  }
+
+  hanldeClick(){
     const { campaign } = this.props;
     let redirect = `/campaign/${campaign.slug}`;
     this.props.history.push(redirect);
@@ -82,11 +82,11 @@ class CampaignCard extends Component {
 
     return (
       <div>
-        <Card 
-          className="camp-card" 
-          onClick={this.hanldeClick} 
-          onMouseEnter={this.handleHover} 
-          onMouseLeave={this.handleHover} 
+        <Card
+          className="camp-card"
+          onClick={this.hanldeClick}
+          onMouseEnter={this.handleHover}
+          onMouseLeave={this.handleHover}
           style={{backgroundColor:this.state.cardColor, borderRadius:'20px'}}
         >
           <CardHeader
@@ -115,13 +115,13 @@ class CampaignCard extends Component {
                 &nbsp;
                 {this.props.language === "en"
                   ? en_headers[category]
-                  : sp_headers[category]                
+                  : sp_headers[category]
                 }
               </div>
             }
           />
           <div className='cam-img' >
-            <img 
+            <img
             style={{
               minHeight:'100%',
               minWidht:'100%',
@@ -131,19 +131,19 @@ class CampaignCard extends Component {
               alt={title}
             />
           </div>
-          <CardContent > 
+          <CardContent >
             <div className='logo-sec'>
               <p><b>{title}</b></p>
             </div>
             <div className='description'>
-              <p>              
+              <p>
                 {description}
               </p>
             </div>
             <div className='progress-text'>
               <div id='raised'>
-                <b>${this.props.amount}</b>
-                {this.props.language==="en" ? ` raised of $${target}` : ` recaudado de $${target}`}
+                <b>${this.props.amount} USD</b>
+                {this.props.language==="en" ? ` raised of $${target} USD` : ` recaudado de $${target} USD`}
               </div>
             </div>
             <Progress theme={{

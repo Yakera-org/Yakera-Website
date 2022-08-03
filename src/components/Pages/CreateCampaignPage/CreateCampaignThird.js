@@ -144,7 +144,7 @@ function CampaignThirdPage(props)
                     name='itemizedbudget'
                     autoComplete="off" 
                     style={{minHeight:'100px', maxHeight:'200px'}}
-                    placeholder={EN ? 'Enter the amount (USD) and item descriptions' : 'Llene con las cosas que comprará y los precios en $USD'}
+                    placeholder={EN ? 'Enter the amount (in USD) and item descriptions' : 'Llene con las cosas que comprará y los precios en $USD'}
                     // value={props.data.itemizedbudget}
                     onChange={(event) => handleTextAreaChange(event, props.validations.validateBudget)}
                     className={classnames(

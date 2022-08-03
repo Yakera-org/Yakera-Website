@@ -88,9 +88,9 @@ class ThanksCard extends Component{
                               {this.props.EN ? 'Thank you for your donation of ' : 'Gracias por tu donación de '}
 
                                   <b>
-                                      ${this.props.amount}
+                                      ${this.props.amount} USD
                                   </b>
-                                  {this.props.EN ? ' to the campaign: ' : ' A la campaña: '} <br/>
+                                  {this.props.EN ? ' to the campaign: ' : ' a la campaña: '} <br/>
 
                                   <b  style={{fontSize:'23px'}}>{this.props.title} </b>
                           </p>
