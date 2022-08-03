@@ -1,92 +1,55 @@
-import React, { Component } from "react";
-import Visual from "./CampaignPageVisual";
-import Author from "../../author";
-import PaymentVisual from "./PaymentVisual";
+import React from "react";
+import useCampaign from "../../../hooks/useCampaign.tsx";
+import useLanguage from "../../../hooks/useLanguage.tsx";
+import HashLoader from "react-spinners/HashLoader";
 import "./CampaignPage.css";
-import api from "../../../services/api";
-import LanguageService from "../../../services/language";
+import CampaignPageVisual from "./CampaignPageVisual";
+import PaymentVisual from "./PaymentVisual";
+import Author from "../../author";
 
-class CampaignPage extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      loaded: false,
-    };
-  }
+function CampaignPage(props) {
+  const EN = useLanguage();
+  const { campaign, acceptsZelle } = useCampaign(props.match.params.title);
 
-  async componentDidMount() {
-    localStorage.setItem("currentTab", "campaigns");
-    var language = LanguageService.getLanguage();
-    let found = false;
-    try {
-      const res = await api.get(`/campaigns/${this.props.match.params.title}`);
-      if (res.data.data) {
-        found = true;
-        var isAcceptingZelle = false;
-        if (res.data.data._user?.zelleInfo?.isAccepting) {
-          isAcceptingZelle = true;
-        }
-        this.setState({
-          campaign: res.data.data,
-          isAcceptingZelle: isAcceptingZelle,
-        });
-      }
-    } catch (err) {
-      console.log("err");
-    } finally {
-      if (!found) {
-        window.location.replace("/campaigns");
-      }
-      this.setState({
-        loaded: true,
-        language: language,
-      });
-    }
-  }
-
-  render() {
-    if (!this.state.loaded) {
-      return <div>Loading</div>;
-    } else {
-      const campaign = this.state.campaign;
-      return (
-        <div className="campaignPage">
-          <Visual
+  return (
+    <div className="campaignPage">
+      {!campaign ? (
+        <div className="loader-wrapper">
+          <HashLoader size={100} color={"#ea8737"} loading={true} />
+        </div>
+      ) : (
+        <>
+          <CampaignPageVisual
             campaign={campaign}
-            amount={campaign?.raised + campaign?.zelleRaised}
-            language={this.state.language}
-            isAcceptingZelle={
-              this.state.isAcceptingZelle &&
-              campaign?._user?.zelleInfo?.name &&
-              campaign?._user?.zelleInfo?.email
-            }
+            EN={EN}
+            isAcceptingZelle={acceptsZelle}
           />
 
-          <hr style={{ width: "90%", marginLeft: "6%" }} />
+          <hr />
 
           {/* Images gallery */}
           <div className="gallery" id="gallery">
             {campaign?.pictures.map((im, i) => (
-              <img src={im.url} alt={i} key={i} />
+              <img src={im.url} alt={"campaign-gallery-item"} key={i} />
             ))}
           </div>
 
-          <hr style={{ width: "90%", marginLeft: "5%" }} />
+          <hr />
 
           <PaymentVisual
-            language={"en"}
+            EN={EN}
             title={campaign?.title}
             slug={campaign?.slug}
             recipientName={campaign?._user?.zelleInfo?.name}
             recipientEmail={campaign?._user?.zelleInfo?.email}
-            isAcceptingZelle={this.state.isAcceptingZelle}
+            isAcceptingZelle={acceptsZelle}
           />
 
           <Author />
-        </div>
-      );
-    }
-  }
+        </>
+      )}
+    </div>
+  );
 }
 
 export default CampaignPage;

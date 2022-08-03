@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import TokenService from "../services/token";
 
-const useLanguage = (): boolean => {
+const useCheckAuthenticated = (): boolean => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   useEffect(() => {
     if (TokenService.getLocalAccessToken()) setIsAuthenticated(true);
@@ -9,4 +9,4 @@ const useLanguage = (): boolean => {
   return isAuthenticated;
 };
 
-export default useLanguage;
+export default useCheckAuthenticated;
