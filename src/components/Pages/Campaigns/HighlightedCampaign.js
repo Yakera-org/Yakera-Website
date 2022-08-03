@@ -3,13 +3,17 @@ import { Grid } from '@material-ui/core';
 
 function HighlightedCampaign(props) {
     const EN = props.EN
-    const numberOfCampaigns = props.campaign?.donations?.length
+    const noNullDonations = props.campaign?.donations?.filter(element => {
+      return element !== null;
+    });
+    const numberOfDonations = noNullDonations.length
     const campaign = {
         picture: props.campaign?.mainPicture?.url || "",
         slug: props.campaign?.slug || "",
-        donationName: props.campaign?.donations[numberOfCampaigns - 1]?.name?.split(" ")[0] || "...",
-        donationAmout: props.campaign?.donations[numberOfCampaigns - 1]?.amount || "...",
-        donationComment: props.campaign?.donations[numberOfCampaigns - 1]?.comment || "...",
+        anon: noNullDonations[numberOfDonations - 1]?.isAnonymous || false,
+        donationName: noNullDonations[numberOfDonations - 1]?.name?.split(" ")[0] || "",
+        donationAmount: noNullDonations[numberOfDonations - 1]?.amount || "",
+        donationComment: noNullDonations[numberOfDonations - 1]?.comment || "",
     }
 
     return (
@@ -33,8 +37,8 @@ function HighlightedCampaign(props) {
                         <div className='bubble-quote'>
                             <img alt='donate-figure' src="https://assets.yakera.org/yakera/profile-icon-1.webp" />
                             <div id="text">
-                                <b> {campaign.donationName} </b> <br />
-                                {campaign.donationComment}
+                                <b> {campaign.anon ? 'Anonymous' : campaign.donationName} </b> <br />
+                                {campaign.donationComment ? '"' + campaign.donationComment + '"' : EN ? 'Most recent donor' : 'Donante más reciente'}
                             </div>
                         </div>
                         <div className='bubble-digit'>
