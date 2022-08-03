@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Dialog, Grid } from "@material-ui/core";
+import AuthBadge from "./AuthBadge";
 import DonateCard from "./DonateCard";
 import { capitalizeFirstLetter } from "../../../stringUtils";
 import { Navbar, Container, Nav } from "react-bootstrap";
@@ -237,6 +238,9 @@ class CampaignPageVisual extends Component {
             <div
               style={{ marginTop: this.state.marginCard + "px", width: "100%" }}
             >
+              <AuthBadge language={language} />
+            </div>
+            <div style={{ width: "100%" }}>
               <DonateCard
                 amount={amount}
                 target={target}
@@ -274,6 +278,7 @@ class CampaignPageVisual extends Component {
                         } else {
                           name = donation.name;
                         }
+
 
                         return (
                           <Grid

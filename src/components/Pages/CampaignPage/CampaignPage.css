@@ -70,6 +70,44 @@
     height: 1px;
 }
 
+/* campaign authenticity badge */
+.auth-badge {
+    padding: 0% 3%; /* 2nd value should match p's top & bottom margins below */
+    margin-bottom: 5%; /* space between Cards */
+}
+.auth-badge-div {
+    padding: 0% 0%;
+}
+.nobreak-wrap {
+  white-space: nowrap; /* prevents a linebreak right before the icon */
+}
+.auth-badge p {
+    width: 100%;
+    text-align: center;
+    margin-top: 3%;
+    margin-bottom: 3%;
+    color: #70B88F;
+    display: inline-block;
+}
+.auth-badge-content {
+    font-size: 1.2vw;
+}
+.auth-badge-icon {
+    width: 2.2vw;
+    height: auto;
+}
+@media only screen and (max-width: 599px) { /* must be 599px to trigger at the same time as the 600px below */
+    .auth-badge-content {
+        font-size: 13px; /* fallback */
+        font-size: calc(10px + 1vw);
+    }
+    .auth-badge-icon {
+        width: 25px;
+        height: auto;
+    }
+}
+
+
 /* donate card right */
 .donate-page-card {
     padding: 5% 0%;
@@ -100,7 +138,7 @@
     padding: 0% 10%;
 }
 .donate-page-card-buttons button{
-   border-radius: 20px; 
+   border-radius: 20px;
 }
 .donate-page-card-buttons button:hover{
     opacity: 0.8;
@@ -395,7 +433,7 @@
         overflow: hidden;
         margin-top:  -280px;
     }
-    
+
     .campaign-page-title-img{
         padding: 5% 0%;
     }
