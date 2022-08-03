@@ -139,7 +139,7 @@ class CampaignPageVisual extends Component {
     }
     const campaign = this.props.campaign;
     const amount = this.props.amount;
-    const target = campaign.targetAmount;
+    const target = campaign?.targetAmount;
     const donations = campaign.donations.slice().reverse();
     let title, story, mainPicture, category;
 
@@ -278,6 +278,7 @@ class CampaignPageVisual extends Component {
                         } else {
                           name = donation.name;
                         }
+
 
                         return (
                           <Grid

@@ -30,7 +30,7 @@ function DashboardStats(props) {
     <div className="dashboard-stats">
       <h2>
         {" "}
-        {EN ? "Welcome " : "¡Hola "} <span id="orange">{user.firstName}</span>!
+        {EN ? "Welcome " : "¡Hola "} <span id="orange">{user?.firstName}</span>!
       </h2>
 
       <Grid container spacing={1} className="dashboard-stats-grid">
