@@ -67,6 +67,13 @@
     font-size: 27px;
     text-align: left;
 }
+
+.about-us-content-wrapper{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
 .about-us-content-section{
     text-align: center;
     margin-top: 50px;
@@ -79,7 +86,6 @@
 }
 .content-area-inside{
     text-align: left;
-    max-height: 150px;
     min-height: 150px;
 }
 .about-us-content-section h2{
@@ -92,15 +98,16 @@
 .about-us-content-section p{
     font-size: 20px;
     padding-left: 20%;
+    margin-bottom: 0;
 }
 .about-us-content-section img{
     width: 80%;
-    margin-top: 50px;
+    margin-bottom: 50px;
 }
 .about-us-team{
     text-align: center;
     font-family: Intro-Regular-Alt;
-    padding: 20px 60px;
+    padding: 20px 0px;
     margin-top: -40px;
 }
 .about-us-team h1{
@@ -142,12 +149,15 @@
 }
 .member-pic img{
     width: 250px;
-    height: 250px;
+    width: 15vw;
+    /* width: 100%; */
+    height: auto;
     position: relative;
     overflow: hidden;
     border-radius: 50%; 
     object-fit: cover; 
     border: 15px solid #ea8737;
+    border: 1vw solid #ea8737;
     outline: none;
 }
 .about-us-team-pics h2{
@@ -222,10 +232,12 @@
     }
     .about-us-top-text{
         text-align: center;
-        width: 100%;
-        padding: 15px 0;
+        width: 90%;
+        padding: 15px 0 11px;
         margin-top: 50px;
-        overflow: hidden;
+        margin-left: auto;
+        margin-right: auto;
+        overflow: visible;
         background-color: rgb(238, 238, 238);
         border-radius: 15px;
     }
@@ -239,6 +251,8 @@
     }
         
     .about-us-banner{
+        width: 90%;
+        margin: auto;
         margin-top: 20px;
         border-radius: 10px;
     }
