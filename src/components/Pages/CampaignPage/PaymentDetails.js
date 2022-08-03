@@ -65,7 +65,7 @@ class PaymentDetails extends PureComponent {
           }
         }));
       }
-    
+
     onAnonCheck(){
         this.setState({
             anon: !this.state.anon
@@ -113,23 +113,23 @@ class PaymentDetails extends PureComponent {
 
         let isValid = false;
         tipError = validateFields.validateNumberIncludeZero(this.state.tip.value + '');
-        
+
         if(!this.state.amount.value){
             amountError = emptyWarning;
         }else{
             amountError = validateFields.validateNumberForAmount(this.state.amount.value + '')
         }
         if(!this.state.email.value){
-          emailError = emptyWarning;     
+          emailError = emptyWarning;
         }else{
           emailError = validateFields.validateEmail(this.state.email.value);
         }
         if(!this.state.name.value){
-          nameError = emptyWarning;      
+          nameError = emptyWarning;
         }else{
             nameError = validateFields.validateName(this.state.name.value)
         }
-        
+
 
         this.setState(state => ({
             amount:{
@@ -164,7 +164,7 @@ class PaymentDetails extends PureComponent {
         if(isValid && !amountError && !emailError && !nameError && !tipError){
             return true
         }
-        
+
         return false
       }
 
@@ -184,23 +184,26 @@ class PaymentDetails extends PureComponent {
                     {EN ? 'How much do you want to donate?' : '¿Cuánto deseas donar?'}
                 </div>
 
-                <div className='money-sign'>{'$'}</div>
-                <input
-                    id="donation-input"
-                    type="number"
-                    name="amount"
-                    value={amount.value}
-                    placeholder={'0.00'}
-                    className={classnames(
-                        'form-control',
-                        { 'is-valid': amount.error === false },
-                        { 'is-invalid': amount.error }
-                        )}
-                        onChange={evt =>
-                                this.handleChange(validateFields.validateNumber, evt)
-                        }
-                        />
-                <div className='error-msg'>{amount.error}</div> 
+                <div className="flex-container">
+                    <div className='flex-child money-sign'>{'$'}</div>
+                    <input
+                        id="donation-input"
+                        type="number"
+                        name="amount"
+                        value={amount.value}
+                        placeholder={'0.00'}
+                        className={classnames(
+                            'flex-child', 'form-control',
+                            { 'is-valid': amount.error === false },
+                            { 'is-invalid': amount.error }, 'flex-field'
+                            )}
+                            onChange={evt =>
+                                    this.handleChange(validateFields.validateNumber, evt)
+                            }
+                    />
+                    <div className='flex-child USD-sign'>{'USD'}</div>
+                </div>
+                <div className='error-msg'>{amount.error}</div>
 
                 <Grid container spacing={2} style={{alignItems:'flex-start'}}>
                     <Grid item xs={12} sm={6}>
@@ -214,15 +217,15 @@ class PaymentDetails extends PureComponent {
                             value={name.value}
                             placeholder={EN ? "Name" : "Nombre"}
                             className={classnames(
-                                'form-control', 
+                                'form-control',
                                 { 'is-valid': name.error === false },
                                 { 'is-invalid': name.error },
                                 'payment-data-input'
                                 )}
                                 onChange={evt =>
                                     this.handleChange(validateFields.validateName, evt)
-                                }                                  
-                                
+                                }
+
                                 />
                         <div className='error-msg'>{name.error}</div>
                     </Grid>
@@ -231,7 +234,7 @@ class PaymentDetails extends PureComponent {
                         <div className='option'>
                             {EN ? 'Email' : 'Correo electrónico'}
                         </div>
-                        
+
                         <input
                             type="text"
                             name="email"
@@ -245,8 +248,8 @@ class PaymentDetails extends PureComponent {
                                 )}
                                 onChange={evt =>
                                     this.handleChange(validateFields.validateEmail, evt)
-                                }                            
-                                
+                                }
+
                                 />
                         <div className='error-msg'>{email.error}</div>
                     </Grid>
@@ -266,15 +269,15 @@ class PaymentDetails extends PureComponent {
                 />
                 <span className='checkbox-button-control'></span>
                 <div className="description" id="checkbox-text">
-                    {EN ? 'I would like to stay anonymous.' : 'Me gustaría permanecer en el anonimato.'}   
+                    {EN ? 'I would like to stay anonymous.' : 'Me gustaría permanecer en el anonimato.'}
                 </div>
                 </label>
                 </div>
-                
+
                 <div className='category-comment'>
                     {EN ? 'Leave a comment!' : '¡Deja un comentario!'}
                 </div>
-                
+
                 <input
                     type="text"
                     name="comment"
@@ -292,10 +295,10 @@ class PaymentDetails extends PureComponent {
                 />
                 <div className='description'>
                     {
-                     EN 
-                     ? 
-                     "Comments are optional, and will be presented on the campaign page for support." 
-                     : 
+                     EN
+                     ?
+                     "Comments are optional, and will be presented on the campaign page for support."
+                     :
                      'Los comentarios son opcionales y se presentarán en la página de la campaña que apoyes.'
                     }
                 </div>
@@ -303,43 +306,46 @@ class PaymentDetails extends PureComponent {
                 <div className='category' id='tip-category'>
                     {EN ? 'Would you like to leave a tip?' : '¿Quisieras dejar propina?'}
                 </div>
-                
-                <div className='money-sign'>{'$'}</div>
-                <input 
-                    id="tip-input"
-                    name="tip"
-                    type="number"
-                    value={tip.value}
-                    placeholder="0.00"
-                    className={classnames(
-                        'form-control',
-                        { 'is-valid': tip.error === false },
-                        { 'is-invalid': tip.error }
-                        )}
-                        onChange={evt =>
-                                this.handleChange(validateFields.validateNumber, evt)
-                        }
-                />
+
+                <div className="flex-container">
+                    <div className='flex-child money-sign'>{'$'}</div>
+                    <input
+                        id="tip-input"
+                        name="tip"
+                        type="number"
+                        value={tip.value}
+                        placeholder="0.00"
+                        className={classnames(
+                            'form-control',
+                            { 'is-valid': tip.error === false },
+                            { 'is-invalid': tip.error }
+                            )}
+                            onChange={evt =>
+                                    this.handleChange(validateFields.validateNumber, evt)
+                            }
+                    />
+                    <div className='flex-child USD-sign'>{'USD'}</div>
+                </div>
                 <div className='error-msg'>{tip.error}</div>
 
                 <div className='description'>
                     {
-                     EN 
-                     ? 
-                     "Leaving a tip helps us to maintain our operations and bring new features to you. Thank you!" 
-                     : 
+                     EN
+                     ?
+                     "Leaving a tip helps us to maintain our operations and bring new features to you. Thank you!"
+                     :
                      'Dejando propina nos ayudas a mantener y traer para ti nuevas funciones y servicios. ¡Gracias!'
                     }
                 </div>
 
                 <button
                     type="submit"
-                    className="btn btn-secondary btn-block payment-start-button"   
-                    onClick={this.onContinue}                   
+                    className="btn btn-secondary btn-block payment-start-button"
+                    onClick={this.onContinue}
                     >
                         {EN ? 'Donate' : 'Donar'}
-                </button>        
-        </div> 
+                </button>
+        </div>
         )
     }
 }

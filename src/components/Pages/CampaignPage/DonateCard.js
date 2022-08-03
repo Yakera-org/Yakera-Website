@@ -10,7 +10,7 @@ class DonateCard extends Component {
         const language = this.props.language;
         const isAcceptingZelle = this.props.isAcceptingZelle;
         var EN = true;
-        
+
         if(language ==="en"){
             EN=true
         }else{
@@ -30,11 +30,11 @@ class DonateCard extends Component {
                     <div className='donate-page-card-text'>
                         <p>
                             <b>
-                                ${amount}
+                                ${amount} USD
                             </b>
                             &nbsp;
-                            {EN ? 'raised of ' : 'recaudado de '} ${target} {EN ? ' target' : ''}   
-                        </p> 
+                            {EN ? 'raised of ' : 'recaudado de '} ${target} USD {EN ? ' target' : ''}   
+                        </p>
                     </div>
                     <div className="donate-page-card-progress">
                         <Progress theme={{
@@ -51,13 +51,13 @@ class DonateCard extends Component {
                     <div className='donate-page-card-buttons'>
                         <button
                             type="submit"
-                            className="btn btn-secondary btn-block"    
+                            className="btn btn-secondary btn-block"
                             onClick={() => {
                                 this.props.onDonate('donateRef')
                             }}
                             style={{
                                 backgroundColor: '#002463'
-                            }}                       
+                            }}
                         >
                             {EN ? 'Donate now' : 'Done ahora'}
                         </button>
@@ -76,18 +76,18 @@ class DonateCard extends Component {
                             :
                             ""
                         }
-                        
+
                         <button
                             type="submit"
                             className="btn btn-secondary btn-block"
                             onClick={this.props.onShare}
                             style={{
                                 borderRadius: '20px',
-                            }}  
+                            }}
                         >
                             {EN ? 'Share' : 'Compartir'}
                         </button>
-                    </div> 
+                    </div>
                 </Card>
 
                 <ShareCard open={this.props.showShare} onClose={this.props.onClose} EN={EN}/>

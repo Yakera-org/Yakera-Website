@@ -27,7 +27,7 @@ class Thankscard extends Component{
             loaded: true
         })
     }
-  
+
     render(){
         if(!this.state.loaded){
             return(
@@ -39,13 +39,13 @@ class Thankscard extends Component{
             return(
                 <Fragment >
                     <Dialog
-                        fullWidth={true} 
-                        maxWidth='lg'                                 
+                        fullWidth={true}
+                        maxWidth='lg'
                         open={this.props.open}
                         onClose={this.props.onClose}
-                                                                                                                                        
+
                     >
-                        
+
                     <iframe src={"../" + consent} title="consentform"
                     style={{
                         padding: '10px 10px',
@@ -55,14 +55,14 @@ class Thankscard extends Component{
 
                     <button
                         type="submit"
-                        className="btn btn-secondary btn-block consent-return"    
-                        onClick={this.props.onClose}                   
+                        className="btn btn-secondary btn-block consent-return"
+                        onClick={this.props.onClose}
                         >
                         return
-                    </button> 
-                    
+                    </button>
+
                     </Dialog>
-                    </Fragment>                   
+                    </Fragment>
             )
         }
     }
