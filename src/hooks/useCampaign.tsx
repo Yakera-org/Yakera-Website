@@ -17,7 +17,7 @@ const useCampaign = (title: string): any => {
             : false
         );
       } catch {
-        //window.location.replace("/campaigns");
+        window.location.replace("/campaigns");
       }
     }
     getCampaign();

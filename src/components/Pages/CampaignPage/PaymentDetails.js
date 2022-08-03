@@ -2,7 +2,6 @@ import React, { PureComponent } from "react";
 import classnames from "classnames";
 import { Grid } from "@material-ui/core";
 import { validateFields } from "../Register/Validation";
-import ConsentCard from "./consentCard";
 class PaymentDetails extends PureComponent {
   constructor(props) {
     super(props);
@@ -188,8 +187,6 @@ class PaymentDetails extends PureComponent {
     const EN = this.props.EN;
     return (
       <div>
-        <ConsentCard open={this.state.openPrivacy} onClose={this.onPrivacy} />
-
         <div className="details">
           {EN
             ? "Enter the details below"
