@@ -2,7 +2,7 @@ import React, { PureComponent } from "react";
 import classnames from "classnames";
 import { Grid } from "@material-ui/core";
 import { validateFields } from "../Register/Validation";
-import ConsentCard from "./ConsentCard";
+import ConsentCard from "./consentCard";
 class PaymentDetails extends PureComponent {
   constructor(props) {
     super(props);

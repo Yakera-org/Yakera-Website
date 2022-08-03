@@ -7,7 +7,7 @@ import api from "../../../services/api";
 import LanguageService from "../../../services/language";
 import "./Payment.css";
 import crypto from "crypto";
-import ThanksCard from "./ThanksCard";
+import ThanksCard from "./thanksCard";
 
 const hmacEncryption = (body, secret) =>
   crypto.createHmac("sha256", secret).update(body).digest("hex");
