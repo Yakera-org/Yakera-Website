@@ -17,14 +17,14 @@ function ReserveVisual(props) {
 
     return (
         <div>
-            
+
             <p id="reserve-top">
                 {
-                    EN ? `Amount to be donated via Reserve: $${props.amount}` 
-                    :`Monto a donar via Reserve: $${props.amount}`
+                    EN ? `Amount to be donated via Reserve: $${props.amount} USD`
+                    :`Monto a donar via Reserve: $${props.amount} USD`
                 }
             </p>
-            
+
             <p id="reserve-des">
                 {
                     EN ? `These are the steps to donate:`
@@ -36,7 +36,7 @@ function ReserveVisual(props) {
             <Grid container spacing={0} className='steps'>
                 <Grid item sm={12}>
                     <CardMedia className='reserve-steps-card' component="img" image={reservebar}
-                        alt='steps-bar' style={{ maxWidth: "100%", float: "center", marginLeft: "-3.8%" }} 
+                        alt='steps-bar' style={{ maxWidth: "100%", float: "center", marginLeft: "-3.8%" }}
                     />
                 </Grid>
                 <Grid container spacing={4} className='reserve-steps-text'>
@@ -55,10 +55,10 @@ function ReserveVisual(props) {
                     </Grid>
                     <Grid item sm={4}>
                         <div id='text'>
-                        {EN 
-                        ? 
-                        "After you have transferred, enter your username in the box below" 
-                        : 
+                        {EN
+                        ?
+                        "After you have transferred, enter your username in the box below"
+                        :
                         "Después de que hayas hecho la transferencia, introduce tu usuario en la casilla de abajo"
                         }
                         </div>
@@ -66,10 +66,10 @@ function ReserveVisual(props) {
                     </Grid>
                     <Grid item sm={4}>
                         <div id='text-third'>
-                        {EN 
-                        ? 
-                        "click on the confirm transaction button and ... that's all!" 
-                        : 
+                        {EN
+                        ?
+                        "click on the confirm transaction button and ... that's all!"
+                        :
                         "Haz click en el botón de confirmación y ¡Ya está todo listo!"
                         }
                         </div>
@@ -82,8 +82,8 @@ function ReserveVisual(props) {
             <Grid container direction='row' className='steps'>
                     <Grid item xs={2}>
                         <CardMedia className='reserve-steps-card' component="img" image={reserveBarVert}
-                            alt='steps-bar-vert' style={{ maxWidth: "80%", minWidth: "60%", float: "center", marginLeft: "30%" }} 
-                        />  
+                            alt='steps-bar-vert' style={{ maxWidth: "80%", minWidth: "60%", float: "center", marginLeft: "30%" }}
+                        />
                     </Grid>
                     <Grid item xs={10}>
                         <Grid container direction='row' spacing={3}>
@@ -100,20 +100,20 @@ function ReserveVisual(props) {
                             </Grid>
                             <Grid item xs={10}>
                                 <div id='text-second'>
-                                {EN 
-                                ? 
-                                "After you have transferred, enter your username in the box below" 
-                                : 
+                                {EN
+                                ?
+                                "After you have transferred, enter your username in the box below"
+                                :
                                 "Después de que hayas hecho la transferencia, introduce tu usuario en la casilla de abajo"
                                 }
                                 </div>
                             </Grid>
                             <Grid item xs={10}>
                                 <div id='text-third'>
-                                {EN 
-                                ? 
-                                "click on the confirm transaction button and ... that's all!" 
-                                : 
+                                {EN
+                                ?
+                                "click on the confirm transaction button and ... that's all!"
+                                :
                                 "Haz click en el botón de confirmación y ¡Ya está todo listo!"
                                 }
                                 </div>
@@ -152,8 +152,8 @@ function ReserveVisual(props) {
                 <Grid item xs={12} className='confirm-container'>
                     <Button className='confirm-button'
                         onClick={props.onConfirm}
-                        style={{ backgroundColor: '#70B88F', 
-                                    color: 'white', 
+                        style={{ backgroundColor: '#70B88F',
+                                    color: 'white',
                                     fontSize: '0.8em',
                                     textTransform: 'none',
                                     borderRadius: '10px',

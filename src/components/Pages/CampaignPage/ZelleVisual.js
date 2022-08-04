@@ -11,16 +11,16 @@ function ZelleVisual(props) {
 
     return (
         <div>
-            
-              {EN ? 
-                <p id="zelle-top">Amount to be donated via <span>Zelle</span>: ${props.amount} </p> 
+
+              {EN ?
+                <p id="zelle-top">Amount to be donated via <span>Zelle</span>: ${props.amount} USD </p>
               :
-                <p id="zelle-top">Cantidad a donar a través de <span>Zelle</span>: ${props.amount} </p> 
+                <p id="zelle-top">Cantidad a donar a través de <span>Zelle</span>: ${props.amount} USD </p> 
               }
-              {EN ? 
-                <p id="zelle-des">(Amount does not include the tip, as it goes straight to the recipient)</p> 
+              {EN ?
+                <p id="zelle-des">(Amount does not include the tip, as it goes straight to the recipient)</p>
               :
-                <p id="zelle-des">(La donación no incluye la propina, ya que va directamente a la persona beneficiaria)</p> 
+                <p id="zelle-des">(La donación no incluye la propina, ya que va directamente a la persona beneficiaria)</p>
               }
             <p>
               {EN ? "Provide us with your Zelle account information!" :

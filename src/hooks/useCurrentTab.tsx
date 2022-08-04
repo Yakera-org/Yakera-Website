@@ -12,7 +12,7 @@ const tabMapping = {
   "/campaign": "campaigns",
   "/profile": "profile",
 };
-const useLanguage = (): string => {
+const useCurrentTab = (): string => {
   const [tab, setTab] = useState("");
   useEffect(() => {
     Object.entries(tabMapping).forEach((entry) => {
@@ -22,4 +22,4 @@ const useLanguage = (): string => {
   return tab;
 };
 
-export default useLanguage;
+export default useCurrentTab;

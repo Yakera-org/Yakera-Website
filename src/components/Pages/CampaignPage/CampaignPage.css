@@ -1,317 +1,378 @@
-.campaignPage{
-    margin-top: 160px;
-    font-family: Intro-Regular-Alt;
+.campaignPage {
+  margin-top: 160px;
+  font-family: Intro-Regular-Alt;
+}
+.campaignPage #healthcare {
+  color: #ff7d7d;
+}
+.campaignPage #education {
+  color: #70b88f;
+}
+.campaignPage #nutrition {
+  color: #edc343;
+}
+.campaignPage #small_business {
+  color: #0e325e;
+}
+.campaignPage .loader-wrapper {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin-top: 10%;
 }
 .camp-page-vis {
-    margin:  0 5% 0 10%;
+  margin: 0 5% 0 10%;
 }
 #exp-img {
-    padding: 5% 15%;
-    background-color:  rgba(204, 205, 212, 1);
+  padding: 5% 15%;
+  background-color: rgba(204, 205, 212, 1);
 }
 /* donate leftf column */
-.campaign-page-title-img{
-    width: 100%;
-    text-align: center;
-    /* background-color: rgba(204, 205, 212, 0.3); */
-    padding: 2% 0;
-    border-radius: 5px;
+.campaign-page-title-img {
+  width: 100%;
+  text-align: center;
+  /* background-color: rgba(204, 205, 212, 0.3); */
+  padding: 2% 0;
+  border-radius: 5px;
 }
 .campaign-page-title-img img {
-    height: auto;
-    cursor: pointer;
-    max-height: 500px;
-    min-height: 500px;
-    border-radius: 5px;
+  height: auto;
+  cursor: pointer;
+  max-height: 500px;
+  min-height: 500px;
+  border-radius: 5px;
 }
-.camp-page-story{
-    margin-top: -50px;
-    text-align: justify;
-    font-size: 20px;
-    padding: 5% 5% 0 0;
+.camp-page-story {
+  margin-top: -50px;
+  text-align: justify;
+  font-size: 20px;
+  padding: 5% 5% 0 0;
 }
-#author-credit{
-    margin-top: 10px;
-    font-size: 20px;
-    color: #7c7c7c;
+#author-credit {
+  margin-top: 10px;
+  font-size: 20px;
+  color: #7c7c7c;
 }
-.camp-page-story h2{
-    font-size: 35px;
-    margin-bottom: 15px;
-    color: #01224d;
+.camp-page-story h2 {
+  font-size: 35px;
+  margin-bottom: 15px;
+  color: #01224d;
 }
-.camp-page-story a{
-    color: #002453;
+.camp-page-story a {
+  color: #002453;
 }
-.camp-page-story a:hover{
-    color: #f77f00;
+.camp-page-story a:hover {
+  color: #f77f00;
 }
-.camp-page-story a:visited{
-    color: #002453;
+.camp-page-story a:visited {
+  color: #002453;
 }
-.camp-page-story a:active{
-    color: #002453;
+.camp-page-story a:active {
+  color: #002453;
 }
 
 /* navbar */
 .camp-page-navbar {
-    font-size: 30px;
-    text-align: center;
+  font-size: 30px;
+  text-align: center;
 }
 /* .camp-page-navbar a.nav-link {
     margin: 0% 0%;
 } */
-.camp-page-navbar a.nav-link.active{
-    border-bottom: 5px solid var(--brand-orange);
+.camp-page-navbar a.nav-link.active {
+  border-bottom: 5px solid var(--brand-orange);
 }
 
 /* hr */
 .campaignPage hr {
-    height: 1px;
+  height: 1px;
 }
 
 /* campaign authenticity badge */
 .auth-badge {
-    padding: 0% 3%; /* 2nd value should match p's top & bottom margins below */
-    margin-bottom: 5%; /* space between Cards */
+  padding: 0% 3%; /* 2nd value should match p's top & bottom margins below */
+  margin-bottom: 5%; /* space between Cards */
 }
 .auth-badge-div {
-    padding: 0% 0%;
+  padding: 0% 0%;
 }
 .nobreak-wrap {
   white-space: nowrap; /* prevents a linebreak right before the icon */
 }
 .auth-badge p {
-    width: 100%;
-    text-align: center;
-    margin-top: 3%;
-    margin-bottom: 3%;
-    color: #70B88F;
-    display: inline-block;
+  width: 100%;
+  text-align: center;
+  margin-top: 3%;
+  margin-bottom: 3%;
+  color: #70b88f;
+  display: inline-block;
 }
 .auth-badge-content {
-    font-size: 1.2vw;
+  font-size: 1.2vw;
 }
 .auth-badge-icon {
-    width: 2.2vw;
+  width: 2.2vw;
+  height: auto;
+}
+@media only screen and (max-width: 599px) {
+  /* must be 599px to trigger at the same time as the 600px below */
+  .auth-badge-content {
+    font-size: 13px; /* fallback */
+    font-size: calc(10px + 1vw);
+  }
+  .auth-badge-icon {
+    width: 25px;
     height: auto;
+  }
 }
-@media only screen and (max-width: 599px) { /* must be 599px to trigger at the same time as the 600px below */
-    .auth-badge-content {
-        font-size: 13px; /* fallback */
-        font-size: calc(10px + 1vw);
-    }
-    .auth-badge-icon {
-        width: 25px;
-        height: auto;
-    }
-}
-
 
 /* donate card right */
 .donate-page-card {
-    padding: 5% 0%;
+  padding: 5% 0%;
 }
-.donate-page-card h1{
-    text-align: center;
+.donate-page-card h1 {
+  text-align: center;
 }
-.donate-page-card p{
-    text-align: center;
-    font-size: 20px;
-    color: #808080;
-    margin: 20px 0;
+.donate-page-card p {
+  text-align: center;
+  font-size: 20px;
+  color: #808080;
+  margin: 20px 0;
 }
-.donate-page-card b{
-    font-size: 25px;
-    color: #01224d;
+.donate-page-card b {
+  font-size: 25px;
+  color: #01224d;
 }
 .donate-page-card-text {
-    padding: 0% 5%;
+  padding: 0% 5%;
 }
 .donate-page-card-progress {
-    padding: 5% 20%;
-    width: 120%;
-    margin-left: -8%;
-    margin-bottom: 20px;
+  padding: 5% 20%;
+  width: 120%;
+  margin-left: -8%;
+  margin-bottom: 20px;
 }
 .donate-page-card-buttons {
-    padding: 0% 10%;
+  padding: 0% 10%;
 }
-.donate-page-card-buttons button{
-   border-radius: 20px;
+.donate-page-card-buttons button {
+  border-radius: 20px;
 }
-.donate-page-card-buttons button:hover{
-    opacity: 0.8;
- }
-.donate-page-card button{
-    background-color: #f77f00;
-    border: none;
-    outline: none;
-    font-size: 20px;
-    color: white;
-    margin: 5px 0;
+.donate-page-card-buttons button:hover {
+  opacity: 0.8;
 }
-.donate-page-card button:hover{
-    background-color: #f77f00;
+.donate-page-card button {
+  background-color: #f77f00;
+  border: none;
+  outline: none;
+  font-size: 20px;
+  color: white;
+  margin: 5px 0;
 }
-.donate-page-card  #zelle{
-    color: #6d1ed4;
-    text-shadow: 1px 1px #6d1ed436;
+.donate-page-card button:hover {
+  background-color: #f77f00;
 }
-.donate-page-card  .zelle-button-card{
-    background-color: #6d1ed4;
-    color: white;
-    width: 100%;
-    padding: 5px;
+.donate-page-card #zelle {
+  color: #6d1ed4;
+  text-shadow: 1px 1px #6d1ed436;
 }
-.donate-page-card  .zelle-button-card:hover{
-    background-color: #6d1ed4;
-    color: white;
+.donate-page-card .zelle-button-card {
+  background-color: #6d1ed4;
+  color: white;
+  width: 100%;
+  padding: 5px;
 }
-.donate-page-card  .zelle-button-card span{
-    font-family: Intro-Light;
-    font-size: 15px;
-    vertical-align: middle;
+.donate-page-card .zelle-button-card:hover {
+  background-color: #6d1ed4;
+  color: white;
+}
+.donate-page-card .zelle-button-card span {
+  font-family: Intro-Light;
+  font-size: 15px;
+  vertical-align: middle;
 }
 .payment-visual {
-    margin:  0 10% 0 10%;
+  margin: 0 10% 0 10%;
 }
-.comment-section{
-    margin-left: 30px;
+.comment-section {
+  margin-left: 30px;
 }
-.comment-section h2{
-    padding: 20px 0;
-    color: #002453;
+.comment-section h2 {
+  padding: 20px 0;
+  color: #002453;
 }
-.comment-section .img-wrapper{
-    padding: 0px;
+.comment-section .img-wrapper {
+  padding: 0px;
 }
-.comment-section .ind-comment{
-    padding: 5px;
-    margin-bottom: 20px;
+.comment-section .ind-comment {
+  padding: 5px;
+  margin-bottom: 20px;
 }
-.comment-section .ind-comment .cmt-wrapper{
-    margin-left: 20px;
+.comment-section .ind-comment .cmt-wrapper {
+  margin-left: 20px;
 }
-.comment-section .ind-comment h3{
-    font-size: 24px;
-    font-weight: 500;
+.comment-section .ind-comment h3 {
+  font-size: 24px;
+  font-weight: 500;
 }
-.comment-section .ind-comment p{
-    padding: 0;
-    margin: 0;
-    font-size: 18px;
-    font-family: Intro-Light;
+.comment-section .ind-comment p {
+  padding: 0;
+  margin: 0;
+  font-size: 18px;
+  font-family: Intro-Light;
 }
-.comment-section .ind-comment img{
-    background-color: rgb(238, 235, 231);
-    width: 100%;
-    border-radius: 50%;
-    object-fit: cover;
+.comment-section .ind-comment img {
+  background-color: rgb(238, 235, 231);
+  width: 100%;
+  border-radius: 50%;
+  object-fit: cover;
 }
 /* payments bottom of page */
-.payment-card{
-    text-align: center;
-    margin: 0%;
-    padding: 0% 28%;
-    width: 100%;
+.payment-card {
+  text-align: center;
+  margin: 0%;
+  padding: 0% 28%;
+  width: 100%;
 }
 
-#donate-now-hr{
-    width: 45%;
-    background-color: #002453;
-    height: 3px;
+#donate-now-hr {
+  width: 45%;
+  background-color: #002453;
+  height: 3px;
 }
 
-.payment-card-sec{
-    text-align: center;
-    width: 100%;
-    font-family: Intro-Regular-Alt;
+.payment-card-sec {
+  text-align: center;
+  width: 100%;
+  font-family: Intro-Regular-Alt;
 }
-.error-msg{
-    color: brown;
+.error-msg {
+  color: brown;
 }
-.payment-card h1{
-    font-size: 50px;
-    color: #002453;
+.payment-card h1 {
+  font-size: 50px;
+  color: #002453;
 }
-.payment-card p, .payment-card-sec p{
-    font-size: 20px;
-    color: #7c7c7c;
+.payment-card p,
+.payment-card-sec p {
+  font-size: 20px;
+  color: #7c7c7c;
 }
-.payment-card-sec input{
-    width: 100%;
-    margin-left: 0%;
-    margin-right: 5px;
-    margin-top: 10px;
-    height: 50px;
-    color: black;
+.payment-card-sec input {
+  width: 100%;
+  margin-left: 0%;
+  margin-right: 5px;
+  margin-top: 10px;
+  height: 50px;
+  color: black;
 }
 .check-text {
-    text-align: left;
-    margin-top: 25px;
-    height: 50px;
-    font-size: 15px;
+  text-align: left;
+  margin-top: 25px;
+  height: 50px;
+  font-size: 15px;
 }
-#privacy-button{
-    color: #002453;
-    font-weight: bolder;
-    background-color: transparent;
-    border: none;
+#privacy-button {
+  color: #002453;
+  font-weight: bolder;
+  background-color: transparent;
+  border: none;
 }
-.payment-start-button{
-    width: 50%;
-    margin-left: 25%;
-    font-size: large;
-    background-color: #002453;
-    border: none;
-    border-radius: 5px;
-    margin-top: 6%;
+.payment-start-button {
+  width: 50%;
+  margin-left: 25%;
+  font-size: large;
+  background-color: #002453;
+  border: none;
+  border-radius: 5px;
+  margin-top: 6%;
 }
-.payment-start-button:hover{
-    opacity: 0.8;
-    background-color: #002453;
+.payment-start-button:hover {
+  opacity: 0.8;
+  background-color: #002453;
 }
-.payment-slit{
-    text-align: center;
-    color: grey;
-    font-size: 25px;
+.payment-slit {
+  text-align: center;
+  color: grey;
+  font-size: 25px;
 }
-.payment-slit b{
-    color: #01224d;
-    font-size: 30px;
+.payment-slit b {
+  color: #01224d;
+  font-size: 30px;
 }
-#required{
-    color: #35383b;
-    font-size: 15px;
-    margin: 5px 0%;
-    text-align: left;
-}
-
-#tip-desc{
-    font-size: 15px;
-    color: rgb(75, 75, 75);
-    text-align: left;
+#required {
+  color: #35383b;
+  font-size: 15px;
+  margin: 5px 0%;
+  text-align: left;
 }
 
-#tip-area input{
-    margin-top: -20px;
-    margin-bottom: 20px;
+#tip-desc {
+  font-size: 15px;
+  color: rgb(75, 75, 75);
+  text-align: left;
 }
-#tip-area .label{
-    font-size: 18px;
-    color: #2e2e2e;
-    vertical-align: middle;
-}
-.consent-return{
-    width: 20%;
-    margin-left: 40%;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    background-color: #01224d;
-    border: none;
 
+#tip-area input {
+  margin-top: -20px;
+  margin-bottom: 20px;
 }
+#tip-area .label {
+  font-size: 18px;
+  color: #2e2e2e;
+  vertical-align: middle;
+}
+.consent-return {
+  width: 20%;
+  margin-left: 40%;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  background-color: #01224d;
+  border: none;
+}
+#charge-exp {
+  color: #636363;
+  font-size: 20px;
+  width: 50%;
+  margin-left: 25%;
+  text-align: justify;
+}
+.gallery {
+  text-align: center;
+}
+.gallery img {
+  margin: 10px 2%;
+  max-width: 20%;
+  min-width: 20%;
+  border-radius: 10px;
+}
+
+.stripe-but,
+.reserve-but,
+.zelle-but {
+  width: 100%;
+  padding: 2px;
+  padding-bottom: 0px;
+  min-width: 200px;
+  background-color: transparent;
+  border-radius: 15px;
+  height: 80px;
+  min-height: 80px;
+  max-height: 100px;
+}
+.reserve-but:hover {
+  background-color: #f0f0f0;
+  cursor: pointer;
+}
+.stripe-but img {
+  margin-top: -15px;
+}
+.stripe-but:hover {
+  cursor: pointer;
+  background-color: #edf0f4;
+  border-radius: 15px;
+}
+<<<<<<< HEAD
 #charge-exp{
     color: #636363;
     font-size: 20px;
@@ -352,9 +413,15 @@
     cursor: pointer;
     background-color: #edf0f4;
     border-radius: 15px;
+=======
+>>>>>>> dev
 
+.zelle-but:hover {
+  background-color: #ede4f0aa;
+  cursor: pointer;
 }
 
+<<<<<<< HEAD
 .paypal-but:hover
 {
     background-color: #f0f0e4aa;
@@ -379,42 +446,53 @@
     max-width: 40%;
     height: auto;
 
+=======
+.zelle-but img {
+  width: 15%;
+  max-width: 40%;
+  height: auto;
+>>>>>>> dev
 }
 .payment-auth {
-    text-align: center;
+  text-align: center;
 }
 
-.payment-auth-card{
-    padding: 20px 25%;
-    height: auto;
+.payment-auth-card {
+  padding: 20px 25%;
+  height: auto;
 }
-.reserve-but img{
-    width: 25%;
-    height: auto;
+.reserve-but img {
+  width: 25%;
+  height: auto;
 }
 
-.payment-back-btn{
-    border: none;
-    font-size: large;
-    border-radius: 5px;
-    background-color: #0D325E;
-    color: white;
-    width: 40%;
-    height: 45px;
-    margin-top: 5%;
-    text-align: center;
-    vertical-align: middle;
+.payment-back-btn {
+  border: none;
+  font-size: large;
+  border-radius: 5px;
+  background-color: #0d325e;
+  color: white;
+  width: 40%;
+  height: 45px;
+  margin-top: 5%;
+  text-align: center;
+  vertical-align: middle;
 }
-.payment-auth-card .payment-back-btn:hover{
-    opacity: 0.8;
+.payment-auth-card .payment-back-btn:hover {
+  opacity: 0.8;
 }
-.payment-visual .loader{
-    margin-left: 0%;
-    z-index: 100000;
+.payment-visual .loader {
+  margin-left: 0%;
+  z-index: 100000;
 }
 
 @media only screen and (max-width: 1200px) {
+<<<<<<< HEAD
 .stripe-but, .reserve-but, .paypal-but{
+=======
+  .stripe-but,
+  .reserve-but {
+>>>>>>> dev
     width: 100%;
     padding: 5px;
     padding-bottom: 5px;
@@ -423,217 +501,217 @@
     height: 50px;
     min-height: 40px;
     max-height: 50px;
-}
-#stripe-option{
+  }
+  #stripe-option {
     font-size: large;
-}
-.zelle-but {
+  }
+  .zelle-but {
     width: 100%;
     height: 50px;
     min-height: 40px;
     max-height: 50px;
-}
-.zelle-but img{
+  }
+  .zelle-but img {
     width: 20%;
     max-width: 20%;
-}
+  }
 }
 
 @media only screen and (max-width: 600px) {
-    .payment-visual .loader{
-        margin-left: 5%;
-    }
-    .campaignPage{
-        overflow: hidden;
-        margin-top:  -280px;
-    }
-
-    .campaign-page-title-img{
-        padding: 5% 0%;
-    }
-    .camp-page-vis {
-        margin-top: 350px;
-        margin-right: 10%;
-    }
-    #exp-img {
-        padding: 5% 5%;
-        background-color:  rgba(204, 205, 212, 1);
-    }
-    .campaign-page-title-img img {
-        width: 100%;
-        object-fit: cover;
-        border-radius: 2px;
-    }
-    .camp-page-vis h1{
-        font-size: 25px;
-        text-align: left;
-        margin-bottom: -10px;
-        margin-top: -10px;
-    }
-    #author-credit{
-        font-size: 17px;
-    }
-    .camp-page-story{
-        margin-top: 0;
-    }
-    .camp-page-story :is(p, h2){
-        text-align: start;
-    }
-    .camp-page-story p{
-        font-size: 17px;
-        overflow: hidden;
-    }
-    .camp-page-story h2{
-        font-size: 28px;
-    }
-    .donate-page-card h1{
-        font-size: 32px;
-        text-align: center;
-    }
-    .donate-page-card p{
-        font-size: 20px;
-        margin: 10px 0;
-    }
-    .donate-page-card b{
-        font-size: 25px;
-    }
-    .donate-page-card button{
-        font-size: 18px;
-        margin: 10px 0;
-        height: 40px;
-    }
-    .comment-section{
-        margin-left: 0px;
-    }
-    .comment-section h2{
-        padding: 20px 0;
-        color: #002453;
-    }
-    .comment-section .img-wrapper{
-        padding: 0px;
-        overflow: hidden;
-    }
-    .comment-section .ind-comment{
-        padding: 0px;
-        margin-bottom: 20px;
-    }
-    .comment-section .ind-comment .cmt-wrapper{
-        margin-left: 20px;
-    }
-    .comment-section .ind-comment h3{
-        font-size: 20px;
-        font-weight: 500;
-    }
-    .comment-section .ind-comment p{
-        padding: 0;
-        margin: 0;
-        font-size: 15px;
-        font-family: Intro-Light;
-    }
-    .comment-section .ind-comment img{
-        background-color: rgb(238, 235, 231);
-        width: 100%;
-        border-radius: 50%;
-        object-fit: cover;
-    }
-    .gallery img{
-        margin: 10px 2%;
-        max-width: 40%;
-        min-width: 40%;
-        border-radius: 10px;
-    }
-    .payment-card{
-        text-align: center;
-        margin: 0%;
-        padding: 0%;
-        width: 100%;
-    }
-    .payment-card h1{
-        font-size: 35px;
-    }
-    .payment-card p{
-        font-size: 20px;
-    }
-    .payment-card-sec input{
-        width: 100%;
-        margin-top: 10px;
-        height: 40px;
-    }
-    .check-text {
-        text-align: left;
-        margin-top: 25px;
-        height: 50px;
-        font-size: 15px;
-    }
-    #privacy-button{
-        font-size: 14px;
-    }
-    .payment-slit{
-        font-size: 20px;
-    }
-    .payment-slit b{
-        display: block;
-        font-size: 30px;
-    }
-    #charge-exp{
-        text-align: start;
-        font-size: 18px;
-        width: 80%;
-        margin-left: 10%;
-    }
-    .camp-page-story a{
-        overflow: hidden;
-        font-size: 18px;
-    }
-    .stripe-but, .reserve-but, .paypal-but{
-        width: 100%;
-        padding: 10px;
-        padding-bottom: 10px;
-        min-width: 200px;
-        border-radius: 15px;
-        height: 50px;
-        min-height: 40px;
-        max-height: 50px;
-    }
-    .zelle-but {
-        width: 100%;
-        height: 50px;
-        min-height: 40px;
-        max-height: 50px;
-    }
-    .zelle-but img{
-        width: 30%;
-    }
-    .reserve-but img{
-        width: 30%;
-        height: auto;
-    }
-    .payment-auth-card{
-        padding: 20px 10px;
-        height: auto;
-    }
-    #tip-area input{
-        margin-top: 0px;
-        margin-bottom: 20px;
-        width: 80%;
-        margin-left: 10%;
-    }
-    #tip-area .label{
-        text-align: left;
-        font-size: 18px;
-        color: #2e2e2e;
-        vertical-align: middle;
-    }
-    .payment-back-btn{
-        border: none;
-        width: 30vw;
-        max-height: 3.5vw;
-        font-size: 12px;
-        border-radius: 5px;
-        background-color: #0D325E;
-        color: white;
-        margin: 20px 0;
-        padding-top: 10px;
-        padding-bottom: 30px;
-    }
+  .payment-visual .loader {
+    margin-left: 5%;
+  }
+  .campaignPage {
+    overflow: hidden;
+    margin-top: -280px;
+  }
+  .campaign-page-title-img {
+    padding: 5% 0%;
+  }
+  .camp-page-vis {
+    margin-top: 350px;
+    margin-right: 10%;
+  }
+  #exp-img {
+    padding: 5% 5%;
+    background-color: rgba(204, 205, 212, 1);
+  }
+  .campaign-page-title-img img {
+    width: 100%;
+    object-fit: cover;
+    border-radius: 2px;
+  }
+  .camp-page-vis h1 {
+    font-size: 25px;
+    text-align: left;
+    margin-bottom: -10px;
+    margin-top: -10px;
+  }
+  #author-credit {
+    font-size: 17px;
+  }
+  .camp-page-story {
+    margin-top: 0;
+  }
+  .camp-page-story :is(p, h2) {
+    text-align: start;
+  }
+  .camp-page-story p {
+    font-size: 17px;
+    overflow: hidden;
+  }
+  .camp-page-story h2 {
+    font-size: 28px;
+  }
+  .donate-page-card h1 {
+    font-size: 32px;
+    text-align: center;
+  }
+  .donate-page-card p {
+    font-size: 20px;
+    margin: 10px 0;
+  }
+  .donate-page-card b {
+    font-size: 25px;
+  }
+  .donate-page-card button {
+    font-size: 18px;
+    margin: 10px 0;
+    height: 40px;
+  }
+  .comment-section {
+    margin-left: 0px;
+  }
+  .comment-section h2 {
+    padding: 20px 0;
+    color: #002453;
+  }
+  .comment-section .img-wrapper {
+    padding: 0px;
+    overflow: hidden;
+  }
+  .comment-section .ind-comment {
+    padding: 0px;
+    margin-bottom: 20px;
+  }
+  .comment-section .ind-comment .cmt-wrapper {
+    margin-left: 20px;
+  }
+  .comment-section .ind-comment h3 {
+    font-size: 20px;
+    font-weight: 500;
+  }
+  .comment-section .ind-comment p {
+    padding: 0;
+    margin: 0;
+    font-size: 15px;
+    font-family: Intro-Light;
+  }
+  .comment-section .ind-comment img {
+    background-color: rgb(238, 235, 231);
+    width: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+  .gallery img {
+    margin: 10px 2%;
+    max-width: 40%;
+    min-width: 40%;
+    border-radius: 10px;
+  }
+  .payment-card {
+    text-align: center;
+    margin: 0%;
+    padding: 0%;
+    width: 100%;
+  }
+  .payment-card h1 {
+    font-size: 35px;
+  }
+  .payment-card p {
+    font-size: 20px;
+  }
+  .payment-card-sec input {
+    width: 100%;
+    margin-top: 10px;
+    height: 40px;
+  }
+  .check-text {
+    text-align: left;
+    margin-top: 25px;
+    height: 50px;
+    font-size: 15px;
+  }
+  #privacy-button {
+    font-size: 14px;
+  }
+  .payment-slit {
+    font-size: 20px;
+  }
+  .payment-slit b {
+    display: block;
+    font-size: 30px;
+  }
+  #charge-exp {
+    text-align: start;
+    font-size: 18px;
+    width: 80%;
+    margin-left: 10%;
+  }
+  .camp-page-story a {
+    overflow: hidden;
+    font-size: 18px;
+  }
+  .stripe-but,
+  .reserve-but {
+    width: 100%;
+    padding: 10px;
+    padding-bottom: 10px;
+    min-width: 200px;
+    border-radius: 15px;
+    height: 50px;
+    min-height: 40px;
+    max-height: 50px;
+  }
+  .zelle-but {
+    width: 100%;
+    height: 50px;
+    min-height: 40px;
+    max-height: 50px;
+  }
+  .zelle-but img {
+    width: 30%;
+  }
+  .reserve-but img {
+    width: 30%;
+    height: auto;
+  }
+  .payment-auth-card {
+    padding: 20px 10px;
+    height: auto;
+  }
+  #tip-area input {
+    margin-top: 0px;
+    margin-bottom: 20px;
+    width: 80%;
+    margin-left: 10%;
+  }
+  #tip-area .label {
+    text-align: left;
+    font-size: 18px;
+    color: #2e2e2e;
+    vertical-align: middle;
+  }
+  .payment-back-btn {
+    border: none;
+    width: 30vw;
+    max-height: 3.5vw;
+    font-size: 12px;
+    border-radius: 5px;
+    background-color: #0d325e;
+    color: white;
+    margin: 20px 0;
+    padding-top: 10px;
+    padding-bottom: 30px;
+  }
 }

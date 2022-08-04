@@ -1,22 +1,17 @@
-import React from 'react'
-import LanguageService from '../../../services/language';
-import Author from '../../author'
-import './AboutUs.css'
-import AboutUsVisuals from './AboutUsVisuals'
+import React from "react";
+import useLanguage from "../../../hooks/useLanguage.tsx";
+import Author from "../../author";
+import "./AboutUs.css";
+import AboutUsVisuals from "./AboutUsVisuals";
 
 function AboutUs() {
-    const [EN, setEN] = React.useState(false);
-
-    React.useEffect(() => {
-        if(LanguageService.getLanguage()==='en')setEN(true)
-        else setEN(false)
-    }, []);
-    return (
-        <div className='about-us-page'>
-            <AboutUsVisuals EN={EN}/>
-            <Author />
-        </div>
-    )
+  const EN = useLanguage();
+  return (
+    <div className="about-us-page">
+      <AboutUsVisuals EN={EN} />
+      <Author />
+    </div>
+  );
 }
 
-export default AboutUs
+export default AboutUs;

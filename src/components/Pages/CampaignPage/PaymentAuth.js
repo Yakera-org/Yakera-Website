@@ -23,12 +23,12 @@ const paypalLogo = 'https://assets.yakera.org/yakera/paypal-logo.webp';
 
 function PaymentAuth(props) {
     const EN = props.EN
-    
+
     const shouldShowZelle = props?.isAcceptingZelle && props?.recipientName && props?.recipientEmail;
-    
+
     const total_amount = Math.round((parseFloat(props.amount) + parseFloat(props.tip)) * Math.pow(10, 2)) / Math.pow(10, 2);
     const [clientSecret, setClientSecret] = useState("");
-    
+
     async function onPaymentAuthClick(e){
         const authname = e.target.getAttribute("name")
         try {
@@ -76,7 +76,7 @@ function PaymentAuth(props) {
 
                 <div className='auth-axplanation'>
                     <h4>
-                    {EN ? 'Amount to be donated:' : 'Monto a donar:'} <label style={{color:'#ea8737'}}>${total_amount}</label>
+                    {EN ? 'Amount to be donated:' : 'Monto a donar:'} <label style={{color:'#ea8737'}}>${total_amount} USD</label>
                     </h4>
                     <p>{EN ? 'Please select a payment method' : 'Por favor seleccione un método de pago.'}</p>
                 </div>
@@ -93,7 +93,7 @@ function PaymentAuth(props) {
                             <AccordionCard.Body>
                                 {clientSecret && (
                                     <Elements options={options} stripe={stripePromise}>
-                                        <StripeForm 
+                                        <StripeForm
                                             EN={EN}
                                             slug={props.slug}
                                             email={props.email}
@@ -114,7 +114,7 @@ function PaymentAuth(props) {
                         </Accordion.Collapse>
                     </AccordionCard>
                 </Accordion>
-                                
+
                 <br />
 
                 <Accordion>
@@ -137,7 +137,7 @@ function PaymentAuth(props) {
                                     isAnon={props.isAnon}
                                     openThanks={props.openThanks}
                                 />
-                                
+
                             </AccordionCard.Body>
                         </Accordion.Collapse>
                     </AccordionCard>
@@ -192,12 +192,12 @@ function PaymentAuth(props) {
                                     openThanks={props.openThanks}
                                     recipientName={props.recipientName}
                                     recipientEmail={props.recipientEmail}
-                                />                                
+                                />
                             </AccordionCard.Body>
                         </Accordion.Collapse>
                     </AccordionCard>
                 </Accordion>
-                               
+
             :
             ''
             }

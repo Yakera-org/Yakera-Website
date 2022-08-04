@@ -8,7 +8,6 @@ import ResetPassword from "./Pages/ResetPassword/ResetPasswordPage";
 import home from "./Pages/Home/home";
 import Campaign from "./Pages/CampaignPage/CampaignPage";
 import Terms from "./Pages/Terms/terms";
-import Consent from "./Pages/Privacy/consent";
 import FAQ from "./Pages/FAQ/FAQPage";
 import Campaigns from "./Pages/Campaigns/Campaigns";
 import AboutUs from "./Pages/AboutUs/AboutUs";
@@ -62,7 +61,6 @@ function Main() {
             <Route exact path="/success" component={SuccessStories} />
             <Route exact path="/campaign/:title" component={Campaign} />
             <Route exact path="/terms" component={Terms} />
-            <Route exact path="/consent" component={Consent} />
             <Route exact path="/frequently-asked-questions" component={FAQ} />
             <Route exact path="/profile/edit" component={ProfileEditPage} />
             <Route exact path="/verify-email" component={EmailVerification} />
