@@ -387,14 +387,14 @@
 }
 
 .zelle-but:hover {
-    background-color:  #ede4f0aa;
-    cursor: pointer;
+  background-color: #ede4f0aa;
+  cursor: pointer;
 }
 
 .zelle-but img {
-    width: 15%;
-    max-width: 40%;
-    height: auto;
+  width: 15%;
+  max-width: 40%;
+  height: auto;
 }
 .payment-auth {
   text-align: center;
