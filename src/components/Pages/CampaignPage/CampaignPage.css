@@ -349,7 +349,8 @@
 
 .stripe-but,
 .reserve-but,
-.zelle-but {
+.zelle-but,
+.paypal-but {
   width: 100%;
   padding: 2px;
   padding-bottom: 0px;
@@ -372,68 +373,25 @@
   background-color: #edf0f4;
   border-radius: 15px;
 }
-#charge-exp{
-    color: #636363;
-    font-size: 20px;
-    width: 50%;
-    margin-left: 25%;
-    text-align: justify;
-}
-.gallery{
-    text-align: center;
-}
-.gallery img{
-    margin: 10px 2%;
-    max-width: 20%;
-    min-width: 20%;
-    border-radius: 10px;
-}
 
-
-.stripe-but, .reserve-but, .zelle-but, .paypal-but{
-    width: 100%;
-    padding: 2px;
-    padding-bottom: 0px;
-    min-width: 200px;
-    background-color: transparent;
-    border-radius: 15px;
-    height: 80px;
-    min-height: 80px;
-    max-height: 100px;
-}
-.reserve-but:hover{
-    background-color:  #f0f0f0;
-    cursor: pointer;
-}
-.stripe-but img{
-    margin-top: -15px;
-}
-.stripe-but:hover{
-    cursor: pointer;
-    background-color: #edf0f4;
-    border-radius: 15px;
-}
-
-.paypal-but:hover
-{
+.paypal-but:hover {
     background-color: #f0f0e4aa;
     cursor: pointer;
 }
 
-.paypal-but img
-{
+.paypal-but img {
     width: 30%;
     max-width: 40%;
     height: auto;
     margin-top: 2.5%;
 }
 
-.zelle-but:hover{
+.zelle-but:hover {
     background-color:  #ede4f0aa;
     cursor: pointer;
 }
 
-.zelle-but img{
+.zelle-but img {
     width: 15%;
     max-width: 40%;
     height: auto;
@@ -507,6 +465,7 @@
     overflow: hidden;
     margin-top: -280px;
   }
+
   .campaign-page-title-img {
     padding: 5% 0%;
   }
