@@ -372,7 +372,6 @@
   background-color: #edf0f4;
   border-radius: 15px;
 }
-<<<<<<< HEAD
 #charge-exp{
     color: #636363;
     font-size: 20px;
@@ -413,15 +412,12 @@
     cursor: pointer;
     background-color: #edf0f4;
     border-radius: 15px;
-=======
->>>>>>> dev
 
 .zelle-but:hover {
   background-color: #ede4f0aa;
   cursor: pointer;
 }
 
-<<<<<<< HEAD
 .paypal-but:hover
 {
     background-color: #f0f0e4aa;
@@ -445,13 +441,6 @@
     width: 15%;
     max-width: 40%;
     height: auto;
-
-=======
-.zelle-but img {
-  width: 15%;
-  max-width: 40%;
-  height: auto;
->>>>>>> dev
 }
 .payment-auth {
   text-align: center;
@@ -487,12 +476,9 @@
 }
 
 @media only screen and (max-width: 1200px) {
-<<<<<<< HEAD
-.stripe-but, .reserve-but, .paypal-but{
-=======
   .stripe-but,
-  .reserve-but {
->>>>>>> dev
+  .reserve-but,
+  .paypal-but {
     width: 100%;
     padding: 5px;
     padding-bottom: 5px;
