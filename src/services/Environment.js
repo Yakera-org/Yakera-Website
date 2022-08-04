@@ -31,15 +31,13 @@ const getPayPalClientID = () => {
   // Old credentials:
   // Live: AQMyTaoohTvLTTKQoNaRyr3pH0wtHr1Yj8QxaxCahDV_X1Tbt49yboUyc4YqgjmkpZdU4hJaGmNjJWlp
   // Sandbox: AZkSvUt1RiwtGclqKXhvgsoXv58UkR439TBBGLx9q-AJ-ZxIxOMmSnRL7dJxiqkxLddYxvsbMJGVBxl7
-
+  //
   // Live client id
-  let clientID = 'AeNq4sQYgLadNuoM4o9uTa8G1A5McYB-fuV2J-iP3W8O7uPByyYQZS_XpTUHt5H3KmK-npUHEqOYctX7';
-
+  let clientID = "AeNq4sQYgLadNuoM4o9uTa8G1A5McYB-fuV2J-iP3W8O7uPByyYQZS_XpTUHt5H3KmK-npUHEqOYctX7";
   if (currentEnv === ENVIRONMENTS.dev) {
       // Sandbox client id
-      clientID = 'AQcToFM4znXfqh4JF0XypGFwbY2LpT319ACgoR-pQnPvCEMjg7mf04I6hpulrfK65ZGRMQDzzZtVZc2c';
+      clientID = "AQcToFM4znXfqh4JF0XypGFwbY2LpT319ACgoR-pQnPvCEMjg7mf04I6hpulrfK65ZGRMQDzzZtVZc2c";
   }
-
   return clientID;
 }
 
