@@ -1,97 +1,70 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { validateFields } from "../Register/Validation";
 import CreateCampaignVisuals from "./CreateCampaignVisuals";
 import Author from "../../author";
 import api from "../../../services/api";
-import TokenService from "../../../services/token";
 import useLanguage from "../../../hooks/useLanguage.tsx";
+import useGetRecipientProfile from "../../../hooks/useGetRecipientProfile.tsx";
+import HashLoader from "react-spinners/HashLoader";
+import { linkify } from "../../../utils/stringUtils";
+
+const initialState = {
+  campaignname: "",
+  campaigncategory: "",
+  amount: "",
+  story: "",
+  description: "",
+  itemizedbudget: "",
+  mainPicture: "",
+  camPics: [],
+  supportPics: [],
+  idPics: [],
+  errors: {
+    campaignname: null,
+    amount: null,
+    story: null,
+    publicstory: null,
+    description: null,
+    moneyuse: null,
+    itemizedbudget: null,
+    mainPic: null,
+    camPics: null,
+    supportPics: null,
+    idPics: null,
+  },
+};
+const categories = {
+  "small business": "small_business",
+  healthcare: "healthcare",
+  education: "education",
+  nutrition: "nutrition",
+  "pequeños negocios": "small_business",
+  salud: "healthcare",
+  educación: "education",
+  alimentación: "nutrition",
+};
 
 function CreateCampaign() {
-  const initialState = {
-    campaignname: "",
-    campaigncategory: "",
-    amount: "",
-    story: "",
-    description: "",
-    itemizedbudget: "",
-    mainPicture: "",
-    camPics: [],
-    supportPics: [],
-    idPics: [],
-    errors: {
-      campaignname: null,
-      amount: null,
-      story: null,
-      publicstory: null,
-      description: null,
-      moneyuse: null,
-      itemizedbudget: null,
-      mainPic: null,
-      camPics: null,
-      supportPics: null,
-      idPics: null,
-    },
-  };
   const [data, setData] = useState(initialState);
   const [errorMessage, setError] = useState("");
   const [successMessage, setSuccess] = useState("");
   const [loader, setLoader] = React.useState(false);
-  const [hasLoaded, setHasLoaded] = React.useState(false);
   const EN = useLanguage();
-
-  useEffect(() => {
-    function startup() {
-      if (TokenService.getLocalAccessToken()) {
-        if (TokenService.isRecipient()) {
-          // only allow recipients to this page
-          getProfile();
-        } else {
-          // redirect donors to their page
-          window.location = "/donor-hub";
-        }
-      } else {
-        window.location = "/login";
-      }
-    }
-    startup();
-  }, []);
-
-  async function getProfile() {
-    try {
-      await api.get("/profile");
-      setHasLoaded(true);
-    } catch (err) {
-      setError("Profile not found");
-      setHasLoaded(true);
-      TokenService.removeAccessToken();
-      TokenService.removeRefreshToken();
-      window.location.replace("/login");
-    }
-  }
+  const recipientProfile = useGetRecipientProfile();
 
   const handleChange = (event) => {
-    let name = event.target.name;
+    let name = event.target.name.toLowerCase();
     let value = event.target.value;
 
-    name = name.toLowerCase();
-
+    setError("");
     setData({
       ...data,
       [name]: value,
+      errors: {
+        ...data.errors,
+        [name]: "",
+      },
     });
-
-    if (value !== "") {
-      setError("");
-      setData({
-        ...data,
-        [name]: value,
-        errors: {
-          ...data.errors,
-          [name]: "",
-        },
-      });
-    }
-
     return;
   };
 
@@ -196,15 +169,6 @@ function CreateCampaign() {
     return false;
   }
 
-  function linkify(text) {
-    //copied from https://stackoverflow.com/questions/1500260/detect-urls-in-text-with-javascript
-    var urlRegex =
-      /(\b(https?|ftp|file):\/\/[-A-Z0-9+&@#/%?=~_|!:,.;]*[-A-Z0-9+&@#/%=~_|])/gi;
-    return text.replace(urlRegex, function (url) {
-      return '<a href="' + url + '">' + url + "</a>";
-    });
-  }
-
   async function submit(event) {
     event.preventDefault();
     setError("");
@@ -213,8 +177,7 @@ function CreateCampaign() {
     );
     formattedStory = formattedStory.replace(/\n/g, " <br />");
 
-    let isValidated = validateData();
-    if (isValidated) {
+    if (validateData()) {
       setLoader(true);
       submitToBackend(formattedStory);
     } else {
@@ -225,18 +188,6 @@ function CreateCampaign() {
   }
 
   async function submitToBackend(story) {
-    const categories = {
-      "small business": "small_business",
-      healthcare: "healthcare",
-      education: "education",
-      nutrition: "nutrition",
-
-      "pequeños negocios": "small_business",
-      salud: "healthcare",
-      educación: "education",
-      alimentación: "nutrition",
-    };
-
     var pics = [];
     data.camPics.forEach((picName) => {
       pics.push({ url: "https://assets.yakera.org/" + picName });
@@ -267,7 +218,6 @@ function CreateCampaign() {
       personalID: id,
     };
 
-    //console.log(payload)
     try {
       await api.post("/campaigns", payload);
       setSuccess(
@@ -286,8 +236,12 @@ function CreateCampaign() {
       setLoader(false);
     }
   }
-  if (!hasLoaded) {
-    return <div>Loading ...</div>;
+  if (Object.keys(recipientProfile).length === 0) {
+    return (
+      <div className="page-loader-wrapper">
+        <HashLoader size={100} color={"#ea8737"} loading={true} />
+      </div>
+    );
   } else {
     return (
       <div>

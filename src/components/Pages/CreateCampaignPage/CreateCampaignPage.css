@@ -3,6 +3,12 @@
   padding: 3% 8%;
   font-family: Intro-Regular-Alt;
 }
+.page-loader-wrapper {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin-top: 10%;
+}
 .create-page h1 {
   color: #01224d;
   font-size: 42px;
@@ -325,7 +331,7 @@ aside h6 {
   height: 2px;
   flex: 1;
   content: "";
-  margin-top: 1.8%;
+  margin-top: 15px;
 }
 
 .subtitle-text-mobile:after {
@@ -579,4 +585,12 @@ aside h6 {
 
 .mobile-row {
   margin: -5% 0;
+}
+@media only screen and (max-width: 600px) {
+  .page-loader-wrapper {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin-top: 50%;
+  }
 }
