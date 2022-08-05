@@ -1,6 +1,5 @@
 import React from "react";
 import { Redirect, BrowserRouter, Switch, Route } from "react-router-dom";
-import axios from "axios";
 import login from "./Pages/Login/Login";
 import register from "./Pages/Register/RegisterPage";
 import ForgotPassword from "./Pages/ForgotPassword/ForgotPasswordPage";
@@ -14,37 +13,16 @@ import AboutUs from "./Pages/AboutUs/AboutUs";
 import NotFoundPage from "./Pages/404/NotFoundPage";
 import CreateCampaign from "./Pages/CreateCampaignPage/CreateCampaign";
 import EmailVerification from "./Pages/EmailVerification/EmailVerificationPage";
-import LanguageService from "../services/language";
 import ProfileEditPage from "./Pages/Profile/EditPage/EditPage";
 import Profile from "./Pages/Profile/Profile";
 import SuccessStories from "./Pages/SuccessStories/SuccessStories";
+import useLanguageFromGeoLocation from "../hooks/useLanguageFromGeoLocation";
 
 function Main() {
-  React.useEffect(() => {
-    //passing getData method to the lifecycle method
-    getData();
-  }, []);
+  const fetchedLanguage = useLanguageFromGeoLocation();
 
-  const [loaded, setLoaded] = React.useState(false);
-
-  //creating function to load ip address from the API
-  const getData = async () => {
-    try {
-      const res = await axios.get("https://geolocation-db.com/json/");
-      LanguageService.setLanguageFromIP(
-        res.data.country_name === "Venezuela" ||
-          res.data.country_name === "Spain"
-          ? "sp"
-          : "en"
-      );
-    } catch (e) {
-      LanguageService.setLanguageFromIP("en");
-    } finally {
-      setLoaded(true);
-    }
-  };
-  if (!loaded) {
-    return "...";
+  if (!fetchedLanguage) {
+    return "";
   } else {
     return (
       <BrowserRouter>
