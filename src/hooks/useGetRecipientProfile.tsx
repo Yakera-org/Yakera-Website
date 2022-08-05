@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import api from "../services/api";
 import TokenService from "../services/token";
 
-const useCheckAuthenticated = (): any => {
+const useGetRecipientProfile = (): any => {
   const [profile, setProfile] = useState({});
   useEffect(() => {
     function startup() {
@@ -33,4 +33,4 @@ const useCheckAuthenticated = (): any => {
   return profile;
 };
 
-export default useCheckAuthenticated;
+export default useGetRecipientProfile;
