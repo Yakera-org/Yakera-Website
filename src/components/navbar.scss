@@ -27,13 +27,44 @@
     color: var(--brand-blue);
     font-size: 18px;
     align-items: center;
+    text-align: center;
+    width: 10%;
+}
+.nav-bar .login-tab{
+    border: 1px solid rgb(163, 163, 163) ;
+    background-color: transparent;
+    border-radius: 15px;
+    padding: 5px 20px;
+}
+.nav-bar .login-tab:hover{
+    border-color: var(--brand-orange) ;
+    cursor: pointer;
+}
+.nav-bar .login-tab:hover >a{
+    color: var(--brand-orange) ;
+}
+.nav-bar .register-tab{
+    border: 2px solid var(--brand-orange) ;
+    background-color: var(--brand-orange) ;
+    border-radius: 15px;
+    padding: 5px 20px;
+}
+.nav-bar .register-tab >a{
+    color: white !important;
+}
+.nav-bar .register-tab:hover{
+    opacity: 0.8;
+    cursor: pointer;
+}
+.nav-bar .register-tab:hover >a{
+    color: var(--brand-orange) ;
 }
 .nav-bar .tabs .brand-wrapper {
     width: 20%;
     text-align: center;
 }
 .nav-bar .tabs .brand-wrapper img{
-    width: 100%;
+    width: 70%;
 }
 .nav-bar .tabs .brand-wrapper img:hover{
     cursor: pointer;

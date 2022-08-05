@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 const tabMapping = {
   "/": "home",
   "/login": "login",
-  "/register": "login",
+  "/register": "register",
   "/forgot-password": "login",
   "/about": "about",
   "/create": "profile",
