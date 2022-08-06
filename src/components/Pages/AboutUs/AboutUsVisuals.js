@@ -71,7 +71,7 @@ function AboutUsVisuals(props) {
                                 100%
                             </div>
                             <p>
-                                <b>Of your donation goes directly to people:</b>
+                                <b>of your donation goes directly to people:</b>
                                 &nbsp;no hidden fees. We are revolutionizing how people connect and send and receive donations around the world.
                             </p>
                         </section>
@@ -81,7 +81,7 @@ function AboutUsVisuals(props) {
                                 100%
                             </div>
                             <p>
-                                <b>De lo que aportas va directamente a las personas:</b>
+                                <b>de lo que aportas va directamente a las personas:</b>
                                 &nbsp;sin comisiones. Estamos revolucionando la forma en la que las personas se conectan, envían y reciben donaciones en el mundo.
                             </p>
                         </section>

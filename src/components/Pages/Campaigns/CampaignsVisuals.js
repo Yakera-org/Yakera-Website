@@ -115,7 +115,7 @@ function CampaignsVisuals(props) {
                         src={dictionaries.pics['bottom-1']}
                         
                     />
-                    <p className='p1'><span>{EN ? 'All of out campaigns are verified' : 'Todas nuestras campañas son verificadas'}</span>{EN ? ' before publication.' : ' antes de su publicación.'}</p>
+                    <p className='p1'><span>{EN ? 'All of our campaigns are verified' : 'Todas nuestras campañas son verificadas'}</span>{EN ? ' before publication.' : ' antes de su publicación.'}</p>
                 </Grid>
                 <Grid item sm={6} xs={12} className='img-2'>
                     <img
