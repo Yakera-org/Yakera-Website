@@ -108,7 +108,7 @@ function Home() {
                   <Button
                     className="cta-text-button"
                     component={Link}
-                    to={loggedIn ? "/donor-hub" : "/register"}
+                    to={loggedIn ? "/profile" : "/register"}
                     style={{
                       padding: "10px",
                       margin: "10px",

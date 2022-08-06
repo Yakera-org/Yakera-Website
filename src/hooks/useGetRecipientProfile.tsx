@@ -12,7 +12,7 @@ const useGetRecipientProfile = (): any => {
         getProfile();
       } else {
         // redirect donors to their page
-        window.open("/donor-hub");
+        window.open("/profile");
       }
     } else {
       window.open("/login");
