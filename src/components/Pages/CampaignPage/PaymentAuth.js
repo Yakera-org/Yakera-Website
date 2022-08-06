@@ -4,6 +4,7 @@ import reserveLogo from "../../../pics/reservebutton.png";
 //import zelleLogo from '../../../pics/zelle.png';
 import ZelleLogic from "./ZelleLogic";
 import ReserveLogic from "./ReserveLogic";
+import { sendTrackerToBackend } from "../../../services/Analytics";
 
 import { loadStripe } from "@stripe/stripe-js";
 import { Elements } from "@stripe/react-stripe-js";
@@ -34,11 +35,7 @@ function PaymentAuth(props) {
 
   async function onPaymentAuthClick(e) {
     const authname = e.target.getAttribute("name");
-    try {
-      await api.get(`/track?path=authentication/${authname}`);
-    } catch (err) {
-      console.log("Error. " + err);
-    }
+    await sendTrackerToBackend("authentication", authname);
   }
 
   useEffect(() => {

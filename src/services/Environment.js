@@ -26,6 +26,9 @@ const getStripeToken = () => {
 const getCurrentEnvironment = () => {
   return currentEnv;
 };
+const isInProduction = () => {
+  return currentEnv === ENVIRONMENTS.production;
+};
 
 const getPayPalClientID = () => {
   // Old credentials:
@@ -33,19 +36,22 @@ const getPayPalClientID = () => {
   // Sandbox: AZkSvUt1RiwtGclqKXhvgsoXv58UkR439TBBGLx9q-AJ-ZxIxOMmSnRL7dJxiqkxLddYxvsbMJGVBxl7
   //
   // Live client id
-  let clientID = "AeNq4sQYgLadNuoM4o9uTa8G1A5McYB-fuV2J-iP3W8O7uPByyYQZS_XpTUHt5H3KmK-npUHEqOYctX7";
+  let clientID =
+    "AeNq4sQYgLadNuoM4o9uTa8G1A5McYB-fuV2J-iP3W8O7uPByyYQZS_XpTUHt5H3KmK-npUHEqOYctX7";
   if (currentEnv === ENVIRONMENTS.dev) {
-      // Sandbox client id
-      clientID = "AQcToFM4znXfqh4JF0XypGFwbY2LpT319ACgoR-pQnPvCEMjg7mf04I6hpulrfK65ZGRMQDzzZtVZc2c";
+    // Sandbox client id
+    clientID =
+      "AQcToFM4znXfqh4JF0XypGFwbY2LpT319ACgoR-pQnPvCEMjg7mf04I6hpulrfK65ZGRMQDzzZtVZc2c";
   }
   return clientID;
-}
+};
 
 const Environment = {
   getStripeToken,
   getBackendUrl,
   getCurrentEnvironment,
   getPayPalClientID,
+  isInProduction,
 };
 
 export default Environment;

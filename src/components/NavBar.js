@@ -74,9 +74,9 @@ function NavBar() {
                   } ${tab === "register" ? "register-tab" : undefined}`}
                   style={tab === currentTab ? { borderColor: "#eb913b" } : {}}
                   onClick={
-                    tab === "login"
+                    tab === "login" || tab === "register"
                       ? () => {
-                          window.location.href = "/login";
+                          window.location.href = `/${tab}`;
                         }
                       : undefined
                   }
