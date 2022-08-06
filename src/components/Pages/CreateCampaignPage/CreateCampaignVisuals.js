@@ -350,10 +350,6 @@ function CreateCampaignVisuals(props) {
     }
   };
 
-  const closeSuccessCard = () => {
-    window.location.href = "/dashboard";
-  };
-
   const submitCampaign = async (event) => {
     setIsUploadingCampaign(true);
     await props.submit(event);
@@ -381,7 +377,9 @@ function CreateCampaignVisuals(props) {
       <SuccessCard
         EN={EN}
         open={openSuccess}
-        onClose={closeSuccessCard}
+        onClose={() => {
+          window.location.href = "/profile";
+        }}
         isMobile={isMobile}
       />
       {!EN ? <WhatsAppButton EN={EN}></WhatsAppButton> : ""}

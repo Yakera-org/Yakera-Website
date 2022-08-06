@@ -4,21 +4,19 @@ import TokenService from "../services/token";
 
 const useGetRecipientProfile = (): any => {
   const [profile, setProfile] = useState({});
+
   useEffect(() => {
-    function startup() {
-      if (TokenService.getLocalAccessToken()) {
-        if (TokenService.isRecipient()) {
-          // only allow recipients to this page
-          getProfile();
-        } else {
-          // redirect donors to their page
-          window.open("/donor-hub");
-        }
+    if (TokenService.getLocalAccessToken()) {
+      if (TokenService.isRecipient()) {
+        // only allow recipients to this page
+        getProfile();
       } else {
-        window.open("/login");
+        // redirect donors to their page
+        window.open("/donor-hub");
       }
+    } else {
+      window.open("/login");
     }
-    startup();
   }, []);
 
   async function getProfile() {
