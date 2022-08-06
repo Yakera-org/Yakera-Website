@@ -656,3 +656,8 @@
     padding-bottom: 30px;
   }
 }
+
+.stripe-option-text {
+  font-weight: bolder;
+  font-size: 1.8em !important;
+}
