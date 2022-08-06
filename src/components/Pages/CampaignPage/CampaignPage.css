@@ -375,15 +375,15 @@
 }
 
 .paypal-but:hover {
-    background-color: #f0f0e4aa;
-    cursor: pointer;
+  background-color: #1e477a20;
+  cursor: pointer;
 }
 
 .paypal-but img {
-    width: 30%;
-    max-width: 40%;
-    height: auto;
-    margin-top: 2.5%;
+  width: 30%;
+  max-width: 40%;
+  height: auto;
+  margin-top: 2.5%;
 }
 
 .zelle-but:hover {
