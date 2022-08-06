@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import CreateCampaignDetails from "./CreateCampaignDetails.js";
 import CampaignIntroPage from "./CreateCampaignIntro";
 import { Alert } from "reactstrap";
-import LanguageService from "../../../services/language";
 import HashLoader from "react-spinners/HashLoader";
 import "./CreateCampaignPage.css";
 import WhatsAppButton from "../WhatsAppButton/WhatsAppButton";
@@ -29,6 +28,7 @@ function CreateCampaignVisuals(props) {
   const [camImagesError, setCamImagesError] = useState("");
   const [idImagesError, setIdImagesError] = useState("");
   const [openSuccess, setOpenSuccess] = useState(false);
+  const EN = props.EN;
 
   let isMobile = width < 700 ? true : false;
 
@@ -37,7 +37,7 @@ function CreateCampaignVisuals(props) {
   };
 
   useEffect(() => {
-    setLanguage(LanguageService.getLanguage());
+    window.scrollTo(0, 0);
 
     window.addEventListener("resize", handleWindowSize);
     return () => window.removeEventListener("resize", handleWindowSize);
@@ -326,7 +326,6 @@ function CreateCampaignVisuals(props) {
     }
   };
 
-  const [language, setLanguage] = useState("");
   const [isUploading, setIsUploading] = useState("");
   const [isUploadingCampaign, setIsUploadingCampaign] = useState(false);
   const [step, setStep] = useState(1);
@@ -339,10 +338,6 @@ function CreateCampaignVisuals(props) {
       }
     }
   };
-
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [step]);
 
   const prevStep = () => {
     if (step > 1) {
@@ -358,13 +353,6 @@ function CreateCampaignVisuals(props) {
       setOpenSuccess(true);
     }
   };
-
-  var EN;
-  if (language === "en") {
-    EN = true;
-  } else {
-    EN = false;
-  }
 
   if (props.success && !openSuccess) {
     setOpenSuccess(true);
@@ -384,7 +372,7 @@ function CreateCampaignVisuals(props) {
       />
       {!EN ? <WhatsAppButton EN={EN}></WhatsAppButton> : ""}
       <div id="background">
-        <MultiStepForm pillSize={50} activeStep={step} inactiveColor={"#999"}>
+        <MultiStepForm pillSize={50} activeStep={step} inactiveColor={"#aaa"}>
           <Step label={1}>
             <CampaignIntroPage
               EN={EN}
@@ -446,22 +434,15 @@ function CreateCampaignVisuals(props) {
               }}
             />
           </Step>
+          <Step label={"✓"}>
+            <CampaignSummary
+              step={step}
+              data={props.data}
+              EN={EN}
+              isMobile={isMobile}
+            />
+          </Step>
         </MultiStepForm>
-        <CampaignSummary
-          step={step}
-          data={props.data}
-          EN={EN}
-          isMobile={isMobile}
-        />
-        {/*props.success
-                ?
-                <Alert color="success" id='alert'>
-                    {props.success}
-                    <br />
-                    {EN ? <>Head to your <a href="/dashboard" style={{color:'darkgreen', textDecoration:'underline'}}> Dashboard</a>.</> : <>Dirígete a tu <a href="/dashboard" style={{color:'darkgreen', textDecoration:'underline'}}> Mi Cuenta</a>.</>}                                            
-                </Alert>
-                :
-                ''*/}
         {props.error ? (
           <Alert color="danger" id="alert">
             {props.error}

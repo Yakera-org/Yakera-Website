@@ -366,6 +366,7 @@ aside h6 {
   border-color: #70b88f;
   border-style: solid;
   border-radius: 5px;
+  border-width: 3px;
 }
 
 .category-healthcare .radio-card-input:checked + .radio-card,
