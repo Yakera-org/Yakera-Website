@@ -457,20 +457,18 @@
   }
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 800px) {
   .payment-visual .loader {
     margin-left: 5%;
   }
   .campaignPage {
     overflow: hidden;
-    margin-top: -280px;
   }
 
   .campaign-page-title-img {
     padding: 5% 0%;
   }
   .camp-page-vis {
-    margin-top: 350px;
     margin-right: 10%;
   }
   #exp-img {

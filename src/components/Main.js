@@ -26,7 +26,7 @@ function Main() {
   } else {
     return (
       <BrowserRouter>
-        <div style={{ marginTop: "100px" }}>
+        <div>
           <Switch>
             <Route exact path="/login" component={login} />
             <Route exact path="/register" component={register} />
