@@ -37,7 +37,7 @@ function NavBar() {
     login: EN ? "LOG IN" : "INICIAR SESIÓN",
     register: EN ? "REGISTER" : "REGISTRAR",
     logout: EN ? "SIGN OUT" : "CERRAR SESIÓN",
-    profile: isDonor ? EN && "DONOR HUB" : EN ? "DASHBOARD" : "MI CUENTA",
+    profile: isDonor ? "DONOR HUB" : EN ? "DASHBOARD" : "MI CUENTA",
   };
 
   const onLogOut = async () => {

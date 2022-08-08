@@ -54,7 +54,7 @@
 }
 .nav-bar .tabs .brand-wrapper img{
     width: 80%;
-    min-width: 100px;
+    min-width: 150px;
     padding-left:50px
 }
 .nav-bar .tabs .brand-wrapper img:hover{
@@ -82,14 +82,14 @@
     padding: 0 5px;
 }
 @media only screen and (max-width: 1100px) {
-    .nav-bar .tab {
-        width: 35%;
+    .nav-bar .tabs .active-tabs{
+        width: 100%;
     }
     .nav-bar .tabs .tab a{
-        font-size: 15px;
+        font-size: 13px;
     }
     .nav-bar .login-tab >a{
-        padding: 5px;
+        padding: 5px ;
     }
     .nav-bar .logout{
         font-size: 15px;
