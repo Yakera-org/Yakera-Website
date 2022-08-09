@@ -18,7 +18,7 @@
     /* border-radius: 1rem; */
 }
 
-.upld-btn{
+.upld-btn {
     border: none;
     border-radius: 10px;
     background-color: #70b88f;
@@ -45,8 +45,8 @@
     margin-top: -16rem;
 }
 
-p{
-    color: #EA8737;
+.crop-container p {
+    color: #ea8737;
     font-size: larger;
 }
 

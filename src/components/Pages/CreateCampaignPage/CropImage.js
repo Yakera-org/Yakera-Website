@@ -80,7 +80,7 @@ class CropImage extends React.Component {
 
     render() {
         return (
-            <div>
+            <div className="crop-container">
                 <div class="img-container" id="cropbox" style={{visibility: "hidden"}}>
                     <p>Cut</p>
                     <img ref={this.imageElement} id="image_being_cropped" src={this.props.image.preview} alt="Source" crossorigin />
