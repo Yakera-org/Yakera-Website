@@ -96,6 +96,7 @@ function CreateCampaignDetails(props) {
                 />
                 {/*<div className="invalid-feedback">{props.data.errors.description}</div>*/}
                 <div className="invalid-feedback invalid-data">{props.errors.descriptionError}</div>
+                <div className="char-display">{props.data.description.length}/250 (MAX)</div>
             </FormGroup>
 
         </div>

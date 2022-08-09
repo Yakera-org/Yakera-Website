@@ -64,6 +64,33 @@ function CreateCampaignVisuals(props) {
     ? "No files uploaded"
     : "No hay archivos subidos";
 
+  
+  const validateMaxChars = (value, amount, setError) => {
+    if (value.length > amount) {
+      setError(
+        EN
+          ? `The maximum number of characters allowed is ${amount}`
+          : `El número máximo de caracteres permitidos es de ${amount}`
+      );
+      return false;
+    }
+
+    return true;
+  }
+
+  const validateMinChars = (value, amount, setError) => {
+    if (value.length < amount) {
+      setError(
+        EN
+          ? `The minimum number of characters allowed is ${amount}`
+          : `El número mínimo de caracteres permitidos es de ${amount}`
+      );
+      return false;
+    }
+
+    return true;
+  }
+
   const validateTitle = (optional = "") => {
     if (optional) {
       setNameError("");
@@ -138,6 +165,12 @@ function CreateCampaignVisuals(props) {
 
   const validateDescription = (optional = "") => {
     if (optional) {
+      let validLength = validateMaxChars(optional, 250, setDescriptionError);
+
+      if (!validLength) {
+        return false;
+      }
+
       setDescriptionError("");
       return true;
     }
@@ -153,6 +186,12 @@ function CreateCampaignVisuals(props) {
         return false;
       }
 
+      let validLength = validateMaxChars(props.data.description, 250, setDescriptionError);
+
+      if (!validLength) {
+        return false;
+      }
+
       setDescriptionError("");
       return true;
     }
@@ -160,6 +199,12 @@ function CreateCampaignVisuals(props) {
 
   const validateStory = (optional = "") => {
     if (optional) {
+      let validLength = validateMinChars(optional, 250, setStoryError);
+
+      if (!validLength) {
+        return false;
+      }
+
       setStoryError("");
       return true;
     }
@@ -175,6 +220,13 @@ function CreateCampaignVisuals(props) {
         return false;
       }
 
+      let validLength = validateMinChars(props.data.story, 250, setStoryError);
+
+      if (!validLength) {
+        return false;
+      }
+
+
       setStoryError("");
       return true;
     }
@@ -182,6 +234,12 @@ function CreateCampaignVisuals(props) {
 
   const validatePublicStory = (optional = "") => {
     if (optional) {
+      let validLength = validateMinChars(optional, 250, setPublicStoryError);
+
+      if (!validLength) {
+        return false;
+      }
+
       setPublicStoryError("");
       return true;
     }
@@ -197,6 +255,13 @@ function CreateCampaignVisuals(props) {
         return false;
       }
 
+      let validLength = validateMinChars(props.data.publicstory, 250, setPublicStoryError);
+
+      if (!validLength) {
+        return false;
+      }
+
+
       setPublicStoryError("");
       return true;
     }
@@ -204,6 +269,12 @@ function CreateCampaignVisuals(props) {
 
   const validateMoneyUse = (optional = "") => {
     if (optional) {
+      let validLength = validateMinChars(optional, 250, setMoneyUseError);
+
+      if (!validLength) {
+        return false;
+      }
+
       setMoneyUseError("");
       return true;
     }
@@ -218,6 +289,13 @@ function CreateCampaignVisuals(props) {
         setMoneyUseError(invalid);
         return false;
       }
+
+      let validLength = validateMinChars(props.data.moneyuse, 250, setMoneyUseError);
+
+      if (!validLength) {
+        return false;
+      }
+
 
       setMoneyUseError("");
       return true;

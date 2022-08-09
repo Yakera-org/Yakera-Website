@@ -61,6 +61,7 @@ function CampaignThirdPage(props)
                 />
                 {/*<div className="invalid-feedback">{props.data.errors.story}</div>*/}
                 <div className="invalid-feedback invalid-data">{props.errors.storyError}</div>
+                <div className="char-display">{props.data.story.length}/250 (MIN)</div>
             </FormGroup>
 
             <FormGroup>
@@ -93,6 +94,7 @@ function CampaignThirdPage(props)
                 />
                 {/*<div className="invalid-feedback">{props.data.errors.publicStory}</div>*/}
                 <div className="invalid-feedback invalid-data">{props.errors.publicStoryError}</div>
+                <div className="char-display">{props.data.publicstory.length}/250 (MIN)</div>
             </FormGroup>
 
             <FormGroup>
@@ -125,6 +127,7 @@ function CampaignThirdPage(props)
                 />
                 {/*<div className="invalid-feedback">{props.data.errors.moneyUse}</div>*/}
                 <div className="invalid-feedback invalid-data">{props.errors.moneyUseError}</div>
+                <div className="char-display">{props.data.moneyuse.length}/250 (MIN)</div>
             </FormGroup>
 
             <FormGroup>

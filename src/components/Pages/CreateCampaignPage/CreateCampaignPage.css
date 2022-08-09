@@ -595,3 +595,16 @@ aside h6 {
     margin-top: 50%;
   }
 }
+
+.char-display {
+  text-align: end;
+}
+
+.is-invalid ~ .char-display {
+  color: #dc3545;
+  margin-top: -1.7em;
+}
+
+.is-valid ~ .char-display {
+  color: #28a745;
+}
