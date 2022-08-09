@@ -103,7 +103,7 @@ function PaymentAuth(props) {
                   alt="card"
                   src={cardImg}
                 ></img>
-                <span name="creditcard" id="stripe-option">
+                <span className="stripe-option-text" name="creditcard" id="stripe-option">
                   {EN ? "Credit or Debit" : "Crédito o Débito"}
                 </span>
               </div>

@@ -36,7 +36,7 @@ function CreateCampaignDetails(props) {
                     as='input'
                     name='campaignname'
                     autoComplete="off"
-                    placeholder={EN ? 'Enter a title that catches the attention of potential donors' : 'Escribe un título que llame la atención de donantes potenciales'}
+                    placeholder={EN ? 'Enter a title that catches the attention of donors' : 'Escribe un título que llame la atención de donantes'}
                     onChange={handleTitleChange}
                     className={classnames(
                         'form-control',
@@ -56,7 +56,7 @@ function CreateCampaignDetails(props) {
                     as='input'
                     name='amount'
                     autoComplete="off"
-                    placeholder={EN ? 'Enter the amount that you wish to raise (in USD)' : 'Llene con la cantidad que desea recaudar en $USD'}
+                    placeholder={EN ? 'Enter the amount that you wish to raise (in USD)' : 'Cantidad que deseas recaudar en $USD'}
                     onChange={handleAmountChange}
                     className={classnames(
                         'form-control',

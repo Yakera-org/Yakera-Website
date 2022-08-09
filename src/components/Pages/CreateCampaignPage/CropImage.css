@@ -1,0 +1,52 @@
+.img-container {
+    margin-bottom: 6rem;
+    width: 280px;
+    height: 308px;
+    margin-right: 3rem;
+    border-radius: 5rem;
+}
+
+#image_being_cropped {
+    border-radius: 1rem;
+}
+
+.img-preview {
+    width: 280px;
+    height: 308px;
+    margin-bottom: 10px;
+    border: 2px solid;
+    /* border-radius: 1rem; */
+}
+
+.upld-btn{
+    border: none;
+    border-radius: 10px;
+    background-color: #70b88f;
+    color: white;
+    font-size: 25px;
+    outline: none;
+    margin-bottom: 10px;
+}
+
+.far {
+    color: white;
+    cursor: pointer;
+}
+
+.far:hover {
+    color: black;
+}
+
+.fas {
+    color: #ff7d7d;
+}
+.fa-stack {
+    margin-left: -3rem;
+    margin-top: -16rem;
+}
+
+p{
+    color: #EA8737;
+    font-size: larger;
+}
+

@@ -6,6 +6,9 @@ import HashLoader from "react-spinners/HashLoader";
 import imageCompression from 'browser-image-compression';
 import FilePreview from "./FilePreview";
 import DroppingZone from "./DroppingZone";
+import DroppingZoneMain from "./DroppingZoneMain";
+import CropImage from "./CropImage";
+
 
 const S3_BUCKET = process.env.REACT_APP_S3_BUCKET
 const REGION = process.env.REACT_APP_REGION
@@ -44,17 +47,25 @@ function CreateCampaignLast(props) {
     const [docLoading, setDocLoading] = useState(false);
     const [camLoading, setCamLoading] = useState(false);
     const [idLoading, setIdLoading] = useState(false);
-
     
     const EN = props.EN;
     const isMobile = props.isMobile;
 
     // https://github.com/react-dropzone/react-dropzone/tree/master/examples/previews
-    const mainThumbs = mainFile.map(file => {
+
+    const cropZone = mainFile.map(file => {
         return(
-            <FilePreview EN={EN} key={file.name} file={file} onRemove={onRemove} onRetry={onRetry} id="main" uploadSuccess={uploadSuccess}uploadFailures={uploadFailures}/>       
+            <>
+            <CropImage image={file} setLoading={setMainLoading} onUpload={onUpload} EN={EN} key={file.name} file={file} onRemove={onRemove} onRetry={onRetry} id="main" uploadSuccess={uploadSuccess}uploadFailures={uploadFailures}/>
+            </>
         )
     });
+
+    // const mainThumbs = mainFile.map(file => {
+    //     return(
+    //         // <FilePreview EN={EN} key={file.name} file={file} onRemove={onRemove} onRetry={onRetry} id="main" uploadSuccess={uploadSuccess}uploadFailures={uploadFailures}/>       
+    //     )
+    // });
 
     const documentThumbs = documentFiles.map(file => {
         return(
@@ -468,7 +479,7 @@ function CreateCampaignLast(props) {
                     }     
                 </div>
 
-                <DroppingZone  
+                <DroppingZoneMain 
                     campaignFiles= {campaignFiles} 
                     mainFile= {mainFile} 
                     file= {mainFile} 
@@ -493,8 +504,9 @@ function CreateCampaignLast(props) {
                 }
 
                 <aside>
-                    <h6>{EN ? "File ready for Upload:" : "Archivo:" }</h6>
-                    <ul>{mainThumbs}</ul>
+                    <ul>{cropZone}</ul>
+                    {/* <h6>{EN ? "File ready for Upload:" : "Archivo:" }</h6> */}
+                    {/* <ul>{mainThumbs}</ul> */}
                     {
                         mainFile.length === 0
                         ?
