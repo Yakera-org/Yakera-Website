@@ -29,6 +29,17 @@ const removeAccessToken = () => {
 const removeRefreshToken = () => {
     localStorage.removeItem("refreshToken");
 };
+const identifyUserType = (type) => {
+    if (type === "user" || type === "admin"){
+        return("recipient")
+    }else if(type === "donor"){
+        return("donor")
+    }
+    else {
+        return(null)
+    }
+};
+
 const setUserType = (type) => {
         localStorage.setItem("userType", type)
 };
@@ -70,7 +81,8 @@ removeRefreshToken,
 getUserType,
 setUserType,
 isDonor,
-isRecipient
+isRecipient,
+identifyUserType
 };
   
   export default TokenService;

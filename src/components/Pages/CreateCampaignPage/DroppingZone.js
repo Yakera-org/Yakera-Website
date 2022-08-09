@@ -1,6 +1,7 @@
 import React from 'react';
 import Dropzone from 'react-dropzone';
-import fileUploadImage from '../../../pics/upload-image-campaign.png'
+
+const fileUploadImage = 'https://assets.yakera.org/yakera/upload-image-campaign.webp';
 
 const DroppingZone = (props) => {
     var campaignFiles = props.campaignFiles

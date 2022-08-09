@@ -9,19 +9,14 @@ function CampaignThirdPage(props)
     let isMobile = props.isMobile;
 
     const handleTextAreaChange = (event, validation) => {
-        validation();
+        validation(event.target.value);
 
         return props.handleChange(event);
     }
 
     return (
         <div>
-            {isMobile
-            ?
-            <h2 className="subtitle-text-mobile"><span>{EN ? 'Tell us your story' : 'Cuéntanos tu historia'}</span></h2>
-            :
-            <h2 className="subtitle-text"><span>{EN ? 'Tell us your story' : 'Cuéntanos tu historia'}</span></h2>
-            }
+            <h2 className={isMobile ? 'subtitle-text-mobile' : 'subtitle-text'}><span>{EN ? 'Tell us your story' : 'Cuéntanos tu historia'}</span></h2>
             <p className="info-text">
                 {EN
                 ?
@@ -45,14 +40,14 @@ function CampaignThirdPage(props)
                     ?
                     'Describe what made you open a campaign to raise funds and clearly comment the situation that you want to resolve.'
                     : 
-                    'Describe que te llevó a abrir una campaña para recaudar fondos y comenta claramente la situación que deseas resolver.'}
+                    'Describe qué te llevó a abrir una campaña para recaudar fondos y comenta claramente la situación que deseas resolver.'}
                 </p>
                 <FormControl
                     type='story'
                     autoComplete="off" 
                     as="textarea"
                     name='story'
-                    style={{minHeight:'100px'}}
+                    style={{minHeight:'100px', maxHeight:'200px'}}
                     placeholder={EN ? "I'm going through..." : 'Estoy atravesando...'}
                     // value={props.data.story}
                     onChange={(event) => handleTextAreaChange(event, props.validations.validateStory)}
@@ -77,14 +72,14 @@ function CampaignThirdPage(props)
                     ?
                     'Describe how do you think you will be able to fix the situation with the donations and why this campaign would be useful to you.'
                     : 
-                    'Describe como crees que podrás resolver la situación con las donaciones y por qué esta campaña será de ayuda para ti.'}
+                    'Describe cómo crees que podrás resolver la situación con las donaciones y por qué esta campaña será de ayuda para ti.'}
                 </p>
                 <FormControl
                     type='publicStory'
                     autoComplete="off" 
                     as="textarea"
                     name='publicStory'
-                    style={{minHeight:'100px'}}
+                    style={{minHeight:'100px', maxHeight:'200px'}}
                     placeholder={EN ? 'I need to get...' : 'Necesito conseguir...'}
                     // value={props.data.publicstory}
                     onChange={(event) => handleTextAreaChange(event, props.validations.validatePublicStory)}
@@ -107,16 +102,16 @@ function CampaignThirdPage(props)
                 <p className="info-text">
                     {EN
                     ?
-                    'Tell evryone else what will ypu use the money for, so that people have more knowledge about what they are contributing to.'
+                    'Tell everyone else what will you use the money for, so that people have more knowledge about what they are contributing to.'
                     : 
-                    'Cuéntale a los demás en que usarás el dinero para que las personas tengan más conocimiento sobre qué estarán aportando.'}
+                    'Cuéntale a los demás en qué usarás el dinero para que las personas tengan más conocimiento sobre qué estarán aportando.'}
                 </p>
                 <FormControl
                     type='moneyUse'
                     autoComplete="off" 
                     as="textarea"
                     name='moneyUse'
-                    style={{minHeight:'100px'}}
+                    style={{minHeight:'100px', maxHeight:'200px'}}
                     placeholder={EN ? "With the money I'll get..." : 'Con el dinero que reciba...'}
                     // value={props.data.moneyuse}
                     onChange={(event) => handleTextAreaChange(event, props.validations.validateMoneyUse)}
@@ -148,8 +143,8 @@ function CampaignThirdPage(props)
                     as='textarea'
                     name='itemizedbudget'
                     autoComplete="off" 
-                    style={{minHeight:'100px'}}
-                    placeholder={EN ? 'Enter the amount (USD) and item descriptions' : 'Llene con las cosas que comprará y los precios en $USD'}
+                    style={{minHeight:'100px', maxHeight:'200px'}}
+                    placeholder={EN ? 'Enter the amount (in USD) and item descriptions' : 'Llene con las cosas que comprará y los precios en $USD'}
                     // value={props.data.itemizedbudget}
                     onChange={(event) => handleTextAreaChange(event, props.validations.validateBudget)}
                     className={classnames(

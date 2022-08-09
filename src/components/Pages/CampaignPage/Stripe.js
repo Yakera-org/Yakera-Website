@@ -13,6 +13,8 @@ function StripeForm(props)
     const [message, setMessage] = useState(null);
     const [isLoading, setIsLoading] = useState(false);
 
+    const [displayError, setDisplayError] = useState(false);
+
     const addAmount = async (paymentIntent, status) => {
         try
         {
@@ -105,7 +107,19 @@ function StripeForm(props)
         {
             if(error.type === "card_error" || error.type === "validation_error")
             {
-                setMessage(error.message);
+                if(error.payment_intent?.last_payment_error.payment_method.billing_details.address.country === 'US')
+                {
+                    setMessage(props.EN
+                        ?
+                        'Please note that at this time we are unable to accept cards from the United States. If you have a card from the US, please make your contribution directly with Zelle or use a different card to complete your payment.'
+                        :
+                        'Por favor note que actualmente no nos encontramos aceptando tarjetas de los Estados Unidos. Si tiene una tarjeta de los EEUU, por favor haga su contribución directamente con Zelle o utilice otra tarjeta para completar el pago.');
+                    setDisplayError(true);
+                }
+                else
+                {
+                    setMessage(error.message);
+                }
             }
             else
             {
@@ -124,6 +138,7 @@ function StripeForm(props)
                     case "succeeded":
                         setMessage("Payment succeeded!");
                         addAmount(paymentIntent, "success");
+                        setDisplayError(false);
                         props.openThanks();
                         break;
                     case "processing":
@@ -148,7 +163,17 @@ function StripeForm(props)
 
     return (
         <form id="payment-form" onSubmit={handleSubmit}>
+            <div className="card-notice">
+                {props.EN
+                ?
+                'At this time we cannot accept US-based debit or credit cards. If you have a card from the US, please use another card or payment method to complete your contribution. Thank you!'
+                :
+                'En este momento no podemos aceptar tarjetas de débito o crédito basadas en EE.UU. Si tiene una tarjeta de los EE.UU., por favor utilice otra tarjeta o método de pago para completar su contribución. ¡Gracias!'}
+            </div>
             <PaymentElement id="payment-element" />
+            {/* Show any error or success message */}
+            {/* message && <div id="payment-message">{message}</div> */}
+            {message && displayError && <div id="payment-message" className="payment-error">{message}</div>}
             <button className="stripe-donate-btn" disabled={isLoading || !stripe || !elements} id="submit">
                 {isLoading 
                  ? 
@@ -159,8 +184,6 @@ function StripeForm(props)
                  <div>{props.EN ? 'Donate' : 'Donar'}</div>
                 }
             </button>
-            {/* Show any error or success message */}
-            {/* message && <div id="payment-message">{message}</div> */}
             {props.EN
                 ?
                 <div className="powered-by">Payments powered by <a className="stripe-link" href="https://stripe.com" target="_blank" rel="noopener noreferrer">Stripe</a></div>

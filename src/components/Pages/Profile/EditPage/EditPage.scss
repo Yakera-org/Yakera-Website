@@ -1,0 +1,284 @@
+.edit-page{
+    margin-top: 150px;
+}
+.edit-page .edit-container {
+    margin: 0 auto;
+    width: 70%;
+    background-color: white;
+    font-family: Intro-Regular-Alt;
+}
+.edit-page .edit-container .banner{
+    text-align: center;
+    background-color: #ea883750;
+    border-radius: 0 0 5px 5px;
+    padding: 80px 10px;
+    font-size: xx-large;
+    color: #202020;
+}
+.edit-page .edit-container .sub-banner{
+    font-family: Intro-Light;
+    padding: 30px;
+}
+.edit-page .edit-container .sub-banner a{
+    color: #202020;
+}
+.edit-page .edit-container .sub-banner a:hover{
+    color: #777;
+    text-decoration: none;
+}
+.edit-page .edit-container .loader-wrapper{
+    position: absolute;
+    left: 50%; 
+    transform: translate(-50%, -50%);
+    margin-top: 50px;
+}
+.edit-page .edit-container .submit-loader-wrapper{
+    position: absolute;
+    left: 50%; 
+    transform: translate(-50%, -50%);
+    margin-top: 0px;
+}
+.edit-page .edit-container .edit-content{
+    padding-left: 7.5%;
+    padding-top: 0;
+}
+.edit-page .edit-container .save-area{
+    padding: 30px;
+    text-align: center;
+    font-family: Intro-Light;
+}
+.edit-page .edit-container .save-area button{ 
+    min-height: 50px;
+}
+.edit-page .edit-container .save-area .active{
+    border: none;
+    outline: none;
+    padding: 15px 5px;
+    border-radius: 5px;
+    width: 20%;
+    background-color: #ea883750;
+    font-size: 18px;
+}
+.edit-page .edit-container .save-area .active:hover{
+    background-color: #ea883740;
+}
+.edit-page .edit-container .save-area .disabled{
+    border: none;
+    outline: none;
+    padding: 15px 5px;
+    border-radius: 5px;
+    width: 20%;
+    background-color: #cccccccc;
+    font-size: 18px;
+}
+.edit-page .edit-container .save-area .disabled:hover{
+    cursor:not-allowed;
+}
+.edit-page .edit-container .save-area p{
+    margin: 20px 0;
+}
+.edit-page .edit-container .save-area a{
+    text-decoration: underline;
+}
+.edit-page .edit-container .save-area a:hover{
+    color: #777;
+}
+.edit-page .edit-content .powered-by{
+    width: 80%;
+    text-align: center;
+}
+.edit-page .edit-content .powered-by p{
+    text-align: left;
+    margin-bottom: 5px;
+    font-family: Intro-Light;
+    color: #202020bb;
+    font-size: 15px;
+}
+.edit-page .edit-content .powered-by img{
+    width: 50%;
+    margin-bottom: 20px;
+    max-width: 180px;
+}
+.edit-page .edit-content .powered-by img:hover{
+    cursor: pointer;
+    opacity: 0.8;
+}
+.edit-page .edit-container .edit-content #field-span{
+    color: #ea8837;
+    font-size: large;
+    width: 80%;
+}
+.edit-page .edit-container .edit-content input, .edit-page .edit-container .edit-content textarea{
+    margin: 10px 0px;
+    width: 80%;
+    font-family: Intro-Light;
+}
+.edit-page .edit-container .edit-content textarea{
+    height: 40px;
+    min-height: 40px;
+    max-height: 200px;
+}
+.edit-page .edit-container .edit-content .zelle-fields, .edit-page .edit-container .edit-content .reserve-fields{
+    margin-top: 15px;
+}
+.edit-page .edit-container .edit-content .zelle-fields #top-header, .edit-page .edit-container .edit-content .reserve-fields #top-header{
+    width: 80%;
+    font-size: 20px;
+    text-align: justify;
+}
+.edit-page .edit-container .edit-content .zelle-fields #description, .edit-page .edit-container .edit-content .reserve-fields #description{
+    width: 80%;
+    font-family: Intro-Light;
+    text-align: justify;
+    font-size: 16px;
+    margin-top: 5px;
+}
+.edit-page .edit-container .edit-content .zelle-fields .star-des{
+    width: 80%;
+    font-family: Intro-Light;
+    text-align: justify;
+    font-size: 15px;
+}
+.edit-page .edit-container .edit-content .reserve-fields .help-area{
+    text-align: center;
+    width: 80%;
+    margin-top: 20px;
+}
+.edit-page .edit-container .edit-content .reserve-fields .help-area p{
+    font-size: 18px;
+    margin-bottom: -5px;
+}
+.edit-page .edit-container .edit-content .reserve-fields .help-area button{
+    width: 30%;
+    border: none;
+    outline: none;
+    border-radius: 50px;
+    background-color: #ea8837;
+    color: white;
+    padding: 10px 5px;
+}
+.edit-page .edit-container .edit-content .reserve-fields .help-area button:hover{
+    opacity: 0.8;
+}
+
+.edit-page .edit-container .edit-content .profile{
+    text-align: center;
+    width: 80%;
+    padding-left: 12%;
+}
+
+.edit-page .edit-container .edit-content .profile img{
+    max-width: 200px;
+    min-width: 200px;
+    max-height: 200px;
+    min-height: 200px;
+    border: solid #ea8837be 8px;
+    border-radius: 50%;
+    margin: 30px 0 20px 0;
+    padding: 8px;
+    object-fit: cover;
+}
+.edit-page .edit-container .edit-content .profile img:hover{
+    cursor: pointer;
+    opacity: 0.8;
+}
+.edit-page .edit-container .edit-content .profile button{
+    border-radius: 5px;
+}
+.edit-page .edit-container .edit-content #photo-upload{
+    display: none;
+}
+.edit-page .edit-container .edit-content .profile label button:hover{
+    background-color: #ffe7c375;
+}
+.edit-page .edit-container .edit-content .profile label button:active{
+    pointer-events: none;
+    background-color: #ffe7c375;
+    outline: none;
+}
+.edit-page .edit-container .edit-content .profile label:hover{
+    cursor: pointer;
+}
+.edit-page .edit-container .edit-content .profile label button{
+    width: 100%;
+    background-color: transparent;
+    max-width: 275px;
+    border-radius: 5px;
+    padding: 10px 20px;
+    border: 1px #c5c5c5 solid;
+    outline: none;
+    font-size: 16px;
+    font-family: Intro-Light;
+}
+.edit-page .edit-container .edit-content .profile label button:hover{
+    background-color: #ea883720;
+    border-color: #ea883720;
+}
+.edit-page .edit-container .edit-content .profile label button:active{
+    pointer-events: none;
+    background-color: #ffe7c3;
+}
+.edit-page .edit-container .edit-content .profile #random-wrap{
+    width: 100%;
+}
+.edit-page .edit-container .edit-content .profile #random{
+    background-color: transparent;
+    width: 30%;
+    border-radius: 5px;
+    padding: 10px 20px;
+    border: 1px #c5c5c5 solid;
+    outline: none;
+    font-size: 16px;
+    font-family: Intro-Light;
+    margin-top: -10px;
+}
+.edit-page .edit-container .edit-content .profile #random:hover{
+    background-color: #ea883720;
+    border: #ea883720 1px solid;
+}
+.edit-page .edit-container .edit-content .profile #random:active{
+    background-color: #ffe7c3;
+}
+.edit-page .edit-container .edit-content .profile #reset-wrap{
+    width: 100%;
+}
+.edit-page .edit-container .edit-content .profile #reset{
+    background-color: transparent;
+    width: 30%;
+    border-radius: 5px;
+    padding: 10px 20px;
+    border: 1px #ca7a7a solid;
+    outline: none;
+    font-size: 16px;
+    font-family: Intro-Light;
+}
+.edit-page .edit-container .edit-content .profile #reset:hover{
+    background-color: #ffe2e2;
+}
+.edit-page .edit-container .edit-content .profile #reset:active{
+    background-color: #f8d7da
+}
+.edit-page .edit-container .edit-content .profile #pic-name{
+    margin: 5px 0 15px 0;
+    font-size: 14px;
+    font-weight: bold;
+    color: #353535;
+    width: 100%;
+    max-width: 275px;
+    overflow: hidden;
+    font-family: Intro-Light;
+}
+@media only screen and (max-width: 600px) {
+    .edit-page .edit-container {
+        width: 100%;
+    } 
+    .edit-page .edit-container .save-area button{ 
+        width: 80%;
+    }
+    .edit-page .edit-container .save-area .active{
+        width: 80%;
+    }
+    .edit-page .edit-container .save-area .disabled{
+        width: 80%;
+    }
+}

@@ -39,10 +39,10 @@ function AboutUsVisuals(props) {
                                 <h1>Check out the <b>Campaigns</b> in
                                 </h1>
                                 <h1 id='labels'>
-                                    <a id='green' href='/campaigns'>Education</a>,&nbsp;
-                                    <a id='yellow' href='/campaigns'>Nutrition</a>,&nbsp;
-                                    <a id='red' href='/campaigns'>Healthcare</a>&nbsp;and&nbsp;
-                                    <a id='blue' href='/campaigns'>Small Business</a>
+                                    <a id='green' href='/campaigns'>Education</a>,
+                                    <a id='yellow' href='/campaigns'> Nutrition</a>,
+                                    <a id='red' href='/campaigns'> Healthcare</a> and
+                                    <a id='blue' href='/campaigns'> Small Business</a>
                                 </h1>
                             </div>
                             :

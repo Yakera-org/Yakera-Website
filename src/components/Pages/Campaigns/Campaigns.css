@@ -1,0 +1,567 @@
+.campaigns-page{
+    margin-top: 150px;
+}
+.grid-header{
+    font-family: Intro-Regular-Alt;
+}
+
+.grid-header img{
+    width: 80%;
+    padding-top: 5%;
+}
+.grid-header .header-mid-img{
+    padding: 0;
+    padding-top: 2%;
+    padding-right: 4%;
+    text-align: center;
+}
+.grid-header .header-mid-img .image-top{
+    background-color: #ea8737;
+    font-family: Intro-Light;
+    color: white;
+    border-radius: 10px 10px 0 0;
+    font-size: 15px;
+    width: 40%;
+    margin-left: 30%;
+    padding: 2% 5%;
+    box-shadow: 15px 15px 1px rgb(223, 223, 223);
+}
+.grid-header .header-mid-img img{
+    width: 40%;
+    padding: 0%;
+    border-radius: 0 0 10px 10px;
+    box-shadow: 15px 15px 1px rgb(223, 223, 223);
+    margin-top: -2px;
+}
+.grid-header .header-mid-img img:hover{
+    cursor: pointer;
+    opacity: 0.9;
+}
+.grid-header .mid-content{
+    padding: 0%;
+    padding-top: 2%;
+}
+.grid-header .mid-content .main-text{
+    font-size: 2.5rem;
+    width: 75%;
+    margin-left: -10%;
+    color: #222;
+}
+.grid-header .mid-content .main-text span{
+   color: #ea8737;
+   font-weight: bold;
+}
+.grid-header .mid-content .bubble-text{
+    padding: 5% 5% 5% 0;
+    margin-left: -10%;
+}
+.grid-header .mid-content .bubble-text .bubble-quote{
+    background-color: #ea8737;
+    text-align: left;
+    border-radius: 30px;
+    width: 70%;
+    max-height: 100px;
+    min-height: 60px;
+    color: white;
+    font-size: 18px;
+    font-family: Intro-Light;
+    float: left;
+}
+.grid-header .mid-content .bubble-text .bubble-quote #text{
+    padding-top: 10px;
+    font-size: 17px;
+    word-break: break-word;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    line-height: 21px; /* fallback */
+    -webkit-line-clamp: 3; /* number of lines to show */
+    -webkit-box-orient: vertical;
+}
+.grid-header .mid-content .bubble-text .bubble-quote img{
+    padding: 5px;
+    margin-left: 5px;
+    width: 20%;
+    min-width: 50px;
+    vertical-align: middle;
+    float: left;
+}
+.grid-header .mid-content .bubble-text .bubble-digit{
+    background-color: rgb(223, 223, 223);
+    float: right;
+    width: 10%;
+    min-width: 100px;
+    margin-left: 1px;
+    text-align: center;
+    padding: 27px 10px 23px;
+    color: #222;
+    border-radius: 30px;
+    font-size: 20px;
+}
+.searchbar{
+    overflow: hidden;
+    display: inline-flex;
+    width: 98%;
+    margin: 20px 0;
+    margin-left: 1%;
+}
+.searchbar .form-control{
+    border-radius: 5px!important;
+    padding: 20px;
+    margin-right: 2%;
+    font-size: 14px;
+    border: none;
+    background-color: #f0f0f0;
+}
+.searchbar .input-group-text{
+    background-color: #f0f0f0;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    min-width:50px;
+}
+.searchbar .input-group-text:hover{
+    background-color: rgb(223, 223, 223);
+    cursor: pointer;
+}
+.filter-section {
+    text-align: left;
+    width: 50%;
+    margin-left: 25%;
+    font-family: Intro-Regular-Alt;
+    margin-top: 10px;
+}
+.filter-section h2{
+    color: #222;
+    text-align: center;
+}
+.filter-section .filters{
+    border-radius: 5px;
+    width: 98%;
+    background-color: #f0f0f0;
+    text-align: center;
+    margin: 10px 0;
+    margin-left: 1%;
+}
+.filter-section .filters .on{
+    background-color: #0e325e!important;
+    color: white;
+}
+.filter-section .filters .on:hover{
+    background-color: #0e325ee6!important;
+}
+.filter-section .filters #quant-filter{
+    font-size: 18px;
+    padding: 20px;
+    border-radius: 5px;
+}
+.filter-section .filters #quant-filter:hover{
+    background-color: rgba(223, 223, 223, 0.748);
+    cursor: pointer;
+}
+.filter-section .filters #quant-filter:active{
+    background-color: #0e325e46;
+    cursor: pointer;
+}
+.filter-section .category-filter{
+    margin: 20px 0;
+}
+.filter-section .category-filter .cat-filter {
+    text-align: center;
+}
+.filter-section .category-filter .cat-filter .MuiButton-label{
+    pointer-events: none;
+}
+.filter-section .category-filter .fade {
+    opacity: 0.3;
+}
+.filter-section .category-filter button, .filter-section .category-filter .off{
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    font-size: 15px;
+    font-family: Intro-Regular-Alt;
+    text-transform: capitalize;
+    background-color: #f0f0f0;
+    color: #222;
+    width: 90%;
+    padding: 10px;
+}
+.filter-section .category-filter .on-healthcare{
+    background-color: #ff7d7d;
+    color: white;
+}
+.filter-section .category-filter #healthcare:hover, .filter-section .category-filter .on-healthcare:hover{
+    background-color: #ff7d7d;
+}
+.filter-section .category-filter .on-education{
+    background-color: #71b98f;
+    color: white;
+}
+.filter-section .category-filter #education:hover, .filter-section .category-filter .on-education:hover{
+    background-color: #71b98f;
+}
+.filter-section .category-filter .on-small_business{
+    background-color: #7099d0;
+    color: white;
+}
+.filter-section .category-filter #small_business:hover, .filter-section .category-filter .on-small_business:hover{
+    background-color: #7099d0;
+}
+.filter-section .category-filter .on-nutrition{
+    background-color: #edc343;
+    color: white;
+}
+.filter-section .category-filter #nutrition:hover, .filter-section .category-filter .on-nutrition:hover{
+    background-color: #edc343;
+}
+.filter-section .reset-filter{
+    border: none;
+    color: #aa5353;
+    background-color: transparent;
+    outline: none;
+    border-radius: 5px;
+    padding: 5px;
+    width: 20%;
+    margin-left: 80%;
+    margin-top: -5px;
+}
+.filter-section .reset-filter{
+    animation: fadeIn 1s;
+    -webkit-animation: fadeIn 1s;
+    -moz-animation: fadeIn 1s;
+    -o-animation: fadeIn 1s;
+    -ms-animation: fadeIn 1s;
+}
+@keyframes fadeIn {
+    0% {opacity:0;}
+    100% {opacity:1;}
+}
+
+@-moz-keyframes fadeIn {
+    0% {opacity:0;}
+    100% {opacity:1;}
+}
+
+@-webkit-keyframes fadeIn {
+    0% {opacity:0;}
+    100% {opacity:1;}
+}
+
+@-o-keyframes fadeIn {
+    0% {opacity:0;}
+    100% {opacity:1;}
+}
+
+@-ms-keyframes fadeIn {
+    0% {opacity:0;}
+    100% {opacity:1;}
+}
+.filter-section .reset-filter:hover{
+    text-decoration: underline;
+}
+
+.pageination{
+    text-align: center;
+    padding: 20px;
+}
+.cam-loader{
+    position: absolute;
+    left: 50%;
+    margin-top: 200px;
+    margin-bottom: 200px;
+    transform: translate(-50%, -50%);
+}
+.pagination {
+    justify-content: center;
+    align-items: center;
+    margin: 25px 0;
+    background-color: transparent;
+    text-align: center;
+    width: 100%;
+    margin-left: 0%;
+    min-width: 100px;
+    padding: 10px;
+}
+.pagination .page-item a {
+    color: var(--brand-orange);
+    border-radius: 5px;
+    margin-left: 2px;
+    margin-right: 2px;
+    background-color: transparent;
+}
+.pagination .page-item a:hover{
+    background-color: rgba(225, 225, 225, 0.2);
+}
+.pagination .page-item:first-child a {
+    border: none;
+    background-color: transparent;
+}
+.pagination .page-item:first-child a:hover,.pagination .page-item:last-child a:hover {
+    color: #ea8837bb;
+}
+.pagination .page-item:last-child a {
+    border: none;
+    background-color: transparent;
+}
+.pagination .active a {
+    color: var(--brand-orange)!important;
+    border-color: #ea883746!important;
+}
+.cam-container{
+    padding: 0 40px;
+    background-color: #f0f0f05a;
+}
+.cam-card{
+    padding: 20px;
+}
+.cam-container .no-cards{
+    text-align: center;
+    color: #222;
+    margin: 20px;
+    font-family: Intro-Regular-Alt;
+    font-size: 18px;
+}
+.bottom-images{
+    background-color: #f0f0f0;
+    text-align: center;
+    padding: 0 10%;
+}
+.bottom-images img{
+    margin: -18% 0 -22% 0;
+    width: 90%;
+    min-width: 100px;
+}
+.bottom-images p{
+    font-family: Intro-Regular-Alt;
+    color: #222;
+    font-size: 1.4rem;
+    width: 80%;
+    margin-left: 10%;
+}
+.bottom-images p span{
+    color: #ea8737;
+}
+.bottom-quote{
+    text-align: center;
+    padding: 0 10%;
+}
+.bottom-quote .campaign-img{
+    width: 100%;
+}
+.bottom-quote .campaign-quote{
+    text-align: left;
+    padding-top: 10%;
+}
+.bottom-quote .quote{
+    width: 20%;
+}
+
+@media only screen and (max-width: 1600px) {
+    .grid-header .header-mid-img{
+        padding: 0;
+        padding-top: 4%;
+        padding-right: 8%;
+        text-align: center;
+    }
+    .grid-header .header-mid-img h2{
+        font-size: 1.5rem;
+        margin-bottom: 15px;
+    }
+    .grid-header .header-mid-img .image-top{
+        width: 55%;
+        margin-left: 22.5%;
+    }
+    .grid-header .header-mid-img img{
+        width: 55%;
+        margin-bottom: 30px;
+    }
+    .grid-header .mid-content{
+        padding-top: 4%;
+    }
+    .grid-header .mid-content .main-text{
+        font-size: 2rem;
+        width: 90%;
+        margin-left: -5%;
+    }
+    .grid-header .mid-content .bubble-text{
+        padding: 5% 5% 5% 0;
+        margin-left: -5%;
+    }
+    .grid-header .mid-content .bubble-text .bubble-quote{
+        border-radius: 30px;
+        width: 65%;
+        font-size: 16px;
+        float: left;
+        max-height: 100px;
+    }
+    .grid-header .mid-content .bubble-text .bubble-quote #text{
+        padding: 10px 1%;
+        font-size: 14px;
+    }
+    .grid-header .mid-content .bubble-text .bubble-quote img{
+        padding:0;
+        padding-top: 2%;
+    }
+    .grid-header .mid-content .bubble-text .bubble-digit{
+        float: right;
+        width: 10%;
+        min-width: 100px;
+        min-height: 60px;
+        max-height: 100px;
+        margin-left: 1px;
+        padding: 17px 0 13px;
+        font-size: 23px;
+    }
+}
+@media only screen and (max-width: 1200px) {
+    .grid-header .header-mid-img h2{
+        width: 100%;
+    }
+    .grid-header .mid-content{
+        padding-top: 5%;
+    }
+    .grid-header .mid-content .bubble-text .bubble-quote{
+        padding: 0 10px;
+        width: 100%;
+        font-size: 18px;
+        float: none;
+    }
+    .grid-header .mid-content .bubble-text .bubble-quote#text{
+        padding:10px;
+    }
+    .grid-header .mid-content .bubble-text .bubble-digit{
+        display: none;
+    }
+    .pagination {
+        text-align: center;
+        width: 100%;
+        margin-left: 0%;
+    }
+}
+@media only screen and (max-width: 1000px) {
+
+    .grid-header .header-mid-img{
+        padding: 0;
+        padding-top: 8%;
+        padding-right: 0%;
+    }
+    .grid-header .header-mid-img h2{
+        margin-bottom: 15px;
+        font-size: 1.3rem;
+    }
+    .grid-header .header-mid-img img{
+        width: 55%;
+        margin-bottom: 30px;
+    }
+    .grid-header .mid-content{
+        padding-top: 8%;
+    }
+    .grid-header .mid-content .main-text{
+        font-size: 1.5rem;
+        width: 100%;
+        margin-left: 0%;
+    }
+    .grid-header .mid-content .bubble-text{
+        padding: 15px 0;
+        margin-left: 0%;
+    }
+    .grid-header .mid-content .bubble-text .bubble-quote{
+        width: 100%;
+        max-height: 100px;
+    }
+    .grid-header .mid-content .bubble-text .bubble-quote #text{
+        padding: 10px 10px ;
+    }
+    .grid-header .mid-content .bubble-text .bubble-quote img{
+        display: none;
+    }
+    .grid-header .mid-content .bubble-text .bubble-digit{
+        float: right;
+        width: 10%;
+        min-width: 100px;
+        margin-left: 1px;
+        padding: 20px 15px;
+        font-size: 20px;
+    }
+}
+@media only screen and (max-width: 900px) {
+    .filter-section .filters #quant-filter{
+        font-size: 14px;
+        padding: 20px 0;
+        margin: 0;
+        margin-bottom: 0px;
+    }
+    .filter-section .category-filter{
+        margin: 15px 0;
+    }
+    .filter-section .category-filter button, .filter-section .category-filter .off{
+        border: none;
+        outline: none;
+        border-radius: 5px;
+        font-size: 15px;
+        font-family: Intro-Regular-Alt;
+        text-transform: capitalize;
+        background-color: #f0f0f0;
+        width: 90%;
+        padding: 10px;
+        min-height: 80px;
+    }
+
+}
+@media only screen and (max-width: 600px) {
+    .grid-header .header-mid-img{
+        padding: 2%;
+        padding-top: 8%;
+        padding-right: 0%;
+        text-align: center;
+    }
+    .grid-header .header-mid-img h2{
+        font-size: 1.5rem;
+        margin-bottom: 15px;
+    }
+    .grid-header .header-mid-img .image-top{
+        width: 60%;
+        font-size: 12px;
+        margin-left: 20%;
+        padding: 5px;
+    }
+    .grid-header .header-mid-img img{
+        width: 60%;
+        padding: 0%;
+    }
+    .grid-header .mid-content{
+        padding: 2%;
+        padding-top: 8%;
+    }
+    .grid-header .mid-content .main-text{
+        font-size: 1.8rem;
+        width: 100%;
+        margin-left: 0%;
+    }
+    .grid-header .mid-content .bubble-text{
+        display: none;
+    }
+    .filter-section {
+        text-align: left;
+        width: 100%;
+        margin-left: 0%;
+        padding: 5%;
+        margin-bottom: -50px;
+        margin-top: -10px;
+    }
+    .filter-section .category-filter .off,.filter-section .category-filter .on-education, .filter-section .category-filter .on-healthcare, .filter-section .category-filter .on-nutrition, .filter-section .category-filter .on-small_business{
+        margin: 10px;
+    }
+    .cam-container{
+        padding: 0 30px;
+    }
+    .cam-card{
+        padding: 20px 0;
+    }
+    .filter-section .reset-filter{
+        padding: 0px;
+        width: 40%;
+        margin-left: 30%;
+    }
+}
