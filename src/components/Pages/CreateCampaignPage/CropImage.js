@@ -2,7 +2,7 @@ import React from "react";
 import Cropper from "cropperjs";
 import "cropperjs/dist/cropper.min.css";
 import "./CropImage.css"
-import { Button } from "bootstrap";
+/// import { Button } from "bootstrap";
 import FilePreview from "./FilePreview";
 // import HashLoader from "react-spinners/HashLoader";
 // import Loader from "react-loader-spinner";
@@ -56,7 +56,7 @@ class CropImage extends React.Component {
         document.getElementById("result").outerHTML = '';
         document.getElementById("cropandupload").outerHTML = '';
 
-        var arr = (this.state.imageDestination).split(','), mime = arr[0].match(/:(.*?);/)[1],
+        var arr = (this.state.imageDestination).split(','), // mime = arr[0].match(/:(.*?);/)[1],
         bstr = atob(arr[1]), n = bstr.length, u8arr = new Uint8Array(n);
         while(n--){
             u8arr[n] = bstr.charCodeAt(n);
