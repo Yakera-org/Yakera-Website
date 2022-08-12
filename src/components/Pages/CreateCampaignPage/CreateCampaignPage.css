@@ -608,3 +608,8 @@ aside h6 {
 .is-valid ~ .char-display {
   color: #28a745;
 }
+
+.main-img-summary {
+  max-width: 20em;
+  height: auto;
+}

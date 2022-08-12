@@ -472,7 +472,7 @@ function CreateCampaignLast(props) {
                         <div><br/>
                         <p className="category-label">Requisitos: </p>
                             <ul className='bold-text'>
-                                <li>Máximo de 1 imágen</li>
+                                <li>Máximo 1 imagen</li>
                                 <li>Tamaño máximo: 6 MB</li>
                             </ul>
                         </div>
@@ -543,8 +543,8 @@ function CreateCampaignLast(props) {
                     :
                         <div><br /><p className="category-label">Requisitos: </p>
                             <ul className='bold-text'>
-                                <li>Máximo de 4 imágenes</li>
-                                <li>Mínimo de 1 imagen</li>
+                                <li>Máximo 4 imágenes</li>
+                                <li>Mínimo 1 imagen</li>
                                 <li>Tamaño máximo: 20 MB</li>
                             </ul>
                         </div>
@@ -616,8 +616,8 @@ function CreateCampaignLast(props) {
                         <div><br />
                         <p className="category-label">Requisitos: </p>
                             <ul className='bold-text'>
-                                <li>Máximo de 2 imágenes</li>
-                                <li>Mínimo de 1 imagen</li>
+                                <li>Máximo 2 imágenes</li>
+                                <li>Mínimo 1 imagen</li>
                                 <li>Tamaño máximo: 10 MB</li>
                             </ul>
                         </div>
@@ -687,8 +687,8 @@ function CreateCampaignLast(props) {
                         <div><br />
                         <p className="category-label">Requisitos: </p>
                             <ul className='bold-text'>
-                                <li>Máximo de 2 imágenes</li>
-                                <li>Mínimo de 1 imagen</li>
+                                <li>Máximo 2 imágenes</li>
+                                <li>Mínimo 1 imagen</li>
                                 <li>Tamaño máximo: 10 MB</li>
                             </ul>
                         </div>

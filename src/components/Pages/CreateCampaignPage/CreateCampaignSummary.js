@@ -32,7 +32,7 @@ function CampaignSummary(props)
             </p>
             
             <p className="summary-label">{EN ? "Campaign's main image" : 'Imagen principal de la campaña'}</p>
-            <img src={'https://assets.yakera.org/' + props.data.mainPicture} alt="Main" />
+            <img src={'https://assets.yakera.org/' + props.data.mainPicture} alt="Main" className="main-img-summary" />
             
             <p className="summary-label">{EN ? "Campaign's title" : 'Título de la campaña'}</p>
             <p className="info-text">{props.data.campaignname}</p>

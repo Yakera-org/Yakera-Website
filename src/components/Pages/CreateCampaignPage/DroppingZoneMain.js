@@ -48,16 +48,16 @@ const DroppingZoneMain = (props) => {
                                 preview: URL.createObjectURL(file)
                             })));        
                         }else{
-                            alert(EN ? 'File too big.' : 'La imágen son demasiado grandes.')
+                            alert(EN ? 'File too big.' : 'Archivo demasiado grande.')
                         }
                     }else{
-                        alert(EN ? `Only ${numberOfFilesLimit} picture allowed.` : `Solo se permite ${numberOfFilesLimit} imágen.`)
+                        alert(EN ? `Only ${numberOfFilesLimit} picture allowed.` : `Solo se permite ${numberOfFilesLimit} imagen.`)
                     }
                 }else{
                     alert(EN ? 'Picture already used' : 'Imagen ya utilizada')
                 }
             }else{
-                alert(EN ? "Only png/jpg/jpeg and png files are allowed!" : "Solamente se acepta archivos png./jpg/jpeg!")
+                alert(EN ? "Only png/jpg/jpeg files are allowed!" : "Solamente se aceptan archivos png/jpg/jpeg!")
             }                        
                 
             }} multiple={true}>

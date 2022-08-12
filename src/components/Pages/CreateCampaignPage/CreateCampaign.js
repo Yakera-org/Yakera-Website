@@ -177,7 +177,7 @@ function CreateCampaign() {
     let formattedStory = linkify(
       data.story + "\n" + data.publicstory + "\n" + data.moneyuse
     );
-    formattedStory = formattedStory.replace(/\n/g, " <br />");
+    formattedStory = formattedStory.replace(/\n/g, " <br /><br />");
 
     if (validateData()) {
       setLoader(true);

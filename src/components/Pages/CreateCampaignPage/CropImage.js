@@ -96,7 +96,7 @@ class CropImage extends React.Component {
                 </div>
 
                 <div id="cropandupload" style={{visibility: "hidden"}}>
-                    <input type="Button" value="Upload" class="btn upld-btn" onClick={this.updateDestination} />
+                    <input type="button" value={this.props.EN ? 'Upload' : 'Cargar'} class="btn upld-btn" onClick={this.updateDestination} />
                 </div>
 
                 <div>
