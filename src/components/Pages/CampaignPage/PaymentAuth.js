@@ -23,6 +23,7 @@ const paypalLogo = "https://assets.yakera.org/yakera/paypal-logo.webp";
 
 function PaymentAuth(props) {
   const EN = props.EN;
+  const restricted = props.restricted;
 
   const shouldShowZelle =
     props?.isAcceptingZelle && props?.recipientName && props?.recipientEmail;
@@ -87,56 +88,62 @@ function PaymentAuth(props) {
           </p>
         </div>
 
-        <Accordion>
-          <AccordionCard>
-            <Accordion.Toggle
-              name="creditcard"
-              onClick={onPaymentAuthClick}
-              as={AccordionCard.Header}
-              eventKey="0"
-              className="stripe-but align-items-center d-flex justify-content-center"
-            >
-              <div name="creditcard">
-                <img
-                  name="creditcard"
-                  className="card-img"
-                  alt="card"
-                  src={cardImg}
-                ></img>
-                <span className="stripe-option-text" name="creditcard" id="stripe-option">
-                  {EN ? "Credit or Debit" : "Crédito o Débito"}
-                </span>
-              </div>
-            </Accordion.Toggle>
-            <Accordion.Collapse eventKey="0">
-              <AccordionCard.Body>
-                {clientSecret && (
-                  <Elements options={options} stripe={stripePromise}>
-                    <StripeForm
-                      EN={EN}
-                      slug={props.slug}
-                      email={props.email}
-                      name={props.name}
-                      amount={props.amount}
-                      tip={props.tip}
-                      comment={props.comment}
-                      isAnon={props.isAnon}
-                      openThanks={props.openThanks}
-                      clientSecret={clientSecret}
-                    />
-                  </Elements>
-                )}
-                {!clientSecret
-                  ? EN
-                    ? "Something went wrong, please refresh the page."
-                    : "Algo salió mal, por favor actualice la página."
-                  : ""}
-              </AccordionCard.Body>
-            </Accordion.Collapse>
-          </AccordionCard>
-        </Accordion>
+        {!restricted ?
+          <>
+          <Accordion>
+            <AccordionCard>
+              <Accordion.Toggle
+                name="creditcard"
+                onClick={onPaymentAuthClick}
+                as={AccordionCard.Header}
+                eventKey="0"
+                className="stripe-but align-items-center d-flex justify-content-center"
+              >
+                <div name="creditcard">
+                  <img
+                    name="creditcard"
+                    className="card-img"
+                    alt="card"
+                    src={cardImg}
+                  ></img>
+                  <span className="stripe-option-text" name="creditcard" id="stripe-option">
+                    {EN ? "Credit or Debit" : "Crédito o Débito"}
+                  </span>
+                </div>
+              </Accordion.Toggle>
+              <Accordion.Collapse eventKey="0">
+                <AccordionCard.Body>
+                  {clientSecret && (
+                    <Elements options={options} stripe={stripePromise}>
+                      <StripeForm
+                        EN={EN}
+                        slug={props.slug}
+                        email={props.email}
+                        name={props.name}
+                        amount={props.amount}
+                        tip={props.tip}
+                        comment={props.comment}
+                        isAnon={props.isAnon}
+                        openThanks={props.openThanks}
+                        clientSecret={clientSecret}
+                      />
+                    </Elements>
+                  )}
+                  {!clientSecret
+                    ? EN
+                      ? "Something went wrong, please refresh the page."
+                      : "Algo salió mal, por favor actualice la página."
+                    : ""}
+                </AccordionCard.Body>
+              </Accordion.Collapse>
+            </AccordionCard>
+          </Accordion>
 
-        <br />
+          <br />
+          </>
+          :
+          ''
+        }
 
         <Accordion>
           <AccordionCard>
@@ -176,40 +183,46 @@ function PaymentAuth(props) {
 
         <br />
 
-        <Accordion>
-          <AccordionCard>
-            <Accordion.Toggle
-              as={AccordionCard.Header}
-              name="paypal-options"
-              onClick={onPaymentAuthClick}
-              eventKey="0"
-              className="paypal-but align-item-center d-flex justify-content-center"
-            >
-              <div name="paypal-options">
-                <img
-                  name="paypal-options"
-                  style={{ maxWidth: "500px" }}
-                  src={paypalLogo}
-                  alt="paypal-logo"
-                />
-              </div>
-            </Accordion.Toggle>
-            <Accordion.Collapse eventKey="0">
-              <AccordionCard.Body>
-                <PayPal
-                  EN={EN}
-                  amount={total_amount}
-                  onSuccess={props.OnSuccessPayment}
-                  onClick={props.OnPaymentClick}
-                  onErrror={props.OnPaymentError}
-                  onCancel={props.OnPaymentCancel}
-                />
-              </AccordionCard.Body>
-            </Accordion.Collapse>
-          </AccordionCard>
-        </Accordion>
+        {!restricted ?
+          <>
+          <Accordion>
+            <AccordionCard>
+              <Accordion.Toggle
+                as={AccordionCard.Header}
+                name="paypal-options"
+                onClick={onPaymentAuthClick}
+                eventKey="0"
+                className="paypal-but align-item-center d-flex justify-content-center"
+              >
+                <div name="paypal-options">
+                  <img
+                    name="paypal-options"
+                    style={{ maxWidth: "500px" }}
+                    src={paypalLogo}
+                    alt="paypal-logo"
+                  />
+                </div>
+              </Accordion.Toggle>
+              <Accordion.Collapse eventKey="0">
+                <AccordionCard.Body>
+                  <PayPal
+                    EN={EN}
+                    amount={total_amount}
+                    onSuccess={props.OnSuccessPayment}
+                    onClick={props.OnPaymentClick}
+                    onErrror={props.OnPaymentError}
+                    onCancel={props.OnPaymentCancel}
+                  />
+                </AccordionCard.Body>
+              </Accordion.Collapse>
+            </AccordionCard>
+          </Accordion>
 
-        <br />
+          <br />
+          </>
+          :
+          ''
+        }
 
         {shouldShowZelle ? (
           <Accordion>
