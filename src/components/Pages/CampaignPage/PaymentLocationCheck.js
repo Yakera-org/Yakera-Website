@@ -8,7 +8,7 @@ function PaymentLocationCheck(props) {
     const setRestricted = props.setRestricted;
 
     return (
-        <div className="loaction-check">
+        <div className="location-check">
             <div className="location-check-question">
                 {EN
                 ?
@@ -17,30 +17,44 @@ function PaymentLocationCheck(props) {
                 '¿Está donando desde los EE. UU. o utilizando una tarjeta emitida en los EE. UU.?'
                 }
             </div>
-            <label className="checkbox-button">
-                <input
-                    name="location"
-                    type="checkbox"
-                    checked={restricted}
-                    onChange={setRestricted}
-                    style={{
-                        marginTop: "-5px",
-                        width: "15px",
-                        float: "left",
-                        clear: "both",
-                    }}
-                    className="checkbox-square"
-                />
-                <span className="checkbox-button-control" style={{marginLeft: EN ? "-275px" : "-320px"}}></span>
-                <div className="description" id="checkbox-text">
-                    {EN
-                    ?
-                    "Yes, I'm using a US-based payment option."
-                    :
-                    "Sí, estoy usando un método de pago de los EE. UU."
-                    }
+            <div className="col location-options-group">
+                <div className="row location-option-row">
+                    <input
+                        type="radio"
+                        name="location"
+                        id="restricted"
+                        checked={restricted === true}
+                        onChange={setRestricted}
+                        className="location-option"
+                    />
+                    <label for="restricted" className="location-label">
+                        {EN
+                        ?
+                        "Yes, I'm using a US-based payment option."
+                        :
+                        'Sí, estoy usando un método de pago de los EE. UU.'
+                        }
+                    </label>
                 </div>
-            </label>
+                <div className="row location-option-row">
+                    <input
+                        type="radio"
+                        name="location"
+                        id="free"
+                        checked={restricted === false}
+                        onChange={setRestricted}
+                        className="location-option"
+                    />
+                    <label for="free"  className="location-label">
+                        {EN
+                        ?
+                        "No, I'm not using a US-based payment option."
+                        :
+                        'No, no estoy usando un método de pago de los EE. UU.'
+                        }
+                    </label>
+                </div>
+            </div>
             <div className="row justify-content-center location-btns">
                 <button type="button" onClick={onBack} className="location-back">
                     {EN ? 'Back' : 'Regresar'}
