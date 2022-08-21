@@ -8,6 +8,7 @@ import LanguageService from "../../../services/language";
 import "./Payment.css";
 import crypto from "crypto";
 import ThanksCard from "./thanksCard";
+import PaymentLocationCheck from "./PaymentLocationCheck";
 
 const hmacEncryption = (body, secret) =>
   crypto.createHmac("sha256", secret).update(body).digest("hex");
@@ -26,6 +27,8 @@ class PaymentVisual extends Component {
       loading: false,
       thanksOpen: false,
       EN: this.props.EN,
+      locationCheck: false,
+      restrictPayment: false,
     };
     this.onContinue = this.onContinue.bind(this);
     this.onClose = this.onClose.bind(this);
@@ -56,11 +59,15 @@ class PaymentVisual extends Component {
   onClose() {
     this.setState({
       hasDetails: false,
+      locationCheck: false,
+      restrictPayment: false,
     });
   }
   onBack() {
     this.setState({
       hasDetails: false,
+      locationCheck: false,
+      restrictPayment: false,
     });
   }
 
@@ -132,6 +139,18 @@ class PaymentVisual extends Component {
     window.location.reload(false);
   }
 
+  onLocationContinue() {
+    this.setState({
+      locationCheck: true,
+    });
+  }
+
+  setRestriction() {
+    this.setState({
+      restrictPayment: !this.state.restrictPayment,
+    });
+  }
+
   render() {
     const EN = this.state.EN;
     return (
@@ -167,7 +186,7 @@ class PaymentVisual extends Component {
             <hr id="donate-now-hr" />
 
             {!this.state.hasDetails ? (
-              //ask for payment details
+              // ask for payment details
 
               <div className="payment-card">
                 <PaymentDetails
@@ -177,31 +196,44 @@ class PaymentVisual extends Component {
                 />
               </div>
             ) : (
-              // else get to payment authentication
+              !this.state.locationCheck ? (
+                // check location
 
-              <PaymentAuth
-                className="payment-auth"
-                EN={EN}
-                language={this.props.language}
-                onClose={this.onClose}
-                amount={parseFloat(this.state.amount)}
-                name={this.state.name}
-                email={this.state.email}
-                isAnon={this.state.isAnon}
-                slug={this.props.slug}
-                tip={this.state.tip}
-                onBack={this.onBack}
-                title={this.props.title}
-                recipientEmail={this.props.recipientEmail}
-                recipientName={this.props.recipientName}
-                comment={this.state.comment}
-                OnSuccessPayment={this.OnSuccessPayment.bind(this)}
-                OnPaymentClick={this.OnPaymentClick.bind(this)}
-                OnPaymentError={this.OnPaymentError.bind(this)}
-                OnPaymentCancel={this.OnPaymentCancel.bind(this)}
-                isAcceptingZelle={this.props.isAcceptingZelle}
-                openThanks={this.openThanks.bind(this)}
-              />
+                <PaymentLocationCheck
+                  EN={EN}
+                  onBack={this.onBack}
+                  onContinue={this.onLocationContinue.bind(this)}
+                  restricted={this.state.restrictPayment}
+                  setRestricted={this.setRestriction.bind(this)}
+                />
+              ) : (
+                // else get to payment authentication
+
+                <PaymentAuth
+                  className="payment-auth"
+                  EN={EN}
+                  language={this.props.language}
+                  onClose={this.onClose}
+                  amount={parseFloat(this.state.amount)}
+                  name={this.state.name}
+                  email={this.state.email}
+                  isAnon={this.state.isAnon}
+                  slug={this.props.slug}
+                  tip={this.state.tip}
+                  onBack={this.onBack}
+                  title={this.props.title}
+                  recipientEmail={this.props.recipientEmail}
+                  recipientName={this.props.recipientName}
+                  comment={this.state.comment}
+                  OnSuccessPayment={this.OnSuccessPayment.bind(this)}
+                  OnPaymentClick={this.OnPaymentClick.bind(this)}
+                  OnPaymentError={this.OnPaymentError.bind(this)}
+                  OnPaymentCancel={this.OnPaymentCancel.bind(this)}
+                  isAcceptingZelle={this.props.isAcceptingZelle}
+                  openThanks={this.openThanks.bind(this)}
+                  restricted={this.state.restrictPayment}
+                />
+              )
             )}
           </div>
         </Grid>

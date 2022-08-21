@@ -659,3 +659,84 @@
   font-weight: bolder;
   font-size: 1.8em !important;
 }
+
+.location-check {
+  text-align: center;
+}
+
+.location-check-question {
+  font-size: medium;
+}
+
+.location-btns {
+  margin-top: 0.8em;
+}
+
+.location-back {
+  margin-right: 1%;
+  background-color: #0d325e;
+}
+
+.location-continue {
+  margin-left: 1%;
+  background-color: #f77f00;
+}
+
+.location-back,
+.location-continue {
+  border: none;
+  width: 8em;
+  height: 2.2em;
+  font-size: medium;
+  border-radius: 5px;
+  color: white;
+}
+
+.location-back:hover,
+.location-continue:hover {
+  opacity: 0.8;
+  cursor: pointer;
+}
+
+.location-options-group {
+  text-align: left;
+  justify-content: center;
+  display: grid;
+}
+
+.location-option-row {
+  flex-wrap: nowrap;
+}
+
+.location-option {
+  margin: 0.5% 1% 0.5% 0% !important;
+  width: 20px !important;
+  height: 20px !important;
+}
+
+.location-option:after,
+.location-option:checked:after {
+  width: 20px;
+  height: 20px;
+  border-radius: 15px;
+  background-color: #fafafa;
+  content: '';
+  display: inline-block;
+  visibility: visible;
+  border: 1px solid #a7a4a4;
+}
+
+.location-option:checked:after {
+  color: #f77f00;
+  border: 1px solid #f77f00;
+  content: '⬤';
+  padding-left: 13%;
+}
+
+.location-option:hover {
+  cursor: pointer;
+}
+
+.location-label {
+  margin: 0.5% 0 0.5% 0;
+}
