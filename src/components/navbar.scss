@@ -1,0 +1,114 @@
+.nav-bar{
+    background-color: white;
+    height: 150px;
+    margin-bottom: -150px;
+    font-family: Intro-Regular-Alt;
+    display: flex;
+    z-index: 1;
+    position: relative;
+}
+.nav-bar .tabs{
+    width: 100%;
+    display: flex;
+    flex-direction: row;   
+    flex-wrap: nowrap;
+    align-items: center;
+}
+.nav-bar .tabs .active-tabs{
+    display: flex;
+    flex-direction: row;   
+    flex-wrap: nowrap;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 80%;
+    text-align: left;
+}
+.nav-bar .tab{
+    color: var(--brand-blue);
+    font-size: 18px;
+    align-items: center;
+    text-align: center;
+    width: 20%;
+}
+.nav-bar .login-tab:hover >a{
+    color: var(--brand-orange) ;
+}
+.nav-bar .login-tab >a{
+    border: 2px solid var(--brand-orange) ;
+    background-color: var(--brand-orange) ;
+    border-radius: 15px;
+    padding: 5px 30px;
+    color: white !important;
+    display: inline-block;
+}
+.nav-bar .login-tab:hover{
+    opacity: 0.8;
+    cursor: pointer;
+}
+.nav-bar .login-tab:hover >a{
+    color: var(--brand-orange) ;
+}
+.nav-bar .tabs .brand-wrapper {
+    width: 20%;
+    text-align: center;
+}
+.nav-bar .tabs .brand-wrapper img{
+    width: 80%;
+    min-width: 150px;
+    padding-left:50px
+}
+.nav-bar .tabs .brand-wrapper img:hover{
+    cursor: pointer;
+    opacity: 0.8;
+}
+.nav-bar .tabs .tab #current{
+    color: var(--brand-orange);
+}
+.nav-bar .tabs .tab a{
+    font-size: 20px;
+    text-decoration: none;
+}
+.nav-bar .logout{
+    padding: 0 3%;
+    font-size: 20px;
+    width: 35%;
+    text-align: right;
+}
+.nav-bar .logout:hover {
+    color: var(--brand-orange);
+    cursor: pointer;
+}
+.nav-bar .logout i{
+    padding: 0 5px;
+}
+@media only screen and (max-width: 1100px) {
+    .nav-bar .tabs .active-tabs{
+        width: 100%;
+    }
+    .nav-bar .tabs .tab a{
+        font-size: 13px;
+    }
+    .nav-bar .login-tab >a{
+        padding: 5px ;
+    }
+    .nav-bar .logout{
+        font-size: 15px;
+    }
+    .nav-bar .tabs .brand-wrapper{
+        width: 100%;
+    }
+    .nav-bar .tabs .brand-wrapper img{
+        padding-left: 10px;
+    }
+}
+@media only screen and (max-width: 800px) {
+    .nav-bar .tab {
+        width: 45%;
+    }
+    .nav-bar .tabs .tab a{
+        font-size: 13px;
+    }
+    .nav-bar .login-tab >a{
+        padding: 2px;
+    }
+}

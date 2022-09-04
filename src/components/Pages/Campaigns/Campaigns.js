@@ -5,6 +5,7 @@ import CampaignsVisuals from "./CampaignsVisuals";
 import "./Campaigns.css";
 import api from "../../../services/api";
 import * as dictionaries from "./dictionaries";
+import { sendTrackerToBackend } from "../../../services/Analytics";
 
 const NUM_OF_ITEMS_PER_PAGE = window.innerWidth < 600 ? 4 : 8;
 
@@ -58,14 +59,6 @@ function Campaigns() {
       setHighlightStory(dictionaries.staticStory);
     } finally {
       setLoadingHighlight(false);
-    }
-  }
-
-  async function sendFilterNameToBackend(name) {
-    try {
-      await api.get(`/track?path=camaignFilter/${name}`);
-    } catch (err) {
-      console.error("Error. " + err);
     }
   }
 
@@ -196,7 +189,7 @@ function Campaigns() {
     setCurrentCategory(newCategory);
     setCurrentSearchQuery(INITIAL_ARGS.query);
 
-    await sendFilterNameToBackend(name);
+    await sendTrackerToBackend("camaignFilter", name);
 
     var loadArgs = {
       page: _currentPage,
@@ -209,7 +202,7 @@ function Campaigns() {
 
   async function setFilter(e) {
     let name = e.target.getAttribute("name");
-    await sendFilterNameToBackend(name);
+    await sendTrackerToBackend("camaignFilter", name);
     var newFilter = getNewFilter(name);
     var _dateOrder = getDateOrder(newFilter);
 

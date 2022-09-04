@@ -7,7 +7,6 @@
   font-family: Intro-Regular-Alt;
   padding: 30px 20px;
   /* changes */
-
 }
 
 .share-dialog h1,
@@ -27,7 +26,7 @@
   height: 38px;
 }
 .copied {
-  color: #002453;
+  color: #70b88f;
   font-size: 18px;
   margin-top: 1px;
   margin-bottom: -5px;
@@ -70,8 +69,8 @@
   object-fit: cover;
 }
 
-.thanks-grid{
-  background-color : #fbefe2;
+.thanks-grid {
+  background-color: #fbefe2;
   padding: 0px 60px 30px 60px;
 }
 @media screen and (max-width: 900px) {
@@ -87,13 +86,13 @@
     margin-top: 0px;
     font-size: 30px;
   }
-  .thanks-grid{
+  .thanks-grid {
     padding: 0px 15px 30px 15px;
   }
 }
 
 @media screen and (max-width: 600px) {
-  .share-dialog{
+  .share-dialog {
     height: 100%;
     width: 90%;
     text-align: center;
@@ -109,7 +108,7 @@
     font-size: 16px;
   }
 
-  .share-dialog h1{
+  .share-dialog h1 {
     margin: 10px;
     margin-top: 0px;
     font-size: 22px;
