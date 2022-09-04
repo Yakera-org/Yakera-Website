@@ -46,7 +46,7 @@ function CampaignCarousel(props) {
   }
 
   if (!loaded) {
-    return <p>Loadifffng...</p>;
+    return <p>Loading...</p>;
   } else {
     return (
       <Grid container spacing={0}>

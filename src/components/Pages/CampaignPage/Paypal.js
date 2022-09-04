@@ -16,6 +16,14 @@ class PayPal extends Component {
           </span>
           : ${amount} USD
         </p>
+        <div className="card-notice">
+          {EN
+          ?
+          'At this time we cannot accept US-based PayPal payments. If you have a PayPal account from the US, please use another payment method to complete your contribution. Thank you!'
+          :
+          'En este momento no podemos aceptar pagos de cuentas de PayPal basadas en EE.UU. Si tiene una cuenta de PayPal de los EE.UU., por favor utilice otro método de pago para completar su contribución. ¡Gracias!'
+          }
+        </div>
         <PayPalButton
           amount={amount}
           currency={"USD"}
