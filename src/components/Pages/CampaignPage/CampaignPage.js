@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import useCampaign from "../../../hooks/useCampaign.tsx";
 import useLanguage from "../../../hooks/useLanguage.tsx";
 import HashLoader from "react-spinners/HashLoader";
@@ -6,11 +6,14 @@ import "./CampaignPage.css";
 import CampaignPageVisual from "./CampaignPageVisual";
 import PaymentVisual from "./PaymentVisual";
 import Author from "../../author";
+import isMaintenance from "../../../hooks/isMaintenance";
+import MaintenanceModal from "../../MaintenanceModal.tsx";
 
 function CampaignPage(props) {
   const EN = useLanguage();
   const { campaign, acceptsZelle } = useCampaign(props.match.params.title);
-
+  const [openMaintenance, setOpenMaintenance] = useState(false);
+  const showMaintenaceModal = isMaintenance();
   return (
     <div className="campaignPage">
       {!campaign ? (
@@ -19,6 +22,9 @@ function CampaignPage(props) {
         </div>
       ) : (
         <>
+          {showMaintenaceModal && openMaintenance && (
+            <MaintenanceModal EN={EN} config="donation" />
+          )}
           <CampaignPageVisual
             campaign={campaign}
             EN={EN}
@@ -43,6 +49,7 @@ function CampaignPage(props) {
             recipientName={campaign?._user?.zelleInfo?.name}
             recipientEmail={campaign?._user?.zelleInfo?.email}
             isAcceptingZelle={acceptsZelle}
+            setOpenMaintenance={() => setOpenMaintenance(true)}
           />
 
           <Author />
