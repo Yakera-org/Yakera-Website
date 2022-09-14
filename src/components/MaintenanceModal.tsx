@@ -42,8 +42,11 @@ const MaintenanceModal = ({
           <div className="close-icon">
             <i
               onClick={() => {
-                if (config === "donation") window.location.reload();
-                window.location.href = "/";
+                if (config === "donation") {
+                  window.location.reload();
+                } else {
+                  window.location.href = "/";
+                }
               }}
               className="fas fa-2x fa-times"
             ></i>
@@ -119,8 +122,11 @@ const MaintenanceModal = ({
               fontSize: "18px",
             }}
             onClick={() => {
-              if (config === "donation") window.location.reload();
-              window.location.href = "/";
+              if (config === "donation") {
+                window.location.reload();
+              } else {
+                window.location.href = "/";
+              }
             }}
           >
             {EN ? "I understand" : "Entiendo"}
