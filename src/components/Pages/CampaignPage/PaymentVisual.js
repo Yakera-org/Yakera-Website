@@ -192,48 +192,47 @@ class PaymentVisual extends Component {
                 <PaymentDetails
                   EN={EN}
                   onContinue={this.onContinue}
+                  openMaintenance={this.props.setOpenMaintenance}
                   presetAmount={this.props.presetAmount}
                 />
               </div>
+            ) : !this.state.locationCheck ? (
+              // check location
+
+              <PaymentLocationCheck
+                EN={EN}
+                onBack={this.onBack}
+                onContinue={this.onLocationContinue.bind(this)}
+                restricted={this.state.restrictPayment}
+                setRestricted={this.setRestriction.bind(this)}
+              />
             ) : (
-              !this.state.locationCheck ? (
-                // check location
+              // else get to payment authentication
 
-                <PaymentLocationCheck
-                  EN={EN}
-                  onBack={this.onBack}
-                  onContinue={this.onLocationContinue.bind(this)}
-                  restricted={this.state.restrictPayment}
-                  setRestricted={this.setRestriction.bind(this)}
-                />
-              ) : (
-                // else get to payment authentication
-
-                <PaymentAuth
-                  className="payment-auth"
-                  EN={EN}
-                  language={this.props.language}
-                  onClose={this.onClose}
-                  amount={parseFloat(this.state.amount)}
-                  name={this.state.name}
-                  email={this.state.email}
-                  isAnon={this.state.isAnon}
-                  slug={this.props.slug}
-                  tip={this.state.tip}
-                  onBack={this.onBack}
-                  title={this.props.title}
-                  recipientEmail={this.props.recipientEmail}
-                  recipientName={this.props.recipientName}
-                  comment={this.state.comment}
-                  OnSuccessPayment={this.OnSuccessPayment.bind(this)}
-                  OnPaymentClick={this.OnPaymentClick.bind(this)}
-                  OnPaymentError={this.OnPaymentError.bind(this)}
-                  OnPaymentCancel={this.OnPaymentCancel.bind(this)}
-                  isAcceptingZelle={this.props.isAcceptingZelle}
-                  openThanks={this.openThanks.bind(this)}
-                  restricted={this.state.restrictPayment}
-                />
-              )
+              <PaymentAuth
+                className="payment-auth"
+                EN={EN}
+                language={this.props.language}
+                onClose={this.onClose}
+                amount={parseFloat(this.state.amount)}
+                name={this.state.name}
+                email={this.state.email}
+                isAnon={this.state.isAnon}
+                slug={this.props.slug}
+                tip={this.state.tip}
+                onBack={this.onBack}
+                title={this.props.title}
+                recipientEmail={this.props.recipientEmail}
+                recipientName={this.props.recipientName}
+                comment={this.state.comment}
+                OnSuccessPayment={this.OnSuccessPayment.bind(this)}
+                OnPaymentClick={this.OnPaymentClick.bind(this)}
+                OnPaymentError={this.OnPaymentError.bind(this)}
+                OnPaymentCancel={this.OnPaymentCancel.bind(this)}
+                isAcceptingZelle={this.props.isAcceptingZelle}
+                openThanks={this.openThanks.bind(this)}
+                restricted={this.state.restrictPayment}
+              />
             )}
           </div>
         </Grid>

@@ -346,7 +346,7 @@ class PaymentDetails extends PureComponent {
         <button
           type="submit"
           className="btn btn-secondary btn-block payment-start-button"
-          onClick={this.onContinue}
+          onClick={this.props.openMaintenance}
         >
           {EN ? "Donate" : "Donar"}
         </button>

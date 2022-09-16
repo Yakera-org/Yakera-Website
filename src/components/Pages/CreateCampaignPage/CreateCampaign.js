@@ -7,6 +7,8 @@ import useLanguage from "../../../hooks/useLanguage.tsx";
 import useGetRecipientProfile from "../../../hooks/useGetRecipientProfile.tsx";
 import HashLoader from "react-spinners/HashLoader";
 import { linkify } from "../../../utils/stringUtils";
+import MaintenanceModal from "../../MaintenanceModal";
+import isMaintenance from "../../../hooks/isMaintenance";
 
 const initialState = {
   campaignname: "",
@@ -238,6 +240,7 @@ function CreateCampaign() {
       setLoader(false);
     }
   }
+  const [openMaintenance] = useState(true);
   if (Object.keys(recipientProfile).length === 0) {
     return (
       <div className="page-loader-wrapper">
@@ -245,8 +248,12 @@ function CreateCampaign() {
       </div>
     );
   } else {
+    const showMaintenaceModal = isMaintenance();
     return (
       <div>
+        {showMaintenaceModal && openMaintenance && (
+          <MaintenanceModal EN={EN} config="create-campaign" />
+        )}
         <CreateCampaignVisuals
           EN={EN}
           success={successMessage}
