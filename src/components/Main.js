@@ -14,6 +14,7 @@ import NotFoundPage from "./Pages/404/NotFoundPage";
 import CreateCampaign from "./Pages/CreateCampaignPage/CreateCampaign";
 import EmailVerification from "./Pages/EmailVerification/EmailVerificationPage";
 import ProfileEditPage from "./Pages/Profile/EditPage/EditPage";
+import ToRecipientForm from "./Pages/Profile/EditPage/ToRecipient/ToRecipientPage";
 import Profile from "./Pages/Profile/Profile";
 import SuccessStories from "./Pages/SuccessStories/SuccessStories";
 import useLanguageFromGeoLocation from "../hooks/useLanguageFromGeoLocation";
@@ -41,6 +42,7 @@ function Main() {
             <Route exact path="/terms" component={Terms} />
             <Route exact path="/frequently-asked-questions" component={FAQ} />
             <Route exact path="/profile/edit" component={ProfileEditPage} />
+            <Route exact path="/profile/edit/to-recipient" component={ToRecipientForm} />
             <Route exact path="/verify-email" component={EmailVerification} />
             <Route exact path="/" component={home} />
             <Route path="/404" component={NotFoundPage} />

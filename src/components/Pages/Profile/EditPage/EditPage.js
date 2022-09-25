@@ -12,6 +12,7 @@ function EditPage() {
   const [loading, setLoading] = React.useState(true);
   const [submitLoading, setSubmitLoading] = React.useState(false);
   const [activeChange, setActiveChange] = React.useState(false);
+  const [changeType, setChangeType] = React.useState(false);
   const [success, setSuccess] = React.useState("");
   const [error, setError] = React.useState("");
 
@@ -103,6 +104,23 @@ function EditPage() {
       return true;
     }
   }
+  
+  async function handleClick(){
+    setChangeType(true);
+    // error handling???
+    // console.log("clicked");
+  }
+  
+  async function rejectChangeType(){ 
+    setChangeType(false);
+  }
+  
+  async function handleConfirm(){ // model off the entire onSubmit function
+    // e.preventDefault(); //i don't know what this does, but it requires an event input to the function
+    // setConfirmLoading(true); // new state
+    // if (validate(data)) backendPatchType(await changeTypeFunct()); // new funcitons
+        // change account type in backend. similar to backendPatch function
+  }
 
   async function setProfilePicture() {
     const currentPicture = data.user.profilePicture;
@@ -166,6 +184,9 @@ function EditPage() {
         activeChange={activeChange}
         onSubmit={onSubmit}
         handleChange={handleChange}
+        handleClick={handleClick}
+        rejectChangeType = {rejectChangeType}
+        changeType={changeType}
         success={success}
         error={error}
       />

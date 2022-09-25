@@ -83,6 +83,47 @@
 .edit-page .edit-container .save-area a:hover{
     color: #777;
 }
+.change-type-buttons{
+  border: none;
+  outline: none;
+  padding: 15px 5px;
+  border-radius: 5px;
+  width: 20%;
+  background-color: #ea883750;
+  text-align: center;
+}
+.change-type-buttons:hover{
+    background-color: #ea883740;
+}
+#change-type-button{
+  font-size: 16px;
+}
+.confirm-change-type-page{
+  text-align: center;
+  padding-bottom: 100px;
+  display:block;
+}
+.heading2{
+  font-size: 30px;
+  text-align: center;
+}
+.subtext{
+  margin: 10px;
+}
+.confirm-type-change-buttons{
+  font-size: 18px;
+  padding: 5px;
+  margin: 10px;
+}
+#reject-change-type-button{
+  background-color: #cccccccc;
+}
+#reject-change-type-button:hover{
+  background-color: #dfdfdf;
+}
+.hide{
+  display: none;
+}
 .edit-page .edit-content .powered-by{
     width: 80%;
     text-align: center;
