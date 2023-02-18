@@ -6,6 +6,7 @@ const ENVIRONMENTS = {
 //change this next line
 const currentEnv = ENVIRONMENTS.dev;
 
+
 const getBackendUrl = () => {
   let backendUrl = "https://api.yakera.org/api";
   if (currentEnv === ENVIRONMENTS.dev) {
